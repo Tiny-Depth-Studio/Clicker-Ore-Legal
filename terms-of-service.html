@@ -2,48 +2,277 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Terms of Service</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Terms of Service — Clicker Ore</title>
+<meta name="description" content="Terms of Service for Clicker Ore by Tiny Depth Studio.">
 <style>
-    body { font-family: Arial, sans-serif; padding: 20px; line-height: 1.6; }
-    h1, h2 { color: #333; }
+  :root {
+    --bg: #14110d;
+    --bg-elevated: #1d1811;
+    --bg-card: #211b13;
+    --text: #ede6d8;
+    --text-dim: #a89a82;
+    --text-faint: #766a55;
+    --accent: #e0a752;
+    --accent-strong: #f2bd6e;
+    --accent-2: #7fb8ad;
+    --border: #3a2f22;
+    --border-soft: #2a2318;
+
+    --font-display: "Bahnschrift", "Segoe UI Semibold", "Arial Narrow Bold", "Arial Narrow", sans-serif;
+    --font-body: "Sitka Text", "Iowan Old Style", Georgia, "Times New Roman", serif;
+    --font-mono: "Cascadia Mono", "Consolas", "SF Mono", ui-monospace, monospace;
+  }
+
+  :root[data-theme="light"] {
+    --bg: #efe9da;
+    --bg-elevated: #e6ddc8;
+    --bg-card: #f3ede0;
+    --text: #241d14;
+    --text-dim: #5c5138;
+    --text-faint: #857656;
+    --accent: #a8621a;
+    --accent-strong: #8a4e12;
+    --accent-2: #2f7a70;
+    --border: #d3c5a4;
+    --border-soft: #ddd0b1;
+  }
+
+  @media (prefers-color-scheme: light) {
+    :root:not([data-theme="dark"]) {
+      --bg: #efe9da;
+      --bg-elevated: #e6ddc8;
+      --bg-card: #f3ede0;
+      --text: #241d14;
+      --text-dim: #5c5138;
+      --text-faint: #857656;
+      --accent: #a8621a;
+      --accent-strong: #8a4e12;
+      --accent-2: #2f7a70;
+      --border: #d3c5a4;
+      --border-soft: #ddd0b1;
+    }
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: 17px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    display: flex;
+    justify-content: center;
+  }
+
+  ::selection { background: var(--accent); color: #14110d; }
+  a { color: var(--accent-strong); text-decoration-color: color-mix(in srgb, var(--accent-strong) 40%, transparent); text-underline-offset: 2px; }
+  a:hover { text-decoration-color: var(--accent-strong); }
+  a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  .page {
+    width: 100%;
+    max-width: 680px;
+    padding: clamp(2rem, 5vw, 4rem) 1.5rem 4rem;
+  }
+
+  .strata {
+    height: 8px;
+    width: 100%;
+    border-radius: 3px;
+    margin-bottom: 2rem;
+    background: repeating-linear-gradient(
+      90deg,
+      var(--accent) 0 6%,
+      var(--accent-2) 6% 11%,
+      var(--border-soft) 11% 18%,
+      var(--accent) 18% 24%,
+      var(--border-soft) 24% 34%,
+      var(--accent-2) 34% 40%,
+      var(--accent) 40% 48%,
+      var(--border-soft) 48% 58%,
+      var(--accent-2) 58% 63%,
+      var(--accent) 63% 72%,
+      var(--border-soft) 72% 82%,
+      var(--accent-2) 82% 90%,
+      var(--accent) 90% 100%
+    );
+    opacity: 0.85;
+  }
+
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-family: var(--font-display);
+    font-size: 0.82rem;
+    letter-spacing: 0.03em;
+    color: var(--text-dim);
+    text-decoration: none;
+    margin-bottom: 1.6rem;
+  }
+  .back-link:hover { color: var(--accent-strong); }
+
+  .eyebrow {
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    font-size: 0.72rem;
+    color: var(--accent);
+    margin-bottom: 0.6rem;
+  }
+
+  h1 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    text-wrap: balance;
+    font-size: clamp(1.9rem, 5vw, 2.4rem);
+    margin: 0 0 0.5rem;
+    line-height: 1.1;
+  }
+
+  .updated {
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    color: var(--text-faint);
+    margin: 0 0 2.6rem;
+  }
+
+  .lede {
+    color: var(--text-dim);
+    font-size: 1.02rem;
+    padding: 1rem 1.2rem;
+    background: var(--bg-card);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 6px 6px 0;
+    margin: 0 0 2.6rem;
+  }
+
+  article section {
+    margin-bottom: 2.2rem;
+    padding-bottom: 2.2rem;
+    border-bottom: 1px solid var(--border-soft);
+  }
+  article section:last-of-type {
+    border-bottom: none;
+  }
+
+  h2 {
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    color: var(--text);
+    margin: 0 0 0.8rem;
+    display: flex;
+    align-items: baseline;
+    gap: 0.6rem;
+  }
+  h2 .num {
+    font-family: var(--font-mono);
+    color: var(--accent);
+    font-size: 0.85rem;
+    font-weight: 400;
+  }
+
+  p { margin: 0 0 0.9rem; color: var(--text); }
+  section > p:last-child { margin-bottom: 0; }
+
+  ul { margin: 0.6rem 0 0; padding-left: 1.3rem; }
+  li { margin-bottom: 0.5rem; color: var(--text); }
+  li:last-child { margin-bottom: 0; }
+  strong { color: var(--accent-strong); font-weight: 600; }
+
+  .contact-box {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1rem 1.2rem;
+    margin-top: 0.6rem;
+  }
+  .contact-box a { font-family: var(--font-mono); font-size: 0.95rem; }
+
+  footer {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+    color: var(--text-faint);
+    font-size: 0.82rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem 1rem;
+    justify-content: space-between;
+  }
+  footer a { color: var(--text-dim); }
+  footer a:hover { color: var(--accent-strong); }
 </style>
 </head>
 <body>
+<div class="page">
+  <div class="strata" role="presentation"></div>
+  <a class="back-link" href="index.html">← Clicker Ore</a>
+  <div class="eyebrow">Tiny Depth Studio · Legal</div>
+  <h1>Terms of Service</h1>
+  <p class="updated">Last updated: November 2025</p>
 
-<h1>Terms of Service</h1>
-<p>Last updated: November 2025</p>
+  <p class="lede">By downloading, accessing, or using our game/application (“Service”), you agree to be bound by these Terms of Service.</p>
 
-<p>By downloading, accessing, or using our game/application (“Service”), you agree to be bound by these Terms of Service.</p>
+  <article>
+    <section>
+      <h2><span class="num">01</span>Use of the Service</h2>
+      <p>You may use the Service solely for personal, non-commercial entertainment purposes. You agree not to:</p>
+      <ul>
+        <li>Modify, reverse-engineer, or attempt to exploit the game.</li>
+        <li>Use cheats, automation tools, bots, or hacks.</li>
+        <li>Distribute or upload illegal content through the Service.</li>
+      </ul>
+    </section>
 
-<h2>1. Use of the Service</h2>
-<p>You may use the Service solely for personal, non-commercial entertainment purposes. You agree not to:</p>
-<ul>
-    <li>Modify, reverse-engineer, or attempt to exploit the game.</li>
-    <li>Use cheats, automation tools, bots, or hacks.</li>
-    <li>Distribute or upload illegal content through the Service.</li>
-</ul>
+    <section>
+      <h2><span class="num">02</span>Ownership</h2>
+      <p>All content, assets, code, and trademarks included in the Service are owned or licensed by us and protected by copyright laws.</p>
+    </section>
 
-<h2>2. Ownership</h2>
-<p>All content, assets, code, and trademarks included in the Service are owned or licensed by us and protected by copyright laws.</p>
+    <section>
+      <h2><span class="num">03</span>Game Data &amp; Save Files</h2>
+      <p>Your in-game progress is stored locally or via cloud services (e.g., Steam Cloud). We are not responsible for lost or corrupted save files.</p>
+    </section>
 
-<h2>3. Game Data & Save Files</h2>
-<p>Your in-game progress is stored locally or via cloud services (e.g., Steam Cloud). We are not responsible for lost or corrupted save files.</p>
+    <section>
+      <h2><span class="num">04</span>Online Features</h2>
+      <p>Some features may require an internet connection. We do not guarantee uninterrupted or error-free online functionality.</p>
+    </section>
 
-<h2>4. Online Features</h2>
-<p>Some features may require an internet connection. We do not guarantee uninterrupted or error-free online functionality.</p>
+    <section>
+      <h2><span class="num">05</span>Termination</h2>
+      <p>We may suspend or terminate access to the Service for violating these terms.</p>
+    </section>
 
-<h2>5. Termination</h2>
-<p>We may suspend or terminate access to the Service for violating these terms.</p>
+    <section>
+      <h2><span class="num">06</span>Disclaimer</h2>
+      <p>The Service is provided “AS IS” without warranties of any kind. We are not liable for damages including data loss, bugs, or device issues.</p>
+    </section>
 
-<h2>6. Disclaimer</h2>
-<p>The Service is provided “AS IS” without warranties of any kind. We are not liable for damages including data loss, bugs, or device issues.</p>
+    <section>
+      <h2><span class="num">07</span>Changes to the Terms</h2>
+      <p>We may update these Terms occasionally. Continued use of the Service means you accept any updates.</p>
+    </section>
 
-<h2>7. Changes to the Terms</h2>
-<p>We may update these Terms occasionally. Continued use of the Service means you accept any updates.</p>
+    <section>
+      <h2><span class="num">08</span>Contact Us</h2>
+      <p>For questions about these Terms, contact:</p>
+      <div class="contact-box"><a href="mailto:tinydeptystudio@gmail.com">tinydeptystudio@gmail.com</a></div>
+    </section>
+  </article>
 
-<h2>8. Contact Us</h2>
-<p>For questions about these Terms, contact: <br>
-<strong>tinydeptystudio@gmail.com</strong></p>
-
+  <footer>
+    <span>© 2026 Tiny Depth Studio</span>
+    <a href="privacy-policy.html">Privacy Policy</a>
+  </footer>
+</div>
 </body>
 </html>
