@@ -13,6 +13,7 @@ LANG = {
     "footer": "Liczby odpowiadają aktualnemu balansowi gry i mogą się zmienić z aktualizacjami. Ceny w sklepie ustala Steam i pokazuje je w twojej walucie, dlatego nie ma ich tutaj.",
     "labels": {
         "contents": "Spis treści",
+        "home": "Strona główna",
         "per_second": "/s",
         "second_short": " s",
         "meter_short": "m",

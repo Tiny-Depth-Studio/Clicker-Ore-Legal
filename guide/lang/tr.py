@@ -13,6 +13,7 @@ LANG = {
     "footer": "Buradaki sayılar oyunun güncel dengesine göredir ve güncellemelerle değişebilir. Mağaza fiyatları Steam tarafından belirlenip kendi para biriminde gösterildiği için burada yazılmıyor.",
     "labels": {
         "contents": "İçindekiler",
+        "home": "Ana sayfa",
         "per_second": "/sn",
         "second_short": " sn",
         "meter_short": "m",

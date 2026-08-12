@@ -13,6 +13,7 @@ LANG = {
     "footer": "Các số ở đây theo cân bằng hiện tại của game và có thể đổi sau mỗi bản cập nhật. Giá cửa hàng do Steam đặt và hiển thị theo tiền tệ của bạn, nên không ghi ở đây.",
     "labels": {
         "contents": "Mục lục",
+        "home": "Trang chủ",
         "per_second": "/giây",
         "second_short": " giây",
         "meter_short": "m",

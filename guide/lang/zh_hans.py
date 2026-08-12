@@ -13,6 +13,7 @@ LANG = {
     "footer": "这里的数值对应当前的游戏平衡，可能随更新变化。商店价格由 Steam 设定并以你所在地区的货币显示，因此本页不列出。",
     "labels": {
         "contents": "目录",
+        "home": "首页",
         "per_second": "/秒",
         "second_short": "秒",
         "meter_short": "米",

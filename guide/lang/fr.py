@@ -13,6 +13,7 @@ LANG = {
     "footer": "Les chiffres suivent l'équilibrage actuel du jeu et peuvent changer avec les mises à jour. Les prix de la boutique sont fixés sur Steam et affichés dans ta monnaie, ils ne sont donc pas listés ici.",
     "labels": {
         "contents": "Sommaire",
+        "home": "Accueil",
         "per_second": "/s",
         "second_short": " s",
         "meter_short": "m",

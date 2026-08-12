@@ -44,12 +44,13 @@ PAGE = """<!DOCTYPE html>
 <input type="checkbox" id="nav-toggle">
 
 <div class="topbar">
-  <span class="topbar-title">&#9935; {brand_sub}</span>
+  <a class="topbar-title" href="index.html">&#9935; {brand}</a>
   <label class="nav-toggle-btn" for="nav-toggle">{contents}</label>
 </div>
 
 <div class="shell">
   <nav class="toc" aria-label="{contents}">
+    <a class="toc-home" href="index.html">← {home}</a>
     <div class="toc-brand">{brand}<small>{brand_sub}</small></div>
     <ul class="toc-list">
       {toc}
@@ -141,6 +142,7 @@ def render(code):
         brand=lang["brand"],
         brand_sub=fill(lang["brand_sub"], values),
         contents=lang["labels"]["contents"],
+        home=lang["labels"]["home"],
         toc="\n      ".join(toc),
         eyebrow=fill(lang["eyebrow"], values),
         headline=fill(lang["headline"], values),

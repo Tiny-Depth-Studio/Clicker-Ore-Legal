@@ -141,6 +141,15 @@ CSS = """
     background: var(--bg-elevated);
     border-right: 1px solid var(--border);
   }
+  .toc-home {
+    display: inline-block;
+    font-family: var(--font-display);
+    font-size: 0.8rem;
+    color: var(--text-dim);
+    margin-bottom: 1.1rem;
+  }
+  .toc-home:hover { color: var(--accent-strong); text-decoration: none; }
+
   .toc-brand {
     font-family: var(--font-display);
     font-size: 1.05rem;

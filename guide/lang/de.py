@@ -13,6 +13,7 @@ LANG = {
     "footer": "Die Zahlen hier folgen dem aktuellen Balancing des Spiels und können sich mit Updates ändern. Shop-Preise legt Steam fest und zeigt sie in deiner Währung, deshalb stehen sie hier nicht.",
     "labels": {
         "contents": "Inhalt",
+        "home": "Startseite",
         "per_second": "/s",
         "second_short": "s",
         "meter_short": "m",

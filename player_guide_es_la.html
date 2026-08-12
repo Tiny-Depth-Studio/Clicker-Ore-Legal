@@ -146,6 +146,15 @@
     background: var(--bg-elevated);
     border-right: 1px solid var(--border);
   }
+  .toc-home {
+    display: inline-block;
+    font-family: var(--font-display);
+    font-size: 0.8rem;
+    color: var(--text-dim);
+    margin-bottom: 1.1rem;
+  }
+  .toc-home:hover { color: var(--accent-strong); text-decoration: none; }
+
   .toc-brand {
     font-family: var(--font-display);
     font-size: 1.05rem;
@@ -462,12 +471,13 @@
 <input type="checkbox" id="nav-toggle">
 
 <div class="topbar">
-  <span class="topbar-title">&#9935; Guía del jugador</span>
+  <a class="topbar-title" href="index.html">&#9935; Clicker Ore Game</a>
   <label class="nav-toggle-btn" for="nav-toggle">Contenido</label>
 </div>
 
 <div class="shell">
   <nav class="toc" aria-label="Contenido">
+    <a class="toc-home" href="index.html">← Inicio</a>
     <div class="toc-brand">Clicker Ore Game<small>Guía del jugador</small></div>
     <ul class="toc-list">
       <li><a href="#start"><span class="toc-num">01</span>Por dónde empezar</a></li>

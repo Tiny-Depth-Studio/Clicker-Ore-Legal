@@ -13,6 +13,7 @@ LANG = {
     "footer": "여기 적힌 수치는 현재 게임 밸런스를 따르며 업데이트로 바뀔 수 있습니다. 상점 가격은 Steam에서 정해 각자의 통화로 표시되므로 여기에는 적지 않았습니다.",
     "labels": {
         "contents": "목차",
+        "home": "홈",
         "per_second": "/초",
         "second_short": "초",
         "meter_short": "m",

@@ -13,6 +13,7 @@ LANG = {
     "footer": "Angka di sini mengikuti keseimbangan game saat ini dan bisa berubah seiring pembaruan. Harga toko ditetapkan Steam dan tampil dalam mata uangmu, jadi tidak dicantumkan di sini.",
     "labels": {
         "contents": "Isi",
+        "home": "Beranda",
         "per_second": "/detik",
         "second_short": " dtk",
         "meter_short": "m",

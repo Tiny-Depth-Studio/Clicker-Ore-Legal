@@ -13,6 +13,7 @@ LANG = {
     "footer": "Numbers here follow the game's current balance and can change with updates. Store prices are set on Steam and shown in your own currency, so they are not listed here.",
     "labels": {
         "contents": "Contents",
+        "home": "Home",
         "per_second": "/s",
         "second_short": "s",
         "meter_short": "m",
