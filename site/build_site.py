@@ -24,7 +24,7 @@ sys.path.insert(0, HERE)
 sys.path.insert(0, os.path.join(ROOT, "guide"))
 
 import build as guide_build
-import style as style_module
+import landing_style as style_module
 
 DATA = os.path.join(HERE, "data", "steam.json")
 OUT = os.path.join(ROOT, "index.html")
@@ -54,81 +54,95 @@ PAGE = """<!DOCTYPE html>
 <body>
 
 <div class="topbar">
-  <span class="topbar-brand">&#9935; {name}</span>
-  <nav class="topbar-nav" aria-label="Sections">
-    <a href="#news">Updates</a>
-    <a href="#media">Screenshots</a>
-    <a href="#guide">Player guide</a>
-    <a href="#legal">Legal</a>
-  </nav>
-  <a class="btn" href="{store_url}">Play free on Steam</a>
+  <div class="topbar-inner">
+    <a class="topbar-brand" href="#top">&#9935; {name}</a>
+    <nav class="topbar-nav" aria-label="Sections">
+      <a href="#news">Updates</a>
+      <a href="#media">Screenshots</a>
+      <a href="#guide">Guide</a>
+      <a href="#legal">Legal</a>
+    </nav>
+    <a class="btn sm topbar-cta" href="{store_url}">Play free</a>
+  </div>
 </div>
 
-<div class="wrap">
-  <div class="strata" role="presentation"></div>
-
-  <header class="hero">
-    <div>
-      <div class="eyebrow">{developer}</div>
-      <h1>{name}</h1>
-      <p class="lede">{description}</p>
-      <div class="chips">{chips}</div>
-      <div class="hero-actions">
-        <a class="btn" href="{store_url}">Play free on Steam</a>
-        <a class="btn ghost" href="#guide">Read the player guide</a>
-      </div>
+<header class="hero" id="top">
+  <div class="hero-bg" style="background-image:url('{header_image}')" role="presentation"></div>
+  <div class="wrap">
+    <span class="kicker">{developer}</span>
+    <h1>{name}</h1>
+    <p class="lede">{description}</p>
+    <div class="hero-actions">
+      <a class="btn" href="{store_url}">Play free on Steam</a>
+      <a class="btn ghost" href="#guide">Read the player guide</a>
     </div>
+    <div class="chips">{chips}</div>
     <a class="hero-art" href="{store_url}" aria-label="{name} on Steam">
       <img src="{header_image}" alt="{name} store artwork" width="920" height="430">
     </a>
-  </header>
+  </div>
+</header>
 
+<main>
   <section class="block" id="news">
-    <div class="block-head">
-      <h2>Latest updates</h2>
-      <a href="{news_hub}">All announcements on Steam →</a>
-    </div>
-    <p class="block-dek">Straight from the Steam announcements - this page rebuilds itself when a new one goes up.</p>
-    <div class="news-grid">
+    <div class="wrap">
+      <div class="block-head">
+        <span class="kicker">Updates</span>
+        <h2>Fresh from the mine</h2>
+        <p class="block-dek">Pulled from the Steam announcements - this page rebuilds itself when a new one goes up.</p>
+      </div>
+      <div class="news-grid">
 {news}
+      </div>
+      <div class="block-more"><a class="btn ghost" href="{news_hub}">All announcements on Steam</a></div>
     </div>
   </section>
 
   <section class="block" id="media">
-    <div class="block-head">
-      <h2>Screenshots</h2>
-      <a href="{store_url}">More on the store page →</a>
-    </div>
-    <p class="block-dek">{media_dek}</p>
-    <div class="media-grid">
+    <div class="wrap">
+      <div class="block-head">
+        <span class="kicker">Gallery</span>
+        <h2>Down in the shaft</h2>
+        <p class="block-dek">{media_dek}</p>
+      </div>
+      <div class="media-grid">
 {media}
+      </div>
     </div>
   </section>
 
   <section class="block" id="guide">
-    <div class="block-head">
-      <h2>Player guide</h2>
-      <span class="chip">{language_count} languages</span>
-    </div>
-    <p class="block-dek">Pickaxes, skills, pets, prestige, bosses and the store, explained in plain terms - the same guide in every language the game ships in. Pick yours:</p>
-    <div class="lang-grid">
+    <div class="wrap">
+      <div class="block-head">
+        <span class="kicker">{language_count} languages</span>
+        <h2>Player guide</h2>
+        <p class="block-dek">Pickaxes, skills, pets, prestige, bosses and the store, explained in plain terms - the same guide in every language the game ships in. Pick yours:</p>
+      </div>
+      <div class="lang-grid">
 {languages}
+      </div>
     </div>
   </section>
 
   <section class="block" id="legal">
-    <div class="block-head"><h2>Legal</h2></div>
-    <p class="block-dek">What data the game collects, and the rules for using it.</p>
-    <div class="legal-row">
-      <a href="privacy-policy.html">Privacy Policy</a>
-      <a href="terms-of-service.html">Terms of Service</a>
+    <div class="wrap">
+      <div class="block-head">
+        <span class="kicker">Legal</span>
+        <h2>The small print</h2>
+        <p class="block-dek">What data the game collects, and the rules for using it.</p>
+      </div>
+      <div class="legal-row">
+        <a class="btn ghost" href="privacy-policy.html">Privacy Policy</a>
+        <a class="btn ghost" href="terms-of-service.html">Terms of Service</a>
+      </div>
     </div>
   </section>
+</main>
 
+<div class="wrap">
   <footer class="site">
-    <span>© {year} {developer}</span>
+    <span>© {year} {developer} · <a href="mailto:{email}">{email}</a></span>
     <span>Updated {updated}</span>
-    <a href="mailto:{email}">{email}</a>
   </footer>
 </div>
 

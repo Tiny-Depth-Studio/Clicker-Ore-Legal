@@ -12,6 +12,7 @@ like a change.
 Run:  python site/steam.py
 """
 
+import datetime
 import html
 import io
 import json
@@ -25,7 +26,9 @@ STORE_URL = "https://store.steampowered.com/app/{0}/".format(APP_ID)
 NEWS_URL = ("https://api.steampowered.com/ISteamNews/GetNewsForApp/v2/"
             "?appid={0}&count=30&maxlength=0".format(APP_ID))
 DETAILS_URL = ("https://store.steampowered.com/api/appdetails"
-               "?appids={0}&l=english".format(APP_ID))
+               "?appids={0}&l=english&cc=us".format(APP_ID))
+
+DATE_FORMATS = ["%d %b, %Y", "%b %d, %Y", "%d %B %Y", "%B %d, %Y", "%d %b %Y"]
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 OUT = os.path.join(HERE, "data", "steam.json")
@@ -83,6 +86,22 @@ def collect_news():
     ]
 
 
+def release_date(raw):
+    """Steam formats this string per requesting region, so pin it to one shape.
+
+    The scheduled run on a US-hosted runner returned "Jul 26, 2026" where a
+    Turkish machine got "26 Jul, 2026" for the same app. Left alone the two
+    builds would keep overwriting each other and every run would commit.
+    """
+    text = (raw or "").strip()
+    for fmt in DATE_FORMATS:
+        try:
+            return datetime.datetime.strptime(text, fmt).strftime("%d %b %Y").lstrip("0")
+        except ValueError:
+            continue
+    return text
+
+
 def collect_app():
     payload = fetch(DETAILS_URL)
     entry = payload.get(str(APP_ID), {})
@@ -99,7 +118,7 @@ def collect_app():
             "header_image": data.get("header_image"),
             "capsule_image": data.get("capsule_image"),
             "is_free": bool(data.get("is_free")),
-            "release_date": (data.get("release_date") or {}).get("date"),
+            "release_date": release_date((data.get("release_date") or {}).get("date")),
             "developers": data.get("developers") or [],
             "genres": [genre["description"] for genre in data.get("genres") or []],
             "platforms": [name for name, on in (data.get("platforms") or {}).items() if on],

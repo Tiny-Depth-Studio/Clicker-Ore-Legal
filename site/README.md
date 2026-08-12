@@ -15,7 +15,7 @@ python site/build_site.py   # render index.html
 | `steam.py` | the only place that talks to Steam. Writes `data/steam.json`. |
 | `data/steam.json` | **generated, committed.** Store copy, artwork URLs, the six newest announcements. Committed so a build works with no network. |
 | `build_site.py` | renders `index.html` from that JSON plus the guide language modules. |
-| `style.py` | the landing page stylesheet, sharing the guide's palette. |
+| `landing_style.py` | the landing page stylesheet. Named apart from `guide/style.py` so the two never shadow each other on `sys.path`. |
 
 ## Why the data is baked in
 
