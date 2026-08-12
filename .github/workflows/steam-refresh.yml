@@ -22,7 +22,7 @@ jobs:
   refresh:
     runs-on: ubuntu-latest
     steps:
-     - uses: actions/checkout@v5
+      - uses: actions/checkout@v5
 
       - uses: actions/setup-python@v6
         with:
@@ -43,8 +43,21 @@ jobs:
             echo "Steam data unchanged, nothing to commit."
             exit 0
           fi
+
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          # main may have moved while this job was building. Point the branch at
+          # whatever is on the remote now, keeping the freshly built files in the
+          # working tree, so the commit below fast-forwards instead of racing.
+          git fetch --depth=1 origin main
+          git reset --mixed FETCH_HEAD
+
           git add index.html site/data/steam.json player_guide_*.html
+          if git diff --cached --quiet; then
+            echo "Nothing new once synced with main."
+            exit 0
+          fi
+
           git commit -m "Refresh Steam news and store art on the landing page"
-          git push
+          git push origin HEAD:main
