@@ -86,6 +86,18 @@ def collect_news():
     ]
 
 
+def stable_asset(url):
+    """Drop Steam's ?t= stamp from artwork URLs.
+
+    That query is a store-touched timestamp, not a content version: it ticked
+    from 1786563388 to 1786567629 while the bytes stayed identical, so leaving it
+    in made every scheduled run produce a diff and commit. The path already
+    carries a content hash, and the CDN serves the bare URL with the same
+    immutable cache header.
+    """
+    return (url or "").split("?", 1)[0]
+
+
 def release_date(raw):
     """Steam formats this string per requesting region, so pin it to one shape.
 
@@ -115,8 +127,8 @@ def collect_app():
             "name": data.get("name"),
             "store_url": STORE_URL,
             "short_description": plain_text(data.get("short_description", "")),
-            "header_image": data.get("header_image"),
-            "capsule_image": data.get("capsule_image"),
+            "header_image": stable_asset(data.get("header_image")),
+            "capsule_image": stable_asset(data.get("capsule_image")),
             "is_free": bool(data.get("is_free")),
             "release_date": release_date((data.get("release_date") or {}).get("date")),
             "developers": data.get("developers") or [],
@@ -124,10 +136,10 @@ def collect_app():
             "platforms": [name for name, on in (data.get("platforms") or {}).items() if on],
         },
         "screenshots": [
-            {"thumb": shot["path_thumbnail"], "full": shot["path_full"]}
+            {"thumb": stable_asset(shot["path_thumbnail"]), "full": stable_asset(shot["path_full"])}
             for shot in data.get("screenshots") or []
         ],
-        "trailer": ({"thumb": movies[0]["thumbnail"], "name": movies[0].get("name")}
+        "trailer": ({"thumb": stable_asset(movies[0]["thumbnail"]), "name": movies[0].get("name")}
                     if movies else None),
     }
 
