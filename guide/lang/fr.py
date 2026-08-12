@@ -1,0 +1,342 @@
+LANG = {
+    "code": "fr",
+    "name": "Français",
+    "html_lang": "fr",
+    "locale": {"group": " ", "decimal": ","},
+    "title": "Clicker Ore Game - Guide du joueur",
+    "description": "Comment la mine fonctionne : monnaies, pioches, compagnons, compétences, prestige, boss et boutique - sans les formules.",
+    "brand": "Clicker Ore Game",
+    "brand_sub": "Guide du joueur",
+    "eyebrow": "Guide du joueur - {date}",
+    "headline": "Toute la mine,<br>expliquée simplement",
+    "subtitle": "Ce que fait chaque système, à quel étage il s'ouvre et où passer ta prochaine heure. Pas de formules - seulement les décisions qui comptent.",
+    "footer": "Les chiffres suivent l'équilibrage actuel du jeu et peuvent changer avec les mises à jour. Les prix de la boutique sont fixés sur Steam et affichés dans ta monnaie, ils ne sont donc pas listés ici.",
+    "labels": {
+        "contents": "Sommaire",
+        "per_second": "/s",
+        "second_short": " s",
+        "meter_short": "m",
+        "language": "Langue",
+        "skill": "Compétence",
+        "unlock_floor": "Étage",
+        "level_first": "Niveau 1 (durée / recharge)",
+        "level_last": "Niveau 7 (durée / recharge)",
+        "effect": "Effet",
+        "boss": "Boss",
+        "health": "Points de vie",
+        "time_limit": "Temps",
+        "reward": "Récompense",
+        "parameter": "Paramètre",
+        "per_level": "Par niveau",
+        "effect_dps": "Dégâts automatiques par seconde",
+        "effect_click": "Dégâts de clic",
+        "effect_gold": "Revenu d'or",
+        "effect_crit_chance": "Chance critique",
+        "effect_crit_multiplier": "Multiplicateur critique",
+        "effect_heat": "Résistance à la chaleur",
+        "effect_click_from_dps": "Part des DPS ajoutée aux clics",
+        "depth": "Profondeur",
+        "ore_types": "Types de minerai",
+        "around_floor": "Vers l'étage",
+        "item": "Objet",
+        "cost": "Prix",
+    },
+    "currencies": {
+        "gold": ["Gagné en <b>cassant du minerai</b>.", "Sert aux niveaux de pioche et d'armure - ta monnaie de tous les jours."],
+        "diamond": ["Vient <b>uniquement des achats en argent réel</b>.", "Sert aux compagnons et aux objets Infini permanents."],
+        "essence": ["Vient du <b>prestige</b> et des victoires contre les boss.", "Sert aux {prestige_parameter_count} paramètres de prestige permanents."],
+        "taskium": ["<b>+{taskium_per_click}</b> à chaque clic réussi.", "Sert à accepter et à relancer des tâches."],
+        "dungeon_key": ["Une clé gratuite par jour, plus les lots de la boutique.", "Sert à lancer un combat de boss - {boss_key_cost} par tentative."],
+        "skill_stone": ["Vient des lots de la boutique et du panneau d'échange.", "Sert à monter les {skill_count} compétences actives."],
+        "ore_stone": ["<b>{ore_stone_min}-{ore_stone_max}</b> par minerai cassé, plus les succès.", "S'échange contre de l'Essence ou de la Pierre de compétence."],
+    },
+    "sections": [
+        {
+            "id": "start",
+            "title": "Par où commencer",
+            "dek": "Trois phases, dans l'ordre où le jeu ouvre les choses.",
+            "blocks": [
+                ("stages", [
+                    ["Début - étages 1 à {prestige_first_floor}", [
+                        "Améliore ta pioche sans arrêt ; achète la suivante dès qu'elle s'ouvre.",
+                        "{skill_ore_breaker} arrive à l'étage {skill_line_floor}, {skill_anger_click} à l'étage 70.",
+                        "Prends {pet_1} dès que tu peux te passer des diamants.",
+                    ]],
+                    ["Milieu - étages {prestige_first_floor} à {boss_floor}", [
+                        "Fais ton premier prestige à l'étage {prestige_first_floor}.",
+                        "Répartis l'Essence sur les {prestige_parameter_count} paramètres au lieu d'en pousser un seul.",
+                        "Les tâches s'ouvrent à l'étage {task_panel_floor}, l'arbre de compétences et l'échange à l'étage {skill_tree_floor}.",
+                    ]],
+                    ["Fin - à partir de l'étage {boss_floor}", [
+                        "Affronte un boss dès que tu as une clé ; c'est ton moteur d'Essence.",
+                        "Achète les objets Infini - ils sont permanents et ne se réinitialisent jamais.",
+                        "Garde l'armure à niveau pour que la chaleur ne mange pas tes dégâts.",
+                    ]],
+                ]),
+                ("note", ["Bon à savoir", "Les nombres s'allongent vite : le jeu passe d'abord à des formes courtes, puis à la notation scientifique comme <strong>1,23e45</strong>. Il n'y a pas de plafond - ce n'est qu'un changement d'écriture."]),
+            ],
+        },
+        {
+            "id": "currencies",
+            "title": "Les {currency_count} monnaies",
+            "dek": "Chacune alimente un système différent. Dépenser la bonne monnaie au mauvais endroit est l'erreur de débutant la plus fréquente.",
+            "blocks": [
+                ("currencies", None),
+                ("note", ["Diamants", "Les boss, les succès et les tâches ne donnent jamais de diamants. Les diamants et les clés de donjon sont gardés sur le serveur : il faut donc être en ligne pour acheter un compagnon."]),
+            ],
+        },
+        {
+            "id": "damage",
+            "title": "Dégâts de clic et dégâts automatiques",
+            "dek": "Deux sources de dégâts distinctes, alimentées par des choses différentes.",
+            "blocks": [
+                ("p", "Les <strong>dégâts de clic</strong> sont ce qu'un appui infliger. Ils montent avec le niveau et les compétences de ta première pioche, la compétence {skill_anger_click}, ton titre et le paramètre de prestige {prestige_click}. Une part de tes dégâts automatiques est aussi versée dans chaque clic dès que {prestige_click_from_dps} est monté."),
+                ("p", "Les <strong>dégâts automatiques</strong> (par seconde) viennent de la deuxième pioche et des suivantes, de la compétence {skill_rampage}, du paramètre {prestige_dps} et de tes compagnons."),
+                ("note", ["Les compagnons font exception", "Les dégâts des compagnons sont ajoutés <strong>après</strong> tous les multiplicateurs, sans être multipliés par eux. Leurs niveaux seuls ne suffisent pas en fin de partie : les multiplicateurs de pioche et de compétence doivent suivre."]),
+            ],
+        },
+        {
+            "id": "critical",
+            "title": "Coups critiques",
+            "dek": "Chaque clic peut devenir critique et frapper plus fort.",
+            "blocks": [
+                ("p", "Tu commences avec <strong>{crit_chance_percent}%</strong> de chance et un multiplicateur de <strong>x{crit_multiplier}</strong>. Quatre choses les font monter : la compétence {skill_critical_strike}, les compétences de pioche, les paramètres de prestige {prestige_crit_chance} et {prestige_crit_multiplier}, et les titres."),
+            ],
+        },
+        {
+            "id": "pickaxes",
+            "title": "Pioches",
+            "dek": "{pickaxe_count} pioches, débloquées dans l'ordre. C'est l'ossature de tes dégâts.",
+            "blocks": [
+                ("ul", [
+                    "La première pioche coûte <strong>{pickaxe_first_cost} or</strong> ; chaque suivante coûte environ <strong>{pickaxe_cost_growth} fois</strong> plus que la précédente.",
+                    "Une pioche se débloque d'elle-même dès que tu as gagné assez d'or dans cette partie - c'est donc l'amélioration qui ouvre la suivante.",
+                    "Chaque niveau coûte environ <strong>{pickaxe_upgrade_growth_percent}%</strong> de plus que le précédent.",
+                    "Seule la <strong>première</strong> pioche alimente les dégâts de clic. Toutes les autres alimentent les dégâts automatiques par seconde.",
+                    "Chaque pioche a {pickaxe_skill_count} compétences, ouvertes aux niveaux {pickaxe_skill_levels}. Certaines n'aident que cette pioche, d'autres toutes - les globales valent plus.",
+                ]),
+                ("note", ["Le grand saut", "Tous les <strong>{pickaxe_bonus_interval} niveaux</strong>, une pioche multiplie sa propre production par <strong>x{pickaxe_bonus_multiplier}</strong>. Pousser une pioche jusqu'à la centaine suivante est en général le plus gros gain de puissance disponible."]),
+            ],
+        },
+        {
+            "id": "suits",
+            "title": "Armures",
+            "dek": "{suit_count} armures, possédées dès le départ. Leur rôle est de te protéger de la chaleur.",
+            "blocks": [
+                ("ul", [
+                    "Tu n'achètes jamais d'armure, tu la montes seulement. Chaque niveau ajoute environ <strong>{suit_heat_per_level_percent}%</strong> de résistance, à partir de {suit_base_heat_resistance}.",
+                    "Tous les {suit_bonus_interval} niveaux, la résistance de l'armure est multipliée par <strong>x{suit_bonus_multiplier}</strong>.",
+                    "Chaque armure a aussi {suit_skill_count} compétences qui s'ouvrent avec les niveaux.",
+                    "Le panneau d'armure s'ouvre à l'étage <strong>{suit_panel_floor}</strong>, avec la jauge de chaleur.",
+                ]),
+            ],
+        },
+        {
+            "id": "temperature",
+            "title": "Chaleur",
+            "dek": "Plus tu descends, plus il fait chaud - et la chaleur rogne tes dégâts sans le dire.",
+            "blocks": [
+                ("ul", [
+                    "La température de l'étage grimpe sans cesse - environ <strong>{temperature_growth}x par étage</strong>, elle double donc toutes les vingtaines d'étages.",
+                    "Tant que ta résistance vaut au moins <strong>{temperature_safe_ratio}x</strong> la température, la jauge reste libre et tu ne perds rien.",
+                    "Dès que la résistance passe sous la température, les dégâts fuient ; à <strong>{temperature_worst_ratio}x</strong> il ne reste qu'un vingtième - une perte de <strong>{temperature_worst_damage_percent}%</strong>.",
+                    "Le panneau d'armure a un bouton d'achat automatique de résistance ; laisse-le actif si tu descends souvent.",
+                ]),
+                ("warn", ["Si ça bloque d'un coup", "Un mur où le minerai n'en finit plus, c'est presque toujours la chaleur et pas les dégâts. Regarde la jauge avant de dépenser autre chose."]),
+            ],
+        },
+        {
+            "id": "pets",
+            "title": "Compagnons",
+            "dek": "{pet_count} compagnons, achetés en diamants puis montés à l'or.",
+            "blocks": [
+                ("ul", [
+                    "Les prix vont de <strong>{pet_cost_first}</strong> à <strong>{pet_cost_last}</strong> diamants ({pet_cost_list}).",
+                    "Chaque niveau ajoute environ <strong>{pet_dps_percent_per_level}%</strong> des dégâts de clic de ta pioche en dégâts automatiques, multiplié par le rang du compagnon - {pet_5} donne donc cinq fois {pet_1} à niveau égal.",
+                    "Les niveaux coûtent environ <strong>{pet_upgrade_growth_percent}%</strong> plus cher à chaque fois, et tous les {pet_bonus_interval} niveaux le compagnon multiplie sa production par <strong>x{pet_bonus_multiplier}</strong>.",
+                    "Chaque compagnon a {pet_skill_count} compétences ; certaines ne servent qu'à lui, d'autres à tous.",
+                    "Le panneau des compagnons s'ouvre à l'étage <strong>{pet_panel_floor}</strong>, ou dès que tu en possèdes un.",
+                ]),
+                ("warn", ["Prestige et compagnons", "Le prestige remet chaque compagnon au <strong>niveau 1</strong> et efface ses compétences. La propriété reste acquise - tu ne rachètes jamais un compagnon."]),
+            ],
+        },
+        {
+            "id": "floors",
+            "title": "Étages, minerai et profondeur",
+            "dek": "L'étage décide de la dureté du minerai et de l'or qu'il rapporte. La profondeur décide de son apparence.",
+            "blocks": [
+                ("ul", [
+                    "Chaque étage a un peu plus de vie et un peu plus d'or que le précédent, et la courbe se redresse en montant.",
+                    "Chaque <strong>{duration_floor_interval}e étage</strong> est un étage chronométré : un compte à rebours de <strong>{duration_floor_seconds} secondes</strong> démarre, la vie monte d'environ {duration_floor_health_percent}% et l'or d'environ {duration_floor_gold_percent}%.",
+                    "La difficulté avance aussi par cycles d'environ {difficulty_cycle_floors} étages - les premiers étages d'un cycle paient le mieux par rapport à leur vie.",
+                    "Chaque minerai lâche en plus <strong>{ore_stone_min}-{ore_stone_max}</strong> Pierre de minerai.",
+                ]),
+                ("warn", ["Les étages chronométrés mordent", "Si le temps s'écoule, tu es renvoyé <strong>un étage</strong> plus bas. Mieux vaut sauter l'étage chronométré que le perdre si tes dégâts ne suivent pas."]),
+                ("p", "Tu peux redescendre à n'importe quel étage déjà atteint dans cette partie et y farmer. Choisir un étage à la main coupe la montée automatique ; réactive-la quand tu veux remonter."),
+                ("p", "Il y a <strong>{ore_type_count}</strong> types de minerai en tout, et la profondeur décide lesquels apparaissent. Le type ne change que l'apparence et sa poussière - la vie et l'or viennent de l'étage."),
+                ("table", "depth"),
+            ],
+        },
+        {
+            "id": "skills",
+            "title": "Compétences actives",
+            "dek": "{skill_count} compétences, chacune un bonus limité dans le temps suivi d'une recharge.",
+            "blocks": [
+                ("p", "Une compétence est <strong>gratuite</strong> quand son étage arrive - tu l'utilises dès le niveau 1. La monter au niveau {skill_levels} coûte <strong>{skill_total_cost} Pierres de compétence</strong> en tout, soit <strong>{skill_all_total_cost}</strong> pour les {skill_count}. Plus le niveau est haut, plus la durée est longue et la recharge courte."),
+                ("table", "skills"),
+                ("p", "La première ligne de compétences s'ouvre à l'étage {skill_line_floor} ; le panneau de l'arbre, où tu dépenses les Pierres de compétence, à l'étage <strong>{skill_tree_floor}</strong>. Le panneau n'est pas nécessaire pour lancer une compétence."),
+                ("note", ["La combinaison", "Lance d'abord {skill_overcharge}, puis la compétence que tu veux vraiment renforcer - {skill_golden_frenzy} par exemple. {skill_time_reversal} réduit ensuite la recharge de la dernière compétence utilisée, tu la récupères donc plus tôt."]),
+            ],
+        },
+        {
+            "id": "titles",
+            "title": "Titres",
+            "dek": "{title_count} titres qui te tombent dessus en grimpant.",
+            "blocks": [
+                ("ul", [
+                    "Les titres vont de l'étage {title_first_floor} à l'étage <strong>{title_last_floor}</strong> et sont choisis automatiquement selon ton meilleur étage de la partie.",
+                    "Chaque titre ajoute environ <strong>+{title_effect_step}</strong> aux bonus qu'il porte.",
+                    "Les bonus arrivent par paliers : dégâts de clic dès le premier titre, puis dégâts automatiques, résistance à la chaleur, or, multiplicateur critique, chance critique et la part de DPS versée aux clics (titres {title_effect_unlocks}).",
+                ]),
+            ],
+        },
+        {
+            "id": "tasks",
+            "title": "Tâches et {currency_taskium}",
+            "dek": "Une voie parallèle qui transforme tes clics en second revenu.",
+            "blocks": [
+                ("ul", [
+                    "Chaque clic réussi donne <strong>+{taskium_per_click} {currency_taskium}</strong>.",
+                    "Accepter une tâche coûte <strong>{task_accept_cost}</strong>, en relancer une <strong>{task_refresh_cost}</strong>.",
+                    "Le panneau des tâches s'ouvre à l'étage {task_panel_floor} ; les {task_slot_count} emplacements aux étages {task_slot_floors}.",
+                    "Il y a {task_type_count} types de tâches en {task_rarity_count} raretés. Chaque tâche dure {task_duration_minutes} minutes, et celles qui ne sont pas acceptées sont remplacées toutes les heures.",
+                    "La récompense grandit avec la rareté - entre <strong>{task_reward_range}</strong> fois l'or du minerai de l'étage courant. Les plus rares donnent aussi de l'Essence.",
+                ]),
+            ],
+        },
+        {
+            "id": "trade",
+            "title": "Panneau d'échange",
+            "dek": "S'ouvre à l'étage {trade_floor}. Le seul endroit où la Pierre de minerai vaut quelque chose.",
+            "blocks": [
+                ("ul", [
+                    "1 Pierre de compétence devient <strong>{trade_skill_stone_to_ore_stone} Pierres de minerai</strong> - jusqu'à {trade_skill_stone_max} par échange.",
+                    "<strong>{trade_ore_stone_to_essence} Pierres de minerai</strong> deviennent 1 Essence.",
+                    "<strong>{trade_ore_stone_to_skill_stone} Pierres de minerai</strong> deviennent 1 Pierre de compétence.",
+                ]),
+                ("p", "Le dernier point compte : c'est ainsi qu'une longue session de farm se transforme en niveaux de compétence sans combattre de boss."),
+            ],
+        },
+        {
+            "id": "extras",
+            "title": "Or gratuit",
+            "dek": "Trois sources qui ne demandent rien d'autre que d'être là.",
+            "blocks": [
+                ("ul", [
+                    "<strong>Ballon d'or</strong> - à partir de l'étage {balloon_floor}, il en passe un toutes les {balloon_min_seconds}-{balloon_max_seconds} secondes. Un clic rapporte <strong>x{balloon_multiplier}</strong> l'or du minerai de ton meilleur étage de la partie.",
+                    "<strong>Gains hors ligne</strong> - comptés après {offline_min_minutes} minutes d'absence et plafonnés à {offline_max_hours} heures. Le premium les double.",
+                    "<strong>Récompense de temps de jeu</strong> - toutes les {playtime_reward_minutes} minutes jouées, environ {playtime_reward_multiplier} fois l'or d'une minute à ton meilleur étage.",
+                ]),
+            ],
+        },
+        {
+            "id": "prestige",
+            "title": "Prestige",
+            "dek": "Tu échanges les progrès de cette partie contre de la puissance permanente. Bien placé, c'est ce qui va le plus vite dans le jeu.",
+            "blocks": [
+                ("p", "Le panneau de prestige s'ouvre la première fois que tu atteins l'étage <strong>{prestige_first_floor}</strong>. Ensuite chaque prestige demande {prestige_floor_step} étages de plus : {prestige_second_floor}, puis {prestige_third_floor}, et ainsi de suite."),
+                ("ul", [
+                    "<strong>Réinitialisé :</strong> l'or, le {currency_taskium}, la progression d'étages, les niveaux de pioche et d'armure, les niveaux de compagnon, toutes les compétences achetées et ton niveau de boss.",
+                    "<strong>Conservé :</strong> le niveau de prestige, l'Essence, les niveaux des {prestige_parameter_count} paramètres, la possession des compagnons, les objets Infini, les succès.",
+                    "Tu ne repars pas de l'étage 1 : la partie suivante commence à <strong>{prestige_floor_step} x ton niveau de prestige</strong>, avec un pactole de départ valant environ {prestige_gold_multiplier} minerais.",
+                    "Toutes les recharges sont vidées : tu commences la partie avec chaque compétence prête.",
+                ]),
+                ("p", "La récompense en Essence ne vient que de deux choses : le <strong>meilleur étage</strong> atteint ({prestige_essence_per_floor} chacun) et le <strong>minerai cassé</strong> ({prestige_essence_per_ore} chacun)."),
+                ("note", ["Casse du minerai, ne cours pas", "Comme le nombre de minerais pèse plus lourd, farmer un étage confortable sur la fin rapporte plus que sprinter vers un étage où tu fais à peine des dégâts."]),
+                ("table", "prestige"),
+                ("p", "Les bonus s'additionnent niveau par niveau au lieu de se composer, et le coût en Essence monte lentement - dépenser régulièrement vaut donc mieux que thésauriser."),
+            ],
+        },
+        {
+            "id": "bosses",
+            "title": "Boss",
+            "dek": "Une course aux dégâts contre le temps, pour de l'Essence. S'ouvre à l'étage {boss_floor}.",
+            "blocks": [
+                ("ul", [
+                    "Tu choisis un boss et dépenses <strong>{boss_key_cost} clé de donjon</strong> pour lancer le combat. Rien ne démarre tout seul.",
+                    "Les boss s'ouvrent dans l'ordre - il faut battre l'un pour voir le suivant. La vie monte d'environ mille fois par palier tandis que le temps se réduit.",
+                    "Les récompenses grandissent avec ton niveau de prestige : environ <strong>+{boss_prestige_bonus_percent}%</strong> par niveau.",
+                    "Le prestige ramène ton niveau de boss au premier.",
+                ]),
+                ("table", "bosses"),
+                ("warn", ["Perdre coûte cher", "Si le boss est encore debout quand le temps tombe à zéro, tu ne gagnes <strong>rien</strong> et la clé est perdue. Après un échec tu vois la vie restante - sers-t'en pour estimer les dégâts qu'il te manque."]),
+            ],
+        },
+        {
+            "id": "achievements",
+            "title": "Succès",
+            "dek": "{achievement_count} succès dans {achievement_type_count} catégories - clics, minerai, boss, prestiges, profondeur et plus.",
+            "blocks": [
+                ("p", "Chaque succès paie en <strong>Pierre de minerai</strong>, et l'objectif comme la récompense sont multipliés par dix environ à chaque palier. La plupart des catégories ont trois paliers ; celles de l'or et des dégâts vont plus loin."),
+                ("note", ["Pense à réclamer", "Les récompenses ne tombent <strong>pas automatiquement</strong>. Si tu n'as pas ouvert l'onglet des succès depuis un moment, il y a un tas qui attend."]),
+            ],
+        },
+        {
+            "id": "daily",
+            "title": "Récompense quotidienne",
+            "dek": "Petite, simple, et manquer un jour ne coûte rien.",
+            "blocks": [
+                ("p", "Se connecter une fois par jour donne <strong>{daily_key_amount} clé de donjon</strong>. C'est pareil chaque jour - pas de calendrier, pas de série à protéger. Il faut être en ligne pour la réclamer."),
+            ],
+        },
+        {
+            "id": "store",
+            "title": "Boutique",
+            "dek": "Diamants, clés, lots, temps premium et les objets Infini permanents.",
+            "blocks": [
+                ("ul", [
+                    "<strong>Lots de diamants :</strong> {diamond_pack_list} diamants. Plus le lot est gros, meilleur est le taux.",
+                    "<strong>Lots de clés :</strong> {key_pack_list} clés de donjon.",
+                    "<strong>{package_small} :</strong> {package_small_contents}.",
+                    "<strong>{package_big} :</strong> {package_big_contents}.",
+                    "<strong>{package_premium} :</strong> {premium_days} jours avec x{premium_click_multiplier} dégâts de clic, x{premium_dps_multiplier} dégâts automatiques, x{premium_gold_multiplier} or, x{premium_heat_multiplier} résistance à la chaleur et x{premium_offline_multiplier} gains hors ligne.",
+                ]),
+                ("p", "Les objets Infini s'achètent <strong>une seule fois en diamants</strong> et ne se réinitialisent jamais, même au prestige. En fin de partie c'est en général le meilleur usage de tes diamants."),
+                ("table", "infinity"),
+                ("note", ["Prix", "Les prix de la boutique viennent de Steam dans ta monnaie, ils ne sont donc pas écrits ici. Le contenu d'un lot ne change jamais ; son prix dépend de ta région."]),
+            ],
+        },
+        {
+            "id": "progress",
+            "title": "Classements et statistiques",
+            "dek": "Deux endroits pour voir où en est la partie.",
+            "blocks": [
+                ("ul", [
+                    "Les classements Steam suivent les clics, les dégâts de clic, le nombre de prestiges, les boss tués et le meilleur étage.",
+                    "L'écran des statistiques en garde davantage - gains, dépenses, clics, temps de jeu et le reste.",
+                ]),
+            ],
+        },
+        {
+            "id": "save",
+            "title": "Sauvegardes",
+            "dek": "Réponse courte : ta progression est protégée par plusieurs couches à la fois.",
+            "blocks": [
+                ("ul", [
+                    "Le jeu se sauvegarde tout seul, chiffré, toutes les <strong>{save_seconds} secondes</strong>.",
+                    "Il sauvegarde dans le Steam Cloud environ toutes les <strong>{cloud_save_seconds} secondes</strong>, et toujours à la fermeture ou en pause - un autre ordinateur reprend donc là où tu t'es arrêté.",
+                    "Si un fichier de sauvegarde est abîmé, le jeu bascule de lui-même sur sa copie de secours.",
+                    "Tu peux aussi copier ta sauvegarde dans le presse-papiers et la coller sur un autre appareil.",
+                ]),
+            ],
+        },
+        {
+            "id": "languages",
+            "title": "Langues",
+            "dek": "Le jeu sort en {language_count} langues.",
+            "blocks": [
+                ("p", "Anglais, turc, allemand, français, espagnol, espagnol d'Amérique latine, italien, polonais, portugais du Brésil, russe, ukrainien, japonais, coréen, chinois simplifié, chinois traditionnel, thaï, indonésien et vietnamien. Le jeu choisit la tienne au premier lancement et tu peux la changer à tout moment dans les options - ce guide existe dans toutes, via les liens en haut de page."),
+            ],
+        },
+    ],
+}

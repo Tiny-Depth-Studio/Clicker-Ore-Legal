@@ -1,0 +1,342 @@
+LANG = {
+    "code": "ko",
+    "name": "한국어",
+    "html_lang": "ko",
+    "locale": {"group": ",", "decimal": "."},
+    "title": "Clicker Ore Game - 플레이어 가이드",
+    "description": "광산이 돌아가는 방식: 화폐, 곡괭이, 펫, 스킬, 프레스티지, 보스, 상점을 수식 없이 정리했습니다.",
+    "brand": "Clicker Ore Game",
+    "brand_sub": "플레이어 가이드",
+    "eyebrow": "플레이어 가이드 - {date}",
+    "headline": "광산의 모든 것을<br>쉬운 말로",
+    "subtitle": "각 시스템이 무엇을 하고, 몇 층에서 열리고, 다음 한 시간을 어디에 쓰면 좋은지 정리했습니다. 수식은 없고 판단에 필요한 내용만 담았습니다.",
+    "footer": "여기 적힌 수치는 현재 게임 밸런스를 따르며 업데이트로 바뀔 수 있습니다. 상점 가격은 Steam에서 정해 각자의 통화로 표시되므로 여기에는 적지 않았습니다.",
+    "labels": {
+        "contents": "목차",
+        "per_second": "/초",
+        "second_short": "초",
+        "meter_short": "m",
+        "language": "언어",
+        "skill": "스킬",
+        "unlock_floor": "층",
+        "level_first": "1단계 (지속 / 재사용)",
+        "level_last": "7단계 (지속 / 재사용)",
+        "effect": "효과",
+        "boss": "보스",
+        "health": "체력",
+        "time_limit": "제한 시간",
+        "reward": "보상",
+        "parameter": "지표",
+        "per_level": "레벨당",
+        "effect_dps": "초당 자동 피해",
+        "effect_click": "클릭 피해",
+        "effect_gold": "골드 수입",
+        "effect_crit_chance": "치명타 확률",
+        "effect_crit_multiplier": "치명타 배율",
+        "effect_heat": "열 저항",
+        "effect_click_from_dps": "클릭에 더해지는 초당 피해 비율",
+        "depth": "깊이",
+        "ore_types": "광석 종류",
+        "around_floor": "대략 층",
+        "item": "아이템",
+        "cost": "가격",
+    },
+    "currencies": {
+        "gold": ["<b>광석을 깨서</b> 얻습니다.", "곡괭이와 방어구 강화에 쓰는 기본 화폐입니다."],
+        "diamond": ["<b>실제 결제로만</b> 들어옵니다.", "펫과 영구 무한 아이템에 씁니다."],
+        "essence": ["<b>프레스티지</b>와 보스 격파로 얻습니다.", "영구 프레스티지 지표 {prestige_parameter_count}가지에 씁니다."],
+        "taskium": ["클릭이 성공할 때마다 <b>+{taskium_per_click}</b>.", "임무 수락과 다시 뽑기에 씁니다."],
+        "dungeon_key": ["하루 한 개는 무료, 그 외에는 상점 패키지.", "보스전 입장에 씁니다(시도당 {boss_key_cost}개)."],
+        "skill_stone": ["상점 패키지와 교환 창에서 얻습니다.", "액티브 스킬 {skill_count}개의 단계를 올리는 데 씁니다."],
+        "ore_stone": ["광석을 깰 때마다 <b>{ore_stone_min}-{ore_stone_max}</b>개, 여기에 업적 보상까지.", "교환 창에서 에센스나 스킬 스톤으로 바꿉니다."],
+    },
+    "sections": [
+        {
+            "id": "start",
+            "title": "무엇부터 할까",
+            "dek": "게임이 기능을 열어주는 순서에 맞춘 세 단계입니다.",
+            "blocks": [
+                ("stages", [
+                    ["초반 - 1층부터 {prestige_first_floor}층", [
+                        "곡괭이를 계속 강화하고, 새 곡괭이가 열리면 바로 구입하세요.",
+                        "{skill_ore_breaker}는 {skill_line_floor}층, {skill_anger_click}은 70층에서 열립니다.",
+                        "다이아 여유가 생기면 {pet_1}을 데려오세요.",
+                    ]],
+                    ["중반 - {prestige_first_floor}층부터 {boss_floor}층", [
+                        "첫 프레스티지는 {prestige_first_floor}층에서 합니다.",
+                        "에센스는 하나에 몰지 말고 지표 {prestige_parameter_count}가지에 나눠 올리세요.",
+                        "임무는 {task_panel_floor}층, 스킬 트리와 교환 창은 {skill_tree_floor}층에서 열립니다.",
+                    ]],
+                    ["후반 - {boss_floor}층부터", [
+                        "열쇠가 있으면 보스에 도전하세요. 에센스의 주 공급원입니다.",
+                        "무한 아이템을 구입하세요. 영구적이고 프레스티지에도 초기화되지 않습니다.",
+                        "열이 피해를 깎지 않도록 방어구 레벨을 유지하세요.",
+                    ]],
+                ]),
+                ("note", ["알아두면 좋은 점", "숫자가 금방 길어지기 때문에 게임은 먼저 짧은 표기로, 이어서 <strong>1.23e45</strong> 같은 과학적 표기로 바뀝니다. 상한이 있는 것이 아니라 표기만 달라집니다."]),
+            ],
+        },
+        {
+            "id": "currencies",
+            "title": "화폐 {currency_count}종",
+            "dek": "각각 다른 시스템을 받쳐줍니다. 맞는 화폐를 엉뚱한 곳에 쓰는 것이 초반에 가장 흔한 실수입니다.",
+            "blocks": [
+                ("currencies", None),
+                ("note", ["다이아 안내", "보스, 업적, 임무는 다이아를 주지 않습니다. 다이아와 던전 열쇠는 서버에서 관리하므로 펫을 사려면 온라인 상태여야 합니다."]),
+            ],
+        },
+        {
+            "id": "damage",
+            "title": "클릭 피해와 자동 피해",
+            "dek": "서로 다른 요소가 키우는 두 개의 독립된 피해원입니다.",
+            "blocks": [
+                ("p", "<strong>클릭 피해</strong>는 한 번 누를 때 들어가는 양입니다. 첫 곡괭이의 레벨과 스킬, {skill_anger_click}, 칭호, 프레스티지 지표 {prestige_click}으로 커집니다. {prestige_click_from_dps}를 올리면 자동 피해의 일부도 클릭마다 더해집니다."),
+                ("p", "<strong>자동 피해</strong>(초당)는 두 번째 곡괭이부터, {skill_rampage}, 지표 {prestige_dps}, 그리고 펫에서 나옵니다."),
+                ("note", ["펫만 예외", "펫 피해는 모든 배율이 적용된 <strong>뒤에</strong> 더해지므로 배율의 영향을 받지 않습니다. 후반에는 펫 레벨만으로 버티기 어렵고, 곡괭이와 스킬 배율도 함께 커져야 합니다."]),
+            ],
+        },
+        {
+            "id": "critical",
+            "title": "치명타",
+            "dek": "모든 클릭이 치명타로 터져 더 큰 피해를 낼 수 있습니다.",
+            "blocks": [
+                ("p", "기본값은 확률 <strong>{crit_chance_percent}%</strong>, 배율 <strong>x{crit_multiplier}</strong>입니다. 이를 올려주는 것은 네 가지로 {skill_critical_strike}, 곡괭이 스킬, 프레스티지 지표 {prestige_crit_chance}와 {prestige_crit_multiplier}, 그리고 칭호입니다."),
+            ],
+        },
+        {
+            "id": "pickaxes",
+            "title": "곡괭이",
+            "dek": "차례대로 열리는 곡괭이 {pickaxe_count}자루. 피해의 뼈대입니다.",
+            "blocks": [
+                ("ul", [
+                    "첫 곡괭이는 <strong>{pickaxe_first_cost} 골드</strong>이고, 이후에는 한 자루마다 앞의 것보다 약 <strong>{pickaxe_cost_growth}배</strong> 비쌉니다.",
+                    "곡괭이는 이번 회차에 번 골드가 일정량을 넘으면 스스로 열립니다. 즉 다음 곡괭이를 여는 것은 강화입니다.",
+                    "레벨마다 앞 레벨보다 약 <strong>{pickaxe_upgrade_growth_percent}%</strong> 비싸집니다.",
+                    "클릭 피해를 올리는 것은 <strong>첫 번째</strong> 곡괭이뿐이고, 나머지는 모두 초당 자동 피해를 올립니다.",
+                    "곡괭이마다 스킬이 {pickaxe_skill_count}개 있고 레벨 {pickaxe_skill_levels}에서 열립니다. 그 곡괭이만 돕는 것과 전체를 돕는 것이 있으며, 전체에 적용되는 쪽이 더 값집니다.",
+                ]),
+                ("note", ["가장 큰 상승", "곡괭이는 <strong>{pickaxe_bonus_interval}레벨마다</strong> 자기 출력을 <strong>x{pickaxe_bonus_multiplier}</strong>로 곱합니다. 한 자루를 다음 100레벨까지 밀어 올리는 것이 보통 가장 큰 전력 상승입니다."]),
+            ],
+        },
+        {
+            "id": "suits",
+            "title": "방어구",
+            "dek": "처음부터 모두 보유한 방어구 {suit_count}종. 역할은 열을 막는 것입니다.",
+            "blocks": [
+                ("ul", [
+                    "방어구는 구입하지 않고 강화만 합니다. 레벨마다 열 저항이 약 <strong>{suit_heat_per_level_percent}%</strong> 늘고, 기준값은 {suit_base_heat_resistance}입니다.",
+                    "{suit_bonus_interval}레벨마다 방어구 저항이 <strong>x{suit_bonus_multiplier}</strong>가 됩니다.",
+                    "방어구마다 레벨에 따라 열리는 스킬도 {suit_skill_count}개 있습니다.",
+                    "방어구 창은 열 게이지와 함께 <strong>{suit_panel_floor}</strong>층에서 열립니다.",
+                ]),
+            ],
+        },
+        {
+            "id": "temperature",
+            "title": "열",
+            "dek": "깊이 내려갈수록 더워지고, 열은 조용히 피해를 깎습니다.",
+            "blocks": [
+                ("ul", [
+                    "층 온도는 계속 오릅니다. 한 층마다 약 <strong>{temperature_growth}배</strong>라서 스무 층 남짓마다 두 배가 됩니다.",
+                    "저항이 온도의 <strong>{temperature_safe_ratio}배</strong> 이상이면 게이지가 깨끗하고 아무것도 잃지 않습니다.",
+                    "저항이 온도 밑으로 떨어지면 피해가 새기 시작하고, <strong>{temperature_worst_ratio}배</strong>에서는 20분의 1만 남습니다. 즉 <strong>{temperature_worst_damage_percent}%</strong> 손실입니다.",
+                    "방어구 창에는 저항을 자동으로 구매하는 스위치가 있습니다. 자주 깊이 내려간다면 켜 두세요.",
+                ]),
+                ("warn", ["갑자기 막혔다면", "광석이 끝없이 버티는 벽은 거의 언제나 피해 부족이 아니라 열 문제입니다. 다른 곳에 쓰기 전에 게이지를 확인하세요."]),
+            ],
+        },
+        {
+            "id": "pets",
+            "title": "펫",
+            "dek": "다이아로 사고 골드로 키우는 펫 {pet_count}마리.",
+            "blocks": [
+                ("ul", [
+                    "가격은 <strong>{pet_cost_first}</strong>에서 <strong>{pet_cost_last}</strong> 다이아({pet_cost_list})입니다.",
+                    "레벨마다 곡괭이 클릭 피해의 약 <strong>{pet_dps_percent_per_level}%</strong>가 자동 피해로 더해지고, 여기에 펫의 순서가 곱해집니다. 같은 레벨이면 {pet_5}가 {pet_1}의 다섯 배입니다.",
+                    "레벨 비용은 매번 약 <strong>{pet_upgrade_growth_percent}%</strong> 오르고, {pet_bonus_interval}레벨마다 펫이 자기 출력을 <strong>x{pet_bonus_multiplier}</strong>로 곱합니다.",
+                    "펫마다 스킬이 {pet_skill_count}개 있고, 그 펫만 돕는 것과 전체를 돕는 것이 있습니다.",
+                    "펫 창은 <strong>{pet_panel_floor}</strong>층, 또는 펫을 한 마리라도 보유하면 열립니다.",
+                ]),
+                ("warn", ["프레스티지와 펫", "프레스티지를 하면 모든 펫이 <strong>1레벨</strong>로 돌아가고 스킬도 해제됩니다. 다만 보유 자체는 영구이므로 다시 구입하지는 않습니다."]),
+            ],
+        },
+        {
+            "id": "floors",
+            "title": "층, 광석, 깊이",
+            "dek": "광석의 단단함과 골드는 층이 정하고, 생김새는 깊이가 정합니다.",
+            "blocks": [
+                ("ul", [
+                    "층이 올라갈수록 체력과 골드가 조금씩 늘고, 그 증가폭은 갈수록 급해집니다.",
+                    "<strong>{duration_floor_interval}층마다</strong> 시간 제한 층이 나옵니다. <strong>{duration_floor_seconds}초</strong> 타이머가 돌고 체력은 약 {duration_floor_health_percent}%, 골드는 약 {duration_floor_gold_percent}% 늘어납니다.",
+                    "난이도는 약 {difficulty_cycle_floors}층 주기로도 움직입니다. 주기의 앞쪽 층이 체력 대비 수익이 가장 좋습니다.",
+                    "광석은 골드 외에 <strong>{ore_stone_min}-{ore_stone_max}</strong>개의 광석 스톤도 떨굽니다.",
+                ]),
+                ("warn", ["시간 제한 층은 아프다", "시간이 다 되면 <strong>한 층</strong> 아래로 밀려납니다. 피해가 부족하면 실패하기보다 그 층을 건너뛰는 편이 낫습니다."]),
+                ("p", "이번 회차에 도달한 층이라면 어디든 내려가 파밍할 수 있습니다. 층을 직접 고르면 자동 상승이 꺼지니, 다시 올라갈 때 켜 주세요."),
+                ("p", "광석은 모두 <strong>{ore_type_count}</strong>종이고 어떤 광석이 나오는지는 깊이가 정합니다. 종류는 겉모습과 가루만 바꾸며, 체력과 골드는 층이 정합니다."),
+                ("table", "depth"),
+            ],
+        },
+        {
+            "id": "skills",
+            "title": "액티브 스킬",
+            "dek": "일정 시간 강화 뒤 재사용 대기가 붙는 스킬 {skill_count}개.",
+            "blocks": [
+                ("p", "스킬은 해당 층에 도달하면 <strong>무료</strong>로 열려 1단계부터 사용합니다. {skill_levels}단계까지 올리는 데 총 <strong>스킬 스톤 {skill_total_cost}개</strong>가 들고, {skill_count}개 전부는 <strong>{skill_all_total_cost}개</strong>입니다. 단계가 오르면 지속이 길어지고 재사용 대기가 짧아집니다."),
+                ("table", "skills"),
+                ("p", "첫 스킬은 {skill_line_floor}층에서 열리고, 스킬 스톤을 쓰는 스킬 트리 창은 <strong>{skill_tree_floor}</strong>층에서 열립니다. 스킬을 쓰는 것만이라면 창은 필요하지 않습니다."),
+                ("note", ["연계", "먼저 {skill_overcharge}를 켜고, 그다음에 실제로 강화하고 싶은 스킬(예: {skill_golden_frenzy})을 사용하세요. {skill_time_reversal}은 마지막에 쓴 스킬의 재사용 대기를 줄여 주므로 그 스킬이 더 빨리 돌아옵니다."]),
+            ],
+        },
+        {
+            "id": "titles",
+            "title": "칭호",
+            "dek": "올라가는 동안 저절로 따라오는 칭호 {title_count}개.",
+            "blocks": [
+                ("ul", [
+                    "칭호는 {title_first_floor}층부터 <strong>{title_last_floor}</strong>층까지 있고, 이번 회차 최고 도달 층에 따라 자동으로 선택됩니다.",
+                    "칭호 하나가 가진 보너스는 각각 약 <strong>+{title_effect_step}</strong>씩입니다.",
+                    "보너스는 단계적으로 늘어납니다. 클릭 피해는 첫 칭호부터, 이어서 자동 피해, 열 저항, 골드, 치명타 배율, 치명타 확률, 클릭에 더해지는 초당 피해 비율({title_effect_unlocks}번째 칭호)입니다.",
+                ]),
+            ],
+        },
+        {
+            "id": "tasks",
+            "title": "임무와 {currency_taskium}",
+            "dek": "클릭을 두 번째 수입으로 바꿔 주는 곁길입니다.",
+            "blocks": [
+                ("ul", [
+                    "클릭이 성공할 때마다 <strong>+{taskium_per_click} {currency_taskium}</strong>이 들어옵니다.",
+                    "임무 수락은 <strong>{task_accept_cost}</strong>, 다시 뽑기는 <strong>{task_refresh_cost}</strong>입니다.",
+                    "임무 창은 {task_panel_floor}층에서 열리고, 칸 {task_slot_count}개는 {task_slot_floors}층에서 차례로 열립니다.",
+                    "임무는 등급 {task_rarity_count}종에 종류 {task_type_count}가지입니다. 하나가 {task_duration_minutes}분 동안 유지되고, 수락하지 않은 임무는 매시간 새로 바뀝니다.",
+                    "보상은 등급에 따라 커지고 현재 층 광석 골드의 <strong>{task_reward_range}</strong>배 범위입니다. 최고 등급은 에센스도 줍니다.",
+                ]),
+            ],
+        },
+        {
+            "id": "trade",
+            "title": "교환 창",
+            "dek": "{trade_floor}층에서 열립니다. 광석 스톤이 값을 가지는 유일한 곳입니다.",
+            "blocks": [
+                ("ul", [
+                    "스킬 스톤 1개 → <strong>광석 스톤 {trade_skill_stone_to_ore_stone}개</strong>(한 번에 최대 {trade_skill_stone_max}개).",
+                    "<strong>광석 스톤 {trade_ore_stone_to_essence}개</strong> → 에센스 1.",
+                    "<strong>광석 스톤 {trade_ore_stone_to_skill_stone}개</strong> → 스킬 스톤 1개.",
+                ]),
+                ("p", "마지막 교환이 핵심입니다. 오래 파밍한 결과를 보스전 없이 스킬 단계로 바꿀 수 있습니다."),
+            ],
+        },
+        {
+            "id": "extras",
+            "title": "공짜 골드",
+            "dek": "게임에 있기만 하면 들어오는 수입 세 가지.",
+            "blocks": [
+                ("ul", [
+                    "<strong>골드 풍선</strong> - {balloon_floor}층부터 {balloon_min_seconds}-{balloon_max_seconds}초마다 하나씩 떠옵니다. 클릭하면 이번 회차 최고 층 광석 골드의 <strong>x{balloon_multiplier}</strong>를 받습니다.",
+                    "<strong>오프라인 수입</strong> - 자리를 비운 {offline_min_minutes}분부터 계산되고 {offline_max_hours}시간에서 멈춥니다. 프리미엄이면 두 배입니다.",
+                    "<strong>플레이 시간 보상</strong> - {playtime_reward_minutes}분 플레이마다 최고 층에서 1분 동안 벌 골드의 약 {playtime_reward_multiplier}배를 줍니다.",
+                ]),
+            ],
+        },
+        {
+            "id": "prestige",
+            "title": "프레스티지",
+            "dek": "이번 회차의 진행을 영구적인 힘으로 바꿉니다. 시점을 잘 잡으면 게임에서 가장 빠른 수단입니다.",
+            "blocks": [
+                ("p", "프레스티지 창은 <strong>{prestige_first_floor}</strong>층에 처음 도달하면 열립니다. 이후 한 번마다 조건이 {prestige_floor_step}층씩 올라가 {prestige_second_floor}층, {prestige_third_floor}층으로 이어집니다."),
+                ("ul", [
+                    "<strong>초기화되는 것:</strong> 골드, {currency_taskium}, 층 진행, 곡괭이와 방어구 강화, 펫 레벨, 구입한 모든 스킬, 보스 진행도.",
+                    "<strong>남는 것:</strong> 프레스티지 레벨, 에센스, 지표 {prestige_parameter_count}가지의 레벨, 보유한 펫, 무한 아이템, 업적.",
+                    "1층부터 다시 시작하지는 않습니다. 다음 회차는 <strong>{prestige_floor_step} × 프레스티지 레벨</strong> 층에서 시작하고, 광석 약 {prestige_gold_multiplier}개 값어치의 시작 골드도 함께 받습니다.",
+                    "모든 재사용 대기가 초기화되므로 회차를 시작할 때 스킬을 전부 쓸 수 있습니다.",
+                ]),
+                ("p", "에센스 보상은 딱 두 가지로 정해집니다. <strong>도달한 최고 층</strong>(층마다 {prestige_essence_per_floor})과 <strong>깬 광석</strong>(개당 {prestige_essence_per_ore})입니다."),
+                ("note", ["달리지 말고 광석을 깨자", "광석 수의 비중이 더 크기 때문에, 마지막 시간을 피해가 거의 통하지 않는 층으로 뛰어오르기보다 편한 층에서 계속 깨는 편이 더 많이 받습니다."]),
+                ("table", "prestige"),
+                ("p", "보너스는 곱이 아니라 레벨마다 더해지는 방식이고, 에센스 비용도 천천히 오릅니다. 모아 두기보다 꾸준히 쓰는 편이 이득입니다."),
+            ],
+        },
+        {
+            "id": "bosses",
+            "title": "보스",
+            "dek": "에센스를 걸고 시간과 겨루는 피해 경쟁. {boss_floor}층에서 열립니다.",
+            "blocks": [
+                ("ul", [
+                    "보스를 고르고 <strong>던전 열쇠 {boss_key_cost}개</strong>를 써서 시작합니다. 자동으로 시작되는 것은 없습니다.",
+                    "보스는 차례대로 열리며 하나를 잡아야 다음이 나옵니다. 단계마다 체력은 약 1000배가 되고 제한 시간은 짧아집니다.",
+                    "보상은 프레스티지 레벨과 함께 커집니다. 레벨당 약 <strong>+{boss_prestige_bonus_percent}%</strong>입니다.",
+                    "프레스티지를 하면 보스 진행도가 첫 보스로 돌아갑니다.",
+                ]),
+                ("table", "bosses"),
+                ("warn", ["지면 손해", "시간이 다 됐을 때 보스가 남아 있으면 보상은 <strong>없고</strong> 쓴 열쇠도 돌아오지 않습니다. 실패한 뒤에는 남은 체력이 보이니, 다음에 얼마나 더 피해가 필요한지 가늠하는 데 쓰세요."]),
+            ],
+        },
+        {
+            "id": "achievements",
+            "title": "업적",
+            "dek": "{achievement_type_count}개 항목에 업적 {achievement_count}개. 클릭, 광석, 보스, 프레스티지, 깊이 등이 있습니다.",
+            "blocks": [
+                ("p", "보상은 모두 <strong>광석 스톤</strong>이고, 목표와 보상 모두 단계마다 약 열 배로 커집니다. 대부분 항목은 3단계이며 골드와 피해 항목은 더 이어집니다."),
+                ("note", ["받는 것을 잊지 마세요", "보상은 <strong>자동으로 들어오지 않습니다</strong>. 한동안 업적 탭을 열지 않았다면 꽤 쌓여 있을 것입니다."]),
+            ],
+        },
+        {
+            "id": "daily",
+            "title": "일일 보상",
+            "dek": "작고 단순하며, 하루를 놓쳐도 손해는 없습니다.",
+            "blocks": [
+                ("p", "하루 한 번 접속하면 <strong>던전 열쇠 {daily_key_amount}개</strong>를 받습니다. 매일 같은 보상이고 달력이나 연속 접속 기록은 없습니다. 받으려면 온라인 상태여야 합니다."),
+            ],
+        },
+        {
+            "id": "store",
+            "title": "상점",
+            "dek": "다이아, 열쇠, 패키지, 프리미엄 기간, 그리고 영구 무한 아이템.",
+            "blocks": [
+                ("ul", [
+                    "<strong>다이아 패키지:</strong> {diamond_pack_list} 다이아. 패키지이 클수록 단가가 낮습니다.",
+                    "<strong>열쇠 패키지:</strong> 던전 열쇠 {key_pack_list}개.",
+                    "<strong>{package_small}:</strong> {package_small_contents}.",
+                    "<strong>{package_big}:</strong> {package_big_contents}.",
+                    "<strong>{package_premium}:</strong> {premium_days}일 동안 클릭 피해 x{premium_click_multiplier}, 자동 피해 x{premium_dps_multiplier}, 골드 x{premium_gold_multiplier}, 열 저항 x{premium_heat_multiplier}, 오프라인 수입 x{premium_offline_multiplier}.",
+                ]),
+                ("p", "무한 아이템은 <strong>다이아로 한 번만</strong> 구입하고 프레스티지에도 초기화되지 않습니다. 후반에는 보통 다이아를 가장 잘 쓰는 방법입니다."),
+                ("table", "infinity"),
+                ("note", ["가격", "상점 가격은 Steam에서 각자의 통화로 전달되므로 여기에는 적지 않았습니다. 구성은 바뀌지 않지만 가격은 지역에 따라 다릅니다."]),
+            ],
+        },
+        {
+            "id": "progress",
+            "title": "순위표와 통계",
+            "dek": "회차가 어떻게 흘러가는지 볼 수 있는 두 곳입니다.",
+            "blocks": [
+                ("ul", [
+                    "Steam 순위표는 클릭 수, 클릭 피해, 프레스티지 횟수, 잡은 보스 수, 최고 층을 기록합니다.",
+                    "통계 화면은 더 많은 것을 기록합니다. 수입, 지출, 클릭 수, 플레이 시간 등입니다.",
+                ]),
+            ],
+        },
+        {
+            "id": "save",
+            "title": "저장",
+            "dek": "짧게 답하면, 진행 상황은 여러 겹으로 보호됩니다.",
+            "blocks": [
+                ("ul", [
+                    "게임은 <strong>{save_seconds}초</strong>마다 암호화해 스스로 저장합니다.",
+                    "Steam 클라우드 백업은 약 <strong>{cloud_save_seconds}초</strong>마다, 그리고 게임을 닫거나 일시 정지할 때 항상 이루어집니다. 다른 컴퓨터에서도 같은 지점에서 이어집니다.",
+                    "저장 파일이 손상되면 게임이 스스로 백업으로 돌아갑니다.",
+                    "저장 데이터를 클립보드로 복사해 다른 기기에 붙여 넣을 수도 있습니다.",
+                ]),
+            ],
+        },
+        {
+            "id": "languages",
+            "title": "언어",
+            "dek": "이 게임은 {language_count}개 언어로 제공됩니다.",
+            "blocks": [
+                ("p", "영어, 튀르키예어, 독일어, 프랑스어, 스페인어, 라틴아메리카 스페인어, 이탈리아어, 폴란드어, 브라질 포르투갈어, 러시아어, 우크라이나어, 일본어, 한국어, 중국어 간체, 중국어 번체, 타이어, 인도네시아어, 베트남어입니다. 첫 실행에서 자동으로 선택되고 설정에서 언제든 바꿀 수 있습니다. 이 가이드도 모든 언어로 있으며 페이지 위쪽 링크에서 열 수 있습니다."),
+            ],
+        },
+    ],
+}

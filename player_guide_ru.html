@@ -1,0 +1,1069 @@
+<title>Clicker Ore Game - Руководство игрока</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Как устроена шахта: валюты, кирки, питомцы, умения, престиж, боссы и магазин - без формул.">
+<style>
+  :root {
+    --bg: #14110d;
+    --bg-elevated: #1d1811;
+    --bg-card: #211b13;
+    --text: #ede6d8;
+    --text-dim: #a89a82;
+    --text-faint: #766a55;
+    --accent: #e0a752;
+    --accent-strong: #f2bd6e;
+    --accent-2: #7fb8ad;
+    --border: #3a2f22;
+    --border-soft: #2a2318;
+    --danger: #cf7a5a;
+    --shadow: 0 8px 24px rgba(0,0,0,0.35);
+
+    --cur-gold: #e0a752;
+    --cur-diamond: #7fd1e0;
+    --cur-essence: #b79ef0;
+    --cur-taskium: #93a8d6;
+    --cur-key: #d98a63;
+    --cur-skillstone: #7fc9a0;
+    --cur-orestone: #b5a68c;
+
+    --font-display: "Bahnschrift", "Segoe UI Semibold", "Arial Narrow Bold", "Arial Narrow", sans-serif;
+    --font-body: "Sitka Text", "Iowan Old Style", Georgia, "Times New Roman", serif;
+    --font-mono: "Cascadia Mono", "Consolas", "SF Mono", ui-monospace, monospace;
+  }
+
+  :root[data-theme="light"] {
+    --bg: #efe9da;
+    --bg-elevated: #e6ddc8;
+    --bg-card: #f3ede0;
+    --text: #241d14;
+    --text-dim: #5c5138;
+    --text-faint: #857656;
+    --accent: #a8621a;
+    --accent-strong: #8a4e12;
+    --accent-2: #2f7a70;
+    --border: #d3c5a4;
+    --border-soft: #ddd0b1;
+    --danger: #a3492c;
+    --shadow: 0 8px 20px rgba(90,70,30,0.12);
+  }
+
+  @media (prefers-color-scheme: light) {
+    :root:not([data-theme="dark"]) {
+      --bg: #efe9da;
+      --bg-elevated: #e6ddc8;
+      --bg-card: #f3ede0;
+      --text: #241d14;
+      --text-dim: #5c5138;
+      --text-faint: #857656;
+      --accent: #a8621a;
+      --accent-strong: #8a4e12;
+      --accent-2: #2f7a70;
+      --border: #d3c5a4;
+      --border-soft: #ddd0b1;
+      --danger: #a3492c;
+      --shadow: 0 8px 20px rgba(90,70,30,0.12);
+    }
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: 17px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection { background: var(--accent); color: #14110d; }
+
+  a { color: var(--accent-strong); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  a:focus-visible, button:focus-visible, summary:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    text-wrap: balance;
+    letter-spacing: 0.01em;
+    color: var(--text);
+  }
+
+  p { max-width: 68ch; }
+  ul, ol { max-width: 68ch; }
+
+  .shell {
+    display: grid;
+    grid-template-columns: 260px minmax(0, 1fr);
+    min-height: 100vh;
+  }
+
+  .topbar {
+    display: none;
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: var(--bg-elevated);
+    border-bottom: 1px solid var(--border);
+    padding: 0.7rem 1rem;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .topbar-title {
+    font-family: var(--font-display);
+    font-size: 0.95rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--accent-strong);
+  }
+  #nav-toggle { display: none; }
+  .nav-toggle-btn {
+    font-family: var(--font-display);
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 0.4rem 0.7rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.85rem;
+  }
+
+  nav.toc {
+    position: sticky;
+    top: 0;
+    align-self: start;
+    height: 100vh;
+    overflow-y: auto;
+    padding: 2rem 1.4rem 3rem;
+    background: var(--bg-elevated);
+    border-right: 1px solid var(--border);
+  }
+  .toc-brand {
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    letter-spacing: 0.03em;
+    color: var(--accent-strong);
+    margin-bottom: 0.15rem;
+  }
+  .toc-brand small {
+    display: block;
+    font-family: var(--font-body);
+    font-style: italic;
+    font-size: 0.78rem;
+    color: var(--text-faint);
+    letter-spacing: 0;
+    margin-top: 0.25rem;
+  }
+  .toc-list {
+    list-style: none;
+    margin: 1.6rem 0 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+  }
+  .toc-list a {
+    display: block;
+    color: var(--text-dim);
+    font-size: 0.88rem;
+    padding: 0.32rem 0.5rem;
+    border-radius: 4px;
+    border-left: 2px solid transparent;
+  }
+  .toc-list a:hover {
+    color: var(--text);
+    text-decoration: none;
+    background: rgba(224,167,82,0.08);
+    border-left-color: var(--accent);
+  }
+  .toc-num {
+    font-family: var(--font-mono);
+    color: var(--text-faint);
+    font-size: 0.78rem;
+    margin-right: 0.45rem;
+  }
+
+  main {
+    padding: 3.2rem clamp(1.2rem, 4vw, 4rem) 6rem;
+    max-width: 900px;
+  }
+
+  header.hero {
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .strata {
+    height: 10px;
+    width: 100%;
+    border-radius: 3px;
+    margin-bottom: 1.6rem;
+    background: repeating-linear-gradient(
+      90deg,
+      var(--accent) 0 6%,
+      var(--accent-2) 6% 11%,
+      var(--border-soft) 11% 18%,
+      var(--accent) 18% 24%,
+      var(--border-soft) 24% 34%,
+      var(--accent-2) 34% 40%,
+      var(--accent) 40% 48%,
+      var(--border-soft) 48% 58%,
+      var(--accent-2) 58% 63%,
+      var(--accent) 63% 72%,
+      var(--border-soft) 72% 82%,
+      var(--accent-2) 82% 90%,
+      var(--accent) 90% 100%
+    );
+    opacity: 0.85;
+  }
+  .eyebrow {
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-size: 0.72rem;
+    color: var(--accent);
+    margin-bottom: 0.6rem;
+  }
+  h1.title {
+    font-size: clamp(2rem, 4.2vw, 2.9rem);
+    margin: 0 0 0.7rem;
+    line-height: 1.1;
+  }
+  .subtitle {
+    color: var(--text-dim);
+    font-size: 1.08rem;
+    max-width: 62ch;
+    margin: 0;
+  }
+
+  .langbar {
+    margin: 1.8rem 0 0;
+    padding-top: 1.2rem;
+    border-top: 1px solid var(--border-soft);
+  }
+  .langbar-label {
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 0.68rem;
+    color: var(--text-faint);
+    margin-bottom: 0.55rem;
+  }
+  .langbar-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem 0.4rem;
+  }
+  .langbar-list a, .langbar-list span {
+    font-family: var(--font-display);
+    font-size: 0.78rem;
+    padding: 0.18rem 0.55rem;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    color: var(--text-dim);
+    background: var(--bg-card);
+  }
+  .langbar-list a:hover {
+    text-decoration: none;
+    color: var(--text);
+    border-color: var(--accent);
+  }
+  .langbar-list span {
+    color: #14110d;
+    background: var(--accent);
+    border-color: var(--accent);
+  }
+  :root[data-theme="light"] .langbar-list span { color: #efe9da; }
+
+  section {
+    margin-bottom: 3.6rem;
+    scroll-margin-top: 1.5rem;
+  }
+  .section-head {
+    display: flex;
+    align-items: baseline;
+    gap: 0.7rem;
+    margin-bottom: 0.3rem;
+  }
+  .section-num {
+    font-family: var(--font-mono);
+    color: var(--accent);
+    font-size: 0.95rem;
+  }
+  h2 {
+    font-size: 1.55rem;
+    margin: 0;
+  }
+  .section-dek {
+    color: var(--text-dim);
+    font-size: 0.98rem;
+    margin: 0.3rem 0 1.5rem;
+    max-width: 62ch;
+  }
+
+  .callout {
+    border-left: 3px solid var(--accent);
+    background: var(--bg-card);
+    padding: 0.95rem 1.2rem;
+    border-radius: 0 6px 6px 0;
+    margin: 1.2rem 0;
+    font-size: 0.95rem;
+  }
+  .callout strong { color: var(--accent-strong); }
+  .callout.warn { border-left-color: var(--danger); }
+  .callout-label {
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 0.72rem;
+    color: var(--accent);
+    margin-bottom: 0.35rem;
+  }
+  .callout.warn .callout-label { color: var(--danger); }
+
+  .currency-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 0.9rem;
+    margin: 1.4rem 0;
+  }
+  .cur-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-top: 3px solid var(--dot);
+    border-radius: 6px;
+    padding: 0.95rem 1rem 1.05rem;
+  }
+  .cur-card h4 {
+    margin: 0 0 0.5rem;
+    font-size: 0.98rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .dot {
+    width: 9px; height: 9px; border-radius: 50%;
+    background: var(--dot);
+    flex: none;
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--dot) 20%, transparent);
+  }
+  .cur-card p {
+    margin: 0.15rem 0;
+    font-size: 0.84rem;
+    color: var(--text-dim);
+    max-width: none;
+  }
+  .cur-card p b { color: var(--text); font-weight: 600; }
+
+  .table-wrap {
+    overflow-x: auto;
+    margin: 1.2rem 0;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+  }
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    min-width: 460px;
+    font-size: 0.9rem;
+  }
+  thead th {
+    text-align: left;
+    font-family: var(--font-display);
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    font-size: 0.72rem;
+    color: var(--text-dim);
+    background: var(--bg-elevated);
+    padding: 0.6rem 0.85rem;
+    border-bottom: 1px solid var(--border);
+    white-space: nowrap;
+  }
+  tbody td {
+    padding: 0.55rem 0.85rem;
+    border-bottom: 1px solid var(--border-soft);
+    font-variant-numeric: tabular-nums;
+    color: var(--text);
+  }
+  tbody tr:last-child td { border-bottom: none; }
+  tbody tr:nth-child(even) { background: color-mix(in srgb, var(--accent) 3%, transparent); }
+  td.num, th.num { font-family: var(--font-mono); }
+  td.strong { color: var(--accent-strong); font-weight: 600; }
+
+  .strategy-track {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 1.4rem 0;
+  }
+  .strategy-stage {
+    background: var(--bg-card);
+    padding: 1rem 1.1rem;
+  }
+  .strategy-stage .stage-label {
+    font-family: var(--font-display);
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+    margin-bottom: 0.4rem;
+  }
+  .strategy-stage ul {
+    margin: 0;
+    padding-left: 1.1rem;
+    font-size: 0.86rem;
+    color: var(--text-dim);
+  }
+  .strategy-stage li { margin-bottom: 0.25rem; }
+
+  footer.doc-footer {
+    margin-top: 4rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+    color: var(--text-faint);
+    font-size: 0.8rem;
+  }
+
+  @media (max-width: 880px) {
+    .shell { grid-template-columns: 1fr; }
+    .topbar { display: flex; }
+    nav.toc {
+      position: fixed;
+      inset: 0 20% 0 0;
+      top: 52px;
+      height: calc(100vh - 52px);
+      transform: translateX(-100%);
+      transition: transform 0.22s ease;
+      z-index: 15;
+      box-shadow: var(--shadow);
+    }
+    #nav-toggle:checked ~ .shell nav.toc {
+      transform: translateX(0);
+    }
+    main { padding: 2rem 1.2rem 5rem; }
+  }
+</style>
+
+<input type="checkbox" id="nav-toggle">
+
+<div class="topbar">
+  <span class="topbar-title">&#9935; Руководство игрока</span>
+  <label class="nav-toggle-btn" for="nav-toggle">Содержание</label>
+</div>
+
+<div class="shell">
+  <nav class="toc" aria-label="Содержание">
+    <div class="toc-brand">Clicker Ore Game<small>Руководство игрока</small></div>
+    <ul class="toc-list">
+      <li><a href="#start"><span class="toc-num">01</span>С чего начать</a></li>
+      <li><a href="#currencies"><span class="toc-num">02</span>7 валют</a></li>
+      <li><a href="#damage"><span class="toc-num">03</span>Урон от клика и автоурон</a></li>
+      <li><a href="#critical"><span class="toc-num">04</span>Критические удары</a></li>
+      <li><a href="#pickaxes"><span class="toc-num">05</span>Кирки</a></li>
+      <li><a href="#suits"><span class="toc-num">06</span>Броня</a></li>
+      <li><a href="#temperature"><span class="toc-num">07</span>Жар</a></li>
+      <li><a href="#pets"><span class="toc-num">08</span>Питомцы</a></li>
+      <li><a href="#floors"><span class="toc-num">09</span>Этажи, руда и глубина</a></li>
+      <li><a href="#skills"><span class="toc-num">10</span>Активные умения</a></li>
+      <li><a href="#titles"><span class="toc-num">11</span>Титулы</a></li>
+      <li><a href="#tasks"><span class="toc-num">12</span>Задания и Taskium</a></li>
+      <li><a href="#trade"><span class="toc-num">13</span>Панель обмена</a></li>
+      <li><a href="#extras"><span class="toc-num">14</span>Бесплатное золото</a></li>
+      <li><a href="#prestige"><span class="toc-num">15</span>Престиж</a></li>
+      <li><a href="#bosses"><span class="toc-num">16</span>Боссы</a></li>
+      <li><a href="#achievements"><span class="toc-num">17</span>Достижения</a></li>
+      <li><a href="#daily"><span class="toc-num">18</span>Ежедневная награда</a></li>
+      <li><a href="#store"><span class="toc-num">19</span>Магазин</a></li>
+      <li><a href="#progress"><span class="toc-num">20</span>Таблицы лидеров и статистика</a></li>
+      <li><a href="#save"><span class="toc-num">21</span>Сохранения</a></li>
+      <li><a href="#languages"><span class="toc-num">22</span>Языки</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <header class="hero">
+      <div class="strata" role="presentation"></div>
+      <div class="eyebrow">Руководство игрока - 2026-08-12</div>
+      <h1 class="title">Вся шахта<br>простыми словами</h1>
+      <p class="subtitle">Что делает каждая система, на каком этаже она открывается и куда лучше потратить следующий час. Без формул - только решения, которые важны.</p>
+      <div class="langbar">
+        <div class="langbar-label">Язык</div>
+        <div class="langbar-list"><a href="player_guide_en.html" hreflang="en">English</a><a href="player_guide_tr.html" hreflang="tr">Türkçe</a><a href="player_guide_de.html" hreflang="de">Deutsch</a><a href="player_guide_fr.html" hreflang="fr">Français</a><a href="player_guide_es.html" hreflang="es">Español</a><a href="player_guide_es_la.html" hreflang="es-419">Español (Latinoamérica)</a><a href="player_guide_it.html" hreflang="it">Italiano</a><a href="player_guide_pl.html" hreflang="pl">Polski</a><a href="player_guide_pt_br.html" hreflang="pt-BR">Português (Brasil)</a><span>Русский</span><a href="player_guide_uk.html" hreflang="uk">Українська</a><a href="player_guide_ja.html" hreflang="ja">日本語</a><a href="player_guide_ko.html" hreflang="ko">한국어</a><a href="player_guide_zh_hans.html" hreflang="zh-Hans">简体中文</a><a href="player_guide_zh_hant.html" hreflang="zh-Hant">繁體中文</a><a href="player_guide_th.html" hreflang="th">ไทย</a><a href="player_guide_id.html" hreflang="id">Bahasa Indonesia</a><a href="player_guide_vi.html" hreflang="vi">Tiếng Việt</a></div>
+      </div>
+    </header>
+
+    <section id="start">
+      <div class="section-head"><span class="section-num">01</span><h2>С чего начать</h2></div>
+      <p class="section-dek">Три этапа - в том порядке, в каком игра открывает содержимое.</p>
+      <div class="strategy-track">
+          <div class="strategy-stage">
+            <div class="stage-label">Начало - этажи с 1 по 200</div>
+            <ul>
+              <li>Улучшай кирку без остановки; покупай следующую сразу, как откроется.</li>
+              <li>Крушитель руды приходит на этаже 50, Гневный клик - на этаже 70.</li>
+              <li>Возьми Камушек, как только сможешь отдать алмазы.</li>
+            </ul>
+          </div>
+          <div class="strategy-stage">
+            <div class="stage-label">Середина - этажи с 200 по 350</div>
+            <ul>
+              <li>Первый престиж делай на этаже 200.</li>
+              <li>Разложи Эссенцию по всем 7 параметрам, а не выжимай один.</li>
+              <li>Задания открываются на этаже 160, дерево умений и обмен - на этаже 180.</li>
+            </ul>
+          </div>
+          <div class="strategy-stage">
+            <div class="stage-label">Позже - от этажа 350</div>
+            <ul>
+              <li>Ходи на боссов, пока есть ключи: это твой источник Эссенции.</li>
+              <li>Купи предметы Бесконечности - они постоянные и никогда не сбрасываются.</li>
+              <li>Держи броню прокачанной, чтобы жар не съедал урон.</li>
+            </ul>
+          </div>
+        </div>
+      <div class="callout">
+          <div class="callout-label">Полезно знать</div>
+          Числа быстро становятся длинными, поэтому игра переходит сначала на короткие формы, а затем на научную запись вида <strong>1,23e45</strong>. Никакого потолка нет - меняется только запись.
+        </div>
+    </section>
+
+    <section id="currencies">
+      <div class="section-head"><span class="section-num">02</span><h2>7 валют</h2></div>
+      <p class="section-dek">Каждая питает свою систему. Потратить нужную валюту не туда - самая частая ошибка на старте.</p>
+      <div class="currency-grid">
+        <div class="cur-card" style="--dot:var(--cur-gold)">
+          <h4><span class="dot"></span>Золото</h4>
+          <p>Добывается <b>разбиванием руды</b>.</p>
+          <p>Уходит на уровни кирки и брони - твоя рабочая валюта.</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-diamond)">
+          <h4><span class="dot"></span>Алмаз</h4>
+          <p>Приходят <b>только из покупок за реальные деньги</b>.</p>
+          <p>Уходят на питомцев и на постоянные предметы Бесконечности.</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-essence)">
+          <h4><span class="dot"></span>Эссенция</h4>
+          <p>Даётся за <b>престиж</b> и за победы над боссами.</p>
+          <p>Уходит на 7 постоянных параметров престижа.</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-taskium)">
+          <h4><span class="dot"></span>Taskium</h4>
+          <p><b>+1</b> за каждый удачный клик.</p>
+          <p>Уходит на принятие и перебор заданий.</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-key)">
+          <h4><span class="dot"></span>Ключ подземелья</h4>
+          <p>Один бесплатный ключ в день плюс наборы в магазине.</p>
+          <p>Уходит на вход в бой с боссом - 1 за попытку.</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-skillstone)">
+          <h4><span class="dot"></span>Камень навыка</h4>
+          <p>Приходит из наборов магазина и из панели обмена.</p>
+          <p>Уходит на прокачку 8 активных умений.</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-orestone)">
+          <h4><span class="dot"></span>Рудный камень</h4>
+          <p><b>1-5</b> с каждой разбитой руды, плюс достижения.</p>
+          <p>Меняется на Эссенцию или Камень умений в панели обмена.</p>
+        </div>
+      </div>
+      <div class="callout">
+          <div class="callout-label">Алмазы</div>
+          Боссы, достижения и задания алмазов не дают. Алмазы и ключи подземелья хранятся на сервере, поэтому для покупки питомца нужно быть в сети.
+        </div>
+    </section>
+
+    <section id="damage">
+      <div class="section-head"><span class="section-num">03</span><h2>Урон от клика и автоурон</h2></div>
+      <p class="section-dek">Два отдельных источника урона, и питает их разное.</p>
+      <p><strong>Урон от клика</strong> - это то, что делает одно нажатие. Он растёт от уровня и умений первой кирки, от умения Гневный клик, от твоего титула и от параметра престижа Рука Камнедробителя. Когда прокачан Единство силы, часть автоурона тоже добавляется к каждому клику.</p>
+      <p><strong>Автоурон</strong> (в секунду) идёт со второй кирки и дальше, от умения Ярость, от параметра Вечная кузня и от питомцев.</p>
+      <div class="callout">
+          <div class="callout-label">Питомцы - исключение</div>
+          Урон питомцев прибавляется <strong>после</strong> всех множителей и ими не масштабируется. Их уровни сами по себе не вывезут позднюю игру: множители кирки и умений тоже должны расти.
+        </div>
+    </section>
+
+    <section id="critical">
+      <div class="section-head"><span class="section-num">04</span><h2>Критические удары</h2></div>
+      <p class="section-dek">Любой клик может выйти критом и ударить сильнее.</p>
+      <p>Ты начинаешь с <strong>5%</strong> шанса и множителем <strong>x1,5</strong>. Поднимают их четыре вещи: умение Критический удар, умения кирок, параметры престижа Оракул руды и Катаклизмическая сила, а также титулы.</p>
+    </section>
+
+    <section id="pickaxes">
+      <div class="section-head"><span class="section-num">05</span><h2>Кирки</h2></div>
+      <p class="section-dek">45 кирок, открываются по порядку. Это костяк твоего урона.</p>
+      <ul>
+          <li>Первая кирка стоит <strong>5 золота</strong>; каждая следующая примерно в <strong>8 раз</strong> дороже предыдущей.</li>
+          <li>Кирка открывается сама, когда в этом заходе накопится достаточно заработанного золота - то есть следующую открывает улучшение текущей.</li>
+          <li>Каждый уровень примерно на <strong>7%</strong> дороже предыдущего.</li>
+          <li>Урон от клика питает только <strong>первая</strong> кирка. Все остальные питают автоурон в секунду.</li>
+          <li>У каждой кирки 6 умений, они открываются на уровнях 5 / 10 / 25 / 50 / 100 / 200. Часть помогает только этой кирке, часть - всем; общие ценнее.</li>
+        </ul>
+      <div class="callout">
+          <div class="callout-label">Большой скачок</div>
+          Каждые <strong>100 уровней</strong> кирка умножает собственную отдачу на <strong>x10</strong>. Дотащить одну кирку до следующей сотни - обычно самый крупный доступный прирост силы.
+        </div>
+    </section>
+
+    <section id="suits">
+      <div class="section-head"><span class="section-num">06</span><h2>Броня</h2></div>
+      <p class="section-dek">5 комплектов, все твои с самого начала. Их задача - держать жар подальше.</p>
+      <ul>
+          <li>Броню не покупают, её только прокачивают. Каждый уровень добавляет около <strong>5%</strong> сопротивления, начиная с 50.</li>
+          <li>Каждые 100 уровней сопротивление брони умножается на <strong>x2</strong>.</li>
+          <li>У каждого комплекта есть ещё 6 умений, открывающихся с уровнями.</li>
+          <li>Панель брони открывается на этаже <strong>130</strong> вместе с указателем жара.</li>
+        </ul>
+    </section>
+
+    <section id="temperature">
+      <div class="section-head"><span class="section-num">07</span><h2>Жар</h2></div>
+      <p class="section-dek">Чем глубже, тем жарче, и жар тихо срезает твой урон.</p>
+      <ul>
+          <li>Температура этажа растёт непрерывно - примерно <strong>1,04x за этаж</strong>, то есть удваивается каждые два десятка этажей.</li>
+          <li>Пока твоё сопротивление не меньше <strong>1,5x</strong> температуры, указатель чист и ты ничего не теряешь.</li>
+          <li>Как только сопротивление падает ниже температуры, урон начинает утекать; при <strong>0,5x</strong> остаётся одна двадцатая - потеря <strong>95%</strong>.</li>
+          <li>В панели брони есть переключатель автопокупки сопротивления; оставь его включённым, если часто уходишь вглубь.</li>
+        </ul>
+      <div class="callout warn">
+          <div class="callout-label">Если внезапно встал</div>
+          Стена, на которой руда не кончается, почти всегда про жар, а не про урон. Посмотри указатель, прежде чем тратить на что-то другое.
+        </div>
+    </section>
+
+    <section id="pets">
+      <div class="section-head"><span class="section-num">08</span><h2>Питомцы</h2></div>
+      <p class="section-dek">5 питомцев: покупаются за алмазы, а потом качаются золотом.</p>
+      <ul>
+          <li>Цены идут от <strong>150</strong> до <strong>250</strong> алмазов (150 / 175 / 200 / 225 / 250).</li>
+          <li>Каждый уровень добавляет примерно <strong>1%</strong> урона от клика твоей кирки как автоурон, умноженный на порядок питомца: Осколок тьмы на том же уровне даёт впятеро больше, чем Камушек.</li>
+          <li>Уровни дорожают примерно на <strong>20%</strong> каждый раз, а каждые 100 уровней питомец умножает свою отдачу на <strong>x5</strong>.</li>
+          <li>У каждого питомца 6 умений; часть работает только на него, часть - на всех.</li>
+          <li>Панель питомцев открывается на этаже <strong>30</strong> или как только у тебя появится питомец.</li>
+        </ul>
+      <div class="callout warn">
+          <div class="callout-label">Престиж и питомцы</div>
+          Престиж возвращает каждого питомца на <strong>1-й уровень</strong> и стирает его умения. Но владение постоянное - питомца не покупают дважды.
+        </div>
+    </section>
+
+    <section id="floors">
+      <div class="section-head"><span class="section-num">09</span><h2>Этажи, руда и глубина</h2></div>
+      <p class="section-dek">Этаж решает, насколько крепка руда и сколько золота она даёт. Глубина решает, как она выглядит.</p>
+      <ul>
+          <li>У каждого этажа чуть больше здоровья и чуть больше золота, чем у предыдущего, и кривая становится всё круче.</li>
+          <li>Каждый <strong>10-й этаж</strong> идёт на время: запускается отсчёт на <strong>20 секунд</strong>, здоровье выше примерно на 50%, золото - примерно на 51%.</li>
+          <li>Сложность идёт ещё и циклами примерно по 100 этажей: первые этажи цикла выгоднее всего по отношению золота к здоровью.</li>
+          <li>Каждая руда дополнительно даёт <strong>1-5</strong> Рудных камней.</li>
+        </ul>
+      <div class="callout warn">
+          <div class="callout-label">Этажи на время кусаются</div>
+          Если отсчёт закончится, тебя отправят <strong>на этаж ниже</strong>. Когда урона не хватает, лучше пропустить этаж на время, чем провалить его.
+        </div>
+      <p>Можно спуститься на любой этаж, до которого ты дошёл в этом заходе, и фармить там. Ручной выбор этажа выключает автоподъём; включи его снова, когда захочешь лезть выше.</p>
+      <p>Всего <strong>40</strong> видов руды, и какие из них попадаются, решает глубина. Вид меняет только облик и пыль - здоровье и золото задаёт этаж.</p>
+      <div class="table-wrap">
+        <table>
+        <thead><tr>
+        <th class="num">Глубина</th>
+        <th class="num">Виды руды</th>
+        <th class="num">Примерно этаж</th>
+        </tr></thead>
+        <tbody>
+        <tr>
+        <td class="num">0-100 м</td>
+        <td class="num">9</td>
+        <td class="num">~54</td>
+        </tr>
+        <tr>
+        <td class="num">100-500 м</td>
+        <td class="num">20</td>
+        <td class="num">~129</td>
+        </tr>
+        <tr>
+        <td class="num">500-1 500 м</td>
+        <td class="num">30</td>
+        <td class="num">~196</td>
+        </tr>
+        <tr>
+        <td class="num">1 500 м+</td>
+        <td class="num">40</td>
+        <td class="num">-</td>
+        </tr>
+        </tbody></table></div>
+    </section>
+
+    <section id="skills">
+      <div class="section-head"><span class="section-num">10</span><h2>Активные умения</h2></div>
+      <p class="section-dek">8 умений: у каждого рывок на время, а после него откат.</p>
+      <p>Умение <strong>бесплатно</strong>, когда доходишь до его этажа: ты уже пользуешься им на 1-м уровне. Довести до уровня 7 стоит <strong>63 Камней умений</strong>, а все 8 - <strong>504</strong>. Чем выше уровень, тем дольше действие и короче откат.</p>
+      <div class="table-wrap">
+        <table>
+        <thead><tr>
+        <th>Умение</th>
+        <th class="num">Этаж</th>
+        <th class="num">Уровень 1 (время / откат)</th>
+        <th class="num">Уровень 7 (время / откат)</th>
+        <th class="num">Эффект</th>
+        </tr></thead>
+        <tbody>
+        <tr>
+        <td>Крушитель руды</td>
+        <td class="num">50</td>
+        <td class="num">30 с / 540 с</td>
+        <td class="num">90 с / 180 с</td>
+        <td class="num">7 → 13 /с</td>
+        </tr>
+        <tr>
+        <td>Гневный клик</td>
+        <td class="num">70</td>
+        <td class="num">40 с / 660 с</td>
+        <td class="num">210 с / 300 с</td>
+        <td class="num">x2 → x5</td>
+        </tr>
+        <tr>
+        <td>Критический удар</td>
+        <td class="num">100</td>
+        <td class="num">30 с / 600 с</td>
+        <td class="num">150 с / 240 с</td>
+        <td class="num">x1,3 → x1,9</td>
+        </tr>
+        <tr>
+        <td>Ярость</td>
+        <td class="num">170</td>
+        <td class="num">40 с / 840 с</td>
+        <td class="num">160 с / 480 с</td>
+        <td class="num">x2 → x3,5</td>
+        </tr>
+        <tr>
+        <td>Золотое безумие</td>
+        <td class="num">240</td>
+        <td class="num">50 с / 1 020 с</td>
+        <td class="num">290 с / 660 с</td>
+        <td class="num">x2 → x5</td>
+        </tr>
+        <tr>
+        <td>Жаростойкость</td>
+        <td class="num">280</td>
+        <td class="num">30 с / 660 с</td>
+        <td class="num">140 с / 300 с</td>
+        <td class="num">x2 → x5</td>
+        </tr>
+        <tr>
+        <td>Перегрузка</td>
+        <td class="num">330</td>
+        <td class="num">20 с / 1 200 с</td>
+        <td class="num">20 с / 840 с</td>
+        <td class="num">x1,5 → x3</td>
+        </tr>
+        <tr>
+        <td>Обращение времени</td>
+        <td class="num">400</td>
+        <td class="num">1 200 с</td>
+        <td class="num">840 с</td>
+        <td class="num">-300 с → -1 020 с</td>
+        </tr>
+        </tbody></table></div>
+      <p>Первая линия умений открывается на этаже 50; панель дерева, где тратятся Камни умений, - на этаже <strong>180</strong>. Чтобы применить умение, панель не нужна.</p>
+      <div class="callout">
+          <div class="callout-label">Связка</div>
+          Сначала жми Перегрузка, потом то умение, которое действительно хочешь усилить, например Золотое безумие. А Обращение времени сокращает откат последнего использованного, так что оно вернётся раньше.
+        </div>
+    </section>
+
+    <section id="titles">
+      <div class="section-head"><span class="section-num">11</span><h2>Титулы</h2></div>
+      <p class="section-dek">100 титулов, которые приходят сами по мере подъёма.</p>
+      <ul>
+          <li>Титулы идут с этажа 1 до этажа <strong>50 000</strong> и выбираются автоматически по самому высокому этажу этого захода.</li>
+          <li>Каждый титул добавляет около <strong>+0,1</strong> к бонусам, которые несёт.</li>
+          <li>Бонусы включаются ступенями: урон от клика с первого титула, затем автоурон, сопротивление жару, золото, множитель крита, шанс крита и доля УВС в клике (титулы 1 / 5 / 10 / 15 / 20 / 25 / 30).</li>
+        </ul>
+    </section>
+
+    <section id="tasks">
+      <div class="section-head"><span class="section-num">12</span><h2>Задания и Taskium</h2></div>
+      <p class="section-dek">Побочная ветка, которая превращает клики во второй доход.</p>
+      <ul>
+          <li>Каждый удачный клик даёт <strong>+1 Taskium</strong>.</li>
+          <li>Принять задание стоит <strong>200</strong>, перебросить - <strong>25</strong>.</li>
+          <li>Панель заданий открывается на этаже 160; 6 слотов - на этажах 160 / 170 / 180 / 190 / 200 / 210.</li>
+          <li>Есть 10 видов заданий в 6 редкостях. Каждое длится 60 минут, непринятые обновляются каждый час.</li>
+          <li>Награда растёт с редкостью: от <strong>50-500</strong> золота руды текущего этажа. Самые редкие дают ещё и Эссенцию.</li>
+        </ul>
+    </section>
+
+    <section id="trade">
+      <div class="section-head"><span class="section-num">13</span><h2>Панель обмена</h2></div>
+      <p class="section-dek">Открывается на этаже 180. Единственное место, где Рудный камень чего-то стоит.</p>
+      <ul>
+          <li>1 Камень умений превращается в <strong>5 000 Рудных камней</strong> - до 100 000 за обмен.</li>
+          <li><strong>2 000 Рудных камней</strong> превращаются в 1 Эссенцию.</li>
+          <li><strong>5 000 Рудных камней</strong> превращаются в 1 Камень умений.</li>
+        </ul>
+      <p>Последний пункт и есть главный: так долгий фарм превращается в уровни умений без боя с боссом.</p>
+    </section>
+
+    <section id="extras">
+      <div class="section-head"><span class="section-num">14</span><h2>Бесплатное золото</h2></div>
+      <p class="section-dek">Три источника, которым нужно только твоё присутствие.</p>
+      <ul>
+          <li><strong>Золотой шар</strong> - с этажа 50 пролетает раз в 70-105 секунд. Клик по нему даёт <strong>x6</strong> золота руды твоего лучшего этажа в этом заходе.</li>
+          <li><strong>Доход офлайн</strong> - считается после 60 минут отсутствия и упирается в 12 часов. Премиум удваивает.</li>
+          <li><strong>Награда за время игры</strong> - каждые 60 минут игры даёт примерно 100 минутных доходов на твоём лучшем этаже.</li>
+        </ul>
+    </section>
+
+    <section id="prestige">
+      <div class="section-head"><span class="section-num">15</span><h2>Престиж</h2></div>
+      <p class="section-dek">Ты меняешь прогресс этого захода на постоянную силу. При верном расчёте это самое быстрое, что есть в игре.</p>
+      <p>Панель престижа открывается, когда ты первый раз доходишь до этажа <strong>200</strong>. Дальше каждый престиж требует ещё 100 этажей: 300, потом 400, и так далее.</p>
+      <ul>
+          <li><strong>Сбрасывается:</strong> золото, Taskium, прогресс этажей, уровни кирок и брони, уровни питомцев, все купленные умения и твой уровень боссов.</li>
+          <li><strong>Остаётся:</strong> уровень престижа, Эссенция, уровни 7 параметров, купленные питомцы, предметы Бесконечности, достижения.</li>
+          <li>Ты не начинаешь с 1-го этажа: следующий заход стартует на <strong>100 x твой уровень престижа</strong>, и к этому даётся стартовое золото примерно за 500 руд.</li>
+          <li>Все откаты обнуляются, так что заход начинается со всеми умениями наготове.</li>
+        </ul>
+      <p>Эссенция считается всего из двух вещей: <strong>самый высокий этаж</strong>, до которого ты дошёл (по 0,5) и <strong>разбитая руда</strong> (по 0,25).</p>
+      <div class="callout">
+          <div class="callout-label">Разбивай руду, а не беги</div>
+          Поскольку количество руды весит больше, фарм удобного этажа в конце даёт больше, чем рывок на этаж, где ты почти не пробиваешь.
+        </div>
+      <div class="table-wrap">
+        <table>
+        <thead><tr>
+        <th>Параметр</th>
+        <th>Эффект</th>
+        <th class="num">За уровень</th>
+        </tr></thead>
+        <tbody>
+        <tr>
+        <td>Вечная кузня</td>
+        <td>Автоматический урон в секунду</td>
+        <td class="num">+20%</td>
+        </tr>
+        <tr>
+        <td>Рука Камнедробителя</td>
+        <td>Урон от клика</td>
+        <td class="num">+25%</td>
+        </tr>
+        <tr>
+        <td>Золотая бездна</td>
+        <td>Доход золота</td>
+        <td class="num">+10%</td>
+        </tr>
+        <tr>
+        <td>Оракул руды</td>
+        <td>Шанс крита</td>
+        <td class="num">+5%</td>
+        </tr>
+        <tr>
+        <td>Катаклизмическая сила</td>
+        <td>Множитель крита</td>
+        <td class="num">+5%</td>
+        </tr>
+        <tr>
+        <td>Адский щит</td>
+        <td>Сопротивление жару</td>
+        <td class="num">+10%</td>
+        </tr>
+        <tr>
+        <td>Единство силы</td>
+        <td>Доля УВС, идущая в клик</td>
+        <td class="num">+1%</td>
+        </tr>
+        </tbody></table></div>
+      <p>Бонусы складываются уровень за уровнем, а не перемножаются, и цена Эссенции растёт медленно - тратить регулярно выгоднее, чем копить.</p>
+    </section>
+
+    <section id="bosses">
+      <div class="section-head"><span class="section-num">16</span><h2>Боссы</h2></div>
+      <p class="section-dek">Гонка урона против таймера за Эссенцию. Открывается на этаже 350.</p>
+      <ul>
+          <li>Ты выбираешь босса и тратишь <strong>1 ключ подземелья</strong>, чтобы начать. Само ничего не запускается.</li>
+          <li>Боссы открываются по порядку - чтобы увидеть следующего, нужно победить текущего. Здоровье растёт примерно в тысячу раз за ступень, а таймер сокращается.</li>
+          <li>Награды растут с уровнем престижа: примерно <strong>+15%</strong> за уровень.</li>
+          <li>Престиж возвращает твой уровень боссов к первому.</li>
+        </ul>
+      <div class="table-wrap">
+        <table>
+        <thead><tr>
+        <th>Босс</th>
+        <th class="num">Здоровье</th>
+        <th class="num">Время</th>
+        <th>Награда</th>
+        </tr></thead>
+        <tbody>
+        <tr>
+        <td>Кристальный колосс</td>
+        <td class="num">1e13</td>
+        <td class="num">30 с</td>
+        <td>50 Эссенция + 5 000 Рудный камень</td>
+        </tr>
+        <tr>
+        <td>Кристальный страж</td>
+        <td class="num">1e16</td>
+        <td class="num">25 с</td>
+        <td>75 Эссенция + 7 500 Рудный камень</td>
+        </tr>
+        <tr>
+        <td>Багровый часовой</td>
+        <td class="num">1e19</td>
+        <td class="num">20 с</td>
+        <td>100 Эссенция + 10 000 Рудный камень</td>
+        </tr>
+        <tr>
+        <td>Каменный страж</td>
+        <td class="num">1e22</td>
+        <td class="num">20 с</td>
+        <td>125 Эссенция + 12 500 Рудный камень</td>
+        </tr>
+        <tr>
+        <td>Ледяной титан</td>
+        <td class="num">1e25</td>
+        <td class="num">20 с</td>
+        <td>150 Эссенция + 15 000 Рудный камень</td>
+        </tr>
+        <tr>
+        <td>Кристальный голем 1</td>
+        <td class="num">1e28</td>
+        <td class="num">20 с</td>
+        <td>175 Эссенция + 17 500 Рудный камень</td>
+        </tr>
+        <tr>
+        <td>Колосс Каменнобородый</td>
+        <td class="num">1e31</td>
+        <td class="num">15 с</td>
+        <td>200 Эссенция + 20 000 Рудный камень</td>
+        </tr>
+        <tr>
+        <td>Кристальный голем 2</td>
+        <td class="num">1e34</td>
+        <td class="num">15 с</td>
+        <td>225 Эссенция + 22 500 Рудный камень</td>
+        </tr>
+        <tr>
+        <td>Пламенный голем</td>
+        <td class="num">1e37</td>
+        <td class="num">15 с</td>
+        <td>250 Эссенция + 25 000 Рудный камень</td>
+        </tr>
+        <tr>
+        <td>Голем-страж</td>
+        <td class="num">1e40</td>
+        <td class="num">10 с</td>
+        <td>275 Эссенция + 27 500 Рудный камень</td>
+        </tr>
+        </tbody></table></div>
+      <div class="callout warn">
+          <div class="callout-label">Проигрыш стоит дорого</div>
+          Если босс ещё стоит, когда таймер дошёл до нуля, ты не получаешь <strong>ничего</strong>, а ключ пропал. После провала видно, сколько здоровья осталось - по этому и оценивай, сколько урона не хватает.
+        </div>
+    </section>
+
+    <section id="achievements">
+      <div class="section-head"><span class="section-num">17</span><h2>Достижения</h2></div>
+      <p class="section-dek">86 достижений в 24 категориях: клики, руда, боссы, престижи, глубина и другое.</p>
+      <p>Каждое достижение платит <strong>Рудным камнем</strong>, и цель, и награда растут примерно в десять раз на ступень. У большинства категорий три ступени; золотые и урона идут дальше.</p>
+      <div class="callout">
+          <div class="callout-label">Не забудь забрать</div>
+          Награды <strong>не приходят сами</strong>. Если давно не открывал вкладку достижений, там уже лежит горка.
+        </div>
+    </section>
+
+    <section id="daily">
+      <div class="section-head"><span class="section-num">18</span><h2>Ежедневная награда</h2></div>
+      <p class="section-dek">Маленькая, простая, и за пропущенный день никакого штрафа.</p>
+      <p>Один вход в день даёт <strong>1 ключ подземелья</strong>. Каждый день одно и то же - ни календаря, ни серии, которую надо беречь. Забрать можно только в сети.</p>
+    </section>
+
+    <section id="store">
+      <div class="section-head"><span class="section-num">19</span><h2>Магазин</h2></div>
+      <p class="section-dek">Алмазы, ключи, наборы, время премиума и постоянные предметы Бесконечности.</p>
+      <ul>
+          <li><strong>Наборы алмазов:</strong> 200 / 550 / 1 150 / 2 400 / 6 250 / 14 000 алмазов. Чем крупнее набор, тем лучше курс.</li>
+          <li><strong>Наборы ключей:</strong> 3 / 7 / 15 ключей подземелья.</li>
+          <li><strong>Малый набор:</strong> 500 Алмаз, 100 Эссенция, 10 Камень навыка, 3 Ключ подземелья.</li>
+          <li><strong>Большой набор:</strong> 1 000 Алмаз, 200 Эссенция, 20 Камень навыка, 5 Ключ подземелья.</li>
+          <li><strong>Премиум-набор на 7 дней:</strong> 7 дней с x5 уроном от клика, x5 автоуроном, x3 золотом, x3 сопротивлением жару и x2 доходом офлайн.</li>
+        </ul>
+      <p>Предметы Бесконечности покупаются <strong>один раз за алмазы</strong> и не сбрасываются никогда, даже при престиже. В поздней игре это обычно лучшее применение алмазов.</p>
+      <div class="table-wrap">
+        <table>
+        <thead><tr>
+        <th>Предмет</th>
+        <th class="num">Эффект</th>
+        <th class="num">Цена</th>
+        </tr></thead>
+        <tbody>
+        <tr>
+        <td>Бесконечная мощь</td>
+        <td class="num">x4</td>
+        <td class="num">350 💎</td>
+        </tr>
+        <tr>
+        <td>Бесконечный доход</td>
+        <td class="num">x3</td>
+        <td class="num">350 💎</td>
+        </tr>
+        <tr>
+        <td>Бесконечная броня</td>
+        <td class="num">x2</td>
+        <td class="num">350 💎</td>
+        </tr>
+        <tr>
+        <td>Бесконечная скорость</td>
+        <td class="num">x1,5</td>
+        <td class="num">550 💎</td>
+        </tr>
+        <tr>
+        <td>Бесконечный кликер</td>
+        <td class="num">7 /с</td>
+        <td class="num">600 💎</td>
+        </tr>
+        </tbody></table></div>
+      <div class="callout">
+          <div class="callout-label">Цены</div>
+          Цены магазина приходят из Steam в твоей валюте, поэтому здесь их нет. Состав набора не меняется никогда; стоимость зависит от региона.
+        </div>
+    </section>
+
+    <section id="progress">
+      <div class="section-head"><span class="section-num">20</span><h2>Таблицы лидеров и статистика</h2></div>
+      <p class="section-dek">Два места, где видно, как идёт заход.</p>
+      <ul>
+          <li>Таблицы лидеров Steam ведут клики, урон от клика, число престижей, убитых боссов и максимальный этаж.</li>
+          <li>Экран статистики хранит больше - заработок, траты, клики, время игры и прочее.</li>
+        </ul>
+    </section>
+
+    <section id="save">
+      <div class="section-head"><span class="section-num">21</span><h2>Сохранения</h2></div>
+      <p class="section-dek">Коротко: прогресс защищён сразу несколькими слоями.</p>
+      <ul>
+          <li>Игра сохраняется сама, в зашифрованном виде, каждые <strong>15 секунд</strong>.</li>
+          <li>Копию в Steam Cloud она отправляет примерно каждые <strong>45 секунд</strong>, а также всегда при выходе и на паузе - другой компьютер продолжит с того же места.</li>
+          <li>Если файл сохранения повредится, игра сама возьмёт резервную копию.</li>
+          <li>Сохранение можно скопировать в буфер обмена и вставить на другом устройстве.</li>
+        </ul>
+    </section>
+
+    <section id="languages">
+      <div class="section-head"><span class="section-num">22</span><h2>Языки</h2></div>
+      <p class="section-dek">Игра выходит на 18 языках.</p>
+      <p>Английский, турецкий, немецкий, французский, испанский, латиноамериканский испанский, итальянский, польский, португальский (Бразилия), русский, украинский, японский, корейский, китайский упрощённый, китайский традиционный, тайский, индонезийский и вьетнамский. При первом запуске игра выбирает твой язык, а сменить его можно в любой момент в настройках - это руководство есть на всех, ссылки наверху страницы.</p>
+    </section>
+
+    <footer class="doc-footer">Числа соответствуют текущему балансу игры и могут измениться с обновлениями. Цены в магазине задаёт Steam и показывает в твоей валюте, поэтому здесь их нет.</footer>
+  </main>
+</div>

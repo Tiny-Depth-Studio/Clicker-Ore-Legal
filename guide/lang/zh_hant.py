@@ -1,0 +1,342 @@
+LANG = {
+    "code": "zh_hant",
+    "name": "繁體中文",
+    "html_lang": "zh-Hant",
+    "locale": {"group": ",", "decimal": "."},
+    "title": "Clicker Ore Game - 玩家指南",
+    "description": "礦場怎麼運作：貨幣、鎬子、寵物、技能、轉生、首領和商店，不用公式講清楚。",
+    "brand": "Clicker Ore Game",
+    "brand_sub": "玩家指南",
+    "eyebrow": "玩家指南 - {date}",
+    "headline": "整座礦場，<br>用白話說清楚",
+    "subtitle": "每個系統做什麼、在第幾層開放、下一個小時該花在哪裡。沒有公式，只有真正影響選擇的資訊。",
+    "footer": "這裡的數值對應目前的遊戲平衡，可能隨更新調整。商店價格由 Steam 設定並以你所在地區的貨幣顯示，因此本頁不列出。",
+    "labels": {
+        "contents": "目錄",
+        "per_second": "/秒",
+        "second_short": "秒",
+        "meter_short": "公尺",
+        "language": "語言",
+        "skill": "技能",
+        "unlock_floor": "層數",
+        "level_first": "1 級（持續 / 冷卻）",
+        "level_last": "7 級（持續 / 冷卻）",
+        "effect": "效果",
+        "boss": "首領",
+        "health": "生命",
+        "time_limit": "時限",
+        "reward": "獎勵",
+        "parameter": "屬性",
+        "per_level": "每級",
+        "effect_dps": "每秒自動傷害",
+        "effect_click": "點擊傷害",
+        "effect_gold": "金幣收入",
+        "effect_crit_chance": "爆擊率",
+        "effect_crit_multiplier": "爆擊倍率",
+        "effect_heat": "抗熱",
+        "effect_click_from_dps": "計入點擊的秒傷比例",
+        "depth": "深度",
+        "ore_types": "礦石種類",
+        "around_floor": "大約層數",
+        "item": "物品",
+        "cost": "價格",
+    },
+    "currencies": {
+        "gold": ["靠<b>敲碎礦石</b>取得。", "用來升級鎬子和護甲，是最主要的日常貨幣。"],
+        "diamond": ["<b>只能透過實際付費</b>取得。", "用來購買寵物和永久的無限物品。"],
+        "essence": ["來自<b>轉生</b>與擊殺首領。", "用來升級 {prestige_parameter_count} 項永久轉生屬性。"],
+        "taskium": ["每次點擊命中 <b>+{taskium_per_click}</b>。", "用來接取任務與重新抽取任務。"],
+        "dungeon_key": ["每天一把免費，其餘來自商店禮包。", "用來進入首領戰，每次 {boss_key_cost} 把。"],
+        "skill_stone": ["來自商店禮包與交易面板。", "用來提升 {skill_count} 個主動技能的等級。"],
+        "ore_stone": ["每敲碎一塊礦石得 <b>{ore_stone_min}-{ore_stone_max}</b> 顆，成就也會給。", "在交易面板換成精華或技能石。"],
+    },
+    "sections": [
+        {
+            "id": "start",
+            "title": "從哪裡開始",
+            "dek": "依遊戲開放內容的順序，分成三個階段。",
+            "blocks": [
+                ("stages", [
+                    ["前期 - 第 1 層到第 {prestige_first_floor} 層", [
+                        "不停升級鎬子；下一把一開放就買。",
+                        "{skill_ore_breaker} 在第 {skill_line_floor} 層開放，{skill_anger_click} 在第 70 層。",
+                        "鑽石有餘裕時就把 {pet_1} 買下來。",
+                    ]],
+                    ["中期 - 第 {prestige_first_floor} 層到第 {boss_floor} 層", [
+                        "第一次轉生在第 {prestige_first_floor} 層進行。",
+                        "精華不要堆在一項上，分給 {prestige_parameter_count} 項屬性。",
+                        "任務在第 {task_panel_floor} 層開放，技能樹和交易面板在第 {skill_tree_floor} 層。",
+                    ]],
+                    ["後期 - 第 {boss_floor} 層之後", [
+                        "手上有鑰匙就去打首領，那是精華的主要來源。",
+                        "買下無限物品，它們是永久的，轉生也不會清空。",
+                        "護甲要跟上等級，別讓熱量吃掉你的傷害。",
+                    ]],
+                ]),
+                ("note", ["值得知道", "數字很快會變長，所以遊戲先換成縮寫，再換成 <strong>1.23e45</strong> 這樣的科學記號。這不是上限，只是寫法變了。"]),
+            ],
+        },
+        {
+            "id": "currencies",
+            "title": "{currency_count} 種貨幣",
+            "dek": "每一種支撐一個系統。把對的貨幣花在錯的地方，是新手最常犯的錯。",
+            "blocks": [
+                ("currencies", None),
+                ("note", ["關於鑽石", "首領、成就和任務都不會給鑽石。鑽石和地牢鑰匙保存在伺服器上，所以購買寵物時需要連線。"]),
+            ],
+        },
+        {
+            "id": "damage",
+            "title": "點擊傷害與自動傷害",
+            "dek": "兩個各自獨立的傷害來源，成長靠的東西也不同。",
+            "blocks": [
+                ("p", "<strong>點擊傷害</strong>是點一下造成的傷害。它隨第一把鎬子的等級與技能、{skill_anger_click}、稱號以及轉生屬性 {prestige_click} 成長。升級 {prestige_click_from_dps} 之後，自動傷害的一部分也會加進每次點擊。"),
+                ("p", "<strong>自動傷害</strong>（每秒）來自第二把鎬子及之後的所有鎬子、{skill_rampage}、屬性 {prestige_dps} 以及你的寵物。"),
+                ("note", ["寵物是例外", "寵物傷害是在所有倍率算完<strong>之後</strong>才加上去的，不會被倍率放大。後期光靠寵物等級不夠，鎬子與技能的倍率也得一起成長。"]),
+            ],
+        },
+        {
+            "id": "critical",
+            "title": "爆擊",
+            "dek": "每次點擊都可能爆擊，打出更高的傷害。",
+            "blocks": [
+                ("p", "初始為 <strong>{crit_chance_percent}%</strong> 爆擊率、<strong>x{crit_multiplier}</strong> 爆擊倍率。有四樣東西能提升它們：{skill_critical_strike} 技能、鎬子技能、轉生屬性 {prestige_crit_chance} 與 {prestige_crit_multiplier}，以及稱號。"),
+            ],
+        },
+        {
+            "id": "pickaxes",
+            "title": "鎬子",
+            "dek": "依序開放的 {pickaxe_count} 把鎬子，是傷害的骨架。",
+            "blocks": [
+                ("ul", [
+                    "第一把鎬子 <strong>{pickaxe_first_cost} 金幣</strong>；之後每一把大約是上一把的 <strong>{pickaxe_cost_growth} 倍</strong>。",
+                    "鎬子會自動開放：本輪賺到的金幣夠了就解鎖，所以真正打開下一把的是升級。",
+                    "每一級比上一級大約貴 <strong>{pickaxe_upgrade_growth_percent}%</strong>。",
+                    "只有<strong>第一把</strong>鎬子提供點擊傷害，其餘全部提供每秒自動傷害。",
+                    "每把鎬子有 {pickaxe_skill_count} 個技能，在等級 {pickaxe_skill_levels} 開放。有的只加成這把鎬子，有的加成全部——全域的更值得。",
+                ]),
+                ("note", ["最大的一次躍升", "鎬子每到 <strong>{pickaxe_bonus_interval} 級</strong>，自身產出就乘上 <strong>x{pickaxe_bonus_multiplier}</strong>。把一把鎬子推到下一個百級，通常是你能拿到的最大提升。"]),
+            ],
+        },
+        {
+            "id": "suits",
+            "title": "護甲",
+            "dek": "開局就全部擁有的 {suit_count} 套護甲，作用是擋住熱量。",
+            "blocks": [
+                ("ul", [
+                    "護甲不用買，只需要升級。每一級增加約 <strong>{suit_heat_per_level_percent}%</strong> 抗熱，基礎值為 {suit_base_heat_resistance}。",
+                    "每 {suit_bonus_interval} 級，護甲的抗熱會乘上 <strong>x{suit_bonus_multiplier}</strong>。",
+                    "每套護甲還有 {suit_skill_count} 個隨等級開放的技能。",
+                    "護甲面板和熱量條一起在第 <strong>{suit_panel_floor}</strong> 層開放。",
+                ]),
+            ],
+        },
+        {
+            "id": "temperature",
+            "title": "熱量",
+            "dek": "越往下越熱，而熱量會悄悄削掉你的傷害。",
+            "blocks": [
+                ("ul", [
+                    "層溫度一直在上升，大約每層 <strong>{temperature_growth} 倍</strong>，也就是每二十幾層翻一倍。",
+                    "只要抗熱達到溫度的 <strong>{temperature_safe_ratio} 倍</strong>，熱量條就是乾淨的，什麼都不會損失。",
+                    "抗熱一旦低於溫度，傷害就開始流失；到 <strong>{temperature_worst_ratio} 倍</strong>時只剩二十分之一，也就是損失 <strong>{temperature_worst_damage_percent}%</strong>。",
+                    "護甲面板上有自動購買抗熱的開關；經常往深處走就一直開著。",
+                ]),
+                ("warn", ["如果突然卡住", "礦石半天打不完的那種牆，幾乎總是熱量問題，而不是傷害不足。在花錢升別的東西之前，先看熱量條。"]),
+            ],
+        },
+        {
+            "id": "pets",
+            "title": "寵物",
+            "dek": "用鑽石購買、再用金幣升級的 {pet_count} 隻寵物。",
+            "blocks": [
+                ("ul", [
+                    "價格從 <strong>{pet_cost_first}</strong> 到 <strong>{pet_cost_last}</strong> 鑽石（{pet_cost_list}）。",
+                    "每一級會把鎬子點擊傷害的約 <strong>{pet_dps_percent_per_level}%</strong> 加成自動傷害，並乘上寵物的序號：同等級下 {pet_5} 是 {pet_1} 的五倍。",
+                    "每一級大約貴 <strong>{pet_upgrade_growth_percent}%</strong>，而且每 {pet_bonus_interval} 級寵物會把自身產出乘上 <strong>x{pet_bonus_multiplier}</strong>。",
+                    "每隻寵物有 {pet_skill_count} 個技能，有的只加成自己，有的加成全部寵物。",
+                    "寵物面板在第 <strong>{pet_panel_floor}</strong> 層開放，或者你一擁有寵物就開放。",
+                ]),
+                ("warn", ["轉生與寵物", "轉生會把每隻寵物退回<strong>1 級</strong>並清掉牠們的技能。但擁有狀態是永久的，不需要重新購買。"]),
+            ],
+        },
+        {
+            "id": "floors",
+            "title": "層數、礦石與深度",
+            "dek": "礦石有多硬、給多少金幣由層數決定；長什麼樣由深度決定。",
+            "blocks": [
+                ("ul", [
+                    "每層的生命和金幣都比上一層多一點，而且越往上漲得越快。",
+                    "每 <strong>{duration_floor_interval} 層</strong>是一個計時層：開始 <strong>{duration_floor_seconds} 秒</strong>倒數，生命提高約 {duration_floor_health_percent}%，金幣提高約 {duration_floor_gold_percent}%。",
+                    "難度還會以大約 {difficulty_cycle_floors} 層為週期變化，週期開頭幾層的金幣與生命之比最划算。",
+                    "每塊礦石除了金幣還會掉 <strong>{ore_stone_min}-{ore_stone_max}</strong> 顆礦石之石。",
+                ]),
+                ("warn", ["計時層會咬人", "倒數結束時如果沒打完，你會被退回<strong>下一層</strong>。傷害不夠時，跳過計時層比失敗更划算。"]),
+                ("p", "本輪到過的任何一層都可以退回去刷。手動選層會關掉自動往上，想繼續爬時再打開。"),
+                ("p", "礦石一共 <strong>{ore_type_count}</strong> 種，出哪一種由深度決定。種類只改變外觀和它的粉末，生命和金幣都由層數決定。"),
+                ("table", "depth"),
+            ],
+        },
+        {
+            "id": "skills",
+            "title": "主動技能",
+            "dek": "{skill_count} 個技能，每個都是限時增益，隨後進入冷卻。",
+            "blocks": [
+                ("p", "走到對應層數時技能<strong>免費</strong>開放，從 1 級就能用。升到 {skill_levels} 級一共要 <strong>{skill_total_cost} 顆技能石</strong>，{skill_count} 個全升要 <strong>{skill_all_total_cost}</strong> 顆。等級越高，持續越長、冷卻越短。"),
+                ("table", "skills"),
+                ("p", "第一條技能線在第 {skill_line_floor} 層開放；花技能石的技能樹面板在第 <strong>{skill_tree_floor}</strong> 層開放。單純使用技能並不需要這個面板。"),
+                ("note", ["連段", "先開 {skill_overcharge}，再放真正想加強的技能，例如 {skill_golden_frenzy}。之後 {skill_time_reversal} 會縮短你最後使用的那個技能的冷卻，讓它更早回來。"]),
+            ],
+        },
+        {
+            "id": "titles",
+            "title": "稱號",
+            "dek": "隨著往上爬自動到手的 {title_count} 個稱號。",
+            "blocks": [
+                ("ul", [
+                    "稱號從第 {title_first_floor} 層一直排到第 <strong>{title_last_floor}</strong> 層，依本輪到過的最高層自動選擇。",
+                    "每個稱號給它所帶的加成各加約 <strong>+{title_effect_step}</strong>。",
+                    "加成是分段開放的：第一個稱號就有點擊傷害，之後依序是自動傷害、抗熱、金幣、爆擊倍率、爆擊率，以及計入點擊的秒傷比例（第 {title_effect_unlocks} 個稱號）。",
+                ]),
+            ],
+        },
+        {
+            "id": "tasks",
+            "title": "任務與 {currency_taskium}",
+            "dek": "把點擊變成第二份收入的支線。",
+            "blocks": [
+                ("ul", [
+                    "每次點擊命中給 <strong>+{taskium_per_click} {currency_taskium}</strong>。",
+                    "接一個任務要 <strong>{task_accept_cost}</strong>，重新抽取要 <strong>{task_refresh_cost}</strong>。",
+                    "任務面板在第 {task_panel_floor} 層開放；{task_slot_count} 個欄位分別在第 {task_slot_floors} 層開放。",
+                    "任務有 {task_type_count} 種類型、{task_rarity_count} 個稀有度。每個任務持續 {task_duration_minutes} 分鐘，沒接的任務每小時換一批。",
+                    "獎勵隨稀有度提高，為目前層礦石金幣的 <strong>{task_reward_range}</strong> 倍之間。最稀有的還會給精華。",
+                ]),
+            ],
+        },
+        {
+            "id": "trade",
+            "title": "交易面板",
+            "dek": "在第 {trade_floor} 層開放，是礦石之石唯一有用的地方。",
+            "blocks": [
+                ("ul", [
+                    "1 顆技能石換 <strong>{trade_skill_stone_to_ore_stone} 顆礦石之石</strong>，每次最多 {trade_skill_stone_max} 顆。",
+                    "<strong>{trade_ore_stone_to_essence} 顆礦石之石</strong>換 1 精華。",
+                    "<strong>{trade_ore_stone_to_skill_stone} 顆礦石之石</strong>換 1 顆技能石。",
+                ]),
+                ("p", "最後一條最重要：它讓一段長時間的刷礦，不打首領也能變成技能等級。"),
+            ],
+        },
+        {
+            "id": "extras",
+            "title": "白拿的金幣",
+            "dek": "三種只要你在線上就有的收入。",
+            "blocks": [
+                ("ul", [
+                    "<strong>金氣球</strong> - 從第 {balloon_floor} 層起，每 {balloon_min_seconds}-{balloon_max_seconds} 秒飄來一個。點掉它會給出本輪最高層礦石金幣的 <strong>x{balloon_multiplier}</strong>。",
+                    "<strong>離線收益</strong> - 離開 {offline_min_minutes} 分鐘後開始計算，{offline_max_hours} 小時封頂。會員翻一倍。",
+                    "<strong>遊戲時長獎勵</strong> - 每玩 {playtime_reward_minutes} 分鐘，給出你最高層一分鐘金幣的約 {playtime_reward_multiplier} 倍。",
+                ]),
+            ],
+        },
+        {
+            "id": "prestige",
+            "title": "轉生",
+            "dek": "用本輪的進度換永久戰力。時機挑得好，它是遊戲裡最快的一步。",
+            "blocks": [
+                ("p", "第一次到第 <strong>{prestige_first_floor}</strong> 層時轉生面板開放。之後每次轉生的要求再高 {prestige_floor_step} 層：第 {prestige_second_floor} 層、第 {prestige_third_floor} 層，依此類推。"),
+                ("ul", [
+                    "<strong>會重置：</strong>金幣、{currency_taskium}、層數進度、鎬子與護甲的升級、寵物等級、買過的全部技能，以及首領進度。",
+                    "<strong>會保留：</strong>轉生等級、精華、{prestige_parameter_count} 項屬性的等級、已擁有的寵物、無限物品、成就。",
+                    "你不會從第 1 層重來：下一輪直接從 <strong>{prestige_floor_step} × 轉生等級</strong> 層開始，還會附上價值約 {prestige_gold_multiplier} 塊礦石的起始金幣。",
+                    "所有技能冷卻都會清空，所以開局就能把技能全放出來。",
+                ]),
+                ("p", "精華獎勵只由兩件事決定：<strong>到過的最高層</strong>（每層 {prestige_essence_per_floor}）和<strong>敲碎的礦石</strong>（每塊 {prestige_essence_per_ore}）。"),
+                ("note", ["多敲礦石，別硬衝", "因為礦石數量佔的比重更大，最後一段時間留在打得舒服的層裡刷，比衝到幾乎打不動的層更划算。"]),
+                ("table", "prestige"),
+                ("p", "加成是逐級相加而不是相乘，而且精華的花費漲得很慢——所以定期花掉比一直存著更值得。"),
+            ],
+        },
+        {
+            "id": "bosses",
+            "title": "首領",
+            "dek": "為精華而戰的限時輸出賽，在第 {boss_floor} 層開放。",
+            "blocks": [
+                ("ul", [
+                    "選一個首領，花 <strong>{boss_key_cost} 把地牢鑰匙</strong>開戰。沒有任何戰鬥會自動開始。",
+                    "首領依序開放，打過一個才會出現下一個。每一階生命大約是上一階的一千倍，而時限越來越短。",
+                    "獎勵隨轉生等級提高，每級約 <strong>+{boss_prestige_bonus_percent}%</strong>。",
+                    "轉生會把首領進度退回第一個。",
+                ]),
+                ("table", "bosses"),
+                ("warn", ["輸了要付代價", "時限歸零時首領還站著，你<strong>什麼都拿不到</strong>，鑰匙也不退。失敗後可以看到剩餘生命，用它估算下次還需要多少傷害。"]),
+            ],
+        },
+        {
+            "id": "achievements",
+            "title": "成就",
+            "dek": "{achievement_type_count} 類共 {achievement_count} 個成就：點擊、礦石、首領、轉生、深度等等。",
+            "blocks": [
+                ("p", "所有成就獎勵都是<strong>礦石之石</strong>，目標和獎勵每一階大約乘十。多數類別有三階，金幣和傷害相關的更長。"),
+                ("note", ["記得領取", "獎勵<strong>不會自動入帳</strong>。如果你有一段時間沒開成就頁，那裡已經堆了一批。"]),
+            ],
+        },
+        {
+            "id": "daily",
+            "title": "每日獎勵",
+            "dek": "很小、很單純，漏一天也沒有懲罰。",
+            "blocks": [
+                ("p", "每天登入一次給 <strong>{daily_key_amount} 把地牢鑰匙</strong>。每天都一樣，沒有日曆也沒有連續登入要守。領取需要連線。"),
+            ],
+        },
+        {
+            "id": "store",
+            "title": "商店",
+            "dek": "鑽石、鑰匙、禮包、會員時長，以及永久的無限物品。",
+            "blocks": [
+                ("ul", [
+                    "<strong>鑽石禮包：</strong>{diamond_pack_list} 鑽石。包越大，單價越低。",
+                    "<strong>鑰匙禮包：</strong>{key_pack_list} 把地牢鑰匙。",
+                    "<strong>{package_small}：</strong>{package_small_contents}。",
+                    "<strong>{package_big}：</strong>{package_big_contents}。",
+                    "<strong>{package_premium}：</strong>{premium_days} 天內點擊傷害 x{premium_click_multiplier}、自動傷害 x{premium_dps_multiplier}、金幣 x{premium_gold_multiplier}、抗熱 x{premium_heat_multiplier}、離線收益 x{premium_offline_multiplier}。",
+                ]),
+                ("p", "無限物品<strong>用鑽石買一次</strong>就永久生效，轉生也不會清空。後期通常是鑽石最划算的去處。"),
+                ("table", "infinity"),
+                ("note", ["價格說明", "商店價格由 Steam 依你所在地區的貨幣給出，所以本頁不寫。禮包內容永遠不變，價格隨地區不同。"]),
+            ],
+        },
+        {
+            "id": "progress",
+            "title": "排行榜與統計",
+            "dek": "兩處可以看這一輪進展的地方。",
+            "blocks": [
+                ("ul", [
+                    "Steam 排行榜記錄點擊次數、點擊傷害、轉生次數、擊殺首領數和最高層數。",
+                    "統計畫面記的更多：收入、支出、點擊數、遊戲時長等等。",
+                ]),
+            ],
+        },
+        {
+            "id": "save",
+            "title": "存檔",
+            "dek": "簡單說：你的進度有好幾層保護同時生效。",
+            "blocks": [
+                ("ul", [
+                    "遊戲每 <strong>{save_seconds} 秒</strong>自動加密儲存一次。",
+                    "大約每 <strong>{cloud_save_seconds} 秒</strong>備份到 Steam 雲端，關閉和暫停時也一定會備份，所以換一台電腦也能接著玩。",
+                    "存檔檔案損壞時，遊戲會自動改用備份。",
+                    "你也可以把存檔複製到剪貼簿，在另一台裝置上貼回去。",
+                ]),
+            ],
+        },
+        {
+            "id": "languages",
+            "title": "語言",
+            "dek": "本作提供 {language_count} 種語言。",
+            "blocks": [
+                ("p", "英語、土耳其語、德語、法語、西班牙語、拉丁美洲西班牙語、義大利語、波蘭語、巴西葡萄牙語、俄語、烏克蘭語、日語、韓語、簡體中文、繁體中文、泰語、印尼語和越南語。首次啟動時遊戲會自動選擇，之後可以隨時在設定裡更改——本指南也有全部語言版本，頁面頂端即可切換。"),
+            ],
+        },
+    ],
+}

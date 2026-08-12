@@ -1,0 +1,1069 @@
+<title>Clicker Ore Game - 玩家指南</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="矿场怎么运作：货币、镐子、宠物、技能、转生、首领和商店，不用公式讲清楚。">
+<style>
+  :root {
+    --bg: #14110d;
+    --bg-elevated: #1d1811;
+    --bg-card: #211b13;
+    --text: #ede6d8;
+    --text-dim: #a89a82;
+    --text-faint: #766a55;
+    --accent: #e0a752;
+    --accent-strong: #f2bd6e;
+    --accent-2: #7fb8ad;
+    --border: #3a2f22;
+    --border-soft: #2a2318;
+    --danger: #cf7a5a;
+    --shadow: 0 8px 24px rgba(0,0,0,0.35);
+
+    --cur-gold: #e0a752;
+    --cur-diamond: #7fd1e0;
+    --cur-essence: #b79ef0;
+    --cur-taskium: #93a8d6;
+    --cur-key: #d98a63;
+    --cur-skillstone: #7fc9a0;
+    --cur-orestone: #b5a68c;
+
+    --font-display: "Bahnschrift", "Segoe UI Semibold", "Arial Narrow Bold", "Arial Narrow", sans-serif;
+    --font-body: "Sitka Text", "Iowan Old Style", Georgia, "Times New Roman", serif;
+    --font-mono: "Cascadia Mono", "Consolas", "SF Mono", ui-monospace, monospace;
+  }
+
+  :root[data-theme="light"] {
+    --bg: #efe9da;
+    --bg-elevated: #e6ddc8;
+    --bg-card: #f3ede0;
+    --text: #241d14;
+    --text-dim: #5c5138;
+    --text-faint: #857656;
+    --accent: #a8621a;
+    --accent-strong: #8a4e12;
+    --accent-2: #2f7a70;
+    --border: #d3c5a4;
+    --border-soft: #ddd0b1;
+    --danger: #a3492c;
+    --shadow: 0 8px 20px rgba(90,70,30,0.12);
+  }
+
+  @media (prefers-color-scheme: light) {
+    :root:not([data-theme="dark"]) {
+      --bg: #efe9da;
+      --bg-elevated: #e6ddc8;
+      --bg-card: #f3ede0;
+      --text: #241d14;
+      --text-dim: #5c5138;
+      --text-faint: #857656;
+      --accent: #a8621a;
+      --accent-strong: #8a4e12;
+      --accent-2: #2f7a70;
+      --border: #d3c5a4;
+      --border-soft: #ddd0b1;
+      --danger: #a3492c;
+      --shadow: 0 8px 20px rgba(90,70,30,0.12);
+    }
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: 17px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection { background: var(--accent); color: #14110d; }
+
+  a { color: var(--accent-strong); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  a:focus-visible, button:focus-visible, summary:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    text-wrap: balance;
+    letter-spacing: 0.01em;
+    color: var(--text);
+  }
+
+  p { max-width: 68ch; }
+  ul, ol { max-width: 68ch; }
+
+  .shell {
+    display: grid;
+    grid-template-columns: 260px minmax(0, 1fr);
+    min-height: 100vh;
+  }
+
+  .topbar {
+    display: none;
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: var(--bg-elevated);
+    border-bottom: 1px solid var(--border);
+    padding: 0.7rem 1rem;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .topbar-title {
+    font-family: var(--font-display);
+    font-size: 0.95rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--accent-strong);
+  }
+  #nav-toggle { display: none; }
+  .nav-toggle-btn {
+    font-family: var(--font-display);
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 0.4rem 0.7rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.85rem;
+  }
+
+  nav.toc {
+    position: sticky;
+    top: 0;
+    align-self: start;
+    height: 100vh;
+    overflow-y: auto;
+    padding: 2rem 1.4rem 3rem;
+    background: var(--bg-elevated);
+    border-right: 1px solid var(--border);
+  }
+  .toc-brand {
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    letter-spacing: 0.03em;
+    color: var(--accent-strong);
+    margin-bottom: 0.15rem;
+  }
+  .toc-brand small {
+    display: block;
+    font-family: var(--font-body);
+    font-style: italic;
+    font-size: 0.78rem;
+    color: var(--text-faint);
+    letter-spacing: 0;
+    margin-top: 0.25rem;
+  }
+  .toc-list {
+    list-style: none;
+    margin: 1.6rem 0 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+  }
+  .toc-list a {
+    display: block;
+    color: var(--text-dim);
+    font-size: 0.88rem;
+    padding: 0.32rem 0.5rem;
+    border-radius: 4px;
+    border-left: 2px solid transparent;
+  }
+  .toc-list a:hover {
+    color: var(--text);
+    text-decoration: none;
+    background: rgba(224,167,82,0.08);
+    border-left-color: var(--accent);
+  }
+  .toc-num {
+    font-family: var(--font-mono);
+    color: var(--text-faint);
+    font-size: 0.78rem;
+    margin-right: 0.45rem;
+  }
+
+  main {
+    padding: 3.2rem clamp(1.2rem, 4vw, 4rem) 6rem;
+    max-width: 900px;
+  }
+
+  header.hero {
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .strata {
+    height: 10px;
+    width: 100%;
+    border-radius: 3px;
+    margin-bottom: 1.6rem;
+    background: repeating-linear-gradient(
+      90deg,
+      var(--accent) 0 6%,
+      var(--accent-2) 6% 11%,
+      var(--border-soft) 11% 18%,
+      var(--accent) 18% 24%,
+      var(--border-soft) 24% 34%,
+      var(--accent-2) 34% 40%,
+      var(--accent) 40% 48%,
+      var(--border-soft) 48% 58%,
+      var(--accent-2) 58% 63%,
+      var(--accent) 63% 72%,
+      var(--border-soft) 72% 82%,
+      var(--accent-2) 82% 90%,
+      var(--accent) 90% 100%
+    );
+    opacity: 0.85;
+  }
+  .eyebrow {
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-size: 0.72rem;
+    color: var(--accent);
+    margin-bottom: 0.6rem;
+  }
+  h1.title {
+    font-size: clamp(2rem, 4.2vw, 2.9rem);
+    margin: 0 0 0.7rem;
+    line-height: 1.1;
+  }
+  .subtitle {
+    color: var(--text-dim);
+    font-size: 1.08rem;
+    max-width: 62ch;
+    margin: 0;
+  }
+
+  .langbar {
+    margin: 1.8rem 0 0;
+    padding-top: 1.2rem;
+    border-top: 1px solid var(--border-soft);
+  }
+  .langbar-label {
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 0.68rem;
+    color: var(--text-faint);
+    margin-bottom: 0.55rem;
+  }
+  .langbar-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem 0.4rem;
+  }
+  .langbar-list a, .langbar-list span {
+    font-family: var(--font-display);
+    font-size: 0.78rem;
+    padding: 0.18rem 0.55rem;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    color: var(--text-dim);
+    background: var(--bg-card);
+  }
+  .langbar-list a:hover {
+    text-decoration: none;
+    color: var(--text);
+    border-color: var(--accent);
+  }
+  .langbar-list span {
+    color: #14110d;
+    background: var(--accent);
+    border-color: var(--accent);
+  }
+  :root[data-theme="light"] .langbar-list span { color: #efe9da; }
+
+  section {
+    margin-bottom: 3.6rem;
+    scroll-margin-top: 1.5rem;
+  }
+  .section-head {
+    display: flex;
+    align-items: baseline;
+    gap: 0.7rem;
+    margin-bottom: 0.3rem;
+  }
+  .section-num {
+    font-family: var(--font-mono);
+    color: var(--accent);
+    font-size: 0.95rem;
+  }
+  h2 {
+    font-size: 1.55rem;
+    margin: 0;
+  }
+  .section-dek {
+    color: var(--text-dim);
+    font-size: 0.98rem;
+    margin: 0.3rem 0 1.5rem;
+    max-width: 62ch;
+  }
+
+  .callout {
+    border-left: 3px solid var(--accent);
+    background: var(--bg-card);
+    padding: 0.95rem 1.2rem;
+    border-radius: 0 6px 6px 0;
+    margin: 1.2rem 0;
+    font-size: 0.95rem;
+  }
+  .callout strong { color: var(--accent-strong); }
+  .callout.warn { border-left-color: var(--danger); }
+  .callout-label {
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 0.72rem;
+    color: var(--accent);
+    margin-bottom: 0.35rem;
+  }
+  .callout.warn .callout-label { color: var(--danger); }
+
+  .currency-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 0.9rem;
+    margin: 1.4rem 0;
+  }
+  .cur-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-top: 3px solid var(--dot);
+    border-radius: 6px;
+    padding: 0.95rem 1rem 1.05rem;
+  }
+  .cur-card h4 {
+    margin: 0 0 0.5rem;
+    font-size: 0.98rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .dot {
+    width: 9px; height: 9px; border-radius: 50%;
+    background: var(--dot);
+    flex: none;
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--dot) 20%, transparent);
+  }
+  .cur-card p {
+    margin: 0.15rem 0;
+    font-size: 0.84rem;
+    color: var(--text-dim);
+    max-width: none;
+  }
+  .cur-card p b { color: var(--text); font-weight: 600; }
+
+  .table-wrap {
+    overflow-x: auto;
+    margin: 1.2rem 0;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+  }
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    min-width: 460px;
+    font-size: 0.9rem;
+  }
+  thead th {
+    text-align: left;
+    font-family: var(--font-display);
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    font-size: 0.72rem;
+    color: var(--text-dim);
+    background: var(--bg-elevated);
+    padding: 0.6rem 0.85rem;
+    border-bottom: 1px solid var(--border);
+    white-space: nowrap;
+  }
+  tbody td {
+    padding: 0.55rem 0.85rem;
+    border-bottom: 1px solid var(--border-soft);
+    font-variant-numeric: tabular-nums;
+    color: var(--text);
+  }
+  tbody tr:last-child td { border-bottom: none; }
+  tbody tr:nth-child(even) { background: color-mix(in srgb, var(--accent) 3%, transparent); }
+  td.num, th.num { font-family: var(--font-mono); }
+  td.strong { color: var(--accent-strong); font-weight: 600; }
+
+  .strategy-track {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 1.4rem 0;
+  }
+  .strategy-stage {
+    background: var(--bg-card);
+    padding: 1rem 1.1rem;
+  }
+  .strategy-stage .stage-label {
+    font-family: var(--font-display);
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+    margin-bottom: 0.4rem;
+  }
+  .strategy-stage ul {
+    margin: 0;
+    padding-left: 1.1rem;
+    font-size: 0.86rem;
+    color: var(--text-dim);
+  }
+  .strategy-stage li { margin-bottom: 0.25rem; }
+
+  footer.doc-footer {
+    margin-top: 4rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+    color: var(--text-faint);
+    font-size: 0.8rem;
+  }
+
+  @media (max-width: 880px) {
+    .shell { grid-template-columns: 1fr; }
+    .topbar { display: flex; }
+    nav.toc {
+      position: fixed;
+      inset: 0 20% 0 0;
+      top: 52px;
+      height: calc(100vh - 52px);
+      transform: translateX(-100%);
+      transition: transform 0.22s ease;
+      z-index: 15;
+      box-shadow: var(--shadow);
+    }
+    #nav-toggle:checked ~ .shell nav.toc {
+      transform: translateX(0);
+    }
+    main { padding: 2rem 1.2rem 5rem; }
+  }
+</style>
+
+<input type="checkbox" id="nav-toggle">
+
+<div class="topbar">
+  <span class="topbar-title">&#9935; 玩家指南</span>
+  <label class="nav-toggle-btn" for="nav-toggle">目录</label>
+</div>
+
+<div class="shell">
+  <nav class="toc" aria-label="目录">
+    <div class="toc-brand">Clicker Ore Game<small>玩家指南</small></div>
+    <ul class="toc-list">
+      <li><a href="#start"><span class="toc-num">01</span>从哪里开始</a></li>
+      <li><a href="#currencies"><span class="toc-num">02</span>7 种货币</a></li>
+      <li><a href="#damage"><span class="toc-num">03</span>点击伤害与自动伤害</a></li>
+      <li><a href="#critical"><span class="toc-num">04</span>暴击</a></li>
+      <li><a href="#pickaxes"><span class="toc-num">05</span>镐子</a></li>
+      <li><a href="#suits"><span class="toc-num">06</span>护甲</a></li>
+      <li><a href="#temperature"><span class="toc-num">07</span>热量</a></li>
+      <li><a href="#pets"><span class="toc-num">08</span>宠物</a></li>
+      <li><a href="#floors"><span class="toc-num">09</span>层数、矿石与深度</a></li>
+      <li><a href="#skills"><span class="toc-num">10</span>主动技能</a></li>
+      <li><a href="#titles"><span class="toc-num">11</span>称号</a></li>
+      <li><a href="#tasks"><span class="toc-num">12</span>任务与 Taskium</a></li>
+      <li><a href="#trade"><span class="toc-num">13</span>交易面板</a></li>
+      <li><a href="#extras"><span class="toc-num">14</span>白拿的金币</a></li>
+      <li><a href="#prestige"><span class="toc-num">15</span>转生</a></li>
+      <li><a href="#bosses"><span class="toc-num">16</span>首领</a></li>
+      <li><a href="#achievements"><span class="toc-num">17</span>成就</a></li>
+      <li><a href="#daily"><span class="toc-num">18</span>每日奖励</a></li>
+      <li><a href="#store"><span class="toc-num">19</span>商店</a></li>
+      <li><a href="#progress"><span class="toc-num">20</span>排行榜与统计</a></li>
+      <li><a href="#save"><span class="toc-num">21</span>存档</a></li>
+      <li><a href="#languages"><span class="toc-num">22</span>语言</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <header class="hero">
+      <div class="strata" role="presentation"></div>
+      <div class="eyebrow">玩家指南 - 2026-08-12</div>
+      <h1 class="title">整座矿场，<br>用大白话说清</h1>
+      <p class="subtitle">每个系统做什么、在第几层开放、下一个小时该花在哪里。没有公式，只有真正影响选择的信息。</p>
+      <div class="langbar">
+        <div class="langbar-label">语言</div>
+        <div class="langbar-list"><a href="player_guide_en.html" hreflang="en">English</a><a href="player_guide_tr.html" hreflang="tr">Türkçe</a><a href="player_guide_de.html" hreflang="de">Deutsch</a><a href="player_guide_fr.html" hreflang="fr">Français</a><a href="player_guide_es.html" hreflang="es">Español</a><a href="player_guide_es_la.html" hreflang="es-419">Español (Latinoamérica)</a><a href="player_guide_it.html" hreflang="it">Italiano</a><a href="player_guide_pl.html" hreflang="pl">Polski</a><a href="player_guide_pt_br.html" hreflang="pt-BR">Português (Brasil)</a><a href="player_guide_ru.html" hreflang="ru">Русский</a><a href="player_guide_uk.html" hreflang="uk">Українська</a><a href="player_guide_ja.html" hreflang="ja">日本語</a><a href="player_guide_ko.html" hreflang="ko">한국어</a><span>简体中文</span><a href="player_guide_zh_hant.html" hreflang="zh-Hant">繁體中文</a><a href="player_guide_th.html" hreflang="th">ไทย</a><a href="player_guide_id.html" hreflang="id">Bahasa Indonesia</a><a href="player_guide_vi.html" hreflang="vi">Tiếng Việt</a></div>
+      </div>
+    </header>
+
+    <section id="start">
+      <div class="section-head"><span class="section-num">01</span><h2>从哪里开始</h2></div>
+      <p class="section-dek">按游戏开放内容的顺序，分成三个阶段。</p>
+      <div class="strategy-track">
+          <div class="strategy-stage">
+            <div class="stage-label">前期 - 第 1 层到第 200 层</div>
+            <ul>
+              <li>不停升级镐子；下一把一开放就买。</li>
+              <li>碎矿 在第 50 层开放，愤怒点击 在第 70 层。</li>
+              <li>钻石有余量时把 洛奇 买下来。</li>
+            </ul>
+          </div>
+          <div class="strategy-stage">
+            <div class="stage-label">中期 - 第 200 层到第 350 层</div>
+            <ul>
+              <li>第一次转生在第 200 层进行。</li>
+              <li>精华不要堆在一项上，分给 7 项属性。</li>
+              <li>任务在第 160 层开放，技能树和交易面板在第 180 层。</li>
+            </ul>
+          </div>
+          <div class="strategy-stage">
+            <div class="stage-label">后期 - 第 350 层之后</div>
+            <ul>
+              <li>手里有钥匙就去打首领，那是精华的主要来源。</li>
+              <li>买下无限物品，它们是永久的，转生也不会清空。</li>
+              <li>护甲要跟上等级，别让热量吃掉你的伤害。</li>
+            </ul>
+          </div>
+        </div>
+      <div class="callout">
+          <div class="callout-label">值得知道</div>
+          数字很快会变长，所以游戏先换成缩写，再换成 <strong>1.23e45</strong> 这样的科学记数法。这不是上限，只是写法变了。
+        </div>
+    </section>
+
+    <section id="currencies">
+      <div class="section-head"><span class="section-num">02</span><h2>7 种货币</h2></div>
+      <p class="section-dek">每种支撑一个系统。把对的货币花在错的地方，是新手最常犯的错。</p>
+      <div class="currency-grid">
+        <div class="cur-card" style="--dot:var(--cur-gold)">
+          <h4><span class="dot"></span>金币</h4>
+          <p>靠<b>敲碎矿石</b>获得。</p>
+          <p>用来升级镐子和护甲，是最主要的日常货币。</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-diamond)">
+          <h4><span class="dot"></span>钻石</h4>
+          <p><b>只能通过真实付费</b>获得。</p>
+          <p>用来买宠物和永久的无限物品。</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-essence)">
+          <h4><span class="dot"></span>精华</h4>
+          <p>来自<b>转生</b>和击杀首领。</p>
+          <p>用来升级 7 项永久转生属性。</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-taskium)">
+          <h4><span class="dot"></span>Taskium</h4>
+          <p>每次点击命中 <b>+1</b>。</p>
+          <p>用来接取任务和重新刷新任务。</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-key)">
+          <h4><span class="dot"></span>地下城钥匙</h4>
+          <p>每天一把免费，其余来自商店礼包。</p>
+          <p>用来进入首领战，每次 1 把。</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-skillstone)">
+          <h4><span class="dot"></span>技能石</h4>
+          <p>来自商店礼包和交易面板。</p>
+          <p>用来提升 8 个主动技能的等级。</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-orestone)">
+          <h4><span class="dot"></span>矿石结晶</h4>
+          <p>每敲碎一块矿石得 <b>1-5</b> 颗，成就也会给。</p>
+          <p>在交易面板换成精华或技能石。</p>
+        </div>
+      </div>
+      <div class="callout">
+          <div class="callout-label">关于钻石</div>
+          首领、成就和任务都不会给钻石。钻石和地牢钥匙保存在服务器上，所以买宠物时需要联网。
+        </div>
+    </section>
+
+    <section id="damage">
+      <div class="section-head"><span class="section-num">03</span><h2>点击伤害与自动伤害</h2></div>
+      <p class="section-dek">两个各自独立的伤害来源，成长靠的东西也不同。</p>
+      <p><strong>点击伤害</strong>是点一下造成的伤害。它随第一把镐子的等级和技能、愤怒点击、称号以及转生属性 碎岩之手 增长。升级 力量合一 后，自动伤害的一部分也会加进每次点击。</p>
+      <p><strong>自动伤害</strong>（每秒）来自第二把镐子及之后的所有镐子、狂暴、属性 永恒熔炉 和你的宠物。</p>
+      <div class="callout">
+          <div class="callout-label">宠物是例外</div>
+          宠物伤害是在所有倍率算完<strong>之后</strong>才加上去的，不会被倍率放大。后期光靠宠物等级不够，镐子和技能的倍率也得一起涨。
+        </div>
+    </section>
+
+    <section id="critical">
+      <div class="section-head"><span class="section-num">04</span><h2>暴击</h2></div>
+      <p class="section-dek">每次点击都可能暴击，打出更高的伤害。</p>
+      <p>初始为 <strong>5%</strong> 暴击率、<strong>x1.5</strong> 暴击倍率。有四样东西能提升它们：暴击 技能、镐子技能、转生属性 矿石神谕 与 劫灭之力，以及称号。</p>
+    </section>
+
+    <section id="pickaxes">
+      <div class="section-head"><span class="section-num">05</span><h2>镐子</h2></div>
+      <p class="section-dek">按顺序开放的 45 把镐子，是伤害的骨架。</p>
+      <ul>
+          <li>第一把镐子 <strong>5 金币</strong>；之后每一把大约是上一把的 <strong>8 倍</strong>。</li>
+          <li>镐子会自动开放：本轮赚到的金币够了就解锁，所以真正打开下一把的是升级。</li>
+          <li>每一级比上一级大约贵 <strong>7%</strong>。</li>
+          <li>只有<strong>第一把</strong>镐子提供点击伤害，其余全部提供每秒自动伤害。</li>
+          <li>每把镐子有 6 个技能，在等级 5 / 10 / 25 / 50 / 100 / 200 开放。有的只加成这把镐子，有的加成全部——全局的更值。</li>
+        </ul>
+      <div class="callout">
+          <div class="callout-label">最大的一次跃升</div>
+          镐子每到 <strong>100 级</strong>，自身产出就乘 <strong>x10</strong>。把一把镐子推到下一个百级，通常是你能拿到的最大提升。
+        </div>
+    </section>
+
+    <section id="suits">
+      <div class="section-head"><span class="section-num">06</span><h2>护甲</h2></div>
+      <p class="section-dek">开局就全部拥有的 5 套护甲，作用是挡住热量。</p>
+      <ul>
+          <li>护甲不用买，只需要升级。每一级增加约 <strong>5%</strong> 抗热，基础值为 50。</li>
+          <li>每 100 级，护甲的抗热会乘 <strong>x2</strong>。</li>
+          <li>每套护甲还有 6 个随等级开放的技能。</li>
+          <li>护甲面板和热量条一起在第 <strong>130</strong> 层开放。</li>
+        </ul>
+    </section>
+
+    <section id="temperature">
+      <div class="section-head"><span class="section-num">07</span><h2>热量</h2></div>
+      <p class="section-dek">越往下越热，而热量会悄悄削掉你的伤害。</p>
+      <ul>
+          <li>层温度一直在涨，大约每层 <strong>1.04 倍</strong>，也就是每二十几层翻一倍。</li>
+          <li>只要抗热达到温度的 <strong>1.5 倍</strong>，热量条就是干净的，什么都不会损失。</li>
+          <li>抗热一旦低于温度，伤害就开始流失；到 <strong>0.5 倍</strong>时只剩二十分之一，也就是损失 <strong>95%</strong>。</li>
+          <li>护甲面板上有自动购买抗热的开关；经常往深处走就一直开着。</li>
+        </ul>
+      <div class="callout warn">
+          <div class="callout-label">如果突然卡住</div>
+          矿石半天打不完的那种墙，几乎总是热量问题，而不是伤害不足。在花钱升别的东西之前，先看热量条。
+        </div>
+    </section>
+
+    <section id="pets">
+      <div class="section-head"><span class="section-num">08</span><h2>宠物</h2></div>
+      <p class="section-dek">用钻石购买、再用金币升级的 5 只宠物。</p>
+      <ul>
+          <li>价格从 <strong>150</strong> 到 <strong>250</strong> 钻石（150 / 175 / 200 / 225 / 250）。</li>
+          <li>每一级会把镐子点击伤害的约 <strong>1%</strong> 加成自动伤害，并乘上宠物的序号：同等级下 暗影碎片 是 洛奇 的五倍。</li>
+          <li>每一级大约贵 <strong>20%</strong>，并且每 100 级宠物会把自身产出乘 <strong>x5</strong>。</li>
+          <li>每只宠物有 6 个技能，有的只加成自己，有的加成全部宠物。</li>
+          <li>宠物面板在第 <strong>30</strong> 层开放，或者你一拥有宠物就开放。</li>
+        </ul>
+      <div class="callout warn">
+          <div class="callout-label">转生与宠物</div>
+          转生会把每只宠物退回<strong>1 级</strong>并清掉它们的技能。但拥有状态是永久的，不需要重新购买。
+        </div>
+    </section>
+
+    <section id="floors">
+      <div class="section-head"><span class="section-num">09</span><h2>层数、矿石与深度</h2></div>
+      <p class="section-dek">矿石有多硬、给多少金币由层数决定；长什么样由深度决定。</p>
+      <ul>
+          <li>每层的生命和金币都比上一层多一点，而且越往上涨得越快。</li>
+          <li>每 <strong>10 层</strong>是一个计时层：开始 <strong>20 秒</strong>倒计时，生命提高约 50%，金币提高约 51%。</li>
+          <li>难度还会以大约 100 层为周期变化，周期开头几层的金币与生命之比最划算。</li>
+          <li>每块矿石除了金币还会掉 <strong>1-5</strong> 颗矿石之石。</li>
+        </ul>
+      <div class="callout warn">
+          <div class="callout-label">计时层会咬人</div>
+          倒计时结束时如果没打完，你会被退回<strong>下一层</strong>。伤害不够时，跳过计时层比失败更划算。
+        </div>
+      <p>本轮到过的任何一层都可以退回去刷。手动选层会关掉自动上层，想继续爬时再打开。</p>
+      <p>矿石一共 <strong>40</strong> 种，出哪一种由深度决定。种类只改变外观和它的粉末，生命和金币都由层数决定。</p>
+      <div class="table-wrap">
+        <table>
+        <thead><tr>
+        <th class="num">深度</th>
+        <th class="num">矿石种类</th>
+        <th class="num">大约层数</th>
+        </tr></thead>
+        <tbody>
+        <tr>
+        <td class="num">0-100 米</td>
+        <td class="num">9</td>
+        <td class="num">~54</td>
+        </tr>
+        <tr>
+        <td class="num">100-500 米</td>
+        <td class="num">20</td>
+        <td class="num">~129</td>
+        </tr>
+        <tr>
+        <td class="num">500-1,500 米</td>
+        <td class="num">30</td>
+        <td class="num">~196</td>
+        </tr>
+        <tr>
+        <td class="num">1,500 米+</td>
+        <td class="num">40</td>
+        <td class="num">-</td>
+        </tr>
+        </tbody></table></div>
+    </section>
+
+    <section id="skills">
+      <div class="section-head"><span class="section-num">10</span><h2>主动技能</h2></div>
+      <p class="section-dek">8 个技能，每个都是限时增益，随后进入冷却。</p>
+      <p>走到对应层数时技能<strong>免费</strong>开放，从 1 级就能用。升到 7 级一共要 <strong>63 颗技能石</strong>，8 个全升要 <strong>504</strong> 颗。等级越高，持续越长、冷却越短。</p>
+      <div class="table-wrap">
+        <table>
+        <thead><tr>
+        <th>技能</th>
+        <th class="num">层数</th>
+        <th class="num">1级（持续 / 冷却）</th>
+        <th class="num">7级（持续 / 冷却）</th>
+        <th class="num">效果</th>
+        </tr></thead>
+        <tbody>
+        <tr>
+        <td>碎矿</td>
+        <td class="num">50</td>
+        <td class="num">30秒 / 540秒</td>
+        <td class="num">90秒 / 180秒</td>
+        <td class="num">7 → 13 /秒</td>
+        </tr>
+        <tr>
+        <td>愤怒点击</td>
+        <td class="num">70</td>
+        <td class="num">40秒 / 660秒</td>
+        <td class="num">210秒 / 300秒</td>
+        <td class="num">x2 → x5</td>
+        </tr>
+        <tr>
+        <td>暴击</td>
+        <td class="num">100</td>
+        <td class="num">30秒 / 600秒</td>
+        <td class="num">150秒 / 240秒</td>
+        <td class="num">x1.3 → x1.9</td>
+        </tr>
+        <tr>
+        <td>狂暴</td>
+        <td class="num">170</td>
+        <td class="num">40秒 / 840秒</td>
+        <td class="num">160秒 / 480秒</td>
+        <td class="num">x2 → x3.5</td>
+        </tr>
+        <tr>
+        <td>黄金狂热</td>
+        <td class="num">240</td>
+        <td class="num">50秒 / 1,020秒</td>
+        <td class="num">290秒 / 660秒</td>
+        <td class="num">x2 → x5</td>
+        </tr>
+        <tr>
+        <td>耐热</td>
+        <td class="num">280</td>
+        <td class="num">30秒 / 660秒</td>
+        <td class="num">140秒 / 300秒</td>
+        <td class="num">x2 → x5</td>
+        </tr>
+        <tr>
+        <td>超载</td>
+        <td class="num">330</td>
+        <td class="num">20秒 / 1,200秒</td>
+        <td class="num">20秒 / 840秒</td>
+        <td class="num">x1.5 → x3</td>
+        </tr>
+        <tr>
+        <td>时光倒流</td>
+        <td class="num">400</td>
+        <td class="num">1,200秒</td>
+        <td class="num">840秒</td>
+        <td class="num">-300秒 → -1,020秒</td>
+        </tr>
+        </tbody></table></div>
+      <p>第一条技能线在第 50 层开放；花技能石的技能树面板在第 <strong>180</strong> 层开放。单纯使用技能并不需要这个面板。</p>
+      <div class="callout">
+          <div class="callout-label">连招</div>
+          先开 超载，再放真正想加强的技能，比如 黄金狂热。之后 时光倒流 会缩短你最后使用的那个技能的冷却，让它更早回来。
+        </div>
+    </section>
+
+    <section id="titles">
+      <div class="section-head"><span class="section-num">11</span><h2>称号</h2></div>
+      <p class="section-dek">随着往上爬自动到手的 100 个称号。</p>
+      <ul>
+          <li>称号从第 1 层一直排到第 <strong>50,000</strong> 层，按本轮到过的最高层自动选择。</li>
+          <li>每个称号给它所带的加成各加约 <strong>+0.1</strong>。</li>
+          <li>加成是分段开放的：第一个称号就有点击伤害，之后依次是自动伤害、抗热、金币、暴击倍率、暴击率，以及计入点击的秒伤比例（第 1 / 5 / 10 / 15 / 20 / 25 / 30 个称号）。</li>
+        </ul>
+    </section>
+
+    <section id="tasks">
+      <div class="section-head"><span class="section-num">12</span><h2>任务与 Taskium</h2></div>
+      <p class="section-dek">把点击变成第二份收入的支线。</p>
+      <ul>
+          <li>每次点击命中给 <strong>+1 Taskium</strong>。</li>
+          <li>接一个任务要 <strong>200</strong>，重新刷新要 <strong>25</strong>。</li>
+          <li>任务面板在第 160 层开放；6 个格子分别在第 160 / 170 / 180 / 190 / 200 / 210 层开放。</li>
+          <li>任务有 10 种类型、6 个稀有度。每个任务持续 60 分钟，没接的任务每小时换一批。</li>
+          <li>奖励随稀有度提高，为当前层矿石金币的 <strong>50-500</strong> 倍之间。最稀有的还会给精华。</li>
+        </ul>
+    </section>
+
+    <section id="trade">
+      <div class="section-head"><span class="section-num">13</span><h2>交易面板</h2></div>
+      <p class="section-dek">在第 180 层开放，是矿石之石唯一有用的地方。</p>
+      <ul>
+          <li>1 颗技能石换 <strong>5,000 颗矿石之石</strong>，每次最多 100,000 颗。</li>
+          <li><strong>2,000 颗矿石之石</strong>换 1 精华。</li>
+          <li><strong>5,000 颗矿石之石</strong>换 1 颗技能石。</li>
+        </ul>
+      <p>最后一条最重要：它让一段长时间的刷矿，不打首领也能变成技能等级。</p>
+    </section>
+
+    <section id="extras">
+      <div class="section-head"><span class="section-num">14</span><h2>白拿的金币</h2></div>
+      <p class="section-dek">三种只要你在线就有的收入。</p>
+      <ul>
+          <li><strong>金气球</strong> - 从第 50 层起，每 70-105 秒飘来一个。点掉它会给出本轮最高层矿石金币的 <strong>x6</strong>。</li>
+          <li><strong>离线收益</strong> - 离开 60 分钟后开始计算，12 小时封顶。会员翻一倍。</li>
+          <li><strong>游戏时长奖励</strong> - 每玩 60 分钟，给出你最高层一分钟金币的约 100 倍。</li>
+        </ul>
+    </section>
+
+    <section id="prestige">
+      <div class="section-head"><span class="section-num">15</span><h2>转生</h2></div>
+      <p class="section-dek">用本轮的进度换永久战力。时机选得好，它是游戏里最快的一步。</p>
+      <p>第一次到第 <strong>200</strong> 层时转生面板开放。之后每次转生要求再高 100 层：第 300 层、第 400 层，以此类推。</p>
+      <ul>
+          <li><strong>会重置：</strong>金币、Taskium、层数进度、镐子和护甲的升级、宠物等级、买过的全部技能，以及首领进度。</li>
+          <li><strong>会保留：</strong>转生等级、精华、7 项属性的等级、已拥有的宠物、无限物品、成就。</li>
+          <li>你不会从第 1 层重来：下一轮直接从 <strong>100 × 转生等级</strong> 层开始，还会附带价值约 500 块矿石的启动金币。</li>
+          <li>所有技能冷却都会清空，所以开局就能把技能全放出来。</li>
+        </ul>
+      <p>精华奖励只由两件事决定：<strong>到过的最高层</strong>（每层 0.5）和<strong>敲碎的矿石</strong>（每块 0.25）。</p>
+      <div class="callout">
+          <div class="callout-label">多敲矿石，别硬冲</div>
+          因为矿石数量占的比重更大，最后一段时间留在打得舒服的层里刷，比冲到几乎打不动的层更划算。
+        </div>
+      <div class="table-wrap">
+        <table>
+        <thead><tr>
+        <th>属性</th>
+        <th>效果</th>
+        <th class="num">每级</th>
+        </tr></thead>
+        <tbody>
+        <tr>
+        <td>永恒熔炉</td>
+        <td>每秒自动伤害</td>
+        <td class="num">+20%</td>
+        </tr>
+        <tr>
+        <td>碎岩之手</td>
+        <td>点击伤害</td>
+        <td class="num">+25%</td>
+        </tr>
+        <tr>
+        <td>黄金深渊</td>
+        <td>金币收入</td>
+        <td class="num">+10%</td>
+        </tr>
+        <tr>
+        <td>矿石神谕</td>
+        <td>暴击率</td>
+        <td class="num">+5%</td>
+        </tr>
+        <tr>
+        <td>劫灭之力</td>
+        <td>暴击倍率</td>
+        <td class="num">+5%</td>
+        </tr>
+        <tr>
+        <td>炼狱之盾</td>
+        <td>抗热</td>
+        <td class="num">+10%</td>
+        </tr>
+        <tr>
+        <td>力量合一</td>
+        <td>计入点击的秒伤比例</td>
+        <td class="num">+1%</td>
+        </tr>
+        </tbody></table></div>
+      <p>加成是逐级相加而不是相乘，而且精华的花费涨得很慢——所以定期花掉比一直攒着更值。</p>
+    </section>
+
+    <section id="bosses">
+      <div class="section-head"><span class="section-num">16</span><h2>首领</h2></div>
+      <p class="section-dek">为精华而战的限时输出赛，在第 350 层开放。</p>
+      <ul>
+          <li>选一个首领，花 <strong>1 把地牢钥匙</strong>开战。没有任何战斗会自动开始。</li>
+          <li>首领按顺序开放，打过一个才会出现下一个。每一阶生命大约是上一阶的一千倍，而时限越来越短。</li>
+          <li>奖励随转生等级提高，每级约 <strong>+15%</strong>。</li>
+          <li>转生会把首领进度退回第一个。</li>
+        </ul>
+      <div class="table-wrap">
+        <table>
+        <thead><tr>
+        <th>首领</th>
+        <th class="num">生命</th>
+        <th class="num">时限</th>
+        <th>奖励</th>
+        </tr></thead>
+        <tbody>
+        <tr>
+        <td>水晶巨像</td>
+        <td class="num">1e13</td>
+        <td class="num">30秒</td>
+        <td>50 精华 + 5,000 矿石结晶</td>
+        </tr>
+        <tr>
+        <td>水晶守卫</td>
+        <td class="num">1e16</td>
+        <td class="num">25秒</td>
+        <td>75 精华 + 7,500 矿石结晶</td>
+        </tr>
+        <tr>
+        <td>绯红哨兵</td>
+        <td class="num">1e19</td>
+        <td class="num">20秒</td>
+        <td>100 精华 + 10,000 矿石结晶</td>
+        </tr>
+        <tr>
+        <td>岩石守卫</td>
+        <td class="num">1e22</td>
+        <td class="num">20秒</td>
+        <td>125 精华 + 12,500 矿石结晶</td>
+        </tr>
+        <tr>
+        <td>霜冻泰坦</td>
+        <td class="num">1e25</td>
+        <td class="num">20秒</td>
+        <td>150 精华 + 15,000 矿石结晶</td>
+        </tr>
+        <tr>
+        <td>水晶魔像 1</td>
+        <td class="num">1e28</td>
+        <td class="num">20秒</td>
+        <td>175 精华 + 17,500 矿石结晶</td>
+        </tr>
+        <tr>
+        <td>石须巨像</td>
+        <td class="num">1e31</td>
+        <td class="num">15秒</td>
+        <td>200 精华 + 20,000 矿石结晶</td>
+        </tr>
+        <tr>
+        <td>水晶魔像 2</td>
+        <td class="num">1e34</td>
+        <td class="num">15秒</td>
+        <td>225 精华 + 22,500 矿石结晶</td>
+        </tr>
+        <tr>
+        <td>烈焰魔像</td>
+        <td class="num">1e37</td>
+        <td class="num">15秒</td>
+        <td>250 精华 + 25,000 矿石结晶</td>
+        </tr>
+        <tr>
+        <td>魔像守卫</td>
+        <td class="num">1e40</td>
+        <td class="num">10秒</td>
+        <td>275 精华 + 27,500 矿石结晶</td>
+        </tr>
+        </tbody></table></div>
+      <div class="callout warn">
+          <div class="callout-label">输了要付代价</div>
+          时限归零时首领还站着，你<strong>什么都拿不到</strong>，钥匙也不退。失败后可以看到剩余生命，用它估算下次还需要多少伤害。
+        </div>
+    </section>
+
+    <section id="achievements">
+      <div class="section-head"><span class="section-num">17</span><h2>成就</h2></div>
+      <p class="section-dek">24 类共 86 个成就：点击、矿石、首领、转生、深度等等。</p>
+      <p>所有成就奖励都是<strong>矿石之石</strong>，目标和奖励每一档大约乘十。多数类别有三档，金币和伤害相关的更长。</p>
+      <div class="callout">
+          <div class="callout-label">记得领取</div>
+          奖励<strong>不会自动到账</strong>。如果你有一段时间没开成就页，那里已经堆了一批。
+        </div>
+    </section>
+
+    <section id="daily">
+      <div class="section-head"><span class="section-num">18</span><h2>每日奖励</h2></div>
+      <p class="section-dek">很小、很简单，漏一天也没有惩罚。</p>
+      <p>每天登录一次给 <strong>1 把地牢钥匙</strong>。每天都一样，没有日历也没有连续登录要守。领取需要联网。</p>
+    </section>
+
+    <section id="store">
+      <div class="section-head"><span class="section-num">19</span><h2>商店</h2></div>
+      <p class="section-dek">钻石、钥匙、礼包、会员时长，以及永久的无限物品。</p>
+      <ul>
+          <li><strong>钻石礼包：</strong>200 / 550 / 1,150 / 2,400 / 6,250 / 14,000 钻石。包越大，单价越低。</li>
+          <li><strong>钥匙礼包：</strong>3 / 7 / 15 把地牢钥匙。</li>
+          <li><strong>小型礼包：</strong>500 钻石, 100 精华, 10 技能石, 3 地下城钥匙。</li>
+          <li><strong>大型礼包：</strong>1,000 钻石, 200 精华, 20 技能石, 5 地下城钥匙。</li>
+          <li><strong>7 天高级礼包：</strong>7 天内点击伤害 x5、自动伤害 x5、金币 x3、抗热 x3、离线收益 x2。</li>
+        </ul>
+      <p>无限物品<strong>用钻石买一次</strong>就永久生效，转生也不会清空。后期通常是钻石最划算的去处。</p>
+      <div class="table-wrap">
+        <table>
+        <thead><tr>
+        <th>物品</th>
+        <th class="num">效果</th>
+        <th class="num">价格</th>
+        </tr></thead>
+        <tbody>
+        <tr>
+        <td>无限力量</td>
+        <td class="num">x4</td>
+        <td class="num">350 💎</td>
+        </tr>
+        <tr>
+        <td>无限收益</td>
+        <td class="num">x3</td>
+        <td class="num">350 💎</td>
+        </tr>
+        <tr>
+        <td>无限护甲</td>
+        <td class="num">x2</td>
+        <td class="num">350 💎</td>
+        </tr>
+        <tr>
+        <td>无限速度</td>
+        <td class="num">x1.5</td>
+        <td class="num">550 💎</td>
+        </tr>
+        <tr>
+        <td>无限点击</td>
+        <td class="num">7 /秒</td>
+        <td class="num">600 💎</td>
+        </tr>
+        </tbody></table></div>
+      <div class="callout">
+          <div class="callout-label">价格说明</div>
+          商店价格由 Steam 按你所在地区的货币给出，所以本页不写。礼包内容永远不变，价格随地区不同。
+        </div>
+    </section>
+
+    <section id="progress">
+      <div class="section-head"><span class="section-num">20</span><h2>排行榜与统计</h2></div>
+      <p class="section-dek">两处可以看这一轮进展的地方。</p>
+      <ul>
+          <li>Steam 排行榜记录点击次数、点击伤害、转生次数、击杀首领数和最高层数。</li>
+          <li>统计界面记的更多：收入、支出、点击数、游戏时长等等。</li>
+        </ul>
+    </section>
+
+    <section id="save">
+      <div class="section-head"><span class="section-num">21</span><h2>存档</h2></div>
+      <p class="section-dek">简单说：你的进度有好几层保护同时生效。</p>
+      <ul>
+          <li>游戏每 <strong>15 秒</strong>自动加密保存一次。</li>
+          <li>大约每 <strong>45 秒</strong>备份到 Steam 云，关闭和暂停时也一定会备份，所以换一台电脑也能接着玩。</li>
+          <li>存档文件损坏时，游戏会自动改用备份。</li>
+          <li>你也可以把存档复制到剪贴板，在另一台设备上粘贴回去。</li>
+        </ul>
+    </section>
+
+    <section id="languages">
+      <div class="section-head"><span class="section-num">22</span><h2>语言</h2></div>
+      <p class="section-dek">本作提供 18 种语言。</p>
+      <p>英语、土耳其语、德语、法语、西班牙语、拉丁美洲西班牙语、意大利语、波兰语、巴西葡萄牙语、俄语、乌克兰语、日语、韩语、简体中文、繁体中文、泰语、印尼语和越南语。首次启动时游戏会自动选择，之后可以随时在设置里更改——本指南也有全部语言版本，页面顶部即可切换。</p>
+    </section>
+
+    <footer class="doc-footer">这里的数值对应当前的游戏平衡，可能随更新变化。商店价格由 Steam 设定并以你所在地区的货币显示，因此本页不列出。</footer>
+  </main>
+</div>

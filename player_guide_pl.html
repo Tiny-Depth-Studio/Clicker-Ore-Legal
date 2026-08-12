@@ -1,0 +1,1069 @@
+<title>Clicker Ore Game - Poradnik gracza</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Jak działa kopalnia: waluty, kilofy, towarzysze, umiejętności, prestiż, bossowie i sklep - bez wzorów.">
+<style>
+  :root {
+    --bg: #14110d;
+    --bg-elevated: #1d1811;
+    --bg-card: #211b13;
+    --text: #ede6d8;
+    --text-dim: #a89a82;
+    --text-faint: #766a55;
+    --accent: #e0a752;
+    --accent-strong: #f2bd6e;
+    --accent-2: #7fb8ad;
+    --border: #3a2f22;
+    --border-soft: #2a2318;
+    --danger: #cf7a5a;
+    --shadow: 0 8px 24px rgba(0,0,0,0.35);
+
+    --cur-gold: #e0a752;
+    --cur-diamond: #7fd1e0;
+    --cur-essence: #b79ef0;
+    --cur-taskium: #93a8d6;
+    --cur-key: #d98a63;
+    --cur-skillstone: #7fc9a0;
+    --cur-orestone: #b5a68c;
+
+    --font-display: "Bahnschrift", "Segoe UI Semibold", "Arial Narrow Bold", "Arial Narrow", sans-serif;
+    --font-body: "Sitka Text", "Iowan Old Style", Georgia, "Times New Roman", serif;
+    --font-mono: "Cascadia Mono", "Consolas", "SF Mono", ui-monospace, monospace;
+  }
+
+  :root[data-theme="light"] {
+    --bg: #efe9da;
+    --bg-elevated: #e6ddc8;
+    --bg-card: #f3ede0;
+    --text: #241d14;
+    --text-dim: #5c5138;
+    --text-faint: #857656;
+    --accent: #a8621a;
+    --accent-strong: #8a4e12;
+    --accent-2: #2f7a70;
+    --border: #d3c5a4;
+    --border-soft: #ddd0b1;
+    --danger: #a3492c;
+    --shadow: 0 8px 20px rgba(90,70,30,0.12);
+  }
+
+  @media (prefers-color-scheme: light) {
+    :root:not([data-theme="dark"]) {
+      --bg: #efe9da;
+      --bg-elevated: #e6ddc8;
+      --bg-card: #f3ede0;
+      --text: #241d14;
+      --text-dim: #5c5138;
+      --text-faint: #857656;
+      --accent: #a8621a;
+      --accent-strong: #8a4e12;
+      --accent-2: #2f7a70;
+      --border: #d3c5a4;
+      --border-soft: #ddd0b1;
+      --danger: #a3492c;
+      --shadow: 0 8px 20px rgba(90,70,30,0.12);
+    }
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: 17px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection { background: var(--accent); color: #14110d; }
+
+  a { color: var(--accent-strong); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  a:focus-visible, button:focus-visible, summary:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    text-wrap: balance;
+    letter-spacing: 0.01em;
+    color: var(--text);
+  }
+
+  p { max-width: 68ch; }
+  ul, ol { max-width: 68ch; }
+
+  .shell {
+    display: grid;
+    grid-template-columns: 260px minmax(0, 1fr);
+    min-height: 100vh;
+  }
+
+  .topbar {
+    display: none;
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: var(--bg-elevated);
+    border-bottom: 1px solid var(--border);
+    padding: 0.7rem 1rem;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .topbar-title {
+    font-family: var(--font-display);
+    font-size: 0.95rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--accent-strong);
+  }
+  #nav-toggle { display: none; }
+  .nav-toggle-btn {
+    font-family: var(--font-display);
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 0.4rem 0.7rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.85rem;
+  }
+
+  nav.toc {
+    position: sticky;
+    top: 0;
+    align-self: start;
+    height: 100vh;
+    overflow-y: auto;
+    padding: 2rem 1.4rem 3rem;
+    background: var(--bg-elevated);
+    border-right: 1px solid var(--border);
+  }
+  .toc-brand {
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    letter-spacing: 0.03em;
+    color: var(--accent-strong);
+    margin-bottom: 0.15rem;
+  }
+  .toc-brand small {
+    display: block;
+    font-family: var(--font-body);
+    font-style: italic;
+    font-size: 0.78rem;
+    color: var(--text-faint);
+    letter-spacing: 0;
+    margin-top: 0.25rem;
+  }
+  .toc-list {
+    list-style: none;
+    margin: 1.6rem 0 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+  }
+  .toc-list a {
+    display: block;
+    color: var(--text-dim);
+    font-size: 0.88rem;
+    padding: 0.32rem 0.5rem;
+    border-radius: 4px;
+    border-left: 2px solid transparent;
+  }
+  .toc-list a:hover {
+    color: var(--text);
+    text-decoration: none;
+    background: rgba(224,167,82,0.08);
+    border-left-color: var(--accent);
+  }
+  .toc-num {
+    font-family: var(--font-mono);
+    color: var(--text-faint);
+    font-size: 0.78rem;
+    margin-right: 0.45rem;
+  }
+
+  main {
+    padding: 3.2rem clamp(1.2rem, 4vw, 4rem) 6rem;
+    max-width: 900px;
+  }
+
+  header.hero {
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .strata {
+    height: 10px;
+    width: 100%;
+    border-radius: 3px;
+    margin-bottom: 1.6rem;
+    background: repeating-linear-gradient(
+      90deg,
+      var(--accent) 0 6%,
+      var(--accent-2) 6% 11%,
+      var(--border-soft) 11% 18%,
+      var(--accent) 18% 24%,
+      var(--border-soft) 24% 34%,
+      var(--accent-2) 34% 40%,
+      var(--accent) 40% 48%,
+      var(--border-soft) 48% 58%,
+      var(--accent-2) 58% 63%,
+      var(--accent) 63% 72%,
+      var(--border-soft) 72% 82%,
+      var(--accent-2) 82% 90%,
+      var(--accent) 90% 100%
+    );
+    opacity: 0.85;
+  }
+  .eyebrow {
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-size: 0.72rem;
+    color: var(--accent);
+    margin-bottom: 0.6rem;
+  }
+  h1.title {
+    font-size: clamp(2rem, 4.2vw, 2.9rem);
+    margin: 0 0 0.7rem;
+    line-height: 1.1;
+  }
+  .subtitle {
+    color: var(--text-dim);
+    font-size: 1.08rem;
+    max-width: 62ch;
+    margin: 0;
+  }
+
+  .langbar {
+    margin: 1.8rem 0 0;
+    padding-top: 1.2rem;
+    border-top: 1px solid var(--border-soft);
+  }
+  .langbar-label {
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 0.68rem;
+    color: var(--text-faint);
+    margin-bottom: 0.55rem;
+  }
+  .langbar-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem 0.4rem;
+  }
+  .langbar-list a, .langbar-list span {
+    font-family: var(--font-display);
+    font-size: 0.78rem;
+    padding: 0.18rem 0.55rem;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    color: var(--text-dim);
+    background: var(--bg-card);
+  }
+  .langbar-list a:hover {
+    text-decoration: none;
+    color: var(--text);
+    border-color: var(--accent);
+  }
+  .langbar-list span {
+    color: #14110d;
+    background: var(--accent);
+    border-color: var(--accent);
+  }
+  :root[data-theme="light"] .langbar-list span { color: #efe9da; }
+
+  section {
+    margin-bottom: 3.6rem;
+    scroll-margin-top: 1.5rem;
+  }
+  .section-head {
+    display: flex;
+    align-items: baseline;
+    gap: 0.7rem;
+    margin-bottom: 0.3rem;
+  }
+  .section-num {
+    font-family: var(--font-mono);
+    color: var(--accent);
+    font-size: 0.95rem;
+  }
+  h2 {
+    font-size: 1.55rem;
+    margin: 0;
+  }
+  .section-dek {
+    color: var(--text-dim);
+    font-size: 0.98rem;
+    margin: 0.3rem 0 1.5rem;
+    max-width: 62ch;
+  }
+
+  .callout {
+    border-left: 3px solid var(--accent);
+    background: var(--bg-card);
+    padding: 0.95rem 1.2rem;
+    border-radius: 0 6px 6px 0;
+    margin: 1.2rem 0;
+    font-size: 0.95rem;
+  }
+  .callout strong { color: var(--accent-strong); }
+  .callout.warn { border-left-color: var(--danger); }
+  .callout-label {
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 0.72rem;
+    color: var(--accent);
+    margin-bottom: 0.35rem;
+  }
+  .callout.warn .callout-label { color: var(--danger); }
+
+  .currency-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 0.9rem;
+    margin: 1.4rem 0;
+  }
+  .cur-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-top: 3px solid var(--dot);
+    border-radius: 6px;
+    padding: 0.95rem 1rem 1.05rem;
+  }
+  .cur-card h4 {
+    margin: 0 0 0.5rem;
+    font-size: 0.98rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .dot {
+    width: 9px; height: 9px; border-radius: 50%;
+    background: var(--dot);
+    flex: none;
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--dot) 20%, transparent);
+  }
+  .cur-card p {
+    margin: 0.15rem 0;
+    font-size: 0.84rem;
+    color: var(--text-dim);
+    max-width: none;
+  }
+  .cur-card p b { color: var(--text); font-weight: 600; }
+
+  .table-wrap {
+    overflow-x: auto;
+    margin: 1.2rem 0;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+  }
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    min-width: 460px;
+    font-size: 0.9rem;
+  }
+  thead th {
+    text-align: left;
+    font-family: var(--font-display);
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    font-size: 0.72rem;
+    color: var(--text-dim);
+    background: var(--bg-elevated);
+    padding: 0.6rem 0.85rem;
+    border-bottom: 1px solid var(--border);
+    white-space: nowrap;
+  }
+  tbody td {
+    padding: 0.55rem 0.85rem;
+    border-bottom: 1px solid var(--border-soft);
+    font-variant-numeric: tabular-nums;
+    color: var(--text);
+  }
+  tbody tr:last-child td { border-bottom: none; }
+  tbody tr:nth-child(even) { background: color-mix(in srgb, var(--accent) 3%, transparent); }
+  td.num, th.num { font-family: var(--font-mono); }
+  td.strong { color: var(--accent-strong); font-weight: 600; }
+
+  .strategy-track {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 1.4rem 0;
+  }
+  .strategy-stage {
+    background: var(--bg-card);
+    padding: 1rem 1.1rem;
+  }
+  .strategy-stage .stage-label {
+    font-family: var(--font-display);
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+    margin-bottom: 0.4rem;
+  }
+  .strategy-stage ul {
+    margin: 0;
+    padding-left: 1.1rem;
+    font-size: 0.86rem;
+    color: var(--text-dim);
+  }
+  .strategy-stage li { margin-bottom: 0.25rem; }
+
+  footer.doc-footer {
+    margin-top: 4rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+    color: var(--text-faint);
+    font-size: 0.8rem;
+  }
+
+  @media (max-width: 880px) {
+    .shell { grid-template-columns: 1fr; }
+    .topbar { display: flex; }
+    nav.toc {
+      position: fixed;
+      inset: 0 20% 0 0;
+      top: 52px;
+      height: calc(100vh - 52px);
+      transform: translateX(-100%);
+      transition: transform 0.22s ease;
+      z-index: 15;
+      box-shadow: var(--shadow);
+    }
+    #nav-toggle:checked ~ .shell nav.toc {
+      transform: translateX(0);
+    }
+    main { padding: 2rem 1.2rem 5rem; }
+  }
+</style>
+
+<input type="checkbox" id="nav-toggle">
+
+<div class="topbar">
+  <span class="topbar-title">&#9935; Poradnik gracza</span>
+  <label class="nav-toggle-btn" for="nav-toggle">Spis treści</label>
+</div>
+
+<div class="shell">
+  <nav class="toc" aria-label="Spis treści">
+    <div class="toc-brand">Clicker Ore Game<small>Poradnik gracza</small></div>
+    <ul class="toc-list">
+      <li><a href="#start"><span class="toc-num">01</span>Od czego zacząć</a></li>
+      <li><a href="#currencies"><span class="toc-num">02</span>7 walut</a></li>
+      <li><a href="#damage"><span class="toc-num">03</span>Obrażenia kliknięcia i automatyczne</a></li>
+      <li><a href="#critical"><span class="toc-num">04</span>Trafienia krytyczne</a></li>
+      <li><a href="#pickaxes"><span class="toc-num">05</span>Kilofy</a></li>
+      <li><a href="#suits"><span class="toc-num">06</span>Zbroje</a></li>
+      <li><a href="#temperature"><span class="toc-num">07</span>Ciepło</a></li>
+      <li><a href="#pets"><span class="toc-num">08</span>Towarzysze</a></li>
+      <li><a href="#floors"><span class="toc-num">09</span>Piętra, ruda i głębokość</a></li>
+      <li><a href="#skills"><span class="toc-num">10</span>Aktywne umiejętności</a></li>
+      <li><a href="#titles"><span class="toc-num">11</span>Tytuły</a></li>
+      <li><a href="#tasks"><span class="toc-num">12</span>Zadania i Taskium</a></li>
+      <li><a href="#trade"><span class="toc-num">13</span>Panel wymiany</a></li>
+      <li><a href="#extras"><span class="toc-num">14</span>Darmowe złoto</a></li>
+      <li><a href="#prestige"><span class="toc-num">15</span>Prestiż</a></li>
+      <li><a href="#bosses"><span class="toc-num">16</span>Bossowie</a></li>
+      <li><a href="#achievements"><span class="toc-num">17</span>Osiągnięcia</a></li>
+      <li><a href="#daily"><span class="toc-num">18</span>Nagroda dzienna</a></li>
+      <li><a href="#store"><span class="toc-num">19</span>Sklep</a></li>
+      <li><a href="#progress"><span class="toc-num">20</span>Rankingi i statystyki</a></li>
+      <li><a href="#save"><span class="toc-num">21</span>Zapisy</a></li>
+      <li><a href="#languages"><span class="toc-num">22</span>Języki</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <header class="hero">
+      <div class="strata" role="presentation"></div>
+      <div class="eyebrow">Poradnik gracza - 2026-08-12</div>
+      <h1 class="title">Cała kopalnia,<br>wyłożona po ludzku</h1>
+      <p class="subtitle">Co robi każdy system, na którym piętrze się otwiera i gdzie najlepiej wydać kolejną godzinę. Bez wzorów - tylko decyzje, które mają znaczenie.</p>
+      <div class="langbar">
+        <div class="langbar-label">Język</div>
+        <div class="langbar-list"><a href="player_guide_en.html" hreflang="en">English</a><a href="player_guide_tr.html" hreflang="tr">Türkçe</a><a href="player_guide_de.html" hreflang="de">Deutsch</a><a href="player_guide_fr.html" hreflang="fr">Français</a><a href="player_guide_es.html" hreflang="es">Español</a><a href="player_guide_es_la.html" hreflang="es-419">Español (Latinoamérica)</a><a href="player_guide_it.html" hreflang="it">Italiano</a><span>Polski</span><a href="player_guide_pt_br.html" hreflang="pt-BR">Português (Brasil)</a><a href="player_guide_ru.html" hreflang="ru">Русский</a><a href="player_guide_uk.html" hreflang="uk">Українська</a><a href="player_guide_ja.html" hreflang="ja">日本語</a><a href="player_guide_ko.html" hreflang="ko">한국어</a><a href="player_guide_zh_hans.html" hreflang="zh-Hans">简体中文</a><a href="player_guide_zh_hant.html" hreflang="zh-Hant">繁體中文</a><a href="player_guide_th.html" hreflang="th">ไทย</a><a href="player_guide_id.html" hreflang="id">Bahasa Indonesia</a><a href="player_guide_vi.html" hreflang="vi">Tiếng Việt</a></div>
+      </div>
+    </header>
+
+    <section id="start">
+      <div class="section-head"><span class="section-num">01</span><h2>Od czego zacząć</h2></div>
+      <p class="section-dek">Trzy etapy, w kolejności, w jakiej gra otwiera kolejne rzeczy.</p>
+      <div class="strategy-track">
+          <div class="strategy-stage">
+            <div class="stage-label">Początek - piętra 1 do 200</div>
+            <ul>
+              <li>Ulepszaj kilof bez przerwy; kupuj następny, gdy tylko się odblokuje.</li>
+              <li>Łamacz Rud pojawia się na piętrze 50, a Gniewne Kliknięcie na piętrze 70.</li>
+              <li>Weź Kamyk, gdy tylko możesz oddać diamenty.</li>
+            </ul>
+          </div>
+          <div class="strategy-stage">
+            <div class="stage-label">Środek - piętra 200 do 350</div>
+            <ul>
+              <li>Pierwszy prestiż zrób na piętrze 200.</li>
+              <li>Rozdziel Esencję na wszystkie 7 parametry, zamiast wyciskać jeden.</li>
+              <li>Zadania otwierają się na piętrze 160, drzewko umiejętności i wymiana na piętrze 180.</li>
+            </ul>
+          </div>
+          <div class="strategy-stage">
+            <div class="stage-label">Późna gra - od piętra 350</div>
+            <ul>
+              <li>Walcz z bossami, kiedy tylko masz klucz - to twój silnik Esencji.</li>
+              <li>Kup przedmioty Nieskończoności - są trwałe i nigdy się nie zerują.</li>
+              <li>Trzymaj zbroję na poziomie, żeby ciepło nie zjadało twoich obrażeń.</li>
+            </ul>
+          </div>
+        </div>
+      <div class="callout">
+          <div class="callout-label">Warto wiedzieć</div>
+          Liczby szybko się wydłużają, więc gra przechodzi najpierw na skróty, a potem na zapis naukowy w stylu <strong>1,23e45</strong>. Nie ma żadnego sufitu - to tylko inny sposób zapisu.
+        </div>
+    </section>
+
+    <section id="currencies">
+      <div class="section-head"><span class="section-num">02</span><h2>7 walut</h2></div>
+      <p class="section-dek">Każda zasila inny system. Wydanie właściwej waluty w złym miejscu to najczęstszy błąd na początku.</p>
+      <div class="currency-grid">
+        <div class="cur-card" style="--dot:var(--cur-gold)">
+          <h4><span class="dot"></span>Złoto</h4>
+          <p>Zdobywasz je, <b>rozbijając rudę</b>.</p>
+          <p>Idzie na poziomy kilofa i zbroi - twoja robocza waluta.</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-diamond)">
+          <h4><span class="dot"></span>Diament</h4>
+          <p>Pochodzą <b>tylko z zakupów za prawdziwe pieniądze</b>.</p>
+          <p>Idą na towarzyszy i na trwałe przedmioty Nieskończoności.</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-essence)">
+          <h4><span class="dot"></span>Esencja</h4>
+          <p>Z <b>prestiżu</b> i ze zwycięstw nad bossami.</p>
+          <p>Idzie na 7 trwałych parametrów prestiżu.</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-taskium)">
+          <h4><span class="dot"></span>Taskium</h4>
+          <p><b>+1</b> za każde udane kliknięcie.</p>
+          <p>Idzie na przyjmowanie i przelosowywanie zadań.</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-key)">
+          <h4><span class="dot"></span>Klucz do lochu</h4>
+          <p>Jeden darmowy klucz dziennie plus paczki ze sklepu.</p>
+          <p>Idzie na wejście do walki z bossem - 1 za próbę.</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-skillstone)">
+          <h4><span class="dot"></span>Kamień umiejętności</h4>
+          <p>Z paczek w sklepie i z panelu wymiany.</p>
+          <p>Idzie na podnoszenie 8 aktywnych umiejętności.</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-orestone)">
+          <h4><span class="dot"></span>Kamień rudy</h4>
+          <p><b>1-5</b> z każdej rozbitej rudy, plus osiągnięcia.</p>
+          <p>Wymieniasz je na Esencję albo Kamień umiejętności w panelu wymiany.</p>
+        </div>
+      </div>
+      <div class="callout">
+          <div class="callout-label">Diamenty</div>
+          Bossowie, osiągnięcia i zadania nigdy nie dają diamentów. Diamenty i klucze do lochu trzyma serwer, więc do kupienia towarzysza trzeba być online.
+        </div>
+    </section>
+
+    <section id="damage">
+      <div class="section-head"><span class="section-num">03</span><h2>Obrażenia kliknięcia i automatyczne</h2></div>
+      <p class="section-dek">Dwa osobne źródła obrażeń, zasilane innymi rzeczami.</p>
+      <p><strong>Obrażenia kliknięcia</strong> to tyle, ile robi jedno dotknięcie. Rosną z poziomem i umiejętnościami pierwszego kilofa, z umiejętnością Gniewne Kliknięcie, z twoim tytułem i z parametrem prestiżu Dłoń Łamacza Kamieni. Gdy podniesiesz Jednostka Siły, część obrażeń automatycznych dolicza się też do każdego kliknięcia.</p>
+      <p><strong>Obrażenia automatyczne</strong> (na sekundę) pochodzą od drugiego kilofa w górę, od umiejętności Szał, od parametru Wieczna Kuźnia i od twoich towarzyszy.</p>
+      <div class="callout">
+          <div class="callout-label">Towarzysze są wyjątkiem</div>
+          Obrażenia towarzyszy dodają się <strong>po</strong> wszystkich mnożnikach, więc nie są przez nie skalowane. Same ich poziomy nie wystarczą w późnej grze - mnożniki kilofa i umiejętności też muszą rosnąć.
+        </div>
+    </section>
+
+    <section id="critical">
+      <div class="section-head"><span class="section-num">04</span><h2>Trafienia krytyczne</h2></div>
+      <p class="section-dek">Każde kliknięcie może wyjść krytycznie i uderzyć mocniej.</p>
+      <p>Startujesz z <strong>5%</strong> szansy i mnożnikiem <strong>x1,5</strong>. Podnoszą je cztery rzeczy: umiejętność Cios Krytyczny, umiejętności kilofów, parametry prestiżu Wyrocznia Rudy i Kataklizmiczna Siła oraz tytuły.</p>
+    </section>
+
+    <section id="pickaxes">
+      <div class="section-head"><span class="section-num">05</span><h2>Kilofy</h2></div>
+      <p class="section-dek">45 kilofów odblokowywanych po kolei. To kręgosłup twoich obrażeń.</p>
+      <ul>
+          <li>Pierwszy kilof kosztuje <strong>5 złota</strong>; każdy kolejny około <strong>8 razy</strong> więcej niż poprzedni.</li>
+          <li>Kilof odblokowuje się sam, gdy zarobisz dość złota w tym przebiegu - to ulepszanie otwiera następny.</li>
+          <li>Każdy poziom kosztuje około <strong>7%</strong> więcej niż poprzedni.</li>
+          <li>Obrażenia kliknięcia zasila tylko <strong>pierwszy</strong> kilof. Wszystkie pozostałe zasilają obrażenia automatyczne.</li>
+          <li>Każdy kilof ma 6 umiejętności, otwierane na poziomach 5 / 10 / 25 / 50 / 100 / 200. Część pomaga tylko temu kilofowi, część wszystkim - te globalne są cenniejsze.</li>
+        </ul>
+      <div class="callout">
+          <div class="callout-label">Duży skok</div>
+          Co <strong>100 poziomów</strong> kilof mnoży własną wydajność przez <strong>x10</strong>. Dopchnięcie jednego kilofa do kolejnej setki to zwykle największy dostępny skok siły.
+        </div>
+    </section>
+
+    <section id="suits">
+      <div class="section-head"><span class="section-num">06</span><h2>Zbroje</h2></div>
+      <p class="section-dek">5 zbroi, wszystkie twoje od początku. Ich zadaniem jest trzymać ciepło z daleka.</p>
+      <ul>
+          <li>Zbroi się nie kupuje, tylko ją podnosi. Każdy poziom dodaje około <strong>5%</strong> odporności, licząc od 50.</li>
+          <li>Co 100 poziomów odporność zbroi mnoży się przez <strong>x2</strong>.</li>
+          <li>Każda zbroja ma też 6 umiejętności, które otwierają się z poziomami.</li>
+          <li>Panel zbroi otwiera się na piętrze <strong>130</strong>, razem ze wskaźnikiem ciepła.</li>
+        </ul>
+    </section>
+
+    <section id="temperature">
+      <div class="section-head"><span class="section-num">07</span><h2>Ciepło</h2></div>
+      <p class="section-dek">Im głębiej, tym goręcej, a ciepło po cichu obcina twoje obrażenia.</p>
+      <ul>
+          <li>Temperatura piętra rośnie bez przerwy - około <strong>1,04x na piętro</strong>, więc podwaja się co dwadzieścia kilka pięter.</li>
+          <li>Dopóki twoja odporność wynosi co najmniej <strong>1,5x</strong> temperatury, wskaźnik jest czysty i nic nie tracisz.</li>
+          <li>Gdy odporność spadnie pod temperaturę, obrażenia zaczynają uciekać; przy <strong>0,5x</strong> zostaje jedna dwudziesta - strata <strong>95%</strong>.</li>
+          <li>W panelu zbroi jest przełącznik automatycznego kupowania odporności; zostaw go włączony, jeśli często schodzisz głębiej.</li>
+        </ul>
+      <div class="callout warn">
+          <div class="callout-label">Jeśli nagle stoisz w miejscu</div>
+          Ściana, na której ruda nie chce się skończyć, to prawie zawsze ciepło, a nie obrażenia. Sprawdź wskaźnik, zanim wydasz coś innego.
+        </div>
+    </section>
+
+    <section id="pets">
+      <div class="section-head"><span class="section-num">08</span><h2>Towarzysze</h2></div>
+      <p class="section-dek">5 towarzyszy, kupowanych za diamenty i podnoszonych złotem.</p>
+      <ul>
+          <li>Ceny idą od <strong>150</strong> do <strong>250</strong> diamentów (150 / 175 / 200 / 225 / 250).</li>
+          <li>Każdy poziom dodaje około <strong>1%</strong> obrażeń kliknięcia twojego kilofa jako obrażenia automatyczne, przemnożone przez kolejność towarzysza - Mroczny Odłamek daje pięć razy tyle co Kamyk na tym samym poziomie.</li>
+          <li>Poziomy drożeją o około <strong>20%</strong> za każdym razem, a co 100 poziomów towarzysz mnoży własną wydajność przez <strong>x5</strong>.</li>
+          <li>Każdy towarzysz ma 6 umiejętności; część działa tylko na niego, część na wszystkich.</li>
+          <li>Panel towarzyszy otwiera się na piętrze <strong>30</strong> albo gdy masz już jednego.</li>
+        </ul>
+      <div class="callout warn">
+          <div class="callout-label">Prestiż i towarzysze</div>
+          Prestiż cofa każdego towarzysza na <strong>poziom 1</strong> i czyści jego umiejętności. Posiadanie zostaje - towarzysza nie kupujesz drugi raz.
+        </div>
+    </section>
+
+    <section id="floors">
+      <div class="section-head"><span class="section-num">09</span><h2>Piętra, ruda i głębokość</h2></div>
+      <p class="section-dek">Piętro decyduje, jak twarda jest ruda i ile złota płaci. Głębokość decyduje, jak wygląda.</p>
+      <ul>
+          <li>Każde piętro ma trochę więcej zdrowia i trochę więcej złota niż poprzednie, a krzywa robi się coraz bardziej stroma.</li>
+          <li>Co <strong>10. piętro</strong> jest na czas: startuje zegar na <strong>20 sekund</strong>, zdrowie rośnie o około 50%, a złoto o około 51%.</li>
+          <li>Trudność idzie też cyklami po około 100 pięter - pierwsze piętra cyklu płacą najlepiej w stosunku do zdrowia.</li>
+          <li>Każda ruda upuszcza dodatkowo <strong>1-5</strong> Kamieni rudy.</li>
+        </ul>
+      <div class="callout warn">
+          <div class="callout-label">Piętra na czas gryzą</div>
+          Jeśli zegar dojdzie do zera, wracasz <strong>o jedno piętro</strong> niżej. Gdy obrażenia nie wystarczają, lepiej pominąć piętro na czas niż je przegrać.
+        </div>
+      <p>Możesz zejść na dowolne piętro, które osiągnąłeś w tym przebiegu, i tam farmić. Ręczny wybór piętra wyłącza automatyczne wchodzenie wyżej; włącz je z powrotem, gdy chcesz znowu się wspinać.</p>
+      <p>W sumie jest <strong>40</strong> rodzajów rudy, a głębokość decyduje, które się pojawiają. Rodzaj zmienia tylko wygląd i pył - zdrowie i złoto pochodzą z piętra.</p>
+      <div class="table-wrap">
+        <table>
+        <thead><tr>
+        <th class="num">Głębokość</th>
+        <th class="num">Rodzaje rudy</th>
+        <th class="num">Około piętra</th>
+        </tr></thead>
+        <tbody>
+        <tr>
+        <td class="num">0-100 m</td>
+        <td class="num">9</td>
+        <td class="num">~54</td>
+        </tr>
+        <tr>
+        <td class="num">100-500 m</td>
+        <td class="num">20</td>
+        <td class="num">~129</td>
+        </tr>
+        <tr>
+        <td class="num">500-1 500 m</td>
+        <td class="num">30</td>
+        <td class="num">~196</td>
+        </tr>
+        <tr>
+        <td class="num">1 500 m+</td>
+        <td class="num">40</td>
+        <td class="num">-</td>
+        </tr>
+        </tbody></table></div>
+    </section>
+
+    <section id="skills">
+      <div class="section-head"><span class="section-num">10</span><h2>Aktywne umiejętności</h2></div>
+      <p class="section-dek">8 umiejętności, każda to zryw na czas, a po nim odnowienie.</p>
+      <p>Umiejętność jest <strong>darmowa</strong>, gdy przychodzi jej piętro - używasz jej już na poziomie 1. Wyciągnięcie do poziomu 7 kosztuje w sumie <strong>63 Kamieni umiejętności</strong>, a wszystkie 8 razem <strong>504</strong>. Wyższy poziom to dłuższy czas i krótsze odnowienie.</p>
+      <div class="table-wrap">
+        <table>
+        <thead><tr>
+        <th>Umiejętność</th>
+        <th class="num">Piętro</th>
+        <th class="num">Poziom 1 (czas / odnowienie)</th>
+        <th class="num">Poziom 7 (czas / odnowienie)</th>
+        <th class="num">Efekt</th>
+        </tr></thead>
+        <tbody>
+        <tr>
+        <td>Łamacz Rud</td>
+        <td class="num">50</td>
+        <td class="num">30 s / 540 s</td>
+        <td class="num">90 s / 180 s</td>
+        <td class="num">7 → 13 /s</td>
+        </tr>
+        <tr>
+        <td>Gniewne Kliknięcie</td>
+        <td class="num">70</td>
+        <td class="num">40 s / 660 s</td>
+        <td class="num">210 s / 300 s</td>
+        <td class="num">x2 → x5</td>
+        </tr>
+        <tr>
+        <td>Cios Krytyczny</td>
+        <td class="num">100</td>
+        <td class="num">30 s / 600 s</td>
+        <td class="num">150 s / 240 s</td>
+        <td class="num">x1,3 → x1,9</td>
+        </tr>
+        <tr>
+        <td>Szał</td>
+        <td class="num">170</td>
+        <td class="num">40 s / 840 s</td>
+        <td class="num">160 s / 480 s</td>
+        <td class="num">x2 → x3,5</td>
+        </tr>
+        <tr>
+        <td>Złota Furia</td>
+        <td class="num">240</td>
+        <td class="num">50 s / 1 020 s</td>
+        <td class="num">290 s / 660 s</td>
+        <td class="num">x2 → x5</td>
+        </tr>
+        <tr>
+        <td>Odporność na Ciepło</td>
+        <td class="num">280</td>
+        <td class="num">30 s / 660 s</td>
+        <td class="num">140 s / 300 s</td>
+        <td class="num">x2 → x5</td>
+        </tr>
+        <tr>
+        <td>Przeciążenie</td>
+        <td class="num">330</td>
+        <td class="num">20 s / 1 200 s</td>
+        <td class="num">20 s / 840 s</td>
+        <td class="num">x1,5 → x3</td>
+        </tr>
+        <tr>
+        <td>Odwrócenie Czasu</td>
+        <td class="num">400</td>
+        <td class="num">1 200 s</td>
+        <td class="num">840 s</td>
+        <td class="num">-300 s → -1 020 s</td>
+        </tr>
+        </tbody></table></div>
+      <p>Pierwsza linia umiejętności otwiera się na piętrze 50; panel drzewka, w którym wydajesz Kamienie umiejętności, na piętrze <strong>180</strong>. Do użycia umiejętności panel nie jest potrzebny.</p>
+      <div class="callout">
+          <div class="callout-label">Kombinacja</div>
+          Odpal najpierw Przeciążenie, a potem tę umiejętność, którą naprawdę chcesz wzmocnić - na przykład Złota Furia. Odwrócenie Czasu skraca potem odnowienie ostatnio użytej, więc dostajesz ją szybciej.
+        </div>
+    </section>
+
+    <section id="titles">
+      <div class="section-head"><span class="section-num">11</span><h2>Tytuły</h2></div>
+      <p class="section-dek">100 tytułów, które same do ciebie przychodzą podczas wspinaczki.</p>
+      <ul>
+          <li>Tytuły idą od piętra 1 do piętra <strong>50 000</strong> i wybierają się same według najwyższego piętra w tym przebiegu.</li>
+          <li>Każdy tytuł dokłada około <strong>+0,1</strong> do premii, które nosi.</li>
+          <li>Premie wchodzą stopniami: obrażenia kliknięcia od pierwszego tytułu, potem obrażenia automatyczne, odporność na ciepło, złoto, mnożnik krytyczny, szansa na krytyk i część DPS dodawana do kliknięć (tytuły 1 / 5 / 10 / 15 / 20 / 25 / 30).</li>
+        </ul>
+    </section>
+
+    <section id="tasks">
+      <div class="section-head"><span class="section-num">12</span><h2>Zadania i Taskium</h2></div>
+      <p class="section-dek">Boczny tor, który zamienia twoje klikanie w drugi przychód.</p>
+      <ul>
+          <li>Każde udane kliknięcie daje <strong>+1 Taskium</strong>.</li>
+          <li>Przyjęcie zadania kosztuje <strong>200</strong>, przelosowanie <strong>25</strong>.</li>
+          <li>Panel zadań otwiera się na piętrze 160; 6 slotów na piętrach 160 / 170 / 180 / 190 / 200 / 210.</li>
+          <li>Jest 10 rodzajów zadań w 6 rzadkościach. Każde trwa 60 minut, a nieprzyjęte wymieniają się co godzinę.</li>
+          <li>Nagroda rośnie z rzadkością - od <strong>50-500</strong> razy złoto z rudy na obecnym piętrze. Najrzadsze dają dodatkowo Esencję.</li>
+        </ul>
+    </section>
+
+    <section id="trade">
+      <div class="section-head"><span class="section-num">13</span><h2>Panel wymiany</h2></div>
+      <p class="section-dek">Otwiera się na piętrze 180. Jedyne miejsce, w którym Kamień rudy jest coś wart.</p>
+      <ul>
+          <li>1 Kamień umiejętności zamienia się na <strong>5 000 Kamieni rudy</strong> - do 100 000 na wymianę.</li>
+          <li><strong>2 000 Kamieni rudy</strong> zamienia się na 1 Esencję.</li>
+          <li><strong>5 000 Kamieni rudy</strong> zamienia się na 1 Kamień umiejętności.</li>
+        </ul>
+      <p>Ostatni punkt jest najważniejszy: tak długa sesja farmienia zamienia się w poziomy umiejętności bez walki z bossem.</p>
+    </section>
+
+    <section id="extras">
+      <div class="section-head"><span class="section-num">14</span><h2>Darmowe złoto</h2></div>
+      <p class="section-dek">Trzy źródła, które wymagają tylko obecności.</p>
+      <ul>
+          <li><strong>Złoty balon</strong> - od piętra 50 przelatuje jeden co 70-105 sekund. Kliknięcie płaci <strong>x6</strong> złota z rudy twojego najlepszego piętra w tym przebiegu.</li>
+          <li><strong>Zarobek offline</strong> - liczy się po 60 minutach nieobecności i kończy na 12 godzinach. Premium podwaja.</li>
+          <li><strong>Nagroda za czas gry</strong> - co 60 minut gry płaci około 100 razy tyle, ile daje minuta na twoim najlepszym piętrze.</li>
+        </ul>
+    </section>
+
+    <section id="prestige">
+      <div class="section-head"><span class="section-num">15</span><h2>Prestiż</h2></div>
+      <p class="section-dek">Zamieniasz postęp tego przebiegu na trwałą siłę. Dobrze wymierzony, jest najszybszą rzeczą w grze.</p>
+      <p>Panel prestiżu otwiera się, gdy pierwszy raz dojdziesz na piętro <strong>200</strong>. Potem każdy prestiż chce 100 pięter więcej: 300, potem 400 i tak dalej.</p>
+      <ul>
+          <li><strong>Zeruje się:</strong> złoto, Taskium, postęp pięter, poziomy kilofów i zbroi, poziomy towarzyszy, wszystkie kupione umiejętności i twój poziom bossa.</li>
+          <li><strong>Zostaje:</strong> poziom prestiżu, Esencja, poziomy 7 parametrów, posiadani towarzysze, przedmioty Nieskończoności, osiągnięcia.</li>
+          <li>Nie wracasz na piętro 1: kolejny przebieg startuje na <strong>100 x twój poziom prestiżu</strong>, a do tego dostajesz startowe złoto warte około 500 rud.</li>
+          <li>Wszystkie odnowienia są czyszczone, więc zaczynasz przebieg z każdą umiejętnością gotową.</li>
+        </ul>
+      <p>Esencja bierze się tylko z dwóch rzeczy: z <strong>najwyższego piętra</strong>, jakie osiągnąłeś (po 0,5) i z <strong>rozbitej rudy</strong> (po 0,25).</p>
+      <div class="callout">
+          <div class="callout-label">Rozbijaj rudę, nie pędź</div>
+          Ponieważ liczba rud waży więcej, farmienie wygodnego piętra na koniec daje więcej niż sprint na piętro, na którym z trudem zadajesz obrażenia.
+        </div>
+      <div class="table-wrap">
+        <table>
+        <thead><tr>
+        <th>Parametr</th>
+        <th>Efekt</th>
+        <th class="num">Na poziom</th>
+        </tr></thead>
+        <tbody>
+        <tr>
+        <td>Wieczna Kuźnia</td>
+        <td>Automatyczne obrażenia na sekundę</td>
+        <td class="num">+20%</td>
+        </tr>
+        <tr>
+        <td>Dłoń Łamacza Kamieni</td>
+        <td>Obrażenia kliknięcia</td>
+        <td class="num">+25%</td>
+        </tr>
+        <tr>
+        <td>Złota Otchłań</td>
+        <td>Przychód złota</td>
+        <td class="num">+10%</td>
+        </tr>
+        <tr>
+        <td>Wyrocznia Rudy</td>
+        <td>Szansa na trafienie krytyczne</td>
+        <td class="num">+5%</td>
+        </tr>
+        <tr>
+        <td>Kataklizmiczna Siła</td>
+        <td>Mnożnik krytyczny</td>
+        <td class="num">+5%</td>
+        </tr>
+        <tr>
+        <td>Piekielna Tarcza</td>
+        <td>Odporność na ciepło</td>
+        <td class="num">+10%</td>
+        </tr>
+        <tr>
+        <td>Jednostka Siły</td>
+        <td>Część DPS dodawana do kliknięć</td>
+        <td class="num">+1%</td>
+        </tr>
+        </tbody></table></div>
+      <p>Premie dodają się poziom po poziomie, a nie składają, i koszt Esencji rośnie wolno - regularne wydawanie opłaca się bardziej niż zbieranie.</p>
+    </section>
+
+    <section id="bosses">
+      <div class="section-head"><span class="section-num">16</span><h2>Bossowie</h2></div>
+      <p class="section-dek">Wyścig obrażeń z zegarem, o Esencję. Otwiera się na piętrze 350.</p>
+      <ul>
+          <li>Wybierasz bossa i wydajesz <strong>1 klucz do lochu</strong>, żeby zacząć. Nic nie startuje samo.</li>
+          <li>Bossowie otwierają się po kolei - jednego trzeba pokonać, żeby zobaczyć następnego. Zdrowie rośnie około tysiąckrotnie na stopień, a zegar się skraca.</li>
+          <li>Nagrody rosną z twoim poziomem prestiżu: około <strong>+15%</strong> na poziom.</li>
+          <li>Prestiż cofa twój poziom bossa na pierwszego.</li>
+        </ul>
+      <div class="table-wrap">
+        <table>
+        <thead><tr>
+        <th>Boss</th>
+        <th class="num">Zdrowie</th>
+        <th class="num">Czas</th>
+        <th>Nagroda</th>
+        </tr></thead>
+        <tbody>
+        <tr>
+        <td>Kryształowy Kolos</td>
+        <td class="num">1e13</td>
+        <td class="num">30 s</td>
+        <td>50 Esencja + 5 000 Kamień rudy</td>
+        </tr>
+        <tr>
+        <td>Kryształowy Strażnik</td>
+        <td class="num">1e16</td>
+        <td class="num">25 s</td>
+        <td>75 Esencja + 7 500 Kamień rudy</td>
+        </tr>
+        <tr>
+        <td>Karmazynowy Wartownik</td>
+        <td class="num">1e19</td>
+        <td class="num">20 s</td>
+        <td>100 Esencja + 10 000 Kamień rudy</td>
+        </tr>
+        <tr>
+        <td>Kamienny Strażnik</td>
+        <td class="num">1e22</td>
+        <td class="num">20 s</td>
+        <td>125 Esencja + 12 500 Kamień rudy</td>
+        </tr>
+        <tr>
+        <td>Lodowy Tytan</td>
+        <td class="num">1e25</td>
+        <td class="num">20 s</td>
+        <td>150 Esencja + 15 000 Kamień rudy</td>
+        </tr>
+        <tr>
+        <td>Kryształowy Golem 1</td>
+        <td class="num">1e28</td>
+        <td class="num">20 s</td>
+        <td>175 Esencja + 17 500 Kamień rudy</td>
+        </tr>
+        <tr>
+        <td>Kolos Kamienna Broda</td>
+        <td class="num">1e31</td>
+        <td class="num">15 s</td>
+        <td>200 Esencja + 20 000 Kamień rudy</td>
+        </tr>
+        <tr>
+        <td>Kryształowy Golem 2</td>
+        <td class="num">1e34</td>
+        <td class="num">15 s</td>
+        <td>225 Esencja + 22 500 Kamień rudy</td>
+        </tr>
+        <tr>
+        <td>Płomienny Golem</td>
+        <td class="num">1e37</td>
+        <td class="num">15 s</td>
+        <td>250 Esencja + 25 000 Kamień rudy</td>
+        </tr>
+        <tr>
+        <td>Golem Strażnik</td>
+        <td class="num">1e40</td>
+        <td class="num">10 s</td>
+        <td>275 Esencja + 27 500 Kamień rudy</td>
+        </tr>
+        </tbody></table></div>
+      <div class="callout warn">
+          <div class="callout-label">Przegrana kosztuje</div>
+          Jeśli boss wciąż stoi, gdy zegar dojdzie do zera, nie dostajesz <strong>nic</strong>, a klucz przepada. Po nieudanej próbie widzisz, ile zdrowia zostało - z tego oszacujesz, ile obrażeń brakuje.
+        </div>
+    </section>
+
+    <section id="achievements">
+      <div class="section-head"><span class="section-num">17</span><h2>Osiągnięcia</h2></div>
+      <p class="section-dek">86 osiągnięć w 24 kategoriach - kliknięcia, ruda, bossowie, prestiże, głębokość i więcej.</p>
+      <p>Każde osiągnięcie płaci <strong>Kamieniem rudy</strong>, a i cel, i nagroda rosną około dziesięciokrotnie na stopień. Większość kategorii ma trzy stopnie; złote i obrażeniowe idą dalej.</p>
+      <div class="callout">
+          <div class="callout-label">Pamiętaj odebrać</div>
+          Nagrody <strong>nie wpadają same</strong>. Jeśli od dawna nie zaglądałeś w zakładkę osiągnięć, czeka tam kupka.
+        </div>
+    </section>
+
+    <section id="daily">
+      <div class="section-head"><span class="section-num">18</span><h2>Nagroda dzienna</h2></div>
+      <p class="section-dek">Mała, prosta i bez kary za pominięty dzień.</p>
+      <p>Jedno wejście dziennie daje <strong>1 klucz do lochu</strong>. Codziennie to samo - nie ma kalendarza ani serii do pilnowania. Do odebrania trzeba być online.</p>
+    </section>
+
+    <section id="store">
+      <div class="section-head"><span class="section-num">19</span><h2>Sklep</h2></div>
+      <p class="section-dek">Diamenty, klucze, paczki, czas premium i trwałe przedmioty Nieskończoności.</p>
+      <ul>
+          <li><strong>Paczki diamentów:</strong> 200 / 550 / 1 150 / 2 400 / 6 250 / 14 000 diamentów. Im większa paczka, tym lepszy kurs.</li>
+          <li><strong>Paczki kluczy:</strong> 3 / 7 / 15 kluczy do lochu.</li>
+          <li><strong>Mały pakiet:</strong> 500 Diament, 100 Esencja, 10 Kamień umiejętności, 3 Klucz do lochu.</li>
+          <li><strong>Duży pakiet:</strong> 1 000 Diament, 200 Esencja, 20 Kamień umiejętności, 5 Klucz do lochu.</li>
+          <li><strong>7-dniowy pakiet Premium:</strong> 7 dni z x5 obrażeniami kliknięcia, x5 obrażeniami automatycznymi, x3 złotem, x3 odpornością na ciepło i x2 zarobkiem offline.</li>
+        </ul>
+      <p>Przedmioty Nieskończoności kupujesz <strong>raz za diamenty</strong> i nigdy się nie zerują, nawet przy prestiżu. W późnej grze to zwykle najlepsze wykorzystanie diamentów.</p>
+      <div class="table-wrap">
+        <table>
+        <thead><tr>
+        <th>Przedmiot</th>
+        <th class="num">Efekt</th>
+        <th class="num">Cena</th>
+        </tr></thead>
+        <tbody>
+        <tr>
+        <td>Nieskończona Moc</td>
+        <td class="num">x4</td>
+        <td class="num">350 💎</td>
+        </tr>
+        <tr>
+        <td>Nieskończony Dochód</td>
+        <td class="num">x3</td>
+        <td class="num">350 💎</td>
+        </tr>
+        <tr>
+        <td>Nieskończona Zbroja</td>
+        <td class="num">x2</td>
+        <td class="num">350 💎</td>
+        </tr>
+        <tr>
+        <td>Nieskończona Szybkość</td>
+        <td class="num">x1,5</td>
+        <td class="num">550 💎</td>
+        </tr>
+        <tr>
+        <td>Nieskończony Klikacz</td>
+        <td class="num">7 /s</td>
+        <td class="num">600 💎</td>
+        </tr>
+        </tbody></table></div>
+      <div class="callout">
+          <div class="callout-label">Ceny</div>
+          Ceny w sklepie przychodzą ze Steama w twojej walucie, dlatego nie ma ich tutaj. Zawartość paczki nigdy się nie zmienia; cena zależy od twojego regionu.
+        </div>
+    </section>
+
+    <section id="progress">
+      <div class="section-head"><span class="section-num">20</span><h2>Rankingi i statystyki</h2></div>
+      <p class="section-dek">Dwa miejsca, w których widać, jak idzie przebieg.</p>
+      <ul>
+          <li>Rankingi Steama liczą kliknięcia, obrażenia kliknięcia, liczbę prestiży, zabitych bossów i najwyższe piętro.</li>
+          <li>Ekran statystyk trzyma więcej - zarobki, wydatki, kliknięcia, czas gry i inne.</li>
+        </ul>
+    </section>
+
+    <section id="save">
+      <div class="section-head"><span class="section-num">21</span><h2>Zapisy</h2></div>
+      <p class="section-dek">Krótka odpowiedź: twój postęp chroni kilka warstw naraz.</p>
+      <ul>
+          <li>Gra zapisuje się sama, zaszyfrowana, co <strong>15 sekund</strong>.</li>
+          <li>Kopię do Steam Cloud wysyła około co <strong>45 sekund</strong>, a zawsze przy zamknięciu i pauzie - inny komputer podejmie od miejsca, w którym skończyłeś.</li>
+          <li>Jeśli plik zapisu się uszkodzi, gra sama sięga po kopię zapasową.</li>
+          <li>Zapis możesz też skopiować do schowka i wkleić na innym urządzeniu.</li>
+        </ul>
+    </section>
+
+    <section id="languages">
+      <div class="section-head"><span class="section-num">22</span><h2>Języki</h2></div>
+      <p class="section-dek">Gra wychodzi w 18 językach.</p>
+      <p>Angielski, turecki, niemiecki, francuski, hiszpański, hiszpański latynoamerykański, włoski, polski, portugalski brazylijski, rosyjski, ukraiński, japoński, koreański, chiński uproszczony, chiński tradycyjny, tajski, indonezyjski i wietnamski. Przy pierwszym uruchomieniu gra wybiera twój, a zmienisz go w każdej chwili w ustawieniach - ten poradnik jest we wszystkich, przez linki na górze strony.</p>
+    </section>
+
+    <footer class="doc-footer">Liczby odpowiadają aktualnemu balansowi gry i mogą się zmienić z aktualizacjami. Ceny w sklepie ustala Steam i pokazuje je w twojej walucie, dlatego nie ma ich tutaj.</footer>
+  </main>
+</div>

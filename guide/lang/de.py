@@ -1,0 +1,342 @@
+LANG = {
+    "code": "de",
+    "name": "Deutsch",
+    "html_lang": "de",
+    "locale": {"group": ".", "decimal": ","},
+    "title": "Clicker Ore Game - Spielerhandbuch",
+    "description": "Wie die Mine funktioniert: Währungen, Spitzhacken, Begleiter, Fähigkeiten, Prestige, Bosse und der Shop - ohne Formeln erklärt.",
+    "brand": "Clicker Ore Game",
+    "brand_sub": "Spielerhandbuch",
+    "eyebrow": "Spielerhandbuch - {date}",
+    "headline": "Die ganze Mine,<br>in klaren Worten",
+    "subtitle": "Was jedes System tut, ab welcher Etage es aufgeht und wo deine nächste Stunde am besten steckt. Keine Formeln - nur die Entscheidungen, die zählen.",
+    "footer": "Die Zahlen hier folgen dem aktuellen Balancing des Spiels und können sich mit Updates ändern. Shop-Preise legt Steam fest und zeigt sie in deiner Währung, deshalb stehen sie hier nicht.",
+    "labels": {
+        "contents": "Inhalt",
+        "per_second": "/s",
+        "second_short": "s",
+        "meter_short": "m",
+        "language": "Sprache",
+        "skill": "Fähigkeit",
+        "unlock_floor": "Etage",
+        "level_first": "Stufe 1 (Dauer / Abklingzeit)",
+        "level_last": "Stufe 7 (Dauer / Abklingzeit)",
+        "effect": "Effekt",
+        "boss": "Boss",
+        "health": "Leben",
+        "time_limit": "Zeit",
+        "reward": "Belohnung",
+        "parameter": "Parameter",
+        "per_level": "Pro Stufe",
+        "effect_dps": "Automatischer Schaden pro Sekunde",
+        "effect_click": "Klickschaden",
+        "effect_gold": "Goldeinkommen",
+        "effect_crit_chance": "Kritische Chance",
+        "effect_crit_multiplier": "Kritischer Multiplikator",
+        "effect_heat": "Hitzewiderstand",
+        "effect_click_from_dps": "Anteil des DPS auf Klicks",
+        "depth": "Tiefe",
+        "ore_types": "Erzarten",
+        "around_floor": "Etwa Etage",
+        "item": "Gegenstand",
+        "cost": "Preis",
+    },
+    "currencies": {
+        "gold": ["Durch das <b>Zerschlagen von Erz</b>.", "Für Spitzhacken- und Rüstungsstufen - dein Arbeitstier."],
+        "diamond": ["Kommt <b>nur aus Echtgeldkäufen</b>.", "Für Begleiter und die dauerhaften Unendlich-Gegenstände."],
+        "essence": ["Aus <b>Prestige</b> und Bosssiegen.", "Für die {prestige_parameter_count} dauerhaften Prestige-Parameter."],
+        "taskium": ["<b>+{taskium_per_click}</b> pro erfolgreichem Klick.", "Für das Annehmen und Neuwürfeln von Aufgaben."],
+        "dungeon_key": ["Ein Gratisschlüssel pro Tag, dazu Shop-Pakete.", "Für den Einstieg in einen Bosskampf - {boss_key_cost} pro Versuch."],
+        "skill_stone": ["Aus Shop-Paketen und dem Tauschfenster.", "Für die Stufen der {skill_count} aktiven Fähigkeiten."],
+        "ore_stone": ["<b>{ore_stone_min}-{ore_stone_max}</b> aus jedem Erz, dazu Erfolge.", "Wird im Tauschfenster zu Essenz oder Fähigkeitsstein."],
+    },
+    "sections": [
+        {
+            "id": "start",
+            "title": "Wo du anfängst",
+            "dek": "Drei Abschnitte, in der Reihenfolge, in der das Spiel Dinge freischaltet.",
+            "blocks": [
+                ("stages", [
+                    ["Früh - Etage 1 bis {prestige_first_floor}", [
+                        "Verbessere deine Spitzhacke ständig; kaufe die nächste, sobald sie aufgeht.",
+                        "{skill_ore_breaker} kommt auf Etage {skill_line_floor}, {skill_anger_click} auf Etage 70.",
+                        "Hol dir {pet_1}, sobald du die Diamanten übrig hast.",
+                    ]],
+                    ["Mitte - Etage {prestige_first_floor} bis {boss_floor}", [
+                        "Mach dein erstes Prestige auf Etage {prestige_first_floor}.",
+                        "Verteile Essenz auf alle {prestige_parameter_count} Parameter, statt einen zu maximieren.",
+                        "Aufgaben öffnen auf Etage {task_panel_floor}, Fähigkeitsbaum und Tauschfenster auf Etage {skill_tree_floor}.",
+                    ]],
+                    ["Spät - ab Etage {boss_floor}", [
+                        "Kämpfe gegen Bosse, wann immer du einen Schlüssel hast; sie sind dein Essenz-Motor.",
+                        "Kaufe die Unendlich-Gegenstände - sie sind dauerhaft und werden nie zurückgesetzt.",
+                        "Halte die Rüstung auf Stand, damit die Hitze deinen Schaden nicht auffrisst.",
+                    ]],
+                ]),
+                ("note", ["Gut zu wissen", "Die Zahlen werden schnell lang, deshalb wechselt das Spiel erst zu Kurzformen und dann zur wissenschaftlichen Schreibweise wie <strong>1,23e45</strong>. Es gibt keine Obergrenze - das ist nur eine andere Darstellung."]),
+            ],
+        },
+        {
+            "id": "currencies",
+            "title": "Die {currency_count} Währungen",
+            "dek": "Jede speist ein anderes System. Die richtige Währung an der falschen Stelle auszugeben ist der häufigste Anfängerfehler.",
+            "blocks": [
+                ("currencies", None),
+                ("note", ["Diamanten", "Bosse, Erfolge und Aufgaben geben nie Diamanten. Diamanten und Verliesschlüssel liegen auf dem Server, deshalb musst du für einen Begleiterkauf online sein."]),
+            ],
+        },
+        {
+            "id": "damage",
+            "title": "Klickschaden und automatischer Schaden",
+            "dek": "Zwei getrennte Schadensquellen, gespeist von verschiedenen Dingen.",
+            "blocks": [
+                ("p", "<strong>Klickschaden</strong> ist das, was ein Tippen anrichtet. Er wächst mit Stufe und Fähigkeiten deiner ersten Spitzhacke, der Fähigkeit {skill_anger_click}, deinem Titel und dem Prestige-Parameter {prestige_click}. Sobald {prestige_click_from_dps} Stufen hat, fließt außerdem ein Anteil deines Automatikschadens in jeden Klick."),
+                ("p", "<strong>Automatischer Schaden</strong> (pro Sekunde) kommt ab der zweiten Spitzhacke, von der Fähigkeit {skill_rampage}, vom Parameter {prestige_dps} und von deinen Begleitern."),
+                ("note", ["Begleiter sind die Ausnahme", "Begleiterschaden wird <strong>nach</strong> allen Multiplikatoren addiert, nicht von ihnen skaliert. Begleiterstufen allein tragen dich im späten Spiel nicht - Spitzhacken- und Fähigkeitsmultiplikatoren müssen mitwachsen."]),
+            ],
+        },
+        {
+            "id": "critical",
+            "title": "Kritische Treffer",
+            "dek": "Jeder Klick kann kritisch werden und härter zuschlagen.",
+            "blocks": [
+                ("p", "Du startest mit <strong>{crit_chance_percent}%</strong> Chance und <strong>x{crit_multiplier}</strong> Multiplikator. Vier Dinge heben das: die Fähigkeit {skill_critical_strike}, Spitzhacken-Fähigkeiten, die Prestige-Parameter {prestige_crit_chance} und {prestige_crit_multiplier} sowie Titel."),
+            ],
+        },
+        {
+            "id": "pickaxes",
+            "title": "Spitzhacken",
+            "dek": "{pickaxe_count} Spitzhacken, der Reihe nach freigeschaltet. Sie sind das Rückgrat deines Schadens.",
+            "blocks": [
+                ("ul", [
+                    "Die erste Spitzhacke kostet <strong>{pickaxe_first_cost} Gold</strong>; jede weitere etwa <strong>{pickaxe_cost_growth} mal</strong> so viel wie die vorige.",
+                    "Eine Spitzhacke schaltet sich selbst frei, sobald du in diesem Durchlauf genug Gold verdient hast - Verbessern öffnet also die nächste.",
+                    "Jede Stufe kostet rund <strong>{pickaxe_upgrade_growth_percent}%</strong> mehr als die vorherige.",
+                    "Nur die <strong>erste</strong> Spitzhacke speist den Klickschaden. Alle anderen speisen den Automatikschaden pro Sekunde.",
+                    "Jede Spitzhacke hat {pickaxe_skill_count} Fähigkeiten, die auf den Stufen {pickaxe_skill_levels} aufgehen. Manche helfen nur dieser Hacke, manche allen - die globalen sind mehr wert.",
+                ]),
+                ("note", ["Der große Sprung", "Alle <strong>{pickaxe_bonus_interval} Stufen</strong> vervielfacht eine Spitzhacke ihren eigenen Ausstoß mit <strong>x{pickaxe_bonus_multiplier}</strong>. Eine Hacke auf den nächsten Hunderter zu schieben ist meist der größte Kraftgewinn, den du hast."]),
+            ],
+        },
+        {
+            "id": "suits",
+            "title": "Rüstungen",
+            "dek": "{suit_count} Rüstungen, alle von Anfang an in deinem Besitz. Ihre Aufgabe ist die Hitze.",
+            "blocks": [
+                ("ul", [
+                    "Rüstung kaufst du nie, du verbesserst sie nur. Jede Stufe gibt etwa <strong>{suit_heat_per_level_percent}%</strong> Hitzewiderstand, ausgehend von {suit_base_heat_resistance}.",
+                    "Alle {suit_bonus_interval} Stufen wird der Widerstand der Rüstung mit <strong>x{suit_bonus_multiplier}</strong> vervielfacht.",
+                    "Jede Rüstung hat außerdem {suit_skill_count} Fähigkeiten, die mit den Stufen aufgehen.",
+                    "Das Rüstungsfenster öffnet auf Etage <strong>{suit_panel_floor}</strong>, zusammen mit der Hitzeanzeige.",
+                ]),
+            ],
+        },
+        {
+            "id": "temperature",
+            "title": "Hitze",
+            "dek": "Je tiefer du kommst, desto heißer wird es - und Hitze beschneidet leise deinen Schaden.",
+            "blocks": [
+                ("ul", [
+                    "Die Etagentemperatur steigt stetig - etwa <strong>{temperature_growth}x pro Etage</strong>, sie verdoppelt sich also alle zwei Dutzend Etagen.",
+                    "Solange dein Widerstand mindestens <strong>{temperature_safe_ratio}x</strong> der Temperatur beträgt, bleibt die Anzeige frei und du verlierst nichts.",
+                    "Fällt der Widerstand unter die Temperatur, sickert Schaden weg; bei <strong>{temperature_worst_ratio}x</strong> bleibt nur ein Zwanzigstel - ein Verlust von <strong>{temperature_worst_damage_percent}%</strong>.",
+                    "Im Rüstungsfenster gibt es einen Schalter, der Widerstand automatisch kauft; lass ihn an, wenn du oft in die Tiefe gehst.",
+                ]),
+                ("warn", ["Wenn es plötzlich stockt", "Eine Wand, an der Erz ewig braucht, ist fast immer Hitze und nicht Schaden. Prüfe die Anzeige, bevor du etwas anderes kaufst."]),
+            ],
+        },
+        {
+            "id": "pets",
+            "title": "Begleiter",
+            "dek": "{pet_count} Begleiter, mit Diamanten gekauft und dann mit Gold aufgestuft.",
+            "blocks": [
+                ("ul", [
+                    "Die Preise reichen von <strong>{pet_cost_first}</strong> bis <strong>{pet_cost_last}</strong> Diamanten ({pet_cost_list}).",
+                    "Jede Stufe fügt etwa <strong>{pet_dps_percent_per_level}%</strong> deines Spitzhacken-Klickschadens als Automatikschaden hinzu, multipliziert mit der Reihenfolge des Begleiters - {pet_5} gibt also auf gleicher Stufe das Fünffache von {pet_1}.",
+                    "Stufen werden jedes Mal rund <strong>{pet_upgrade_growth_percent}%</strong> teurer, und alle {pet_bonus_interval} Stufen vervielfacht der Begleiter seinen Ausstoß mit <strong>x{pet_bonus_multiplier}</strong>.",
+                    "Jeder Begleiter hat {pet_skill_count} Fähigkeiten; manche helfen nur ihm, manche allen.",
+                    "Das Begleiterfenster öffnet auf Etage <strong>{pet_panel_floor}</strong> oder sobald du einen Begleiter besitzt.",
+                ]),
+                ("warn", ["Prestige und Begleiter", "Prestige setzt jeden Begleiter auf <strong>Stufe 1</strong> zurück und löscht seine Fähigkeiten. Der Besitz bleibt aber - du kaufst einen Begleiter nie zweimal."]),
+            ],
+        },
+        {
+            "id": "floors",
+            "title": "Etagen, Erz und Tiefe",
+            "dek": "Die Etage bestimmt, wie hart das Erz ist und wie viel Gold es zahlt. Die Tiefe bestimmt, wie es aussieht.",
+            "blocks": [
+                ("ul", [
+                    "Jede Etage hat etwas mehr Leben und etwas mehr Gold als die vorige, und die Kurve wird steiler.",
+                    "Jede <strong>{duration_floor_interval}. Etage</strong> ist eine Zeitetage: eine Uhr über <strong>{duration_floor_seconds} Sekunden</strong> läuft, Leben liegt etwa {duration_floor_health_percent}% und Gold etwa {duration_floor_gold_percent}% höher.",
+                    "Die Schwierigkeit läuft außerdem in Zyklen von etwa {difficulty_cycle_floors} Etagen - die ersten Etagen eines Zyklus zahlen im Verhältnis zum Leben am besten.",
+                    "Jedes Erz lässt zusätzlich <strong>{ore_stone_min}-{ore_stone_max}</strong> Erzstein fallen.",
+                ]),
+                ("warn", ["Zeitetagen beißen", "Läuft die Uhr ab, wirst du <strong>eine Etage</strong> zurückgeschickt. Überspringe die Zeitetage lieber, als sie zu verlieren, wenn dein Schaden nicht reicht."]),
+                ("p", "Du kannst auf jede Etage zurück, die du in diesem Durchlauf erreicht hast, und dort farmen. Eine Etage per Hand zu wählen schaltet das automatische Aufsteigen ab; schalte es wieder ein, wenn du weiterklettern willst."),
+                ("p", "Es gibt insgesamt <strong>{ore_type_count}</strong> Erzarten, und die Tiefe entscheidet, welche auftauchen. Die Erzart ändert nur Aussehen und Staub - Leben und Gold kommen von der Etage."),
+                ("table", "depth"),
+            ],
+        },
+        {
+            "id": "skills",
+            "title": "Aktive Fähigkeiten",
+            "dek": "{skill_count} Fähigkeiten, jede ein Schub auf Zeit mit anschließender Abklingzeit.",
+            "blocks": [
+                ("p", "Eine Fähigkeit ist <strong>kostenlos</strong>, wenn ihre Etage kommt - du benutzt sie ab Stufe 1. Sie auf Stufe {skill_levels} zu bringen kostet insgesamt <strong>{skill_total_cost} Fähigkeitsstein</strong>, für alle {skill_count} zusammen <strong>{skill_all_total_cost}</strong>. Höhere Stufen bedeuten längere Dauer und kürzere Abklingzeit."),
+                ("table", "skills"),
+                ("p", "Die erste Fähigkeitslinie öffnet auf Etage {skill_line_floor}; das Fähigkeitsbaum-Fenster, in dem du Fähigkeitsstein ausgibst, auf Etage <strong>{skill_tree_floor}</strong>. Zum Benutzen brauchst du das Fenster nicht."),
+                ("note", ["Die Kombination", "Zünde zuerst {skill_overcharge}, dann die Fähigkeit, die du wirklich verstärken willst - zum Beispiel {skill_golden_frenzy}. {skill_time_reversal} kürzt danach die Abklingzeit der zuletzt benutzten Fähigkeit, du bekommst sie also früher zurück."]),
+            ],
+        },
+        {
+            "id": "titles",
+            "title": "Titel",
+            "dek": "{title_count} Titel, die dir beim Klettern von selbst zufallen.",
+            "blocks": [
+                ("ul", [
+                    "Titel reichen von Etage {title_first_floor} bis Etage <strong>{title_last_floor}</strong> und werden automatisch nach deiner höchsten Etage in diesem Durchlauf gewählt.",
+                    "Jeder Titel legt etwa <strong>+{title_effect_step}</strong> auf die Boni, die er trägt.",
+                    "Die Boni kommen gestaffelt: Klickschaden ab dem ersten Titel, dann Automatikschaden, Hitzewiderstand, Gold, kritischer Multiplikator, kritische Chance und der DPS-Anteil auf Klicks (Titel {title_effect_unlocks}).",
+                ]),
+            ],
+        },
+        {
+            "id": "tasks",
+            "title": "Aufgaben und {currency_taskium}",
+            "dek": "Ein Nebenstrang, der dein Klicken in ein zweites Einkommen verwandelt.",
+            "blocks": [
+                ("ul", [
+                    "Jeder erfolgreiche Klick gibt <strong>+{taskium_per_click} {currency_taskium}</strong>.",
+                    "Eine Aufgabe anzunehmen kostet <strong>{task_accept_cost}</strong>, sie neu zu würfeln <strong>{task_refresh_cost}</strong>.",
+                    "Das Aufgabenfenster öffnet auf Etage {task_panel_floor}; die {task_slot_count} Plätze auf den Etagen {task_slot_floors}.",
+                    "Es gibt {task_type_count} Aufgabenarten in {task_rarity_count} Seltenheiten. Jede Aufgabe läuft {task_duration_minutes} Minuten, nicht angenommene werden jede Stunde ersetzt.",
+                    "Die Belohnung wächst mit der Seltenheit - zwischen <strong>{task_reward_range}</strong> mal dem Erzgold der aktuellen Etage. Die seltensten zahlen zusätzlich Essenz.",
+                ]),
+            ],
+        },
+        {
+            "id": "trade",
+            "title": "Tauschfenster",
+            "dek": "Öffnet auf Etage {trade_floor}. Der einzige Ort, an dem Erzstein etwas wert ist.",
+            "blocks": [
+                ("ul", [
+                    "1 Fähigkeitsstein wird zu <strong>{trade_skill_stone_to_ore_stone} Erzstein</strong> - bis zu {trade_skill_stone_max} pro Tausch.",
+                    "<strong>{trade_ore_stone_to_essence} Erzstein</strong> werden zu 1 Essenz.",
+                    "<strong>{trade_ore_stone_to_skill_stone} Erzstein</strong> werden zu 1 Fähigkeitsstein.",
+                ]),
+                ("p", "Der letzte Punkt ist der wichtige: So wird eine lange Farm-Sitzung ohne Bosskampf zu Fähigkeitsstufen."),
+            ],
+        },
+        {
+            "id": "extras",
+            "title": "Gratisgold",
+            "dek": "Drei Quellen, die nichts verlangen außer da zu sein.",
+            "blocks": [
+                ("ul", [
+                    "<strong>Goldballon</strong> - ab Etage {balloon_floor} schwebt alle {balloon_min_seconds}-{balloon_max_seconds} Sekunden einer herein. Ein Klick zahlt <strong>x{balloon_multiplier}</strong> das Erzgold deiner besten Etage in diesem Durchlauf.",
+                    "<strong>Offline-Einnahmen</strong> - werden nach {offline_min_minutes} Minuten Abwesenheit gezählt und bei {offline_max_hours} Stunden gekappt. Premium verdoppelt sie.",
+                    "<strong>Spielzeit-Belohnung</strong> - alle {playtime_reward_minutes} Minuten Spielzeit zahlt sie etwa das {playtime_reward_multiplier}-fache einer Minute Gold auf deiner besten Etage.",
+                ]),
+            ],
+        },
+        {
+            "id": "prestige",
+            "title": "Prestige",
+            "dek": "Du tauschst den Fortschritt dieses Durchlaufs gegen dauerhafte Kraft. Gut getimt ist es das Schnellste im Spiel.",
+            "blocks": [
+                ("p", "Das Prestige-Fenster öffnet, wenn du zum ersten Mal Etage <strong>{prestige_first_floor}</strong> erreichst. Danach verlangt jedes Prestige {prestige_floor_step} Etagen mehr: {prestige_second_floor}, dann {prestige_third_floor}, und so weiter."),
+                ("ul", [
+                    "<strong>Zurückgesetzt:</strong> Gold, {currency_taskium}, Etagenfortschritt, Spitzhacken- und Rüstungsstufen, Begleiterstufen, alle gekauften Fähigkeiten und dein Bosslevel.",
+                    "<strong>Bleibt:</strong> Prestigestufe, Essenz, die Stufen der {prestige_parameter_count} Parameter, Begleiterbesitz, Unendlich-Gegenstände, Erfolge.",
+                    "Du fängst nicht auf Etage 1 an: der nächste Durchlauf startet auf <strong>{prestige_floor_step} x deiner Prestigestufe</strong>, dazu Startgold im Wert von etwa {prestige_gold_multiplier} Erz.",
+                    "Alle Abklingzeiten werden geleert, du beginnst also mit allen Fähigkeiten bereit.",
+                ]),
+                ("p", "Die Essenz-Belohnung kommt aus nur zwei Dingen: der <strong>höchsten Etage</strong>, die du erreicht hast (je {prestige_essence_per_floor}) und dem <strong>zerschlagenen Erz</strong> (je {prestige_essence_per_ore})."),
+                ("note", ["Erz schlagen, nicht sprinten", "Weil die Erzmenge der größere Posten ist, bringt eine bequeme Etage am Ende mehr als ein Sprint auf eine Etage, an der du kaum Schaden machst."]),
+                ("table", "prestige"),
+                ("p", "Die Boni addieren sich Stufe für Stufe, sie potenzieren sich nicht, und die Essenzkosten steigen langsam - Essenz regelmäßig auszugeben zahlt sich also mehr aus als sie zu horten."),
+            ],
+        },
+        {
+            "id": "bosses",
+            "title": "Bosse",
+            "dek": "Ein Schadensrennen auf Zeit, für Essenz. Öffnet auf Etage {boss_floor}.",
+            "blocks": [
+                ("ul", [
+                    "Du wählst einen Boss und gibst <strong>{boss_key_cost} Verliesschlüssel</strong> aus, um zu starten. Von allein beginnt nichts.",
+                    "Bosse gehen der Reihe nach auf - besiege einen, um den nächsten zu sehen. Das Leben steigt pro Schritt etwa tausendfach, die Uhr wird kürzer.",
+                    "Die Belohnungen wachsen mit deiner Prestigestufe: etwa <strong>+{boss_prestige_bonus_percent}%</strong> pro Stufe.",
+                    "Prestige setzt dein Bosslevel auf den ersten zurück.",
+                ]),
+                ("table", "bosses"),
+                ("warn", ["Verlieren kostet", "Steht der Boss noch, wenn die Uhr abläuft, bekommst du <strong>nichts</strong> und der Schlüssel ist weg. Nach einem Fehlversuch siehst du das übrige Leben - daran schätzt du ab, wie viel Schaden noch fehlt."]),
+            ],
+        },
+        {
+            "id": "achievements",
+            "title": "Erfolge",
+            "dek": "{achievement_count} Erfolge in {achievement_type_count} Kategorien - Klicks, Erz, Bosse, Prestige, Tiefe und mehr.",
+            "blocks": [
+                ("p", "Jeder Erfolg zahlt <strong>Erzstein</strong>, und Ziel wie Belohnung wachsen pro Stufe etwa um das Zehnfache. Die meisten Kategorien haben drei Stufen, die Gold- und Schadenskategorien gehen weiter."),
+                ("note", ["Abholen nicht vergessen", "Belohnungen kommen <strong>nicht automatisch</strong>. Wenn du den Erfolgstab länger nicht geöffnet hast, wartet dort ein Stapel."]),
+            ],
+        },
+        {
+            "id": "daily",
+            "title": "Tagesbelohnung",
+            "dek": "Klein, einfach, und ein verpasster Tag kostet nichts.",
+            "blocks": [
+                ("p", "Einmal am Tag einloggen gibt <strong>{daily_key_amount} Verliesschlüssel</strong>. Jeden Tag dasselbe - es gibt keinen Kalender und keine Serie zu schützen. Zum Abholen musst du online sein."),
+            ],
+        },
+        {
+            "id": "store",
+            "title": "Shop",
+            "dek": "Diamanten, Schlüssel, Pakete, Premium-Zeit und die dauerhaften Unendlich-Gegenstände.",
+            "blocks": [
+                ("ul", [
+                    "<strong>Diamantpakete:</strong> {diamond_pack_list} Diamanten. Je größer das Paket, desto besser der Kurs.",
+                    "<strong>Schlüsselpakete:</strong> {key_pack_list} Verliesschlüssel.",
+                    "<strong>{package_small}:</strong> {package_small_contents}.",
+                    "<strong>{package_big}:</strong> {package_big_contents}.",
+                    "<strong>{package_premium}:</strong> {premium_days} Tage mit x{premium_click_multiplier} Klickschaden, x{premium_dps_multiplier} Automatikschaden, x{premium_gold_multiplier} Gold, x{premium_heat_multiplier} Hitzewiderstand und x{premium_offline_multiplier} Offline-Einnahmen.",
+                ]),
+                ("p", "Die Unendlich-Gegenstände kaufst du <strong>einmal mit Diamanten</strong>, und sie werden nie zurückgesetzt, auch nicht bei Prestige. Im späten Spiel sind sie meist die beste Verwendung für Diamanten."),
+                ("table", "infinity"),
+                ("note", ["Preise", "Die Shop-Preise kommen von Steam in deiner Währung, deshalb stehen sie hier nicht. Was in einem Paket steckt, ändert sich nie; was es kostet, hängt von deiner Region ab."]),
+            ],
+        },
+        {
+            "id": "progress",
+            "title": "Bestenlisten und Statistiken",
+            "dek": "Zwei Orte, an denen du siehst, wie der Durchlauf läuft.",
+            "blocks": [
+                ("ul", [
+                    "Die Steam-Bestenlisten führen Klicks, Klickschaden, Prestigezahl, getötete Bosse und höchste Etage.",
+                    "Der Statistikbildschirm führt mehr - Einnahmen, Ausgaben, Klicks, Spielzeit und weiteres.",
+                ]),
+            ],
+        },
+        {
+            "id": "save",
+            "title": "Spielstände",
+            "dek": "Kurze Antwort: dein Fortschritt ist mehrfach abgesichert.",
+            "blocks": [
+                ("ul", [
+                    "Das Spiel speichert sich alle <strong>{save_seconds} Sekunden</strong> verschlüsselt selbst.",
+                    "Etwa alle <strong>{cloud_save_seconds} Sekunden</strong> sichert es in die Steam Cloud, und immer beim Schließen oder Pausieren - ein anderer Rechner macht damit dort weiter, wo du aufgehört hast.",
+                    "Ist eine Spielstanddatei beschädigt, greift das Spiel von selbst auf seine Sicherung zurück.",
+                    "Du kannst deinen Spielstand außerdem in die Zwischenablage kopieren und auf einem anderen Gerät einsetzen.",
+                ]),
+            ],
+        },
+        {
+            "id": "languages",
+            "title": "Sprachen",
+            "dek": "Das Spiel erscheint in {language_count} Sprachen.",
+            "blocks": [
+                ("p", "Englisch, Türkisch, Deutsch, Französisch, Spanisch, lateinamerikanisches Spanisch, Italienisch, Polnisch, brasilianisches Portugiesisch, Russisch, Ukrainisch, Japanisch, Koreanisch, Chinesisch (vereinfacht), Chinesisch (traditionell), Thai, Indonesisch und Vietnamesisch. Beim ersten Start wählt das Spiel deine Sprache, und du kannst sie jederzeit in den Einstellungen ändern - dieses Handbuch gibt es in allen, verlinkt oben auf der Seite."),
+            ],
+        },
+    ],
+}

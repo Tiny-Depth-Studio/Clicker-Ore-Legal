@@ -1,0 +1,1069 @@
+<title>Clicker Ore Game - Spielerhandbuch</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Wie die Mine funktioniert: Währungen, Spitzhacken, Begleiter, Fähigkeiten, Prestige, Bosse und der Shop - ohne Formeln erklärt.">
+<style>
+  :root {
+    --bg: #14110d;
+    --bg-elevated: #1d1811;
+    --bg-card: #211b13;
+    --text: #ede6d8;
+    --text-dim: #a89a82;
+    --text-faint: #766a55;
+    --accent: #e0a752;
+    --accent-strong: #f2bd6e;
+    --accent-2: #7fb8ad;
+    --border: #3a2f22;
+    --border-soft: #2a2318;
+    --danger: #cf7a5a;
+    --shadow: 0 8px 24px rgba(0,0,0,0.35);
+
+    --cur-gold: #e0a752;
+    --cur-diamond: #7fd1e0;
+    --cur-essence: #b79ef0;
+    --cur-taskium: #93a8d6;
+    --cur-key: #d98a63;
+    --cur-skillstone: #7fc9a0;
+    --cur-orestone: #b5a68c;
+
+    --font-display: "Bahnschrift", "Segoe UI Semibold", "Arial Narrow Bold", "Arial Narrow", sans-serif;
+    --font-body: "Sitka Text", "Iowan Old Style", Georgia, "Times New Roman", serif;
+    --font-mono: "Cascadia Mono", "Consolas", "SF Mono", ui-monospace, monospace;
+  }
+
+  :root[data-theme="light"] {
+    --bg: #efe9da;
+    --bg-elevated: #e6ddc8;
+    --bg-card: #f3ede0;
+    --text: #241d14;
+    --text-dim: #5c5138;
+    --text-faint: #857656;
+    --accent: #a8621a;
+    --accent-strong: #8a4e12;
+    --accent-2: #2f7a70;
+    --border: #d3c5a4;
+    --border-soft: #ddd0b1;
+    --danger: #a3492c;
+    --shadow: 0 8px 20px rgba(90,70,30,0.12);
+  }
+
+  @media (prefers-color-scheme: light) {
+    :root:not([data-theme="dark"]) {
+      --bg: #efe9da;
+      --bg-elevated: #e6ddc8;
+      --bg-card: #f3ede0;
+      --text: #241d14;
+      --text-dim: #5c5138;
+      --text-faint: #857656;
+      --accent: #a8621a;
+      --accent-strong: #8a4e12;
+      --accent-2: #2f7a70;
+      --border: #d3c5a4;
+      --border-soft: #ddd0b1;
+      --danger: #a3492c;
+      --shadow: 0 8px 20px rgba(90,70,30,0.12);
+    }
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: 17px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection { background: var(--accent); color: #14110d; }
+
+  a { color: var(--accent-strong); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  a:focus-visible, button:focus-visible, summary:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    text-wrap: balance;
+    letter-spacing: 0.01em;
+    color: var(--text);
+  }
+
+  p { max-width: 68ch; }
+  ul, ol { max-width: 68ch; }
+
+  .shell {
+    display: grid;
+    grid-template-columns: 260px minmax(0, 1fr);
+    min-height: 100vh;
+  }
+
+  .topbar {
+    display: none;
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: var(--bg-elevated);
+    border-bottom: 1px solid var(--border);
+    padding: 0.7rem 1rem;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .topbar-title {
+    font-family: var(--font-display);
+    font-size: 0.95rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--accent-strong);
+  }
+  #nav-toggle { display: none; }
+  .nav-toggle-btn {
+    font-family: var(--font-display);
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 0.4rem 0.7rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.85rem;
+  }
+
+  nav.toc {
+    position: sticky;
+    top: 0;
+    align-self: start;
+    height: 100vh;
+    overflow-y: auto;
+    padding: 2rem 1.4rem 3rem;
+    background: var(--bg-elevated);
+    border-right: 1px solid var(--border);
+  }
+  .toc-brand {
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    letter-spacing: 0.03em;
+    color: var(--accent-strong);
+    margin-bottom: 0.15rem;
+  }
+  .toc-brand small {
+    display: block;
+    font-family: var(--font-body);
+    font-style: italic;
+    font-size: 0.78rem;
+    color: var(--text-faint);
+    letter-spacing: 0;
+    margin-top: 0.25rem;
+  }
+  .toc-list {
+    list-style: none;
+    margin: 1.6rem 0 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+  }
+  .toc-list a {
+    display: block;
+    color: var(--text-dim);
+    font-size: 0.88rem;
+    padding: 0.32rem 0.5rem;
+    border-radius: 4px;
+    border-left: 2px solid transparent;
+  }
+  .toc-list a:hover {
+    color: var(--text);
+    text-decoration: none;
+    background: rgba(224,167,82,0.08);
+    border-left-color: var(--accent);
+  }
+  .toc-num {
+    font-family: var(--font-mono);
+    color: var(--text-faint);
+    font-size: 0.78rem;
+    margin-right: 0.45rem;
+  }
+
+  main {
+    padding: 3.2rem clamp(1.2rem, 4vw, 4rem) 6rem;
+    max-width: 900px;
+  }
+
+  header.hero {
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .strata {
+    height: 10px;
+    width: 100%;
+    border-radius: 3px;
+    margin-bottom: 1.6rem;
+    background: repeating-linear-gradient(
+      90deg,
+      var(--accent) 0 6%,
+      var(--accent-2) 6% 11%,
+      var(--border-soft) 11% 18%,
+      var(--accent) 18% 24%,
+      var(--border-soft) 24% 34%,
+      var(--accent-2) 34% 40%,
+      var(--accent) 40% 48%,
+      var(--border-soft) 48% 58%,
+      var(--accent-2) 58% 63%,
+      var(--accent) 63% 72%,
+      var(--border-soft) 72% 82%,
+      var(--accent-2) 82% 90%,
+      var(--accent) 90% 100%
+    );
+    opacity: 0.85;
+  }
+  .eyebrow {
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-size: 0.72rem;
+    color: var(--accent);
+    margin-bottom: 0.6rem;
+  }
+  h1.title {
+    font-size: clamp(2rem, 4.2vw, 2.9rem);
+    margin: 0 0 0.7rem;
+    line-height: 1.1;
+  }
+  .subtitle {
+    color: var(--text-dim);
+    font-size: 1.08rem;
+    max-width: 62ch;
+    margin: 0;
+  }
+
+  .langbar {
+    margin: 1.8rem 0 0;
+    padding-top: 1.2rem;
+    border-top: 1px solid var(--border-soft);
+  }
+  .langbar-label {
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 0.68rem;
+    color: var(--text-faint);
+    margin-bottom: 0.55rem;
+  }
+  .langbar-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem 0.4rem;
+  }
+  .langbar-list a, .langbar-list span {
+    font-family: var(--font-display);
+    font-size: 0.78rem;
+    padding: 0.18rem 0.55rem;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    color: var(--text-dim);
+    background: var(--bg-card);
+  }
+  .langbar-list a:hover {
+    text-decoration: none;
+    color: var(--text);
+    border-color: var(--accent);
+  }
+  .langbar-list span {
+    color: #14110d;
+    background: var(--accent);
+    border-color: var(--accent);
+  }
+  :root[data-theme="light"] .langbar-list span { color: #efe9da; }
+
+  section {
+    margin-bottom: 3.6rem;
+    scroll-margin-top: 1.5rem;
+  }
+  .section-head {
+    display: flex;
+    align-items: baseline;
+    gap: 0.7rem;
+    margin-bottom: 0.3rem;
+  }
+  .section-num {
+    font-family: var(--font-mono);
+    color: var(--accent);
+    font-size: 0.95rem;
+  }
+  h2 {
+    font-size: 1.55rem;
+    margin: 0;
+  }
+  .section-dek {
+    color: var(--text-dim);
+    font-size: 0.98rem;
+    margin: 0.3rem 0 1.5rem;
+    max-width: 62ch;
+  }
+
+  .callout {
+    border-left: 3px solid var(--accent);
+    background: var(--bg-card);
+    padding: 0.95rem 1.2rem;
+    border-radius: 0 6px 6px 0;
+    margin: 1.2rem 0;
+    font-size: 0.95rem;
+  }
+  .callout strong { color: var(--accent-strong); }
+  .callout.warn { border-left-color: var(--danger); }
+  .callout-label {
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 0.72rem;
+    color: var(--accent);
+    margin-bottom: 0.35rem;
+  }
+  .callout.warn .callout-label { color: var(--danger); }
+
+  .currency-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 0.9rem;
+    margin: 1.4rem 0;
+  }
+  .cur-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-top: 3px solid var(--dot);
+    border-radius: 6px;
+    padding: 0.95rem 1rem 1.05rem;
+  }
+  .cur-card h4 {
+    margin: 0 0 0.5rem;
+    font-size: 0.98rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .dot {
+    width: 9px; height: 9px; border-radius: 50%;
+    background: var(--dot);
+    flex: none;
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--dot) 20%, transparent);
+  }
+  .cur-card p {
+    margin: 0.15rem 0;
+    font-size: 0.84rem;
+    color: var(--text-dim);
+    max-width: none;
+  }
+  .cur-card p b { color: var(--text); font-weight: 600; }
+
+  .table-wrap {
+    overflow-x: auto;
+    margin: 1.2rem 0;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+  }
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    min-width: 460px;
+    font-size: 0.9rem;
+  }
+  thead th {
+    text-align: left;
+    font-family: var(--font-display);
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    font-size: 0.72rem;
+    color: var(--text-dim);
+    background: var(--bg-elevated);
+    padding: 0.6rem 0.85rem;
+    border-bottom: 1px solid var(--border);
+    white-space: nowrap;
+  }
+  tbody td {
+    padding: 0.55rem 0.85rem;
+    border-bottom: 1px solid var(--border-soft);
+    font-variant-numeric: tabular-nums;
+    color: var(--text);
+  }
+  tbody tr:last-child td { border-bottom: none; }
+  tbody tr:nth-child(even) { background: color-mix(in srgb, var(--accent) 3%, transparent); }
+  td.num, th.num { font-family: var(--font-mono); }
+  td.strong { color: var(--accent-strong); font-weight: 600; }
+
+  .strategy-track {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 1.4rem 0;
+  }
+  .strategy-stage {
+    background: var(--bg-card);
+    padding: 1rem 1.1rem;
+  }
+  .strategy-stage .stage-label {
+    font-family: var(--font-display);
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+    margin-bottom: 0.4rem;
+  }
+  .strategy-stage ul {
+    margin: 0;
+    padding-left: 1.1rem;
+    font-size: 0.86rem;
+    color: var(--text-dim);
+  }
+  .strategy-stage li { margin-bottom: 0.25rem; }
+
+  footer.doc-footer {
+    margin-top: 4rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+    color: var(--text-faint);
+    font-size: 0.8rem;
+  }
+
+  @media (max-width: 880px) {
+    .shell { grid-template-columns: 1fr; }
+    .topbar { display: flex; }
+    nav.toc {
+      position: fixed;
+      inset: 0 20% 0 0;
+      top: 52px;
+      height: calc(100vh - 52px);
+      transform: translateX(-100%);
+      transition: transform 0.22s ease;
+      z-index: 15;
+      box-shadow: var(--shadow);
+    }
+    #nav-toggle:checked ~ .shell nav.toc {
+      transform: translateX(0);
+    }
+    main { padding: 2rem 1.2rem 5rem; }
+  }
+</style>
+
+<input type="checkbox" id="nav-toggle">
+
+<div class="topbar">
+  <span class="topbar-title">&#9935; Spielerhandbuch</span>
+  <label class="nav-toggle-btn" for="nav-toggle">Inhalt</label>
+</div>
+
+<div class="shell">
+  <nav class="toc" aria-label="Inhalt">
+    <div class="toc-brand">Clicker Ore Game<small>Spielerhandbuch</small></div>
+    <ul class="toc-list">
+      <li><a href="#start"><span class="toc-num">01</span>Wo du anfängst</a></li>
+      <li><a href="#currencies"><span class="toc-num">02</span>Die 7 Währungen</a></li>
+      <li><a href="#damage"><span class="toc-num">03</span>Klickschaden und automatischer Schaden</a></li>
+      <li><a href="#critical"><span class="toc-num">04</span>Kritische Treffer</a></li>
+      <li><a href="#pickaxes"><span class="toc-num">05</span>Spitzhacken</a></li>
+      <li><a href="#suits"><span class="toc-num">06</span>Rüstungen</a></li>
+      <li><a href="#temperature"><span class="toc-num">07</span>Hitze</a></li>
+      <li><a href="#pets"><span class="toc-num">08</span>Begleiter</a></li>
+      <li><a href="#floors"><span class="toc-num">09</span>Etagen, Erz und Tiefe</a></li>
+      <li><a href="#skills"><span class="toc-num">10</span>Aktive Fähigkeiten</a></li>
+      <li><a href="#titles"><span class="toc-num">11</span>Titel</a></li>
+      <li><a href="#tasks"><span class="toc-num">12</span>Aufgaben und Taskium</a></li>
+      <li><a href="#trade"><span class="toc-num">13</span>Tauschfenster</a></li>
+      <li><a href="#extras"><span class="toc-num">14</span>Gratisgold</a></li>
+      <li><a href="#prestige"><span class="toc-num">15</span>Prestige</a></li>
+      <li><a href="#bosses"><span class="toc-num">16</span>Bosse</a></li>
+      <li><a href="#achievements"><span class="toc-num">17</span>Erfolge</a></li>
+      <li><a href="#daily"><span class="toc-num">18</span>Tagesbelohnung</a></li>
+      <li><a href="#store"><span class="toc-num">19</span>Shop</a></li>
+      <li><a href="#progress"><span class="toc-num">20</span>Bestenlisten und Statistiken</a></li>
+      <li><a href="#save"><span class="toc-num">21</span>Spielstände</a></li>
+      <li><a href="#languages"><span class="toc-num">22</span>Sprachen</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <header class="hero">
+      <div class="strata" role="presentation"></div>
+      <div class="eyebrow">Spielerhandbuch - 2026-08-12</div>
+      <h1 class="title">Die ganze Mine,<br>in klaren Worten</h1>
+      <p class="subtitle">Was jedes System tut, ab welcher Etage es aufgeht und wo deine nächste Stunde am besten steckt. Keine Formeln - nur die Entscheidungen, die zählen.</p>
+      <div class="langbar">
+        <div class="langbar-label">Sprache</div>
+        <div class="langbar-list"><a href="player_guide_en.html" hreflang="en">English</a><a href="player_guide_tr.html" hreflang="tr">Türkçe</a><span>Deutsch</span><a href="player_guide_fr.html" hreflang="fr">Français</a><a href="player_guide_es.html" hreflang="es">Español</a><a href="player_guide_es_la.html" hreflang="es-419">Español (Latinoamérica)</a><a href="player_guide_it.html" hreflang="it">Italiano</a><a href="player_guide_pl.html" hreflang="pl">Polski</a><a href="player_guide_pt_br.html" hreflang="pt-BR">Português (Brasil)</a><a href="player_guide_ru.html" hreflang="ru">Русский</a><a href="player_guide_uk.html" hreflang="uk">Українська</a><a href="player_guide_ja.html" hreflang="ja">日本語</a><a href="player_guide_ko.html" hreflang="ko">한국어</a><a href="player_guide_zh_hans.html" hreflang="zh-Hans">简体中文</a><a href="player_guide_zh_hant.html" hreflang="zh-Hant">繁體中文</a><a href="player_guide_th.html" hreflang="th">ไทย</a><a href="player_guide_id.html" hreflang="id">Bahasa Indonesia</a><a href="player_guide_vi.html" hreflang="vi">Tiếng Việt</a></div>
+      </div>
+    </header>
+
+    <section id="start">
+      <div class="section-head"><span class="section-num">01</span><h2>Wo du anfängst</h2></div>
+      <p class="section-dek">Drei Abschnitte, in der Reihenfolge, in der das Spiel Dinge freischaltet.</p>
+      <div class="strategy-track">
+          <div class="strategy-stage">
+            <div class="stage-label">Früh - Etage 1 bis 200</div>
+            <ul>
+              <li>Verbessere deine Spitzhacke ständig; kaufe die nächste, sobald sie aufgeht.</li>
+              <li>Erzbrecher kommt auf Etage 50, Zornklick auf Etage 70.</li>
+              <li>Hol dir Felsi, sobald du die Diamanten übrig hast.</li>
+            </ul>
+          </div>
+          <div class="strategy-stage">
+            <div class="stage-label">Mitte - Etage 200 bis 350</div>
+            <ul>
+              <li>Mach dein erstes Prestige auf Etage 200.</li>
+              <li>Verteile Essenz auf alle 7 Parameter, statt einen zu maximieren.</li>
+              <li>Aufgaben öffnen auf Etage 160, Fähigkeitsbaum und Tauschfenster auf Etage 180.</li>
+            </ul>
+          </div>
+          <div class="strategy-stage">
+            <div class="stage-label">Spät - ab Etage 350</div>
+            <ul>
+              <li>Kämpfe gegen Bosse, wann immer du einen Schlüssel hast; sie sind dein Essenz-Motor.</li>
+              <li>Kaufe die Unendlich-Gegenstände - sie sind dauerhaft und werden nie zurückgesetzt.</li>
+              <li>Halte die Rüstung auf Stand, damit die Hitze deinen Schaden nicht auffrisst.</li>
+            </ul>
+          </div>
+        </div>
+      <div class="callout">
+          <div class="callout-label">Gut zu wissen</div>
+          Die Zahlen werden schnell lang, deshalb wechselt das Spiel erst zu Kurzformen und dann zur wissenschaftlichen Schreibweise wie <strong>1,23e45</strong>. Es gibt keine Obergrenze - das ist nur eine andere Darstellung.
+        </div>
+    </section>
+
+    <section id="currencies">
+      <div class="section-head"><span class="section-num">02</span><h2>Die 7 Währungen</h2></div>
+      <p class="section-dek">Jede speist ein anderes System. Die richtige Währung an der falschen Stelle auszugeben ist der häufigste Anfängerfehler.</p>
+      <div class="currency-grid">
+        <div class="cur-card" style="--dot:var(--cur-gold)">
+          <h4><span class="dot"></span>Gold</h4>
+          <p>Durch das <b>Zerschlagen von Erz</b>.</p>
+          <p>Für Spitzhacken- und Rüstungsstufen - dein Arbeitstier.</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-diamond)">
+          <h4><span class="dot"></span>Diamant</h4>
+          <p>Kommt <b>nur aus Echtgeldkäufen</b>.</p>
+          <p>Für Begleiter und die dauerhaften Unendlich-Gegenstände.</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-essence)">
+          <h4><span class="dot"></span>Essenz</h4>
+          <p>Aus <b>Prestige</b> und Bosssiegen.</p>
+          <p>Für die 7 dauerhaften Prestige-Parameter.</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-taskium)">
+          <h4><span class="dot"></span>Taskium</h4>
+          <p><b>+1</b> pro erfolgreichem Klick.</p>
+          <p>Für das Annehmen und Neuwürfeln von Aufgaben.</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-key)">
+          <h4><span class="dot"></span>Verliesschlüssel</h4>
+          <p>Ein Gratisschlüssel pro Tag, dazu Shop-Pakete.</p>
+          <p>Für den Einstieg in einen Bosskampf - 1 pro Versuch.</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-skillstone)">
+          <h4><span class="dot"></span>Fertigkeitsstein</h4>
+          <p>Aus Shop-Paketen und dem Tauschfenster.</p>
+          <p>Für die Stufen der 8 aktiven Fähigkeiten.</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-orestone)">
+          <h4><span class="dot"></span>Erzstein</h4>
+          <p><b>1-5</b> aus jedem Erz, dazu Erfolge.</p>
+          <p>Wird im Tauschfenster zu Essenz oder Fähigkeitsstein.</p>
+        </div>
+      </div>
+      <div class="callout">
+          <div class="callout-label">Diamanten</div>
+          Bosse, Erfolge und Aufgaben geben nie Diamanten. Diamanten und Verliesschlüssel liegen auf dem Server, deshalb musst du für einen Begleiterkauf online sein.
+        </div>
+    </section>
+
+    <section id="damage">
+      <div class="section-head"><span class="section-num">03</span><h2>Klickschaden und automatischer Schaden</h2></div>
+      <p class="section-dek">Zwei getrennte Schadensquellen, gespeist von verschiedenen Dingen.</p>
+      <p><strong>Klickschaden</strong> ist das, was ein Tippen anrichtet. Er wächst mit Stufe und Fähigkeiten deiner ersten Spitzhacke, der Fähigkeit Zornklick, deinem Titel und dem Prestige-Parameter Hand des Steinbrechers. Sobald Einheit der Kraft Stufen hat, fließt außerdem ein Anteil deines Automatikschadens in jeden Klick.</p>
+      <p><strong>Automatischer Schaden</strong> (pro Sekunde) kommt ab der zweiten Spitzhacke, von der Fähigkeit Amoklauf, vom Parameter Ewige Schmiede und von deinen Begleitern.</p>
+      <div class="callout">
+          <div class="callout-label">Begleiter sind die Ausnahme</div>
+          Begleiterschaden wird <strong>nach</strong> allen Multiplikatoren addiert, nicht von ihnen skaliert. Begleiterstufen allein tragen dich im späten Spiel nicht - Spitzhacken- und Fähigkeitsmultiplikatoren müssen mitwachsen.
+        </div>
+    </section>
+
+    <section id="critical">
+      <div class="section-head"><span class="section-num">04</span><h2>Kritische Treffer</h2></div>
+      <p class="section-dek">Jeder Klick kann kritisch werden und härter zuschlagen.</p>
+      <p>Du startest mit <strong>5%</strong> Chance und <strong>x1,5</strong> Multiplikator. Vier Dinge heben das: die Fähigkeit Kritischer Schlag, Spitzhacken-Fähigkeiten, die Prestige-Parameter Erzorakel und Kataklysmische Kraft sowie Titel.</p>
+    </section>
+
+    <section id="pickaxes">
+      <div class="section-head"><span class="section-num">05</span><h2>Spitzhacken</h2></div>
+      <p class="section-dek">45 Spitzhacken, der Reihe nach freigeschaltet. Sie sind das Rückgrat deines Schadens.</p>
+      <ul>
+          <li>Die erste Spitzhacke kostet <strong>5 Gold</strong>; jede weitere etwa <strong>8 mal</strong> so viel wie die vorige.</li>
+          <li>Eine Spitzhacke schaltet sich selbst frei, sobald du in diesem Durchlauf genug Gold verdient hast - Verbessern öffnet also die nächste.</li>
+          <li>Jede Stufe kostet rund <strong>7%</strong> mehr als die vorherige.</li>
+          <li>Nur die <strong>erste</strong> Spitzhacke speist den Klickschaden. Alle anderen speisen den Automatikschaden pro Sekunde.</li>
+          <li>Jede Spitzhacke hat 6 Fähigkeiten, die auf den Stufen 5 / 10 / 25 / 50 / 100 / 200 aufgehen. Manche helfen nur dieser Hacke, manche allen - die globalen sind mehr wert.</li>
+        </ul>
+      <div class="callout">
+          <div class="callout-label">Der große Sprung</div>
+          Alle <strong>100 Stufen</strong> vervielfacht eine Spitzhacke ihren eigenen Ausstoß mit <strong>x10</strong>. Eine Hacke auf den nächsten Hunderter zu schieben ist meist der größte Kraftgewinn, den du hast.
+        </div>
+    </section>
+
+    <section id="suits">
+      <div class="section-head"><span class="section-num">06</span><h2>Rüstungen</h2></div>
+      <p class="section-dek">5 Rüstungen, alle von Anfang an in deinem Besitz. Ihre Aufgabe ist die Hitze.</p>
+      <ul>
+          <li>Rüstung kaufst du nie, du verbesserst sie nur. Jede Stufe gibt etwa <strong>5%</strong> Hitzewiderstand, ausgehend von 50.</li>
+          <li>Alle 100 Stufen wird der Widerstand der Rüstung mit <strong>x2</strong> vervielfacht.</li>
+          <li>Jede Rüstung hat außerdem 6 Fähigkeiten, die mit den Stufen aufgehen.</li>
+          <li>Das Rüstungsfenster öffnet auf Etage <strong>130</strong>, zusammen mit der Hitzeanzeige.</li>
+        </ul>
+    </section>
+
+    <section id="temperature">
+      <div class="section-head"><span class="section-num">07</span><h2>Hitze</h2></div>
+      <p class="section-dek">Je tiefer du kommst, desto heißer wird es - und Hitze beschneidet leise deinen Schaden.</p>
+      <ul>
+          <li>Die Etagentemperatur steigt stetig - etwa <strong>1,04x pro Etage</strong>, sie verdoppelt sich also alle zwei Dutzend Etagen.</li>
+          <li>Solange dein Widerstand mindestens <strong>1,5x</strong> der Temperatur beträgt, bleibt die Anzeige frei und du verlierst nichts.</li>
+          <li>Fällt der Widerstand unter die Temperatur, sickert Schaden weg; bei <strong>0,5x</strong> bleibt nur ein Zwanzigstel - ein Verlust von <strong>95%</strong>.</li>
+          <li>Im Rüstungsfenster gibt es einen Schalter, der Widerstand automatisch kauft; lass ihn an, wenn du oft in die Tiefe gehst.</li>
+        </ul>
+      <div class="callout warn">
+          <div class="callout-label">Wenn es plötzlich stockt</div>
+          Eine Wand, an der Erz ewig braucht, ist fast immer Hitze und nicht Schaden. Prüfe die Anzeige, bevor du etwas anderes kaufst.
+        </div>
+    </section>
+
+    <section id="pets">
+      <div class="section-head"><span class="section-num">08</span><h2>Begleiter</h2></div>
+      <p class="section-dek">5 Begleiter, mit Diamanten gekauft und dann mit Gold aufgestuft.</p>
+      <ul>
+          <li>Die Preise reichen von <strong>150</strong> bis <strong>250</strong> Diamanten (150 / 175 / 200 / 225 / 250).</li>
+          <li>Jede Stufe fügt etwa <strong>1%</strong> deines Spitzhacken-Klickschadens als Automatikschaden hinzu, multipliziert mit der Reihenfolge des Begleiters - Schattensplitter gibt also auf gleicher Stufe das Fünffache von Felsi.</li>
+          <li>Stufen werden jedes Mal rund <strong>20%</strong> teurer, und alle 100 Stufen vervielfacht der Begleiter seinen Ausstoß mit <strong>x5</strong>.</li>
+          <li>Jeder Begleiter hat 6 Fähigkeiten; manche helfen nur ihm, manche allen.</li>
+          <li>Das Begleiterfenster öffnet auf Etage <strong>30</strong> oder sobald du einen Begleiter besitzt.</li>
+        </ul>
+      <div class="callout warn">
+          <div class="callout-label">Prestige und Begleiter</div>
+          Prestige setzt jeden Begleiter auf <strong>Stufe 1</strong> zurück und löscht seine Fähigkeiten. Der Besitz bleibt aber - du kaufst einen Begleiter nie zweimal.
+        </div>
+    </section>
+
+    <section id="floors">
+      <div class="section-head"><span class="section-num">09</span><h2>Etagen, Erz und Tiefe</h2></div>
+      <p class="section-dek">Die Etage bestimmt, wie hart das Erz ist und wie viel Gold es zahlt. Die Tiefe bestimmt, wie es aussieht.</p>
+      <ul>
+          <li>Jede Etage hat etwas mehr Leben und etwas mehr Gold als die vorige, und die Kurve wird steiler.</li>
+          <li>Jede <strong>10. Etage</strong> ist eine Zeitetage: eine Uhr über <strong>20 Sekunden</strong> läuft, Leben liegt etwa 50% und Gold etwa 51% höher.</li>
+          <li>Die Schwierigkeit läuft außerdem in Zyklen von etwa 100 Etagen - die ersten Etagen eines Zyklus zahlen im Verhältnis zum Leben am besten.</li>
+          <li>Jedes Erz lässt zusätzlich <strong>1-5</strong> Erzstein fallen.</li>
+        </ul>
+      <div class="callout warn">
+          <div class="callout-label">Zeitetagen beißen</div>
+          Läuft die Uhr ab, wirst du <strong>eine Etage</strong> zurückgeschickt. Überspringe die Zeitetage lieber, als sie zu verlieren, wenn dein Schaden nicht reicht.
+        </div>
+      <p>Du kannst auf jede Etage zurück, die du in diesem Durchlauf erreicht hast, und dort farmen. Eine Etage per Hand zu wählen schaltet das automatische Aufsteigen ab; schalte es wieder ein, wenn du weiterklettern willst.</p>
+      <p>Es gibt insgesamt <strong>40</strong> Erzarten, und die Tiefe entscheidet, welche auftauchen. Die Erzart ändert nur Aussehen und Staub - Leben und Gold kommen von der Etage.</p>
+      <div class="table-wrap">
+        <table>
+        <thead><tr>
+        <th class="num">Tiefe</th>
+        <th class="num">Erzarten</th>
+        <th class="num">Etwa Etage</th>
+        </tr></thead>
+        <tbody>
+        <tr>
+        <td class="num">0-100 m</td>
+        <td class="num">9</td>
+        <td class="num">~54</td>
+        </tr>
+        <tr>
+        <td class="num">100-500 m</td>
+        <td class="num">20</td>
+        <td class="num">~129</td>
+        </tr>
+        <tr>
+        <td class="num">500-1.500 m</td>
+        <td class="num">30</td>
+        <td class="num">~196</td>
+        </tr>
+        <tr>
+        <td class="num">1.500 m+</td>
+        <td class="num">40</td>
+        <td class="num">-</td>
+        </tr>
+        </tbody></table></div>
+    </section>
+
+    <section id="skills">
+      <div class="section-head"><span class="section-num">10</span><h2>Aktive Fähigkeiten</h2></div>
+      <p class="section-dek">8 Fähigkeiten, jede ein Schub auf Zeit mit anschließender Abklingzeit.</p>
+      <p>Eine Fähigkeit ist <strong>kostenlos</strong>, wenn ihre Etage kommt - du benutzt sie ab Stufe 1. Sie auf Stufe 7 zu bringen kostet insgesamt <strong>63 Fähigkeitsstein</strong>, für alle 8 zusammen <strong>504</strong>. Höhere Stufen bedeuten längere Dauer und kürzere Abklingzeit.</p>
+      <div class="table-wrap">
+        <table>
+        <thead><tr>
+        <th>Fähigkeit</th>
+        <th class="num">Etage</th>
+        <th class="num">Stufe 1 (Dauer / Abklingzeit)</th>
+        <th class="num">Stufe 7 (Dauer / Abklingzeit)</th>
+        <th class="num">Effekt</th>
+        </tr></thead>
+        <tbody>
+        <tr>
+        <td>Erzbrecher</td>
+        <td class="num">50</td>
+        <td class="num">30s / 540s</td>
+        <td class="num">90s / 180s</td>
+        <td class="num">7 → 13 /s</td>
+        </tr>
+        <tr>
+        <td>Zornklick</td>
+        <td class="num">70</td>
+        <td class="num">40s / 660s</td>
+        <td class="num">210s / 300s</td>
+        <td class="num">x2 → x5</td>
+        </tr>
+        <tr>
+        <td>Kritischer Schlag</td>
+        <td class="num">100</td>
+        <td class="num">30s / 600s</td>
+        <td class="num">150s / 240s</td>
+        <td class="num">x1,3 → x1,9</td>
+        </tr>
+        <tr>
+        <td>Amoklauf</td>
+        <td class="num">170</td>
+        <td class="num">40s / 840s</td>
+        <td class="num">160s / 480s</td>
+        <td class="num">x2 → x3,5</td>
+        </tr>
+        <tr>
+        <td>Goldrausch</td>
+        <td class="num">240</td>
+        <td class="num">50s / 1.020s</td>
+        <td class="num">290s / 660s</td>
+        <td class="num">x2 → x5</td>
+        </tr>
+        <tr>
+        <td>Hitzeresistenz</td>
+        <td class="num">280</td>
+        <td class="num">30s / 660s</td>
+        <td class="num">140s / 300s</td>
+        <td class="num">x2 → x5</td>
+        </tr>
+        <tr>
+        <td>Überladung</td>
+        <td class="num">330</td>
+        <td class="num">20s / 1.200s</td>
+        <td class="num">20s / 840s</td>
+        <td class="num">x1,5 → x3</td>
+        </tr>
+        <tr>
+        <td>Zeitumkehr</td>
+        <td class="num">400</td>
+        <td class="num">1.200s</td>
+        <td class="num">840s</td>
+        <td class="num">-300s → -1.020s</td>
+        </tr>
+        </tbody></table></div>
+      <p>Die erste Fähigkeitslinie öffnet auf Etage 50; das Fähigkeitsbaum-Fenster, in dem du Fähigkeitsstein ausgibst, auf Etage <strong>180</strong>. Zum Benutzen brauchst du das Fenster nicht.</p>
+      <div class="callout">
+          <div class="callout-label">Die Kombination</div>
+          Zünde zuerst Überladung, dann die Fähigkeit, die du wirklich verstärken willst - zum Beispiel Goldrausch. Zeitumkehr kürzt danach die Abklingzeit der zuletzt benutzten Fähigkeit, du bekommst sie also früher zurück.
+        </div>
+    </section>
+
+    <section id="titles">
+      <div class="section-head"><span class="section-num">11</span><h2>Titel</h2></div>
+      <p class="section-dek">100 Titel, die dir beim Klettern von selbst zufallen.</p>
+      <ul>
+          <li>Titel reichen von Etage 1 bis Etage <strong>50.000</strong> und werden automatisch nach deiner höchsten Etage in diesem Durchlauf gewählt.</li>
+          <li>Jeder Titel legt etwa <strong>+0,1</strong> auf die Boni, die er trägt.</li>
+          <li>Die Boni kommen gestaffelt: Klickschaden ab dem ersten Titel, dann Automatikschaden, Hitzewiderstand, Gold, kritischer Multiplikator, kritische Chance und der DPS-Anteil auf Klicks (Titel 1 / 5 / 10 / 15 / 20 / 25 / 30).</li>
+        </ul>
+    </section>
+
+    <section id="tasks">
+      <div class="section-head"><span class="section-num">12</span><h2>Aufgaben und Taskium</h2></div>
+      <p class="section-dek">Ein Nebenstrang, der dein Klicken in ein zweites Einkommen verwandelt.</p>
+      <ul>
+          <li>Jeder erfolgreiche Klick gibt <strong>+1 Taskium</strong>.</li>
+          <li>Eine Aufgabe anzunehmen kostet <strong>200</strong>, sie neu zu würfeln <strong>25</strong>.</li>
+          <li>Das Aufgabenfenster öffnet auf Etage 160; die 6 Plätze auf den Etagen 160 / 170 / 180 / 190 / 200 / 210.</li>
+          <li>Es gibt 10 Aufgabenarten in 6 Seltenheiten. Jede Aufgabe läuft 60 Minuten, nicht angenommene werden jede Stunde ersetzt.</li>
+          <li>Die Belohnung wächst mit der Seltenheit - zwischen <strong>50-500</strong> mal dem Erzgold der aktuellen Etage. Die seltensten zahlen zusätzlich Essenz.</li>
+        </ul>
+    </section>
+
+    <section id="trade">
+      <div class="section-head"><span class="section-num">13</span><h2>Tauschfenster</h2></div>
+      <p class="section-dek">Öffnet auf Etage 180. Der einzige Ort, an dem Erzstein etwas wert ist.</p>
+      <ul>
+          <li>1 Fähigkeitsstein wird zu <strong>5.000 Erzstein</strong> - bis zu 100.000 pro Tausch.</li>
+          <li><strong>2.000 Erzstein</strong> werden zu 1 Essenz.</li>
+          <li><strong>5.000 Erzstein</strong> werden zu 1 Fähigkeitsstein.</li>
+        </ul>
+      <p>Der letzte Punkt ist der wichtige: So wird eine lange Farm-Sitzung ohne Bosskampf zu Fähigkeitsstufen.</p>
+    </section>
+
+    <section id="extras">
+      <div class="section-head"><span class="section-num">14</span><h2>Gratisgold</h2></div>
+      <p class="section-dek">Drei Quellen, die nichts verlangen außer da zu sein.</p>
+      <ul>
+          <li><strong>Goldballon</strong> - ab Etage 50 schwebt alle 70-105 Sekunden einer herein. Ein Klick zahlt <strong>x6</strong> das Erzgold deiner besten Etage in diesem Durchlauf.</li>
+          <li><strong>Offline-Einnahmen</strong> - werden nach 60 Minuten Abwesenheit gezählt und bei 12 Stunden gekappt. Premium verdoppelt sie.</li>
+          <li><strong>Spielzeit-Belohnung</strong> - alle 60 Minuten Spielzeit zahlt sie etwa das 100-fache einer Minute Gold auf deiner besten Etage.</li>
+        </ul>
+    </section>
+
+    <section id="prestige">
+      <div class="section-head"><span class="section-num">15</span><h2>Prestige</h2></div>
+      <p class="section-dek">Du tauschst den Fortschritt dieses Durchlaufs gegen dauerhafte Kraft. Gut getimt ist es das Schnellste im Spiel.</p>
+      <p>Das Prestige-Fenster öffnet, wenn du zum ersten Mal Etage <strong>200</strong> erreichst. Danach verlangt jedes Prestige 100 Etagen mehr: 300, dann 400, und so weiter.</p>
+      <ul>
+          <li><strong>Zurückgesetzt:</strong> Gold, Taskium, Etagenfortschritt, Spitzhacken- und Rüstungsstufen, Begleiterstufen, alle gekauften Fähigkeiten und dein Bosslevel.</li>
+          <li><strong>Bleibt:</strong> Prestigestufe, Essenz, die Stufen der 7 Parameter, Begleiterbesitz, Unendlich-Gegenstände, Erfolge.</li>
+          <li>Du fängst nicht auf Etage 1 an: der nächste Durchlauf startet auf <strong>100 x deiner Prestigestufe</strong>, dazu Startgold im Wert von etwa 500 Erz.</li>
+          <li>Alle Abklingzeiten werden geleert, du beginnst also mit allen Fähigkeiten bereit.</li>
+        </ul>
+      <p>Die Essenz-Belohnung kommt aus nur zwei Dingen: der <strong>höchsten Etage</strong>, die du erreicht hast (je 0,5) und dem <strong>zerschlagenen Erz</strong> (je 0,25).</p>
+      <div class="callout">
+          <div class="callout-label">Erz schlagen, nicht sprinten</div>
+          Weil die Erzmenge der größere Posten ist, bringt eine bequeme Etage am Ende mehr als ein Sprint auf eine Etage, an der du kaum Schaden machst.
+        </div>
+      <div class="table-wrap">
+        <table>
+        <thead><tr>
+        <th>Parameter</th>
+        <th>Effekt</th>
+        <th class="num">Pro Stufe</th>
+        </tr></thead>
+        <tbody>
+        <tr>
+        <td>Ewige Schmiede</td>
+        <td>Automatischer Schaden pro Sekunde</td>
+        <td class="num">+20%</td>
+        </tr>
+        <tr>
+        <td>Hand des Steinbrechers</td>
+        <td>Klickschaden</td>
+        <td class="num">+25%</td>
+        </tr>
+        <tr>
+        <td>Goldener Abgrund</td>
+        <td>Goldeinkommen</td>
+        <td class="num">+10%</td>
+        </tr>
+        <tr>
+        <td>Erzorakel</td>
+        <td>Kritische Chance</td>
+        <td class="num">+5%</td>
+        </tr>
+        <tr>
+        <td>Kataklysmische Kraft</td>
+        <td>Kritischer Multiplikator</td>
+        <td class="num">+5%</td>
+        </tr>
+        <tr>
+        <td>Höllenschild</td>
+        <td>Hitzewiderstand</td>
+        <td class="num">+10%</td>
+        </tr>
+        <tr>
+        <td>Einheit der Kraft</td>
+        <td>Anteil des DPS auf Klicks</td>
+        <td class="num">+1%</td>
+        </tr>
+        </tbody></table></div>
+      <p>Die Boni addieren sich Stufe für Stufe, sie potenzieren sich nicht, und die Essenzkosten steigen langsam - Essenz regelmäßig auszugeben zahlt sich also mehr aus als sie zu horten.</p>
+    </section>
+
+    <section id="bosses">
+      <div class="section-head"><span class="section-num">16</span><h2>Bosse</h2></div>
+      <p class="section-dek">Ein Schadensrennen auf Zeit, für Essenz. Öffnet auf Etage 350.</p>
+      <ul>
+          <li>Du wählst einen Boss und gibst <strong>1 Verliesschlüssel</strong> aus, um zu starten. Von allein beginnt nichts.</li>
+          <li>Bosse gehen der Reihe nach auf - besiege einen, um den nächsten zu sehen. Das Leben steigt pro Schritt etwa tausendfach, die Uhr wird kürzer.</li>
+          <li>Die Belohnungen wachsen mit deiner Prestigestufe: etwa <strong>+15%</strong> pro Stufe.</li>
+          <li>Prestige setzt dein Bosslevel auf den ersten zurück.</li>
+        </ul>
+      <div class="table-wrap">
+        <table>
+        <thead><tr>
+        <th>Boss</th>
+        <th class="num">Leben</th>
+        <th class="num">Zeit</th>
+        <th>Belohnung</th>
+        </tr></thead>
+        <tbody>
+        <tr>
+        <td>Kristallkoloss</td>
+        <td class="num">1e13</td>
+        <td class="num">30s</td>
+        <td>50 Essenz + 5.000 Erzstein</td>
+        </tr>
+        <tr>
+        <td>Kristallwächter</td>
+        <td class="num">1e16</td>
+        <td class="num">25s</td>
+        <td>75 Essenz + 7.500 Erzstein</td>
+        </tr>
+        <tr>
+        <td>Purpurner Wächter</td>
+        <td class="num">1e19</td>
+        <td class="num">20s</td>
+        <td>100 Essenz + 10.000 Erzstein</td>
+        </tr>
+        <tr>
+        <td>Steinwächter</td>
+        <td class="num">1e22</td>
+        <td class="num">20s</td>
+        <td>125 Essenz + 12.500 Erzstein</td>
+        </tr>
+        <tr>
+        <td>Frosttitan</td>
+        <td class="num">1e25</td>
+        <td class="num">20s</td>
+        <td>150 Essenz + 15.000 Erzstein</td>
+        </tr>
+        <tr>
+        <td>Kristallgolem 1</td>
+        <td class="num">1e28</td>
+        <td class="num">20s</td>
+        <td>175 Essenz + 17.500 Erzstein</td>
+        </tr>
+        <tr>
+        <td>Steinbart-Koloss</td>
+        <td class="num">1e31</td>
+        <td class="num">15s</td>
+        <td>200 Essenz + 20.000 Erzstein</td>
+        </tr>
+        <tr>
+        <td>Kristallgolem 2</td>
+        <td class="num">1e34</td>
+        <td class="num">15s</td>
+        <td>225 Essenz + 22.500 Erzstein</td>
+        </tr>
+        <tr>
+        <td>Flammengolem</td>
+        <td class="num">1e37</td>
+        <td class="num">15s</td>
+        <td>250 Essenz + 25.000 Erzstein</td>
+        </tr>
+        <tr>
+        <td>Golemwächter</td>
+        <td class="num">1e40</td>
+        <td class="num">10s</td>
+        <td>275 Essenz + 27.500 Erzstein</td>
+        </tr>
+        </tbody></table></div>
+      <div class="callout warn">
+          <div class="callout-label">Verlieren kostet</div>
+          Steht der Boss noch, wenn die Uhr abläuft, bekommst du <strong>nichts</strong> und der Schlüssel ist weg. Nach einem Fehlversuch siehst du das übrige Leben - daran schätzt du ab, wie viel Schaden noch fehlt.
+        </div>
+    </section>
+
+    <section id="achievements">
+      <div class="section-head"><span class="section-num">17</span><h2>Erfolge</h2></div>
+      <p class="section-dek">86 Erfolge in 24 Kategorien - Klicks, Erz, Bosse, Prestige, Tiefe und mehr.</p>
+      <p>Jeder Erfolg zahlt <strong>Erzstein</strong>, und Ziel wie Belohnung wachsen pro Stufe etwa um das Zehnfache. Die meisten Kategorien haben drei Stufen, die Gold- und Schadenskategorien gehen weiter.</p>
+      <div class="callout">
+          <div class="callout-label">Abholen nicht vergessen</div>
+          Belohnungen kommen <strong>nicht automatisch</strong>. Wenn du den Erfolgstab länger nicht geöffnet hast, wartet dort ein Stapel.
+        </div>
+    </section>
+
+    <section id="daily">
+      <div class="section-head"><span class="section-num">18</span><h2>Tagesbelohnung</h2></div>
+      <p class="section-dek">Klein, einfach, und ein verpasster Tag kostet nichts.</p>
+      <p>Einmal am Tag einloggen gibt <strong>1 Verliesschlüssel</strong>. Jeden Tag dasselbe - es gibt keinen Kalender und keine Serie zu schützen. Zum Abholen musst du online sein.</p>
+    </section>
+
+    <section id="store">
+      <div class="section-head"><span class="section-num">19</span><h2>Shop</h2></div>
+      <p class="section-dek">Diamanten, Schlüssel, Pakete, Premium-Zeit und die dauerhaften Unendlich-Gegenstände.</p>
+      <ul>
+          <li><strong>Diamantpakete:</strong> 200 / 550 / 1.150 / 2.400 / 6.250 / 14.000 Diamanten. Je größer das Paket, desto besser der Kurs.</li>
+          <li><strong>Schlüsselpakete:</strong> 3 / 7 / 15 Verliesschlüssel.</li>
+          <li><strong>Kleines Paket:</strong> 500 Diamant, 100 Essenz, 10 Fertigkeitsstein, 3 Verliesschlüssel.</li>
+          <li><strong>Großes Paket:</strong> 1.000 Diamant, 200 Essenz, 20 Fertigkeitsstein, 5 Verliesschlüssel.</li>
+          <li><strong>7-Tage-Premiumpaket:</strong> 7 Tage mit x5 Klickschaden, x5 Automatikschaden, x3 Gold, x3 Hitzewiderstand und x2 Offline-Einnahmen.</li>
+        </ul>
+      <p>Die Unendlich-Gegenstände kaufst du <strong>einmal mit Diamanten</strong>, und sie werden nie zurückgesetzt, auch nicht bei Prestige. Im späten Spiel sind sie meist die beste Verwendung für Diamanten.</p>
+      <div class="table-wrap">
+        <table>
+        <thead><tr>
+        <th>Gegenstand</th>
+        <th class="num">Effekt</th>
+        <th class="num">Preis</th>
+        </tr></thead>
+        <tbody>
+        <tr>
+        <td>Unendliche Kraft</td>
+        <td class="num">x4</td>
+        <td class="num">350 💎</td>
+        </tr>
+        <tr>
+        <td>Unendliches Einkommen</td>
+        <td class="num">x3</td>
+        <td class="num">350 💎</td>
+        </tr>
+        <tr>
+        <td>Unendliche Rüstung</td>
+        <td class="num">x2</td>
+        <td class="num">350 💎</td>
+        </tr>
+        <tr>
+        <td>Unendliche Geschwindigkeit</td>
+        <td class="num">x1,5</td>
+        <td class="num">550 💎</td>
+        </tr>
+        <tr>
+        <td>Unendlicher Klicker</td>
+        <td class="num">7 /s</td>
+        <td class="num">600 💎</td>
+        </tr>
+        </tbody></table></div>
+      <div class="callout">
+          <div class="callout-label">Preise</div>
+          Die Shop-Preise kommen von Steam in deiner Währung, deshalb stehen sie hier nicht. Was in einem Paket steckt, ändert sich nie; was es kostet, hängt von deiner Region ab.
+        </div>
+    </section>
+
+    <section id="progress">
+      <div class="section-head"><span class="section-num">20</span><h2>Bestenlisten und Statistiken</h2></div>
+      <p class="section-dek">Zwei Orte, an denen du siehst, wie der Durchlauf läuft.</p>
+      <ul>
+          <li>Die Steam-Bestenlisten führen Klicks, Klickschaden, Prestigezahl, getötete Bosse und höchste Etage.</li>
+          <li>Der Statistikbildschirm führt mehr - Einnahmen, Ausgaben, Klicks, Spielzeit und weiteres.</li>
+        </ul>
+    </section>
+
+    <section id="save">
+      <div class="section-head"><span class="section-num">21</span><h2>Spielstände</h2></div>
+      <p class="section-dek">Kurze Antwort: dein Fortschritt ist mehrfach abgesichert.</p>
+      <ul>
+          <li>Das Spiel speichert sich alle <strong>15 Sekunden</strong> verschlüsselt selbst.</li>
+          <li>Etwa alle <strong>45 Sekunden</strong> sichert es in die Steam Cloud, und immer beim Schließen oder Pausieren - ein anderer Rechner macht damit dort weiter, wo du aufgehört hast.</li>
+          <li>Ist eine Spielstanddatei beschädigt, greift das Spiel von selbst auf seine Sicherung zurück.</li>
+          <li>Du kannst deinen Spielstand außerdem in die Zwischenablage kopieren und auf einem anderen Gerät einsetzen.</li>
+        </ul>
+    </section>
+
+    <section id="languages">
+      <div class="section-head"><span class="section-num">22</span><h2>Sprachen</h2></div>
+      <p class="section-dek">Das Spiel erscheint in 18 Sprachen.</p>
+      <p>Englisch, Türkisch, Deutsch, Französisch, Spanisch, lateinamerikanisches Spanisch, Italienisch, Polnisch, brasilianisches Portugiesisch, Russisch, Ukrainisch, Japanisch, Koreanisch, Chinesisch (vereinfacht), Chinesisch (traditionell), Thai, Indonesisch und Vietnamesisch. Beim ersten Start wählt das Spiel deine Sprache, und du kannst sie jederzeit in den Einstellungen ändern - dieses Handbuch gibt es in allen, verlinkt oben auf der Seite.</p>
+    </section>
+
+    <footer class="doc-footer">Die Zahlen hier folgen dem aktuellen Balancing des Spiels und können sich mit Updates ändern. Shop-Preise legt Steam fest und zeigt sie in deiner Währung, deshalb stehen sie hier nicht.</footer>
+  </main>
+</div>

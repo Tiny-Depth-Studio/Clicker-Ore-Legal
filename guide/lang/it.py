@@ -1,0 +1,342 @@
+LANG = {
+    "code": "it",
+    "name": "Italiano",
+    "html_lang": "it",
+    "locale": {"group": ".", "decimal": ","},
+    "title": "Clicker Ore Game - Guida del giocatore",
+    "description": "Come funziona la miniera: valute, picconi, compagni, abilità, prestigio, boss e negozio, spiegati senza formule.",
+    "brand": "Clicker Ore Game",
+    "brand_sub": "Guida del giocatore",
+    "eyebrow": "Guida del giocatore - {date}",
+    "headline": "Tutta la miniera,<br>spiegata semplice",
+    "subtitle": "Cosa fa ogni sistema, a quale piano si apre e dove conviene spendere la prossima ora. Nessuna formula: solo le decisioni che contano.",
+    "footer": "I numeri seguono il bilanciamento attuale del gioco e possono cambiare con gli aggiornamenti. I prezzi del negozio li fissa Steam e li mostra nella tua valuta, quindi qui non sono elencati.",
+    "labels": {
+        "contents": "Indice",
+        "per_second": "/s",
+        "second_short": " s",
+        "meter_short": "m",
+        "language": "Lingua",
+        "skill": "Abilità",
+        "unlock_floor": "Piano",
+        "level_first": "Livello 1 (durata / recupero)",
+        "level_last": "Livello 7 (durata / recupero)",
+        "effect": "Effetto",
+        "boss": "Boss",
+        "health": "Salute",
+        "time_limit": "Tempo",
+        "reward": "Ricompensa",
+        "parameter": "Parametro",
+        "per_level": "Per livello",
+        "effect_dps": "Danno automatico al secondo",
+        "effect_click": "Danno da clic",
+        "effect_gold": "Guadagno d'oro",
+        "effect_crit_chance": "Probabilità critica",
+        "effect_crit_multiplier": "Moltiplicatore critico",
+        "effect_heat": "Resistenza al calore",
+        "effect_click_from_dps": "Quota di DPS aggiunta ai clic",
+        "depth": "Profondità",
+        "ore_types": "Tipi di minerale",
+        "around_floor": "Intorno al piano",
+        "item": "Oggetto",
+        "cost": "Prezzo",
+    },
+    "currencies": {
+        "gold": ["Si guadagna <b>rompendo minerale</b>.", "Si spende sui livelli di piccone e armatura: la tua valuta di lavoro."],
+        "diamond": ["Arriva <b>solo dagli acquisti con denaro reale</b>.", "Si spende sui compagni e sugli oggetti Infinito permanenti."],
+        "essence": ["Viene dal <b>prestigio</b> e dalle vittorie sui boss.", "Si spende sui {prestige_parameter_count} parametri di prestigio permanenti."],
+        "taskium": ["<b>+{taskium_per_click}</b> per ogni clic riuscito.", "Si spende per accettare e ripescare incarichi."],
+        "dungeon_key": ["Una chiave gratis al giorno, più i pacchetti del negozio.", "Si spende per entrare in uno scontro con un boss: {boss_key_cost} per tentativo."],
+        "skill_stone": ["Arriva dai pacchetti del negozio e dal pannello di scambio.", "Si spende per far salire le {skill_count} abilità attive."],
+        "ore_stone": ["<b>{ore_stone_min}-{ore_stone_max}</b> da ogni minerale rotto, più gli obiettivi.", "Si scambia con Essenza o Pietra abilità nel pannello di scambio."],
+    },
+    "sections": [
+        {
+            "id": "start",
+            "title": "Da dove iniziare",
+            "dek": "Tre fasi, nell'ordine in cui il gioco apre le cose.",
+            "blocks": [
+                ("stages", [
+                    ["Inizio - piani da 1 a {prestige_first_floor}", [
+                        "Migliora il piccone senza sosta; compra il successivo appena si apre.",
+                        "{skill_ore_breaker} arriva al piano {skill_line_floor}, {skill_anger_click} al piano 70.",
+                        "Prendi {pet_1} appena puoi staccare i diamanti.",
+                    ]],
+                    ["Metà - piani da {prestige_first_floor} a {boss_floor}", [
+                        "Fai il primo prestigio al piano {prestige_first_floor}.",
+                        "Distribuisci l'Essenza su tutti i {prestige_parameter_count} parametri invece di spingerne uno.",
+                        "Gli incarichi si aprono al piano {task_panel_floor}, l'albero delle abilità e lo scambio al piano {skill_tree_floor}.",
+                    ]],
+                    ["Avanzato - dal piano {boss_floor}", [
+                        "Affronta un boss ogni volta che hai una chiave: sono il tuo motore di Essenza.",
+                        "Compra gli oggetti Infinito: sono permanenti e non si azzerano mai.",
+                        "Tieni l'armatura al passo, così il calore non ti mangia il danno.",
+                    ]],
+                ]),
+                ("note", ["Utile da sapere", "I numeri si allungano in fretta, quindi il gioco passa prima a forme brevi e poi alla notazione scientifica tipo <strong>1,23e45</strong>. Non c'è un tetto: cambia solo il modo di scriverlo."]),
+            ],
+        },
+        {
+            "id": "currencies",
+            "title": "Le {currency_count} valute",
+            "dek": "Ognuna alimenta un sistema diverso. Spendere la valuta giusta nel posto sbagliato è l'errore più comune all'inizio.",
+            "blocks": [
+                ("currencies", None),
+                ("note", ["Diamanti", "Boss, obiettivi e incarichi non danno mai diamanti. Diamanti e chiavi del sotterraneo stanno sul server, quindi per comprare un compagno devi essere online."]),
+            ],
+        },
+        {
+            "id": "damage",
+            "title": "Danno da clic e danno automatico",
+            "dek": "Due fonti di danno separate, alimentate da cose diverse.",
+            "blocks": [
+                ("p", "Il <strong>danno da clic</strong> è quello che fa un tocco. Cresce con livello e abilità del tuo primo piccone, con l'abilità {skill_anger_click}, col tuo titolo e col parametro di prestigio {prestige_click}. Quando fai salire {prestige_click_from_dps}, una quota del danno automatico entra in ogni clic."),
+                ("p", "Il <strong>danno automatico</strong> (al secondo) viene dal secondo piccone in poi, dall'abilità {skill_rampage}, dal parametro {prestige_dps} e dai tuoi compagni."),
+                ("note", ["I compagni sono l'eccezione", "Il danno dei compagni si somma <strong>dopo</strong> tutti i moltiplicatori, non viene scalato da loro. I loro livelli da soli non ti portano avanti a fine partita: i moltiplicatori di piccone e abilità devono crescere."]),
+            ],
+        },
+        {
+            "id": "critical",
+            "title": "Colpi critici",
+            "dek": "Ogni clic può uscire critico e picchiare più forte.",
+            "blocks": [
+                ("p", "Parti con <strong>{crit_chance_percent}%</strong> di probabilità e un moltiplicatore <strong>x{crit_multiplier}</strong>. Quattro cose li alzano: l'abilità {skill_critical_strike}, le abilità dei picconi, i parametri di prestigio {prestige_crit_chance} e {prestige_crit_multiplier}, e i titoli."),
+            ],
+        },
+        {
+            "id": "pickaxes",
+            "title": "Picconi",
+            "dek": "{pickaxe_count} picconi, sbloccati in ordine. Sono la spina dorsale del tuo danno.",
+            "blocks": [
+                ("ul", [
+                    "Il primo piccone costa <strong>{pickaxe_first_cost} oro</strong>; ogni successivo costa circa <strong>{pickaxe_cost_growth} volte</strong> più del precedente.",
+                    "Un piccone si sblocca da solo quando hai guadagnato abbastanza oro in questa partita: è il potenziamento che apre il successivo.",
+                    "Ogni livello costa circa il <strong>{pickaxe_upgrade_growth_percent}%</strong> in più del precedente.",
+                    "Solo il <strong>primo</strong> piccone alimenta il danno da clic. Tutti gli altri alimentano il danno automatico al secondo.",
+                    "Ogni piccone ha {pickaxe_skill_count} abilità, che si aprono ai livelli {pickaxe_skill_levels}. Alcune aiutano solo quel piccone, altre tutti: quelle globali valgono di più.",
+                ]),
+                ("note", ["Il grande salto", "Ogni <strong>{pickaxe_bonus_interval} livelli</strong> un piccone moltiplica la propria resa per <strong>x{pickaxe_bonus_multiplier}</strong>. Spingere un piccone al centinaio successivo è in genere il salto di potenza più grande che hai."]),
+            ],
+        },
+        {
+            "id": "suits",
+            "title": "Armature",
+            "dek": "{suit_count} armature, tue dall'inizio. Esistono per tenerti lontano il calore.",
+            "blocks": [
+                ("ul", [
+                    "L'armatura non si compra, si fa solo salire. Ogni livello aggiunge circa il <strong>{suit_heat_per_level_percent}%</strong> di resistenza, partendo da {suit_base_heat_resistance}.",
+                    "Ogni {suit_bonus_interval} livelli la resistenza dell'armatura viene moltiplicata per <strong>x{suit_bonus_multiplier}</strong>.",
+                    "Ogni armatura ha anche {suit_skill_count} abilità che si aprono salendo di livello.",
+                    "Il pannello dell'armatura si apre al piano <strong>{suit_panel_floor}</strong>, insieme all'indicatore del calore.",
+                ]),
+            ],
+        },
+        {
+            "id": "temperature",
+            "title": "Calore",
+            "dek": "Più scendi, più fa caldo, e il calore ti taglia il danno in silenzio.",
+            "blocks": [
+                ("ul", [
+                    "La temperatura del piano sale senza fermarsi: circa <strong>{temperature_growth}x per piano</strong>, quindi raddoppia ogni ventina di piani.",
+                    "Finché la tua resistenza vale almeno <strong>{temperature_safe_ratio}x</strong> la temperatura, l'indicatore resta libero e non perdi niente.",
+                    "Quando la resistenza scende sotto la temperatura il danno inizia a sfuggire; a <strong>{temperature_worst_ratio}x</strong> ti resta un ventesimo, cioè una perdita del <strong>{temperature_worst_damage_percent}%</strong>.",
+                    "Nel pannello dell'armatura c'è un interruttore che compra resistenza da solo: lascialo attivo se scendi spesso.",
+                ]),
+                ("warn", ["Se all'improvviso ti blocchi", "Un muro dove il minerale non finisce mai è quasi sempre calore, non danno. Guarda l'indicatore prima di spendere su altro."]),
+            ],
+        },
+        {
+            "id": "pets",
+            "title": "Compagni",
+            "dek": "{pet_count} compagni, comprati con i diamanti e poi fatti salire con l'oro.",
+            "blocks": [
+                ("ul", [
+                    "I prezzi vanno da <strong>{pet_cost_first}</strong> a <strong>{pet_cost_last}</strong> diamanti ({pet_cost_list}).",
+                    "Ogni livello aggiunge circa l'<strong>{pet_dps_percent_per_level}%</strong> del danno da clic del piccone come danno automatico, moltiplicato per l'ordine del compagno: {pet_5} dà cinque volte {pet_1} a pari livello.",
+                    "I livelli rincarano di circa il <strong>{pet_upgrade_growth_percent}%</strong> ogni volta e ogni {pet_bonus_interval} livelli il compagno moltiplica la propria resa per <strong>x{pet_bonus_multiplier}</strong>.",
+                    "Ogni compagno ha {pet_skill_count} abilità; alcune servono solo a lui, altre a tutti.",
+                    "Il pannello dei compagni si apre al piano <strong>{pet_panel_floor}</strong>, o appena ne possiedi uno.",
+                ]),
+                ("warn", ["Prestigio e compagni", "Il prestigio riporta ogni compagno al <strong>livello 1</strong> e cancella le sue abilità. La proprietà però resta: un compagno non lo ricompri mai."]),
+            ],
+        },
+        {
+            "id": "floors",
+            "title": "Piani, minerale e profondità",
+            "dek": "Il piano decide quanto è duro il minerale e quanto oro paga. La profondità decide come è fatto.",
+            "blocks": [
+                ("ul", [
+                    "Ogni piano ha un po' più di salute e un po' più di oro del precedente, e la curva si impenna man mano.",
+                    "Ogni <strong>{duration_floor_interval}° piano</strong> è a tempo: parte un conto alla rovescia di <strong>{duration_floor_seconds} secondi</strong>, la salute sale di circa il {duration_floor_health_percent}% e l'oro di circa il {duration_floor_gold_percent}%.",
+                    "La difficoltà procede anche a cicli di circa {difficulty_cycle_floors} piani: i primi piani di un ciclo pagano meglio rispetto alla loro salute.",
+                    "Ogni minerale lascia anche <strong>{ore_stone_min}-{ore_stone_max}</strong> Pietre minerale.",
+                ]),
+                ("warn", ["I piani a tempo mordono", "Se il tempo finisce vieni rispedito <strong>un piano</strong> sotto. Se il danno non basta, meglio saltare il piano a tempo che perderlo."]),
+                ("p", "Puoi tornare a qualunque piano già raggiunto in questa partita e farmare lì. Scegliere un piano a mano spegne l'avanzamento automatico; riattivalo quando vuoi risalire."),
+                ("p", "Ci sono <strong>{ore_type_count}</strong> tipi di minerale in tutto e la profondità decide quali compaiono. Il tipo cambia solo l'aspetto e la sua polvere: salute e oro vengono dal piano."),
+                ("table", "depth"),
+            ],
+        },
+        {
+            "id": "skills",
+            "title": "Abilità attive",
+            "dek": "{skill_count} abilità, ognuna una spinta a tempo seguita dal recupero.",
+            "blocks": [
+                ("p", "Un'abilità è <strong>gratis</strong> quando arriva il suo piano: la usi già al livello 1. Portarla al livello {skill_levels} costa in tutto <strong>{skill_total_cost} Pietre abilità</strong>, cioè <strong>{skill_all_total_cost}</strong> per tutte e {skill_count}. Più alto il livello, più lunga la durata e più corto il recupero."),
+                ("table", "skills"),
+                ("p", "La prima linea di abilità si apre al piano {skill_line_floor}; il pannello dell'albero, dove spendi le Pietre abilità, al piano <strong>{skill_tree_floor}</strong>. Per usare un'abilità il pannello non serve."),
+                ("note", ["La combo", "Lancia prima {skill_overcharge}, poi l'abilità che vuoi davvero potenziare, per esempio {skill_golden_frenzy}. {skill_time_reversal} poi accorcia il recupero dell'ultima che hai usato, così te la riprendi prima."]),
+            ],
+        },
+        {
+            "id": "titles",
+            "title": "Titoli",
+            "dek": "{title_count} titoli che ti arrivano da soli mentre sali.",
+            "blocks": [
+                ("ul", [
+                    "I titoli vanno dal piano {title_first_floor} al piano <strong>{title_last_floor}</strong> e vengono scelti da soli in base al piano più alto di questa partita.",
+                    "Ogni titolo aggiunge circa <strong>+{title_effect_step}</strong> ai bonus che porta.",
+                    "I bonus arrivano a scaglioni: danno da clic dal primo titolo, poi danno automatico, resistenza al calore, oro, moltiplicatore critico, probabilità critica e la quota di DPS che passa ai clic (titoli {title_effect_unlocks}).",
+                ]),
+            ],
+        },
+        {
+            "id": "tasks",
+            "title": "Incarichi e {currency_taskium}",
+            "dek": "Un binario parallelo che trasforma i tuoi clic in una seconda entrata.",
+            "blocks": [
+                ("ul", [
+                    "Ogni clic riuscito dà <strong>+{taskium_per_click} {currency_taskium}</strong>.",
+                    "Accettare un incarico costa <strong>{task_accept_cost}</strong>, ripescarne uno <strong>{task_refresh_cost}</strong>.",
+                    "Il pannello degli incarichi si apre al piano {task_panel_floor}; le {task_slot_count} caselle ai piani {task_slot_floors}.",
+                    "Ci sono {task_type_count} tipi di incarico in {task_rarity_count} rarità. Ogni incarico dura {task_duration_minutes} minuti e quelli non accettati vengono sostituiti ogni ora.",
+                    "La ricompensa cresce con la rarità: tra <strong>{task_reward_range}</strong> volte l'oro del minerale del piano attuale. I più rari danno anche Essenza.",
+                ]),
+            ],
+        },
+        {
+            "id": "trade",
+            "title": "Pannello di scambio",
+            "dek": "Si apre al piano {trade_floor}. L'unico posto dove la Pietra minerale vale qualcosa.",
+            "blocks": [
+                ("ul", [
+                    "1 Pietra abilità diventa <strong>{trade_skill_stone_to_ore_stone} Pietre minerale</strong>, fino a {trade_skill_stone_max} per scambio.",
+                    "<strong>{trade_ore_stone_to_essence} Pietre minerale</strong> diventano 1 Essenza.",
+                    "<strong>{trade_ore_stone_to_skill_stone} Pietre minerale</strong> diventano 1 Pietra abilità.",
+                ]),
+                ("p", "L'ultimo conta: è così che una lunga sessione di farm diventa livelli di abilità senza combattere un boss."),
+            ],
+        },
+        {
+            "id": "extras",
+            "title": "Oro gratis",
+            "dek": "Tre fonti che chiedono solo di essere presenti.",
+            "blocks": [
+                ("ul", [
+                    "<strong>Palloncino d'oro</strong>: dal piano {balloon_floor} ne passa uno ogni {balloon_min_seconds}-{balloon_max_seconds} secondi. Cliccarlo paga <strong>x{balloon_multiplier}</strong> l'oro del minerale del tuo miglior piano in questa partita.",
+                    "<strong>Guadagni offline</strong>: contano dopo {offline_min_minutes} minuti di assenza e si fermano a {offline_max_hours} ore. Il premium li raddoppia.",
+                    "<strong>Premio per tempo di gioco</strong>: ogni {playtime_reward_minutes} minuti giocati paga circa {playtime_reward_multiplier} volte l'oro di un minuto sul tuo miglior piano.",
+                ]),
+            ],
+        },
+        {
+            "id": "prestige",
+            "title": "Prestigio",
+            "dek": "Scambi i progressi di questa partita con potenza permanente. Ben calcolato è la cosa più rapida del gioco.",
+            "blocks": [
+                ("p", "Il pannello del prestigio si apre la prima volta che raggiungi il piano <strong>{prestige_first_floor}</strong>. Poi ogni prestigio chiede {prestige_floor_step} piani in più: {prestige_second_floor}, poi {prestige_third_floor}, e così via."),
+                ("ul", [
+                    "<strong>Si azzera:</strong> oro, {currency_taskium}, avanzamento dei piani, livelli di piccone e armatura, livelli dei compagni, tutte le abilità comprate e il tuo livello dei boss.",
+                    "<strong>Resta:</strong> livello di prestigio, Essenza, i livelli dei {prestige_parameter_count} parametri, i compagni già tuoi, gli oggetti Infinito, gli obiettivi.",
+                    "Non riparti dal piano 1: la partita seguente comincia a <strong>{prestige_floor_step} x il tuo livello di prestigio</strong>, con un oro iniziale che vale circa {prestige_gold_multiplier} minerali.",
+                    "Tutti i recuperi vengono azzerati, quindi cominci la partita con ogni abilità pronta.",
+                ]),
+                ("p", "L'Essenza arriva da due sole cose: il <strong>piano più alto</strong> raggiunto ({prestige_essence_per_floor} ciascuno) e il <strong>minerale rotto</strong> ({prestige_essence_per_ore} ciascuno)."),
+                ("note", ["Rompi minerale, non correre", "Poiché il minerale pesa di più nel conto, farmare un piano comodo negli ultimi minuti rende più che scattare verso un piano dove fai a stento danno."]),
+                ("table", "prestige"),
+                ("p", "I bonus si sommano livello per livello invece di comporsi, e il costo in Essenza sale piano: spenderla spesso rende più che tenerla da parte."),
+            ],
+        },
+        {
+            "id": "bosses",
+            "title": "Boss",
+            "dek": "Una corsa al danno contro il tempo, per Essenza. Si apre al piano {boss_floor}.",
+            "blocks": [
+                ("ul", [
+                    "Scegli un boss e spendi <strong>{boss_key_cost} chiave del sotterraneo</strong> per iniziare. Niente parte da solo.",
+                    "I boss si aprono in ordine: devi batterne uno per vedere il successivo. La salute sale di circa mille volte a ogni scalino mentre il tempo si accorcia.",
+                    "Le ricompense crescono col tuo livello di prestigio: circa <strong>+{boss_prestige_bonus_percent}%</strong> per livello.",
+                    "Il prestigio riporta il tuo livello dei boss al primo.",
+                ]),
+                ("table", "bosses"),
+                ("warn", ["Perdere costa", "Se il boss è ancora in piedi quando il tempo finisce non prendi <strong>niente</strong> e la chiave è andata. Dopo un tentativo fallito vedi la salute rimasta: usala per stimare quanto danno ti manca."]),
+            ],
+        },
+        {
+            "id": "achievements",
+            "title": "Obiettivi",
+            "dek": "{achievement_count} obiettivi in {achievement_type_count} categorie: clic, minerale, boss, prestigi, profondità e altro.",
+            "blocks": [
+                ("p", "Ogni obiettivo paga in <strong>Pietra minerale</strong>, e sia il traguardo sia il premio si moltiplicano per dieci a ogni scaglione. La maggior parte delle categorie ha tre scaglioni; quelle di oro e danno vanno più lontano."),
+                ("note", ["Ricordati di riscuotere", "Le ricompense <strong>non arrivano da sole</strong>. Se non apri la scheda degli obiettivi da un po', lì ti aspetta un mucchio."]),
+            ],
+        },
+        {
+            "id": "daily",
+            "title": "Premio giornaliero",
+            "dek": "Piccolo, semplice e senza penalità se salti un giorno.",
+            "blocks": [
+                ("p", "Entrare una volta al giorno dà <strong>{daily_key_amount} chiave del sotterraneo</strong>. È uguale ogni giorno: non c'è calendario né serie da difendere. Per riscuoterlo devi essere online."),
+            ],
+        },
+        {
+            "id": "store",
+            "title": "Negozio",
+            "dek": "Diamanti, chiavi, pacchetti, tempo premium e gli oggetti Infinito permanenti.",
+            "blocks": [
+                ("ul", [
+                    "<strong>Pacchetti di diamanti:</strong> {diamond_pack_list} diamanti. Più grande il pacchetto, migliore il cambio.",
+                    "<strong>Pacchetti di chiavi:</strong> {key_pack_list} chiavi del sotterraneo.",
+                    "<strong>{package_small}:</strong> {package_small_contents}.",
+                    "<strong>{package_big}:</strong> {package_big_contents}.",
+                    "<strong>{package_premium}:</strong> {premium_days} giorni con x{premium_click_multiplier} danno da clic, x{premium_dps_multiplier} danno automatico, x{premium_gold_multiplier} oro, x{premium_heat_multiplier} resistenza al calore e x{premium_offline_multiplier} guadagni offline.",
+                ]),
+                ("p", "Gli oggetti Infinito si comprano <strong>una volta sola con i diamanti</strong> e non si azzerano mai, nemmeno col prestigio. A fine partita sono in genere il modo migliore di spendere i diamanti."),
+                ("table", "infinity"),
+                ("note", ["Prezzi", "I prezzi del negozio arrivano da Steam nella tua valuta, quindi qui non sono scritti. Il contenuto di un pacchetto non cambia mai; quanto costa dipende dalla tua regione."]),
+            ],
+        },
+        {
+            "id": "progress",
+            "title": "Classifiche e statistiche",
+            "dek": "Due posti dove vedere come sta andando la partita.",
+            "blocks": [
+                ("ul", [
+                    "Le classifiche Steam seguono clic, danno da clic, numero di prestigi, boss uccisi e piano più alto.",
+                    "La schermata delle statistiche tiene traccia di più: guadagni, spese, clic, tempo giocato e altro.",
+                ]),
+            ],
+        },
+        {
+            "id": "save",
+            "title": "Salvataggi",
+            "dek": "Risposta breve: i tuoi progressi sono protetti da più strati insieme.",
+            "blocks": [
+                ("ul", [
+                    "Il gioco si salva da solo, cifrato, ogni <strong>{save_seconds} secondi</strong>.",
+                    "Fa una copia su Steam Cloud circa ogni <strong>{cloud_save_seconds} secondi</strong>, e sempre alla chiusura o in pausa: un altro computer riprende da dove hai lasciato.",
+                    "Se un file di salvataggio si danneggia, il gioco passa da solo alla sua copia di riserva.",
+                    "Puoi anche copiare il salvataggio negli appunti e incollarlo su un altro dispositivo.",
+                ]),
+            ],
+        },
+        {
+            "id": "languages",
+            "title": "Lingue",
+            "dek": "Il gioco esce in {language_count} lingue.",
+            "blocks": [
+                ("p", "Inglese, turco, tedesco, francese, spagnolo, spagnolo latinoamericano, italiano, polacco, portoghese brasiliano, russo, ucraino, giapponese, coreano, cinese semplificato, cinese tradizionale, thai, indonesiano e vietnamita. Al primo avvio il gioco sceglie la tua e puoi cambiarla quando vuoi nelle impostazioni: questa guida c'è in tutte, dai link in cima alla pagina."),
+            ],
+        },
+    ],
+}

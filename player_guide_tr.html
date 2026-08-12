@@ -1,4 +1,6 @@
-<title>Clicker Ore Game — Oyuncu Rehberi</title>
+<title>Clicker Ore Game - Oyuncu Rehberi</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Madende ne nasıl işliyor: para birimleri, kazmalar, petler, yetenekler, prestij, bosslar ve mağaza - formül olmadan.">
 <style>
   :root {
     --bg: #14110d;
@@ -94,7 +96,6 @@
   p { max-width: 68ch; }
   ul, ol { max-width: 68ch; }
 
-  /* ---------- layout shell ---------- */
   .shell {
     display: grid;
     grid-template-columns: 260px minmax(0, 1fr);
@@ -195,7 +196,6 @@
     margin-bottom: 3rem;
     padding-bottom: 2rem;
     border-bottom: 1px solid var(--border);
-    position: relative;
   }
   .strata {
     height: 10px;
@@ -240,7 +240,45 @@
     margin: 0;
   }
 
-  /* ---------- sections ---------- */
+  .langbar {
+    margin: 1.8rem 0 0;
+    padding-top: 1.2rem;
+    border-top: 1px solid var(--border-soft);
+  }
+  .langbar-label {
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 0.68rem;
+    color: var(--text-faint);
+    margin-bottom: 0.55rem;
+  }
+  .langbar-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem 0.4rem;
+  }
+  .langbar-list a, .langbar-list span {
+    font-family: var(--font-display);
+    font-size: 0.78rem;
+    padding: 0.18rem 0.55rem;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    color: var(--text-dim);
+    background: var(--bg-card);
+  }
+  .langbar-list a:hover {
+    text-decoration: none;
+    color: var(--text);
+    border-color: var(--accent);
+  }
+  .langbar-list span {
+    color: #14110d;
+    background: var(--accent);
+    border-color: var(--accent);
+  }
+  :root[data-theme="light"] .langbar-list span { color: #efe9da; }
+
   section {
     margin-bottom: 3.6rem;
     scroll-margin-top: 1.5rem;
@@ -266,12 +304,7 @@
     margin: 0.3rem 0 1.5rem;
     max-width: 62ch;
   }
-  h3 {
-    font-size: 1.15rem;
-    margin: 1.8rem 0 0.6rem;
-  }
 
-  /* ---------- callouts ---------- */
   .callout {
     border-left: 3px solid var(--accent);
     background: var(--bg-card);
@@ -292,7 +325,6 @@
   }
   .callout.warn .callout-label { color: var(--danger); }
 
-  /* ---------- currency cards ---------- */
   .currency-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -327,21 +359,6 @@
   }
   .cur-card p b { color: var(--text); font-weight: 600; }
 
-  .badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
-    font-family: var(--font-mono);
-    font-size: 0.82rem;
-    padding: 0.1rem 0.5rem 0.1rem 0.4rem;
-    border-radius: 20px;
-    background: color-mix(in srgb, var(--dot) 16%, var(--bg-card));
-    border: 1px solid color-mix(in srgb, var(--dot) 35%, var(--border));
-    white-space: nowrap;
-  }
-  .badge .dot { box-shadow: none; }
-
-  /* ---------- tables ---------- */
   .table-wrap {
     overflow-x: auto;
     margin: 1.2rem 0;
@@ -378,75 +395,6 @@
   td.num, th.num { font-family: var(--font-mono); }
   td.strong { color: var(--accent-strong); font-weight: 600; }
 
-  /* ---------- cards grid (pets/skills) ---------- */
-  .card-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-    gap: 1rem;
-    margin: 1.3rem 0;
-  }
-  .item-card {
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 1.1rem 1.2rem;
-  }
-  .item-card .kicker {
-    font-family: var(--font-mono);
-    font-size: 0.74rem;
-    color: var(--accent);
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-  }
-  .item-card h4 {
-    margin: 0.25rem 0 0.5rem;
-    font-size: 1.05rem;
-    font-family: var(--font-display);
-  }
-  .item-card p {
-    font-size: 0.88rem;
-    color: var(--text-dim);
-    margin: 0.3rem 0;
-    max-width: none;
-  }
-  .item-card .price {
-    margin-top: 0.7rem;
-    font-family: var(--font-mono);
-    font-size: 0.86rem;
-    color: var(--accent-strong);
-  }
-
-  /* ---------- details / formula toggles ---------- */
-  details.formula {
-    margin: 1rem 0;
-    border: 1px dashed var(--border);
-    border-radius: 6px;
-    padding: 0.1rem 1rem;
-    background: color-mix(in srgb, var(--bg-elevated) 60%, transparent);
-  }
-  details.formula summary {
-    cursor: pointer;
-    padding: 0.7rem 0;
-    font-family: var(--font-display);
-    font-size: 0.85rem;
-    color: var(--text-dim);
-    letter-spacing: 0.02em;
-  }
-  details.formula summary:hover { color: var(--accent); }
-  details.formula pre {
-    font-family: var(--font-mono);
-    font-size: 0.83rem;
-    background: var(--bg);
-    padding: 0.9rem 1rem;
-    border-radius: 6px;
-    overflow-x: auto;
-    line-height: 1.55;
-    color: var(--text-dim);
-    border: 1px solid var(--border-soft);
-  }
-  details.formula p:last-child { padding-bottom: 0.9rem; }
-
-  /* quick strategy summary */
   .strategy-track {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
@@ -508,487 +456,614 @@
 <input type="checkbox" id="nav-toggle">
 
 <div class="topbar">
-  <span class="topbar-title">⛏ Oyuncu Rehberi</span>
+  <span class="topbar-title">&#9935; Oyuncu Rehberi</span>
   <label class="nav-toggle-btn" for="nav-toggle">İçindekiler</label>
 </div>
 
 <div class="shell">
   <nav class="toc" aria-label="İçindekiler">
-    <div class="toc-brand">Clicker Ore Game<small>Oyuncu Parametre Rehberi</small></div>
+    <div class="toc-brand">Clicker Ore Game<small>Oyuncu Rehberi</small></div>
     <ul class="toc-list">
-      <li><a href="#para-birimleri"><span class="toc-num">01</span>Para Birimleri</a></li>
-      <li><a href="#tiklama-hasar"><span class="toc-num">02</span>Tıklama &amp; Hasar</a></li>
-      <li><a href="#kritik"><span class="toc-num">03</span>Kritik Vuruş</a></li>
-      <li><a href="#kazma"><span class="toc-num">04</span>Kazma Rehberi</a></li>
-      <li><a href="#yetenekler"><span class="toc-num">05</span>Aktif Yetenekler</a></li>
-      <li><a href="#petler"><span class="toc-num">06</span>Evcil Hayvanlar</a></li>
-      <li><a href="#cevher-derinlik"><span class="toc-num">07</span>Cevher &amp; Derinlik</a></li>
-      <li><a href="#prestij"><span class="toc-num">08</span>Prestij</a></li>
-      <li><a href="#boss"><span class="toc-num">09</span>Boss Savaşları</a></li>
-      <li><a href="#zindan-anahtari"><span class="toc-num">10</span>Zindan Anahtarı</a></li>
-      <li><a href="#basarimlar"><span class="toc-num">11</span>Başarımlar</a></li>
-      <li><a href="#gunluk-odul"><span class="toc-num">12</span>Günlük Ödül</a></li>
-      <li><a href="#magaza"><span class="toc-num">13</span>Mağaza &amp; Satın Alımlar</a></li>
-      <li><a href="#kayit"><span class="toc-num">14</span>Kayıt &amp; Güvenlik</a></li>
+      <li><a href="#start"><span class="toc-num">01</span>Nereden Başlamalı</a></li>
+      <li><a href="#currencies"><span class="toc-num">02</span>7 Para Birimi</a></li>
+      <li><a href="#damage"><span class="toc-num">03</span>Tıklama Hasarı ve Otomatik Hasar</a></li>
+      <li><a href="#critical"><span class="toc-num">04</span>Kritik Vuruşlar</a></li>
+      <li><a href="#pickaxes"><span class="toc-num">05</span>Kazmalar</a></li>
+      <li><a href="#suits"><span class="toc-num">06</span>Zırhlar</a></li>
+      <li><a href="#temperature"><span class="toc-num">07</span>Isı</a></li>
+      <li><a href="#pets"><span class="toc-num">08</span>Petler</a></li>
+      <li><a href="#floors"><span class="toc-num">09</span>Katlar, Cevher ve Derinlik</a></li>
+      <li><a href="#skills"><span class="toc-num">10</span>Aktif Yetenekler</a></li>
+      <li><a href="#titles"><span class="toc-num">11</span>Unvanlar</a></li>
+      <li><a href="#tasks"><span class="toc-num">12</span>Görevler ve Taskium</a></li>
+      <li><a href="#trade"><span class="toc-num">13</span>Takas Paneli</a></li>
+      <li><a href="#extras"><span class="toc-num">14</span>Bedava Altın</a></li>
+      <li><a href="#prestige"><span class="toc-num">15</span>Prestij</a></li>
+      <li><a href="#bosses"><span class="toc-num">16</span>Bosslar</a></li>
+      <li><a href="#achievements"><span class="toc-num">17</span>Başarımlar</a></li>
+      <li><a href="#daily"><span class="toc-num">18</span>Günlük Ödül</a></li>
+      <li><a href="#store"><span class="toc-num">19</span>Mağaza</a></li>
+      <li><a href="#progress"><span class="toc-num">20</span>Liderlik Tabloları ve İstatistikler</a></li>
+      <li><a href="#save"><span class="toc-num">21</span>Kayıtlar</a></li>
+      <li><a href="#languages"><span class="toc-num">22</span>Diller</a></li>
     </ul>
   </nav>
 
   <main>
     <header class="hero">
       <div class="strata" role="presentation"></div>
-      <div class="eyebrow">Oyuncu Rehberi · Sürüm 2026-07-26</div>
-      <h1 class="title">Her Parametrenin Ne İşe Yaradığını<br>Bilerek Oyna</h1>
-      <p class="subtitle">
-        Bu rehber, oyunun kazma, yetenek, pet, prestij, boss ve mağaza sistemlerindeki
-        gerçek sayıları ve mekanikleri anlatır. "Prestij ne zaman açılır?", "Hangi kazmayı
-        yükseltmeliyim?", "Boss'a girmeye değer mi?" gibi sorulara net cevap bulman için hazırlandı.
-      </p>
+      <div class="eyebrow">Oyuncu Rehberi - 2026-08-12</div>
+      <h1 class="title">Madenin Tamamı,<br>Sade Anlatımla</h1>
+      <p class="subtitle">Hangi sistem ne yapar, kaçıncı katta açılır ve bir sonraki saatini nereye harcamalısın. Formül yok - sadece işine yarayan kararlar.</p>
+      <div class="langbar">
+        <div class="langbar-label">Dil</div>
+        <div class="langbar-list"><a href="player_guide_en.html" hreflang="en">English</a><span>Türkçe</span><a href="player_guide_de.html" hreflang="de">Deutsch</a><a href="player_guide_fr.html" hreflang="fr">Français</a><a href="player_guide_es.html" hreflang="es">Español</a><a href="player_guide_es_la.html" hreflang="es-419">Español (Latinoamérica)</a><a href="player_guide_it.html" hreflang="it">Italiano</a><a href="player_guide_pl.html" hreflang="pl">Polski</a><a href="player_guide_pt_br.html" hreflang="pt-BR">Português (Brasil)</a><a href="player_guide_ru.html" hreflang="ru">Русский</a><a href="player_guide_uk.html" hreflang="uk">Українська</a><a href="player_guide_ja.html" hreflang="ja">日本語</a><a href="player_guide_ko.html" hreflang="ko">한국어</a><a href="player_guide_zh_hans.html" hreflang="zh-Hans">简体中文</a><a href="player_guide_zh_hant.html" hreflang="zh-Hant">繁體中文</a><a href="player_guide_th.html" hreflang="th">ไทย</a><a href="player_guide_id.html" hreflang="id">Bahasa Indonesia</a><a href="player_guide_vi.html" hreflang="vi">Tiếng Việt</a></div>
+      </div>
     </header>
 
-    <section>
-      <div class="callout">
-        <div class="callout-label">Hızlı Strateji Özeti</div>
-        Aşağıdaki üç aşama, oyunun doğal ilerleme akışını özetler — her aşamada nereye odaklanman gerektiğini gösterir.
-      </div>
+    <section id="start">
+      <div class="section-head"><span class="section-num">01</span><h2>Nereden Başlamalı</h2></div>
+      <p class="section-dek">Oyunun sistemleri açma sırasına göre üç aşama.</p>
       <div class="strategy-track">
-        <div class="strategy-stage">
-          <div class="stage-label">Erken Oyun (0–200. kat)</div>
-          <ul>
-            <li>Kazmanı sürekli yükselt, yeni kazma açılınca hemen al</li>
-            <li>50. katta OreBreaker, 70. katta AngerClick yeteneğini aç</li>
-            <li>İlk pet'i (Rocky) elmasın varsa hemen satın al</li>
-          </ul>
+          <div class="strategy-stage">
+            <div class="stage-label">Başlangıç - kat 1 ile 200 arası</div>
+            <ul>
+              <li>Kazmanı durmadan yükselt; yenisi açıldığı anda al.</li>
+              <li>Cevher Kırıcı 50. katta, Öfkeli Tıklama 70. katta gelir.</li>
+              <li>Elmasın yeterse ilk pet olarak Rocky alınır.</li>
+            </ul>
+          </div>
+          <div class="strategy-stage">
+            <div class="stage-label">Orta - kat 200 ile 350 arası</div>
+            <ul>
+              <li>İlk prestiji 200. katta yaparsın.</li>
+              <li>Öz'ü tek parametrede yığma, 7 parametreye dağıt.</li>
+              <li>Görevler 160. katta, yetenek ağacı ve takas paneli 180. katta açılır.</li>
+            </ul>
+          </div>
+          <div class="strategy-stage">
+            <div class="stage-label">İleri - kat 350 ve sonrası</div>
+            <ul>
+              <li>Elinde anahtar oldukça boss dövüş; Öz'ün asıl kaynağı orası.</li>
+              <li>Sonsuz eşyaları al - kalıcıdır, prestijde bile sıfırlanmaz.</li>
+              <li>Zırhı yükseltmeyi bırakma; ısı hasarını sessizce yiyor.</li>
+            </ul>
+          </div>
         </div>
-        <div class="strategy-stage">
-          <div class="stage-label">Orta Oyun (200–350. kat)</div>
-          <ul>
-            <li>200. katta ilk Prestij'i yap, Essence'i DPS ve Tıklama Hasarı parametrelerine yatır</li>
-            <li>Yetenek ağacını (Skill Tree, 180. kat) açıp SkillStone biriktir</li>
-            <li>350. kata gelince Boss sistemine hazırlan</li>
-          </ul>
+      <div class="callout">
+          <div class="callout-label">Bilmen iyi olur</div>
+          Sayılar hızla uzuyor, bu yüzden oyun önce kısaltmalara sonra <strong>1.23e45</strong> gibi bilimsel gösterime geçer. Bir üst sınır yok - bu yalnızca gösterim değişikliği.
         </div>
-        <div class="strategy-stage">
-          <div class="stage-label">Geç Oyun (350. kat+)</div>
-          <ul>
-            <li>Zindan Anahtarı biriktirip düzenli Boss'a gir (SkillStone + Essence kaynağı)</li>
-            <li>Infinity eşyalara (Power/Income/Armor/Clicker) elmas biriktir</li>
-            <li>Her prestijde 7 parametreyi dengeli büyüt, tek birine saplanma</li>
-          </ul>
-        </div>
-      </div>
     </section>
 
-    <section id="para-birimleri">
-      <div class="section-head"><span class="section-num">01</span><h2>Para Birimleri</h2></div>
-      <p class="section-dek">Oyunda 7 farklı para birimi var. Her biri farklı bir sistemi besliyor — birini biriktirip yanlış yerde harcamak en sık yapılan hata.</p>
-
+    <section id="currencies">
+      <div class="section-head"><span class="section-num">02</span><h2>7 Para Birimi</h2></div>
+      <p class="section-dek">Her biri farklı bir sistemi besler. Yeni oyuncunun en sık hatası, doğru parayı yanlış yere harcamak.</p>
       <div class="currency-grid">
         <div class="cur-card" style="--dot:var(--cur-gold)">
-          <h4><span class="dot"></span>Gold (Altın)</h4>
-          <p>Kazanılır: <b>cevher kırarak</b></p>
-          <p>Harcanır: kazma &amp; zırh yükseltme, çoğu satın alma</p>
+          <h4><span class="dot"></span>Altın</h4>
+          <p><b>Cevher kırarak</b> kazanılır.</p>
+          <p>Kazma ve zırh yükseltmelerine gider - ana iş gücün.</p>
         </div>
         <div class="cur-card" style="--dot:var(--cur-diamond)">
-          <h4><span class="dot"></span>Diamond (Elmas)</h4>
-          <p>Kazanılır: boss ödülü, reklam, satın alma</p>
-          <p>Harcanır: pet satın alma, Infinity eşyalar, mağaza</p>
+          <h4><span class="dot"></span>Elmas</h4>
+          <p>Yalnızca <b>gerçek para alışverişiyle</b> gelir.</p>
+          <p>Petlere ve kalıcı Sonsuz eşyalara harcanır.</p>
         </div>
         <div class="cur-card" style="--dot:var(--cur-essence)">
-          <h4><span class="dot"></span>Essence (Öz)</h4>
-          <p>Kazanılır: <b>sadece Prestij ödülü</b></p>
-          <p>Harcanır: 7 Prestij Parametresi'nin yükseltilmesi</p>
+          <h4><span class="dot"></span>Öz</h4>
+          <p><b>Prestijden</b> ve boss zaferlerinden gelir.</p>
+          <p>7 kalıcı prestij parametresine harcanır.</p>
         </div>
         <div class="cur-card" style="--dot:var(--cur-taskium)">
           <h4><span class="dot"></span>Taskium</h4>
-          <p>Kazanılır: her tıklamada +1, görev tamamlama</p>
-          <p>Harcanır: Taskium mağazası</p>
+          <p>Her başarılı tıklamada <b>+1</b>.</p>
+          <p>Görev kabul etmeye ve görev yenilemeye gider.</p>
         </div>
         <div class="cur-card" style="--dot:var(--cur-key)">
           <h4><span class="dot"></span>Zindan Anahtarı</h4>
-          <p>Kazanılır: günlük ödül (1/gün), mağaza paketi</p>
-          <p>Harcanır: boss savaşına giriş (savaş başına 1 adet)</p>
+          <p>Günde bir bedava anahtar, ayrıca mağaza paketleri.</p>
+          <p>Boss dövüşüne girmek için - deneme başına 1 anahtar.</p>
         </div>
         <div class="cur-card" style="--dot:var(--cur-skillstone)">
-          <h4><span class="dot"></span>SkillStone</h4>
-          <p>Kazanılır: boss ödülü</p>
-          <p>Harcanır: Yetenek Ağacı (Skill Tree) düğümleri</p>
+          <h4><span class="dot"></span>Yetenek Taşı</h4>
+          <p>Mağaza paketlerinden ve takas panelinden gelir.</p>
+          <p>8 aktif yeteneğin kademelerine harcanır.</p>
         </div>
         <div class="cur-card" style="--dot:var(--cur-orestone)">
-          <h4><span class="dot"></span>OreStone</h4>
-          <p>Kazanılır: her kırılan cevherden 1–5 arası rastgele</p>
-          <p>Harcanır: başarım ödülleri bu para birimini verir; OreStone sisteminde kullanılır</p>
+          <h4><span class="dot"></span>Cevher Taşı</h4>
+          <p>Kırdığın her cevherden <b>1-5</b> tane, ayrıca başarımlardan.</p>
+          <p>Takas panelinde Öz'e ya da Yetenek Taşı'na çevrilir.</p>
         </div>
       </div>
-
       <div class="callout">
-        <div class="callout-label">Bilgi</div>
-        Sayılar çok büyüdüğünde oyun onları <strong>1.23e45</strong> gibi bilimsel gösterimle yazar
-        (mantissa × 10<sup>üs</sup>). Gösterilebilecek en büyük sayı yaklaşık <strong>1e308</strong>'dir —
-        bu sınıra ulaşan bir değer daha fazla büyümez, orada sabit kalır.
-      </div>
+          <div class="callout-label">Elmas</div>
+          Boss, başarım ve görevler elmas VERMEZ. Elmas ve zindan anahtarı sunucuda tutulur; bu yüzden pet almak için çevrimiçi olman gerekir.
+        </div>
     </section>
 
-    <section id="tiklama-hasar">
-      <div class="section-head"><span class="section-num">02</span><h2>Tıklama Hasarı &amp; DPS (Otomatik Hasar)</h2></div>
-      <p class="section-dek">İki ayrı hasar kaynağın var: elinle attığın her tıklama (Tıklama Hasarı) ve saniyede otomatik işleyen (DPS). İkisi de farklı kaynaklardan beslenir.</p>
-
-      <h3>Tıklama hasarını ne artırır?</h3>
-      <p>Sırasıyla en büyük etkiden en küçüğe: aktif kazmanın seviyesi ve skill'leri, AngerClick yeteneği (aktifken ×2 ile ×5 arası), Prestij'in "Stonecrusher's Hand" parametresi, unvan (title) bonusları, ve DPS'inin bir kısmının tıklamaya dönüştürülmesi (Prestij'in "Unity of Force" parametresiyle açılır/güçlenir).</p>
-
-      <h3>DPS'i (saniyelik otomatik hasar) ne artırır?</h3>
-      <p>Kazmanın DPS değeri (özellikle DPS kullanan kazmalar), Rampage yeteneği (aktifken ×2 ile ×3.5 arası), Prestij'in "Eternal Forge" parametresi, ve <strong>pet'lerin toplam DPS'i</strong>. Önemli bir ayrıntı: pet DPS'i tüm çarpanlar uygulandıktan <strong>sonra üzerine eklenir</strong> — yani pet'lerin DPS'i diğer çarpanlarla büyümez, ham olarak toplanır. Bu yüzden geç oyunda pet seviyesi tek başına yeterli olmaz, kazma/skill çarpanlarını da büyütmen gerekir.</p>
-
-      <details class="formula">
-        <summary>Tam formülü gör (ileri seviye oyuncular için)</summary>
-        <pre>Tıklama Hasarı = 1
-  + (Kazma Tıklama Hasarı + DPS'ten gelen pay)
-    × Infinity × Sıcaklık × AngerClick × Unvan × Prestij çarpanları
-
-Toplam DPS = (Kazma DPS × Infinity × Sıcaklık × Rampage × Prestij × Unvan çarpanları)
-             + Toplam Pet DPS  (pet DPS çarpanlara dahil değil, en son eklenir)</pre>
-      </details>
-    </section>
-
-    <section id="kritik">
-      <div class="section-head"><span class="section-num">03</span><h2>Kritik Vuruş</h2></div>
-      <p class="section-dek">Her tıklamada bir ihtimalle kritik vuruş olursun ve normalden daha fazla hasar verirsin.</p>
-      <div class="table-wrap">
-        <table>
-          <thead><tr><th>Değer</th><th>Taban (yükseltmesiz)</th></tr></thead>
-          <tbody>
-            <tr><td>Kritik Şansı</td><td class="num strong">%5</td></tr>
-            <tr><td>Kritik Hasar Çarpanı</td><td class="num strong">×1.5</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <p>Bu iki değeri büyütmenin dört yolu var: <strong>CriticalStrike</strong> yeteneği (aktifken şansı ×1.3–×1.9 çarpar), kazma skill'lerindeki kritik bonusları, Prestij'in <strong>Ore Oracle</strong> (şans) ve <strong>Cataclysmic Force</strong> (çarpan) parametreleri, ve unvan bonusları. Kritik oldu mu oldu — o tıklamanın hasarı normalin kritik çarpanı katı kadar olur.</p>
-    </section>
-
-    <section id="kazma">
-      <div class="section-head"><span class="section-num">04</span><h2>Kazma Rehberi</h2></div>
-      <p class="section-dek">Oyunda toplam <strong>45 kazma</strong> var (17 değil — bu rehberi yazarken kontrol ettik). Her biri sırayla açılıyor; bir kısmı Tıklama Hasarına, bir kısmı DPS'e katkı sağlıyor.</p>
-
-      <h3>Yeni kazma ne zaman açılır?</h3>
-      <p>Bir kazma, o prestij döneminde kazandığın toplam altın belirli bir eşiği geçince otomatik açılır. Eşik, kazmanın satın alma maliyetiyle orantılı büyür — yani sıradaki kazmaya "erişmek" için önce elindeki kazmaları iyi yükseltip yeterince altın biriktirmen gerekir.</p>
-
-      <h3>Kazma satın alma maliyeti nasıl artıyor?</h3>
-      <p>İlk kazma sabit <strong>4 Altın</strong>'dır. Sonraki her kazmanın maliyeti bir öncekinden yaklaşık <strong>6 kat</strong> pahalıdır — bu yüzden ard arda birkaç kazma satın almak yerine, elindeki kazmayı iyice yükseltip DPS/hasarını artırmak genelde daha verimlidir.</p>
-
-      <h3>Seviye yükseltme maliyeti</h3>
-      <p>Her seviye bir öncekinden yaklaşık <strong>%7 daha pahalı</strong> olur. Bu yüzden tek bir kazmayı sonsuza kadar yükseltmek gitgide zorlaşır; oyunun "yeni kazma aç" akışı tam olarak bunu dengelemek için var.</p>
-
+    <section id="damage">
+      <div class="section-head"><span class="section-num">03</span><h2>Tıklama Hasarı ve Otomatik Hasar</h2></div>
+      <p class="section-dek">İki ayrı hasar kaynağı, ikisini besleyen şeyler farklı.</p>
+      <p><strong>Tıklama hasarı</strong> bir dokunuşun verdiği hasardır. İlk kazmanın seviyesi ve skill'leri, Öfkeli Tıklama yeteneği, unvanın ve Taşkıran Eli prestij parametresi bunu büyütür. Güç Birliği yükseltildikçe otomatik hasarının bir payı da her tıklamaya eklenir.</p>
+      <p><strong>Otomatik hasar</strong> (saniyede) ikinci kazmadan itibaren tüm kazmalardan, Cinnet yeteneğinden, Ebedî Ocak parametresinden ve petlerinden gelir.</p>
       <div class="callout">
-        <div class="callout-label">Önemli Sıçrama Noktası</div>
-        Bir kazma <strong>her 100 seviyeye ulaştığında</strong>, o kazmanın değeri <strong>×11</strong> ile çarpılır.
-        100, 200, 300... seviyelerine yaklaşırken bir kazmayı diğerlerine göre önceliklendirmek genelde en büyük tekil güç artışını verir.
-      </div>
-
-      <h3>Kazma başına skill ağacı</h3>
-      <p>Her kazmanın kendi <strong>6 skill'i</strong> var. Skill'ler o kazma belirli bir seviyeye (ör. 5, 20, 50, 100...) ulaştığında satın alınabilir hâle gelir ve tıklama hasarı, DPS, kritik şans/çarpan veya altın kazancı üzerinde kalıcı yüzdesel bonus verir. Bazı skill'ler sadece o kazmaya özeldir, bazıları <strong>tüm kazmaların toplamına</strong> etki eder — global etkili skill'ler genelde daha değerlidir.</p>
+          <div class="callout-label">Petler istisna</div>
+          Pet hasarı tüm çarpanlar uygulandıktan <strong>sonra</strong> eklenir, onlarla büyümez. Yani ileri oyunda pet seviyesi tek başına yetmez; kazma ve skill çarpanları da büyümek zorunda.
+        </div>
     </section>
 
-    <section id="yetenekler">
-      <div class="section-head"><span class="section-num">05</span><h2>Aktif Yetenekler</h2></div>
-      <p class="section-dek">8 aktif yetenek var, her biri süreli bir güçlendirme sağlıyor ve ardından bekleme süresine (cooldown) giriyor. Her yeteneğin 7 seviyesi var; seviye arttıkça süre uzuyor, bekleme kısalıyor, maliyet ikiye katlanıyor (1 → 2 → 4 → 8 → 16 → 32 → 64).</p>
-
-      <div class="table-wrap">
-        <table>
-          <thead>
-            <tr><th>Yetenek</th><th>Etkisi</th><th>Açılış Katı</th><th class="num">Lv1 Süre/Bekleme</th><th class="num">Lv7 Süre/Bekleme</th></tr>
-          </thead>
-          <tbody>
-            <tr><td>OreBreaker</td><td>Cevheri/boss'u otomatik tıklar (7→13 vuruş/sn)</td><td class="num">50</td><td class="num">30sn / 540sn</td><td class="num">90sn / 180sn</td></tr>
-            <tr><td>AngerClick</td><td>Tıklama hasarını çarpar</td><td class="num">70</td><td class="num">×2 · 40sn / 660sn</td><td class="num">×5 · 210sn / 300sn</td></tr>
-            <tr><td>CriticalStrike</td><td>Kritik şansını çarpar</td><td class="num">100</td><td class="num">×1.3 · 30sn / 600sn</td><td class="num">×1.9 · 150sn / 240sn</td></tr>
-            <tr><td>Rampage</td><td>DPS'i çarpar</td><td class="num">170</td><td class="num">×2 · 40sn / 840sn</td><td class="num">×3.5 · 160sn / 480sn</td></tr>
-            <tr><td>HeatResistance</td><td>Sıcaklık direncini çarpar</td><td class="num">280</td><td class="num">×2 · 30sn / 660sn</td><td class="num">×5 · 140sn / 300sn</td></tr>
-            <tr><td>GoldenFrenzy</td><td>Altın kazancını çarpar</td><td class="num">240</td><td class="num">×2 · 50sn / 1020sn</td><td class="num">×5 · 290sn / 660sn</td></tr>
-            <tr><td>Overcharge</td><td>Bir sonraki kullanılan yeteneği güçlendirir</td><td class="num">330</td><td class="num">×1.5 · anlık / 1200sn</td><td class="num">×3 · anlık / 840sn</td></tr>
-            <tr><td>TimeReversal</td><td>Son kullanılan yeteneğin beklemesini kısaltır</td><td class="num">400</td><td class="num">−300sn · anlık / 1200sn</td><td class="num">−1020sn · anlık / 840sn</td></tr>
-          </tbody>
-        </table>
-      </div>
-
-      <p><strong>Yetenek Ağacı</strong> paneli 180. katta, ilk yetenekler ise sırasıyla 50–400. katlar arasında açılıyor. <strong>Overcharge + TimeReversal</strong> ikilisi kombo amaçlıdır: önce Overcharge'ı aktif et, ardından güçlendirmek istediğin yeteneği (ör. GoldenFrenzy) kullan; TimeReversal ise son kullandığın yeteneğin beklemesini kısaltarak onu daha sık kullanmanı sağlar.</p>
+    <section id="critical">
+      <div class="section-head"><span class="section-num">04</span><h2>Kritik Vuruşlar</h2></div>
+      <p class="section-dek">Her tıklama kritik gelip daha sert vurabilir.</p>
+      <p>Başlangıç değerleri <strong>%5</strong> şans ve <strong>x1,5</strong> çarpandır. Dört şey bunları büyütür: Kritik Vuruş yeteneği, kazma skill'leri, Cevher Kâhini ile Felaket Gücü prestij parametreleri ve unvanlar.</p>
     </section>
 
-    <section id="petler">
-      <div class="section-head"><span class="section-num">06</span><h2>Evcil Hayvanlar (Pet)</h2></div>
-      <p class="section-dek">5 pet var, hepsi Elmas ile satın alınıyor ve satın alındıktan sonra Altın ile seviye atlatılıyor. Pet DPS'i, tüm diğer çarpanlardan bağımsız olarak <em>ham</em> şekilde toplam DPS'ine eklenir.</p>
-
-      <div class="card-grid">
-        <div class="item-card">
-          <div class="kicker">Sıra 1</div>
-          <h4>Rocky (Stone Golem)</h4>
-          <p>En ucuz ve en erken alınabilecek pet. DPS katkısı seviye başına en yavaş büyür.</p>
-          <div class="price">150 💎</div>
+    <section id="pickaxes">
+      <div class="section-head"><span class="section-num">05</span><h2>Kazmalar</h2></div>
+      <p class="section-dek">Sırayla açılan 45 kazma. Hasarının belkemiği.</p>
+      <ul>
+          <li>İlk kazma <strong>5 altın</strong>; sonraki her kazma bir öncekinin yaklaşık <strong>8 katı</strong> tutar.</li>
+          <li>Kazma kendiliğinden açılır: bu prestijte yeterince altın kazanmak yeter - yani yeni kazmayı açan şey mevcut kazmayı yükseltmek.</li>
+          <li>Her seviye bir öncekinden yaklaşık <strong>%7</strong> pahalıdır.</li>
+          <li>Tıklama hasarını yalnızca <strong>ilk</strong> kazma besler. Geri kalan hepsi saniyedeki otomatik hasarı besler.</li>
+          <li>Her kazmanın 6 skill'i var; 5 / 10 / 25 / 50 / 100 / 200 seviyelerinde açılır. Bazısı yalnız o kazmaya, bazısı tüm kazmalara etki eder - tümüne etki edenler daha değerlidir.</li>
+        </ul>
+      <div class="callout">
+          <div class="callout-label">Büyük sıçrama</div>
+          Bir kazma her <strong>100 seviyede</strong> kendi çıktısını <strong>x10</strong> katına çıkarır. Tek bir kazmayı sonraki yüzlüğe taşımak, elindeki en büyük güç artışıdır.
         </div>
-        <div class="item-card">
-          <div class="kicker">Sıra 2</div>
-          <h4>Sprout (Root Golem)</h4>
-          <p>Rocky'den biraz daha pahalı, seviye başına biraz daha fazla DPS verir.</p>
-          <div class="price">175 💎</div>
-        </div>
-        <div class="item-card">
-          <div class="kicker">Sıra 3</div>
-          <h4>Gemstone (Crystal Golem)</h4>
-          <p>Orta segment pet, dengeli maliyet/güç oranı.</p>
-          <div class="price">200 💎</div>
-        </div>
-        <div class="item-card">
-          <div class="kicker">Sıra 4</div>
-          <h4>Blazestone (Lava Golem)</h4>
-          <p>Geç oyun için güçlü, seviye başına yüksek DPS artışı.</p>
-          <div class="price">225 💎</div>
-        </div>
-        <div class="item-card">
-          <div class="kicker">Sıra 5</div>
-          <h4>Shadowshard (Obsidian Golem)</h4>
-          <p>En güçlü pet — Rocky'ye göre <strong>seviye başına 5 kat</strong> daha fazla DPS verir.</p>
-          <div class="price">250 💎</div>
-        </div>
-      </div>
+    </section>
 
-      <h3>Pet DPS'i neye bağlı?</h3>
-      <p>Her pet seviyesi, o anki <strong>toplam tıklama hasarının yaklaşık %1'i × pet'in sırası</strong> kadar DPS ekler. Bu yüzden aynı seviyede Shadowshard (sıra 5), Rocky'den (sıra 1) beş kat daha güçlüdür — ama Shadowshard'ı yükseltmek de daha pahalıdır. Pratik sonuç: <strong>önce tıklama hasarını büyüt</strong> (pet'lerin DPS tabanı ondan besleniyor), sonra pet seviyelerine yatırım yap.</p>
+    <section id="suits">
+      <div class="section-head"><span class="section-num">06</span><h2>Zırhlar</h2></div>
+      <p class="section-dek">Baştan sahip olduğun 5 zırh. Görevleri ısıyı üstünden almak.</p>
+      <ul>
+          <li>Zırh satın alınmaz, yalnızca yükseltilir. Her seviye ısı direncine yaklaşık <strong>%5</strong> ekler; taban 50.</li>
+          <li>Her 100 seviyede zırhın direnci <strong>x2</strong> katına çıkar.</li>
+          <li>Her zırhın ayrıca seviye ilerledikçe açılan 6 skill'i var.</li>
+          <li>Zırh paneli, ısı göstergesiyle birlikte <strong>130.</strong> katta açılır.</li>
+        </ul>
+    </section>
 
-      <p>Seviye maliyeti, pet'in sırası arttıkça üstel olarak büyür ve her seviyede yaklaşık <strong>%30 daha pahalı</strong> olur — bu yüzden geç oyunda tüm pet'leri eşit seviyede tutmak yerine, en yüksek sıralı (en güçlü) pet'e öncelik vermek genelde daha verimlidir.</p>
-
-      <p>Her pet'in de kendine ait <strong>6 skill'i</strong> var, belirli seviyelerde açılıyor; bazıları sadece o pete, bazıları tüm pet'lerin toplamına etki ediyor.</p>
-
+    <section id="temperature">
+      <div class="section-head"><span class="section-num">07</span><h2>Isı</h2></div>
+      <p class="section-dek">Derine indikçe sıcaklık artar ve ısı hasarını sessizce kırpar.</p>
+      <ul>
+          <li>Kat sıcaklığı istikrarlı biçimde tırmanır - kat başına yaklaşık <strong>1,04 kat</strong>, yani her yirmi katta bir ikiye katlanır.</li>
+          <li>Direncin kat sıcaklığının en az <strong>1,5 katı</strong> olduğu sürece gösterge temiz kalır, hiçbir şey kaybetmezsin.</li>
+          <li>Direnç sıcaklığın altına düştüğü an hasar sızmaya başlar; <strong>0,5 kat</strong> seviyesinde hasarın yalnızca yirmide biri kalır - yani <strong>%95</strong> kayıp.</li>
+          <li>Zırh panelinde direnci otomatik satın alma anahtarı var; sık derine iniyorsan açık bırak.</li>
+        </ul>
       <div class="callout warn">
-        <div class="callout-label">Prestij Uyarısı</div>
-        Prestij yaptığında pet'lerin <strong>seviyesi 1'e sıfırlanır</strong> ve skill'leri "satın alınmamış" hâle gelir.
-        Ama pet'in kendisini tekrar satın almana gerek yok — sahiplik kalıcıdır.
-      </div>
+          <div class="callout-label">İlerleme tıkandıysa</div>
+          Cevherin bir anda bitmez olması neredeyse her zaman hasar değil ısı sorunudur. Başka bir şeye para harcamadan önce göstergeye bak.
+        </div>
     </section>
 
-    <section id="cevher-derinlik">
-      <div class="section-head"><span class="section-num">07</span><h2>Cevher &amp; Derinlik</h2></div>
-      <p class="section-dek">İlerledikçe katlar (floor) zorlaşır ama daha fazla altın verir. Derinlik (metre) ise hangi cevher türlerinin karşına çıkacağını belirler.</p>
+    <section id="pets">
+      <div class="section-head"><span class="section-num">08</span><h2>Petler</h2></div>
+      <p class="section-dek">Elmasla alınıp altınla yükseltilen 5 pet.</p>
+      <ul>
+          <li>Fiyatlar <strong>150</strong> elmastan <strong>250</strong> elmasa kadar (150 / 175 / 200 / 225 / 250).</li>
+          <li>Her seviye, kazma tıklama hasarının yaklaşık <strong>%1</strong> kadarını otomatik hasar olarak ekler ve bu pet'in sırasıyla çarpılır - yani aynı seviyede Shadowshard, Rocky pet'inin beş katını verir.</li>
+          <li>Seviyeler her adımda yaklaşık <strong>%20</strong> pahalanır; her 100 seviyede pet kendi çıktısını <strong>x5</strong> katına çıkarır.</li>
+          <li>Her pet'in 6 skill'i var; bazısı yalnız o pet'e, bazısı hepsine etki eder.</li>
+          <li>Pet paneli <strong>30.</strong> katta, ya da elinde bir pet olduğu anda açılır.</li>
+        </ul>
+      <div class="callout warn">
+          <div class="callout-label">Prestij ve petler</div>
+          Prestij her pet'i <strong>1. seviyeye</strong> döndürür ve skill'lerini siler. Ama sahiplik kalıcıdır - pet'i bir daha satın almazsın.
+        </div>
+    </section>
 
-      <h3>Katlar zorlaştıkça ne değişir?</h3>
-      <p>Her kat, bir öncekinden biraz daha fazla can ve biraz daha fazla altın verir — büyüme başta yavaş, ilerledikçe hızlanan bir eğridir. Ayrıca <strong>her 10 katta bir</strong> ("duration floor") o kat özel bir mini patrona dönüşür: <strong>20 saniyelik bir süre sınırı</strong> başlar ve o cevherin canı/altını normalden <strong>%50 (can) / %51 (altın)</strong> daha fazladır.</p>
-
-      <h3>Cevher çeşidi neye göre değişir?</h3>
-      <p>Kırdığın cevherin türü (Demir, Bakır, Altın, Uranyum vb.) tamamen <strong>derinlik (metre)</strong> değerine bağlıdır, kata değil. Derinlik arttıkça yeni ve daha nadir cevher türleri havuza eklenir:</p>
+    <section id="floors">
+      <div class="section-head"><span class="section-num">09</span><h2>Katlar, Cevher ve Derinlik</h2></div>
+      <p class="section-dek">Cevherin ne kadar sert olduğunu ve ne kadar altın verdiğini kat belirler; nasıl göründüğünü derinlik.</p>
+      <ul>
+          <li>Her katın canı ve altını bir öncekinden biraz fazladır; eğri ilerledikçe dikleşir.</li>
+          <li>Her <strong>10. kat</strong> süreli kattır: <strong>20 saniyelik</strong> sayaç başlar, can yaklaşık %50, altın yaklaşık %51 artar.</li>
+          <li>Zorluk ayrıca yaklaşık 100 katlık döngülerle işler - bir döngünün ilk katları canına göre en iyi altını verir.</li>
+          <li>Her cevher altınının üstüne <strong>1-5</strong> Cevher Taşı düşürür.</li>
+        </ul>
+      <div class="callout warn">
+          <div class="callout-label">Süreli kat ceza keser</div>
+          Sayaç dolarsa <strong>bir alt kata</strong> geri gönderilirsin. Hasarın yetmiyorsa süreli katta başarısız olmak yerine o katı atla.
+        </div>
+      <p>Bu prestijte ulaştığın herhangi bir kata inip orada farm yapabilirsin. Kat elle seçmek otomatik ilerlemeyi kapatır; yeniden tırmanmak isteyince geri aç.</p>
+      <p>Oyunda toplam <strong>40</strong> cevher türü var ve hangisinin çıkacağını derinlik belirler. Cevher türü yalnızca görüntüyü ve tozunu değiştirir - can ve altın kattan gelir.</p>
       <div class="table-wrap">
         <table>
-          <thead><tr><th>Derinlik</th><th>Toplam Cevher Çeşidi</th><th>Örnekler</th></tr></thead>
-          <tbody>
-            <tr><td class="num">0–100m</td><td class="num">9</td><td>Demir, Bakır, Karbon, Silikon...</td></tr>
-            <tr><td class="num">100–500m</td><td class="num">20</td><td>+ Altın, Gümüş, Kurşun, Çinko...</td></tr>
-            <tr><td class="num">500–1500m</td><td class="num">30</td><td>+ Platin, Titanyum, Kobalt...</td></tr>
-            <tr><td class="num">1500m+</td><td class="num">40</td><td>+ Uranyum, Toryum, Osmiyum (nadir)</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <p>Cevher türü sadece görsel farklılık ve "toz" (dust) ödülünü etkiler — kırması ne kadar zor olduğu ve ne kadar altın verdiği tamamen bulunduğun <strong>kat</strong>a bağlıdır, cevherin türüne değil.</p>
-
-      <p>Her kırılan cevherden ayrıca <strong>1 ile 5 arası rastgele OreStone</strong> düşer.</p>
-
-      <details class="formula">
-        <summary>Tam formülü gör (ileri seviye oyuncular için)</summary>
-        <pre>Cevher Canı  = 1 + 9 × 1.06^(kat-1) × kat        (her 10. katta ×1.5)
-Altın Ödülü = 1 + 1.45 × 1.05^(kat-1) × kat      (her 10. katta ×1.51)
-Derinlik(m) = 1 + 1.1 × 1.01^(kat-1) × kat</pre>
-      </details>
-    </section>
-
-    <section id="prestij">
-      <div class="section-head"><span class="section-num">08</span><h2>Prestij</h2></div>
-      <p class="section-dek">Prestij, ilerlemenin büyük kısmını sıfırlayıp karşılığında kalıcı bir güç kaynağı (Essence) veren "yeniden başlama" sistemi. Doğru zamanlanınca ilerlemeni hızlandırır.</p>
-
-      <h3>Prestij ne zaman açılır?</h3>
-      <p>İlk kez <strong>200. kata</strong> ulaştığında Prestij paneli açılır. Sonraki her prestij için gereken kat artar: <strong>(mevcut prestij seviyen + 1) × 100</strong>. Yani 1. prestijden sonra 2. prestij için 300. kat, 3. prestij için 400. kat gerekir.</p>
-
-      <h3>Prestij yapınca ne olur?</h3>
-      <table>
-        <thead><tr><th>Sıfırlanır</th><th>Kalıcı Kalır</th></tr></thead>
+        <thead><tr>
+        <th class="num">Derinlik</th>
+        <th class="num">Cevher türü</th>
+        <th class="num">Yaklaşık kat</th>
+        </tr></thead>
         <tbody>
-          <tr><td>Altın (0'a döner)</td><td>Prestij Seviyesi (+1 artar)</td></tr>
-          <tr><td>Kat ilerlemesi (yeniden başlar)</td><td>Essence bakiyesi</td></tr>
-          <tr><td>Kazma yükseltmeleri (başlangıç hariç)</td><td>7 Prestij Parametresi'nin seviyeleri</td></tr>
-          <tr><td>Pet seviyeleri (1'e döner)</td><td>Pet sahiplikleri (yeniden satın almaya gerek yok)</td></tr>
-          <tr><td>Kazma/pet skill'leri</td><td></td></tr>
-        </tbody>
-      </table>
-
-      <h3>Essence ödülü nasıl hesaplanır?</h3>
-      <p>O prestij döneminde yaptıkların doğrudan ödülüne yansır:</p>
-      <ul>
-        <li>Ulaştığın en yüksek kat × <strong>0.5</strong></li>
-        <li>Kırdığın toplam cevher sayısı × <strong>0.25</strong></li>
-        <li>Yükselttiğin kazma seviyesi sayısı × <strong>0.1</strong></li>
-        <li>Yükselttiğin zırh seviyesi sayısı × <strong>0.1</strong></li>
-      </ul>
-      <div class="callout">
-        <div class="callout-label">Örnek Hesap</div>
-        250. kata ulaştın, 5.000 cevher kırdın, 300 kere kazma ve 50 kere zırh yükselttin:<br>
-        <span style="font-family:var(--font-mono)">(250×0.5) + (5000×0.25) + (300×0.1) + (50×0.1) = 125 + 1250 + 30 + 5 = <strong style="color:var(--accent-strong)">1.410 Essence</strong></span><br>
-        Görüldüğü gibi <strong>cevher kırmak</strong> Essence'in en büyük kaynağı — prestij öncesi son dakikalarda hızlı kat atlamaktan çok, mümkün olduğunca çok cevher kırmaya odaklanmak daha kârlı.
-      </div>
-
-      <h3>Essence'i nereye harcamalısın? (7 Prestij Parametresi)</h3>
-      <div class="table-wrap">
-        <table>
-          <thead><tr><th>Parametre</th><th>Etkisi</th><th class="num">Seviye Başı</th></tr></thead>
-          <tbody>
-            <tr><td>Eternal Forge</td><td>DPS çarpanı</td><td class="num strong">+%20</td></tr>
-            <tr><td>Stonecrusher's Hand</td><td>Tıklama Hasarı çarpanı</td><td class="num strong">+%25</td></tr>
-            <tr><td>Golden Abyss</td><td>Altın kazancı çarpanı</td><td class="num strong">+%10</td></tr>
-            <tr><td>Ore Oracle</td><td>Kritik şans</td><td class="num strong">+%5</td></tr>
-            <tr><td>Cataclysmic Force</td><td>Kritik çarpan</td><td class="num strong">+%5</td></tr>
-            <tr><td>Infernal Shield</td><td>Sıcaklık direnci</td><td class="num strong">+%10</td></tr>
-            <tr><td>Unity of Force</td><td>DPS'ten tıklama hasarına dönüşüm</td><td class="num strong">+%1</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <p>Bu bonuslar seviye seviye <strong>toplanarak</strong> büyür (katlanmalı değil) — yani her seviye eşit miktarda katkı sağlar, bu da erken seviyelerde de yatırımın "boşa gitmediği" anlamına gelir. Maliyet Essence cinsindendir ve seviye arttıkça yavaşça artar (yaklaşık %1'lik büyüme + seviye eklenmesi), yani bu 7 parametre kazma/pet yükseltmelerine göre <strong>çok daha ucuz büyütülebilir</strong> — biriken Essence'i bekletmek yerine düzenli harcamak mantıklı.</p>
+        <tr>
+        <td class="num">0-100 m</td>
+        <td class="num">9</td>
+        <td class="num">~54</td>
+        </tr>
+        <tr>
+        <td class="num">100-500 m</td>
+        <td class="num">20</td>
+        <td class="num">~129</td>
+        </tr>
+        <tr>
+        <td class="num">500-1.500 m</td>
+        <td class="num">30</td>
+        <td class="num">~196</td>
+        </tr>
+        <tr>
+        <td class="num">1.500 m+</td>
+        <td class="num">40</td>
+        <td class="num">-</td>
+        </tr>
+        </tbody></table></div>
     </section>
 
-    <section id="boss">
-      <div class="section-head"><span class="section-num">09</span><h2>Boss Savaşları</h2></div>
-      <p class="section-dek">Boss'lar, süreli bir hasar yarışı: verilen sürede boss'u öldürürsen büyük ödül alırsın, yetiştiremezsen hiçbir şey kazanmadan çıkarsın.</p>
-
-      <h3>Nasıl açılır ve girilir?</h3>
-      <p>Boss/Zindan sistemi <strong>350. kata</strong> ulaşınca açılır. Otomatik başlamaz — zindan panelinden bir boss seçip savaşa girmek için <strong>1 Zindan Anahtarı</strong> harcarsın. Anahtarın yoksa savaşa giremezsin, bu yüzden anahtar birikimini takip etmek önemlidir.</p>
-
-      <h3>10 Boss, sırayla açılır</h3>
-      <p>Rastgele değil, sıralı bir liste: bir boss'u yendiğinde bir sonraki açılır. Her seviyede can yaklaşık <strong>1000 kat</strong> artar, süre ise kademeli olarak kısalır.</p>
+    <section id="skills">
+      <div class="section-head"><span class="section-num">10</span><h2>Aktif Yetenekler</h2></div>
+      <p class="section-dek">Her biri süreli bir güçlendirme, ardından bekleme süresi olan 8 yetenek.</p>
+      <p>Yetenek, katı geldiğinde <strong>bedava</strong> açılır ve 1. kademede kullanılmaya başlar. 7. kademeye çıkarmak toplam <strong>63 Yetenek Taşı</strong> tutar; 8 yeteneğin hepsi için <strong>504</strong>. Kademe yükseldikçe süre uzar, bekleme kısalır.</p>
       <div class="table-wrap">
         <table>
-          <thead><tr><th class="num">Boss</th><th>İsim</th><th class="num">Can</th><th class="num">Süre</th><th class="num">Ödül (Essence / SkillStone / OreStone)</th></tr></thead>
-          <tbody>
-            <tr><td class="num">1</td><td>Crystal Colossus</td><td class="num">1e13</td><td class="num">30sn</td><td class="num">100 / 3 / 5.000</td></tr>
-            <tr><td class="num">2</td><td>Crystal Guardian</td><td class="num">1e16</td><td class="num">25sn</td><td class="num">200 / 6 / 10.000</td></tr>
-            <tr><td class="num">3</td><td>Crimson Sentinel</td><td class="num">1e19</td><td class="num">20sn</td><td class="num">300 / 9 / 15.000</td></tr>
-            <tr><td class="num">4</td><td>Stone Guardian</td><td class="num">1e22</td><td class="num">20sn</td><td class="num">400 / 12 / 20.000</td></tr>
-            <tr><td class="num">5</td><td>Frost Titan</td><td class="num">1e25</td><td class="num">20sn</td><td class="num">500 / 15 / 25.000</td></tr>
-            <tr><td class="num">6</td><td>Crystal Golem</td><td class="num">1e28</td><td class="num">20sn</td><td class="num">600 / 18 / 30.000</td></tr>
-            <tr><td class="num">7</td><td>Stonebeard Colossus</td><td class="num">1e31</td><td class="num">15sn</td><td class="num">700 / 21 / 35.000</td></tr>
-            <tr><td class="num">8</td><td>Crystal Golem II</td><td class="num">1e34</td><td class="num">15sn</td><td class="num">800 / 24 / 40.000</td></tr>
-            <tr><td class="num">9</td><td>Blaze Golem</td><td class="num">1e37</td><td class="num">15sn</td><td class="num">900 / 27 / 45.000</td></tr>
-            <tr><td class="num">10</td><td>Golem Guardian</td><td class="num">1e40</td><td class="num">10sn</td><td class="num">1.000 / 30 / 50.000</td></tr>
-          </tbody>
-        </table>
-      </div>
+        <thead><tr>
+        <th>Yetenek</th>
+        <th class="num">Kat</th>
+        <th class="num">1. kademe (süre / bekleme)</th>
+        <th class="num">7. kademe (süre / bekleme)</th>
+        <th class="num">Etki</th>
+        </tr></thead>
+        <tbody>
+        <tr>
+        <td>Cevher Kırıcı</td>
+        <td class="num">50</td>
+        <td class="num">30 sn / 540 sn</td>
+        <td class="num">90 sn / 180 sn</td>
+        <td class="num">7 → 13 /sn</td>
+        </tr>
+        <tr>
+        <td>Öfkeli Tıklama</td>
+        <td class="num">70</td>
+        <td class="num">40 sn / 660 sn</td>
+        <td class="num">210 sn / 300 sn</td>
+        <td class="num">x2 → x5</td>
+        </tr>
+        <tr>
+        <td>Kritik Vuruş</td>
+        <td class="num">100</td>
+        <td class="num">30 sn / 600 sn</td>
+        <td class="num">150 sn / 240 sn</td>
+        <td class="num">x1,3 → x1,9</td>
+        </tr>
+        <tr>
+        <td>Cinnet</td>
+        <td class="num">170</td>
+        <td class="num">40 sn / 840 sn</td>
+        <td class="num">160 sn / 480 sn</td>
+        <td class="num">x2 → x3,5</td>
+        </tr>
+        <tr>
+        <td>Altın Çılgınlığı</td>
+        <td class="num">240</td>
+        <td class="num">50 sn / 1.020 sn</td>
+        <td class="num">290 sn / 660 sn</td>
+        <td class="num">x2 → x5</td>
+        </tr>
+        <tr>
+        <td>Isı Direnci</td>
+        <td class="num">280</td>
+        <td class="num">30 sn / 660 sn</td>
+        <td class="num">140 sn / 300 sn</td>
+        <td class="num">x2 → x5</td>
+        </tr>
+        <tr>
+        <td>Aşırı Yükleme</td>
+        <td class="num">330</td>
+        <td class="num">20 sn / 1.200 sn</td>
+        <td class="num">20 sn / 840 sn</td>
+        <td class="num">x1,5 → x3</td>
+        </tr>
+        <tr>
+        <td>Zamanı Geri Alma</td>
+        <td class="num">400</td>
+        <td class="num">1.200 sn</td>
+        <td class="num">840 sn</td>
+        <td class="num">-300 sn → -1.020 sn</td>
+        </tr>
+        </tbody></table></div>
+      <p>İlk yetenek hattı 50. katta açılır; Yetenek Taşı harcadığın yetenek ağacı paneli <strong>180.</strong> katta açılır. Yeteneği kullanmak için panele gerek yok.</p>
+      <div class="callout">
+          <div class="callout-label">Kombo</div>
+          Önce Aşırı Yükleme kullan, sonra asıl güçlendirmek istediğin yeteneği - örneğin Altın Çılgınlığı. Zamanı Geri Alma ise en son kullandığın yeteneğin beklemesini kısaltır, yani onu daha erken geri alırsın.
+        </div>
+    </section>
 
+    <section id="titles">
+      <div class="section-head"><span class="section-num">11</span><h2>Unvanlar</h2></div>
+      <p class="section-dek">Tırmandıkça kendiliğinden gelen 100 unvan.</p>
+      <ul>
+          <li>Unvanlar 1. kattan <strong>50.000.</strong> kata kadar yayılır ve bu prestijteki en yüksek kata göre otomatik seçilir.</li>
+          <li>Her unvan taşıdığı bonuslara yaklaşık <strong>+0,1</strong> ekler.</li>
+          <li>Bonuslar kademeli gelir: ilk unvandan tıklama hasarı, sonra otomatik hasar, ısı direnci, altın, kritik çarpanı, kritik şansı ve tıklamaya eklenen SBH payı (1 / 5 / 10 / 15 / 20 / 25 / 30. unvanlar).</li>
+        </ul>
+    </section>
+
+    <section id="tasks">
+      <div class="section-head"><span class="section-num">12</span><h2>Görevler ve Taskium</h2></div>
+      <p class="section-dek">Tıklamanı ikinci bir gelire çeviren yan hat.</p>
+      <ul>
+          <li>Her başarılı tıklama <strong>+1 Taskium</strong> verir.</li>
+          <li>Görev kabul etmek <strong>200</strong>, görev yenilemek <strong>25</strong> tutar.</li>
+          <li>Görev paneli 160. katta açılır; 6 yuva 160 / 170 / 180 / 190 / 200 / 210. katlarda açılır.</li>
+          <li>6 nadirlikte 10 görev türü var. Her görev 60 dakika sürer, kabul edilmeyenler saat başı yenilenir.</li>
+          <li>Ödül nadirlikle büyür: o anki katın cevher altınının <strong>50-500</strong> katı arası. En nadir görevler ayrıca Öz verir.</li>
+        </ul>
+    </section>
+
+    <section id="trade">
+      <div class="section-head"><span class="section-num">13</span><h2>Takas Paneli</h2></div>
+      <p class="section-dek">180. katta açılır. Cevher Taşı'nın bir işe yaradığı tek yer.</p>
+      <ul>
+          <li>1 Yetenek Taşı <strong>5.000 Cevher Taşı</strong> olur - işlem başına en fazla 100.000.</li>
+          <li><strong>2.000 Cevher Taşı</strong> 1 Öz olur.</li>
+          <li><strong>5.000 Cevher Taşı</strong> 1 Yetenek Taşı olur.</li>
+        </ul>
+      <p>Sonuncusu önemli: uzun bir farm seansını boss dövüşmeden yetenek kademesine çeviren yol budur.</p>
+    </section>
+
+    <section id="extras">
+      <div class="section-head"><span class="section-num">14</span><h2>Bedava Altın</h2></div>
+      <p class="section-dek">Sadece oyunda olmanı isteyen üç kaynak.</p>
+      <ul>
+          <li><strong>Altın balonu</strong> - 50. kattan itibaren her 70-105 saniyede bir süzülüp gelir. Tıklayınca bu prestijteki en iyi katın cevher altınının <strong>x6</strong> katını verir.</li>
+          <li><strong>Çevrimdışı kazanç</strong> - 60 dakikadan sonra saymaya başlar, 12 saatte kesilir. Premium bunu iki katına çıkarır.</li>
+          <li><strong>Oyun süresi ödülü</strong> - her 60 dakikalık oyun için en iyi katındaki bir dakikalık altının yaklaşık 100 katı.</li>
+        </ul>
+    </section>
+
+    <section id="prestige">
+      <div class="section-head"><span class="section-num">15</span><h2>Prestij</h2></div>
+      <p class="section-dek">Bu turdaki ilerlemeyi kalıcı güce çevirmek. Zamanlaması doğruysa oyundaki en hızlı hamle.</p>
+      <p>Prestij paneli, <strong>200.</strong> kata ilk kez ulaştığında açılır. Sonrasında her prestij 100 kat daha ister: 300, ardından 400 ve böyle sürer.</p>
+      <ul>
+          <li><strong>Sıfırlanır:</strong> altın, Taskium, kat ilerlemesi, kazma ve zırh yükseltmeleri, pet seviyeleri, satın alınmış tüm skill'ler ve boss seviyesi.</li>
+          <li><strong>Kalır:</strong> prestij seviyesi, Öz, 7 parametrenin seviyeleri, pet sahipliği, Sonsuz eşyalar, başarımlar.</li>
+          <li>Kat 1'den başlamazsın: yeni tur <strong>100 x prestij seviyesi</strong> katından açılır ve yanına yaklaşık 500 cevher değerinde başlangıç altını gelir.</li>
+          <li>Tüm yetenek beklemeleri temizlenir, yani tura hepsi hazırken başlarsın.</li>
+        </ul>
+      <p>Öz ödülü yalnızca iki şeyden gelir: ulaştığın <strong>en yüksek kat</strong> (her biri 0,5) ve <strong>kırdığın cevher</strong> (her biri 0,25).</p>
+      <div class="callout">
+          <div class="callout-label">Koşma, cevher kır</div>
+          Cevher sayısı daha büyük terim olduğu için, son dakikaları zar zor hasar verdiğin bir kata tırmanmakla geçirmek yerine rahat bir katta farm yapmak daha çok Öz getirir.
+        </div>
+      <div class="table-wrap">
+        <table>
+        <thead><tr>
+        <th>Parametre</th>
+        <th>Etki</th>
+        <th class="num">Seviye başına</th>
+        </tr></thead>
+        <tbody>
+        <tr>
+        <td>Ebedî Ocak</td>
+        <td>Saniyede otomatik hasar</td>
+        <td class="num">+20%</td>
+        </tr>
+        <tr>
+        <td>Taşkıran Eli</td>
+        <td>Tıklama hasarı</td>
+        <td class="num">+25%</td>
+        </tr>
+        <tr>
+        <td>Altın Uçurum</td>
+        <td>Altın kazancı</td>
+        <td class="num">+10%</td>
+        </tr>
+        <tr>
+        <td>Cevher Kâhini</td>
+        <td>Kritik şansı</td>
+        <td class="num">+5%</td>
+        </tr>
+        <tr>
+        <td>Felaket Gücü</td>
+        <td>Kritik çarpanı</td>
+        <td class="num">+5%</td>
+        </tr>
+        <tr>
+        <td>Cehennem Kalkanı</td>
+        <td>Isı direnci</td>
+        <td class="num">+10%</td>
+        </tr>
+        <tr>
+        <td>Güç Birliği</td>
+        <td>Tıklamaya eklenen SBH payı</td>
+        <td class="num">+1%</td>
+        </tr>
+        </tbody></table></div>
+      <p>Bonuslar bileşik değil, seviye seviye toplanır; Öz maliyeti de yavaş yükselir. Yani Öz'ü biriktirmek yerine düzenli harcamak kazandırır.</p>
+    </section>
+
+    <section id="bosses">
+      <div class="section-head"><span class="section-num">16</span><h2>Bosslar</h2></div>
+      <p class="section-dek">Öz için süreli hasar yarışı. 350. katta açılır.</p>
+      <ul>
+          <li>Bir boss seçip <strong>1 zindan anahtarı</strong> harcayarak başlatırsın. Kendiliğinden başlayan bir şey yok.</li>
+          <li>Bosslar sırayla açılır - birini geçmeden sonrakini görmezsin. Her adımda can bini aşkın katına çıkar, süre kısalır.</li>
+          <li>Ödüller prestij seviyenle büyür: seviye başına yaklaşık <strong>%15</strong>.</li>
+          <li>Prestij boss seviyeni ilk bossa döndürür.</li>
+        </ul>
+      <div class="table-wrap">
+        <table>
+        <thead><tr>
+        <th>Boss</th>
+        <th class="num">Can</th>
+        <th class="num">Süre</th>
+        <th>Ödül</th>
+        </tr></thead>
+        <tbody>
+        <tr>
+        <td>Kristal Dev</td>
+        <td class="num">1e13</td>
+        <td class="num">30 sn</td>
+        <td>50 Öz + 5.000 Cevher Taşı</td>
+        </tr>
+        <tr>
+        <td>Kristal Muhafız</td>
+        <td class="num">1e16</td>
+        <td class="num">25 sn</td>
+        <td>75 Öz + 7.500 Cevher Taşı</td>
+        </tr>
+        <tr>
+        <td>Kızıl Nöbetçi</td>
+        <td class="num">1e19</td>
+        <td class="num">20 sn</td>
+        <td>100 Öz + 10.000 Cevher Taşı</td>
+        </tr>
+        <tr>
+        <td>Taş Muhafız</td>
+        <td class="num">1e22</td>
+        <td class="num">20 sn</td>
+        <td>125 Öz + 12.500 Cevher Taşı</td>
+        </tr>
+        <tr>
+        <td>Buz Titanı</td>
+        <td class="num">1e25</td>
+        <td class="num">20 sn</td>
+        <td>150 Öz + 15.000 Cevher Taşı</td>
+        </tr>
+        <tr>
+        <td>Kristal Golem 1</td>
+        <td class="num">1e28</td>
+        <td class="num">20 sn</td>
+        <td>175 Öz + 17.500 Cevher Taşı</td>
+        </tr>
+        <tr>
+        <td>Taşsakal Dev</td>
+        <td class="num">1e31</td>
+        <td class="num">15 sn</td>
+        <td>200 Öz + 20.000 Cevher Taşı</td>
+        </tr>
+        <tr>
+        <td>Kristal Golem 2</td>
+        <td class="num">1e34</td>
+        <td class="num">15 sn</td>
+        <td>225 Öz + 22.500 Cevher Taşı</td>
+        </tr>
+        <tr>
+        <td>Alev Golem</td>
+        <td class="num">1e37</td>
+        <td class="num">15 sn</td>
+        <td>250 Öz + 25.000 Cevher Taşı</td>
+        </tr>
+        <tr>
+        <td>Golem Muhafız</td>
+        <td class="num">1e40</td>
+        <td class="num">10 sn</td>
+        <td>275 Öz + 27.500 Cevher Taşı</td>
+        </tr>
+        </tbody></table></div>
       <div class="callout warn">
-        <div class="callout-label">Kaybedersen</div>
-        Süre dolduğunda boss hâlâ hayattaysa savaş biter, <strong>hiçbir ödül verilmez</strong> ve harcadığın Zindan Anahtarı geri gelmez.
-        Bir boss'a girmeden önce DPS'inin o boss'un canını süre içinde bitirebilecek düzeyde olduğundan emin ol — kalan can yüzdesini kaybettikten sonra görebilirsin, bu yüzden ilk denemede tam sonuç alamazsan bir sonraki denemeye göre DPS ihtiyacını tahmin edebilirsin.
-      </div>
-      <p><strong>SkillStone ve Essence'in ana kaynağı boss ödülleridir</strong> — yetenek ağacını ve prestij parametrelerini büyütmek istiyorsan düzenli boss'a girmek şart.</p>
+          <div class="callout-label">Kaybetmek pahalı</div>
+          Süre dolduğunda boss ayaktaysa <strong>hiçbir ödül almazsın</strong> ve anahtar geri gelmez. Başarısız denemeden sonra ne kadar can kaldığını görebilirsin - bir dahaki sefere ne kadar hasar gerektiğini oradan kestir.
+        </div>
     </section>
 
-    <section id="zindan-anahtari">
-      <div class="section-head"><span class="section-num">10</span><h2>Zindan Anahtarı</h2></div>
-      <p class="section-dek">Tek bir işi var: boss savaşına giriş bileti.</p>
-      <p>Her boss denemesi <strong>1 anahtar</strong> harcar (kazansan da kaybetsen de anahtar geri gelmez). Anahtar kaynakların: günlük ödülden gelen 1 adet, ve mağazadan satın alınabilen 3 / 7 / 15'lik paketler. Boss ödülleri (SkillStone, Essence) geç oyunun temel kaynağı olduğu için, anahtarları biriktirip boşa harcamamak, gereksiz zayıf denemeler yapmamak önemli.</p>
-    </section>
-
-    <section id="basarimlar">
-      <div class="section-head"><span class="section-num">11</span><h2>Başarımlar (Achievements)</h2></div>
-      <p class="section-dek">25 farklı başarım kategorisi var (cevher kırma, tıklama sayısı, kritik vuruş, boss öldürme, prestij sayısı vb.), her biri genelde 3-6 kademeli. Tüm başarım ödülleri <strong>OreStone</strong> olarak verilir.</p>
-
-      <p>Genel desen: her kademede hem hedef hem ödül yaklaşık <strong>×10</strong> büyür. Birkaç örnek:</p>
-      <div class="table-wrap">
-        <table>
-          <thead><tr><th>Kategori</th><th>Kademe 1</th><th>Kademe 2</th><th>Kademe 3</th></tr></thead>
-          <tbody>
-            <tr><td>Cevher Kırma</td><td class="num">1.000 → 5.000 OreStone</td><td class="num">10.000 → 50.000 OreStone</td><td class="num">100.000 → 500.000 OreStone</td></tr>
-            <tr><td>Boss Öldürme</td><td class="num">1 → 5.000 OreStone</td><td class="num">5 → 15.000 OreStone</td><td class="num">15 → 50.000 OreStone</td></tr>
-            <tr><td>Prestij Sayısı</td><td class="num">5 → 5.000 OreStone</td><td class="num">50 → 50.000 OreStone</td><td class="num">500 → 500.000 OreStone</td></tr>
-          </tbody>
-        </table>
-      </div>
+    <section id="achievements">
+      <div class="section-head"><span class="section-num">17</span><h2>Başarımlar</h2></div>
+      <p class="section-dek">24 kategoride 86 başarım - tıklama, cevher, boss, prestij, derinlik ve dahası.</p>
+      <p>Her başarım <strong>Cevher Taşı</strong> öder; hem hedef hem ödül kademe başına kabaca on katına çıkar. Kategorilerin çoğu üç kademelidir, altın ve hasar kategorileri daha uzun gider.</p>
       <div class="callout">
-        <div class="callout-label">Unutma</div>
-        Ödüller <strong>otomatik verilmez</strong> — başarımlar sekmesinden elle "Al" demen gerekir. Uzun süre uğramadıysan büyük miktarda birikmiş OreStone kaçırıyor olabilirsin.
-      </div>
+          <div class="callout-label">Toplamayı unutma</div>
+          Ödüller <strong>otomatik yatmaz</strong>. Bir süredir başarım sekmesini açmadıysan orada birikmiş bir yığın var.
+        </div>
     </section>
 
-    <section id="gunluk-odul">
-      <div class="section-head"><span class="section-num">12</span><h2>Günlük Ödül</h2></div>
-      <p class="section-dek">Basit ve cezasız bir sistem.</p>
-      <p>Günde bir kez, giriş yaptığında <strong>1 Zindan Anahtarı</strong> alabilirsin. Hak, her gün <strong>UTC gece yarısında</strong> yenilenir. 7 günlük bir ödül takvimi ya da art arda giriş serisi (streak) <strong>yok</strong> — bir günü kaçırsan bile ceza almazsın, ertesi gün hakkın normal şekilde yenilenir. Ödülü almak için giriş yapmış (online) olman gerekiyor.</p>
+    <section id="daily">
+      <div class="section-head"><span class="section-num">18</span><h2>Günlük Ödül</h2></div>
+      <p class="section-dek">Küçük, basit ve bir günü kaçırmanın cezası yok.</p>
+      <p>Günde bir kez giriş yapmak <strong>1 zindan anahtarı</strong> verir. Her gün aynıdır - takvim yok, korunacak bir seri yok. Almak için çevrimiçi olman gerekir.</p>
     </section>
 
-    <section id="magaza">
-      <div class="section-head"><span class="section-num">13</span><h2>Mağaza &amp; Satın Alımlar</h2></div>
-      <p class="section-dek">Gerçek para karşılığı elmas, zindan anahtarı, paketler ve kalıcı "Infinity" yükseltmeler satın alınabiliyor.</p>
-
-      <h3>Elmas Paketleri</h3>
-      <div class="table-wrap">
-        <table>
-          <thead><tr><th class="num">Elmas</th><th class="num">Fiyat</th></tr></thead>
-          <tbody>
-            <tr><td class="num">200</td><td class="num">$1.09</td></tr>
-            <tr><td class="num">550</td><td class="num">$2.99</td></tr>
-            <tr><td class="num">1.150</td><td class="num">$5.49</td></tr>
-            <tr><td class="num">2.400</td><td class="num">$10.99</td></tr>
-            <tr><td class="num">6.250</td><td class="num">$27.39</td></tr>
-            <tr><td class="num">14.000</td><td class="num">$54.99</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <p style="font-size:0.85rem; color:var(--text-faint)">Elmas miktarı arttıkça birim fiyat düşer — büyük paket her zaman daha avantajlıdır.</p>
-
-      <h3>Zindan Anahtarı Paketleri</h3>
-      <p><strong>3 anahtar</strong> / $1.99 &nbsp;·&nbsp; <strong>7 anahtar</strong> / $4.18 &nbsp;·&nbsp; <strong>15 anahtar</strong> / $7.96</p>
-
-      <h3>Toplu Paketler</h3>
-      <div class="card-grid">
-        <div class="item-card">
-          <div class="kicker">Bundle</div>
-          <h4>Small Package</h4>
-          <p>500 Elmas + 100 Essence + 10 SkillStone + 5 Zindan Anahtarı</p>
-          <div class="price">$3.75</div>
-        </div>
-        <div class="item-card">
-          <div class="kicker">Bundle</div>
-          <h4>Big Package</h4>
-          <p>1.000 Elmas + 200 Essence + 20 SkillStone + 10 Zindan Anahtarı</p>
-          <div class="price">$5.40</div>
-        </div>
-        <div class="item-card">
-          <div class="kicker">Abonelik</div>
-          <h4>7 Günlük Premium</h4>
-          <p>7 gün boyunca tıklama hasarına ekstra sabit çarpan sağlar</p>
-          <div class="price">$4.99</div>
-        </div>
-      </div>
-
-      <h3>Infinity Eşyalar (tek seferlik, kalıcı)</h3>
-      <p>Bu dört eşya <strong>bir kez</strong> satın alınır ve etkisi kalıcıdır — geç oyunun en verimli elmas harcaması genelde burasıdır:</p>
-      <div class="table-wrap">
-        <table>
-          <thead><tr><th>Eşya</th><th>Etkisi</th><th class="num">Maliyet</th></tr></thead>
-          <tbody>
-            <tr><td>Infinity Power</td><td>Hasara kalıcı +%500 (×6) çarpan</td><td class="num strong">350 💎</td></tr>
-            <tr><td>Infinity Income</td><td>Altın kazancına kalıcı +%500 (×6) çarpan</td><td class="num strong">350 💎</td></tr>
-            <tr><td>Infinity Armor</td><td>Sıcaklık direncine kalıcı +%500 (×6) çarpan</td><td class="num strong">350 💎</td></tr>
-            <tr><td>Infinity Clicker</td><td>Saniyede 10 otomatik tıklama (kalıcı auto-click)</td><td class="num strong">600 💎</td></tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
-
-    <section id="kayit">
-      <div class="section-head"><span class="section-num">14</span><h2>Kayıt &amp; Güvenlik — "İlerlemem Kaybolur mu?"</h2></div>
-      <p class="section-dek">Kısa cevap: hayır, birden fazla katman ilerlemeni korur.</p>
+    <section id="store">
+      <div class="section-head"><span class="section-num">19</span><h2>Mağaza</h2></div>
+      <p class="section-dek">Elmas, anahtar, paketler, premium süresi ve kalıcı Sonsuz eşyalar.</p>
       <ul>
-        <li>Oyun her <strong>15 saniyede bir</strong> otomatik ve şifreli olarak kaydeder.</li>
-        <li>Steam Cloud'a yaklaşık <strong>her 45 saniyede bir</strong> (ve oyun kapatılırken/duraklatılırken mutlaka) yedeklenir — Steam Cloud açıksa farklı bir bilgisayarda kaldığın yerden devam edebilirsin.</li>
-        <li>Kayıt dosyası bozulursa oyun otomatik olarak son <strong>yedek dosyaya</strong> geçer, ilerleme kaybı olmadan devam edersin.</li>
-        <li>Kayıt dosyanı panoya kopyalayıp (dışa aktar) başka bir cihazda yapıştırarak (içe aktar) elle de taşıyabilirsin.</li>
-      </ul>
+          <li><strong>Elmas paketleri:</strong> 200 / 550 / 1.150 / 2.400 / 6.250 / 14.000 elmas. Paket büyüdükçe birim fiyat düşer.</li>
+          <li><strong>Anahtar paketleri:</strong> 3 / 7 / 15 zindan anahtarı.</li>
+          <li><strong>Küçük Paket:</strong> 500 Elmas, 100 Öz, 10 Yetenek Taşı, 3 Zindan Anahtarı.</li>
+          <li><strong>Büyük Paket:</strong> 1.000 Elmas, 200 Öz, 20 Yetenek Taşı, 5 Zindan Anahtarı.</li>
+          <li><strong>7 Günlük Premium Paket:</strong> 7 gün boyunca x5 tıklama hasarı, x5 otomatik hasar, x3 altın, x3 ısı direnci ve x2 çevrimdışı kazanç.</li>
+        </ul>
+      <p>Sonsuz eşyalar <strong>elmasla bir kez</strong> alınır ve hiç sıfırlanmaz, prestijte bile. İleri oyunda genelde elmasın en verimli harcandığı yer burasıdır.</p>
+      <div class="table-wrap">
+        <table>
+        <thead><tr>
+        <th>Eşya</th>
+        <th class="num">Etki</th>
+        <th class="num">Fiyat</th>
+        </tr></thead>
+        <tbody>
+        <tr>
+        <td>Sonsuz Güç</td>
+        <td class="num">x4</td>
+        <td class="num">350 💎</td>
+        </tr>
+        <tr>
+        <td>Sonsuz Kazanç</td>
+        <td class="num">x3</td>
+        <td class="num">350 💎</td>
+        </tr>
+        <tr>
+        <td>Sonsuz Zırh</td>
+        <td class="num">x2</td>
+        <td class="num">350 💎</td>
+        </tr>
+        <tr>
+        <td>Sonsuz Hız</td>
+        <td class="num">x1,5</td>
+        <td class="num">550 💎</td>
+        </tr>
+        <tr>
+        <td>Sonsuz Tıklayıcı</td>
+        <td class="num">7 /sn</td>
+        <td class="num">600 💎</td>
+        </tr>
+        </tbody></table></div>
+      <div class="callout">
+          <div class="callout-label">Fiyatlar</div>
+          Mağaza fiyatları Steam'den kendi para biriminde gelir, bu yüzden burada yazılmıyor. Bir paketin içeriği hiç değişmez; fiyatı bölgene göre değişir.
+        </div>
     </section>
 
-    <footer class="doc-footer">
-      Bu rehber, oyunun mevcut denge (balance) verilerine göre hazırlanmıştır; ileride yapılacak güncellemelerle sayılar değişebilir.
-      Teknik/geliştirici referansı için repo köküne eklenen <code>OYUNCU_PARAMETRE_REHBERI.md</code> dosyasına bakabilirsiniz.
-    </footer>
+    <section id="progress">
+      <div class="section-head"><span class="section-num">20</span><h2>Liderlik Tabloları ve İstatistikler</h2></div>
+      <p class="section-dek">Turun nasıl gittiğini görebileceğin iki yer.</p>
+      <ul>
+          <li>Steam liderlik tabloları tıklama sayısını, tıklama hasarını, prestij sayısını, öldürülen bossları ve en yüksek katı tutar.</li>
+          <li>İstatistik ekranı daha uzun bir kayıt tutar - kazanç, harcama, tıklama, oynanan süre ve dahası.</li>
+        </ul>
+    </section>
+
+    <section id="save">
+      <div class="section-head"><span class="section-num">21</span><h2>Kayıtlar</h2></div>
+      <p class="section-dek">Kısa cevap: ilerlemen aynı anda birkaç katmanla korunuyor.</p>
+      <ul>
+          <li>Oyun kendini her <strong>15 saniyede</strong> şifreli olarak kaydeder.</li>
+          <li>Yaklaşık her <strong>45 saniyede</strong> bir Steam Cloud'a yedekler; oyunu kapattığında ve duraklattığında da her zaman - yani başka bir bilgisayarda kaldığın yerden devam edersin.</li>
+          <li>Kayıt dosyası bozulursa oyun kendiliğinden yedeğine düşer.</li>
+          <li>Kaydını panoya kopyalayıp başka bir cihazda geri yapıştırabilirsin.</li>
+        </ul>
+    </section>
+
+    <section id="languages">
+      <div class="section-head"><span class="section-num">22</span><h2>Diller</h2></div>
+      <p class="section-dek">Oyun 18 dilde çıkıyor.</p>
+      <p>İngilizce, Türkçe, Almanca, Fransızca, İspanyolca, Latin Amerika İspanyolcası, İtalyanca, Lehçe, Brezilya Portekizcesi, Rusça, Ukraynaca, Japonca, Korece, Basitleştirilmiş Çince, Geleneksel Çince, Tayca, Endonezce ve Vietnamca. Oyun ilk açılışta senin dilini seçer, ayarlardan dilediğin an değiştirebilirsin - bu rehber de hepsinde var, sayfanın başındaki bağlantılardan.</p>
+    </section>
+
+    <footer class="doc-footer">Buradaki sayılar oyunun güncel dengesine göredir ve güncellemelerle değişebilir. Mağaza fiyatları Steam tarafından belirlenip kendi para biriminde gösterildiği için burada yazılmıyor.</footer>
   </main>
 </div>

@@ -212,6 +212,34 @@
   }
   footer a { color: var(--text-dim); text-decoration: underline; text-underline-offset: 2px; }
   footer a:hover { color: var(--accent-strong); }
+
+  .more-langs { margin-top: 1.1rem; }
+  .more-langs-label {
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 0.68rem;
+    color: var(--text-faint);
+    margin-bottom: 0.55rem;
+  }
+  .more-langs-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem 0.4rem;
+  }
+  .more-langs-list a {
+    font-family: var(--font-display);
+    font-size: 0.78rem;
+    padding: 0.18rem 0.55rem;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    color: var(--text-dim);
+    text-decoration: none;
+  }
+  .more-langs-list a:hover {
+    color: var(--text);
+    border-color: var(--accent);
+  }
 </style>
 </head>
 <body>
@@ -238,6 +266,27 @@
         </span>
         <span class="arrow">→</span>
       </a>
+    </div>
+    <div class="more-langs">
+      <div class="more-langs-label">Also available in</div>
+      <div class="more-langs-list">
+        <a href="player_guide_de.html" hreflang="de">Deutsch</a>
+        <a href="player_guide_fr.html" hreflang="fr">Français</a>
+        <a href="player_guide_es.html" hreflang="es">Español</a>
+        <a href="player_guide_es_la.html" hreflang="es-419">Español (Latinoamérica)</a>
+        <a href="player_guide_it.html" hreflang="it">Italiano</a>
+        <a href="player_guide_pl.html" hreflang="pl">Polski</a>
+        <a href="player_guide_pt_br.html" hreflang="pt-BR">Português (Brasil)</a>
+        <a href="player_guide_ru.html" hreflang="ru">Русский</a>
+        <a href="player_guide_uk.html" hreflang="uk">Українська</a>
+        <a href="player_guide_ja.html" hreflang="ja">日本語</a>
+        <a href="player_guide_ko.html" hreflang="ko">한국어</a>
+        <a href="player_guide_zh_hans.html" hreflang="zh-Hans">简体中文</a>
+        <a href="player_guide_zh_hant.html" hreflang="zh-Hant">繁體中文</a>
+        <a href="player_guide_th.html" hreflang="th">ไทย</a>
+        <a href="player_guide_id.html" hreflang="id">Bahasa Indonesia</a>
+        <a href="player_guide_vi.html" hreflang="vi">Tiếng Việt</a>
+      </div>
     </div>
   </div>
 

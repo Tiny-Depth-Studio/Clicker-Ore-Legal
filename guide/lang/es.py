@@ -1,0 +1,342 @@
+LANG = {
+    "code": "es",
+    "name": "Español",
+    "html_lang": "es",
+    "locale": {"group": ".", "decimal": ","},
+    "title": "Clicker Ore Game - Guía del jugador",
+    "description": "Cómo funciona la mina: monedas, picos, mascotas, habilidades, prestigio, jefes y tienda, explicado sin fórmulas.",
+    "brand": "Clicker Ore Game",
+    "brand_sub": "Guía del jugador",
+    "eyebrow": "Guía del jugador - {date}",
+    "headline": "Toda la mina,<br>explicada en claro",
+    "subtitle": "Qué hace cada sistema, en qué piso se abre y dónde te conviene gastar la próxima hora. Sin fórmulas: solo las decisiones que importan.",
+    "footer": "Los números siguen el equilibrio actual del juego y pueden cambiar con las actualizaciones. Los precios de la tienda los fija Steam y se muestran en tu moneda, así que no aparecen aquí.",
+    "labels": {
+        "contents": "Contenido",
+        "per_second": "/s",
+        "second_short": " s",
+        "meter_short": "m",
+        "language": "Idioma",
+        "skill": "Habilidad",
+        "unlock_floor": "Piso",
+        "level_first": "Nivel 1 (duración / espera)",
+        "level_last": "Nivel 7 (duración / espera)",
+        "effect": "Efecto",
+        "boss": "Jefe",
+        "health": "Vida",
+        "time_limit": "Tiempo",
+        "reward": "Recompensa",
+        "parameter": "Parámetro",
+        "per_level": "Por nivel",
+        "effect_dps": "Daño automático por segundo",
+        "effect_click": "Daño por clic",
+        "effect_gold": "Ingreso de oro",
+        "effect_crit_chance": "Probabilidad crítica",
+        "effect_crit_multiplier": "Multiplicador crítico",
+        "effect_heat": "Resistencia al calor",
+        "effect_click_from_dps": "Parte del DPS que pasa al clic",
+        "depth": "Profundidad",
+        "ore_types": "Tipos de mineral",
+        "around_floor": "Alrededor del piso",
+        "item": "Objeto",
+        "cost": "Precio",
+    },
+    "currencies": {
+        "gold": ["Se gana <b>rompiendo mineral</b>.", "Se gasta en niveles de pico y armadura: tu moneda de trabajo."],
+        "diamond": ["Solo llega con <b>compras de dinero real</b>.", "Se gasta en mascotas y en los objetos Infinito permanentes."],
+        "essence": ["Viene del <b>prestigio</b> y de vencer jefes.", "Se gasta en los {prestige_parameter_count} parámetros de prestigio permanentes."],
+        "taskium": ["<b>+{taskium_per_click}</b> por cada clic acertado.", "Se gasta en aceptar y volver a tirar tareas."],
+        "dungeon_key": ["Una llave gratis al día, más los lotes de la tienda.", "Se gasta al entrar a un jefe: {boss_key_cost} por intento."],
+        "skill_stone": ["Viene de los lotes de la tienda y del panel de intercambio.", "Se gasta en subir las {skill_count} habilidades activas."],
+        "ore_stone": ["<b>{ore_stone_min}-{ore_stone_max}</b> por cada mineral roto, más los logros.", "Se cambia por Esencia o Piedra de habilidad en el panel de intercambio."],
+    },
+    "sections": [
+        {
+            "id": "start",
+            "title": "Por dónde empezar",
+            "dek": "Tres etapas, en el orden en que el juego va abriendo cosas.",
+            "blocks": [
+                ("stages", [
+                    ["Inicio - pisos 1 a {prestige_first_floor}", [
+                        "Mejora el pico sin parar; compra el siguiente en cuanto se abra.",
+                        "{skill_ore_breaker} llega en el piso {skill_line_floor} y {skill_anger_click} en el piso 70.",
+                        "Consigue a {pet_1} en cuanto puedas soltar los diamantes.",
+                    ]],
+                    ["Medio - pisos {prestige_first_floor} a {boss_floor}", [
+                        "Haz tu primer prestigio en el piso {prestige_first_floor}.",
+                        "Reparte la Esencia entre los {prestige_parameter_count} parámetros en vez de exprimir uno.",
+                        "Las tareas se abren en el piso {task_panel_floor}, y el árbol de habilidades y el intercambio en el piso {skill_tree_floor}.",
+                    ]],
+                    ["Avanzado - desde el piso {boss_floor}", [
+                        "Pelea con jefes siempre que tengas una llave: son tu motor de Esencia.",
+                        "Compra los objetos Infinito: son permanentes y nunca se reinician.",
+                        "Mantén la armadura subida para que el calor no se coma tu daño.",
+                    ]],
+                ]),
+                ("note", ["Conviene saberlo", "Los números se alargan rápido, así que el juego pasa primero a formas cortas y luego a notación científica como <strong>1,23e45</strong>. No hay tope: solo cambia la forma de escribirlo."]),
+            ],
+        },
+        {
+            "id": "currencies",
+            "title": "Las {currency_count} monedas",
+            "dek": "Cada una alimenta un sistema distinto. Gastar la moneda correcta en el lugar equivocado es el error más común al empezar.",
+            "blocks": [
+                ("currencies", None),
+                ("note", ["Diamantes", "Los jefes, los logros y las tareas nunca dan diamantes. Los diamantes y las llaves de mazmorra se guardan en el servidor, así que para comprar una mascota tienes que estar conectado."]),
+            ],
+        },
+        {
+            "id": "damage",
+            "title": "Daño por clic y daño automático",
+            "dek": "Dos fuentes de daño separadas, alimentadas por cosas distintas.",
+            "blocks": [
+                ("p", "El <strong>daño por clic</strong> es lo que hace un toque. Sube con el nivel y las habilidades de tu primer pico, con la habilidad {skill_anger_click}, con tu título y con el parámetro de prestigio {prestige_click}. Además, cuando subes {prestige_click_from_dps}, una parte de tu daño automático se suma a cada clic."),
+                ("p", "El <strong>daño automático</strong> (por segundo) viene del segundo pico en adelante, de la habilidad {skill_rampage}, del parámetro {prestige_dps} y de tus mascotas."),
+                ("note", ["Las mascotas son la excepción", "El daño de las mascotas se suma <strong>después</strong> de todos los multiplicadores, no se escala con ellos. Sus niveles solos no te sostienen al final: los multiplicadores de pico y habilidad tienen que crecer también."]),
+            ],
+        },
+        {
+            "id": "critical",
+            "title": "Golpes críticos",
+            "dek": "Cada clic puede salir crítico y golpear más fuerte.",
+            "blocks": [
+                ("p", "Empiezas con un <strong>{crit_chance_percent}%</strong> de probabilidad y un multiplicador de <strong>x{crit_multiplier}</strong>. Cuatro cosas los suben: la habilidad {skill_critical_strike}, las habilidades de pico, los parámetros de prestigio {prestige_crit_chance} y {prestige_crit_multiplier}, y los títulos."),
+            ],
+        },
+        {
+            "id": "pickaxes",
+            "title": "Picos",
+            "dek": "{pickaxe_count} picos que se desbloquean en orden. Son la columna de tu daño.",
+            "blocks": [
+                ("ul", [
+                    "El primer pico cuesta <strong>{pickaxe_first_cost} de oro</strong>; cada siguiente cuesta unas <strong>{pickaxe_cost_growth} veces</strong> más que el anterior.",
+                    "Un pico se desbloquea solo cuando has ganado suficiente oro en esta partida, así que mejorar es lo que abre el siguiente.",
+                    "Cada nivel cuesta alrededor de un <strong>{pickaxe_upgrade_growth_percent}%</strong> más que el anterior.",
+                    "Solo el <strong>primer</strong> pico alimenta el daño por clic. Todos los demás alimentan el daño automático por segundo.",
+                    "Cada pico tiene {pickaxe_skill_count} habilidades que se abren en los niveles {pickaxe_skill_levels}. Algunas ayudan solo a ese pico y otras a todos: las globales valen más.",
+                ]),
+                ("note", ["El gran salto", "Cada <strong>{pickaxe_bonus_interval} niveles</strong>, un pico multiplica su propia producción por <strong>x{pickaxe_bonus_multiplier}</strong>. Empujar un pico hasta la siguiente centena suele ser la mayor subida de poder que tienes a mano."]),
+            ],
+        },
+        {
+            "id": "suits",
+            "title": "Armaduras",
+            "dek": "{suit_count} armaduras, todas tuyas desde el principio. Existen para quitarte el calor de encima.",
+            "blocks": [
+                ("ul", [
+                    "La armadura no se compra, solo se sube. Cada nivel añade cerca de un <strong>{suit_heat_per_level_percent}%</strong> de resistencia, partiendo de {suit_base_heat_resistance}.",
+                    "Cada {suit_bonus_interval} niveles, la resistencia de la armadura se multiplica por <strong>x{suit_bonus_multiplier}</strong>.",
+                    "Cada armadura tiene además {suit_skill_count} habilidades que se abren al subir de nivel.",
+                    "El panel de armadura se abre en el piso <strong>{suit_panel_floor}</strong>, junto con el medidor de calor.",
+                ]),
+            ],
+        },
+        {
+            "id": "temperature",
+            "title": "Calor",
+            "dek": "Cuanto más bajas, más calor hace, y el calor recorta tu daño en silencio.",
+            "blocks": [
+                ("ul", [
+                    "La temperatura del piso sube sin parar: unas <strong>{temperature_growth} veces por piso</strong>, así que se duplica cada veintitantos pisos.",
+                    "Mientras tu resistencia sea al menos <strong>{temperature_safe_ratio} veces</strong> la temperatura, el medidor queda limpio y no pierdes nada.",
+                    "Cuando la resistencia baja de la temperatura, el daño empieza a fugarse; en <strong>{temperature_worst_ratio} veces</strong> te queda solo una veinteava parte, una pérdida del <strong>{temperature_worst_damage_percent}%</strong>.",
+                    "El panel de armadura tiene un interruptor para comprar resistencia automáticamente; déjalo puesto si bajas a menudo.",
+                ]),
+                ("warn", ["Si de golpe te atascas", "Un muro donde el mineral no se acaba nunca casi siempre es calor, no daño. Mira el medidor antes de gastar en otra cosa."]),
+            ],
+        },
+        {
+            "id": "pets",
+            "title": "Mascotas",
+            "dek": "{pet_count} mascotas que se compran con diamantes y luego se suben con oro.",
+            "blocks": [
+                ("ul", [
+                    "Los precios van de <strong>{pet_cost_first}</strong> a <strong>{pet_cost_last}</strong> diamantes ({pet_cost_list}).",
+                    "Cada nivel añade cerca del <strong>{pet_dps_percent_per_level}%</strong> del daño por clic de tu pico como daño automático, multiplicado por el orden de la mascota: {pet_5} da cinco veces lo de {pet_1} al mismo nivel.",
+                    "Los niveles se encarecen un <strong>{pet_upgrade_growth_percent}%</strong> cada vez y, cada {pet_bonus_interval} niveles, la mascota multiplica su producción por <strong>x{pet_bonus_multiplier}</strong>.",
+                    "Cada mascota tiene {pet_skill_count} habilidades; unas sirven solo a ella y otras a todas.",
+                    "El panel de mascotas se abre en el piso <strong>{pet_panel_floor}</strong>, o en cuanto tienes una.",
+                ]),
+                ("warn", ["Prestigio y mascotas", "El prestigio devuelve cada mascota al <strong>nivel 1</strong> y borra sus habilidades. La propiedad es permanente: nunca vuelves a comprar una mascota."]),
+            ],
+        },
+        {
+            "id": "floors",
+            "title": "Pisos, mineral y profundidad",
+            "dek": "El piso decide lo duro que es el mineral y cuánto oro paga. La profundidad decide qué aspecto tiene.",
+            "blocks": [
+                ("ul", [
+                    "Cada piso tiene algo más de vida y algo más de oro que el anterior, y la curva se empina al avanzar.",
+                    "Cada <strong>piso {duration_floor_interval}</strong> es un piso con reloj: arranca una cuenta de <strong>{duration_floor_seconds} segundos</strong>, la vida sube cerca del {duration_floor_health_percent}% y el oro cerca del {duration_floor_gold_percent}%.",
+                    "La dificultad también avanza en ciclos de unos {difficulty_cycle_floors} pisos: los primeros pisos de un ciclo pagan mejor en relación con su vida.",
+                    "Cada mineral suelta además <strong>{ore_stone_min}-{ore_stone_max}</strong> Piedras de mineral.",
+                ]),
+                ("warn", ["Los pisos con reloj muerden", "Si se agota el tiempo, bajas <strong>un piso</strong>. Si tu daño no llega, mejor saltarse el piso con reloj que perderlo."]),
+                ("p", "Puedes volver a cualquier piso que ya hayas alcanzado en esta partida y farmear ahí. Elegir piso a mano apaga el avance automático; vuélvelo a encender cuando quieras seguir subiendo."),
+                ("p", "Hay <strong>{ore_type_count}</strong> tipos de mineral en total y la profundidad decide cuáles aparecen. El tipo solo cambia el aspecto y su polvo: la vida y el oro vienen del piso."),
+                ("table", "depth"),
+            ],
+        },
+        {
+            "id": "skills",
+            "title": "Habilidades activas",
+            "dek": "{skill_count} habilidades, cada una un empujón con tiempo limitado y luego su espera.",
+            "blocks": [
+                ("p", "Una habilidad es <strong>gratis</strong> cuando llega su piso: la usas ya en el nivel 1. Subirla al nivel {skill_levels} cuesta <strong>{skill_total_cost} Piedras de habilidad</strong> en total, o <strong>{skill_all_total_cost}</strong> para las {skill_count}. A más nivel, más duración y menos espera."),
+                ("table", "skills"),
+                ("p", "La primera línea de habilidades se abre en el piso {skill_line_floor}; el panel del árbol, donde gastas las Piedras de habilidad, en el piso <strong>{skill_tree_floor}</strong>. Para usar una habilidad no necesitas el panel."),
+                ("note", ["El combo", "Lanza primero {skill_overcharge} y después la habilidad que de verdad quieres reforzar, por ejemplo {skill_golden_frenzy}. Luego {skill_time_reversal} recorta la espera de la última que usaste, así la recuperas antes."]),
+            ],
+        },
+        {
+            "id": "titles",
+            "title": "Títulos",
+            "dek": "{title_count} títulos que te van cayendo mientras subes.",
+            "blocks": [
+                ("ul", [
+                    "Los títulos van del piso {title_first_floor} al piso <strong>{title_last_floor}</strong> y se eligen solos según el piso más alto de esta partida.",
+                    "Cada título añade cerca de <strong>+{title_effect_step}</strong> a los bonos que lleva.",
+                    "Los bonos llegan por tramos: daño por clic desde el primer título, luego daño automático, resistencia al calor, oro, multiplicador crítico, probabilidad crítica y la parte de DPS que pasa al clic (títulos {title_effect_unlocks}).",
+                ]),
+            ],
+        },
+        {
+            "id": "tasks",
+            "title": "Tareas y {currency_taskium}",
+            "dek": "Una vía paralela que convierte tus clics en un segundo ingreso.",
+            "blocks": [
+                ("ul", [
+                    "Cada clic acertado da <strong>+{taskium_per_click} {currency_taskium}</strong>.",
+                    "Aceptar una tarea cuesta <strong>{task_accept_cost}</strong> y volver a tirarla <strong>{task_refresh_cost}</strong>.",
+                    "El panel de tareas se abre en el piso {task_panel_floor}; las {task_slot_count} ranuras en los pisos {task_slot_floors}.",
+                    "Hay {task_type_count} tipos de tarea en {task_rarity_count} rarezas. Cada tarea dura {task_duration_minutes} minutos y las que no aceptas se cambian cada hora.",
+                    "La recompensa crece con la rareza: entre <strong>{task_reward_range}</strong> veces el oro del mineral del piso actual. Las más raras dan además Esencia.",
+                ]),
+            ],
+        },
+        {
+            "id": "trade",
+            "title": "Panel de intercambio",
+            "dek": "Se abre en el piso {trade_floor}. El único sitio donde la Piedra de mineral vale algo.",
+            "blocks": [
+                ("ul", [
+                    "1 Piedra de habilidad se convierte en <strong>{trade_skill_stone_to_ore_stone} Piedras de mineral</strong>, hasta {trade_skill_stone_max} por intercambio.",
+                    "<strong>{trade_ore_stone_to_essence} Piedras de mineral</strong> se convierten en 1 Esencia.",
+                    "<strong>{trade_ore_stone_to_skill_stone} Piedras de mineral</strong> se convierten en 1 Piedra de habilidad.",
+                ]),
+                ("p", "El último importa: así una sesión larga de farmeo se vuelve niveles de habilidad sin pelear con un jefe."),
+            ],
+        },
+        {
+            "id": "extras",
+            "title": "Oro gratis",
+            "dek": "Tres fuentes que no piden más que estar ahí.",
+            "blocks": [
+                ("ul", [
+                    "<strong>Globo de oro</strong>: desde el piso {balloon_floor} aparece uno cada {balloon_min_seconds}-{balloon_max_seconds} segundos. Al clicarlo paga <strong>x{balloon_multiplier}</strong> el oro del mineral de tu mejor piso en esta partida.",
+                    "<strong>Ganancias sin conexión</strong>: cuentan a partir de {offline_min_minutes} minutos fuera y se cortan a las {offline_max_hours} horas. El premium las duplica.",
+                    "<strong>Recompensa por tiempo jugado</strong>: cada {playtime_reward_minutes} minutos de juego paga unas {playtime_reward_multiplier} veces el oro de un minuto en tu mejor piso.",
+                ]),
+            ],
+        },
+        {
+            "id": "prestige",
+            "title": "Prestigio",
+            "dek": "Cambias el progreso de esta partida por poder permanente. Bien medido, es lo más rápido del juego.",
+            "blocks": [
+                ("p", "El panel de prestigio se abre la primera vez que llegas al piso <strong>{prestige_first_floor}</strong>. Después, cada prestigio pide {prestige_floor_step} pisos más: {prestige_second_floor}, luego {prestige_third_floor}, y así."),
+                ("ul", [
+                    "<strong>Se reinicia:</strong> el oro, el {currency_taskium}, el avance de pisos, los niveles de pico y armadura, los niveles de mascota, todas las habilidades compradas y tu nivel de jefe.",
+                    "<strong>Se queda:</strong> el nivel de prestigio, la Esencia, los niveles de los {prestige_parameter_count} parámetros, las mascotas que ya tienes, los objetos Infinito y los logros.",
+                    "No vuelves al piso 1: la siguiente partida arranca en <strong>{prestige_floor_step} x tu nivel de prestigio</strong>, con un oro inicial que vale unos {prestige_gold_multiplier} minerales.",
+                    "Todas las esperas se vacían, así que empiezas la partida con todas las habilidades listas.",
+                ]),
+                ("p", "La Esencia sale de solo dos cosas: el <strong>piso más alto</strong> que alcanzaste ({prestige_essence_per_floor} cada uno) y el <strong>mineral roto</strong> ({prestige_essence_per_ore} cada uno)."),
+                ("note", ["Rompe mineral, no corras", "Como el mineral pesa más en la cuenta, farmear un piso cómodo al final da más que sprintar hasta un piso donde apenas haces daño."]),
+                ("table", "prestige"),
+                ("p", "Los bonos se suman nivel a nivel en vez de multiplicarse, y el coste en Esencia sube despacio: gastarla a menudo rinde más que guardarla."),
+            ],
+        },
+        {
+            "id": "bosses",
+            "title": "Jefes",
+            "dek": "Una carrera de daño contra el reloj, a cambio de Esencia. Se abre en el piso {boss_floor}.",
+            "blocks": [
+                ("ul", [
+                    "Eliges un jefe y gastas <strong>{boss_key_cost} llave de mazmorra</strong> para empezar. Nada arranca solo.",
+                    "Los jefes se abren en orden: hay que vencer uno para ver el siguiente. La vida sube unas mil veces por escalón mientras el reloj se acorta.",
+                    "Las recompensas crecen con tu nivel de prestigio: cerca de <strong>+{boss_prestige_bonus_percent}%</strong> por nivel.",
+                    "El prestigio devuelve tu nivel de jefe al primero.",
+                ]),
+                ("table", "bosses"),
+                ("warn", ["Perder cuesta", "Si el jefe sigue en pie cuando el reloj llega a cero, no ganas <strong>nada</strong> y la llave se va. Tras un intento fallido ves la vida que quedaba: úsalo para calcular cuánto daño te falta."]),
+            ],
+        },
+        {
+            "id": "achievements",
+            "title": "Logros",
+            "dek": "{achievement_count} logros en {achievement_type_count} categorías: clics, mineral, jefes, prestigios, profundidad y más.",
+            "blocks": [
+                ("p", "Cada logro paga en <strong>Piedra de mineral</strong>, y tanto el objetivo como el premio se multiplican por diez en cada escalón. La mayoría de categorías tiene tres; las de oro y daño llegan más lejos."),
+                ("note", ["Recuérdalo: hay que reclamarlos", "Las recompensas <strong>no caen solas</strong>. Si llevas tiempo sin abrir la pestaña de logros, ahí te espera un montón."]),
+            ],
+        },
+        {
+            "id": "daily",
+            "title": "Recompensa diaria",
+            "dek": "Pequeña, simple y sin castigo por saltarse un día.",
+            "blocks": [
+                ("p", "Entrar una vez al día da <strong>{daily_key_amount} llave de mazmorra</strong>. Es igual todos los días: no hay calendario ni racha que cuidar. Para reclamarla hay que estar conectado."),
+            ],
+        },
+        {
+            "id": "store",
+            "title": "Tienda",
+            "dek": "Diamantes, llaves, lotes, tiempo premium y los objetos Infinito permanentes.",
+            "blocks": [
+                ("ul", [
+                    "<strong>Lotes de diamantes:</strong> {diamond_pack_list} diamantes. Cuanto mayor el lote, mejor el cambio.",
+                    "<strong>Lotes de llaves:</strong> {key_pack_list} llaves de mazmorra.",
+                    "<strong>{package_small}:</strong> {package_small_contents}.",
+                    "<strong>{package_big}:</strong> {package_big_contents}.",
+                    "<strong>{package_premium}:</strong> {premium_days} días con x{premium_click_multiplier} daño por clic, x{premium_dps_multiplier} daño automático, x{premium_gold_multiplier} oro, x{premium_heat_multiplier} resistencia al calor y x{premium_offline_multiplier} ganancias sin conexión.",
+                ]),
+                ("p", "Los objetos Infinito se compran <strong>una vez con diamantes</strong> y no se reinician nunca, ni con el prestigio. En la parte avanzada suelen ser el mejor destino para tus diamantes."),
+                ("table", "infinity"),
+                ("note", ["Precios", "Los precios de la tienda llegan de Steam en tu moneda, así que no se escriben aquí. Lo que trae un lote no cambia nunca; lo que cuesta depende de tu región."]),
+            ],
+        },
+        {
+            "id": "progress",
+            "title": "Clasificaciones y estadísticas",
+            "dek": "Dos sitios para ver cómo va la partida.",
+            "blocks": [
+                ("ul", [
+                    "Las clasificaciones de Steam registran clics, daño por clic, número de prestigios, jefes derrotados y piso más alto.",
+                    "La pantalla de estadísticas guarda más: ingresos, gastos, clics, tiempo jugado y demás.",
+                ]),
+            ],
+        },
+        {
+            "id": "save",
+            "title": "Partidas guardadas",
+            "dek": "Respuesta corta: tu progreso está protegido por varias capas a la vez.",
+            "blocks": [
+                ("ul", [
+                    "El juego se guarda solo, cifrado, cada <strong>{save_seconds} segundos</strong>.",
+                    "Sube una copia a Steam Cloud cada <strong>{cloud_save_seconds} segundos</strong> aproximadamente, y siempre al cerrar o pausar, así que otro ordenador sigue donde lo dejaste.",
+                    "Si un archivo de guardado se estropea, el juego cae solo en su copia de seguridad.",
+                    "También puedes copiar tu partida al portapapeles y pegarla en otro dispositivo.",
+                ]),
+            ],
+        },
+        {
+            "id": "languages",
+            "title": "Idiomas",
+            "dek": "El juego sale en {language_count} idiomas.",
+            "blocks": [
+                ("p", "Inglés, turco, alemán, francés, español, español de Latinoamérica, italiano, polaco, portugués de Brasil, ruso, ucraniano, japonés, coreano, chino simplificado, chino tradicional, tailandés, indonesio y vietnamita. El juego elige el tuyo al primer arranque y puedes cambiarlo cuando quieras en los ajustes; esta guía está en todos, con los enlaces arriba de la página."),
+            ],
+        },
+    ],
+}

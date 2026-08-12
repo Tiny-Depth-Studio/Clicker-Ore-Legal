@@ -1,0 +1,342 @@
+LANG = {
+    "code": "pl",
+    "name": "Polski",
+    "html_lang": "pl",
+    "locale": {"group": " ", "decimal": ","},
+    "title": "Clicker Ore Game - Poradnik gracza",
+    "description": "Jak działa kopalnia: waluty, kilofy, towarzysze, umiejętności, prestiż, bossowie i sklep - bez wzorów.",
+    "brand": "Clicker Ore Game",
+    "brand_sub": "Poradnik gracza",
+    "eyebrow": "Poradnik gracza - {date}",
+    "headline": "Cała kopalnia,<br>wyłożona po ludzku",
+    "subtitle": "Co robi każdy system, na którym piętrze się otwiera i gdzie najlepiej wydać kolejną godzinę. Bez wzorów - tylko decyzje, które mają znaczenie.",
+    "footer": "Liczby odpowiadają aktualnemu balansowi gry i mogą się zmienić z aktualizacjami. Ceny w sklepie ustala Steam i pokazuje je w twojej walucie, dlatego nie ma ich tutaj.",
+    "labels": {
+        "contents": "Spis treści",
+        "per_second": "/s",
+        "second_short": " s",
+        "meter_short": "m",
+        "language": "Język",
+        "skill": "Umiejętność",
+        "unlock_floor": "Piętro",
+        "level_first": "Poziom 1 (czas / odnowienie)",
+        "level_last": "Poziom 7 (czas / odnowienie)",
+        "effect": "Efekt",
+        "boss": "Boss",
+        "health": "Zdrowie",
+        "time_limit": "Czas",
+        "reward": "Nagroda",
+        "parameter": "Parametr",
+        "per_level": "Na poziom",
+        "effect_dps": "Automatyczne obrażenia na sekundę",
+        "effect_click": "Obrażenia kliknięcia",
+        "effect_gold": "Przychód złota",
+        "effect_crit_chance": "Szansa na trafienie krytyczne",
+        "effect_crit_multiplier": "Mnożnik krytyczny",
+        "effect_heat": "Odporność na ciepło",
+        "effect_click_from_dps": "Część DPS dodawana do kliknięć",
+        "depth": "Głębokość",
+        "ore_types": "Rodzaje rudy",
+        "around_floor": "Około piętra",
+        "item": "Przedmiot",
+        "cost": "Cena",
+    },
+    "currencies": {
+        "gold": ["Zdobywasz je, <b>rozbijając rudę</b>.", "Idzie na poziomy kilofa i zbroi - twoja robocza waluta."],
+        "diamond": ["Pochodzą <b>tylko z zakupów za prawdziwe pieniądze</b>.", "Idą na towarzyszy i na trwałe przedmioty Nieskończoności."],
+        "essence": ["Z <b>prestiżu</b> i ze zwycięstw nad bossami.", "Idzie na {prestige_parameter_count} trwałych parametrów prestiżu."],
+        "taskium": ["<b>+{taskium_per_click}</b> za każde udane kliknięcie.", "Idzie na przyjmowanie i przelosowywanie zadań."],
+        "dungeon_key": ["Jeden darmowy klucz dziennie plus paczki ze sklepu.", "Idzie na wejście do walki z bossem - {boss_key_cost} za próbę."],
+        "skill_stone": ["Z paczek w sklepie i z panelu wymiany.", "Idzie na podnoszenie {skill_count} aktywnych umiejętności."],
+        "ore_stone": ["<b>{ore_stone_min}-{ore_stone_max}</b> z każdej rozbitej rudy, plus osiągnięcia.", "Wymieniasz je na Esencję albo Kamień umiejętności w panelu wymiany."],
+    },
+    "sections": [
+        {
+            "id": "start",
+            "title": "Od czego zacząć",
+            "dek": "Trzy etapy, w kolejności, w jakiej gra otwiera kolejne rzeczy.",
+            "blocks": [
+                ("stages", [
+                    ["Początek - piętra 1 do {prestige_first_floor}", [
+                        "Ulepszaj kilof bez przerwy; kupuj następny, gdy tylko się odblokuje.",
+                        "{skill_ore_breaker} pojawia się na piętrze {skill_line_floor}, a {skill_anger_click} na piętrze 70.",
+                        "Weź {pet_1}, gdy tylko możesz oddać diamenty.",
+                    ]],
+                    ["Środek - piętra {prestige_first_floor} do {boss_floor}", [
+                        "Pierwszy prestiż zrób na piętrze {prestige_first_floor}.",
+                        "Rozdziel Esencję na wszystkie {prestige_parameter_count} parametry, zamiast wyciskać jeden.",
+                        "Zadania otwierają się na piętrze {task_panel_floor}, drzewko umiejętności i wymiana na piętrze {skill_tree_floor}.",
+                    ]],
+                    ["Późna gra - od piętra {boss_floor}", [
+                        "Walcz z bossami, kiedy tylko masz klucz - to twój silnik Esencji.",
+                        "Kup przedmioty Nieskończoności - są trwałe i nigdy się nie zerują.",
+                        "Trzymaj zbroję na poziomie, żeby ciepło nie zjadało twoich obrażeń.",
+                    ]],
+                ]),
+                ("note", ["Warto wiedzieć", "Liczby szybko się wydłużają, więc gra przechodzi najpierw na skróty, a potem na zapis naukowy w stylu <strong>1,23e45</strong>. Nie ma żadnego sufitu - to tylko inny sposób zapisu."]),
+            ],
+        },
+        {
+            "id": "currencies",
+            "title": "{currency_count} walut",
+            "dek": "Każda zasila inny system. Wydanie właściwej waluty w złym miejscu to najczęstszy błąd na początku.",
+            "blocks": [
+                ("currencies", None),
+                ("note", ["Diamenty", "Bossowie, osiągnięcia i zadania nigdy nie dają diamentów. Diamenty i klucze do lochu trzyma serwer, więc do kupienia towarzysza trzeba być online."]),
+            ],
+        },
+        {
+            "id": "damage",
+            "title": "Obrażenia kliknięcia i automatyczne",
+            "dek": "Dwa osobne źródła obrażeń, zasilane innymi rzeczami.",
+            "blocks": [
+                ("p", "<strong>Obrażenia kliknięcia</strong> to tyle, ile robi jedno dotknięcie. Rosną z poziomem i umiejętnościami pierwszego kilofa, z umiejętnością {skill_anger_click}, z twoim tytułem i z parametrem prestiżu {prestige_click}. Gdy podniesiesz {prestige_click_from_dps}, część obrażeń automatycznych dolicza się też do każdego kliknięcia."),
+                ("p", "<strong>Obrażenia automatyczne</strong> (na sekundę) pochodzą od drugiego kilofa w górę, od umiejętności {skill_rampage}, od parametru {prestige_dps} i od twoich towarzyszy."),
+                ("note", ["Towarzysze są wyjątkiem", "Obrażenia towarzyszy dodają się <strong>po</strong> wszystkich mnożnikach, więc nie są przez nie skalowane. Same ich poziomy nie wystarczą w późnej grze - mnożniki kilofa i umiejętności też muszą rosnąć."]),
+            ],
+        },
+        {
+            "id": "critical",
+            "title": "Trafienia krytyczne",
+            "dek": "Każde kliknięcie może wyjść krytycznie i uderzyć mocniej.",
+            "blocks": [
+                ("p", "Startujesz z <strong>{crit_chance_percent}%</strong> szansy i mnożnikiem <strong>x{crit_multiplier}</strong>. Podnoszą je cztery rzeczy: umiejętność {skill_critical_strike}, umiejętności kilofów, parametry prestiżu {prestige_crit_chance} i {prestige_crit_multiplier} oraz tytuły."),
+            ],
+        },
+        {
+            "id": "pickaxes",
+            "title": "Kilofy",
+            "dek": "{pickaxe_count} kilofów odblokowywanych po kolei. To kręgosłup twoich obrażeń.",
+            "blocks": [
+                ("ul", [
+                    "Pierwszy kilof kosztuje <strong>{pickaxe_first_cost} złota</strong>; każdy kolejny około <strong>{pickaxe_cost_growth} razy</strong> więcej niż poprzedni.",
+                    "Kilof odblokowuje się sam, gdy zarobisz dość złota w tym przebiegu - to ulepszanie otwiera następny.",
+                    "Każdy poziom kosztuje około <strong>{pickaxe_upgrade_growth_percent}%</strong> więcej niż poprzedni.",
+                    "Obrażenia kliknięcia zasila tylko <strong>pierwszy</strong> kilof. Wszystkie pozostałe zasilają obrażenia automatyczne.",
+                    "Każdy kilof ma {pickaxe_skill_count} umiejętności, otwierane na poziomach {pickaxe_skill_levels}. Część pomaga tylko temu kilofowi, część wszystkim - te globalne są cenniejsze.",
+                ]),
+                ("note", ["Duży skok", "Co <strong>{pickaxe_bonus_interval} poziomów</strong> kilof mnoży własną wydajność przez <strong>x{pickaxe_bonus_multiplier}</strong>. Dopchnięcie jednego kilofa do kolejnej setki to zwykle największy dostępny skok siły."]),
+            ],
+        },
+        {
+            "id": "suits",
+            "title": "Zbroje",
+            "dek": "{suit_count} zbroi, wszystkie twoje od początku. Ich zadaniem jest trzymać ciepło z daleka.",
+            "blocks": [
+                ("ul", [
+                    "Zbroi się nie kupuje, tylko ją podnosi. Każdy poziom dodaje około <strong>{suit_heat_per_level_percent}%</strong> odporności, licząc od {suit_base_heat_resistance}.",
+                    "Co {suit_bonus_interval} poziomów odporność zbroi mnoży się przez <strong>x{suit_bonus_multiplier}</strong>.",
+                    "Każda zbroja ma też {suit_skill_count} umiejętności, które otwierają się z poziomami.",
+                    "Panel zbroi otwiera się na piętrze <strong>{suit_panel_floor}</strong>, razem ze wskaźnikiem ciepła.",
+                ]),
+            ],
+        },
+        {
+            "id": "temperature",
+            "title": "Ciepło",
+            "dek": "Im głębiej, tym goręcej, a ciepło po cichu obcina twoje obrażenia.",
+            "blocks": [
+                ("ul", [
+                    "Temperatura piętra rośnie bez przerwy - około <strong>{temperature_growth}x na piętro</strong>, więc podwaja się co dwadzieścia kilka pięter.",
+                    "Dopóki twoja odporność wynosi co najmniej <strong>{temperature_safe_ratio}x</strong> temperatury, wskaźnik jest czysty i nic nie tracisz.",
+                    "Gdy odporność spadnie pod temperaturę, obrażenia zaczynają uciekać; przy <strong>{temperature_worst_ratio}x</strong> zostaje jedna dwudziesta - strata <strong>{temperature_worst_damage_percent}%</strong>.",
+                    "W panelu zbroi jest przełącznik automatycznego kupowania odporności; zostaw go włączony, jeśli często schodzisz głębiej.",
+                ]),
+                ("warn", ["Jeśli nagle stoisz w miejscu", "Ściana, na której ruda nie chce się skończyć, to prawie zawsze ciepło, a nie obrażenia. Sprawdź wskaźnik, zanim wydasz coś innego."]),
+            ],
+        },
+        {
+            "id": "pets",
+            "title": "Towarzysze",
+            "dek": "{pet_count} towarzyszy, kupowanych za diamenty i podnoszonych złotem.",
+            "blocks": [
+                ("ul", [
+                    "Ceny idą od <strong>{pet_cost_first}</strong> do <strong>{pet_cost_last}</strong> diamentów ({pet_cost_list}).",
+                    "Każdy poziom dodaje około <strong>{pet_dps_percent_per_level}%</strong> obrażeń kliknięcia twojego kilofa jako obrażenia automatyczne, przemnożone przez kolejność towarzysza - {pet_5} daje pięć razy tyle co {pet_1} na tym samym poziomie.",
+                    "Poziomy drożeją o około <strong>{pet_upgrade_growth_percent}%</strong> za każdym razem, a co {pet_bonus_interval} poziomów towarzysz mnoży własną wydajność przez <strong>x{pet_bonus_multiplier}</strong>.",
+                    "Każdy towarzysz ma {pet_skill_count} umiejętności; część działa tylko na niego, część na wszystkich.",
+                    "Panel towarzyszy otwiera się na piętrze <strong>{pet_panel_floor}</strong> albo gdy masz już jednego.",
+                ]),
+                ("warn", ["Prestiż i towarzysze", "Prestiż cofa każdego towarzysza na <strong>poziom 1</strong> i czyści jego umiejętności. Posiadanie zostaje - towarzysza nie kupujesz drugi raz."]),
+            ],
+        },
+        {
+            "id": "floors",
+            "title": "Piętra, ruda i głębokość",
+            "dek": "Piętro decyduje, jak twarda jest ruda i ile złota płaci. Głębokość decyduje, jak wygląda.",
+            "blocks": [
+                ("ul", [
+                    "Każde piętro ma trochę więcej zdrowia i trochę więcej złota niż poprzednie, a krzywa robi się coraz bardziej stroma.",
+                    "Co <strong>{duration_floor_interval}. piętro</strong> jest na czas: startuje zegar na <strong>{duration_floor_seconds} sekund</strong>, zdrowie rośnie o około {duration_floor_health_percent}%, a złoto o około {duration_floor_gold_percent}%.",
+                    "Trudność idzie też cyklami po około {difficulty_cycle_floors} pięter - pierwsze piętra cyklu płacą najlepiej w stosunku do zdrowia.",
+                    "Każda ruda upuszcza dodatkowo <strong>{ore_stone_min}-{ore_stone_max}</strong> Kamieni rudy.",
+                ]),
+                ("warn", ["Piętra na czas gryzą", "Jeśli zegar dojdzie do zera, wracasz <strong>o jedno piętro</strong> niżej. Gdy obrażenia nie wystarczają, lepiej pominąć piętro na czas niż je przegrać."]),
+                ("p", "Możesz zejść na dowolne piętro, które osiągnąłeś w tym przebiegu, i tam farmić. Ręczny wybór piętra wyłącza automatyczne wchodzenie wyżej; włącz je z powrotem, gdy chcesz znowu się wspinać."),
+                ("p", "W sumie jest <strong>{ore_type_count}</strong> rodzajów rudy, a głębokość decyduje, które się pojawiają. Rodzaj zmienia tylko wygląd i pył - zdrowie i złoto pochodzą z piętra."),
+                ("table", "depth"),
+            ],
+        },
+        {
+            "id": "skills",
+            "title": "Aktywne umiejętności",
+            "dek": "{skill_count} umiejętności, każda to zryw na czas, a po nim odnowienie.",
+            "blocks": [
+                ("p", "Umiejętność jest <strong>darmowa</strong>, gdy przychodzi jej piętro - używasz jej już na poziomie 1. Wyciągnięcie do poziomu {skill_levels} kosztuje w sumie <strong>{skill_total_cost} Kamieni umiejętności</strong>, a wszystkie {skill_count} razem <strong>{skill_all_total_cost}</strong>. Wyższy poziom to dłuższy czas i krótsze odnowienie."),
+                ("table", "skills"),
+                ("p", "Pierwsza linia umiejętności otwiera się na piętrze {skill_line_floor}; panel drzewka, w którym wydajesz Kamienie umiejętności, na piętrze <strong>{skill_tree_floor}</strong>. Do użycia umiejętności panel nie jest potrzebny."),
+                ("note", ["Kombinacja", "Odpal najpierw {skill_overcharge}, a potem tę umiejętność, którą naprawdę chcesz wzmocnić - na przykład {skill_golden_frenzy}. {skill_time_reversal} skraca potem odnowienie ostatnio użytej, więc dostajesz ją szybciej."]),
+            ],
+        },
+        {
+            "id": "titles",
+            "title": "Tytuły",
+            "dek": "{title_count} tytułów, które same do ciebie przychodzą podczas wspinaczki.",
+            "blocks": [
+                ("ul", [
+                    "Tytuły idą od piętra {title_first_floor} do piętra <strong>{title_last_floor}</strong> i wybierają się same według najwyższego piętra w tym przebiegu.",
+                    "Każdy tytuł dokłada około <strong>+{title_effect_step}</strong> do premii, które nosi.",
+                    "Premie wchodzą stopniami: obrażenia kliknięcia od pierwszego tytułu, potem obrażenia automatyczne, odporność na ciepło, złoto, mnożnik krytyczny, szansa na krytyk i część DPS dodawana do kliknięć (tytuły {title_effect_unlocks}).",
+                ]),
+            ],
+        },
+        {
+            "id": "tasks",
+            "title": "Zadania i {currency_taskium}",
+            "dek": "Boczny tor, który zamienia twoje klikanie w drugi przychód.",
+            "blocks": [
+                ("ul", [
+                    "Każde udane kliknięcie daje <strong>+{taskium_per_click} {currency_taskium}</strong>.",
+                    "Przyjęcie zadania kosztuje <strong>{task_accept_cost}</strong>, przelosowanie <strong>{task_refresh_cost}</strong>.",
+                    "Panel zadań otwiera się na piętrze {task_panel_floor}; {task_slot_count} slotów na piętrach {task_slot_floors}.",
+                    "Jest {task_type_count} rodzajów zadań w {task_rarity_count} rzadkościach. Każde trwa {task_duration_minutes} minut, a nieprzyjęte wymieniają się co godzinę.",
+                    "Nagroda rośnie z rzadkością - od <strong>{task_reward_range}</strong> razy złoto z rudy na obecnym piętrze. Najrzadsze dają dodatkowo Esencję.",
+                ]),
+            ],
+        },
+        {
+            "id": "trade",
+            "title": "Panel wymiany",
+            "dek": "Otwiera się na piętrze {trade_floor}. Jedyne miejsce, w którym Kamień rudy jest coś wart.",
+            "blocks": [
+                ("ul", [
+                    "1 Kamień umiejętności zamienia się na <strong>{trade_skill_stone_to_ore_stone} Kamieni rudy</strong> - do {trade_skill_stone_max} na wymianę.",
+                    "<strong>{trade_ore_stone_to_essence} Kamieni rudy</strong> zamienia się na 1 Esencję.",
+                    "<strong>{trade_ore_stone_to_skill_stone} Kamieni rudy</strong> zamienia się na 1 Kamień umiejętności.",
+                ]),
+                ("p", "Ostatni punkt jest najważniejszy: tak długa sesja farmienia zamienia się w poziomy umiejętności bez walki z bossem."),
+            ],
+        },
+        {
+            "id": "extras",
+            "title": "Darmowe złoto",
+            "dek": "Trzy źródła, które wymagają tylko obecności.",
+            "blocks": [
+                ("ul", [
+                    "<strong>Złoty balon</strong> - od piętra {balloon_floor} przelatuje jeden co {balloon_min_seconds}-{balloon_max_seconds} sekund. Kliknięcie płaci <strong>x{balloon_multiplier}</strong> złota z rudy twojego najlepszego piętra w tym przebiegu.",
+                    "<strong>Zarobek offline</strong> - liczy się po {offline_min_minutes} minutach nieobecności i kończy na {offline_max_hours} godzinach. Premium podwaja.",
+                    "<strong>Nagroda za czas gry</strong> - co {playtime_reward_minutes} minut gry płaci około {playtime_reward_multiplier} razy tyle, ile daje minuta na twoim najlepszym piętrze.",
+                ]),
+            ],
+        },
+        {
+            "id": "prestige",
+            "title": "Prestiż",
+            "dek": "Zamieniasz postęp tego przebiegu na trwałą siłę. Dobrze wymierzony, jest najszybszą rzeczą w grze.",
+            "blocks": [
+                ("p", "Panel prestiżu otwiera się, gdy pierwszy raz dojdziesz na piętro <strong>{prestige_first_floor}</strong>. Potem każdy prestiż chce {prestige_floor_step} pięter więcej: {prestige_second_floor}, potem {prestige_third_floor} i tak dalej."),
+                ("ul", [
+                    "<strong>Zeruje się:</strong> złoto, {currency_taskium}, postęp pięter, poziomy kilofów i zbroi, poziomy towarzyszy, wszystkie kupione umiejętności i twój poziom bossa.",
+                    "<strong>Zostaje:</strong> poziom prestiżu, Esencja, poziomy {prestige_parameter_count} parametrów, posiadani towarzysze, przedmioty Nieskończoności, osiągnięcia.",
+                    "Nie wracasz na piętro 1: kolejny przebieg startuje na <strong>{prestige_floor_step} x twój poziom prestiżu</strong>, a do tego dostajesz startowe złoto warte około {prestige_gold_multiplier} rud.",
+                    "Wszystkie odnowienia są czyszczone, więc zaczynasz przebieg z każdą umiejętnością gotową.",
+                ]),
+                ("p", "Esencja bierze się tylko z dwóch rzeczy: z <strong>najwyższego piętra</strong>, jakie osiągnąłeś (po {prestige_essence_per_floor}) i z <strong>rozbitej rudy</strong> (po {prestige_essence_per_ore})."),
+                ("note", ["Rozbijaj rudę, nie pędź", "Ponieważ liczba rud waży więcej, farmienie wygodnego piętra na koniec daje więcej niż sprint na piętro, na którym z trudem zadajesz obrażenia."]),
+                ("table", "prestige"),
+                ("p", "Premie dodają się poziom po poziomie, a nie składają, i koszt Esencji rośnie wolno - regularne wydawanie opłaca się bardziej niż zbieranie."),
+            ],
+        },
+        {
+            "id": "bosses",
+            "title": "Bossowie",
+            "dek": "Wyścig obrażeń z zegarem, o Esencję. Otwiera się na piętrze {boss_floor}.",
+            "blocks": [
+                ("ul", [
+                    "Wybierasz bossa i wydajesz <strong>{boss_key_cost} klucz do lochu</strong>, żeby zacząć. Nic nie startuje samo.",
+                    "Bossowie otwierają się po kolei - jednego trzeba pokonać, żeby zobaczyć następnego. Zdrowie rośnie około tysiąckrotnie na stopień, a zegar się skraca.",
+                    "Nagrody rosną z twoim poziomem prestiżu: około <strong>+{boss_prestige_bonus_percent}%</strong> na poziom.",
+                    "Prestiż cofa twój poziom bossa na pierwszego.",
+                ]),
+                ("table", "bosses"),
+                ("warn", ["Przegrana kosztuje", "Jeśli boss wciąż stoi, gdy zegar dojdzie do zera, nie dostajesz <strong>nic</strong>, a klucz przepada. Po nieudanej próbie widzisz, ile zdrowia zostało - z tego oszacujesz, ile obrażeń brakuje."]),
+            ],
+        },
+        {
+            "id": "achievements",
+            "title": "Osiągnięcia",
+            "dek": "{achievement_count} osiągnięć w {achievement_type_count} kategoriach - kliknięcia, ruda, bossowie, prestiże, głębokość i więcej.",
+            "blocks": [
+                ("p", "Każde osiągnięcie płaci <strong>Kamieniem rudy</strong>, a i cel, i nagroda rosną około dziesięciokrotnie na stopień. Większość kategorii ma trzy stopnie; złote i obrażeniowe idą dalej."),
+                ("note", ["Pamiętaj odebrać", "Nagrody <strong>nie wpadają same</strong>. Jeśli od dawna nie zaglądałeś w zakładkę osiągnięć, czeka tam kupka."]),
+            ],
+        },
+        {
+            "id": "daily",
+            "title": "Nagroda dzienna",
+            "dek": "Mała, prosta i bez kary za pominięty dzień.",
+            "blocks": [
+                ("p", "Jedno wejście dziennie daje <strong>{daily_key_amount} klucz do lochu</strong>. Codziennie to samo - nie ma kalendarza ani serii do pilnowania. Do odebrania trzeba być online."),
+            ],
+        },
+        {
+            "id": "store",
+            "title": "Sklep",
+            "dek": "Diamenty, klucze, paczki, czas premium i trwałe przedmioty Nieskończoności.",
+            "blocks": [
+                ("ul", [
+                    "<strong>Paczki diamentów:</strong> {diamond_pack_list} diamentów. Im większa paczka, tym lepszy kurs.",
+                    "<strong>Paczki kluczy:</strong> {key_pack_list} kluczy do lochu.",
+                    "<strong>{package_small}:</strong> {package_small_contents}.",
+                    "<strong>{package_big}:</strong> {package_big_contents}.",
+                    "<strong>{package_premium}:</strong> {premium_days} dni z x{premium_click_multiplier} obrażeniami kliknięcia, x{premium_dps_multiplier} obrażeniami automatycznymi, x{premium_gold_multiplier} złotem, x{premium_heat_multiplier} odpornością na ciepło i x{premium_offline_multiplier} zarobkiem offline.",
+                ]),
+                ("p", "Przedmioty Nieskończoności kupujesz <strong>raz za diamenty</strong> i nigdy się nie zerują, nawet przy prestiżu. W późnej grze to zwykle najlepsze wykorzystanie diamentów."),
+                ("table", "infinity"),
+                ("note", ["Ceny", "Ceny w sklepie przychodzą ze Steama w twojej walucie, dlatego nie ma ich tutaj. Zawartość paczki nigdy się nie zmienia; cena zależy od twojego regionu."]),
+            ],
+        },
+        {
+            "id": "progress",
+            "title": "Rankingi i statystyki",
+            "dek": "Dwa miejsca, w których widać, jak idzie przebieg.",
+            "blocks": [
+                ("ul", [
+                    "Rankingi Steama liczą kliknięcia, obrażenia kliknięcia, liczbę prestiży, zabitych bossów i najwyższe piętro.",
+                    "Ekran statystyk trzyma więcej - zarobki, wydatki, kliknięcia, czas gry i inne.",
+                ]),
+            ],
+        },
+        {
+            "id": "save",
+            "title": "Zapisy",
+            "dek": "Krótka odpowiedź: twój postęp chroni kilka warstw naraz.",
+            "blocks": [
+                ("ul", [
+                    "Gra zapisuje się sama, zaszyfrowana, co <strong>{save_seconds} sekund</strong>.",
+                    "Kopię do Steam Cloud wysyła około co <strong>{cloud_save_seconds} sekund</strong>, a zawsze przy zamknięciu i pauzie - inny komputer podejmie od miejsca, w którym skończyłeś.",
+                    "Jeśli plik zapisu się uszkodzi, gra sama sięga po kopię zapasową.",
+                    "Zapis możesz też skopiować do schowka i wkleić na innym urządzeniu.",
+                ]),
+            ],
+        },
+        {
+            "id": "languages",
+            "title": "Języki",
+            "dek": "Gra wychodzi w {language_count} językach.",
+            "blocks": [
+                ("p", "Angielski, turecki, niemiecki, francuski, hiszpański, hiszpański latynoamerykański, włoski, polski, portugalski brazylijski, rosyjski, ukraiński, japoński, koreański, chiński uproszczony, chiński tradycyjny, tajski, indonezyjski i wietnamski. Przy pierwszym uruchomieniu gra wybiera twój, a zmienisz go w każdej chwili w ustawieniach - ten poradnik jest we wszystkich, przez linki na górze strony."),
+            ],
+        },
+    ],
+}

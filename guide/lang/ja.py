@@ -1,0 +1,342 @@
+LANG = {
+    "code": "ja",
+    "name": "日本語",
+    "html_lang": "ja",
+    "locale": {"group": ",", "decimal": "."},
+    "title": "Clicker Ore Game - プレイヤーガイド",
+    "description": "鉱山の仕組み: 通貨、ツルハシ、ペット、スキル、プレステージ、ボス、ストアを数式なしで解説します。",
+    "brand": "Clicker Ore Game",
+    "brand_sub": "プレイヤーガイド",
+    "eyebrow": "プレイヤーガイド - {date}",
+    "headline": "鉱山のすべてを<br>やさしい言葉で",
+    "subtitle": "どのシステムが何をして、どの階で開放され、次の1時間をどこに使うべきか。数式はありません。判断に必要なことだけをまとめています。",
+    "footer": "ここに載せた数値は現在のゲームバランスに基づいており、アップデートで変わることがあります。ストアの価格はSteamが設定し、お客様の通貨で表示されるため、ここには記載していません。",
+    "labels": {
+        "contents": "目次",
+        "per_second": "/秒",
+        "second_short": "秒",
+        "meter_short": "m",
+        "language": "言語",
+        "skill": "スキル",
+        "unlock_floor": "階",
+        "level_first": "レベル1 (効果時間 / 再使用)",
+        "level_last": "レベル7 (効果時間 / 再使用)",
+        "effect": "効果",
+        "boss": "ボス",
+        "health": "体力",
+        "time_limit": "制限時間",
+        "reward": "報酬",
+        "parameter": "パラメーター",
+        "per_level": "1レベルあたり",
+        "effect_dps": "毎秒の自動ダメージ",
+        "effect_click": "クリックダメージ",
+        "effect_gold": "ゴールド収入",
+        "effect_crit_chance": "クリティカル率",
+        "effect_crit_multiplier": "クリティカル倍率",
+        "effect_heat": "熱耐性",
+        "effect_click_from_dps": "クリックに加算される秒間ダメージの割合",
+        "depth": "深度",
+        "ore_types": "鉱石の種類",
+        "around_floor": "おおよその階",
+        "item": "アイテム",
+        "cost": "価格",
+    },
+    "currencies": {
+        "gold": ["<b>鉱石を砕く</b>と手に入ります。", "ツルハシと装備の強化に使う、いちばん基本の通貨です。"],
+        "diamond": ["<b>実際の課金だけ</b>で手に入ります。", "ペットと永続の無限アイテムに使います。"],
+        "essence": ["<b>プレステージ</b>とボス撃破で手に入ります。", "{prestige_parameter_count}つの永続プレステージパラメーターに使います。"],
+        "taskium": ["クリックが当たるごとに <b>+{taskium_per_click}</b>。", "任務の受注と引き直しに使います。"],
+        "dungeon_key": ["1日1個は無料、あとはストアのパックから。", "ボス戦への入場に使います（1回につき{boss_key_cost}個）。"],
+        "skill_stone": ["ストアのパックと交換パネルから手に入ります。", "{skill_count}種のアクティブスキルのレベル上げに使います。"],
+        "ore_stone": ["砕いた鉱石ごとに <b>{ore_stone_min}-{ore_stone_max}</b> 個、さらに実績から。", "交換パネルでエッセンスやスキルストーンに替えられます。"],
+    },
+    "sections": [
+        {
+            "id": "start",
+            "title": "まず何をするか",
+            "dek": "ゲームが機能を開放していく順に、3つの段階に分けています。",
+            "blocks": [
+                ("stages", [
+                    ["序盤 - 1階から{prestige_first_floor}階", [
+                        "ツルハシは休まず強化し、次のツルハシが開いたらすぐ買いましょう。",
+                        "{skill_ore_breaker}は{skill_line_floor}階、{skill_anger_click}は70階で手に入ります。",
+                        "ダイヤに余裕ができたら{pet_1}を買いましょう。",
+                    ]],
+                    ["中盤 - {prestige_first_floor}階から{boss_floor}階", [
+                        "最初のプレステージは{prestige_first_floor}階で行います。",
+                        "エッセンスは1つに集中させず、{prestige_parameter_count}つのパラメーターに分けて伸ばします。",
+                        "任務は{task_panel_floor}階、スキルツリーと交換パネルは{skill_tree_floor}階で開きます。",
+                    ]],
+                    ["終盤 - {boss_floor}階から先", [
+                        "鍵があるうちはボスに挑みましょう。エッセンスの主な供給源です。",
+                        "無限アイテムを買いましょう。永続で、プレステージでもリセットされません。",
+                        "熱にダメージを削られないよう、装備のレベルを保ちましょう。",
+                    ]],
+                ]),
+                ("note", ["知っておくと便利", "数値はすぐ長くなるため、ゲームはまず短縮表記に、その後 <strong>1.23e45</strong> のような指数表記に切り替わります。上限があるわけではなく、表記が変わるだけです。"]),
+            ],
+        },
+        {
+            "id": "currencies",
+            "title": "{currency_count}種類の通貨",
+            "dek": "それぞれ別のシステムを支えています。通貨を間違った場所に使ってしまうのが、序盤で最も多い失敗です。",
+            "blocks": [
+                ("currencies", None),
+                ("note", ["ダイヤについて", "ボス、実績、任務からダイヤは出ません。ダイヤとダンジョンキーはサーバー側で管理されるため、ペットの購入にはオンライン接続が必要です。"]),
+            ],
+        },
+        {
+            "id": "damage",
+            "title": "クリックダメージと自動ダメージ",
+            "dek": "2つの独立したダメージ源で、伸ばす要素も別です。",
+            "blocks": [
+                ("p", "<strong>クリックダメージ</strong>は1回のタップで与える量です。最初のツルハシのレベルとスキル、{skill_anger_click}、称号、プレステージパラメーターの{prestige_click}で伸びます。{prestige_click_from_dps}を上げると、自動ダメージの一部もクリックに加算されます。"),
+                ("p", "<strong>自動ダメージ</strong>（毎秒）は2本目以降のツルハシ、{skill_rampage}、{prestige_dps}、そしてペットから生まれます。"),
+                ("note", ["ペットだけは例外", "ペットのダメージはすべての倍率が掛かった<strong>あと</strong>に加算されるため、倍率の影響を受けません。終盤はペットのレベルだけでは足りず、ツルハシとスキルの倍率も伸ばす必要があります。"]),
+            ],
+        },
+        {
+            "id": "critical",
+            "title": "クリティカル",
+            "dek": "どのクリックもクリティカルになり、より大きなダメージを出せます。",
+            "blocks": [
+                ("p", "初期値は発生率 <strong>{crit_chance_percent}%</strong>、倍率 <strong>x{crit_multiplier}</strong> です。これを伸ばすのは4つ、{skill_critical_strike}、ツルハシのスキル、プレステージパラメーターの{prestige_crit_chance}と{prestige_crit_multiplier}、そして称号です。"),
+            ],
+        },
+        {
+            "id": "pickaxes",
+            "title": "ツルハシ",
+            "dek": "順番に開放される{pickaxe_count}本のツルハシ。ダメージの土台です。",
+            "blocks": [
+                ("ul", [
+                    "最初のツルハシは <strong>{pickaxe_first_cost} ゴールド</strong>。以降は1本ごとに約 <strong>{pickaxe_cost_growth} 倍</strong>の値段になります。",
+                    "ツルハシはこの周回で稼いだゴールドが一定量に達すると自動で開放されます。つまり強化こそが次の1本を開く手段です。",
+                    "1レベルごとに前より約 <strong>{pickaxe_upgrade_growth_percent}%</strong> 高くなります。",
+                    "クリックダメージを担うのは<strong>1本目だけ</strong>で、残りはすべて毎秒の自動ダメージを担います。",
+                    "各ツルハシには{pickaxe_skill_count}個のスキルがあり、レベル {pickaxe_skill_levels} で開放されます。そのツルハシだけに効くものと全体に効くものがあり、全体に効くほうが価値が高いです。",
+                ]),
+                ("note", ["大きな伸び", "ツルハシは <strong>{pickaxe_bonus_interval} レベルごと</strong>に自身の出力を <strong>x{pickaxe_bonus_multiplier}</strong> します。1本を次の100レベルまで押し上げるのが、たいてい最大の強化になります。"]),
+            ],
+        },
+        {
+            "id": "suits",
+            "title": "装備",
+            "dek": "最初からすべて所持している{suit_count}種の装備。役割は熱を防ぐことです。",
+            "blocks": [
+                ("ul", [
+                    "装備は購入せず、強化するだけです。1レベルごとに熱耐性が約 <strong>{suit_heat_per_level_percent}%</strong> 増え、基準値は{suit_base_heat_resistance}です。",
+                    "{suit_bonus_interval} レベルごとに装備の耐性が <strong>x{suit_bonus_multiplier}</strong> されます。",
+                    "各装備にはレベルに応じて開く{suit_skill_count}個のスキルもあります。",
+                    "装備パネルは熱ゲージと一緒に <strong>{suit_panel_floor}</strong> 階で開きます。",
+                ]),
+            ],
+        },
+        {
+            "id": "temperature",
+            "title": "熱",
+            "dek": "深く潜るほど温度は上がり、熱は静かにダメージを削っていきます。",
+            "blocks": [
+                ("ul", [
+                    "階の温度は上がり続けます。1階あたり約 <strong>{temperature_growth}倍</strong>で、20階ほどごとに倍になります。",
+                    "耐性が温度の <strong>{temperature_safe_ratio}倍</strong>以上あるあいだはゲージがきれいなままで、何も失いません。",
+                    "耐性が温度を下回るとダメージが漏れ始め、<strong>{temperature_worst_ratio}倍</strong>では20分の1しか残りません。つまり <strong>{temperature_worst_damage_percent}%</strong> の損失です。",
+                    "装備パネルには耐性を自動購入するスイッチがあります。よく深く潜るならオンのままにしましょう。",
+                ]),
+                ("warn", ["進みが急に止まったら", "鉱石がいつまでも割れない壁は、ほぼ必ずダメージ不足ではなく熱です。ほかに課金・投資をする前にゲージを確認してください。"]),
+            ],
+        },
+        {
+            "id": "pets",
+            "title": "ペット",
+            "dek": "ダイヤで購入し、ゴールドでレベルを上げる{pet_count}体のペット。",
+            "blocks": [
+                ("ul", [
+                    "価格は <strong>{pet_cost_first}</strong> から <strong>{pet_cost_last}</strong> ダイヤ（{pet_cost_list}）です。",
+                    "1レベルごとにツルハシのクリックダメージの約 <strong>{pet_dps_percent_per_level}%</strong> が自動ダメージとして加わり、ペットの順番が掛かります。同じレベルなら{pet_5}は{pet_1}の5倍です。",
+                    "レベル費用は毎回およそ <strong>{pet_upgrade_growth_percent}%</strong> 上がり、{pet_bonus_interval} レベルごとにペットは自身の出力を <strong>x{pet_bonus_multiplier}</strong> します。",
+                    "各ペットには{pet_skill_count}個のスキルがあり、そのペットだけに効くものと全ペットに効くものがあります。",
+                    "ペットパネルは <strong>{pet_panel_floor}</strong> 階、またはペットを1体でも持った時点で開きます。",
+                ]),
+                ("warn", ["プレステージとペット", "プレステージでペットはすべて<strong>レベル1</strong>に戻り、スキルも解除されます。ただし所持自体は永続で、買い直す必要はありません。"]),
+            ],
+        },
+        {
+            "id": "floors",
+            "title": "階・鉱石・深度",
+            "dek": "鉱石の硬さと稼げるゴールドを決めるのは階、見た目を決めるのは深度です。",
+            "blocks": [
+                ("ul", [
+                    "階が進むごとに体力とゴールドが少しずつ増え、その伸びは進むほど急になります。",
+                    "<strong>{duration_floor_interval}階ごと</strong>は時間制の階です。<strong>{duration_floor_seconds}秒</strong>のカウントが始まり、体力は約{duration_floor_health_percent}%、ゴールドは約{duration_floor_gold_percent}%増えます。",
+                    "難易度は約{difficulty_cycle_floors}階の周期でも変化します。周期の最初のほうの階は体力に対する稼ぎが最も良くなります。",
+                    "鉱石はゴールドに加えて <strong>{ore_stone_min}-{ore_stone_max}</strong> 個の鉱石ストーンを落とします。",
+                ]),
+                ("warn", ["時間制の階は痛い", "時間切れになると<strong>1階</strong>下に戻されます。ダメージが足りないときは、失敗するより時間制の階を飛ばしたほうが得です。"]),
+                ("p", "この周回で到達した階なら、どこへでも戻って周回できます。手動で階を選ぶと自動で上がる動作は止まります。また登りたくなったら戻してください。"),
+                ("p", "鉱石は全部で <strong>{ore_type_count}</strong> 種類あり、どれが出るかは深度で決まります。種類が変えるのは見た目と粉だけで、体力とゴールドは階が決めます。"),
+                ("table", "depth"),
+            ],
+        },
+        {
+            "id": "skills",
+            "title": "アクティブスキル",
+            "dek": "{skill_count}種のスキル。どれも一定時間の強化と、そのあとの再使用待ちで動きます。",
+            "blocks": [
+                ("p", "スキルは対応する階に着いた時点で<strong>無料</strong>で開き、レベル1から使えます。レベル{skill_levels}まで上げるのに必要なのは合計 <strong>{skill_total_cost} スキルストーン</strong>、{skill_count}種すべてで <strong>{skill_all_total_cost}</strong> です。レベルが上がると効果時間が延び、再使用時間が短くなります。"),
+                ("table", "skills"),
+                ("p", "最初のスキルは{skill_line_floor}階で開き、スキルストーンを使うスキルツリーのパネルは <strong>{skill_tree_floor}</strong> 階で開きます。スキルを使うだけならパネルは不要です。"),
+                ("note", ["組み合わせ", "まず{skill_overcharge}を使い、そのあとに本当に強化したいスキル（たとえば{skill_golden_frenzy}）を使います。{skill_time_reversal}は最後に使ったスキルの再使用時間を縮めるので、そのスキルが早く戻ってきます。"]),
+            ],
+        },
+        {
+            "id": "titles",
+            "title": "称号",
+            "dek": "登るにつれて自動でついてくる{title_count}個の称号。",
+            "blocks": [
+                ("ul", [
+                    "称号は{title_first_floor}階から <strong>{title_last_floor}</strong> 階まであり、その周回の最高到達階に応じて自動で選ばれます。",
+                    "1つの称号が持つボーナスは、それぞれ約 <strong>+{title_effect_step}</strong> 分です。",
+                    "ボーナスは段階的に増えます。クリックダメージは最初の称号から、続いて自動ダメージ、熱耐性、ゴールド、クリティカル倍率、クリティカル率、クリックへ加算される秒間ダメージの割合（{title_effect_unlocks}番目の称号）です。",
+                ]),
+            ],
+        },
+        {
+            "id": "tasks",
+            "title": "任務と{currency_taskium}",
+            "dek": "クリックを第二の収入に変えるサブ要素です。",
+            "blocks": [
+                ("ul", [
+                    "クリックが当たるごとに <strong>+{taskium_per_click} {currency_taskium}</strong> 入ります。",
+                    "任務の受注は <strong>{task_accept_cost}</strong>、引き直しは <strong>{task_refresh_cost}</strong> です。",
+                    "任務パネルは{task_panel_floor}階で開き、{task_slot_count}個の枠は {task_slot_floors} 階で順に開きます。",
+                    "任務は{task_rarity_count}段階のレアリティで{task_type_count}種類。1件{task_duration_minutes}分で、受注していない任務は1時間ごとに入れ替わります。",
+                    "報酬はレアリティで伸び、現在の階の鉱石ゴールドの <strong>{task_reward_range}</strong> 倍の範囲です。最上位のレアリティはエッセンスも出ます。",
+                ]),
+            ],
+        },
+        {
+            "id": "trade",
+            "title": "交換パネル",
+            "dek": "{trade_floor}階で開きます。鉱石ストーンが役に立つ唯一の場所です。",
+            "blocks": [
+                ("ul", [
+                    "スキルストーン1個 → <strong>鉱石ストーン{trade_skill_stone_to_ore_stone}個</strong>（1回の交換で最大{trade_skill_stone_max}個）。",
+                    "<strong>鉱石ストーン{trade_ore_stone_to_essence}個</strong> → エッセンス1。",
+                    "<strong>鉱石ストーン{trade_ore_stone_to_skill_stone}個</strong> → スキルストーン1個。",
+                ]),
+                ("p", "最後の交換が重要です。長く周回した成果を、ボス戦なしでスキルのレベルに変えられます。"),
+            ],
+        },
+        {
+            "id": "extras",
+            "title": "無料のゴールド",
+            "dek": "遊んでいるだけで入る3つの収入。",
+            "blocks": [
+                ("ul", [
+                    "<strong>ゴールドバルーン</strong> - {balloon_floor}階から、{balloon_min_seconds}-{balloon_max_seconds}秒ごとに1つ流れてきます。クリックすると、その周回の最高階の鉱石ゴールドの <strong>x{balloon_multiplier}</strong> がもらえます。",
+                    "<strong>オフライン収入</strong> - 離席{offline_min_minutes}分から計算され、{offline_max_hours}時間で上限になります。プレミアムで2倍です。",
+                    "<strong>プレイ時間報酬</strong> - {playtime_reward_minutes}分プレイするごとに、最高階での1分あたりのゴールドの約{playtime_reward_multiplier}倍が入ります。",
+                ]),
+            ],
+        },
+        {
+            "id": "prestige",
+            "title": "プレステージ",
+            "dek": "その周回の進行を永続的な強さに交換します。タイミングが合えばゲーム内で最も速い手段です。",
+            "blocks": [
+                ("p", "プレステージパネルは <strong>{prestige_first_floor}</strong> 階に初めて到達すると開きます。以降は1回ごとに{prestige_floor_step}階ずつ条件が上がり、{prestige_second_floor}階、{prestige_third_floor}階…と続きます。"),
+                ("ul", [
+                    "<strong>リセットされるもの:</strong> ゴールド、{currency_taskium}、階の進行、ツルハシと装備の強化、ペットのレベル、購入したすべてのスキル、ボスの進行度。",
+                    "<strong>残るもの:</strong> プレステージレベル、エッセンス、{prestige_parameter_count}つのパラメーターのレベル、ペットの所持、無限アイテム、実績。",
+                    "1階からやり直しではありません。次の周回は <strong>{prestige_floor_step} × プレステージレベル</strong>の階から始まり、鉱石{prestige_gold_multiplier}個分ほどの開始ゴールドももらえます。",
+                    "スキルの再使用待ちはすべて消えるので、周回開始時から全スキルが使えます。",
+                ]),
+                ("p", "エッセンスの報酬は2つだけで決まります。<strong>到達した最高階</strong>（1階につき{prestige_essence_per_floor}）と<strong>砕いた鉱石</strong>（1個につき{prestige_essence_per_ore}）です。"),
+                ("note", ["走るより砕く", "鉱石の数のほうが比重が大きいため、最後の時間はダメージが通らない階へ駆け上がるより、快適な階で砕き続けたほうが多くもらえます。"]),
+                ("table", "prestige"),
+                ("p", "ボーナスは掛け算ではなくレベルごとの足し算で、エッセンスの費用もゆっくり上がります。ためこむより、こまめに使うほうが得です。"),
+            ],
+        },
+        {
+            "id": "bosses",
+            "title": "ボス",
+            "dek": "エッセンスを賭けた時間制のダメージ勝負。{boss_floor}階で開きます。",
+            "blocks": [
+                ("ul", [
+                    "ボスを選び <strong>ダンジョンキー{boss_key_cost}個</strong>を使って開始します。自動では始まりません。",
+                    "ボスは順番に開放され、1体倒すと次が現れます。段階ごとに体力は約1000倍になり、制限時間は短くなります。",
+                    "報酬はプレステージレベルとともに増え、1レベルあたり約 <strong>+{boss_prestige_bonus_percent}%</strong> です。",
+                    "プレステージするとボスの進行度は最初のボスに戻ります。",
+                ]),
+                ("table", "bosses"),
+                ("warn", ["負けると損", "時間切れの時点でボスが残っていると報酬は<strong>ゼロ</strong>で、使った鍵も戻りません。失敗後は残り体力が表示されるので、次にどれだけダメージが必要かの目安にしてください。"]),
+            ],
+        },
+        {
+            "id": "achievements",
+            "title": "実績",
+            "dek": "{achievement_type_count}カテゴリーに{achievement_count}個の実績。クリック、鉱石、ボス、プレステージ、深度などがあります。",
+            "blocks": [
+                ("p", "報酬はすべて<strong>鉱石ストーン</strong>で、条件と報酬はどちらも段階ごとに約10倍になります。多くのカテゴリーは3段階で、ゴールド系とダメージ系はさらに続きます。"),
+                ("note", ["受け取りを忘れずに", "報酬は<strong>自動では入りません</strong>。しばらく実績タブを開いていないなら、かなりの量がたまっているはずです。"]),
+            ],
+        },
+        {
+            "id": "daily",
+            "title": "デイリー報酬",
+            "dek": "小さく単純で、1日抜けても罰はありません。",
+            "blocks": [
+                ("p", "1日1回のログインで <strong>ダンジョンキー{daily_key_amount}個</strong>。内容は毎日同じで、カレンダーも連続ログイン記録もありません。受け取りにはオンライン接続が必要です。"),
+            ],
+        },
+        {
+            "id": "store",
+            "title": "ストア",
+            "dek": "ダイヤ、鍵、パッケージ、プレミアム期間、そして永続の無限アイテム。",
+            "blocks": [
+                ("ul", [
+                    "<strong>ダイヤパック:</strong> {diamond_pack_list} ダイヤ。大きいパックほど単価が下がります。",
+                    "<strong>鍵パック:</strong> ダンジョンキー {key_pack_list} 個。",
+                    "<strong>{package_small}:</strong> {package_small_contents}。",
+                    "<strong>{package_big}:</strong> {package_big_contents}。",
+                    "<strong>{package_premium}:</strong> {premium_days}日間、クリックダメージ x{premium_click_multiplier}、自動ダメージ x{premium_dps_multiplier}、ゴールド x{premium_gold_multiplier}、熱耐性 x{premium_heat_multiplier}、オフライン収入 x{premium_offline_multiplier}。",
+                ]),
+                ("p", "無限アイテムは<strong>ダイヤで1回買うだけ</strong>で、プレステージでもリセットされません。終盤ではダイヤの使い道として最も効率が良いことが多いです。"),
+                ("table", "infinity"),
+                ("note", ["価格について", "ストアの価格はSteamからお客様の通貨で届くため、ここには記載していません。パックの中身は変わりませんが、価格は地域によって変わります。"]),
+            ],
+        },
+        {
+            "id": "progress",
+            "title": "ランキングと統計",
+            "dek": "周回の進み具合を確認できる2か所。",
+            "blocks": [
+                ("ul", [
+                    "Steamのランキングはクリック数、クリックダメージ、プレステージ回数、討伐ボス数、最高到達階を記録します。",
+                    "統計画面はさらに多くを記録します。収入、支出、クリック数、プレイ時間などです。",
+                ]),
+            ],
+        },
+        {
+            "id": "save",
+            "title": "セーブ",
+            "dek": "結論から言えば、進行データは複数の仕組みで守られています。",
+            "blocks": [
+                ("ul", [
+                    "ゲームは <strong>{save_seconds}秒</strong>ごとに暗号化して自動保存します。",
+                    "Steam Cloudへのバックアップは約 <strong>{cloud_save_seconds}秒</strong>ごと、さらに終了時と一時停止時にも必ず行います。別のPCでも同じところから続けられます。",
+                    "セーブファイルが壊れた場合は、ゲームが自動でバックアップに切り替えます。",
+                    "セーブデータをクリップボードにコピーして、別の端末で貼り付けることもできます。",
+                ]),
+            ],
+        },
+        {
+            "id": "languages",
+            "title": "対応言語",
+            "dek": "本作は{language_count}言語で提供されます。",
+            "blocks": [
+                ("p", "英語、トルコ語、ドイツ語、フランス語、スペイン語、ラテンアメリカスペイン語、イタリア語、ポーランド語、ブラジルポルトガル語、ロシア語、ウクライナ語、日本語、韓国語、簡体字中国語、繁体字中国語、タイ語、インドネシア語、ベトナム語。初回起動時に自動で選ばれ、設定からいつでも変更できます。このガイドも全言語ぶんあり、ページ上部のリンクから開けます。"),
+            ],
+        },
+    ],
+}

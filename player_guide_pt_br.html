@@ -1,0 +1,1069 @@
+<title>Clicker Ore Game - Guia do jogador</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Como a mina funciona: moedas, picaretas, mascotes, habilidades, prestígio, chefes e loja, explicado sem fórmulas.">
+<style>
+  :root {
+    --bg: #14110d;
+    --bg-elevated: #1d1811;
+    --bg-card: #211b13;
+    --text: #ede6d8;
+    --text-dim: #a89a82;
+    --text-faint: #766a55;
+    --accent: #e0a752;
+    --accent-strong: #f2bd6e;
+    --accent-2: #7fb8ad;
+    --border: #3a2f22;
+    --border-soft: #2a2318;
+    --danger: #cf7a5a;
+    --shadow: 0 8px 24px rgba(0,0,0,0.35);
+
+    --cur-gold: #e0a752;
+    --cur-diamond: #7fd1e0;
+    --cur-essence: #b79ef0;
+    --cur-taskium: #93a8d6;
+    --cur-key: #d98a63;
+    --cur-skillstone: #7fc9a0;
+    --cur-orestone: #b5a68c;
+
+    --font-display: "Bahnschrift", "Segoe UI Semibold", "Arial Narrow Bold", "Arial Narrow", sans-serif;
+    --font-body: "Sitka Text", "Iowan Old Style", Georgia, "Times New Roman", serif;
+    --font-mono: "Cascadia Mono", "Consolas", "SF Mono", ui-monospace, monospace;
+  }
+
+  :root[data-theme="light"] {
+    --bg: #efe9da;
+    --bg-elevated: #e6ddc8;
+    --bg-card: #f3ede0;
+    --text: #241d14;
+    --text-dim: #5c5138;
+    --text-faint: #857656;
+    --accent: #a8621a;
+    --accent-strong: #8a4e12;
+    --accent-2: #2f7a70;
+    --border: #d3c5a4;
+    --border-soft: #ddd0b1;
+    --danger: #a3492c;
+    --shadow: 0 8px 20px rgba(90,70,30,0.12);
+  }
+
+  @media (prefers-color-scheme: light) {
+    :root:not([data-theme="dark"]) {
+      --bg: #efe9da;
+      --bg-elevated: #e6ddc8;
+      --bg-card: #f3ede0;
+      --text: #241d14;
+      --text-dim: #5c5138;
+      --text-faint: #857656;
+      --accent: #a8621a;
+      --accent-strong: #8a4e12;
+      --accent-2: #2f7a70;
+      --border: #d3c5a4;
+      --border-soft: #ddd0b1;
+      --danger: #a3492c;
+      --shadow: 0 8px 20px rgba(90,70,30,0.12);
+    }
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: 17px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection { background: var(--accent); color: #14110d; }
+
+  a { color: var(--accent-strong); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  a:focus-visible, button:focus-visible, summary:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    text-wrap: balance;
+    letter-spacing: 0.01em;
+    color: var(--text);
+  }
+
+  p { max-width: 68ch; }
+  ul, ol { max-width: 68ch; }
+
+  .shell {
+    display: grid;
+    grid-template-columns: 260px minmax(0, 1fr);
+    min-height: 100vh;
+  }
+
+  .topbar {
+    display: none;
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: var(--bg-elevated);
+    border-bottom: 1px solid var(--border);
+    padding: 0.7rem 1rem;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .topbar-title {
+    font-family: var(--font-display);
+    font-size: 0.95rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--accent-strong);
+  }
+  #nav-toggle { display: none; }
+  .nav-toggle-btn {
+    font-family: var(--font-display);
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 0.4rem 0.7rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.85rem;
+  }
+
+  nav.toc {
+    position: sticky;
+    top: 0;
+    align-self: start;
+    height: 100vh;
+    overflow-y: auto;
+    padding: 2rem 1.4rem 3rem;
+    background: var(--bg-elevated);
+    border-right: 1px solid var(--border);
+  }
+  .toc-brand {
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    letter-spacing: 0.03em;
+    color: var(--accent-strong);
+    margin-bottom: 0.15rem;
+  }
+  .toc-brand small {
+    display: block;
+    font-family: var(--font-body);
+    font-style: italic;
+    font-size: 0.78rem;
+    color: var(--text-faint);
+    letter-spacing: 0;
+    margin-top: 0.25rem;
+  }
+  .toc-list {
+    list-style: none;
+    margin: 1.6rem 0 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+  }
+  .toc-list a {
+    display: block;
+    color: var(--text-dim);
+    font-size: 0.88rem;
+    padding: 0.32rem 0.5rem;
+    border-radius: 4px;
+    border-left: 2px solid transparent;
+  }
+  .toc-list a:hover {
+    color: var(--text);
+    text-decoration: none;
+    background: rgba(224,167,82,0.08);
+    border-left-color: var(--accent);
+  }
+  .toc-num {
+    font-family: var(--font-mono);
+    color: var(--text-faint);
+    font-size: 0.78rem;
+    margin-right: 0.45rem;
+  }
+
+  main {
+    padding: 3.2rem clamp(1.2rem, 4vw, 4rem) 6rem;
+    max-width: 900px;
+  }
+
+  header.hero {
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .strata {
+    height: 10px;
+    width: 100%;
+    border-radius: 3px;
+    margin-bottom: 1.6rem;
+    background: repeating-linear-gradient(
+      90deg,
+      var(--accent) 0 6%,
+      var(--accent-2) 6% 11%,
+      var(--border-soft) 11% 18%,
+      var(--accent) 18% 24%,
+      var(--border-soft) 24% 34%,
+      var(--accent-2) 34% 40%,
+      var(--accent) 40% 48%,
+      var(--border-soft) 48% 58%,
+      var(--accent-2) 58% 63%,
+      var(--accent) 63% 72%,
+      var(--border-soft) 72% 82%,
+      var(--accent-2) 82% 90%,
+      var(--accent) 90% 100%
+    );
+    opacity: 0.85;
+  }
+  .eyebrow {
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-size: 0.72rem;
+    color: var(--accent);
+    margin-bottom: 0.6rem;
+  }
+  h1.title {
+    font-size: clamp(2rem, 4.2vw, 2.9rem);
+    margin: 0 0 0.7rem;
+    line-height: 1.1;
+  }
+  .subtitle {
+    color: var(--text-dim);
+    font-size: 1.08rem;
+    max-width: 62ch;
+    margin: 0;
+  }
+
+  .langbar {
+    margin: 1.8rem 0 0;
+    padding-top: 1.2rem;
+    border-top: 1px solid var(--border-soft);
+  }
+  .langbar-label {
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 0.68rem;
+    color: var(--text-faint);
+    margin-bottom: 0.55rem;
+  }
+  .langbar-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem 0.4rem;
+  }
+  .langbar-list a, .langbar-list span {
+    font-family: var(--font-display);
+    font-size: 0.78rem;
+    padding: 0.18rem 0.55rem;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    color: var(--text-dim);
+    background: var(--bg-card);
+  }
+  .langbar-list a:hover {
+    text-decoration: none;
+    color: var(--text);
+    border-color: var(--accent);
+  }
+  .langbar-list span {
+    color: #14110d;
+    background: var(--accent);
+    border-color: var(--accent);
+  }
+  :root[data-theme="light"] .langbar-list span { color: #efe9da; }
+
+  section {
+    margin-bottom: 3.6rem;
+    scroll-margin-top: 1.5rem;
+  }
+  .section-head {
+    display: flex;
+    align-items: baseline;
+    gap: 0.7rem;
+    margin-bottom: 0.3rem;
+  }
+  .section-num {
+    font-family: var(--font-mono);
+    color: var(--accent);
+    font-size: 0.95rem;
+  }
+  h2 {
+    font-size: 1.55rem;
+    margin: 0;
+  }
+  .section-dek {
+    color: var(--text-dim);
+    font-size: 0.98rem;
+    margin: 0.3rem 0 1.5rem;
+    max-width: 62ch;
+  }
+
+  .callout {
+    border-left: 3px solid var(--accent);
+    background: var(--bg-card);
+    padding: 0.95rem 1.2rem;
+    border-radius: 0 6px 6px 0;
+    margin: 1.2rem 0;
+    font-size: 0.95rem;
+  }
+  .callout strong { color: var(--accent-strong); }
+  .callout.warn { border-left-color: var(--danger); }
+  .callout-label {
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 0.72rem;
+    color: var(--accent);
+    margin-bottom: 0.35rem;
+  }
+  .callout.warn .callout-label { color: var(--danger); }
+
+  .currency-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 0.9rem;
+    margin: 1.4rem 0;
+  }
+  .cur-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-top: 3px solid var(--dot);
+    border-radius: 6px;
+    padding: 0.95rem 1rem 1.05rem;
+  }
+  .cur-card h4 {
+    margin: 0 0 0.5rem;
+    font-size: 0.98rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .dot {
+    width: 9px; height: 9px; border-radius: 50%;
+    background: var(--dot);
+    flex: none;
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--dot) 20%, transparent);
+  }
+  .cur-card p {
+    margin: 0.15rem 0;
+    font-size: 0.84rem;
+    color: var(--text-dim);
+    max-width: none;
+  }
+  .cur-card p b { color: var(--text); font-weight: 600; }
+
+  .table-wrap {
+    overflow-x: auto;
+    margin: 1.2rem 0;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+  }
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    min-width: 460px;
+    font-size: 0.9rem;
+  }
+  thead th {
+    text-align: left;
+    font-family: var(--font-display);
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    font-size: 0.72rem;
+    color: var(--text-dim);
+    background: var(--bg-elevated);
+    padding: 0.6rem 0.85rem;
+    border-bottom: 1px solid var(--border);
+    white-space: nowrap;
+  }
+  tbody td {
+    padding: 0.55rem 0.85rem;
+    border-bottom: 1px solid var(--border-soft);
+    font-variant-numeric: tabular-nums;
+    color: var(--text);
+  }
+  tbody tr:last-child td { border-bottom: none; }
+  tbody tr:nth-child(even) { background: color-mix(in srgb, var(--accent) 3%, transparent); }
+  td.num, th.num { font-family: var(--font-mono); }
+  td.strong { color: var(--accent-strong); font-weight: 600; }
+
+  .strategy-track {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 1.4rem 0;
+  }
+  .strategy-stage {
+    background: var(--bg-card);
+    padding: 1rem 1.1rem;
+  }
+  .strategy-stage .stage-label {
+    font-family: var(--font-display);
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+    margin-bottom: 0.4rem;
+  }
+  .strategy-stage ul {
+    margin: 0;
+    padding-left: 1.1rem;
+    font-size: 0.86rem;
+    color: var(--text-dim);
+  }
+  .strategy-stage li { margin-bottom: 0.25rem; }
+
+  footer.doc-footer {
+    margin-top: 4rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+    color: var(--text-faint);
+    font-size: 0.8rem;
+  }
+
+  @media (max-width: 880px) {
+    .shell { grid-template-columns: 1fr; }
+    .topbar { display: flex; }
+    nav.toc {
+      position: fixed;
+      inset: 0 20% 0 0;
+      top: 52px;
+      height: calc(100vh - 52px);
+      transform: translateX(-100%);
+      transition: transform 0.22s ease;
+      z-index: 15;
+      box-shadow: var(--shadow);
+    }
+    #nav-toggle:checked ~ .shell nav.toc {
+      transform: translateX(0);
+    }
+    main { padding: 2rem 1.2rem 5rem; }
+  }
+</style>
+
+<input type="checkbox" id="nav-toggle">
+
+<div class="topbar">
+  <span class="topbar-title">&#9935; Guia do jogador</span>
+  <label class="nav-toggle-btn" for="nav-toggle">Conteúdo</label>
+</div>
+
+<div class="shell">
+  <nav class="toc" aria-label="Conteúdo">
+    <div class="toc-brand">Clicker Ore Game<small>Guia do jogador</small></div>
+    <ul class="toc-list">
+      <li><a href="#start"><span class="toc-num">01</span>Por onde começar</a></li>
+      <li><a href="#currencies"><span class="toc-num">02</span>As 7 moedas</a></li>
+      <li><a href="#damage"><span class="toc-num">03</span>Dano por clique e dano automático</a></li>
+      <li><a href="#critical"><span class="toc-num">04</span>Golpes críticos</a></li>
+      <li><a href="#pickaxes"><span class="toc-num">05</span>Picaretas</a></li>
+      <li><a href="#suits"><span class="toc-num">06</span>Armaduras</a></li>
+      <li><a href="#temperature"><span class="toc-num">07</span>Calor</a></li>
+      <li><a href="#pets"><span class="toc-num">08</span>Mascotes</a></li>
+      <li><a href="#floors"><span class="toc-num">09</span>Andares, minério e profundidade</a></li>
+      <li><a href="#skills"><span class="toc-num">10</span>Habilidades ativas</a></li>
+      <li><a href="#titles"><span class="toc-num">11</span>Títulos</a></li>
+      <li><a href="#tasks"><span class="toc-num">12</span>Tarefas e Taskium</a></li>
+      <li><a href="#trade"><span class="toc-num">13</span>Painel de troca</a></li>
+      <li><a href="#extras"><span class="toc-num">14</span>Ouro de graça</a></li>
+      <li><a href="#prestige"><span class="toc-num">15</span>Prestígio</a></li>
+      <li><a href="#bosses"><span class="toc-num">16</span>Chefes</a></li>
+      <li><a href="#achievements"><span class="toc-num">17</span>Conquistas</a></li>
+      <li><a href="#daily"><span class="toc-num">18</span>Recompensa diária</a></li>
+      <li><a href="#store"><span class="toc-num">19</span>Loja</a></li>
+      <li><a href="#progress"><span class="toc-num">20</span>Rankings e estatísticas</a></li>
+      <li><a href="#save"><span class="toc-num">21</span>Saves</a></li>
+      <li><a href="#languages"><span class="toc-num">22</span>Idiomas</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <header class="hero">
+      <div class="strata" role="presentation"></div>
+      <div class="eyebrow">Guia do jogador - 2026-08-12</div>
+      <h1 class="title">A mina inteira,<br>explicada em palavras simples</h1>
+      <p class="subtitle">O que cada sistema faz, em que andar ele abre e onde vale gastar a próxima hora. Sem fórmulas: só as decisões que importam.</p>
+      <div class="langbar">
+        <div class="langbar-label">Idioma</div>
+        <div class="langbar-list"><a href="player_guide_en.html" hreflang="en">English</a><a href="player_guide_tr.html" hreflang="tr">Türkçe</a><a href="player_guide_de.html" hreflang="de">Deutsch</a><a href="player_guide_fr.html" hreflang="fr">Français</a><a href="player_guide_es.html" hreflang="es">Español</a><a href="player_guide_es_la.html" hreflang="es-419">Español (Latinoamérica)</a><a href="player_guide_it.html" hreflang="it">Italiano</a><a href="player_guide_pl.html" hreflang="pl">Polski</a><span>Português (Brasil)</span><a href="player_guide_ru.html" hreflang="ru">Русский</a><a href="player_guide_uk.html" hreflang="uk">Українська</a><a href="player_guide_ja.html" hreflang="ja">日本語</a><a href="player_guide_ko.html" hreflang="ko">한국어</a><a href="player_guide_zh_hans.html" hreflang="zh-Hans">简体中文</a><a href="player_guide_zh_hant.html" hreflang="zh-Hant">繁體中文</a><a href="player_guide_th.html" hreflang="th">ไทย</a><a href="player_guide_id.html" hreflang="id">Bahasa Indonesia</a><a href="player_guide_vi.html" hreflang="vi">Tiếng Việt</a></div>
+      </div>
+    </header>
+
+    <section id="start">
+      <div class="section-head"><span class="section-num">01</span><h2>Por onde começar</h2></div>
+      <p class="section-dek">Três fases, na ordem em que o jogo vai abrindo as coisas.</p>
+      <div class="strategy-track">
+          <div class="strategy-stage">
+            <div class="stage-label">Começo - andares 1 a 200</div>
+            <ul>
+              <li>Melhore a picareta sem parar; compre a próxima assim que ela abrir.</li>
+              <li>Quebra-Minérios chega no andar 50 e Clique de Ira no andar 70.</li>
+              <li>Pegue Pedrinha assim que puder tirar os diamantes.</li>
+            </ul>
+          </div>
+          <div class="strategy-stage">
+            <div class="stage-label">Meio - andares 200 a 350</div>
+            <ul>
+              <li>Faça o primeiro prestígio no andar 200.</li>
+              <li>Espalhe a Essência pelos 7 parâmetros em vez de estourar um só.</li>
+              <li>As tarefas abrem no andar 160; a árvore de habilidades e a troca no andar 180.</li>
+            </ul>
+          </div>
+          <div class="strategy-stage">
+            <div class="stage-label">Avançado - do andar 350 em diante</div>
+            <ul>
+              <li>Enfrente chefes sempre que tiver chave: eles são o seu motor de Essência.</li>
+              <li>Compre os itens Infinito: são permanentes e nunca zeram.</li>
+              <li>Mantenha a armadura em dia para o calor não comer o seu dano.</li>
+            </ul>
+          </div>
+        </div>
+      <div class="callout">
+          <div class="callout-label">Bom saber</div>
+          Os números crescem rápido, então o jogo passa primeiro para formas curtas e depois para notação científica tipo <strong>1,23e45</strong>. Não existe teto: isso é só a forma de escrever.
+        </div>
+    </section>
+
+    <section id="currencies">
+      <div class="section-head"><span class="section-num">02</span><h2>As 7 moedas</h2></div>
+      <p class="section-dek">Cada uma alimenta um sistema diferente. Gastar a moeda certa no lugar errado é o erro mais comum no começo.</p>
+      <div class="currency-grid">
+        <div class="cur-card" style="--dot:var(--cur-gold)">
+          <h4><span class="dot"></span>Ouro</h4>
+          <p>Vem de <b>quebrar minério</b>.</p>
+          <p>Vai para níveis de picareta e armadura: sua moeda do dia a dia.</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-diamond)">
+          <h4><span class="dot"></span>Diamante</h4>
+          <p>Vem <b>só de compras com dinheiro real</b>.</p>
+          <p>Vai para mascotes e para os itens Infinito permanentes.</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-essence)">
+          <h4><span class="dot"></span>Essência</h4>
+          <p>Vem do <b>prestígio</b> e de vencer chefes.</p>
+          <p>Vai para os 7 parâmetros de prestígio permanentes.</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-taskium)">
+          <h4><span class="dot"></span>Taskium</h4>
+          <p><b>+1</b> a cada clique certo.</p>
+          <p>Vai para aceitar e sortear tarefas de novo.</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-key)">
+          <h4><span class="dot"></span>Chave de masmorra</h4>
+          <p>Uma chave grátis por dia, mais os pacotes da loja.</p>
+          <p>Vai para entrar na luta contra um chefe: 1 por tentativa.</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-skillstone)">
+          <h4><span class="dot"></span>Pedra de habilidade</h4>
+          <p>Vem dos pacotes da loja e do painel de troca.</p>
+          <p>Vai para subir as 8 habilidades ativas.</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-orestone)">
+          <h4><span class="dot"></span>Pedra de minério</h4>
+          <p><b>1-5</b> de cada minério quebrado, mais as conquistas.</p>
+          <p>Troca-se por Essência ou Pedra de habilidade no painel de troca.</p>
+        </div>
+      </div>
+      <div class="callout">
+          <div class="callout-label">Diamantes</div>
+          Chefes, conquistas e tarefas nunca dão diamantes. Diamantes e chaves de masmorra ficam no servidor, então comprar um mascote exige estar online.
+        </div>
+    </section>
+
+    <section id="damage">
+      <div class="section-head"><span class="section-num">03</span><h2>Dano por clique e dano automático</h2></div>
+      <p class="section-dek">Duas fontes de dano separadas, alimentadas por coisas diferentes.</p>
+      <p>O <strong>dano por clique</strong> é o que um toque faz. Ele cresce com o nível e as habilidades da sua primeira picareta, com a habilidade Clique de Ira, com o seu título e com o parâmetro de prestígio Mão do Quebra-Pedras. Quando você sobe Unidade de Força, uma parte do dano automático também entra em cada clique.</p>
+      <p>O <strong>dano automático</strong> (por segundo) vem da segunda picareta em diante, da habilidade Fúria, do parâmetro Forja Eterna e dos seus mascotes.</p>
+      <div class="callout">
+          <div class="callout-label">Mascotes são a exceção</div>
+          O dano dos mascotes é somado <strong>depois</strong> de todos os multiplicadores, sem ser escalado por eles. Só o nível deles não sustenta o fim de jogo: os multiplicadores de picareta e habilidade precisam crescer também.
+        </div>
+    </section>
+
+    <section id="critical">
+      <div class="section-head"><span class="section-num">04</span><h2>Golpes críticos</h2></div>
+      <p class="section-dek">Todo clique pode sair crítico e bater mais forte.</p>
+      <p>Você começa com <strong>5%</strong> de chance e multiplicador de <strong>x1,5</strong>. Quatro coisas aumentam isso: a habilidade Golpe Crítico, as habilidades das picaretas, os parâmetros de prestígio Oráculo do Minério e Força Cataclísmica, e os títulos.</p>
+    </section>
+
+    <section id="pickaxes">
+      <div class="section-head"><span class="section-num">05</span><h2>Picaretas</h2></div>
+      <p class="section-dek">45 picaretas, liberadas em ordem. Elas são a espinha do seu dano.</p>
+      <ul>
+          <li>A primeira picareta custa <strong>5 de ouro</strong>; cada seguinte custa cerca de <strong>8 vezes</strong> mais que a anterior.</li>
+          <li>Uma picareta libera sozinha quando você já ganhou ouro suficiente nesta rodada, então é a melhoria que abre a próxima.</li>
+          <li>Cada nível custa cerca de <strong>7%</strong> mais que o anterior.</li>
+          <li>Só a <strong>primeira</strong> picareta alimenta o dano por clique. Todas as outras alimentam o dano automático por segundo.</li>
+          <li>Cada picareta tem 6 habilidades, que abrem nos níveis 5 / 10 / 25 / 50 / 100 / 200. Algumas ajudam só aquela picareta e outras todas: as globais valem mais.</li>
+        </ul>
+      <div class="callout">
+          <div class="callout-label">O grande salto</div>
+          A cada <strong>100 níveis</strong>, a picareta multiplica a própria produção por <strong>x10</strong>. Empurrar uma picareta até a próxima centena costuma ser o maior ganho de força disponível.
+        </div>
+    </section>
+
+    <section id="suits">
+      <div class="section-head"><span class="section-num">06</span><h2>Armaduras</h2></div>
+      <p class="section-dek">5 armaduras, todas suas desde o início. Elas existem para tirar o calor de cima de você.</p>
+      <ul>
+          <li>Armadura não se compra, só se sobe. Cada nível soma cerca de <strong>5%</strong> de resistência, partindo de 50.</li>
+          <li>A cada 100 níveis, a resistência da armadura é multiplicada por <strong>x2</strong>.</li>
+          <li>Cada armadura tem também 6 habilidades que abrem conforme o nível.</li>
+          <li>O painel de armadura abre no andar <strong>130</strong>, junto com o medidor de calor.</li>
+        </ul>
+    </section>
+
+    <section id="temperature">
+      <div class="section-head"><span class="section-num">07</span><h2>Calor</h2></div>
+      <p class="section-dek">Quanto mais fundo, mais quente, e o calor corta o seu dano em silêncio.</p>
+      <ul>
+          <li>A temperatura do andar sobe sem parar: cerca de <strong>1,04x por andar</strong>, ou seja, dobra a cada vinte e poucos andares.</li>
+          <li>Enquanto a sua resistência for pelo menos <strong>1,5x</strong> a temperatura, o medidor fica limpo e você não perde nada.</li>
+          <li>Quando a resistência cai abaixo da temperatura, o dano começa a escapar; em <strong>0,5x</strong> resta só um vinte avos, uma perda de <strong>95%</strong>.</li>
+          <li>O painel de armadura tem uma chave para comprar resistência automaticamente; deixe ligada se você desce muito.</li>
+        </ul>
+      <div class="callout warn">
+          <div class="callout-label">Se travar de repente</div>
+          Uma parede em que o minério não acaba nunca quase sempre é calor, não dano. Olhe o medidor antes de gastar em outra coisa.
+        </div>
+    </section>
+
+    <section id="pets">
+      <div class="section-head"><span class="section-num">08</span><h2>Mascotes</h2></div>
+      <p class="section-dek">5 mascotes, comprados com diamantes e depois subidos com ouro.</p>
+      <ul>
+          <li>Os preços vão de <strong>150</strong> a <strong>250</strong> diamantes (150 / 175 / 200 / 225 / 250).</li>
+          <li>Cada nível soma cerca de <strong>1%</strong> do dano por clique da sua picareta como dano automático, multiplicado pela ordem do mascote: Fragmento Sombrio dá cinco vezes o de Pedrinha no mesmo nível.</li>
+          <li>Os níveis ficam cerca de <strong>20%</strong> mais caros a cada vez e, a cada 100 níveis, o mascote multiplica a própria produção por <strong>x5</strong>.</li>
+          <li>Cada mascote tem 6 habilidades; algumas servem só a ele, outras a todos.</li>
+          <li>O painel de mascotes abre no andar <strong>30</strong>, ou assim que você tiver um.</li>
+        </ul>
+      <div class="callout warn">
+          <div class="callout-label">Prestígio e mascotes</div>
+          O prestígio devolve cada mascote ao <strong>nível 1</strong> e apaga as habilidades dele. A posse é permanente: você nunca recompra um mascote.
+        </div>
+    </section>
+
+    <section id="floors">
+      <div class="section-head"><span class="section-num">09</span><h2>Andares, minério e profundidade</h2></div>
+      <p class="section-dek">O andar decide o quanto o minério é duro e quanto ouro ele paga. A profundidade decide a aparência dele.</p>
+      <ul>
+          <li>Cada andar tem um pouco mais de vida e um pouco mais de ouro que o anterior, e a curva fica mais inclinada conforme você sobe.</li>
+          <li>Todo <strong>10º andar</strong> é cronometrado: começa uma contagem de <strong>20 segundos</strong>, a vida sobe cerca de 50% e o ouro cerca de 51%.</li>
+          <li>A dificuldade também anda em ciclos de cerca de 100 andares: os primeiros andares de um ciclo pagam melhor em relação à vida.</li>
+          <li>Cada minério ainda solta <strong>1-5</strong> Pedras de minério.</li>
+        </ul>
+      <div class="callout warn">
+          <div class="callout-label">Andar cronometrado morde</div>
+          Se o tempo acabar, você volta <strong>um andar</strong>. Se o dano não dá conta, é melhor pular o andar cronometrado do que perder nele.
+        </div>
+      <p>Você pode voltar a qualquer andar já alcançado nesta rodada e farmar ali. Escolher andar na mão desliga o avanço automático; ligue de novo quando quiser subir.</p>
+      <p>São <strong>40</strong> tipos de minério no total, e a profundidade decide quais aparecem. O tipo muda só a aparência e o pó: vida e ouro vêm do andar.</p>
+      <div class="table-wrap">
+        <table>
+        <thead><tr>
+        <th class="num">Profundidade</th>
+        <th class="num">Tipos de minério</th>
+        <th class="num">Perto do andar</th>
+        </tr></thead>
+        <tbody>
+        <tr>
+        <td class="num">0-100 m</td>
+        <td class="num">9</td>
+        <td class="num">~54</td>
+        </tr>
+        <tr>
+        <td class="num">100-500 m</td>
+        <td class="num">20</td>
+        <td class="num">~129</td>
+        </tr>
+        <tr>
+        <td class="num">500-1.500 m</td>
+        <td class="num">30</td>
+        <td class="num">~196</td>
+        </tr>
+        <tr>
+        <td class="num">1.500 m+</td>
+        <td class="num">40</td>
+        <td class="num">-</td>
+        </tr>
+        </tbody></table></div>
+    </section>
+
+    <section id="skills">
+      <div class="section-head"><span class="section-num">10</span><h2>Habilidades ativas</h2></div>
+      <p class="section-dek">8 habilidades, cada uma um empurrão com tempo limitado e depois a recarga.</p>
+      <p>Uma habilidade é <strong>de graça</strong> quando o andar dela chega: você já usa no nível 1. Levar até o nível 7 custa <strong>63 Pedras de habilidade</strong> no total, ou <strong>504</strong> para todas as 8. Nível mais alto significa duração maior e recarga menor.</p>
+      <div class="table-wrap">
+        <table>
+        <thead><tr>
+        <th>Habilidade</th>
+        <th class="num">Andar</th>
+        <th class="num">Nível 1 (duração / recarga)</th>
+        <th class="num">Nível 7 (duração / recarga)</th>
+        <th class="num">Efeito</th>
+        </tr></thead>
+        <tbody>
+        <tr>
+        <td>Quebra-Minérios</td>
+        <td class="num">50</td>
+        <td class="num">30 s / 540 s</td>
+        <td class="num">90 s / 180 s</td>
+        <td class="num">7 → 13 /s</td>
+        </tr>
+        <tr>
+        <td>Clique de Ira</td>
+        <td class="num">70</td>
+        <td class="num">40 s / 660 s</td>
+        <td class="num">210 s / 300 s</td>
+        <td class="num">x2 → x5</td>
+        </tr>
+        <tr>
+        <td>Golpe Crítico</td>
+        <td class="num">100</td>
+        <td class="num">30 s / 600 s</td>
+        <td class="num">150 s / 240 s</td>
+        <td class="num">x1,3 → x1,9</td>
+        </tr>
+        <tr>
+        <td>Fúria</td>
+        <td class="num">170</td>
+        <td class="num">40 s / 840 s</td>
+        <td class="num">160 s / 480 s</td>
+        <td class="num">x2 → x3,5</td>
+        </tr>
+        <tr>
+        <td>Frenesi Dourado</td>
+        <td class="num">240</td>
+        <td class="num">50 s / 1.020 s</td>
+        <td class="num">290 s / 660 s</td>
+        <td class="num">x2 → x5</td>
+        </tr>
+        <tr>
+        <td>Resistência ao Calor</td>
+        <td class="num">280</td>
+        <td class="num">30 s / 660 s</td>
+        <td class="num">140 s / 300 s</td>
+        <td class="num">x2 → x5</td>
+        </tr>
+        <tr>
+        <td>Sobrecarga</td>
+        <td class="num">330</td>
+        <td class="num">20 s / 1.200 s</td>
+        <td class="num">20 s / 840 s</td>
+        <td class="num">x1,5 → x3</td>
+        </tr>
+        <tr>
+        <td>Reversão Temporal</td>
+        <td class="num">400</td>
+        <td class="num">1.200 s</td>
+        <td class="num">840 s</td>
+        <td class="num">-300 s → -1.020 s</td>
+        </tr>
+        </tbody></table></div>
+      <p>A primeira linha de habilidades abre no andar 50; o painel da árvore, onde você gasta Pedras de habilidade, abre no andar <strong>180</strong>. Para usar uma habilidade o painel não é necessário.</p>
+      <div class="callout">
+          <div class="callout-label">O combo</div>
+          Dispare primeiro Sobrecarga e depois a habilidade que você quer mesmo reforçar, por exemplo Frenesi Dourado. Aí Reversão Temporal corta a recarga da última que você usou, então ela volta mais rápido.
+        </div>
+    </section>
+
+    <section id="titles">
+      <div class="section-head"><span class="section-num">11</span><h2>Títulos</h2></div>
+      <p class="section-dek">100 títulos que chegam sozinhos enquanto você sobe.</p>
+      <ul>
+          <li>Os títulos vão do andar 1 ao andar <strong>50.000</strong> e são escolhidos sozinhos pelo andar mais alto desta rodada.</li>
+          <li>Cada título soma cerca de <strong>+0,1</strong> nos bônus que carrega.</li>
+          <li>Os bônus chegam em etapas: dano por clique já no primeiro título, depois dano automático, resistência ao calor, ouro, multiplicador crítico, chance de crítico e a parte do DPS que vai para o clique (títulos 1 / 5 / 10 / 15 / 20 / 25 / 30).</li>
+        </ul>
+    </section>
+
+    <section id="tasks">
+      <div class="section-head"><span class="section-num">12</span><h2>Tarefas e Taskium</h2></div>
+      <p class="section-dek">Uma trilha paralela que transforma os seus cliques em uma segunda renda.</p>
+      <ul>
+          <li>Cada clique certo dá <strong>+1 Taskium</strong>.</li>
+          <li>Aceitar uma tarefa custa <strong>200</strong>; sortear de novo custa <strong>25</strong>.</li>
+          <li>O painel de tarefas abre no andar 160; as 6 vagas nos andares 160 / 170 / 180 / 190 / 200 / 210.</li>
+          <li>São 10 tipos de tarefa em 6 raridades. Cada tarefa dura 60 minutos, e as não aceitas são trocadas a cada hora.</li>
+          <li>A recompensa cresce com a raridade: entre <strong>50-500</strong> vezes o ouro do minério do andar atual. As mais raras dão Essência também.</li>
+        </ul>
+    </section>
+
+    <section id="trade">
+      <div class="section-head"><span class="section-num">13</span><h2>Painel de troca</h2></div>
+      <p class="section-dek">Abre no andar 180. O único lugar em que a Pedra de minério vale algo.</p>
+      <ul>
+          <li>1 Pedra de habilidade vira <strong>5.000 Pedras de minério</strong>, até 100.000 por troca.</li>
+          <li><strong>2.000 Pedras de minério</strong> viram 1 Essência.</li>
+          <li><strong>5.000 Pedras de minério</strong> viram 1 Pedra de habilidade.</li>
+        </ul>
+      <p>A última importa: é assim que uma sessão longa de farm vira níveis de habilidade sem enfrentar chefe.</p>
+    </section>
+
+    <section id="extras">
+      <div class="section-head"><span class="section-num">14</span><h2>Ouro de graça</h2></div>
+      <p class="section-dek">Três fontes que só pedem que você esteja ali.</p>
+      <ul>
+          <li><strong>Balão de ouro</strong>: do andar 50 em diante, um aparece a cada 70-105 segundos. Clicar paga <strong>x6</strong> o ouro do minério do seu melhor andar nesta rodada.</li>
+          <li><strong>Ganhos offline</strong>: contam depois de 60 minutos fora e param em 12 horas. O premium dobra.</li>
+          <li><strong>Recompensa por tempo de jogo</strong>: a cada 60 minutos jogados paga cerca de 100 vezes o ouro de um minuto no seu melhor andar.</li>
+        </ul>
+    </section>
+
+    <section id="prestige">
+      <div class="section-head"><span class="section-num">15</span><h2>Prestígio</h2></div>
+      <p class="section-dek">Você troca o progresso desta rodada por poder permanente. Na hora certa, é a coisa mais rápida do jogo.</p>
+      <p>O painel de prestígio abre na primeira vez que você chega ao andar <strong>200</strong>. Depois disso cada prestígio pede 100 andares a mais: 300, depois 400, e assim segue.</p>
+      <ul>
+          <li><strong>Zera:</strong> ouro, Taskium, progresso de andares, níveis de picareta e armadura, níveis de mascote, todas as habilidades compradas e o seu nível de chefe.</li>
+          <li><strong>Fica:</strong> nível de prestígio, Essência, os níveis dos 7 parâmetros, os mascotes que você já tem, os itens Infinito e as conquistas.</li>
+          <li>Você não volta ao andar 1: a rodada seguinte começa em <strong>100 x o seu nível de prestígio</strong>, com um ouro inicial que vale cerca de 500 minérios.</li>
+          <li>Todas as recargas são limpas, então você começa a rodada com todas as habilidades prontas.</li>
+        </ul>
+      <p>A Essência vem de duas coisas só: o <strong>andar mais alto</strong> que você alcançou (0,5 cada) e o <strong>minério quebrado</strong> (0,25 cada).</p>
+      <div class="callout">
+          <div class="callout-label">Quebre minério, não corra</div>
+          Como o minério pesa mais na conta, farmar um andar confortável no fim rende mais que correr até um andar em que você quase não faz dano.
+        </div>
+      <div class="table-wrap">
+        <table>
+        <thead><tr>
+        <th>Parâmetro</th>
+        <th>Efeito</th>
+        <th class="num">Por nível</th>
+        </tr></thead>
+        <tbody>
+        <tr>
+        <td>Forja Eterna</td>
+        <td>Dano automático por segundo</td>
+        <td class="num">+20%</td>
+        </tr>
+        <tr>
+        <td>Mão do Quebra-Pedras</td>
+        <td>Dano por clique</td>
+        <td class="num">+25%</td>
+        </tr>
+        <tr>
+        <td>Abismo Dourado</td>
+        <td>Ganho de ouro</td>
+        <td class="num">+10%</td>
+        </tr>
+        <tr>
+        <td>Oráculo do Minério</td>
+        <td>Chance de crítico</td>
+        <td class="num">+5%</td>
+        </tr>
+        <tr>
+        <td>Força Cataclísmica</td>
+        <td>Multiplicador crítico</td>
+        <td class="num">+5%</td>
+        </tr>
+        <tr>
+        <td>Escudo Infernal</td>
+        <td>Resistência ao calor</td>
+        <td class="num">+10%</td>
+        </tr>
+        <tr>
+        <td>Unidade de Força</td>
+        <td>Parte do DPS somada ao clique</td>
+        <td class="num">+1%</td>
+        </tr>
+        </tbody></table></div>
+      <p>Os bônus se somam nível por nível em vez de se multiplicarem, e o custo em Essência sobe devagar: gastar com frequência rende mais que guardar.</p>
+    </section>
+
+    <section id="bosses">
+      <div class="section-head"><span class="section-num">16</span><h2>Chefes</h2></div>
+      <p class="section-dek">Uma corrida de dano contra o relógio, em troca de Essência. Abre no andar 350.</p>
+      <ul>
+          <li>Você escolhe um chefe e gasta <strong>1 chave de masmorra</strong> para começar. Nada começa sozinho.</li>
+          <li>Os chefes abrem em ordem: é preciso vencer um para ver o próximo. A vida sobe cerca de mil vezes por degrau enquanto o relógio encurta.</li>
+          <li>As recompensas crescem com o seu nível de prestígio: cerca de <strong>+15%</strong> por nível.</li>
+          <li>O prestígio devolve o seu nível de chefe ao primeiro.</li>
+        </ul>
+      <div class="table-wrap">
+        <table>
+        <thead><tr>
+        <th>Chefe</th>
+        <th class="num">Vida</th>
+        <th class="num">Tempo</th>
+        <th>Recompensa</th>
+        </tr></thead>
+        <tbody>
+        <tr>
+        <td>Colosso de Cristal</td>
+        <td class="num">1e13</td>
+        <td class="num">30 s</td>
+        <td>50 Essência + 5.000 Pedra de minério</td>
+        </tr>
+        <tr>
+        <td>Guardião de Cristal</td>
+        <td class="num">1e16</td>
+        <td class="num">25 s</td>
+        <td>75 Essência + 7.500 Pedra de minério</td>
+        </tr>
+        <tr>
+        <td>Sentinela Carmesim</td>
+        <td class="num">1e19</td>
+        <td class="num">20 s</td>
+        <td>100 Essência + 10.000 Pedra de minério</td>
+        </tr>
+        <tr>
+        <td>Guardião de Pedra</td>
+        <td class="num">1e22</td>
+        <td class="num">20 s</td>
+        <td>125 Essência + 12.500 Pedra de minério</td>
+        </tr>
+        <tr>
+        <td>Titã de Gelo</td>
+        <td class="num">1e25</td>
+        <td class="num">20 s</td>
+        <td>150 Essência + 15.000 Pedra de minério</td>
+        </tr>
+        <tr>
+        <td>Golem de Cristal 1</td>
+        <td class="num">1e28</td>
+        <td class="num">20 s</td>
+        <td>175 Essência + 17.500 Pedra de minério</td>
+        </tr>
+        <tr>
+        <td>Colosso Barbapedra</td>
+        <td class="num">1e31</td>
+        <td class="num">15 s</td>
+        <td>200 Essência + 20.000 Pedra de minério</td>
+        </tr>
+        <tr>
+        <td>Golem de Cristal 2</td>
+        <td class="num">1e34</td>
+        <td class="num">15 s</td>
+        <td>225 Essência + 22.500 Pedra de minério</td>
+        </tr>
+        <tr>
+        <td>Golem de Chamas</td>
+        <td class="num">1e37</td>
+        <td class="num">15 s</td>
+        <td>250 Essência + 25.000 Pedra de minério</td>
+        </tr>
+        <tr>
+        <td>Golem Guardião</td>
+        <td class="num">1e40</td>
+        <td class="num">10 s</td>
+        <td>275 Essência + 27.500 Pedra de minério</td>
+        </tr>
+        </tbody></table></div>
+      <div class="callout warn">
+          <div class="callout-label">Perder custa</div>
+          Se o chefe ainda estiver de pé quando o tempo zerar, você não leva <strong>nada</strong> e a chave se vai. Depois de uma tentativa falha você vê a vida que restou: use isso para estimar quanto dano falta.
+        </div>
+    </section>
+
+    <section id="achievements">
+      <div class="section-head"><span class="section-num">17</span><h2>Conquistas</h2></div>
+      <p class="section-dek">86 conquistas em 24 categorias: cliques, minério, chefes, prestígios, profundidade e mais.</p>
+      <p>Cada conquista paga em <strong>Pedra de minério</strong>, e tanto a meta quanto o prêmio se multiplicam por dez em cada degrau. A maioria das categorias tem três; as de ouro e dano vão mais longe.</p>
+      <div class="callout">
+          <div class="callout-label">Lembre de resgatar</div>
+          As recompensas <strong>não caem sozinhas</strong>. Se você não abre a aba de conquistas há um tempo, tem uma pilha esperando lá.
+        </div>
+    </section>
+
+    <section id="daily">
+      <div class="section-head"><span class="section-num">18</span><h2>Recompensa diária</h2></div>
+      <p class="section-dek">Pequena, simples e sem castigo por perder um dia.</p>
+      <p>Entrar uma vez por dia dá <strong>1 chave de masmorra</strong>. É igual todo dia: não tem calendário nem sequência para proteger. Para resgatar é preciso estar online.</p>
+    </section>
+
+    <section id="store">
+      <div class="section-head"><span class="section-num">19</span><h2>Loja</h2></div>
+      <p class="section-dek">Diamantes, chaves, pacotes, tempo premium e os itens Infinito permanentes.</p>
+      <ul>
+          <li><strong>Pacotes de diamantes:</strong> 200 / 550 / 1.150 / 2.400 / 6.250 / 14.000 diamantes. Quanto maior o pacote, melhor a proporção.</li>
+          <li><strong>Pacotes de chaves:</strong> 3 / 7 / 15 chaves de masmorra.</li>
+          <li><strong>Pacote pequeno:</strong> 500 Diamante, 100 Essência, 10 Pedra de habilidade, 3 Chave de masmorra.</li>
+          <li><strong>Pacote grande:</strong> 1.000 Diamante, 200 Essência, 20 Pedra de habilidade, 5 Chave de masmorra.</li>
+          <li><strong>Pacote Premium de 7 dias:</strong> 7 dias com x5 dano por clique, x5 dano automático, x3 ouro, x3 resistência ao calor e x2 ganhos offline.</li>
+        </ul>
+      <p>Os itens Infinito são comprados <strong>uma vez com diamantes</strong> e nunca zeram, nem no prestígio. No fim de jogo eles costumam ser o melhor destino dos seus diamantes.</p>
+      <div class="table-wrap">
+        <table>
+        <thead><tr>
+        <th>Item</th>
+        <th class="num">Efeito</th>
+        <th class="num">Preço</th>
+        </tr></thead>
+        <tbody>
+        <tr>
+        <td>Poder Infinito</td>
+        <td class="num">x4</td>
+        <td class="num">350 💎</td>
+        </tr>
+        <tr>
+        <td>Renda Infinita</td>
+        <td class="num">x3</td>
+        <td class="num">350 💎</td>
+        </tr>
+        <tr>
+        <td>Armadura Infinita</td>
+        <td class="num">x2</td>
+        <td class="num">350 💎</td>
+        </tr>
+        <tr>
+        <td>Velocidade Infinita</td>
+        <td class="num">x1,5</td>
+        <td class="num">550 💎</td>
+        </tr>
+        <tr>
+        <td>Clicador Infinito</td>
+        <td class="num">7 /s</td>
+        <td class="num">600 💎</td>
+        </tr>
+        </tbody></table></div>
+      <div class="callout">
+          <div class="callout-label">Preços</div>
+          Os preços da loja vêm da Steam na sua moeda, por isso não estão escritos aqui. O que vem no pacote nunca muda; quanto custa depende da sua região.
+        </div>
+    </section>
+
+    <section id="progress">
+      <div class="section-head"><span class="section-num">20</span><h2>Rankings e estatísticas</h2></div>
+      <p class="section-dek">Dois lugares para ver como a rodada está indo.</p>
+      <ul>
+          <li>Os rankings da Steam acompanham cliques, dano por clique, número de prestígios, chefes derrotados e andar mais alto.</li>
+          <li>A tela de estatísticas guarda mais: ganhos, gastos, cliques, tempo jogado e outros.</li>
+        </ul>
+    </section>
+
+    <section id="save">
+      <div class="section-head"><span class="section-num">21</span><h2>Saves</h2></div>
+      <p class="section-dek">Resposta curta: o seu progresso está protegido por várias camadas ao mesmo tempo.</p>
+      <ul>
+          <li>O jogo salva sozinho, criptografado, a cada <strong>15 segundos</strong>.</li>
+          <li>Ele manda uma cópia para a Steam Cloud a cada <strong>45 segundos</strong> mais ou menos, e sempre ao fechar ou pausar: outro computador continua de onde você parou.</li>
+          <li>Se um arquivo de save corromper, o jogo cai sozinho na cópia de segurança.</li>
+          <li>Você também pode copiar o save para a área de transferência e colar em outro aparelho.</li>
+        </ul>
+    </section>
+
+    <section id="languages">
+      <div class="section-head"><span class="section-num">22</span><h2>Idiomas</h2></div>
+      <p class="section-dek">O jogo sai em 18 idiomas.</p>
+      <p>Inglês, turco, alemão, francês, espanhol, espanhol da América Latina, italiano, polonês, português do Brasil, russo, ucraniano, japonês, coreano, chinês simplificado, chinês tradicional, tailandês, indonésio e vietnamita. O jogo escolhe o seu na primeira execução e você pode trocar quando quiser nas configurações: este guia existe em todos, pelos links no topo da página.</p>
+    </section>
+
+    <footer class="doc-footer">Os números seguem o balanceamento atual do jogo e podem mudar com as atualizações. Os preços da loja são definidos na Steam e aparecem na sua moeda, por isso não estão listados aqui.</footer>
+  </main>
+</div>

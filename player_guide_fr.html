@@ -1,0 +1,1069 @@
+<title>Clicker Ore Game - Guide du joueur</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Comment la mine fonctionne : monnaies, pioches, compagnons, compétences, prestige, boss et boutique - sans les formules.">
+<style>
+  :root {
+    --bg: #14110d;
+    --bg-elevated: #1d1811;
+    --bg-card: #211b13;
+    --text: #ede6d8;
+    --text-dim: #a89a82;
+    --text-faint: #766a55;
+    --accent: #e0a752;
+    --accent-strong: #f2bd6e;
+    --accent-2: #7fb8ad;
+    --border: #3a2f22;
+    --border-soft: #2a2318;
+    --danger: #cf7a5a;
+    --shadow: 0 8px 24px rgba(0,0,0,0.35);
+
+    --cur-gold: #e0a752;
+    --cur-diamond: #7fd1e0;
+    --cur-essence: #b79ef0;
+    --cur-taskium: #93a8d6;
+    --cur-key: #d98a63;
+    --cur-skillstone: #7fc9a0;
+    --cur-orestone: #b5a68c;
+
+    --font-display: "Bahnschrift", "Segoe UI Semibold", "Arial Narrow Bold", "Arial Narrow", sans-serif;
+    --font-body: "Sitka Text", "Iowan Old Style", Georgia, "Times New Roman", serif;
+    --font-mono: "Cascadia Mono", "Consolas", "SF Mono", ui-monospace, monospace;
+  }
+
+  :root[data-theme="light"] {
+    --bg: #efe9da;
+    --bg-elevated: #e6ddc8;
+    --bg-card: #f3ede0;
+    --text: #241d14;
+    --text-dim: #5c5138;
+    --text-faint: #857656;
+    --accent: #a8621a;
+    --accent-strong: #8a4e12;
+    --accent-2: #2f7a70;
+    --border: #d3c5a4;
+    --border-soft: #ddd0b1;
+    --danger: #a3492c;
+    --shadow: 0 8px 20px rgba(90,70,30,0.12);
+  }
+
+  @media (prefers-color-scheme: light) {
+    :root:not([data-theme="dark"]) {
+      --bg: #efe9da;
+      --bg-elevated: #e6ddc8;
+      --bg-card: #f3ede0;
+      --text: #241d14;
+      --text-dim: #5c5138;
+      --text-faint: #857656;
+      --accent: #a8621a;
+      --accent-strong: #8a4e12;
+      --accent-2: #2f7a70;
+      --border: #d3c5a4;
+      --border-soft: #ddd0b1;
+      --danger: #a3492c;
+      --shadow: 0 8px 20px rgba(90,70,30,0.12);
+    }
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: 17px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection { background: var(--accent); color: #14110d; }
+
+  a { color: var(--accent-strong); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  a:focus-visible, button:focus-visible, summary:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    text-wrap: balance;
+    letter-spacing: 0.01em;
+    color: var(--text);
+  }
+
+  p { max-width: 68ch; }
+  ul, ol { max-width: 68ch; }
+
+  .shell {
+    display: grid;
+    grid-template-columns: 260px minmax(0, 1fr);
+    min-height: 100vh;
+  }
+
+  .topbar {
+    display: none;
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: var(--bg-elevated);
+    border-bottom: 1px solid var(--border);
+    padding: 0.7rem 1rem;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .topbar-title {
+    font-family: var(--font-display);
+    font-size: 0.95rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--accent-strong);
+  }
+  #nav-toggle { display: none; }
+  .nav-toggle-btn {
+    font-family: var(--font-display);
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 0.4rem 0.7rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.85rem;
+  }
+
+  nav.toc {
+    position: sticky;
+    top: 0;
+    align-self: start;
+    height: 100vh;
+    overflow-y: auto;
+    padding: 2rem 1.4rem 3rem;
+    background: var(--bg-elevated);
+    border-right: 1px solid var(--border);
+  }
+  .toc-brand {
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    letter-spacing: 0.03em;
+    color: var(--accent-strong);
+    margin-bottom: 0.15rem;
+  }
+  .toc-brand small {
+    display: block;
+    font-family: var(--font-body);
+    font-style: italic;
+    font-size: 0.78rem;
+    color: var(--text-faint);
+    letter-spacing: 0;
+    margin-top: 0.25rem;
+  }
+  .toc-list {
+    list-style: none;
+    margin: 1.6rem 0 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+  }
+  .toc-list a {
+    display: block;
+    color: var(--text-dim);
+    font-size: 0.88rem;
+    padding: 0.32rem 0.5rem;
+    border-radius: 4px;
+    border-left: 2px solid transparent;
+  }
+  .toc-list a:hover {
+    color: var(--text);
+    text-decoration: none;
+    background: rgba(224,167,82,0.08);
+    border-left-color: var(--accent);
+  }
+  .toc-num {
+    font-family: var(--font-mono);
+    color: var(--text-faint);
+    font-size: 0.78rem;
+    margin-right: 0.45rem;
+  }
+
+  main {
+    padding: 3.2rem clamp(1.2rem, 4vw, 4rem) 6rem;
+    max-width: 900px;
+  }
+
+  header.hero {
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .strata {
+    height: 10px;
+    width: 100%;
+    border-radius: 3px;
+    margin-bottom: 1.6rem;
+    background: repeating-linear-gradient(
+      90deg,
+      var(--accent) 0 6%,
+      var(--accent-2) 6% 11%,
+      var(--border-soft) 11% 18%,
+      var(--accent) 18% 24%,
+      var(--border-soft) 24% 34%,
+      var(--accent-2) 34% 40%,
+      var(--accent) 40% 48%,
+      var(--border-soft) 48% 58%,
+      var(--accent-2) 58% 63%,
+      var(--accent) 63% 72%,
+      var(--border-soft) 72% 82%,
+      var(--accent-2) 82% 90%,
+      var(--accent) 90% 100%
+    );
+    opacity: 0.85;
+  }
+  .eyebrow {
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-size: 0.72rem;
+    color: var(--accent);
+    margin-bottom: 0.6rem;
+  }
+  h1.title {
+    font-size: clamp(2rem, 4.2vw, 2.9rem);
+    margin: 0 0 0.7rem;
+    line-height: 1.1;
+  }
+  .subtitle {
+    color: var(--text-dim);
+    font-size: 1.08rem;
+    max-width: 62ch;
+    margin: 0;
+  }
+
+  .langbar {
+    margin: 1.8rem 0 0;
+    padding-top: 1.2rem;
+    border-top: 1px solid var(--border-soft);
+  }
+  .langbar-label {
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 0.68rem;
+    color: var(--text-faint);
+    margin-bottom: 0.55rem;
+  }
+  .langbar-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem 0.4rem;
+  }
+  .langbar-list a, .langbar-list span {
+    font-family: var(--font-display);
+    font-size: 0.78rem;
+    padding: 0.18rem 0.55rem;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    color: var(--text-dim);
+    background: var(--bg-card);
+  }
+  .langbar-list a:hover {
+    text-decoration: none;
+    color: var(--text);
+    border-color: var(--accent);
+  }
+  .langbar-list span {
+    color: #14110d;
+    background: var(--accent);
+    border-color: var(--accent);
+  }
+  :root[data-theme="light"] .langbar-list span { color: #efe9da; }
+
+  section {
+    margin-bottom: 3.6rem;
+    scroll-margin-top: 1.5rem;
+  }
+  .section-head {
+    display: flex;
+    align-items: baseline;
+    gap: 0.7rem;
+    margin-bottom: 0.3rem;
+  }
+  .section-num {
+    font-family: var(--font-mono);
+    color: var(--accent);
+    font-size: 0.95rem;
+  }
+  h2 {
+    font-size: 1.55rem;
+    margin: 0;
+  }
+  .section-dek {
+    color: var(--text-dim);
+    font-size: 0.98rem;
+    margin: 0.3rem 0 1.5rem;
+    max-width: 62ch;
+  }
+
+  .callout {
+    border-left: 3px solid var(--accent);
+    background: var(--bg-card);
+    padding: 0.95rem 1.2rem;
+    border-radius: 0 6px 6px 0;
+    margin: 1.2rem 0;
+    font-size: 0.95rem;
+  }
+  .callout strong { color: var(--accent-strong); }
+  .callout.warn { border-left-color: var(--danger); }
+  .callout-label {
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 0.72rem;
+    color: var(--accent);
+    margin-bottom: 0.35rem;
+  }
+  .callout.warn .callout-label { color: var(--danger); }
+
+  .currency-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 0.9rem;
+    margin: 1.4rem 0;
+  }
+  .cur-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-top: 3px solid var(--dot);
+    border-radius: 6px;
+    padding: 0.95rem 1rem 1.05rem;
+  }
+  .cur-card h4 {
+    margin: 0 0 0.5rem;
+    font-size: 0.98rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .dot {
+    width: 9px; height: 9px; border-radius: 50%;
+    background: var(--dot);
+    flex: none;
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--dot) 20%, transparent);
+  }
+  .cur-card p {
+    margin: 0.15rem 0;
+    font-size: 0.84rem;
+    color: var(--text-dim);
+    max-width: none;
+  }
+  .cur-card p b { color: var(--text); font-weight: 600; }
+
+  .table-wrap {
+    overflow-x: auto;
+    margin: 1.2rem 0;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+  }
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    min-width: 460px;
+    font-size: 0.9rem;
+  }
+  thead th {
+    text-align: left;
+    font-family: var(--font-display);
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    font-size: 0.72rem;
+    color: var(--text-dim);
+    background: var(--bg-elevated);
+    padding: 0.6rem 0.85rem;
+    border-bottom: 1px solid var(--border);
+    white-space: nowrap;
+  }
+  tbody td {
+    padding: 0.55rem 0.85rem;
+    border-bottom: 1px solid var(--border-soft);
+    font-variant-numeric: tabular-nums;
+    color: var(--text);
+  }
+  tbody tr:last-child td { border-bottom: none; }
+  tbody tr:nth-child(even) { background: color-mix(in srgb, var(--accent) 3%, transparent); }
+  td.num, th.num { font-family: var(--font-mono); }
+  td.strong { color: var(--accent-strong); font-weight: 600; }
+
+  .strategy-track {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 1.4rem 0;
+  }
+  .strategy-stage {
+    background: var(--bg-card);
+    padding: 1rem 1.1rem;
+  }
+  .strategy-stage .stage-label {
+    font-family: var(--font-display);
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+    margin-bottom: 0.4rem;
+  }
+  .strategy-stage ul {
+    margin: 0;
+    padding-left: 1.1rem;
+    font-size: 0.86rem;
+    color: var(--text-dim);
+  }
+  .strategy-stage li { margin-bottom: 0.25rem; }
+
+  footer.doc-footer {
+    margin-top: 4rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+    color: var(--text-faint);
+    font-size: 0.8rem;
+  }
+
+  @media (max-width: 880px) {
+    .shell { grid-template-columns: 1fr; }
+    .topbar { display: flex; }
+    nav.toc {
+      position: fixed;
+      inset: 0 20% 0 0;
+      top: 52px;
+      height: calc(100vh - 52px);
+      transform: translateX(-100%);
+      transition: transform 0.22s ease;
+      z-index: 15;
+      box-shadow: var(--shadow);
+    }
+    #nav-toggle:checked ~ .shell nav.toc {
+      transform: translateX(0);
+    }
+    main { padding: 2rem 1.2rem 5rem; }
+  }
+</style>
+
+<input type="checkbox" id="nav-toggle">
+
+<div class="topbar">
+  <span class="topbar-title">&#9935; Guide du joueur</span>
+  <label class="nav-toggle-btn" for="nav-toggle">Sommaire</label>
+</div>
+
+<div class="shell">
+  <nav class="toc" aria-label="Sommaire">
+    <div class="toc-brand">Clicker Ore Game<small>Guide du joueur</small></div>
+    <ul class="toc-list">
+      <li><a href="#start"><span class="toc-num">01</span>Par où commencer</a></li>
+      <li><a href="#currencies"><span class="toc-num">02</span>Les 7 monnaies</a></li>
+      <li><a href="#damage"><span class="toc-num">03</span>Dégâts de clic et dégâts automatiques</a></li>
+      <li><a href="#critical"><span class="toc-num">04</span>Coups critiques</a></li>
+      <li><a href="#pickaxes"><span class="toc-num">05</span>Pioches</a></li>
+      <li><a href="#suits"><span class="toc-num">06</span>Armures</a></li>
+      <li><a href="#temperature"><span class="toc-num">07</span>Chaleur</a></li>
+      <li><a href="#pets"><span class="toc-num">08</span>Compagnons</a></li>
+      <li><a href="#floors"><span class="toc-num">09</span>Étages, minerai et profondeur</a></li>
+      <li><a href="#skills"><span class="toc-num">10</span>Compétences actives</a></li>
+      <li><a href="#titles"><span class="toc-num">11</span>Titres</a></li>
+      <li><a href="#tasks"><span class="toc-num">12</span>Tâches et Taskium</a></li>
+      <li><a href="#trade"><span class="toc-num">13</span>Panneau d'échange</a></li>
+      <li><a href="#extras"><span class="toc-num">14</span>Or gratuit</a></li>
+      <li><a href="#prestige"><span class="toc-num">15</span>Prestige</a></li>
+      <li><a href="#bosses"><span class="toc-num">16</span>Boss</a></li>
+      <li><a href="#achievements"><span class="toc-num">17</span>Succès</a></li>
+      <li><a href="#daily"><span class="toc-num">18</span>Récompense quotidienne</a></li>
+      <li><a href="#store"><span class="toc-num">19</span>Boutique</a></li>
+      <li><a href="#progress"><span class="toc-num">20</span>Classements et statistiques</a></li>
+      <li><a href="#save"><span class="toc-num">21</span>Sauvegardes</a></li>
+      <li><a href="#languages"><span class="toc-num">22</span>Langues</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <header class="hero">
+      <div class="strata" role="presentation"></div>
+      <div class="eyebrow">Guide du joueur - 2026-08-12</div>
+      <h1 class="title">Toute la mine,<br>expliquée simplement</h1>
+      <p class="subtitle">Ce que fait chaque système, à quel étage il s'ouvre et où passer ta prochaine heure. Pas de formules - seulement les décisions qui comptent.</p>
+      <div class="langbar">
+        <div class="langbar-label">Langue</div>
+        <div class="langbar-list"><a href="player_guide_en.html" hreflang="en">English</a><a href="player_guide_tr.html" hreflang="tr">Türkçe</a><a href="player_guide_de.html" hreflang="de">Deutsch</a><span>Français</span><a href="player_guide_es.html" hreflang="es">Español</a><a href="player_guide_es_la.html" hreflang="es-419">Español (Latinoamérica)</a><a href="player_guide_it.html" hreflang="it">Italiano</a><a href="player_guide_pl.html" hreflang="pl">Polski</a><a href="player_guide_pt_br.html" hreflang="pt-BR">Português (Brasil)</a><a href="player_guide_ru.html" hreflang="ru">Русский</a><a href="player_guide_uk.html" hreflang="uk">Українська</a><a href="player_guide_ja.html" hreflang="ja">日本語</a><a href="player_guide_ko.html" hreflang="ko">한국어</a><a href="player_guide_zh_hans.html" hreflang="zh-Hans">简体中文</a><a href="player_guide_zh_hant.html" hreflang="zh-Hant">繁體中文</a><a href="player_guide_th.html" hreflang="th">ไทย</a><a href="player_guide_id.html" hreflang="id">Bahasa Indonesia</a><a href="player_guide_vi.html" hreflang="vi">Tiếng Việt</a></div>
+      </div>
+    </header>
+
+    <section id="start">
+      <div class="section-head"><span class="section-num">01</span><h2>Par où commencer</h2></div>
+      <p class="section-dek">Trois phases, dans l'ordre où le jeu ouvre les choses.</p>
+      <div class="strategy-track">
+          <div class="strategy-stage">
+            <div class="stage-label">Début - étages 1 à 200</div>
+            <ul>
+              <li>Améliore ta pioche sans arrêt ; achète la suivante dès qu'elle s'ouvre.</li>
+              <li>Brise-minerai arrive à l'étage 50, Clic de rage à l'étage 70.</li>
+              <li>Prends Rocaille dès que tu peux te passer des diamants.</li>
+            </ul>
+          </div>
+          <div class="strategy-stage">
+            <div class="stage-label">Milieu - étages 200 à 350</div>
+            <ul>
+              <li>Fais ton premier prestige à l'étage 200.</li>
+              <li>Répartis l'Essence sur les 7 paramètres au lieu d'en pousser un seul.</li>
+              <li>Les tâches s'ouvrent à l'étage 160, l'arbre de compétences et l'échange à l'étage 180.</li>
+            </ul>
+          </div>
+          <div class="strategy-stage">
+            <div class="stage-label">Fin - à partir de l'étage 350</div>
+            <ul>
+              <li>Affronte un boss dès que tu as une clé ; c'est ton moteur d'Essence.</li>
+              <li>Achète les objets Infini - ils sont permanents et ne se réinitialisent jamais.</li>
+              <li>Garde l'armure à niveau pour que la chaleur ne mange pas tes dégâts.</li>
+            </ul>
+          </div>
+        </div>
+      <div class="callout">
+          <div class="callout-label">Bon à savoir</div>
+          Les nombres s'allongent vite : le jeu passe d'abord à des formes courtes, puis à la notation scientifique comme <strong>1,23e45</strong>. Il n'y a pas de plafond - ce n'est qu'un changement d'écriture.
+        </div>
+    </section>
+
+    <section id="currencies">
+      <div class="section-head"><span class="section-num">02</span><h2>Les 7 monnaies</h2></div>
+      <p class="section-dek">Chacune alimente un système différent. Dépenser la bonne monnaie au mauvais endroit est l'erreur de débutant la plus fréquente.</p>
+      <div class="currency-grid">
+        <div class="cur-card" style="--dot:var(--cur-gold)">
+          <h4><span class="dot"></span>Or</h4>
+          <p>Gagné en <b>cassant du minerai</b>.</p>
+          <p>Sert aux niveaux de pioche et d'armure - ta monnaie de tous les jours.</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-diamond)">
+          <h4><span class="dot"></span>Diamant</h4>
+          <p>Vient <b>uniquement des achats en argent réel</b>.</p>
+          <p>Sert aux compagnons et aux objets Infini permanents.</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-essence)">
+          <h4><span class="dot"></span>Essence</h4>
+          <p>Vient du <b>prestige</b> et des victoires contre les boss.</p>
+          <p>Sert aux 7 paramètres de prestige permanents.</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-taskium)">
+          <h4><span class="dot"></span>Taskium</h4>
+          <p><b>+1</b> à chaque clic réussi.</p>
+          <p>Sert à accepter et à relancer des tâches.</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-key)">
+          <h4><span class="dot"></span>Clé de donjon</h4>
+          <p>Une clé gratuite par jour, plus les lots de la boutique.</p>
+          <p>Sert à lancer un combat de boss - 1 par tentative.</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-skillstone)">
+          <h4><span class="dot"></span>Pierre de compétence</h4>
+          <p>Vient des lots de la boutique et du panneau d'échange.</p>
+          <p>Sert à monter les 8 compétences actives.</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-orestone)">
+          <h4><span class="dot"></span>Pierre de minerai</h4>
+          <p><b>1-5</b> par minerai cassé, plus les succès.</p>
+          <p>S'échange contre de l'Essence ou de la Pierre de compétence.</p>
+        </div>
+      </div>
+      <div class="callout">
+          <div class="callout-label">Diamants</div>
+          Les boss, les succès et les tâches ne donnent jamais de diamants. Les diamants et les clés de donjon sont gardés sur le serveur : il faut donc être en ligne pour acheter un compagnon.
+        </div>
+    </section>
+
+    <section id="damage">
+      <div class="section-head"><span class="section-num">03</span><h2>Dégâts de clic et dégâts automatiques</h2></div>
+      <p class="section-dek">Deux sources de dégâts distinctes, alimentées par des choses différentes.</p>
+      <p>Les <strong>dégâts de clic</strong> sont ce qu'un appui infliger. Ils montent avec le niveau et les compétences de ta première pioche, la compétence Clic de rage, ton titre et le paramètre de prestige Main du Brise-pierre. Une part de tes dégâts automatiques est aussi versée dans chaque clic dès que Unité de la force est monté.</p>
+      <p>Les <strong>dégâts automatiques</strong> (par seconde) viennent de la deuxième pioche et des suivantes, de la compétence Déchaînement, du paramètre Forge éternelle et de tes compagnons.</p>
+      <div class="callout">
+          <div class="callout-label">Les compagnons font exception</div>
+          Les dégâts des compagnons sont ajoutés <strong>après</strong> tous les multiplicateurs, sans être multipliés par eux. Leurs niveaux seuls ne suffisent pas en fin de partie : les multiplicateurs de pioche et de compétence doivent suivre.
+        </div>
+    </section>
+
+    <section id="critical">
+      <div class="section-head"><span class="section-num">04</span><h2>Coups critiques</h2></div>
+      <p class="section-dek">Chaque clic peut devenir critique et frapper plus fort.</p>
+      <p>Tu commences avec <strong>5%</strong> de chance et un multiplicateur de <strong>x1,5</strong>. Quatre choses les font monter : la compétence Frappe critique, les compétences de pioche, les paramètres de prestige Oracle du minerai et Force cataclysmique, et les titres.</p>
+    </section>
+
+    <section id="pickaxes">
+      <div class="section-head"><span class="section-num">05</span><h2>Pioches</h2></div>
+      <p class="section-dek">45 pioches, débloquées dans l'ordre. C'est l'ossature de tes dégâts.</p>
+      <ul>
+          <li>La première pioche coûte <strong>5 or</strong> ; chaque suivante coûte environ <strong>8 fois</strong> plus que la précédente.</li>
+          <li>Une pioche se débloque d'elle-même dès que tu as gagné assez d'or dans cette partie - c'est donc l'amélioration qui ouvre la suivante.</li>
+          <li>Chaque niveau coûte environ <strong>7%</strong> de plus que le précédent.</li>
+          <li>Seule la <strong>première</strong> pioche alimente les dégâts de clic. Toutes les autres alimentent les dégâts automatiques par seconde.</li>
+          <li>Chaque pioche a 6 compétences, ouvertes aux niveaux 5 / 10 / 25 / 50 / 100 / 200. Certaines n'aident que cette pioche, d'autres toutes - les globales valent plus.</li>
+        </ul>
+      <div class="callout">
+          <div class="callout-label">Le grand saut</div>
+          Tous les <strong>100 niveaux</strong>, une pioche multiplie sa propre production par <strong>x10</strong>. Pousser une pioche jusqu'à la centaine suivante est en général le plus gros gain de puissance disponible.
+        </div>
+    </section>
+
+    <section id="suits">
+      <div class="section-head"><span class="section-num">06</span><h2>Armures</h2></div>
+      <p class="section-dek">5 armures, possédées dès le départ. Leur rôle est de te protéger de la chaleur.</p>
+      <ul>
+          <li>Tu n'achètes jamais d'armure, tu la montes seulement. Chaque niveau ajoute environ <strong>5%</strong> de résistance, à partir de 50.</li>
+          <li>Tous les 100 niveaux, la résistance de l'armure est multipliée par <strong>x2</strong>.</li>
+          <li>Chaque armure a aussi 6 compétences qui s'ouvrent avec les niveaux.</li>
+          <li>Le panneau d'armure s'ouvre à l'étage <strong>130</strong>, avec la jauge de chaleur.</li>
+        </ul>
+    </section>
+
+    <section id="temperature">
+      <div class="section-head"><span class="section-num">07</span><h2>Chaleur</h2></div>
+      <p class="section-dek">Plus tu descends, plus il fait chaud - et la chaleur rogne tes dégâts sans le dire.</p>
+      <ul>
+          <li>La température de l'étage grimpe sans cesse - environ <strong>1,04x par étage</strong>, elle double donc toutes les vingtaines d'étages.</li>
+          <li>Tant que ta résistance vaut au moins <strong>1,5x</strong> la température, la jauge reste libre et tu ne perds rien.</li>
+          <li>Dès que la résistance passe sous la température, les dégâts fuient ; à <strong>0,5x</strong> il ne reste qu'un vingtième - une perte de <strong>95%</strong>.</li>
+          <li>Le panneau d'armure a un bouton d'achat automatique de résistance ; laisse-le actif si tu descends souvent.</li>
+        </ul>
+      <div class="callout warn">
+          <div class="callout-label">Si ça bloque d'un coup</div>
+          Un mur où le minerai n'en finit plus, c'est presque toujours la chaleur et pas les dégâts. Regarde la jauge avant de dépenser autre chose.
+        </div>
+    </section>
+
+    <section id="pets">
+      <div class="section-head"><span class="section-num">08</span><h2>Compagnons</h2></div>
+      <p class="section-dek">5 compagnons, achetés en diamants puis montés à l'or.</p>
+      <ul>
+          <li>Les prix vont de <strong>150</strong> à <strong>250</strong> diamants (150 / 175 / 200 / 225 / 250).</li>
+          <li>Chaque niveau ajoute environ <strong>1%</strong> des dégâts de clic de ta pioche en dégâts automatiques, multiplié par le rang du compagnon - Éclat d'ombre donne donc cinq fois Rocaille à niveau égal.</li>
+          <li>Les niveaux coûtent environ <strong>20%</strong> plus cher à chaque fois, et tous les 100 niveaux le compagnon multiplie sa production par <strong>x5</strong>.</li>
+          <li>Chaque compagnon a 6 compétences ; certaines ne servent qu'à lui, d'autres à tous.</li>
+          <li>Le panneau des compagnons s'ouvre à l'étage <strong>30</strong>, ou dès que tu en possèdes un.</li>
+        </ul>
+      <div class="callout warn">
+          <div class="callout-label">Prestige et compagnons</div>
+          Le prestige remet chaque compagnon au <strong>niveau 1</strong> et efface ses compétences. La propriété reste acquise - tu ne rachètes jamais un compagnon.
+        </div>
+    </section>
+
+    <section id="floors">
+      <div class="section-head"><span class="section-num">09</span><h2>Étages, minerai et profondeur</h2></div>
+      <p class="section-dek">L'étage décide de la dureté du minerai et de l'or qu'il rapporte. La profondeur décide de son apparence.</p>
+      <ul>
+          <li>Chaque étage a un peu plus de vie et un peu plus d'or que le précédent, et la courbe se redresse en montant.</li>
+          <li>Chaque <strong>10e étage</strong> est un étage chronométré : un compte à rebours de <strong>20 secondes</strong> démarre, la vie monte d'environ 50% et l'or d'environ 51%.</li>
+          <li>La difficulté avance aussi par cycles d'environ 100 étages - les premiers étages d'un cycle paient le mieux par rapport à leur vie.</li>
+          <li>Chaque minerai lâche en plus <strong>1-5</strong> Pierre de minerai.</li>
+        </ul>
+      <div class="callout warn">
+          <div class="callout-label">Les étages chronométrés mordent</div>
+          Si le temps s'écoule, tu es renvoyé <strong>un étage</strong> plus bas. Mieux vaut sauter l'étage chronométré que le perdre si tes dégâts ne suivent pas.
+        </div>
+      <p>Tu peux redescendre à n'importe quel étage déjà atteint dans cette partie et y farmer. Choisir un étage à la main coupe la montée automatique ; réactive-la quand tu veux remonter.</p>
+      <p>Il y a <strong>40</strong> types de minerai en tout, et la profondeur décide lesquels apparaissent. Le type ne change que l'apparence et sa poussière - la vie et l'or viennent de l'étage.</p>
+      <div class="table-wrap">
+        <table>
+        <thead><tr>
+        <th class="num">Profondeur</th>
+        <th class="num">Types de minerai</th>
+        <th class="num">Vers l'étage</th>
+        </tr></thead>
+        <tbody>
+        <tr>
+        <td class="num">0-100 m</td>
+        <td class="num">9</td>
+        <td class="num">~54</td>
+        </tr>
+        <tr>
+        <td class="num">100-500 m</td>
+        <td class="num">20</td>
+        <td class="num">~129</td>
+        </tr>
+        <tr>
+        <td class="num">500-1 500 m</td>
+        <td class="num">30</td>
+        <td class="num">~196</td>
+        </tr>
+        <tr>
+        <td class="num">1 500 m+</td>
+        <td class="num">40</td>
+        <td class="num">-</td>
+        </tr>
+        </tbody></table></div>
+    </section>
+
+    <section id="skills">
+      <div class="section-head"><span class="section-num">10</span><h2>Compétences actives</h2></div>
+      <p class="section-dek">8 compétences, chacune un bonus limité dans le temps suivi d'une recharge.</p>
+      <p>Une compétence est <strong>gratuite</strong> quand son étage arrive - tu l'utilises dès le niveau 1. La monter au niveau 7 coûte <strong>63 Pierres de compétence</strong> en tout, soit <strong>504</strong> pour les 8. Plus le niveau est haut, plus la durée est longue et la recharge courte.</p>
+      <div class="table-wrap">
+        <table>
+        <thead><tr>
+        <th>Compétence</th>
+        <th class="num">Étage</th>
+        <th class="num">Niveau 1 (durée / recharge)</th>
+        <th class="num">Niveau 7 (durée / recharge)</th>
+        <th class="num">Effet</th>
+        </tr></thead>
+        <tbody>
+        <tr>
+        <td>Brise-minerai</td>
+        <td class="num">50</td>
+        <td class="num">30 s / 540 s</td>
+        <td class="num">90 s / 180 s</td>
+        <td class="num">7 → 13 /s</td>
+        </tr>
+        <tr>
+        <td>Clic de rage</td>
+        <td class="num">70</td>
+        <td class="num">40 s / 660 s</td>
+        <td class="num">210 s / 300 s</td>
+        <td class="num">x2 → x5</td>
+        </tr>
+        <tr>
+        <td>Frappe critique</td>
+        <td class="num">100</td>
+        <td class="num">30 s / 600 s</td>
+        <td class="num">150 s / 240 s</td>
+        <td class="num">x1,3 → x1,9</td>
+        </tr>
+        <tr>
+        <td>Déchaînement</td>
+        <td class="num">170</td>
+        <td class="num">40 s / 840 s</td>
+        <td class="num">160 s / 480 s</td>
+        <td class="num">x2 → x3,5</td>
+        </tr>
+        <tr>
+        <td>Frénésie dorée</td>
+        <td class="num">240</td>
+        <td class="num">50 s / 1 020 s</td>
+        <td class="num">290 s / 660 s</td>
+        <td class="num">x2 → x5</td>
+        </tr>
+        <tr>
+        <td>Résistance à la chaleur</td>
+        <td class="num">280</td>
+        <td class="num">30 s / 660 s</td>
+        <td class="num">140 s / 300 s</td>
+        <td class="num">x2 → x5</td>
+        </tr>
+        <tr>
+        <td>Surcharge</td>
+        <td class="num">330</td>
+        <td class="num">20 s / 1 200 s</td>
+        <td class="num">20 s / 840 s</td>
+        <td class="num">x1,5 → x3</td>
+        </tr>
+        <tr>
+        <td>Retour temporel</td>
+        <td class="num">400</td>
+        <td class="num">1 200 s</td>
+        <td class="num">840 s</td>
+        <td class="num">-300 s → -1 020 s</td>
+        </tr>
+        </tbody></table></div>
+      <p>La première ligne de compétences s'ouvre à l'étage 50 ; le panneau de l'arbre, où tu dépenses les Pierres de compétence, à l'étage <strong>180</strong>. Le panneau n'est pas nécessaire pour lancer une compétence.</p>
+      <div class="callout">
+          <div class="callout-label">La combinaison</div>
+          Lance d'abord Surcharge, puis la compétence que tu veux vraiment renforcer - Frénésie dorée par exemple. Retour temporel réduit ensuite la recharge de la dernière compétence utilisée, tu la récupères donc plus tôt.
+        </div>
+    </section>
+
+    <section id="titles">
+      <div class="section-head"><span class="section-num">11</span><h2>Titres</h2></div>
+      <p class="section-dek">100 titres qui te tombent dessus en grimpant.</p>
+      <ul>
+          <li>Les titres vont de l'étage 1 à l'étage <strong>50 000</strong> et sont choisis automatiquement selon ton meilleur étage de la partie.</li>
+          <li>Chaque titre ajoute environ <strong>+0,1</strong> aux bonus qu'il porte.</li>
+          <li>Les bonus arrivent par paliers : dégâts de clic dès le premier titre, puis dégâts automatiques, résistance à la chaleur, or, multiplicateur critique, chance critique et la part de DPS versée aux clics (titres 1 / 5 / 10 / 15 / 20 / 25 / 30).</li>
+        </ul>
+    </section>
+
+    <section id="tasks">
+      <div class="section-head"><span class="section-num">12</span><h2>Tâches et Taskium</h2></div>
+      <p class="section-dek">Une voie parallèle qui transforme tes clics en second revenu.</p>
+      <ul>
+          <li>Chaque clic réussi donne <strong>+1 Taskium</strong>.</li>
+          <li>Accepter une tâche coûte <strong>200</strong>, en relancer une <strong>25</strong>.</li>
+          <li>Le panneau des tâches s'ouvre à l'étage 160 ; les 6 emplacements aux étages 160 / 170 / 180 / 190 / 200 / 210.</li>
+          <li>Il y a 10 types de tâches en 6 raretés. Chaque tâche dure 60 minutes, et celles qui ne sont pas acceptées sont remplacées toutes les heures.</li>
+          <li>La récompense grandit avec la rareté - entre <strong>50-500</strong> fois l'or du minerai de l'étage courant. Les plus rares donnent aussi de l'Essence.</li>
+        </ul>
+    </section>
+
+    <section id="trade">
+      <div class="section-head"><span class="section-num">13</span><h2>Panneau d'échange</h2></div>
+      <p class="section-dek">S'ouvre à l'étage 180. Le seul endroit où la Pierre de minerai vaut quelque chose.</p>
+      <ul>
+          <li>1 Pierre de compétence devient <strong>5 000 Pierres de minerai</strong> - jusqu'à 100 000 par échange.</li>
+          <li><strong>2 000 Pierres de minerai</strong> deviennent 1 Essence.</li>
+          <li><strong>5 000 Pierres de minerai</strong> deviennent 1 Pierre de compétence.</li>
+        </ul>
+      <p>Le dernier point compte : c'est ainsi qu'une longue session de farm se transforme en niveaux de compétence sans combattre de boss.</p>
+    </section>
+
+    <section id="extras">
+      <div class="section-head"><span class="section-num">14</span><h2>Or gratuit</h2></div>
+      <p class="section-dek">Trois sources qui ne demandent rien d'autre que d'être là.</p>
+      <ul>
+          <li><strong>Ballon d'or</strong> - à partir de l'étage 50, il en passe un toutes les 70-105 secondes. Un clic rapporte <strong>x6</strong> l'or du minerai de ton meilleur étage de la partie.</li>
+          <li><strong>Gains hors ligne</strong> - comptés après 60 minutes d'absence et plafonnés à 12 heures. Le premium les double.</li>
+          <li><strong>Récompense de temps de jeu</strong> - toutes les 60 minutes jouées, environ 100 fois l'or d'une minute à ton meilleur étage.</li>
+        </ul>
+    </section>
+
+    <section id="prestige">
+      <div class="section-head"><span class="section-num">15</span><h2>Prestige</h2></div>
+      <p class="section-dek">Tu échanges les progrès de cette partie contre de la puissance permanente. Bien placé, c'est ce qui va le plus vite dans le jeu.</p>
+      <p>Le panneau de prestige s'ouvre la première fois que tu atteins l'étage <strong>200</strong>. Ensuite chaque prestige demande 100 étages de plus : 300, puis 400, et ainsi de suite.</p>
+      <ul>
+          <li><strong>Réinitialisé :</strong> l'or, le Taskium, la progression d'étages, les niveaux de pioche et d'armure, les niveaux de compagnon, toutes les compétences achetées et ton niveau de boss.</li>
+          <li><strong>Conservé :</strong> le niveau de prestige, l'Essence, les niveaux des 7 paramètres, la possession des compagnons, les objets Infini, les succès.</li>
+          <li>Tu ne repars pas de l'étage 1 : la partie suivante commence à <strong>100 x ton niveau de prestige</strong>, avec un pactole de départ valant environ 500 minerais.</li>
+          <li>Toutes les recharges sont vidées : tu commences la partie avec chaque compétence prête.</li>
+        </ul>
+      <p>La récompense en Essence ne vient que de deux choses : le <strong>meilleur étage</strong> atteint (0,5 chacun) et le <strong>minerai cassé</strong> (0,25 chacun).</p>
+      <div class="callout">
+          <div class="callout-label">Casse du minerai, ne cours pas</div>
+          Comme le nombre de minerais pèse plus lourd, farmer un étage confortable sur la fin rapporte plus que sprinter vers un étage où tu fais à peine des dégâts.
+        </div>
+      <div class="table-wrap">
+        <table>
+        <thead><tr>
+        <th>Paramètre</th>
+        <th>Effet</th>
+        <th class="num">Par niveau</th>
+        </tr></thead>
+        <tbody>
+        <tr>
+        <td>Forge éternelle</td>
+        <td>Dégâts automatiques par seconde</td>
+        <td class="num">+20%</td>
+        </tr>
+        <tr>
+        <td>Main du Brise-pierre</td>
+        <td>Dégâts de clic</td>
+        <td class="num">+25%</td>
+        </tr>
+        <tr>
+        <td>Abîme doré</td>
+        <td>Revenu d'or</td>
+        <td class="num">+10%</td>
+        </tr>
+        <tr>
+        <td>Oracle du minerai</td>
+        <td>Chance critique</td>
+        <td class="num">+5%</td>
+        </tr>
+        <tr>
+        <td>Force cataclysmique</td>
+        <td>Multiplicateur critique</td>
+        <td class="num">+5%</td>
+        </tr>
+        <tr>
+        <td>Bouclier infernal</td>
+        <td>Résistance à la chaleur</td>
+        <td class="num">+10%</td>
+        </tr>
+        <tr>
+        <td>Unité de la force</td>
+        <td>Part des DPS ajoutée aux clics</td>
+        <td class="num">+1%</td>
+        </tr>
+        </tbody></table></div>
+      <p>Les bonus s'additionnent niveau par niveau au lieu de se composer, et le coût en Essence monte lentement - dépenser régulièrement vaut donc mieux que thésauriser.</p>
+    </section>
+
+    <section id="bosses">
+      <div class="section-head"><span class="section-num">16</span><h2>Boss</h2></div>
+      <p class="section-dek">Une course aux dégâts contre le temps, pour de l'Essence. S'ouvre à l'étage 350.</p>
+      <ul>
+          <li>Tu choisis un boss et dépenses <strong>1 clé de donjon</strong> pour lancer le combat. Rien ne démarre tout seul.</li>
+          <li>Les boss s'ouvrent dans l'ordre - il faut battre l'un pour voir le suivant. La vie monte d'environ mille fois par palier tandis que le temps se réduit.</li>
+          <li>Les récompenses grandissent avec ton niveau de prestige : environ <strong>+15%</strong> par niveau.</li>
+          <li>Le prestige ramène ton niveau de boss au premier.</li>
+        </ul>
+      <div class="table-wrap">
+        <table>
+        <thead><tr>
+        <th>Boss</th>
+        <th class="num">Points de vie</th>
+        <th class="num">Temps</th>
+        <th>Récompense</th>
+        </tr></thead>
+        <tbody>
+        <tr>
+        <td>Colosse de cristal</td>
+        <td class="num">1e13</td>
+        <td class="num">30 s</td>
+        <td>50 Essence + 5 000 Pierre de minerai</td>
+        </tr>
+        <tr>
+        <td>Gardien de cristal</td>
+        <td class="num">1e16</td>
+        <td class="num">25 s</td>
+        <td>75 Essence + 7 500 Pierre de minerai</td>
+        </tr>
+        <tr>
+        <td>Sentinelle carmin</td>
+        <td class="num">1e19</td>
+        <td class="num">20 s</td>
+        <td>100 Essence + 10 000 Pierre de minerai</td>
+        </tr>
+        <tr>
+        <td>Gardien de pierre</td>
+        <td class="num">1e22</td>
+        <td class="num">20 s</td>
+        <td>125 Essence + 12 500 Pierre de minerai</td>
+        </tr>
+        <tr>
+        <td>Titan de givre</td>
+        <td class="num">1e25</td>
+        <td class="num">20 s</td>
+        <td>150 Essence + 15 000 Pierre de minerai</td>
+        </tr>
+        <tr>
+        <td>Golem de cristal 1</td>
+        <td class="num">1e28</td>
+        <td class="num">20 s</td>
+        <td>175 Essence + 17 500 Pierre de minerai</td>
+        </tr>
+        <tr>
+        <td>Colosse Barbe-de-pierre</td>
+        <td class="num">1e31</td>
+        <td class="num">15 s</td>
+        <td>200 Essence + 20 000 Pierre de minerai</td>
+        </tr>
+        <tr>
+        <td>Golem de cristal 2</td>
+        <td class="num">1e34</td>
+        <td class="num">15 s</td>
+        <td>225 Essence + 22 500 Pierre de minerai</td>
+        </tr>
+        <tr>
+        <td>Golem de flammes</td>
+        <td class="num">1e37</td>
+        <td class="num">15 s</td>
+        <td>250 Essence + 25 000 Pierre de minerai</td>
+        </tr>
+        <tr>
+        <td>Gardien golem</td>
+        <td class="num">1e40</td>
+        <td class="num">10 s</td>
+        <td>275 Essence + 27 500 Pierre de minerai</td>
+        </tr>
+        </tbody></table></div>
+      <div class="callout warn">
+          <div class="callout-label">Perdre coûte cher</div>
+          Si le boss est encore debout quand le temps tombe à zéro, tu ne gagnes <strong>rien</strong> et la clé est perdue. Après un échec tu vois la vie restante - sers-t'en pour estimer les dégâts qu'il te manque.
+        </div>
+    </section>
+
+    <section id="achievements">
+      <div class="section-head"><span class="section-num">17</span><h2>Succès</h2></div>
+      <p class="section-dek">86 succès dans 24 catégories - clics, minerai, boss, prestiges, profondeur et plus.</p>
+      <p>Chaque succès paie en <strong>Pierre de minerai</strong>, et l'objectif comme la récompense sont multipliés par dix environ à chaque palier. La plupart des catégories ont trois paliers ; celles de l'or et des dégâts vont plus loin.</p>
+      <div class="callout">
+          <div class="callout-label">Pense à réclamer</div>
+          Les récompenses ne tombent <strong>pas automatiquement</strong>. Si tu n'as pas ouvert l'onglet des succès depuis un moment, il y a un tas qui attend.
+        </div>
+    </section>
+
+    <section id="daily">
+      <div class="section-head"><span class="section-num">18</span><h2>Récompense quotidienne</h2></div>
+      <p class="section-dek">Petite, simple, et manquer un jour ne coûte rien.</p>
+      <p>Se connecter une fois par jour donne <strong>1 clé de donjon</strong>. C'est pareil chaque jour - pas de calendrier, pas de série à protéger. Il faut être en ligne pour la réclamer.</p>
+    </section>
+
+    <section id="store">
+      <div class="section-head"><span class="section-num">19</span><h2>Boutique</h2></div>
+      <p class="section-dek">Diamants, clés, lots, temps premium et les objets Infini permanents.</p>
+      <ul>
+          <li><strong>Lots de diamants :</strong> 200 / 550 / 1 150 / 2 400 / 6 250 / 14 000 diamants. Plus le lot est gros, meilleur est le taux.</li>
+          <li><strong>Lots de clés :</strong> 3 / 7 / 15 clés de donjon.</li>
+          <li><strong>Petit paquet :</strong> 500 Diamant, 100 Essence, 10 Pierre de compétence, 3 Clé de donjon.</li>
+          <li><strong>Grand paquet :</strong> 1 000 Diamant, 200 Essence, 20 Pierre de compétence, 5 Clé de donjon.</li>
+          <li><strong>Pack Premium 7 jours :</strong> 7 jours avec x5 dégâts de clic, x5 dégâts automatiques, x3 or, x3 résistance à la chaleur et x2 gains hors ligne.</li>
+        </ul>
+      <p>Les objets Infini s'achètent <strong>une seule fois en diamants</strong> et ne se réinitialisent jamais, même au prestige. En fin de partie c'est en général le meilleur usage de tes diamants.</p>
+      <div class="table-wrap">
+        <table>
+        <thead><tr>
+        <th>Objet</th>
+        <th class="num">Effet</th>
+        <th class="num">Prix</th>
+        </tr></thead>
+        <tbody>
+        <tr>
+        <td>Puissance infinie</td>
+        <td class="num">x4</td>
+        <td class="num">350 💎</td>
+        </tr>
+        <tr>
+        <td>Revenu infini</td>
+        <td class="num">x3</td>
+        <td class="num">350 💎</td>
+        </tr>
+        <tr>
+        <td>Armure infinie</td>
+        <td class="num">x2</td>
+        <td class="num">350 💎</td>
+        </tr>
+        <tr>
+        <td>Vitesse infinie</td>
+        <td class="num">x1,5</td>
+        <td class="num">550 💎</td>
+        </tr>
+        <tr>
+        <td>Cliqueur infini</td>
+        <td class="num">7 /s</td>
+        <td class="num">600 💎</td>
+        </tr>
+        </tbody></table></div>
+      <div class="callout">
+          <div class="callout-label">Prix</div>
+          Les prix de la boutique viennent de Steam dans ta monnaie, ils ne sont donc pas écrits ici. Le contenu d'un lot ne change jamais ; son prix dépend de ta région.
+        </div>
+    </section>
+
+    <section id="progress">
+      <div class="section-head"><span class="section-num">20</span><h2>Classements et statistiques</h2></div>
+      <p class="section-dek">Deux endroits pour voir où en est la partie.</p>
+      <ul>
+          <li>Les classements Steam suivent les clics, les dégâts de clic, le nombre de prestiges, les boss tués et le meilleur étage.</li>
+          <li>L'écran des statistiques en garde davantage - gains, dépenses, clics, temps de jeu et le reste.</li>
+        </ul>
+    </section>
+
+    <section id="save">
+      <div class="section-head"><span class="section-num">21</span><h2>Sauvegardes</h2></div>
+      <p class="section-dek">Réponse courte : ta progression est protégée par plusieurs couches à la fois.</p>
+      <ul>
+          <li>Le jeu se sauvegarde tout seul, chiffré, toutes les <strong>15 secondes</strong>.</li>
+          <li>Il sauvegarde dans le Steam Cloud environ toutes les <strong>45 secondes</strong>, et toujours à la fermeture ou en pause - un autre ordinateur reprend donc là où tu t'es arrêté.</li>
+          <li>Si un fichier de sauvegarde est abîmé, le jeu bascule de lui-même sur sa copie de secours.</li>
+          <li>Tu peux aussi copier ta sauvegarde dans le presse-papiers et la coller sur un autre appareil.</li>
+        </ul>
+    </section>
+
+    <section id="languages">
+      <div class="section-head"><span class="section-num">22</span><h2>Langues</h2></div>
+      <p class="section-dek">Le jeu sort en 18 langues.</p>
+      <p>Anglais, turc, allemand, français, espagnol, espagnol d'Amérique latine, italien, polonais, portugais du Brésil, russe, ukrainien, japonais, coréen, chinois simplifié, chinois traditionnel, thaï, indonésien et vietnamien. Le jeu choisit la tienne au premier lancement et tu peux la changer à tout moment dans les options - ce guide existe dans toutes, via les liens en haut de page.</p>
+    </section>
+
+    <footer class="doc-footer">Les chiffres suivent l'équilibrage actuel du jeu et peuvent changer avec les mises à jour. Les prix de la boutique sont fixés sur Steam et affichés dans ta monnaie, ils ne sont donc pas listés ici.</footer>
+  </main>
+</div>

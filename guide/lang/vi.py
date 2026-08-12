@@ -1,0 +1,342 @@
+LANG = {
+    "code": "vi",
+    "name": "Tiếng Việt",
+    "html_lang": "vi",
+    "locale": {"group": ".", "decimal": ","},
+    "title": "Clicker Ore Game - Hướng dẫn người chơi",
+    "description": "Mỏ vận hành thế nào: tiền tệ, cúp, thú, kỹ năng, thăng hoa, trùm và cửa hàng - giải thích không cần công thức.",
+    "brand": "Clicker Ore Game",
+    "brand_sub": "Hướng dẫn người chơi",
+    "eyebrow": "Hướng dẫn người chơi - {date}",
+    "headline": "Cả khu mỏ,<br>nói bằng lời dễ hiểu",
+    "subtitle": "Mỗi hệ thống làm gì, mở ở tầng nào, và giờ tiếp theo bạn nên dồn vào đâu. Không có công thức, chỉ có những quyết định thật sự quan trọng.",
+    "footer": "Các số ở đây theo cân bằng hiện tại của game và có thể đổi sau mỗi bản cập nhật. Giá cửa hàng do Steam đặt và hiển thị theo tiền tệ của bạn, nên không ghi ở đây.",
+    "labels": {
+        "contents": "Mục lục",
+        "per_second": "/giây",
+        "second_short": " giây",
+        "meter_short": "m",
+        "language": "Ngôn ngữ",
+        "skill": "Kỹ năng",
+        "unlock_floor": "Tầng",
+        "level_first": "Cấp 1 (thời gian / hồi)",
+        "level_last": "Cấp 7 (thời gian / hồi)",
+        "effect": "Hiệu ứng",
+        "boss": "Trùm",
+        "health": "Sinh lực",
+        "time_limit": "Thời gian",
+        "reward": "Thưởng",
+        "parameter": "Chỉ số",
+        "per_level": "Mỗi cấp",
+        "effect_dps": "Sát thương tự động mỗi giây",
+        "effect_click": "Sát thương nhấp",
+        "effect_gold": "Thu nhập vàng",
+        "effect_crit_chance": "Tỉ lệ chí mạng",
+        "effect_crit_multiplier": "Hệ số chí mạng",
+        "effect_heat": "Kháng nhiệt",
+        "effect_click_from_dps": "Phần sát thương mỗi giây cộng vào nhấp",
+        "depth": "Độ sâu",
+        "ore_types": "Loại quặng",
+        "around_floor": "Khoảng tầng",
+        "item": "Vật phẩm",
+        "cost": "Giá",
+    },
+    "currencies": {
+        "gold": ["Có được từ việc <b>đập quặng</b>.", "Dùng để nâng cúp và giáp - đồng tiền làm việc hằng ngày."],
+        "diamond": ["Chỉ đến từ <b>giao dịch bằng tiền thật</b>.", "Dùng để mua thú và các vật phẩm Vô Hạn vĩnh viễn."],
+        "essence": ["Đến từ <b>thăng hoa</b> và các lần thắng trùm.", "Dùng cho {prestige_parameter_count} chỉ số thăng hoa vĩnh viễn."],
+        "taskium": ["<b>+{taskium_per_click}</b> cho mỗi lần nhấp trúng.", "Dùng để nhận và đổi lại nhiệm vụ."],
+        "dungeon_key": ["Mỗi ngày một chìa miễn phí, còn lại từ các gói trong cửa hàng.", "Dùng để vào đánh trùm - {boss_key_cost} chìa mỗi lượt."],
+        "skill_stone": ["Đến từ các gói trong cửa hàng và bảng trao đổi.", "Dùng để nâng cấp {skill_count} kỹ năng chủ động."],
+        "ore_stone": ["<b>{ore_stone_min}-{ore_stone_max}</b> viên từ mỗi quặng đập được, cộng thêm thành tích.", "Đổi thành Tinh Chất hoặc Đá Kỹ Năng ở bảng trao đổi."],
+    },
+    "sections": [
+        {
+            "id": "start",
+            "title": "Bắt đầu từ đâu",
+            "dek": "Ba giai đoạn, theo đúng thứ tự game mở nội dung.",
+            "blocks": [
+                ("stages", [
+                    ["Đầu - tầng 1 đến tầng {prestige_first_floor}", [
+                        "Nâng cúp liên tục; mua cúp kế tiếp ngay khi nó mở.",
+                        "{skill_ore_breaker} xuất hiện ở tầng {skill_line_floor}, {skill_anger_click} ở tầng 70.",
+                        "Khi dư kim cương thì mua {pet_1}.",
+                    ]],
+                    ["Giữa - tầng {prestige_first_floor} đến tầng {boss_floor}", [
+                        "Thăng hoa lần đầu ở tầng {prestige_first_floor}.",
+                        "Rải Tinh Chất cho cả {prestige_parameter_count} chỉ số, đừng dồn vào một cái.",
+                        "Nhiệm vụ mở ở tầng {task_panel_floor}, cây kỹ năng và bảng trao đổi mở ở tầng {skill_tree_floor}.",
+                    ]],
+                    ["Cuối - từ tầng {boss_floor} trở đi", [
+                        "Có chìa thì đi đánh trùm; đó là nguồn Tinh Chất chính.",
+                        "Mua các vật phẩm Vô Hạn - chúng vĩnh viễn và không bao giờ bị xóa.",
+                        "Giữ giáp đủ cấp để nhiệt không ăn mất sát thương của bạn.",
+                    ]],
+                ]),
+                ("note", ["Nên biết", "Các số dài lên rất nhanh nên game chuyển sang dạng viết tắt, rồi sang ký hiệu khoa học kiểu <strong>1,23e45</strong>. Không có giới hạn nào cả - chỉ là cách viết đổi."]),
+            ],
+        },
+        {
+            "id": "currencies",
+            "title": "{currency_count} loại tiền tệ",
+            "dek": "Mỗi loại nuôi một hệ thống khác nhau. Dùng đúng tiền nhưng sai chỗ là lỗi phổ biến nhất khi mới chơi.",
+            "blocks": [
+                ("currencies", None),
+                ("note", ["Về kim cương", "Trùm, thành tích và nhiệm vụ không bao giờ cho kim cương. Kim cương và chìa hầm ngục được giữ trên máy chủ, nên muốn mua thú thì phải trực tuyến."]),
+            ],
+        },
+        {
+            "id": "damage",
+            "title": "Sát thương nhấp và sát thương tự động",
+            "dek": "Hai nguồn sát thương riêng biệt, và thứ làm chúng lớn lên cũng khác nhau.",
+            "blocks": [
+                ("p", "<strong>Sát thương nhấp</strong> là lượng một lần nhấn gây ra. Nó tăng theo cấp và kỹ năng của cúp đầu tiên, kỹ năng {skill_anger_click}, danh hiệu của bạn và chỉ số thăng hoa {prestige_click}. Khi đã nâng {prestige_click_from_dps}, một phần sát thương tự động cũng được cộng vào từng lần nhấp."),
+                ("p", "<strong>Sát thương tự động</strong> (mỗi giây) đến từ cúp thứ hai trở đi, kỹ năng {skill_rampage}, chỉ số {prestige_dps} và các thú của bạn."),
+                ("note", ["Thú là ngoại lệ", "Sát thương của thú được cộng <strong>sau</strong> mọi hệ số, nên không được các hệ số nhân lên. Về cuối game, chỉ nâng cấp thú là không đủ: hệ số của cúp và kỹ năng cũng phải lớn theo."]),
+            ],
+        },
+        {
+            "id": "critical",
+            "title": "Chí mạng",
+            "dek": "Mỗi lần nhấp đều có thể nổ chí mạng và đánh mạnh hơn.",
+            "blocks": [
+                ("p", "Bạn bắt đầu với tỉ lệ <strong>{crit_chance_percent}%</strong> và hệ số <strong>x{crit_multiplier}</strong>. Bốn thứ đẩy chúng lên: kỹ năng {skill_critical_strike}, kỹ năng của cúp, chỉ số thăng hoa {prestige_crit_chance} và {prestige_crit_multiplier}, cùng danh hiệu."),
+            ],
+        },
+        {
+            "id": "pickaxes",
+            "title": "Cúp",
+            "dek": "{pickaxe_count} cây cúp mở lần lượt. Đây là xương sống của sát thương.",
+            "blocks": [
+                ("ul", [
+                    "Cúp đầu tiên giá <strong>{pickaxe_first_cost} vàng</strong>; mỗi cây sau đắt hơn cây trước khoảng <strong>{pickaxe_cost_growth} lần</strong>.",
+                    "Cúp tự mở khi số vàng bạn kiếm trong lượt này đủ nhiều - nghĩa là chính việc nâng cấp mới mở ra cây kế tiếp.",
+                    "Mỗi cấp đắt hơn cấp trước khoảng <strong>{pickaxe_upgrade_growth_percent}%</strong>.",
+                    "Chỉ cây <strong>đầu tiên</strong> góp vào sát thương nhấp. Tất cả các cây còn lại góp vào sát thương tự động mỗi giây.",
+                    "Mỗi cúp có {pickaxe_skill_count} kỹ năng, mở ở cấp {pickaxe_skill_levels}. Có kỹ năng chỉ giúp cây đó, có kỹ năng giúp tất cả - loại giúp tất cả đáng giá hơn.",
+                ]),
+                ("note", ["Bước nhảy lớn nhất", "Mỗi <strong>{pickaxe_bonus_interval} cấp</strong>, cúp nhân sản lượng của chính nó lên <strong>x{pickaxe_bonus_multiplier}</strong>. Đẩy một cây cúp tới mốc trăm kế tiếp thường là mức tăng sức mạnh lớn nhất bạn có."]),
+            ],
+        },
+        {
+            "id": "suits",
+            "title": "Giáp",
+            "dek": "{suit_count} bộ giáp, bạn có đủ ngay từ đầu. Việc của chúng là chắn nhiệt.",
+            "blocks": [
+                ("ul", [
+                    "Giáp không phải mua, chỉ nâng cấp. Mỗi cấp thêm khoảng <strong>{suit_heat_per_level_percent}%</strong> kháng nhiệt, tính từ mốc {suit_base_heat_resistance}.",
+                    "Mỗi {suit_bonus_interval} cấp, kháng nhiệt của bộ giáp được nhân <strong>x{suit_bonus_multiplier}</strong>.",
+                    "Mỗi bộ còn có {suit_skill_count} kỹ năng mở dần theo cấp.",
+                    "Bảng giáp mở ở tầng <strong>{suit_panel_floor}</strong>, cùng với thanh nhiệt.",
+                ]),
+            ],
+        },
+        {
+            "id": "temperature",
+            "title": "Nhiệt",
+            "dek": "Càng xuống sâu càng nóng, và nhiệt âm thầm cắt bớt sát thương của bạn.",
+            "blocks": [
+                ("ul", [
+                    "Nhiệt độ của tầng tăng liên tục - khoảng <strong>{temperature_growth} lần mỗi tầng</strong>, tức cứ hai chục tầng lại gấp đôi.",
+                    "Khi kháng nhiệt còn đạt ít nhất <strong>{temperature_safe_ratio} lần</strong> nhiệt độ, thanh nhiệt vẫn sạch và bạn không mất gì.",
+                    "Khi kháng nhiệt tụt xuống dưới nhiệt độ, sát thương bắt đầu rò rỉ; ở mức <strong>{temperature_worst_ratio} lần</strong> chỉ còn một phần hai mươi - mất <strong>{temperature_worst_damage_percent}%</strong>.",
+                    "Bảng giáp có công tắc tự mua kháng nhiệt; nếu hay xuống sâu thì cứ để bật.",
+                ]),
+                ("warn", ["Nếu tự nhiên đứng máy", "Bức tường mà quặng mãi không vỡ gần như luôn là chuyện nhiệt, không phải thiếu sát thương. Hãy xem thanh nhiệt trước khi tiêu vào thứ khác."]),
+            ],
+        },
+        {
+            "id": "pets",
+            "title": "Thú",
+            "dek": "{pet_count} thú, mua bằng kim cương rồi nâng cấp bằng vàng.",
+            "blocks": [
+                ("ul", [
+                    "Giá từ <strong>{pet_cost_first}</strong> đến <strong>{pet_cost_last}</strong> kim cương ({pet_cost_list}).",
+                    "Mỗi cấp thêm khoảng <strong>{pet_dps_percent_per_level}%</strong> sát thương nhấp của cúp dưới dạng sát thương tự động, nhân với thứ tự của thú - nên cùng cấp thì {pet_5} mạnh gấp năm {pet_1}.",
+                    "Chi phí mỗi cấp tăng khoảng <strong>{pet_upgrade_growth_percent}%</strong> mỗi lần, và mỗi {pet_bonus_interval} cấp thú nhân sản lượng của chính nó lên <strong>x{pet_bonus_multiplier}</strong>.",
+                    "Mỗi thú có {pet_skill_count} kỹ năng; có cái chỉ giúp nó, có cái giúp cả đàn.",
+                    "Bảng thú mở ở tầng <strong>{pet_panel_floor}</strong>, hoặc ngay khi bạn có một con.",
+                ]),
+                ("warn", ["Thăng hoa và thú", "Thăng hoa đưa mọi thú về <strong>cấp 1</strong> và xóa kỹ năng của chúng. Nhưng quyền sở hữu là vĩnh viễn - bạn không phải mua lại."]),
+            ],
+        },
+        {
+            "id": "floors",
+            "title": "Tầng, quặng và độ sâu",
+            "dek": "Tầng quyết định quặng cứng ra sao và trả bao nhiêu vàng. Độ sâu quyết định quặng trông thế nào.",
+            "blocks": [
+                ("ul", [
+                    "Mỗi tầng có sinh lực và vàng nhiều hơn tầng trước một chút, và càng lên đường cong càng dốc.",
+                    "Cứ <strong>tầng thứ {duration_floor_interval}</strong> là một tầng tính giờ: đồng hồ <strong>{duration_floor_seconds} giây</strong> chạy, sinh lực cao hơn khoảng {duration_floor_health_percent}% và vàng khoảng {duration_floor_gold_percent}%.",
+                    "Độ khó còn chạy theo chu kỳ khoảng {difficulty_cycle_floors} tầng - những tầng đầu chu kỳ có tỉ lệ vàng trên sinh lực tốt nhất.",
+                    "Mỗi quặng còn rơi <strong>{ore_stone_min}-{ore_stone_max}</strong> Đá Quặng bên cạnh vàng.",
+                ]),
+                ("warn", ["Tầng tính giờ rất rát", "Nếu hết giờ, bạn bị đẩy xuống <strong>một tầng</strong>. Khi sát thương chưa đủ, bỏ qua tầng tính giờ còn hơn để thua ở đó."]),
+                ("p", "Bạn có thể xuống bất kỳ tầng nào đã tới trong lượt này để farm. Chọn tầng thủ công sẽ tắt chế độ tự lên tầng; bật lại khi muốn leo tiếp."),
+                ("p", "Có tất cả <strong>{ore_type_count}</strong> loại quặng, và độ sâu quyết định loại nào xuất hiện. Loại quặng chỉ đổi hình dáng và bụi của nó - sinh lực và vàng do tầng quyết định."),
+                ("table", "depth"),
+            ],
+        },
+        {
+            "id": "skills",
+            "title": "Kỹ năng chủ động",
+            "dek": "{skill_count} kỹ năng, mỗi cái là một đợt tăng lực có hạn rồi tới thời gian hồi.",
+            "blocks": [
+                ("p", "Kỹ năng <strong>miễn phí</strong> khi bạn tới tầng của nó và dùng được ngay từ cấp 1. Nâng lên cấp {skill_levels} tốn tổng <strong>{skill_total_cost} Đá Kỹ Năng</strong>, cả {skill_count} kỹ năng là <strong>{skill_all_total_cost}</strong> viên. Cấp cao hơn nghĩa là kéo dài hơn và hồi nhanh hơn."),
+                ("table", "skills"),
+                ("p", "Nhánh kỹ năng đầu mở ở tầng {skill_line_floor}; bảng cây kỹ năng nơi bạn tiêu Đá Kỹ Năng mở ở tầng <strong>{skill_tree_floor}</strong>. Chỉ để dùng kỹ năng thì không cần bảng đó."),
+                ("note", ["Chuỗi kết hợp", "Bật {skill_overcharge} trước, rồi mới dùng kỹ năng bạn thật sự muốn tăng lực - ví dụ {skill_golden_frenzy}. Sau đó {skill_time_reversal} cắt thời gian hồi của kỹ năng bạn dùng gần nhất, nên nó quay lại sớm hơn."]),
+            ],
+        },
+        {
+            "id": "titles",
+            "title": "Danh hiệu",
+            "dek": "{title_count} danh hiệu tự đến khi bạn leo lên.",
+            "blocks": [
+                ("ul", [
+                    "Danh hiệu trải từ tầng {title_first_floor} tới tầng <strong>{title_last_floor}</strong> và được chọn tự động theo tầng cao nhất của lượt này.",
+                    "Mỗi danh hiệu thêm khoảng <strong>+{title_effect_step}</strong> vào những phần thưởng nó mang.",
+                    "Các thưởng đến theo từng chặng: sát thương nhấp từ danh hiệu đầu tiên, rồi tới sát thương tự động, kháng nhiệt, vàng, hệ số chí mạng, tỉ lệ chí mạng và phần sát thương mỗi giây cộng vào nhấp (danh hiệu {title_effect_unlocks}).",
+                ]),
+            ],
+        },
+        {
+            "id": "tasks",
+            "title": "Nhiệm vụ và {currency_taskium}",
+            "dek": "Nhánh phụ biến việc nhấp của bạn thành nguồn thu thứ hai.",
+            "blocks": [
+                ("ul", [
+                    "Mỗi lần nhấp trúng cho <strong>+{taskium_per_click} {currency_taskium}</strong>.",
+                    "Nhận một nhiệm vụ tốn <strong>{task_accept_cost}</strong>, đổi lại tốn <strong>{task_refresh_cost}</strong>.",
+                    "Bảng nhiệm vụ mở ở tầng {task_panel_floor}; {task_slot_count} ô mở ở các tầng {task_slot_floors}.",
+                    "Có {task_type_count} loại nhiệm vụ ở {task_rarity_count} mức độ hiếm. Mỗi nhiệm vụ kéo dài {task_duration_minutes} phút, và những nhiệm vụ chưa nhận sẽ được thay mỗi giờ.",
+                    "Thưởng lớn dần theo độ hiếm - trong khoảng <strong>{task_reward_range}</strong> lần vàng quặng của tầng hiện tại. Mức hiếm nhất còn cho thêm Tinh Chất.",
+                ]),
+            ],
+        },
+        {
+            "id": "trade",
+            "title": "Bảng trao đổi",
+            "dek": "Mở ở tầng {trade_floor}. Chỗ duy nhất Đá Quặng có giá trị.",
+            "blocks": [
+                ("ul", [
+                    "1 Đá Kỹ Năng thành <strong>{trade_skill_stone_to_ore_stone} Đá Quặng</strong> - tối đa {trade_skill_stone_max} mỗi lần đổi.",
+                    "<strong>{trade_ore_stone_to_essence} Đá Quặng</strong> thành 1 Tinh Chất.",
+                    "<strong>{trade_ore_stone_to_skill_stone} Đá Quặng</strong> thành 1 Đá Kỹ Năng.",
+                ]),
+                ("p", "Mục cuối mới là quan trọng: nó biến một buổi farm dài thành cấp kỹ năng mà không cần đánh trùm."),
+            ],
+        },
+        {
+            "id": "extras",
+            "title": "Vàng miễn phí",
+            "dek": "Ba nguồn chỉ cần bạn có mặt.",
+            "blocks": [
+                ("ul", [
+                    "<strong>Bóng vàng</strong> - từ tầng {balloon_floor}, cứ {balloon_min_seconds}-{balloon_max_seconds} giây lại có một quả bay vào. Nhấp vào sẽ nhận <strong>x{balloon_multiplier}</strong> vàng quặng của tầng cao nhất trong lượt này.",
+                    "<strong>Thu nhập ngoại tuyến</strong> - tính từ khi bạn rời game {offline_min_minutes} phút và dừng ở {offline_max_hours} giờ. Premium nhân đôi.",
+                    "<strong>Thưởng thời gian chơi</strong> - mỗi {playtime_reward_minutes} phút chơi cho khoảng {playtime_reward_multiplier} lần lượng vàng một phút ở tầng cao nhất của bạn.",
+                ]),
+            ],
+        },
+        {
+            "id": "prestige",
+            "title": "Thăng hoa",
+            "dek": "Bạn đổi tiến độ của lượt này lấy sức mạnh vĩnh viễn. Chọn đúng thời điểm thì đây là cách nhanh nhất trong game.",
+            "blocks": [
+                ("p", "Bảng thăng hoa mở lần đầu khi bạn tới tầng <strong>{prestige_first_floor}</strong>. Sau đó mỗi lần thăng hoa đòi thêm {prestige_floor_step} tầng: {prestige_second_floor}, rồi {prestige_third_floor}, và tiếp tục như vậy."),
+                ("ul", [
+                    "<strong>Bị xóa:</strong> vàng, {currency_taskium}, tiến độ tầng, các nâng cấp cúp và giáp, cấp thú, toàn bộ kỹ năng đã mua, và tiến độ trùm.",
+                    "<strong>Giữ lại:</strong> cấp thăng hoa, Tinh Chất, cấp của {prestige_parameter_count} chỉ số, những thú đã sở hữu, vật phẩm Vô Hạn, thành tích.",
+                    "Bạn không phải bắt đầu lại từ tầng 1: lượt sau mở ở tầng <strong>{prestige_floor_step} x cấp thăng hoa</strong>, kèm số vàng khởi đầu trị giá khoảng {prestige_gold_multiplier} quặng.",
+                    "Mọi thời gian hồi đều được xóa, nên bạn vào lượt mới với tất cả kỹ năng sẵn sàng.",
+                ]),
+                ("p", "Thưởng Tinh Chất chỉ tính từ hai thứ: <strong>tầng cao nhất</strong> bạn đạt được (mỗi tầng {prestige_essence_per_floor}) và <strong>số quặng đã đập</strong> (mỗi viên {prestige_essence_per_ore})."),
+                ("note", ["Đập quặng, đừng chạy", "Vì số quặng nặng hơn trong phép tính, những phút cuối nên farm ở tầng đánh thoải mái thay vì lao lên tầng gần như không xuyên nổi."]),
+                ("table", "prestige"),
+                ("p", "Các thưởng cộng dồn theo từng cấp chứ không nhân lũy tiến, và chi phí Tinh Chất tăng chậm - nên tiêu đều đặn lợi hơn để dành."),
+            ],
+        },
+        {
+            "id": "bosses",
+            "title": "Trùm",
+            "dek": "Cuộc đua sát thương với đồng hồ để lấy Tinh Chất. Mở ở tầng {boss_floor}.",
+            "blocks": [
+                ("ul", [
+                    "Bạn chọn một trùm và trả <strong>{boss_key_cost} chìa hầm ngục</strong> để bắt đầu. Không có gì tự khởi động.",
+                    "Trùm mở lần lượt - hạ được một con mới thấy con sau. Sinh lực tăng khoảng một nghìn lần mỗi bậc trong khi đồng hồ ngắn dần.",
+                    "Thưởng lớn dần theo cấp thăng hoa: khoảng <strong>+{boss_prestige_bonus_percent}%</strong> mỗi cấp.",
+                    "Thăng hoa đưa tiến độ trùm về con đầu tiên.",
+                ]),
+                ("table", "bosses"),
+                ("warn", ["Thua là mất", "Nếu hết giờ mà trùm còn đứng, bạn <strong>không nhận được gì</strong> và chìa đã trả cũng không hoàn lại. Sau một lượt thất bại bạn thấy được phần sinh lực còn lại - dùng nó để ước lượng còn cần thêm bao nhiêu sát thương."]),
+            ],
+        },
+        {
+            "id": "achievements",
+            "title": "Thành tích",
+            "dek": "{achievement_count} thành tích trong {achievement_type_count} hạng mục: nhấp, quặng, trùm, thăng hoa, độ sâu và hơn nữa.",
+            "blocks": [
+                ("p", "Mọi thành tích đều trả bằng <strong>Đá Quặng</strong>, và cả mục tiêu lẫn phần thưởng đều tăng khoảng mười lần mỗi bậc. Phần lớn hạng mục có ba bậc; nhóm vàng và sát thương đi xa hơn."),
+                ("note", ["Nhớ nhận", "Thưởng <strong>không tự vào túi</strong>. Nếu lâu rồi bạn chưa mở thẻ thành tích, trong đó đang có một chồng chờ sẵn."]),
+            ],
+        },
+        {
+            "id": "daily",
+            "title": "Thưởng hằng ngày",
+            "dek": "Nhỏ, đơn giản, và bỏ một ngày cũng không bị phạt.",
+            "blocks": [
+                ("p", "Đăng nhập một lần mỗi ngày cho <strong>{daily_key_amount} chìa hầm ngục</strong>. Ngày nào cũng như nhau - không có lịch và không có chuỗi ngày cần giữ. Muốn nhận thì phải trực tuyến."),
+            ],
+        },
+        {
+            "id": "store",
+            "title": "Cửa hàng",
+            "dek": "Kim cương, chìa, gói, thời gian premium, và các vật phẩm Vô Hạn vĩnh viễn.",
+            "blocks": [
+                ("ul", [
+                    "<strong>Gói kim cương:</strong> {diamond_pack_list} kim cương. Gói càng lớn, giá mỗi viên càng rẻ.",
+                    "<strong>Gói chìa:</strong> {key_pack_list} chìa hầm ngục.",
+                    "<strong>{package_small}:</strong> {package_small_contents}.",
+                    "<strong>{package_big}:</strong> {package_big_contents}.",
+                    "<strong>{package_premium}:</strong> {premium_days} ngày với sát thương nhấp x{premium_click_multiplier}, sát thương tự động x{premium_dps_multiplier}, vàng x{premium_gold_multiplier}, kháng nhiệt x{premium_heat_multiplier} và thu nhập ngoại tuyến x{premium_offline_multiplier}.",
+                ]),
+                ("p", "Vật phẩm Vô Hạn chỉ <strong>mua một lần bằng kim cương</strong> và không bao giờ bị xóa, kể cả khi thăng hoa. Về cuối game, đây thường là cách dùng kim cương hiệu quả nhất."),
+                ("table", "infinity"),
+                ("note", ["Về giá", "Giá cửa hàng lấy từ Steam theo tiền tệ của bạn nên không ghi ở đây. Nội dung một gói không bao giờ đổi; giá thì tùy khu vực."]),
+            ],
+        },
+        {
+            "id": "progress",
+            "title": "Bảng xếp hạng và thống kê",
+            "dek": "Hai nơi để xem lượt chơi đang đi tới đâu.",
+            "blocks": [
+                ("ul", [
+                    "Bảng xếp hạng Steam ghi số lần nhấp, sát thương nhấp, số lần thăng hoa, số trùm đã hạ và tầng cao nhất.",
+                    "Màn hình thống kê giữ nhiều hơn: thu nhập, chi tiêu, số lần nhấp, thời gian chơi và hơn nữa.",
+                ]),
+            ],
+        },
+        {
+            "id": "save",
+            "title": "Lưu game",
+            "dek": "Trả lời ngắn: tiến độ của bạn được bảo vệ bằng nhiều lớp cùng lúc.",
+            "blocks": [
+                ("ul", [
+                    "Game tự lưu, có mã hóa, mỗi <strong>{save_seconds} giây</strong>.",
+                    "Nó sao lưu lên Steam Cloud khoảng mỗi <strong>{cloud_save_seconds} giây</strong>, và luôn sao lưu khi bạn tắt hoặc tạm dừng - nên máy khác vẫn tiếp tục đúng chỗ bạn dừng.",
+                    "Nếu tệp lưu bị hỏng, game tự chuyển sang bản sao lưu.",
+                    "Bạn cũng có thể chép bản lưu vào bộ nhớ tạm rồi dán lại trên thiết bị khác.",
+                ]),
+            ],
+        },
+        {
+            "id": "languages",
+            "title": "Ngôn ngữ",
+            "dek": "Game có {language_count} ngôn ngữ.",
+            "blocks": [
+                ("p", "Anh, Thổ Nhĩ Kỳ, Đức, Pháp, Tây Ban Nha, Tây Ban Nha Mỹ Latinh, Ý, Ba Lan, Bồ Đào Nha Brazil, Nga, Ukraina, Nhật, Hàn, Trung giản thể, Trung phồn thể, Thái, Indonesia và Việt. Lần chạy đầu game tự chọn ngôn ngữ của bạn, và bạn có thể đổi bất cứ lúc nào trong phần cài đặt - hướng dẫn này cũng có đủ mọi ngôn ngữ, qua các liên kết ở đầu trang."),
+            ],
+        },
+    ],
+}

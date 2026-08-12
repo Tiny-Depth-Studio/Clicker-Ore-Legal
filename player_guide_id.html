@@ -1,0 +1,1069 @@
+<title>Clicker Ore Game - Panduan Pemain</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Cara kerja tambang: mata uang, beliung, hewan, skill, prestise, bos, dan toko - dijelaskan tanpa rumus.">
+<style>
+  :root {
+    --bg: #14110d;
+    --bg-elevated: #1d1811;
+    --bg-card: #211b13;
+    --text: #ede6d8;
+    --text-dim: #a89a82;
+    --text-faint: #766a55;
+    --accent: #e0a752;
+    --accent-strong: #f2bd6e;
+    --accent-2: #7fb8ad;
+    --border: #3a2f22;
+    --border-soft: #2a2318;
+    --danger: #cf7a5a;
+    --shadow: 0 8px 24px rgba(0,0,0,0.35);
+
+    --cur-gold: #e0a752;
+    --cur-diamond: #7fd1e0;
+    --cur-essence: #b79ef0;
+    --cur-taskium: #93a8d6;
+    --cur-key: #d98a63;
+    --cur-skillstone: #7fc9a0;
+    --cur-orestone: #b5a68c;
+
+    --font-display: "Bahnschrift", "Segoe UI Semibold", "Arial Narrow Bold", "Arial Narrow", sans-serif;
+    --font-body: "Sitka Text", "Iowan Old Style", Georgia, "Times New Roman", serif;
+    --font-mono: "Cascadia Mono", "Consolas", "SF Mono", ui-monospace, monospace;
+  }
+
+  :root[data-theme="light"] {
+    --bg: #efe9da;
+    --bg-elevated: #e6ddc8;
+    --bg-card: #f3ede0;
+    --text: #241d14;
+    --text-dim: #5c5138;
+    --text-faint: #857656;
+    --accent: #a8621a;
+    --accent-strong: #8a4e12;
+    --accent-2: #2f7a70;
+    --border: #d3c5a4;
+    --border-soft: #ddd0b1;
+    --danger: #a3492c;
+    --shadow: 0 8px 20px rgba(90,70,30,0.12);
+  }
+
+  @media (prefers-color-scheme: light) {
+    :root:not([data-theme="dark"]) {
+      --bg: #efe9da;
+      --bg-elevated: #e6ddc8;
+      --bg-card: #f3ede0;
+      --text: #241d14;
+      --text-dim: #5c5138;
+      --text-faint: #857656;
+      --accent: #a8621a;
+      --accent-strong: #8a4e12;
+      --accent-2: #2f7a70;
+      --border: #d3c5a4;
+      --border-soft: #ddd0b1;
+      --danger: #a3492c;
+      --shadow: 0 8px 20px rgba(90,70,30,0.12);
+    }
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: 17px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection { background: var(--accent); color: #14110d; }
+
+  a { color: var(--accent-strong); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  a:focus-visible, button:focus-visible, summary:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    text-wrap: balance;
+    letter-spacing: 0.01em;
+    color: var(--text);
+  }
+
+  p { max-width: 68ch; }
+  ul, ol { max-width: 68ch; }
+
+  .shell {
+    display: grid;
+    grid-template-columns: 260px minmax(0, 1fr);
+    min-height: 100vh;
+  }
+
+  .topbar {
+    display: none;
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: var(--bg-elevated);
+    border-bottom: 1px solid var(--border);
+    padding: 0.7rem 1rem;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .topbar-title {
+    font-family: var(--font-display);
+    font-size: 0.95rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--accent-strong);
+  }
+  #nav-toggle { display: none; }
+  .nav-toggle-btn {
+    font-family: var(--font-display);
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 0.4rem 0.7rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.85rem;
+  }
+
+  nav.toc {
+    position: sticky;
+    top: 0;
+    align-self: start;
+    height: 100vh;
+    overflow-y: auto;
+    padding: 2rem 1.4rem 3rem;
+    background: var(--bg-elevated);
+    border-right: 1px solid var(--border);
+  }
+  .toc-brand {
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    letter-spacing: 0.03em;
+    color: var(--accent-strong);
+    margin-bottom: 0.15rem;
+  }
+  .toc-brand small {
+    display: block;
+    font-family: var(--font-body);
+    font-style: italic;
+    font-size: 0.78rem;
+    color: var(--text-faint);
+    letter-spacing: 0;
+    margin-top: 0.25rem;
+  }
+  .toc-list {
+    list-style: none;
+    margin: 1.6rem 0 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+  }
+  .toc-list a {
+    display: block;
+    color: var(--text-dim);
+    font-size: 0.88rem;
+    padding: 0.32rem 0.5rem;
+    border-radius: 4px;
+    border-left: 2px solid transparent;
+  }
+  .toc-list a:hover {
+    color: var(--text);
+    text-decoration: none;
+    background: rgba(224,167,82,0.08);
+    border-left-color: var(--accent);
+  }
+  .toc-num {
+    font-family: var(--font-mono);
+    color: var(--text-faint);
+    font-size: 0.78rem;
+    margin-right: 0.45rem;
+  }
+
+  main {
+    padding: 3.2rem clamp(1.2rem, 4vw, 4rem) 6rem;
+    max-width: 900px;
+  }
+
+  header.hero {
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .strata {
+    height: 10px;
+    width: 100%;
+    border-radius: 3px;
+    margin-bottom: 1.6rem;
+    background: repeating-linear-gradient(
+      90deg,
+      var(--accent) 0 6%,
+      var(--accent-2) 6% 11%,
+      var(--border-soft) 11% 18%,
+      var(--accent) 18% 24%,
+      var(--border-soft) 24% 34%,
+      var(--accent-2) 34% 40%,
+      var(--accent) 40% 48%,
+      var(--border-soft) 48% 58%,
+      var(--accent-2) 58% 63%,
+      var(--accent) 63% 72%,
+      var(--border-soft) 72% 82%,
+      var(--accent-2) 82% 90%,
+      var(--accent) 90% 100%
+    );
+    opacity: 0.85;
+  }
+  .eyebrow {
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-size: 0.72rem;
+    color: var(--accent);
+    margin-bottom: 0.6rem;
+  }
+  h1.title {
+    font-size: clamp(2rem, 4.2vw, 2.9rem);
+    margin: 0 0 0.7rem;
+    line-height: 1.1;
+  }
+  .subtitle {
+    color: var(--text-dim);
+    font-size: 1.08rem;
+    max-width: 62ch;
+    margin: 0;
+  }
+
+  .langbar {
+    margin: 1.8rem 0 0;
+    padding-top: 1.2rem;
+    border-top: 1px solid var(--border-soft);
+  }
+  .langbar-label {
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 0.68rem;
+    color: var(--text-faint);
+    margin-bottom: 0.55rem;
+  }
+  .langbar-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem 0.4rem;
+  }
+  .langbar-list a, .langbar-list span {
+    font-family: var(--font-display);
+    font-size: 0.78rem;
+    padding: 0.18rem 0.55rem;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    color: var(--text-dim);
+    background: var(--bg-card);
+  }
+  .langbar-list a:hover {
+    text-decoration: none;
+    color: var(--text);
+    border-color: var(--accent);
+  }
+  .langbar-list span {
+    color: #14110d;
+    background: var(--accent);
+    border-color: var(--accent);
+  }
+  :root[data-theme="light"] .langbar-list span { color: #efe9da; }
+
+  section {
+    margin-bottom: 3.6rem;
+    scroll-margin-top: 1.5rem;
+  }
+  .section-head {
+    display: flex;
+    align-items: baseline;
+    gap: 0.7rem;
+    margin-bottom: 0.3rem;
+  }
+  .section-num {
+    font-family: var(--font-mono);
+    color: var(--accent);
+    font-size: 0.95rem;
+  }
+  h2 {
+    font-size: 1.55rem;
+    margin: 0;
+  }
+  .section-dek {
+    color: var(--text-dim);
+    font-size: 0.98rem;
+    margin: 0.3rem 0 1.5rem;
+    max-width: 62ch;
+  }
+
+  .callout {
+    border-left: 3px solid var(--accent);
+    background: var(--bg-card);
+    padding: 0.95rem 1.2rem;
+    border-radius: 0 6px 6px 0;
+    margin: 1.2rem 0;
+    font-size: 0.95rem;
+  }
+  .callout strong { color: var(--accent-strong); }
+  .callout.warn { border-left-color: var(--danger); }
+  .callout-label {
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 0.72rem;
+    color: var(--accent);
+    margin-bottom: 0.35rem;
+  }
+  .callout.warn .callout-label { color: var(--danger); }
+
+  .currency-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 0.9rem;
+    margin: 1.4rem 0;
+  }
+  .cur-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-top: 3px solid var(--dot);
+    border-radius: 6px;
+    padding: 0.95rem 1rem 1.05rem;
+  }
+  .cur-card h4 {
+    margin: 0 0 0.5rem;
+    font-size: 0.98rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .dot {
+    width: 9px; height: 9px; border-radius: 50%;
+    background: var(--dot);
+    flex: none;
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--dot) 20%, transparent);
+  }
+  .cur-card p {
+    margin: 0.15rem 0;
+    font-size: 0.84rem;
+    color: var(--text-dim);
+    max-width: none;
+  }
+  .cur-card p b { color: var(--text); font-weight: 600; }
+
+  .table-wrap {
+    overflow-x: auto;
+    margin: 1.2rem 0;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+  }
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    min-width: 460px;
+    font-size: 0.9rem;
+  }
+  thead th {
+    text-align: left;
+    font-family: var(--font-display);
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    font-size: 0.72rem;
+    color: var(--text-dim);
+    background: var(--bg-elevated);
+    padding: 0.6rem 0.85rem;
+    border-bottom: 1px solid var(--border);
+    white-space: nowrap;
+  }
+  tbody td {
+    padding: 0.55rem 0.85rem;
+    border-bottom: 1px solid var(--border-soft);
+    font-variant-numeric: tabular-nums;
+    color: var(--text);
+  }
+  tbody tr:last-child td { border-bottom: none; }
+  tbody tr:nth-child(even) { background: color-mix(in srgb, var(--accent) 3%, transparent); }
+  td.num, th.num { font-family: var(--font-mono); }
+  td.strong { color: var(--accent-strong); font-weight: 600; }
+
+  .strategy-track {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 1.4rem 0;
+  }
+  .strategy-stage {
+    background: var(--bg-card);
+    padding: 1rem 1.1rem;
+  }
+  .strategy-stage .stage-label {
+    font-family: var(--font-display);
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+    margin-bottom: 0.4rem;
+  }
+  .strategy-stage ul {
+    margin: 0;
+    padding-left: 1.1rem;
+    font-size: 0.86rem;
+    color: var(--text-dim);
+  }
+  .strategy-stage li { margin-bottom: 0.25rem; }
+
+  footer.doc-footer {
+    margin-top: 4rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+    color: var(--text-faint);
+    font-size: 0.8rem;
+  }
+
+  @media (max-width: 880px) {
+    .shell { grid-template-columns: 1fr; }
+    .topbar { display: flex; }
+    nav.toc {
+      position: fixed;
+      inset: 0 20% 0 0;
+      top: 52px;
+      height: calc(100vh - 52px);
+      transform: translateX(-100%);
+      transition: transform 0.22s ease;
+      z-index: 15;
+      box-shadow: var(--shadow);
+    }
+    #nav-toggle:checked ~ .shell nav.toc {
+      transform: translateX(0);
+    }
+    main { padding: 2rem 1.2rem 5rem; }
+  }
+</style>
+
+<input type="checkbox" id="nav-toggle">
+
+<div class="topbar">
+  <span class="topbar-title">&#9935; Panduan Pemain</span>
+  <label class="nav-toggle-btn" for="nav-toggle">Isi</label>
+</div>
+
+<div class="shell">
+  <nav class="toc" aria-label="Isi">
+    <div class="toc-brand">Clicker Ore Game<small>Panduan Pemain</small></div>
+    <ul class="toc-list">
+      <li><a href="#start"><span class="toc-num">01</span>Mulai dari mana</a></li>
+      <li><a href="#currencies"><span class="toc-num">02</span>7 mata uang</a></li>
+      <li><a href="#damage"><span class="toc-num">03</span>Kerusakan klik dan kerusakan otomatis</a></li>
+      <li><a href="#critical"><span class="toc-num">04</span>Serangan kritis</a></li>
+      <li><a href="#pickaxes"><span class="toc-num">05</span>Beliung</a></li>
+      <li><a href="#suits"><span class="toc-num">06</span>Baju tambang</a></li>
+      <li><a href="#temperature"><span class="toc-num">07</span>Panas</a></li>
+      <li><a href="#pets"><span class="toc-num">08</span>Hewan</a></li>
+      <li><a href="#floors"><span class="toc-num">09</span>Lantai, bijih, dan kedalaman</a></li>
+      <li><a href="#skills"><span class="toc-num">10</span>Skill aktif</a></li>
+      <li><a href="#titles"><span class="toc-num">11</span>Gelar</a></li>
+      <li><a href="#tasks"><span class="toc-num">12</span>Tugas dan Taskium</a></li>
+      <li><a href="#trade"><span class="toc-num">13</span>Panel tukar</a></li>
+      <li><a href="#extras"><span class="toc-num">14</span>Emas gratis</a></li>
+      <li><a href="#prestige"><span class="toc-num">15</span>Prestise</a></li>
+      <li><a href="#bosses"><span class="toc-num">16</span>Bos</a></li>
+      <li><a href="#achievements"><span class="toc-num">17</span>Pencapaian</a></li>
+      <li><a href="#daily"><span class="toc-num">18</span>Hadiah harian</a></li>
+      <li><a href="#store"><span class="toc-num">19</span>Toko</a></li>
+      <li><a href="#progress"><span class="toc-num">20</span>Papan peringkat dan statistik</a></li>
+      <li><a href="#save"><span class="toc-num">21</span>Simpanan</a></li>
+      <li><a href="#languages"><span class="toc-num">22</span>Bahasa</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <header class="hero">
+      <div class="strata" role="presentation"></div>
+      <div class="eyebrow">Panduan Pemain - 2026-08-12</div>
+      <h1 class="title">Seisi tambang,<br>dijelaskan sederhana</h1>
+      <p class="subtitle">Apa fungsi tiap sistem, di lantai berapa ia terbuka, dan ke mana sebaiknya satu jam berikutnya kamu pakai. Tanpa rumus, hanya keputusan yang penting.</p>
+      <div class="langbar">
+        <div class="langbar-label">Bahasa</div>
+        <div class="langbar-list"><a href="player_guide_en.html" hreflang="en">English</a><a href="player_guide_tr.html" hreflang="tr">Türkçe</a><a href="player_guide_de.html" hreflang="de">Deutsch</a><a href="player_guide_fr.html" hreflang="fr">Français</a><a href="player_guide_es.html" hreflang="es">Español</a><a href="player_guide_es_la.html" hreflang="es-419">Español (Latinoamérica)</a><a href="player_guide_it.html" hreflang="it">Italiano</a><a href="player_guide_pl.html" hreflang="pl">Polski</a><a href="player_guide_pt_br.html" hreflang="pt-BR">Português (Brasil)</a><a href="player_guide_ru.html" hreflang="ru">Русский</a><a href="player_guide_uk.html" hreflang="uk">Українська</a><a href="player_guide_ja.html" hreflang="ja">日本語</a><a href="player_guide_ko.html" hreflang="ko">한국어</a><a href="player_guide_zh_hans.html" hreflang="zh-Hans">简体中文</a><a href="player_guide_zh_hant.html" hreflang="zh-Hant">繁體中文</a><a href="player_guide_th.html" hreflang="th">ไทย</a><span>Bahasa Indonesia</span><a href="player_guide_vi.html" hreflang="vi">Tiếng Việt</a></div>
+      </div>
+    </header>
+
+    <section id="start">
+      <div class="section-head"><span class="section-num">01</span><h2>Mulai dari mana</h2></div>
+      <p class="section-dek">Tiga tahap, mengikuti urutan game membuka isinya.</p>
+      <div class="strategy-track">
+          <div class="strategy-stage">
+            <div class="stage-label">Awal - lantai 1 sampai 200</div>
+            <ul>
+              <li>Tingkatkan beliung terus-terusan; beli yang berikutnya begitu terbuka.</li>
+              <li>Pemecah Bijih datang di lantai 50, Klik Amarah di lantai 70.</li>
+              <li>Ambil Si Batu begitu diamond kamu longgar.</li>
+            </ul>
+          </div>
+          <div class="strategy-stage">
+            <div class="stage-label">Tengah - lantai 200 sampai 350</div>
+            <ul>
+              <li>Lakukan prestise pertama di lantai 200.</li>
+              <li>Sebar Esensi ke 7 parameter, jangan menumpuk di satu.</li>
+              <li>Tugas terbuka di lantai 160, pohon skill dan panel tukar di lantai 180.</li>
+            </ul>
+          </div>
+          <div class="strategy-stage">
+            <div class="stage-label">Akhir - dari lantai 350</div>
+            <ul>
+              <li>Lawan bos setiap kali punya kunci; itu sumber Esensi utamamu.</li>
+              <li>Beli item Infinity - permanen dan tidak pernah direset.</li>
+              <li>Jaga level baju supaya panas tidak memakan kerusakanmu.</li>
+            </ul>
+          </div>
+        </div>
+      <div class="callout">
+          <div class="callout-label">Perlu diketahui</div>
+          Angka cepat memanjang, jadi game beralih ke bentuk singkat lalu ke notasi ilmiah seperti <strong>1,23e45</strong>. Tidak ada batas atas - hanya cara penulisannya yang berubah.
+        </div>
+    </section>
+
+    <section id="currencies">
+      <div class="section-head"><span class="section-num">02</span><h2>7 mata uang</h2></div>
+      <p class="section-dek">Masing-masing menopang sistem yang berbeda. Membelanjakan mata uang yang benar di tempat yang salah adalah kesalahan paling umum di awal.</p>
+      <div class="currency-grid">
+        <div class="cur-card" style="--dot:var(--cur-gold)">
+          <h4><span class="dot"></span>Emas</h4>
+          <p>Didapat dari <b>memecah bijih</b>.</p>
+          <p>Dipakai untuk level beliung dan baju - mata uang kerja sehari-hari.</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-diamond)">
+          <h4><span class="dot"></span>Berlian</h4>
+          <p>Hanya masuk dari <b>pembelian uang sungguhan</b>.</p>
+          <p>Dipakai untuk hewan dan item Infinity yang permanen.</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-essence)">
+          <h4><span class="dot"></span>Esensi</h4>
+          <p>Datang dari <b>prestise</b> dan kemenangan atas bos.</p>
+          <p>Dipakai untuk 7 parameter prestise permanen.</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-taskium)">
+          <h4><span class="dot"></span>Taskium</h4>
+          <p><b>+1</b> setiap klik yang kena.</p>
+          <p>Dipakai untuk menerima dan mengacak ulang tugas.</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-key)">
+          <h4><span class="dot"></span>Kunci Dungeon</h4>
+          <p>Satu kunci gratis tiap hari, sisanya dari paket toko.</p>
+          <p>Dipakai untuk masuk pertarungan bos - 1 per percobaan.</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-skillstone)">
+          <h4><span class="dot"></span>Batu Skill</h4>
+          <p>Datang dari paket toko dan panel tukar.</p>
+          <p>Dipakai untuk menaikkan level 8 skill aktif.</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-orestone)">
+          <h4><span class="dot"></span>Batu Bijih</h4>
+          <p><b>1-5</b> dari setiap bijih yang dipecah, ditambah pencapaian.</p>
+          <p>Ditukar jadi Esensi atau Batu Skill di panel tukar.</p>
+        </div>
+      </div>
+      <div class="callout">
+          <div class="callout-label">Soal diamond</div>
+          Bos, pencapaian, dan tugas tidak pernah memberi diamond. Diamond dan kunci ruang bawah tanah disimpan di server, jadi membeli hewan butuh koneksi online.
+        </div>
+    </section>
+
+    <section id="damage">
+      <div class="section-head"><span class="section-num">03</span><h2>Kerusakan klik dan kerusakan otomatis</h2></div>
+      <p class="section-dek">Dua sumber kerusakan terpisah, dan yang menumbuhkannya pun berbeda.</p>
+      <p><strong>Kerusakan klik</strong> adalah hasil satu ketukan. Ia tumbuh dari level dan skill beliung pertamamu, skill Klik Amarah, gelarmu, serta parameter prestise Tangan Penghancur Batu. Setelah Kesatuan Kekuatan dinaikkan, sebagian kerusakan otomatis juga ikut masuk ke setiap klik.</p>
+      <p><strong>Kerusakan otomatis</strong> (per detik) datang dari beliung kedua dan seterusnya, skill Mengamuk, parameter Tempa Abadi, serta hewan-hewanmu.</p>
+      <div class="callout">
+          <div class="callout-label">Hewan adalah pengecualian</div>
+          Kerusakan hewan ditambahkan <strong>setelah</strong> semua pengali, jadi tidak diperbesar olehnya. Di akhir permainan level hewan saja tidak cukup: pengali beliung dan skill harus tumbuh juga.
+        </div>
+    </section>
+
+    <section id="critical">
+      <div class="section-head"><span class="section-num">04</span><h2>Serangan kritis</h2></div>
+      <p class="section-dek">Setiap klik bisa keluar kritis dan menghantam lebih keras.</p>
+      <p>Kamu mulai dengan peluang <strong>5%</strong> dan pengali <strong>x1,5</strong>. Empat hal menaikkannya: skill Serangan Kritis, skill beliung, parameter prestise Cenayang Bijih dan Kekuatan Bencana, serta gelar.</p>
+    </section>
+
+    <section id="pickaxes">
+      <div class="section-head"><span class="section-num">05</span><h2>Beliung</h2></div>
+      <p class="section-dek">45 beliung yang terbuka berurutan. Inilah tulang punggung kerusakanmu.</p>
+      <ul>
+          <li>Beliung pertama <strong>5 emas</strong>; tiap beliung berikutnya sekitar <strong>8 kali</strong> lebih mahal dari sebelumnya.</li>
+          <li>Beliung terbuka sendiri begitu emas yang kamu kumpulkan di putaran ini cukup - jadi peningkatanlah yang membuka beliung berikutnya.</li>
+          <li>Setiap level sekitar <strong>7%</strong> lebih mahal dari level sebelumnya.</li>
+          <li>Hanya beliung <strong>pertama</strong> yang menambah kerusakan klik. Semua sisanya menambah kerusakan otomatis per detik.</li>
+          <li>Setiap beliung punya 6 skill yang terbuka di level 5 / 10 / 25 / 50 / 100 / 200. Ada yang menolong beliung itu saja, ada yang menolong semuanya - yang menyeluruh lebih berharga.</li>
+        </ul>
+      <div class="callout">
+          <div class="callout-label">Lompatan terbesar</div>
+          Setiap <strong>100 level</strong>, beliung mengalikan keluarannya sendiri dengan <strong>x10</strong>. Mendorong satu beliung ke ratusan berikutnya biasanya lompatan kekuatan terbesar yang tersedia.
+        </div>
+    </section>
+
+    <section id="suits">
+      <div class="section-head"><span class="section-num">06</span><h2>Baju tambang</h2></div>
+      <p class="section-dek">5 baju yang sudah jadi milikmu sejak awal. Tugasnya menahan panas.</p>
+      <ul>
+          <li>Baju tidak dibeli, hanya dinaikkan levelnya. Tiap level menambah sekitar <strong>5%</strong> ketahanan panas, mulai dari 50.</li>
+          <li>Setiap 100 level, ketahanan baju dikalikan <strong>x2</strong>.</li>
+          <li>Setiap baju juga punya 6 skill yang terbuka seiring level.</li>
+          <li>Panel baju terbuka di lantai <strong>130</strong>, bersama indikator panas.</li>
+        </ul>
+    </section>
+
+    <section id="temperature">
+      <div class="section-head"><span class="section-num">07</span><h2>Panas</h2></div>
+      <p class="section-dek">Semakin dalam semakin panas, dan panas memotong kerusakanmu tanpa terasa.</p>
+      <ul>
+          <li>Suhu lantai naik terus - sekitar <strong>1,04x per lantai</strong>, jadi berlipat dua setiap dua puluhan lantai.</li>
+          <li>Selama ketahananmu setidaknya <strong>1,5x</strong> suhu lantai, indikator tetap bersih dan kamu tidak kehilangan apa pun.</li>
+          <li>Begitu ketahanan turun di bawah suhu, kerusakan mulai bocor; pada <strong>0,5x</strong> hanya tinggal seperdua puluh - kehilangan <strong>95%</strong>.</li>
+          <li>Panel baju punya tombol beli ketahanan otomatis; biarkan menyala kalau kamu sering turun jauh.</li>
+        </ul>
+      <div class="callout warn">
+          <div class="callout-label">Kalau tiba-tiba mandek</div>
+          Dinding tempat bijih tak habis-habis hampir selalu soal panas, bukan kerusakan. Lihat indikatornya sebelum membelanjakan apa pun.
+        </div>
+    </section>
+
+    <section id="pets">
+      <div class="section-head"><span class="section-num">08</span><h2>Hewan</h2></div>
+      <p class="section-dek">5 hewan, dibeli dengan diamond lalu dinaikkan dengan emas.</p>
+      <ul>
+          <li>Harganya dari <strong>150</strong> sampai <strong>250</strong> diamond (150 / 175 / 200 / 225 / 250).</li>
+          <li>Setiap level menambah sekitar <strong>1%</strong> dari kerusakan klik beliungmu sebagai kerusakan otomatis, dikalikan urutan hewan itu - jadi Si Serpih Bayangan memberi lima kali Si Batu pada level sama.</li>
+          <li>Biaya level naik sekitar <strong>20%</strong> tiap kali, dan setiap 100 level hewan mengalikan keluarannya sendiri dengan <strong>x5</strong>.</li>
+          <li>Setiap hewan punya 6 skill; ada yang hanya untuk dirinya, ada yang untuk semua.</li>
+          <li>Panel hewan terbuka di lantai <strong>30</strong>, atau begitu kamu punya satu hewan.</li>
+        </ul>
+      <div class="callout warn">
+          <div class="callout-label">Prestise dan hewan</div>
+          Prestise mengembalikan setiap hewan ke <strong>level 1</strong> dan menghapus skill mereka. Namun kepemilikan bersifat permanen - kamu tidak perlu membeli ulang.
+        </div>
+    </section>
+
+    <section id="floors">
+      <div class="section-head"><span class="section-num">09</span><h2>Lantai, bijih, dan kedalaman</h2></div>
+      <p class="section-dek">Lantai menentukan sekeras apa bijihnya dan berapa emasnya. Kedalaman menentukan tampilannya.</p>
+      <ul>
+          <li>Setiap lantai punya sedikit lebih banyak nyawa dan emas dari lantai sebelumnya, dan kurvanya makin curam.</li>
+          <li>Setiap <strong>lantai ke-10</strong> adalah lantai berwaktu: hitungan <strong>20 detik</strong> mulai berjalan, nyawa naik sekitar 50% dan emas sekitar 51%.</li>
+          <li>Kesulitan juga berjalan dalam siklus sekitar 100 lantai - lantai-lantai awal sebuah siklus paling untung dibanding nyawanya.</li>
+          <li>Setiap bijih juga menjatuhkan <strong>1-5</strong> Batu Bijih di samping emas.</li>
+        </ul>
+      <div class="callout warn">
+          <div class="callout-label">Lantai berwaktu menggigit</div>
+          Kalau waktunya habis, kamu didorong <strong>satu lantai</strong> ke bawah. Kalau kerusakanmu kurang, lewati saja lantai berwaktu daripada gagal di sana.
+        </div>
+      <p>Kamu bisa turun ke lantai mana pun yang sudah kamu capai di putaran ini dan farming di situ. Memilih lantai secara manual mematikan naik otomatis; nyalakan lagi kalau ingin memanjat.</p>
+      <p>Ada <strong>40</strong> jenis bijih seluruhnya, dan kedalaman menentukan mana yang muncul. Jenis bijih hanya mengubah tampilan dan debunya - nyawa dan emas datang dari lantai.</p>
+      <div class="table-wrap">
+        <table>
+        <thead><tr>
+        <th class="num">Kedalaman</th>
+        <th class="num">Jenis bijih</th>
+        <th class="num">Sekitar lantai</th>
+        </tr></thead>
+        <tbody>
+        <tr>
+        <td class="num">0-100 m</td>
+        <td class="num">9</td>
+        <td class="num">~54</td>
+        </tr>
+        <tr>
+        <td class="num">100-500 m</td>
+        <td class="num">20</td>
+        <td class="num">~129</td>
+        </tr>
+        <tr>
+        <td class="num">500-1.500 m</td>
+        <td class="num">30</td>
+        <td class="num">~196</td>
+        </tr>
+        <tr>
+        <td class="num">1.500 m+</td>
+        <td class="num">40</td>
+        <td class="num">-</td>
+        </tr>
+        </tbody></table></div>
+    </section>
+
+    <section id="skills">
+      <div class="section-head"><span class="section-num">10</span><h2>Skill aktif</h2></div>
+      <p class="section-dek">8 skill, masing-masing dorongan berbatas waktu lalu jeda pemulihan.</p>
+      <p>Sebuah skill <strong>gratis</strong> ketika lantainya tercapai - kamu langsung memakainya di level 1. Menaikkannya ke level 7 butuh total <strong>63 Batu Skill</strong>, atau <strong>504</strong> untuk semua 8 skill. Level lebih tinggi berarti durasi lebih panjang dan jeda lebih pendek.</p>
+      <div class="table-wrap">
+        <table>
+        <thead><tr>
+        <th>Skill</th>
+        <th class="num">Lantai</th>
+        <th class="num">Level 1 (durasi / jeda)</th>
+        <th class="num">Level 7 (durasi / jeda)</th>
+        <th class="num">Efek</th>
+        </tr></thead>
+        <tbody>
+        <tr>
+        <td>Pemecah Bijih</td>
+        <td class="num">50</td>
+        <td class="num">30 dtk / 540 dtk</td>
+        <td class="num">90 dtk / 180 dtk</td>
+        <td class="num">7 → 13 /detik</td>
+        </tr>
+        <tr>
+        <td>Klik Amarah</td>
+        <td class="num">70</td>
+        <td class="num">40 dtk / 660 dtk</td>
+        <td class="num">210 dtk / 300 dtk</td>
+        <td class="num">x2 → x5</td>
+        </tr>
+        <tr>
+        <td>Serangan Kritis</td>
+        <td class="num">100</td>
+        <td class="num">30 dtk / 600 dtk</td>
+        <td class="num">150 dtk / 240 dtk</td>
+        <td class="num">x1,3 → x1,9</td>
+        </tr>
+        <tr>
+        <td>Mengamuk</td>
+        <td class="num">170</td>
+        <td class="num">40 dtk / 840 dtk</td>
+        <td class="num">160 dtk / 480 dtk</td>
+        <td class="num">x2 → x3,5</td>
+        </tr>
+        <tr>
+        <td>Gila Emas</td>
+        <td class="num">240</td>
+        <td class="num">50 dtk / 1.020 dtk</td>
+        <td class="num">290 dtk / 660 dtk</td>
+        <td class="num">x2 → x5</td>
+        </tr>
+        <tr>
+        <td>Ketahanan Panas</td>
+        <td class="num">280</td>
+        <td class="num">30 dtk / 660 dtk</td>
+        <td class="num">140 dtk / 300 dtk</td>
+        <td class="num">x2 → x5</td>
+        </tr>
+        <tr>
+        <td>Muatan Berlebih</td>
+        <td class="num">330</td>
+        <td class="num">20 dtk / 1.200 dtk</td>
+        <td class="num">20 dtk / 840 dtk</td>
+        <td class="num">x1,5 → x3</td>
+        </tr>
+        <tr>
+        <td>Pembalik Waktu</td>
+        <td class="num">400</td>
+        <td class="num">1.200 dtk</td>
+        <td class="num">840 dtk</td>
+        <td class="num">-300 dtk → -1.020 dtk</td>
+        </tr>
+        </tbody></table></div>
+      <p>Jalur skill pertama terbuka di lantai 50; panel pohon skill tempat kamu membelanjakan Batu Skill terbuka di lantai <strong>180</strong>. Untuk memakai skill, panel itu tidak diperlukan.</p>
+      <div class="callout">
+          <div class="callout-label">Kombinasinya</div>
+          Nyalakan Muatan Berlebih dulu, lalu skill yang benar-benar ingin kamu perkuat - misalnya Gila Emas. Setelah itu Pembalik Waktu memotong jeda skill yang terakhir kamu pakai, jadi ia kembali lebih cepat.
+        </div>
+    </section>
+
+    <section id="titles">
+      <div class="section-head"><span class="section-num">11</span><h2>Gelar</h2></div>
+      <p class="section-dek">100 gelar yang datang sendiri saat kamu memanjat.</p>
+      <ul>
+          <li>Gelar terbentang dari lantai 1 sampai lantai <strong>50.000</strong> dan dipilih otomatis dari lantai tertinggi di putaran ini.</li>
+          <li>Setiap gelar menambah sekitar <strong>+0,1</strong> pada bonus yang dibawanya.</li>
+          <li>Bonusnya datang bertahap: kerusakan klik sejak gelar pertama, lalu kerusakan otomatis, ketahanan panas, emas, pengali kritis, peluang kritis, dan bagian kerusakan per detik yang masuk ke klik (gelar 1 / 5 / 10 / 15 / 20 / 25 / 30).</li>
+        </ul>
+    </section>
+
+    <section id="tasks">
+      <div class="section-head"><span class="section-num">12</span><h2>Tugas dan Taskium</h2></div>
+      <p class="section-dek">Jalur samping yang mengubah klikmu jadi penghasilan kedua.</p>
+      <ul>
+          <li>Setiap klik yang kena memberi <strong>+1 Taskium</strong>.</li>
+          <li>Menerima tugas butuh <strong>200</strong>, mengacak ulang butuh <strong>25</strong>.</li>
+          <li>Panel tugas terbuka di lantai 160; 6 slotnya terbuka di lantai 160 / 170 / 180 / 190 / 200 / 210.</li>
+          <li>Ada 10 jenis tugas dalam 6 tingkat kelangkaan. Tiap tugas berjalan 60 menit, dan yang tidak diterima diganti setiap jam.</li>
+          <li>Hadiahnya tumbuh dengan kelangkaan - antara <strong>50-500</strong> kali emas bijih di lantai saat itu. Yang paling langka juga memberi Esensi.</li>
+        </ul>
+    </section>
+
+    <section id="trade">
+      <div class="section-head"><span class="section-num">13</span><h2>Panel tukar</h2></div>
+      <p class="section-dek">Terbuka di lantai 180. Satu-satunya tempat Batu Bijih ada gunanya.</p>
+      <ul>
+          <li>1 Batu Skill jadi <strong>5.000 Batu Bijih</strong> - maksimal 100.000 per penukaran.</li>
+          <li><strong>2.000 Batu Bijih</strong> jadi 1 Esensi.</li>
+          <li><strong>5.000 Batu Bijih</strong> jadi 1 Batu Skill.</li>
+        </ul>
+      <p>Yang terakhir itu penting: begitulah sesi farming panjang berubah jadi level skill tanpa melawan bos.</p>
+    </section>
+
+    <section id="extras">
+      <div class="section-head"><span class="section-num">14</span><h2>Emas gratis</h2></div>
+      <p class="section-dek">Tiga sumber yang hanya minta kamu ada di sana.</p>
+      <ul>
+          <li><strong>Balon emas</strong> - dari lantai 50, satu melayang masuk setiap 70-105 detik. Mengkliknya memberi <strong>x6</strong> emas bijih lantai terbaikmu di putaran ini.</li>
+          <li><strong>Penghasilan offline</strong> - dihitung setelah 60 menit pergi dan berhenti di 12 jam. Premium menggandakannya.</li>
+          <li><strong>Hadiah waktu bermain</strong> - setiap 60 menit bermain memberi sekitar 100 kali emas satu menit di lantai terbaikmu.</li>
+        </ul>
+    </section>
+
+    <section id="prestige">
+      <div class="section-head"><span class="section-num">15</span><h2>Prestise</h2></div>
+      <p class="section-dek">Kamu menukar kemajuan putaran ini dengan kekuatan permanen. Kalau waktunya tepat, ini hal tercepat di dalam game.</p>
+      <p>Panel prestise terbuka saat pertama kali kamu mencapai lantai <strong>200</strong>. Sesudahnya tiap prestise minta 100 lantai lagi: 300, lalu 400, dan seterusnya.</p>
+      <ul>
+          <li><strong>Direset:</strong> emas, Taskium, kemajuan lantai, peningkatan beliung dan baju, level hewan, semua skill yang dibeli, dan kemajuan bos.</li>
+          <li><strong>Tetap:</strong> level prestise, Esensi, level 7 parameter, hewan yang sudah dimiliki, item Infinity, dan pencapaian.</li>
+          <li>Kamu tidak mulai dari lantai 1: putaran berikutnya dimulai di <strong>100 x level prestisemu</strong>, ditambah emas awal senilai sekitar 500 bijih.</li>
+          <li>Semua jeda skill dibersihkan, jadi kamu memulai putaran dengan semua skill siap.</li>
+        </ul>
+      <p>Hadiah Esensi hanya dihitung dari dua hal: <strong>lantai tertinggi</strong> yang kamu capai (masing-masing 0,5) dan <strong>bijih yang dipecah</strong> (masing-masing 0,25).</p>
+      <div class="callout">
+          <div class="callout-label">Pecahkan bijih, jangan berlari</div>
+          Karena jumlah bijih berbobot lebih besar, farming di lantai yang nyaman pada menit-menit terakhir lebih menghasilkan daripada memaksa naik ke lantai yang nyaris tak tertembus.
+        </div>
+      <div class="table-wrap">
+        <table>
+        <thead><tr>
+        <th>Parameter</th>
+        <th>Efek</th>
+        <th class="num">Per level</th>
+        </tr></thead>
+        <tbody>
+        <tr>
+        <td>Tempa Abadi</td>
+        <td>Kerusakan otomatis per detik</td>
+        <td class="num">+20%</td>
+        </tr>
+        <tr>
+        <td>Tangan Penghancur Batu</td>
+        <td>Kerusakan klik</td>
+        <td class="num">+25%</td>
+        </tr>
+        <tr>
+        <td>Jurang Emas</td>
+        <td>Pemasukan emas</td>
+        <td class="num">+10%</td>
+        </tr>
+        <tr>
+        <td>Cenayang Bijih</td>
+        <td>Peluang kritis</td>
+        <td class="num">+5%</td>
+        </tr>
+        <tr>
+        <td>Kekuatan Bencana</td>
+        <td>Pengali kritis</td>
+        <td class="num">+5%</td>
+        </tr>
+        <tr>
+        <td>Perisai Neraka</td>
+        <td>Ketahanan panas</td>
+        <td class="num">+10%</td>
+        </tr>
+        <tr>
+        <td>Kesatuan Kekuatan</td>
+        <td>Bagian kerusakan per detik yang masuk ke klik</td>
+        <td class="num">+1%</td>
+        </tr>
+        </tbody></table></div>
+      <p>Bonusnya bertambah level demi level, bukan berlipat, dan biaya Esensi naik lambat - jadi membelanjakan Esensi secara rutin lebih untung daripada menumpuknya.</p>
+    </section>
+
+    <section id="bosses">
+      <div class="section-head"><span class="section-num">16</span><h2>Bos</h2></div>
+      <p class="section-dek">Lomba kerusakan melawan waktu untuk Esensi. Terbuka di lantai 350.</p>
+      <ul>
+          <li>Kamu memilih bos dan membayar <strong>1 kunci ruang bawah tanah</strong> untuk memulai. Tidak ada yang mulai sendiri.</li>
+          <li>Bos terbuka berurutan - kalahkan satu untuk melihat yang berikutnya. Nyawa naik sekitar seribu kali per tingkat sementara waktunya makin pendek.</li>
+          <li>Hadiah tumbuh bersama level prestisemu: sekitar <strong>+15%</strong> per level.</li>
+          <li>Prestise mengembalikan kemajuan bos ke bos pertama.</li>
+        </ul>
+      <div class="table-wrap">
+        <table>
+        <thead><tr>
+        <th>Bos</th>
+        <th class="num">Nyawa</th>
+        <th class="num">Waktu</th>
+        <th>Hadiah</th>
+        </tr></thead>
+        <tbody>
+        <tr>
+        <td>Kolosus Kristal</td>
+        <td class="num">1e13</td>
+        <td class="num">30 dtk</td>
+        <td>50 Esensi + 5.000 Batu Bijih</td>
+        </tr>
+        <tr>
+        <td>Penjaga Kristal</td>
+        <td class="num">1e16</td>
+        <td class="num">25 dtk</td>
+        <td>75 Esensi + 7.500 Batu Bijih</td>
+        </tr>
+        <tr>
+        <td>Penjaga Merah Darah</td>
+        <td class="num">1e19</td>
+        <td class="num">20 dtk</td>
+        <td>100 Esensi + 10.000 Batu Bijih</td>
+        </tr>
+        <tr>
+        <td>Penjaga Batu</td>
+        <td class="num">1e22</td>
+        <td class="num">20 dtk</td>
+        <td>125 Esensi + 12.500 Batu Bijih</td>
+        </tr>
+        <tr>
+        <td>Titan Beku</td>
+        <td class="num">1e25</td>
+        <td class="num">20 dtk</td>
+        <td>150 Esensi + 15.000 Batu Bijih</td>
+        </tr>
+        <tr>
+        <td>Golem Kristal 1</td>
+        <td class="num">1e28</td>
+        <td class="num">20 dtk</td>
+        <td>175 Esensi + 17.500 Batu Bijih</td>
+        </tr>
+        <tr>
+        <td>Kolosus Janggut Batu</td>
+        <td class="num">1e31</td>
+        <td class="num">15 dtk</td>
+        <td>200 Esensi + 20.000 Batu Bijih</td>
+        </tr>
+        <tr>
+        <td>Golem Kristal 2</td>
+        <td class="num">1e34</td>
+        <td class="num">15 dtk</td>
+        <td>225 Esensi + 22.500 Batu Bijih</td>
+        </tr>
+        <tr>
+        <td>Golem Api</td>
+        <td class="num">1e37</td>
+        <td class="num">15 dtk</td>
+        <td>250 Esensi + 25.000 Batu Bijih</td>
+        </tr>
+        <tr>
+        <td>Golem Penjaga</td>
+        <td class="num">1e40</td>
+        <td class="num">10 dtk</td>
+        <td>275 Esensi + 27.500 Batu Bijih</td>
+        </tr>
+        </tbody></table></div>
+      <div class="callout warn">
+          <div class="callout-label">Kalah itu mahal</div>
+          Kalau bos masih berdiri saat waktu habis, kamu tidak dapat <strong>apa pun</strong> dan kuncinya hilang. Setelah gagal kamu bisa melihat sisa nyawanya - pakai itu untuk menaksir berapa kerusakan lagi yang kamu butuh.
+        </div>
+    </section>
+
+    <section id="achievements">
+      <div class="section-head"><span class="section-num">17</span><h2>Pencapaian</h2></div>
+      <p class="section-dek">86 pencapaian dalam 24 kategori: klik, bijih, bos, prestise, kedalaman, dan lainnya.</p>
+      <p>Semua pencapaian dibayar dengan <strong>Batu Bijih</strong>, dan target maupun hadiahnya naik sekitar sepuluh kali tiap tingkat. Sebagian besar kategori punya tiga tingkat; kategori emas dan kerusakan lebih panjang.</p>
+      <div class="callout">
+          <div class="callout-label">Jangan lupa diambil</div>
+          Hadiahnya <strong>tidak masuk otomatis</strong>. Kalau sudah lama tidak membuka tab pencapaian, di sana pasti sudah menumpuk.
+        </div>
+    </section>
+
+    <section id="daily">
+      <div class="section-head"><span class="section-num">18</span><h2>Hadiah harian</h2></div>
+      <p class="section-dek">Kecil, sederhana, dan melewatkan satu hari tidak dihukum.</p>
+      <p>Masuk sekali sehari memberi <strong>1 kunci ruang bawah tanah</strong>. Sama setiap hari - tidak ada kalender dan tidak ada rentetan yang perlu dijaga. Untuk mengambilnya kamu harus online.</p>
+    </section>
+
+    <section id="store">
+      <div class="section-head"><span class="section-num">19</span><h2>Toko</h2></div>
+      <p class="section-dek">Diamond, kunci, paket, waktu premium, dan item Infinity permanen.</p>
+      <ul>
+          <li><strong>Paket diamond:</strong> 200 / 550 / 1.150 / 2.400 / 6.250 / 14.000 diamond. Makin besar paketnya, makin murah per satuannya.</li>
+          <li><strong>Paket kunci:</strong> 3 / 7 / 15 kunci ruang bawah tanah.</li>
+          <li><strong>Paket Kecil:</strong> 500 Berlian, 100 Esensi, 10 Batu Skill, 3 Kunci Dungeon.</li>
+          <li><strong>Paket Besar:</strong> 1.000 Berlian, 200 Esensi, 20 Batu Skill, 5 Kunci Dungeon.</li>
+          <li><strong>Paket Premium 7 Hari:</strong> 7 hari dengan kerusakan klik x5, kerusakan otomatis x5, emas x3, ketahanan panas x3, dan penghasilan offline x2.</li>
+        </ul>
+      <p>Item Infinity dibeli <strong>sekali dengan diamond</strong> dan tidak pernah direset, bahkan oleh prestise. Di akhir permainan biasanya inilah pemakaian diamond yang paling berguna.</p>
+      <div class="table-wrap">
+        <table>
+        <thead><tr>
+        <th>Item</th>
+        <th class="num">Efek</th>
+        <th class="num">Harga</th>
+        </tr></thead>
+        <tbody>
+        <tr>
+        <td>Kekuatan Infinity</td>
+        <td class="num">x4</td>
+        <td class="num">350 💎</td>
+        </tr>
+        <tr>
+        <td>Pendapatan Infinity</td>
+        <td class="num">x3</td>
+        <td class="num">350 💎</td>
+        </tr>
+        <tr>
+        <td>Armor Infinity</td>
+        <td class="num">x2</td>
+        <td class="num">350 💎</td>
+        </tr>
+        <tr>
+        <td>Kecepatan Infinity</td>
+        <td class="num">x1,5</td>
+        <td class="num">550 💎</td>
+        </tr>
+        <tr>
+        <td>Clicker Infinity</td>
+        <td class="num">7 /detik</td>
+        <td class="num">600 💎</td>
+        </tr>
+        </tbody></table></div>
+      <div class="callout">
+          <div class="callout-label">Soal harga</div>
+          Harga toko datang dari Steam dalam mata uangmu, jadi tidak ditulis di sini. Isi paket tidak pernah berubah; harganya tergantung wilayahmu.
+        </div>
+    </section>
+
+    <section id="progress">
+      <div class="section-head"><span class="section-num">20</span><h2>Papan peringkat dan statistik</h2></div>
+      <p class="section-dek">Dua tempat untuk melihat bagaimana putaran ini berjalan.</p>
+      <ul>
+          <li>Papan peringkat Steam mencatat jumlah klik, kerusakan klik, jumlah prestise, bos yang dikalahkan, dan lantai tertinggi.</li>
+          <li>Layar statistik menyimpan lebih banyak: pemasukan, pengeluaran, klik, waktu bermain, dan lainnya.</li>
+        </ul>
+    </section>
+
+    <section id="save">
+      <div class="section-head"><span class="section-num">21</span><h2>Simpanan</h2></div>
+      <p class="section-dek">Jawaban singkatnya: kemajuanmu dilindungi beberapa lapis sekaligus.</p>
+      <ul>
+          <li>Game menyimpan sendiri, terenkripsi, setiap <strong>15 detik</strong>.</li>
+          <li>Ia mencadangkan ke Steam Cloud sekitar setiap <strong>45 detik</strong>, dan selalu saat ditutup atau dijeda - jadi komputer lain melanjutkan dari titik yang sama.</li>
+          <li>Kalau berkas simpanan rusak, game beralih sendiri ke cadangannya.</li>
+          <li>Kamu juga bisa menyalin simpananmu ke papan klip dan menempelkannya di perangkat lain.</li>
+        </ul>
+    </section>
+
+    <section id="languages">
+      <div class="section-head"><span class="section-num">22</span><h2>Bahasa</h2></div>
+      <p class="section-dek">Game ini tersedia dalam 18 bahasa.</p>
+      <p>Inggris, Turki, Jerman, Prancis, Spanyol, Spanyol Amerika Latin, Italia, Polandia, Portugis Brasil, Rusia, Ukraina, Jepang, Korea, Tionghoa Sederhana, Tionghoa Tradisional, Thai, Indonesia, dan Vietnam. Game memilih bahasamu saat pertama dijalankan dan kamu bisa menggantinya kapan saja di pengaturan - panduan ini pun ada dalam semuanya, lewat tautan di bagian atas halaman.</p>
+    </section>
+
+    <footer class="doc-footer">Angka di sini mengikuti keseimbangan game saat ini dan bisa berubah seiring pembaruan. Harga toko ditetapkan Steam dan tampil dalam mata uangmu, jadi tidak dicantumkan di sini.</footer>
+  </main>
+</div>

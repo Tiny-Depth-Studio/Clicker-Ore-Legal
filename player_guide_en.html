@@ -1,4 +1,6 @@
-<title>Clicker Ore Game — Player Guide</title>
+<title>Clicker Ore Game - Player Guide</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="How the mine works: currencies, pickaxes, pets, skills, prestige, bosses and the store, explained without the maths.">
 <style>
   :root {
     --bg: #14110d;
@@ -94,7 +96,6 @@
   p { max-width: 68ch; }
   ul, ol { max-width: 68ch; }
 
-  /* ---------- layout shell ---------- */
   .shell {
     display: grid;
     grid-template-columns: 260px minmax(0, 1fr);
@@ -195,7 +196,6 @@
     margin-bottom: 3rem;
     padding-bottom: 2rem;
     border-bottom: 1px solid var(--border);
-    position: relative;
   }
   .strata {
     height: 10px;
@@ -240,7 +240,45 @@
     margin: 0;
   }
 
-  /* ---------- sections ---------- */
+  .langbar {
+    margin: 1.8rem 0 0;
+    padding-top: 1.2rem;
+    border-top: 1px solid var(--border-soft);
+  }
+  .langbar-label {
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 0.68rem;
+    color: var(--text-faint);
+    margin-bottom: 0.55rem;
+  }
+  .langbar-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem 0.4rem;
+  }
+  .langbar-list a, .langbar-list span {
+    font-family: var(--font-display);
+    font-size: 0.78rem;
+    padding: 0.18rem 0.55rem;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    color: var(--text-dim);
+    background: var(--bg-card);
+  }
+  .langbar-list a:hover {
+    text-decoration: none;
+    color: var(--text);
+    border-color: var(--accent);
+  }
+  .langbar-list span {
+    color: #14110d;
+    background: var(--accent);
+    border-color: var(--accent);
+  }
+  :root[data-theme="light"] .langbar-list span { color: #efe9da; }
+
   section {
     margin-bottom: 3.6rem;
     scroll-margin-top: 1.5rem;
@@ -266,12 +304,7 @@
     margin: 0.3rem 0 1.5rem;
     max-width: 62ch;
   }
-  h3 {
-    font-size: 1.15rem;
-    margin: 1.8rem 0 0.6rem;
-  }
 
-  /* ---------- callouts ---------- */
   .callout {
     border-left: 3px solid var(--accent);
     background: var(--bg-card);
@@ -292,7 +325,6 @@
   }
   .callout.warn .callout-label { color: var(--danger); }
 
-  /* ---------- currency cards ---------- */
   .currency-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -327,21 +359,6 @@
   }
   .cur-card p b { color: var(--text); font-weight: 600; }
 
-  .badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
-    font-family: var(--font-mono);
-    font-size: 0.82rem;
-    padding: 0.1rem 0.5rem 0.1rem 0.4rem;
-    border-radius: 20px;
-    background: color-mix(in srgb, var(--dot) 16%, var(--bg-card));
-    border: 1px solid color-mix(in srgb, var(--dot) 35%, var(--border));
-    white-space: nowrap;
-  }
-  .badge .dot { box-shadow: none; }
-
-  /* ---------- tables ---------- */
   .table-wrap {
     overflow-x: auto;
     margin: 1.2rem 0;
@@ -378,75 +395,6 @@
   td.num, th.num { font-family: var(--font-mono); }
   td.strong { color: var(--accent-strong); font-weight: 600; }
 
-  /* ---------- cards grid (pets/skills) ---------- */
-  .card-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-    gap: 1rem;
-    margin: 1.3rem 0;
-  }
-  .item-card {
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 1.1rem 1.2rem;
-  }
-  .item-card .kicker {
-    font-family: var(--font-mono);
-    font-size: 0.74rem;
-    color: var(--accent);
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-  }
-  .item-card h4 {
-    margin: 0.25rem 0 0.5rem;
-    font-size: 1.05rem;
-    font-family: var(--font-display);
-  }
-  .item-card p {
-    font-size: 0.88rem;
-    color: var(--text-dim);
-    margin: 0.3rem 0;
-    max-width: none;
-  }
-  .item-card .price {
-    margin-top: 0.7rem;
-    font-family: var(--font-mono);
-    font-size: 0.86rem;
-    color: var(--accent-strong);
-  }
-
-  /* ---------- details / formula toggles ---------- */
-  details.formula {
-    margin: 1rem 0;
-    border: 1px dashed var(--border);
-    border-radius: 6px;
-    padding: 0.1rem 1rem;
-    background: color-mix(in srgb, var(--bg-elevated) 60%, transparent);
-  }
-  details.formula summary {
-    cursor: pointer;
-    padding: 0.7rem 0;
-    font-family: var(--font-display);
-    font-size: 0.85rem;
-    color: var(--text-dim);
-    letter-spacing: 0.02em;
-  }
-  details.formula summary:hover { color: var(--accent); }
-  details.formula pre {
-    font-family: var(--font-mono);
-    font-size: 0.83rem;
-    background: var(--bg);
-    padding: 0.9rem 1rem;
-    border-radius: 6px;
-    overflow-x: auto;
-    line-height: 1.55;
-    color: var(--text-dim);
-    border: 1px solid var(--border-soft);
-  }
-  details.formula p:last-child { padding-bottom: 0.9rem; }
-
-  /* quick strategy summary */
   .strategy-track {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
@@ -508,487 +456,614 @@
 <input type="checkbox" id="nav-toggle">
 
 <div class="topbar">
-  <span class="topbar-title">⛏ Player Guide</span>
+  <span class="topbar-title">&#9935; Player Guide</span>
   <label class="nav-toggle-btn" for="nav-toggle">Contents</label>
 </div>
 
 <div class="shell">
-  <nav class="toc" aria-label="Table of contents">
-    <div class="toc-brand">Clicker Ore Game<small>Player Parameter Guide</small></div>
+  <nav class="toc" aria-label="Contents">
+    <div class="toc-brand">Clicker Ore Game<small>Player Guide</small></div>
     <ul class="toc-list">
-      <li><a href="#currencies"><span class="toc-num">01</span>Currencies</a></li>
-      <li><a href="#click-damage"><span class="toc-num">02</span>Click Damage &amp; DPS</a></li>
-      <li><a href="#critical"><span class="toc-num">03</span>Critical Hits</a></li>
-      <li><a href="#pickaxes"><span class="toc-num">04</span>Pickaxe Guide</a></li>
-      <li><a href="#skills"><span class="toc-num">05</span>Active Skills</a></li>
-      <li><a href="#pets"><span class="toc-num">06</span>Pets</a></li>
-      <li><a href="#ore-depth"><span class="toc-num">07</span>Ore &amp; Depth</a></li>
-      <li><a href="#prestige"><span class="toc-num">08</span>Prestige</a></li>
-      <li><a href="#boss"><span class="toc-num">09</span>Boss Fights</a></li>
-      <li><a href="#dungeon-key"><span class="toc-num">10</span>Dungeon Key</a></li>
-      <li><a href="#achievements"><span class="toc-num">11</span>Achievements</a></li>
-      <li><a href="#daily-reward"><span class="toc-num">12</span>Daily Reward</a></li>
-      <li><a href="#store"><span class="toc-num">13</span>Store &amp; Purchases</a></li>
-      <li><a href="#save"><span class="toc-num">14</span>Save &amp; Security</a></li>
+      <li><a href="#start"><span class="toc-num">01</span>Where To Start</a></li>
+      <li><a href="#currencies"><span class="toc-num">02</span>The 7 Currencies</a></li>
+      <li><a href="#damage"><span class="toc-num">03</span>Click Damage And Auto Damage</a></li>
+      <li><a href="#critical"><span class="toc-num">04</span>Critical Hits</a></li>
+      <li><a href="#pickaxes"><span class="toc-num">05</span>Pickaxes</a></li>
+      <li><a href="#suits"><span class="toc-num">06</span>Armour</a></li>
+      <li><a href="#temperature"><span class="toc-num">07</span>Heat</a></li>
+      <li><a href="#pets"><span class="toc-num">08</span>Pets</a></li>
+      <li><a href="#floors"><span class="toc-num">09</span>Floors, Ore And Depth</a></li>
+      <li><a href="#skills"><span class="toc-num">10</span>Active Skills</a></li>
+      <li><a href="#titles"><span class="toc-num">11</span>Titles</a></li>
+      <li><a href="#tasks"><span class="toc-num">12</span>Tasks And Taskium</a></li>
+      <li><a href="#trade"><span class="toc-num">13</span>Trade Panel</a></li>
+      <li><a href="#extras"><span class="toc-num">14</span>Free Gold</a></li>
+      <li><a href="#prestige"><span class="toc-num">15</span>Prestige</a></li>
+      <li><a href="#bosses"><span class="toc-num">16</span>Bosses</a></li>
+      <li><a href="#achievements"><span class="toc-num">17</span>Achievements</a></li>
+      <li><a href="#daily"><span class="toc-num">18</span>Daily Reward</a></li>
+      <li><a href="#store"><span class="toc-num">19</span>Store</a></li>
+      <li><a href="#progress"><span class="toc-num">20</span>Leaderboards And Statistics</a></li>
+      <li><a href="#save"><span class="toc-num">21</span>Saves</a></li>
+      <li><a href="#languages"><span class="toc-num">22</span>Languages</a></li>
     </ul>
   </nav>
 
   <main>
     <header class="hero">
       <div class="strata" role="presentation"></div>
-      <div class="eyebrow">Player Guide · Revision 2026-07-26</div>
-      <h1 class="title">Play With Every<br>Parameter Explained</h1>
-      <p class="subtitle">
-        This guide walks through the real numbers and mechanics behind pickaxes, skills, pets,
-        prestige, bosses, and the store. It's built to answer questions like "When does prestige
-        unlock?", "Which pickaxe should I upgrade?", and "Is it worth fighting this boss?"
-      </p>
+      <div class="eyebrow">Player Guide - 2026-08-12</div>
+      <h1 class="title">Everything In The Mine,<br>In Plain Words</h1>
+      <p class="subtitle">What each system does, when it opens up, and where your next hour is best spent. No formulas - just the decisions that matter.</p>
+      <div class="langbar">
+        <div class="langbar-label">Language</div>
+        <div class="langbar-list"><span>English</span><a href="player_guide_tr.html" hreflang="tr">Türkçe</a><a href="player_guide_de.html" hreflang="de">Deutsch</a><a href="player_guide_fr.html" hreflang="fr">Français</a><a href="player_guide_es.html" hreflang="es">Español</a><a href="player_guide_es_la.html" hreflang="es-419">Español (Latinoamérica)</a><a href="player_guide_it.html" hreflang="it">Italiano</a><a href="player_guide_pl.html" hreflang="pl">Polski</a><a href="player_guide_pt_br.html" hreflang="pt-BR">Português (Brasil)</a><a href="player_guide_ru.html" hreflang="ru">Русский</a><a href="player_guide_uk.html" hreflang="uk">Українська</a><a href="player_guide_ja.html" hreflang="ja">日本語</a><a href="player_guide_ko.html" hreflang="ko">한국어</a><a href="player_guide_zh_hans.html" hreflang="zh-Hans">简体中文</a><a href="player_guide_zh_hant.html" hreflang="zh-Hant">繁體中文</a><a href="player_guide_th.html" hreflang="th">ไทย</a><a href="player_guide_id.html" hreflang="id">Bahasa Indonesia</a><a href="player_guide_vi.html" hreflang="vi">Tiếng Việt</a></div>
+      </div>
     </header>
 
-    <section>
-      <div class="callout">
-        <div class="callout-label">Quick Strategy Summary</div>
-        The three stages below follow the game's natural progression flow — where to focus at each point.
-      </div>
+    <section id="start">
+      <div class="section-head"><span class="section-num">01</span><h2>Where To Start</h2></div>
+      <p class="section-dek">Three stages, following the order the game opens things up in.</p>
       <div class="strategy-track">
-        <div class="strategy-stage">
-          <div class="stage-label">Early Game (Floor 0–200)</div>
-          <ul>
-            <li>Keep upgrading your pickaxe; buy the next one the moment it unlocks</li>
-            <li>Unlock OreBreaker at floor 50 and AngerClick at floor 70</li>
-            <li>Buy your first pet (Rocky) as soon as you can afford it</li>
-          </ul>
+          <div class="strategy-stage">
+            <div class="stage-label">Early - floor 1 to 200</div>
+            <ul>
+              <li>Upgrade your pickaxe constantly; buy the next one as soon as it unlocks.</li>
+              <li>Ore Breaker arrives at floor 50, Anger Click at floor 70.</li>
+              <li>Buy Rocky as soon as you can spare the diamonds.</li>
+            </ul>
+          </div>
+          <div class="strategy-stage">
+            <div class="stage-label">Middle - floor 200 to 350</div>
+            <ul>
+              <li>Prestige for the first time at floor 200.</li>
+              <li>Spread Essence across the 7 parameters instead of maxing one.</li>
+              <li>Tasks open at floor 160, the skill tree and trade panel at floor 180.</li>
+            </ul>
+          </div>
+          <div class="strategy-stage">
+            <div class="stage-label">Late - floor 350 and beyond</div>
+            <ul>
+              <li>Fight bosses whenever you hold a key; they are your Essence engine.</li>
+              <li>Buy the Infinity items - they are permanent and never reset.</li>
+              <li>Keep armour levelled so heat never eats your damage.</li>
+            </ul>
+          </div>
         </div>
-        <div class="strategy-stage">
-          <div class="stage-label">Mid Game (Floor 200–350)</div>
-          <ul>
-            <li>Prestige for the first time at floor 200; put Essence into DPS and Click Damage first</li>
-            <li>Unlock the Skill Tree (floor 180) and start stockpiling SkillStone</li>
-            <li>Get ready for the Boss system as you approach floor 350</li>
-          </ul>
+      <div class="callout">
+          <div class="callout-label">Good to know</div>
+          Numbers get long fast, so the game switches to short forms and then to scientific notation like <strong>1.23e45</strong>. Nothing is capped - that is only a change of notation.
         </div>
-        <div class="strategy-stage">
-          <div class="stage-label">Late Game (Floor 350+)</div>
-          <ul>
-            <li>Stock up Dungeon Keys and fight bosses regularly (your main SkillStone/Essence source)</li>
-            <li>Save diamonds for the Infinity items (Power/Income/Armor/Clicker)</li>
-            <li>Grow all 7 prestige parameters evenly each run instead of maxing just one</li>
-          </ul>
-        </div>
-      </div>
     </section>
 
     <section id="currencies">
-      <div class="section-head"><span class="section-num">01</span><h2>Currencies</h2></div>
-      <p class="section-dek">There are 7 currencies in the game. Each feeds a different system — hoarding one and spending it in the wrong place is the most common early mistake.</p>
-
+      <div class="section-head"><span class="section-num">02</span><h2>The 7 Currencies</h2></div>
+      <p class="section-dek">Each one feeds a different system. Spending the right currency in the wrong place is the most common early mistake.</p>
       <div class="currency-grid">
         <div class="cur-card" style="--dot:var(--cur-gold)">
           <h4><span class="dot"></span>Gold</h4>
-          <p>Earned: <b>breaking ore</b></p>
-          <p>Spent: pickaxe &amp; suit upgrades, most purchases</p>
+          <p>Earned by <b>breaking ore</b>.</p>
+          <p>Spent on pickaxe and armour upgrades - your main workhorse.</p>
         </div>
         <div class="cur-card" style="--dot:var(--cur-diamond)">
           <h4><span class="dot"></span>Diamond</h4>
-          <p>Earned: boss rewards, ads, real-money purchase</p>
-          <p>Spent: buying pets, Infinity items, store</p>
+          <p>Comes from <b>real-money purchases only</b>.</p>
+          <p>Spent on pets and the permanent Infinity items.</p>
         </div>
         <div class="cur-card" style="--dot:var(--cur-essence)">
           <h4><span class="dot"></span>Essence</h4>
-          <p>Earned: <b>only from Prestige rewards</b></p>
-          <p>Spent: upgrading the 7 Prestige Parameters</p>
+          <p>From <b>prestige</b> and boss wins.</p>
+          <p>Spent on the 7 permanent prestige parameters.</p>
         </div>
         <div class="cur-card" style="--dot:var(--cur-taskium)">
           <h4><span class="dot"></span>Taskium</h4>
-          <p>Earned: +1 per click, task completion</p>
-          <p>Spent: Taskium store</p>
+          <p><b>+1</b> for every successful click.</p>
+          <p>Spent on accepting and rerolling tasks.</p>
         </div>
         <div class="cur-card" style="--dot:var(--cur-key)">
           <h4><span class="dot"></span>Dungeon Key</h4>
-          <p>Earned: daily reward (1/day), store packs</p>
-          <p>Spent: entering a boss fight (1 per attempt)</p>
+          <p>One free key a day, plus store packs.</p>
+          <p>Spent to enter a boss fight - 1 per attempt.</p>
         </div>
         <div class="cur-card" style="--dot:var(--cur-skillstone)">
-          <h4><span class="dot"></span>SkillStone</h4>
-          <p>Earned: boss rewards</p>
-          <p>Spent: Skill Tree nodes</p>
+          <h4><span class="dot"></span>Skill Stone</h4>
+          <p>From store packages and the trade panel.</p>
+          <p>Spent on levelling the 8 active skills.</p>
         </div>
         <div class="cur-card" style="--dot:var(--cur-orestone)">
-          <h4><span class="dot"></span>OreStone</h4>
-          <p>Earned: 1–5 random per ore broken</p>
-          <p>Spent: this is also the achievement reward currency; used in the OreStone system</p>
+          <h4><span class="dot"></span>Ore Stone</h4>
+          <p><b>1-5</b> from every ore you break, plus achievements.</p>
+          <p>Traded for Essence or Skill Stone at the trade panel.</p>
         </div>
       </div>
-
       <div class="callout">
-        <div class="callout-label">Good to know</div>
-        Once numbers get big enough, the game switches to scientific notation like <strong>1.23e45</strong>
-        (mantissa × 10<sup>exponent</sup>). The largest representable value is roughly <strong>1e308</strong> —
-        a value that hits this ceiling stops growing and stays fixed there.
-      </div>
+          <div class="callout-label">Diamonds</div>
+          Bosses, achievements and tasks never pay diamonds. Diamonds and dungeon keys are held on the server, so buying a pet needs you to be online.
+        </div>
     </section>
 
-    <section id="click-damage">
-      <div class="section-head"><span class="section-num">02</span><h2>Click Damage &amp; DPS (Auto Damage)</h2></div>
-      <p class="section-dek">You have two separate damage sources: every manual click (Click Damage) and automatic per-second damage (DPS). They're fed by different things.</p>
-
-      <h3>What increases click damage?</h3>
-      <p>Roughly in order of impact: your active pickaxe's level and skills, the AngerClick skill (×2 to ×5 while active), the Prestige parameter "Stonecrusher's Hand," title bonuses, and converting a slice of your DPS into click damage (unlocked/strengthened by the Prestige parameter "Unity of Force").</p>
-
-      <h3>What increases DPS (automatic per-second damage)?</h3>
-      <p>Your pickaxe's DPS stat (especially DPS-focused pickaxes), the Rampage skill (×2 to ×3.5 while active), the Prestige parameter "Eternal Forge," and <strong>your pets' combined DPS</strong>. One important detail: pet DPS is added <strong>after</strong> every multiplier is applied — it's added raw, not scaled by them. That means pet levels alone aren't enough in the late game; you still need to grow your pickaxe/skill multipliers.</p>
-
-      <details class="formula">
-        <summary>See the exact formula (for advanced players)</summary>
-        <pre>Click Damage = 1
-  + (Pickaxe Click Damage + share converted from DPS)
-    × Infinity × Temperature × AngerClick × Title × Prestige multipliers
-
-Total DPS = (Pickaxe DPS × Infinity × Temperature × Rampage × Prestige × Title multipliers)
-            + Total Pet DPS  (pet DPS is not affected by these multipliers, it's added last)</pre>
-      </details>
+    <section id="damage">
+      <div class="section-head"><span class="section-num">03</span><h2>Click Damage And Auto Damage</h2></div>
+      <p class="section-dek">Two separate damage sources, fed by different things.</p>
+      <p><strong>Click damage</strong> is what a tap does. It grows with your first pickaxe's level and skills, the Anger Click skill, your title, and the Stonecrusher’s Hand prestige parameter. A slice of your auto damage is also folded into every click once Unity of Force is levelled.</p>
+      <p><strong>Auto damage</strong> (per second) comes from the second pickaxe onward, the Rampage skill, the Eternal Forge parameter, and your pets.</p>
+      <div class="callout">
+          <div class="callout-label">Pets are the exception</div>
+          Pet damage is added <strong>after</strong> every multiplier, not scaled by them. Pet levels alone will not carry you late game - the pickaxe and skill multipliers still have to grow.
+        </div>
     </section>
 
     <section id="critical">
-      <div class="section-head"><span class="section-num">03</span><h2>Critical Hits</h2></div>
-      <p class="section-dek">Every click has a chance to land as a critical hit, dealing more damage than normal.</p>
-      <div class="table-wrap">
-        <table>
-          <thead><tr><th>Stat</th><th>Base (no upgrades)</th></tr></thead>
-          <tbody>
-            <tr><td>Critical Chance</td><td class="num strong">5%</td></tr>
-            <tr><td>Critical Damage Multiplier</td><td class="num strong">×1.5</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <p>There are four ways to boost these: the <strong>CriticalStrike</strong> skill (multiplies chance by ×1.3–×1.9 while active), critical bonuses from pickaxe skills, the Prestige parameters <strong>Ore Oracle</strong> (chance) and <strong>Cataclysmic Force</strong> (multiplier), and title bonuses. When a crit lands, that click's damage is multiplied by the total critical multiplier.</p>
+      <div class="section-head"><span class="section-num">04</span><h2>Critical Hits</h2></div>
+      <p class="section-dek">Every click can land as a critical and hit harder.</p>
+      <p>You start with a <strong>5%</strong> chance and a <strong>x1.5</strong> multiplier. Four things raise those: the Critical Strike skill, pickaxe skills, the Ore Oracle and Cataclysmic Force prestige parameters, and titles.</p>
     </section>
 
     <section id="pickaxes">
-      <div class="section-head"><span class="section-num">04</span><h2>Pickaxe Guide</h2></div>
-      <p class="section-dek">There are <strong>45 pickaxes</strong> in the game (not 17 — we checked while writing this guide). Each unlocks in sequence; some contribute to Click Damage, others to DPS.</p>
-
-      <h3>When does a new pickaxe unlock?</h3>
-      <p>A pickaxe automatically unlocks once your total gold earned this prestige run crosses a threshold. That threshold scales with the pickaxe's purchase cost — so reaching the next pickaxe usually means upgrading your current one well enough to earn the gold, not just clicking faster.</p>
-
-      <h3>How does the purchase cost scale?</h3>
-      <p>The first pickaxe is a flat <strong>4 Gold</strong>. Every pickaxe after that costs roughly <strong>6 times</strong> more than the previous one — which is why buying several pickaxes in a row is usually less efficient than fully upgrading the one you already have.</p>
-
-      <h3>Upgrade cost per level</h3>
-      <p>Each level costs about <strong>7% more</strong> than the last. That means endlessly upgrading a single pickaxe gets harder and harder — the "unlock a new pickaxe" flow exists specifically to balance that curve.</p>
-
+      <div class="section-head"><span class="section-num">05</span><h2>Pickaxes</h2></div>
+      <p class="section-dek">45 pickaxes, unlocked in order. They are the backbone of your damage.</p>
+      <ul>
+          <li>The first pickaxe costs <strong>5 gold</strong>; each following one costs about <strong>8 times</strong> more than the last.</li>
+          <li>A pickaxe unlocks by itself once you have earned enough gold this run - so upgrading is what opens the next one.</li>
+          <li>Every level costs about <strong>7%</strong> more than the previous one.</li>
+          <li>Only the <strong>first</strong> pickaxe feeds click damage. All the others feed auto damage per second.</li>
+          <li>Each pickaxe has 6 skills, unlocking at levels 5 / 10 / 25 / 50 / 100 / 200. Some help that pickaxe, some help all of them - the global ones are worth more.</li>
+        </ul>
       <div class="callout">
-        <div class="callout-label">Key Power Spike</div>
-        Every time a pickaxe reaches a <strong>multiple of 100 levels</strong>, its value gets multiplied by <strong>×11</strong>.
-        Pushing one pickaxe toward level 100, 200, 300... ahead of the others usually gives the single biggest power jump available.
-      </div>
-
-      <h3>Per-pickaxe skill tree</h3>
-      <p>Each pickaxe has its own <strong>6 skills</strong>. Skills become purchasable once that pickaxe reaches a specific level (e.g. 5, 20, 50, 100...) and grant a permanent percentage bonus to click damage, DPS, critical chance/multiplier, or gold income. Some skills only affect that one pickaxe, while others boost the <strong>combined total of all pickaxes</strong> — the global-effect skills are generally the more valuable ones.</p>
+          <div class="callout-label">The big jump</div>
+          Every <strong>100 levels</strong> a pickaxe multiplies its own output by <strong>x10</strong>. Pushing one pickaxe to the next hundred is usually the largest single power gain available to you.
+        </div>
     </section>
 
-    <section id="skills">
-      <div class="section-head"><span class="section-num">05</span><h2>Active Skills</h2></div>
-      <p class="section-dek">There are 8 active skills, each granting a timed boost before going on cooldown. Every skill has 7 levels; as level rises, duration gets longer, cooldown gets shorter, and cost doubles (1 → 2 → 4 → 8 → 16 → 32 → 64).</p>
+    <section id="suits">
+      <div class="section-head"><span class="section-num">06</span><h2>Armour</h2></div>
+      <p class="section-dek">5 suits, all owned from the start. They exist to keep the heat off you.</p>
+      <ul>
+          <li>You never buy armour - you only level it. Each level adds about <strong>5%</strong> heat resistance, starting from 50.</li>
+          <li>Every 100 levels the suit's resistance is multiplied by <strong>x2</strong>.</li>
+          <li>Each suit also has 6 skills that unlock as it levels.</li>
+          <li>The armour panel opens at floor <strong>130</strong>, together with the heat gauge.</li>
+        </ul>
+    </section>
 
-      <div class="table-wrap">
-        <table>
-          <thead>
-            <tr><th>Skill</th><th>Effect</th><th>Unlocks at Floor</th><th class="num">Lv1 Duration/Cooldown</th><th class="num">Lv7 Duration/Cooldown</th></tr>
-          </thead>
-          <tbody>
-            <tr><td>OreBreaker</td><td>Auto-clicks the ore/boss (7→13 hits/sec)</td><td class="num">50</td><td class="num">30s / 540s</td><td class="num">90s / 180s</td></tr>
-            <tr><td>AngerClick</td><td>Multiplies click damage</td><td class="num">70</td><td class="num">×2 · 40s / 660s</td><td class="num">×5 · 210s / 300s</td></tr>
-            <tr><td>CriticalStrike</td><td>Multiplies critical chance</td><td class="num">100</td><td class="num">×1.3 · 30s / 600s</td><td class="num">×1.9 · 150s / 240s</td></tr>
-            <tr><td>Rampage</td><td>Multiplies DPS</td><td class="num">170</td><td class="num">×2 · 40s / 840s</td><td class="num">×3.5 · 160s / 480s</td></tr>
-            <tr><td>HeatResistance</td><td>Multiplies heat resistance</td><td class="num">280</td><td class="num">×2 · 30s / 660s</td><td class="num">×5 · 140s / 300s</td></tr>
-            <tr><td>GoldenFrenzy</td><td>Multiplies gold income</td><td class="num">240</td><td class="num">×2 · 50s / 1020s</td><td class="num">×5 · 290s / 660s</td></tr>
-            <tr><td>Overcharge</td><td>Boosts the effect of the next skill used</td><td class="num">330</td><td class="num">×1.5 · instant / 1200s</td><td class="num">×3 · instant / 840s</td></tr>
-            <tr><td>TimeReversal</td><td>Cuts the cooldown of the last-used skill</td><td class="num">400</td><td class="num">−300s · instant / 1200s</td><td class="num">−1020s · instant / 840s</td></tr>
-          </tbody>
-        </table>
-      </div>
-
-      <p>The <strong>Skill Tree</strong> panel unlocks at floor 180, and the individual skills unlock across floors 50–400. <strong>Overcharge + TimeReversal</strong> are built for combos: activate Overcharge first, then use the skill you want boosted (e.g. GoldenFrenzy); TimeReversal then cuts the cooldown of whichever skill you last used, letting you use it again sooner.</p>
+    <section id="temperature">
+      <div class="section-head"><span class="section-num">07</span><h2>Heat</h2></div>
+      <p class="section-dek">The deeper you go the hotter it gets, and heat quietly cuts your damage.</p>
+      <ul>
+          <li>Floor temperature climbs steadily - roughly <strong>1.04x per floor</strong>, so it doubles every couple of dozen floors.</li>
+          <li>While your resistance is at least <strong>1.5x</strong> the floor temperature, the gauge stays clear and nothing is lost.</li>
+          <li>Once resistance drops below the temperature, damage starts bleeding away; at <strong>0.5x</strong> you keep only a twentieth of it - a <strong>95%</strong> loss.</li>
+          <li>The armour panel has an auto-buy switch for resistance; leave it on if you push depth often.</li>
+        </ul>
+      <div class="callout warn">
+          <div class="callout-label">If progress stalls</div>
+          A sudden wall where ore takes forever is almost always heat, not damage. Check the gauge before you spend anything else.
+        </div>
     </section>
 
     <section id="pets">
-      <div class="section-head"><span class="section-num">06</span><h2>Pets</h2></div>
-      <p class="section-dek">There are 5 pets, all purchased with Diamonds and then leveled up with Gold. Pet DPS is added <em>raw</em> to your total DPS, independent of every other multiplier.</p>
-
-      <div class="card-grid">
-        <div class="item-card">
-          <div class="kicker">Order 1</div>
-          <h4>Rocky (Stone Golem)</h4>
-          <p>The cheapest and earliest pet you can get. Its DPS grows the slowest per level.</p>
-          <div class="price">150 💎</div>
-        </div>
-        <div class="item-card">
-          <div class="kicker">Order 2</div>
-          <h4>Sprout (Root Golem)</h4>
-          <p>A bit pricier than Rocky, with a bit more DPS per level.</p>
-          <div class="price">175 💎</div>
-        </div>
-        <div class="item-card">
-          <div class="kicker">Order 3</div>
-          <h4>Gemstone (Crystal Golem)</h4>
-          <p>A mid-tier pet with a balanced cost-to-power ratio.</p>
-          <div class="price">200 💎</div>
-        </div>
-        <div class="item-card">
-          <div class="kicker">Order 4</div>
-          <h4>Blazestone (Lava Golem)</h4>
-          <p>Strong for the late game, with a high DPS gain per level.</p>
-          <div class="price">225 💎</div>
-        </div>
-        <div class="item-card">
-          <div class="kicker">Order 5</div>
-          <h4>Shadowshard (Obsidian Golem)</h4>
-          <p>The strongest pet — gives <strong>5 times</strong> the DPS per level compared to Rocky.</p>
-          <div class="price">250 💎</div>
-        </div>
-      </div>
-
-      <h3>What drives pet DPS?</h3>
-      <p>Each pet level adds roughly <strong>1% of your current total click damage × the pet's order number</strong> as DPS. That's why Shadowshard (order 5) is five times stronger than Rocky (order 1) at the same level — but leveling Shadowshard also costs more. Practical takeaway: <strong>grow your click damage first</strong> (that's what pet DPS is based on), then invest in pet levels.</p>
-
-      <p>Level cost scales exponentially with a pet's order and grows roughly <strong>30% per level</strong> — so in the late game, prioritizing your highest-order (strongest) pet is usually more efficient than keeping every pet at the same level.</p>
-
-      <p>Each pet also has its own <strong>6 skills</strong>, unlocking at set levels; some only affect that pet, others boost the combined total of all pets.</p>
-
+      <div class="section-head"><span class="section-num">08</span><h2>Pets</h2></div>
+      <p class="section-dek">5 pets, bought with diamonds and then levelled with gold.</p>
+      <ul>
+          <li>Prices run from <strong>150</strong> to <strong>250</strong> diamonds (150 / 175 / 200 / 225 / 250).</li>
+          <li>Each level adds about <strong>1%</strong> of your pickaxe click damage as auto damage, multiplied by the pet's order - so Shadowshard gives five times what Rocky gives at the same level.</li>
+          <li>Levels get about <strong>20%</strong> more expensive each time, and every 100 levels the pet multiplies its own output by <strong>x5</strong>.</li>
+          <li>Each pet has 6 skills; some help only that pet, some help all of them.</li>
+          <li>The pet panel opens at floor <strong>30</strong>, or as soon as you own a pet.</li>
+        </ul>
       <div class="callout warn">
-        <div class="callout-label">Prestige Warning</div>
-        Prestiging resets every pet's <strong>level back to 1</strong> and un-purchases their skills.
-        You don't need to buy the pets themselves again, though — ownership is permanent.
-      </div>
+          <div class="callout-label">Prestige and pets</div>
+          Prestige puts every pet back to <strong>level 1</strong> and clears their skills. Ownership is permanent though - you never rebuy a pet.
+        </div>
     </section>
 
-    <section id="ore-depth">
-      <div class="section-head"><span class="section-num">07</span><h2>Ore &amp; Depth</h2></div>
-      <p class="section-dek">As you progress, floors get tougher but pay out more gold. Depth (in meters) is what determines which ore types you'll encounter.</p>
-
-      <h3>What changes as floors get harder?</h3>
-      <p>Each floor has slightly more health and slightly more gold than the last — growth starts slow and accelerates the further you go. Also, <strong>every 10th floor</strong> ("duration floor") turns into a mini-boss: a <strong>20-second timer</strong> starts, and that ore's health/gold is boosted by roughly <strong>50% (health) / 51% (gold)</strong>.</p>
-
-      <h3>What determines ore type?</h3>
-      <p>The type of ore you break (Iron, Copper, Gold, Uranium, etc.) depends entirely on <strong>depth (meters)</strong>, not the floor number. New, rarer ore types get added to the pool as depth increases:</p>
+    <section id="floors">
+      <div class="section-head"><span class="section-num">09</span><h2>Floors, Ore And Depth</h2></div>
+      <p class="section-dek">Floors decide how tough ore is and how much gold it pays. Depth decides what the ore looks like.</p>
+      <ul>
+          <li>Every floor has a little more health and a little more gold than the one before, and the curve steepens as you go.</li>
+          <li>Every <strong>10th floor</strong> is a timed floor: a <strong>20 second</strong> clock starts, health is up about 50% and gold about 51%.</li>
+          <li>Difficulty also runs in cycles of about 100 floors - the first floors of a cycle pay best relative to their health.</li>
+          <li>Every ore drops <strong>1-5</strong> Ore Stone on top of its gold.</li>
+        </ul>
+      <div class="callout warn">
+          <div class="callout-label">Timed floors bite</div>
+          If the clock runs out you are pushed back <strong>one floor</strong>. Skip the timed floor rather than fail it if your damage is short.
+        </div>
+      <p>You can drop back to any floor you have already reached this run and farm there. Picking a floor by hand turns auto-advance off; turn it back on when you want to climb again.</p>
+      <p>There are <strong>40</strong> ore types in total, and depth decides which ones appear. Ore type only changes the look and its dust - health and gold come from the floor.</p>
       <div class="table-wrap">
         <table>
-          <thead><tr><th>Depth</th><th>Total Ore Types</th><th>Examples</th></tr></thead>
-          <tbody>
-            <tr><td class="num">0–100m</td><td class="num">9</td><td>Iron, Copper, Carbon, Silicon...</td></tr>
-            <tr><td class="num">100–500m</td><td class="num">20</td><td>+ Gold, Silver, Lead, Zinc...</td></tr>
-            <tr><td class="num">500–1500m</td><td class="num">30</td><td>+ Platinum, Titanium, Cobalt...</td></tr>
-            <tr><td class="num">1500m+</td><td class="num">40</td><td>+ Uranium, Thorium, Osmium (rare)</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <p>Ore type only affects appearance and its "dust" reward — how tough it is to break and how much gold it pays out is determined entirely by the <strong>floor</strong>, not the ore type.</p>
+        <thead><tr>
+        <th class="num">Depth</th>
+        <th class="num">Ore types</th>
+        <th class="num">Around floor</th>
+        </tr></thead>
+        <tbody>
+        <tr>
+        <td class="num">0-100 m</td>
+        <td class="num">9</td>
+        <td class="num">~54</td>
+        </tr>
+        <tr>
+        <td class="num">100-500 m</td>
+        <td class="num">20</td>
+        <td class="num">~129</td>
+        </tr>
+        <tr>
+        <td class="num">500-1,500 m</td>
+        <td class="num">30</td>
+        <td class="num">~196</td>
+        </tr>
+        <tr>
+        <td class="num">1,500 m+</td>
+        <td class="num">40</td>
+        <td class="num">-</td>
+        </tr>
+        </tbody></table></div>
+    </section>
 
-      <p>Every broken ore also drops <strong>1 to 5 random OreStone</strong>.</p>
+    <section id="skills">
+      <div class="section-head"><span class="section-num">10</span><h2>Active Skills</h2></div>
+      <p class="section-dek">8 skills, each a timed boost followed by a cooldown.</p>
+      <p>A skill is <strong>free</strong> when its floor arrives - you start using it at level 1. Levelling it up to level 7 costs <strong>63 Skill Stone</strong> in total, or <strong>504</strong> for all 8. Higher levels mean longer duration and shorter cooldown.</p>
+      <div class="table-wrap">
+        <table>
+        <thead><tr>
+        <th>Skill</th>
+        <th class="num">Floor</th>
+        <th class="num">Level 1 (duration / cooldown)</th>
+        <th class="num">Level 7 (duration / cooldown)</th>
+        <th class="num">Effect</th>
+        </tr></thead>
+        <tbody>
+        <tr>
+        <td>Ore Breaker</td>
+        <td class="num">50</td>
+        <td class="num">30s / 540s</td>
+        <td class="num">90s / 180s</td>
+        <td class="num">7 → 13 /s</td>
+        </tr>
+        <tr>
+        <td>Anger Click</td>
+        <td class="num">70</td>
+        <td class="num">40s / 660s</td>
+        <td class="num">210s / 300s</td>
+        <td class="num">x2 → x5</td>
+        </tr>
+        <tr>
+        <td>Critical Strike</td>
+        <td class="num">100</td>
+        <td class="num">30s / 600s</td>
+        <td class="num">150s / 240s</td>
+        <td class="num">x1.3 → x1.9</td>
+        </tr>
+        <tr>
+        <td>Rampage</td>
+        <td class="num">170</td>
+        <td class="num">40s / 840s</td>
+        <td class="num">160s / 480s</td>
+        <td class="num">x2 → x3.5</td>
+        </tr>
+        <tr>
+        <td>Golden Frenzy</td>
+        <td class="num">240</td>
+        <td class="num">50s / 1,020s</td>
+        <td class="num">290s / 660s</td>
+        <td class="num">x2 → x5</td>
+        </tr>
+        <tr>
+        <td>Heat Resistance</td>
+        <td class="num">280</td>
+        <td class="num">30s / 660s</td>
+        <td class="num">140s / 300s</td>
+        <td class="num">x2 → x5</td>
+        </tr>
+        <tr>
+        <td>Overcharge</td>
+        <td class="num">330</td>
+        <td class="num">20s / 1,200s</td>
+        <td class="num">20s / 840s</td>
+        <td class="num">x1.5 → x3</td>
+        </tr>
+        <tr>
+        <td>Time Reversal</td>
+        <td class="num">400</td>
+        <td class="num">1,200s</td>
+        <td class="num">840s</td>
+        <td class="num">-300s → -1,020s</td>
+        </tr>
+        </tbody></table></div>
+      <p>The first skill line opens at floor 50; the skill tree panel where you spend Skill Stone opens at floor <strong>180</strong>. You do not need the panel to use a skill.</p>
+      <div class="callout">
+          <div class="callout-label">The combo</div>
+          Fire Overcharge first, then the skill you actually want boosted - for example Golden Frenzy. Time Reversal then cuts the cooldown of whatever you used last, so you get it back sooner.
+        </div>
+    </section>
 
-      <details class="formula">
-        <summary>See the exact formula (for advanced players)</summary>
-        <pre>Ore Health = 1 + 9 × 1.06^(floor-1) × floor        (×1.5 every 10th floor)
-Gold Reward = 1 + 1.45 × 1.05^(floor-1) × floor    (×1.51 every 10th floor)
-Depth(m)    = 1 + 1.1 × 1.01^(floor-1) × floor</pre>
-      </details>
+    <section id="titles">
+      <div class="section-head"><span class="section-num">11</span><h2>Titles</h2></div>
+      <p class="section-dek">100 titles that pick themselves up as you climb.</p>
+      <ul>
+          <li>Titles run from floor 1 to floor <strong>50,000</strong> and are chosen automatically from the highest floor you reached this run.</li>
+          <li>Each title adds about <strong>+0.1</strong> to the bonuses it carries.</li>
+          <li>The bonuses arrive in stages - click damage from the first title, then auto damage, heat resistance, gold, critical multiplier, critical chance and the DPS-to-click share (titles 1 / 5 / 10 / 15 / 20 / 25 / 30).</li>
+        </ul>
+    </section>
+
+    <section id="tasks">
+      <div class="section-head"><span class="section-num">12</span><h2>Tasks And Taskium</h2></div>
+      <p class="section-dek">A side track that turns your clicking into a second income.</p>
+      <ul>
+          <li>Every successful click gives <strong>+1 Taskium</strong>.</li>
+          <li>Accepting a task costs <strong>200</strong>, rerolling one costs <strong>25</strong>.</li>
+          <li>The task panel opens at floor 160; the 6 slots open across floors 160 / 170 / 180 / 190 / 200 / 210.</li>
+          <li>There are 10 task types in 6 rarities. Each task lasts 60 minutes, and unaccepted ones are replaced every hour.</li>
+          <li>The reward scales with rarity - between <strong>50-500</strong> times the current floor's ore gold. The rarest ones also pay Essence.</li>
+        </ul>
+    </section>
+
+    <section id="trade">
+      <div class="section-head"><span class="section-num">13</span><h2>Trade Panel</h2></div>
+      <p class="section-dek">Opens at floor 180. The only place Ore Stone is worth anything.</p>
+      <ul>
+          <li>1 Skill Stone becomes <strong>5,000 Ore Stone</strong> - up to 100,000 per trade.</li>
+          <li><strong>2,000 Ore Stone</strong> becomes 1 Essence.</li>
+          <li><strong>5,000 Ore Stone</strong> becomes 1 Skill Stone.</li>
+        </ul>
+      <p>That last one matters: it is how a long farming session turns into skill levels without a boss fight.</p>
+    </section>
+
+    <section id="extras">
+      <div class="section-head"><span class="section-num">14</span><h2>Free Gold</h2></div>
+      <p class="section-dek">Three sources that ask for nothing but showing up.</p>
+      <ul>
+          <li><strong>Gold balloon</strong> - from floor 50, one drifts in every 70-105 seconds. Clicking it pays <strong>x6</strong> the ore gold of your best floor this run.</li>
+          <li><strong>Offline earnings</strong> - counted after 60 minutes away and capped at 12 hours. Premium doubles it.</li>
+          <li><strong>Play time reward</strong> - every 60 minutes of play pays about 100 times a minute's worth of gold at your best floor.</li>
+        </ul>
     </section>
 
     <section id="prestige">
-      <div class="section-head"><span class="section-num">08</span><h2>Prestige</h2></div>
-      <p class="section-dek">Prestige resets most of your progress in exchange for a permanent power source (Essence). Timed well, it speeds up your progress overall.</p>
-
-      <h3>When does Prestige unlock?</h3>
-      <p>The Prestige panel unlocks the first time you reach <strong>floor 200</strong>. The requirement grows for each subsequent prestige: <strong>(your current prestige level + 1) × 100</strong>. So after your 1st prestige, the 2nd requires floor 300, the 3rd requires floor 400, and so on.</p>
-
-      <h3>What happens when you prestige?</h3>
-      <table>
-        <thead><tr><th>Resets</th><th>Stays Permanent</th></tr></thead>
-        <tbody>
-          <tr><td>Gold (back to 0)</td><td>Prestige Level (+1)</td></tr>
-          <tr><td>Floor progress (restarts)</td><td>Essence balance</td></tr>
-          <tr><td>Pickaxe upgrades (except starting ones)</td><td>Levels of the 7 Prestige Parameters</td></tr>
-          <tr><td>Pet levels (back to 1)</td><td>Pet ownership (no need to rebuy)</td></tr>
-          <tr><td>Pickaxe/pet skills</td><td></td></tr>
-        </tbody>
-      </table>
-
-      <h3>How is the Essence reward calculated?</h3>
-      <p>It's based directly on what you accomplished during that prestige run:</p>
+      <div class="section-head"><span class="section-num">15</span><h2>Prestige</h2></div>
+      <p class="section-dek">Trade this run's progress for permanent power. Timed well, it is the fastest thing in the game.</p>
+      <p>The prestige panel opens the first time you reach floor <strong>200</strong>. After that each prestige asks for 100 floors more - 300, then 400, and so on.</p>
       <ul>
-        <li>Highest floor reached × <strong>0.5</strong></li>
-        <li>Total ore broken × <strong>0.25</strong></li>
-        <li>Pickaxe levels bought × <strong>0.1</strong></li>
-        <li>Suit levels bought × <strong>0.1</strong></li>
-      </ul>
+          <li><strong>Reset:</strong> gold, Taskium, floor progress, pickaxe and armour upgrades, pet levels, all bought skills, and your boss level.</li>
+          <li><strong>Kept:</strong> prestige level, Essence, the 7 parameter levels, pet ownership, Infinity items, achievements.</li>
+          <li>You do not restart at floor 1: your next run starts at <strong>100 x your prestige level</strong>, with a pile of starting gold worth about 500 ore.</li>
+          <li>Every skill cooldown is cleared, so you begin the run with all of them ready.</li>
+        </ul>
+      <p>The Essence reward comes from two things only: the <strong>highest floor</strong> you reached (0.5 each) and the <strong>ore you broke</strong> (0.25 each).</p>
       <div class="callout">
-        <div class="callout-label">Worked Example</div>
-        You reached floor 250, broke 5,000 ore, and bought 300 pickaxe levels and 50 suit levels:<br>
-        <span style="font-family:var(--font-mono)">(250×0.5) + (5000×0.25) + (300×0.1) + (50×0.1) = 125 + 1250 + 30 + 5 = <strong style="color:var(--accent-strong)">1,410 Essence</strong></span><br>
-        As you can see, <strong>breaking ore</strong> is by far the biggest Essence source — spending your last minutes before prestiging racing to a higher floor is usually less valuable than just breaking as much ore as possible.
-      </div>
-
-      <h3>Where should you spend Essence? (The 7 Prestige Parameters)</h3>
+          <div class="callout-label">Break ore, do not sprint</div>
+          Because ore count is the bigger term, farming a comfortable floor for the last stretch beats racing upward to a floor you can barely damage.
+        </div>
       <div class="table-wrap">
         <table>
-          <thead><tr><th>Parameter</th><th>Effect</th><th class="num">Per Level</th></tr></thead>
-          <tbody>
-            <tr><td>Eternal Forge</td><td>DPS multiplier</td><td class="num strong">+20%</td></tr>
-            <tr><td>Stonecrusher's Hand</td><td>Click Damage multiplier</td><td class="num strong">+25%</td></tr>
-            <tr><td>Golden Abyss</td><td>Gold income multiplier</td><td class="num strong">+10%</td></tr>
-            <tr><td>Ore Oracle</td><td>Critical chance</td><td class="num strong">+5%</td></tr>
-            <tr><td>Cataclysmic Force</td><td>Critical multiplier</td><td class="num strong">+5%</td></tr>
-            <tr><td>Infernal Shield</td><td>Heat resistance</td><td class="num strong">+10%</td></tr>
-            <tr><td>Unity of Force</td><td>DPS-to-click-damage conversion</td><td class="num strong">+1%</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <p>These bonuses stack <strong>additively</strong> level by level (not compounding), meaning every level contributes an equal amount — so your investment "doesn't get diluted" even at low levels. Cost is in Essence and rises slowly as level increases (roughly a 1% growth rate plus the level itself), meaning these 7 parameters are <strong>far cheaper to grow</strong> than pickaxe or pet upgrades — it usually pays to spend Essence regularly rather than let it pile up.</p>
+        <thead><tr>
+        <th>Parameter</th>
+        <th>Effect</th>
+        <th class="num">Per level</th>
+        </tr></thead>
+        <tbody>
+        <tr>
+        <td>Eternal Forge</td>
+        <td>Auto damage per second</td>
+        <td class="num">+20%</td>
+        </tr>
+        <tr>
+        <td>Stonecrusher’s Hand</td>
+        <td>Click damage</td>
+        <td class="num">+25%</td>
+        </tr>
+        <tr>
+        <td>Golden Abyss</td>
+        <td>Gold income</td>
+        <td class="num">+10%</td>
+        </tr>
+        <tr>
+        <td>Ore Oracle</td>
+        <td>Critical chance</td>
+        <td class="num">+5%</td>
+        </tr>
+        <tr>
+        <td>Cataclysmic Force</td>
+        <td>Critical multiplier</td>
+        <td class="num">+5%</td>
+        </tr>
+        <tr>
+        <td>Infernal Shield</td>
+        <td>Heat resistance</td>
+        <td class="num">+10%</td>
+        </tr>
+        <tr>
+        <td>Unity of Force</td>
+        <td>Share of DPS added to clicks</td>
+        <td class="num">+1%</td>
+        </tr>
+        </tbody></table></div>
+      <p>The bonuses add up level by level rather than compounding, and Essence costs rise slowly - so spending Essence often beats hoarding it.</p>
     </section>
 
-    <section id="boss">
-      <div class="section-head"><span class="section-num">09</span><h2>Boss Fights</h2></div>
-      <p class="section-dek">Bosses are a timed damage race: kill the boss before the timer runs out for a big reward, or walk away with nothing if you don't.</p>
-
-      <h3>How do you unlock and enter one?</h3>
-      <p>The Boss/Dungeon system unlocks at <strong>floor 350</strong>. It doesn't start automatically — you pick a boss from the dungeon entry panel and spend <strong>1 Dungeon Key</strong> to start the fight. No key means no fight, so keeping track of your key stock matters.</p>
-
-      <h3>10 Bosses, unlocked in order</h3>
-      <p>Bosses aren't random — beating one unlocks the next in a fixed sequence. Health increases roughly <strong>1000×</strong> per level, while the time limit shrinks.</p>
+    <section id="bosses">
+      <div class="section-head"><span class="section-num">16</span><h2>Bosses</h2></div>
+      <p class="section-dek">A timed damage race for Essence. Opens at floor 350.</p>
+      <ul>
+          <li>You pick a boss and spend <strong>1 dungeon key</strong> to start. Nothing starts by itself.</li>
+          <li>Bosses unlock in order - beat one to see the next. Health goes up about a thousandfold each step while the clock gets shorter.</li>
+          <li>Rewards grow with your prestige level: about <strong>+15%</strong> per level.</li>
+          <li>Prestige sends your boss level back to the first one.</li>
+        </ul>
       <div class="table-wrap">
         <table>
-          <thead><tr><th class="num">Boss</th><th>Name</th><th class="num">Health</th><th class="num">Time Limit</th><th class="num">Reward (Essence / SkillStone / OreStone)</th></tr></thead>
-          <tbody>
-            <tr><td class="num">1</td><td>Crystal Colossus</td><td class="num">1e13</td><td class="num">30s</td><td class="num">100 / 3 / 5,000</td></tr>
-            <tr><td class="num">2</td><td>Crystal Guardian</td><td class="num">1e16</td><td class="num">25s</td><td class="num">200 / 6 / 10,000</td></tr>
-            <tr><td class="num">3</td><td>Crimson Sentinel</td><td class="num">1e19</td><td class="num">20s</td><td class="num">300 / 9 / 15,000</td></tr>
-            <tr><td class="num">4</td><td>Stone Guardian</td><td class="num">1e22</td><td class="num">20s</td><td class="num">400 / 12 / 20,000</td></tr>
-            <tr><td class="num">5</td><td>Frost Titan</td><td class="num">1e25</td><td class="num">20s</td><td class="num">500 / 15 / 25,000</td></tr>
-            <tr><td class="num">6</td><td>Crystal Golem</td><td class="num">1e28</td><td class="num">20s</td><td class="num">600 / 18 / 30,000</td></tr>
-            <tr><td class="num">7</td><td>Stonebeard Colossus</td><td class="num">1e31</td><td class="num">15s</td><td class="num">700 / 21 / 35,000</td></tr>
-            <tr><td class="num">8</td><td>Crystal Golem II</td><td class="num">1e34</td><td class="num">15s</td><td class="num">800 / 24 / 40,000</td></tr>
-            <tr><td class="num">9</td><td>Blaze Golem</td><td class="num">1e37</td><td class="num">15s</td><td class="num">900 / 27 / 45,000</td></tr>
-            <tr><td class="num">10</td><td>Golem Guardian</td><td class="num">1e40</td><td class="num">10s</td><td class="num">1,000 / 30 / 50,000</td></tr>
-          </tbody>
-        </table>
-      </div>
-
+        <thead><tr>
+        <th>Boss</th>
+        <th class="num">Health</th>
+        <th class="num">Time</th>
+        <th>Reward</th>
+        </tr></thead>
+        <tbody>
+        <tr>
+        <td>Crystal Colossus</td>
+        <td class="num">1e13</td>
+        <td class="num">30s</td>
+        <td>50 Essence + 5,000 Ore Stone</td>
+        </tr>
+        <tr>
+        <td>Crystal Guardian</td>
+        <td class="num">1e16</td>
+        <td class="num">25s</td>
+        <td>75 Essence + 7,500 Ore Stone</td>
+        </tr>
+        <tr>
+        <td>Crimson Sentinel</td>
+        <td class="num">1e19</td>
+        <td class="num">20s</td>
+        <td>100 Essence + 10,000 Ore Stone</td>
+        </tr>
+        <tr>
+        <td>Stone Guardian</td>
+        <td class="num">1e22</td>
+        <td class="num">20s</td>
+        <td>125 Essence + 12,500 Ore Stone</td>
+        </tr>
+        <tr>
+        <td>Frost Titan</td>
+        <td class="num">1e25</td>
+        <td class="num">20s</td>
+        <td>150 Essence + 15,000 Ore Stone</td>
+        </tr>
+        <tr>
+        <td>Crystal Golem 1</td>
+        <td class="num">1e28</td>
+        <td class="num">20s</td>
+        <td>175 Essence + 17,500 Ore Stone</td>
+        </tr>
+        <tr>
+        <td>Stonebeard Colossus</td>
+        <td class="num">1e31</td>
+        <td class="num">15s</td>
+        <td>200 Essence + 20,000 Ore Stone</td>
+        </tr>
+        <tr>
+        <td>Crystal Golem 2</td>
+        <td class="num">1e34</td>
+        <td class="num">15s</td>
+        <td>225 Essence + 22,500 Ore Stone</td>
+        </tr>
+        <tr>
+        <td>Blaze Golem</td>
+        <td class="num">1e37</td>
+        <td class="num">15s</td>
+        <td>250 Essence + 25,000 Ore Stone</td>
+        </tr>
+        <tr>
+        <td>Golem Guardian</td>
+        <td class="num">1e40</td>
+        <td class="num">10s</td>
+        <td>275 Essence + 27,500 Ore Stone</td>
+        </tr>
+        </tbody></table></div>
       <div class="callout warn">
-        <div class="callout-label">If You Lose</div>
-        If the boss is still alive when the timer hits zero, the fight ends with <strong>no reward</strong> and the Dungeon Key you spent isn't refunded.
-        Before entering, make sure your DPS can realistically finish that boss's health bar within the time limit — you'll see the remaining health percentage after a failed attempt, which helps you estimate how much more DPS you need for next time.
-      </div>
-      <p><strong>Boss rewards are the main source of SkillStone and Essence</strong> — growing your Skill Tree and Prestige parameters requires fighting bosses regularly.</p>
-    </section>
-
-    <section id="dungeon-key">
-      <div class="section-head"><span class="section-num">10</span><h2>Dungeon Key</h2></div>
-      <p class="section-dek">It has exactly one job: your ticket into a boss fight.</p>
-      <p>Every boss attempt costs <strong>1 key</strong> (win or lose, it's not refunded). Your key sources: 1 free key from the daily reward, plus purchasable packs of 3 / 7 / 15 in the store. Since boss rewards (SkillStone, Essence) are a core late-game resource, it pays to avoid burning keys on attempts you're not actually ready to win.</p>
+          <div class="callout-label">Losing costs you</div>
+          If the timer ends first you get <strong>nothing</strong> and the key is gone. After a failed attempt you can see how much health was left - use that to judge how much more damage you need.
+        </div>
     </section>
 
     <section id="achievements">
-      <div class="section-head"><span class="section-num">11</span><h2>Achievements</h2></div>
-      <p class="section-dek">There are 25 achievement categories (breaking ore, click count, critical hits, boss kills, prestige count, and more), most with 3–6 tiers. Every achievement reward is paid in <strong>OreStone</strong>.</p>
-
-      <p>General pattern: both the target and the reward roughly scale <strong>×10</strong> per tier. A few examples:</p>
-      <div class="table-wrap">
-        <table>
-          <thead><tr><th>Category</th><th>Tier 1</th><th>Tier 2</th><th>Tier 3</th></tr></thead>
-          <tbody>
-            <tr><td>Break Ore</td><td class="num">1,000 → 5,000 OreStone</td><td class="num">10,000 → 50,000 OreStone</td><td class="num">100,000 → 500,000 OreStone</td></tr>
-            <tr><td>Kill Boss</td><td class="num">1 → 5,000 OreStone</td><td class="num">5 → 15,000 OreStone</td><td class="num">15 → 50,000 OreStone</td></tr>
-            <tr><td>Prestige Count</td><td class="num">5 → 5,000 OreStone</td><td class="num">50 → 50,000 OreStone</td><td class="num">500 → 500,000 OreStone</td></tr>
-          </tbody>
-        </table>
-      </div>
+      <div class="section-head"><span class="section-num">17</span><h2>Achievements</h2></div>
+      <p class="section-dek">86 achievements across 24 categories - clicks, ore, bosses, prestiges, depth and more.</p>
+      <p>Every achievement pays <strong>Ore Stone</strong>, and both the target and the reward grow roughly tenfold per tier. Most categories have three tiers; the gold and damage ones go further.</p>
       <div class="callout">
-        <div class="callout-label">Don't forget</div>
-        Rewards are <strong>not automatic</strong> — you have to manually claim them from the achievements tab. If you haven't checked in a while, you could be sitting on a large pile of unclaimed OreStone.
-      </div>
+          <div class="callout-label">Claim them</div>
+          Rewards are <strong>not automatic</strong>. If you have not opened the achievements tab in a while, there is a pile waiting there.
+        </div>
     </section>
 
-    <section id="daily-reward">
-      <div class="section-head"><span class="section-num">12</span><h2>Daily Reward</h2></div>
-      <p class="section-dek">Simple, and there's no penalty for missing a day.</p>
-      <p>Once a day, logging in gets you <strong>1 Dungeon Key</strong>. The claim resets at <strong>UTC midnight</strong>. There's <strong>no</strong> 7-day reward calendar and <strong>no</strong> login streak — missing a day carries no penalty, and your claim simply resets normally the next day. You need to be logged in (online) to claim it.</p>
+    <section id="daily">
+      <div class="section-head"><span class="section-num">18</span><h2>Daily Reward</h2></div>
+      <p class="section-dek">Small, simple, and no penalty for missing a day.</p>
+      <p>Logging in once a day gives <strong>1 dungeon key</strong>. It is the same every day - there is no calendar and no streak to protect. You need to be online to claim it.</p>
     </section>
 
     <section id="store">
-      <div class="section-head"><span class="section-num">13</span><h2>Store &amp; Purchases</h2></div>
-      <p class="section-dek">Real-money purchases cover diamonds, dungeon keys, bundles, and permanent "Infinity" upgrades.</p>
-
-      <h3>Diamond Packs</h3>
+      <div class="section-head"><span class="section-num">19</span><h2>Store</h2></div>
+      <p class="section-dek">Diamonds, keys, packages, premium time, and the permanent Infinity items.</p>
+      <ul>
+          <li><strong>Diamond packs:</strong> 200 / 550 / 1,150 / 2,400 / 6,250 / 14,000 diamonds. The bigger the pack, the better the rate.</li>
+          <li><strong>Key packs:</strong> 3 / 7 / 15 dungeon keys.</li>
+          <li><strong>Small Package:</strong> 500 Diamond, 100 Essence, 10 Skill Stone, 3 Dungeon Key.</li>
+          <li><strong>Big Package:</strong> 1,000 Diamond, 200 Essence, 20 Skill Stone, 5 Dungeon Key.</li>
+          <li><strong>7-Day Premium Package:</strong> 7 days of x5 click damage, x5 auto damage, x3 gold, x3 heat resistance and x2 offline earnings.</li>
+        </ul>
+      <p>The Infinity items are bought <strong>once with diamonds</strong> and never reset, not even on prestige. Late game they are usually the best diamond spend you have.</p>
       <div class="table-wrap">
         <table>
-          <thead><tr><th class="num">Diamonds</th><th class="num">Price</th></tr></thead>
-          <tbody>
-            <tr><td class="num">200</td><td class="num">$1.09</td></tr>
-            <tr><td class="num">550</td><td class="num">$2.99</td></tr>
-            <tr><td class="num">1,150</td><td class="num">$5.49</td></tr>
-            <tr><td class="num">2,400</td><td class="num">$10.99</td></tr>
-            <tr><td class="num">6,250</td><td class="num">$27.39</td></tr>
-            <tr><td class="num">14,000</td><td class="num">$54.99</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <p style="font-size:0.85rem; color:var(--text-faint)">The unit price drops as the pack size grows — the biggest pack is always the best value.</p>
-
-      <h3>Dungeon Key Packs</h3>
-      <p><strong>3 keys</strong> / $1.99 &nbsp;·&nbsp; <strong>7 keys</strong> / $4.18 &nbsp;·&nbsp; <strong>15 keys</strong> / $7.96</p>
-
-      <h3>Bundles</h3>
-      <div class="card-grid">
-        <div class="item-card">
-          <div class="kicker">Bundle</div>
-          <h4>Small Package</h4>
-          <p>500 Diamonds + 100 Essence + 10 SkillStone + 5 Dungeon Keys</p>
-          <div class="price">$3.75</div>
+        <thead><tr>
+        <th>Item</th>
+        <th class="num">Effect</th>
+        <th class="num">Cost</th>
+        </tr></thead>
+        <tbody>
+        <tr>
+        <td>Infinity Power</td>
+        <td class="num">x4</td>
+        <td class="num">350 💎</td>
+        </tr>
+        <tr>
+        <td>Infinity Income</td>
+        <td class="num">x3</td>
+        <td class="num">350 💎</td>
+        </tr>
+        <tr>
+        <td>Infinity Armor</td>
+        <td class="num">x2</td>
+        <td class="num">350 💎</td>
+        </tr>
+        <tr>
+        <td>Infinity Speed</td>
+        <td class="num">x1.5</td>
+        <td class="num">550 💎</td>
+        </tr>
+        <tr>
+        <td>Infinity Clicker</td>
+        <td class="num">7 /s</td>
+        <td class="num">600 💎</td>
+        </tr>
+        </tbody></table></div>
+      <div class="callout">
+          <div class="callout-label">Prices</div>
+          Store prices come from Steam in your own currency, so they are not printed here. What a pack contains never changes; what it costs depends on your region.
         </div>
-        <div class="item-card">
-          <div class="kicker">Bundle</div>
-          <h4>Big Package</h4>
-          <p>1,000 Diamonds + 200 Essence + 20 SkillStone + 10 Dungeon Keys</p>
-          <div class="price">$5.40</div>
-        </div>
-        <div class="item-card">
-          <div class="kicker">Subscription</div>
-          <h4>7-Day Premium</h4>
-          <p>Gives click damage an extra flat multiplier for 7 days</p>
-          <div class="price">$4.99</div>
-        </div>
-      </div>
+    </section>
 
-      <h3>Infinity Items (one-time, permanent)</h3>
-      <p>These four items are purchased <strong>once</strong> and their effect is permanent — usually the most efficient diamond spend in the late game:</p>
-      <div class="table-wrap">
-        <table>
-          <thead><tr><th>Item</th><th>Effect</th><th class="num">Cost</th></tr></thead>
-          <tbody>
-            <tr><td>Infinity Power</td><td>Permanent +500% (×6) damage multiplier</td><td class="num strong">350 💎</td></tr>
-            <tr><td>Infinity Income</td><td>Permanent +500% (×6) gold income multiplier</td><td class="num strong">350 💎</td></tr>
-            <tr><td>Infinity Armor</td><td>Permanent +500% (×6) heat resistance multiplier</td><td class="num strong">350 💎</td></tr>
-            <tr><td>Infinity Clicker</td><td>Permanent auto-click at 10 clicks/second</td><td class="num strong">600 💎</td></tr>
-          </tbody>
-        </table>
-      </div>
+    <section id="progress">
+      <div class="section-head"><span class="section-num">20</span><h2>Leaderboards And Statistics</h2></div>
+      <p class="section-dek">Two places to see how the run is going.</p>
+      <ul>
+          <li>Steam leaderboards track clicks, click damage, prestige count, bosses killed and highest floor.</li>
+          <li>The statistics screen keeps a longer record - earnings, spending, clicks, time played and more.</li>
+        </ul>
     </section>
 
     <section id="save">
-      <div class="section-head"><span class="section-num">14</span><h2>Save &amp; Security — "Will I Lose My Progress?"</h2></div>
-      <p class="section-dek">Short answer: no, several layers protect your progress.</p>
+      <div class="section-head"><span class="section-num">21</span><h2>Saves</h2></div>
+      <p class="section-dek">Short answer: your progress is safe in several ways at once.</p>
       <ul>
-        <li>The game auto-saves, encrypted, every <strong>15 seconds</strong>.</li>
-        <li>It backs up to Steam Cloud roughly <strong>every 45 seconds</strong> (and always when the game closes or is paused) — with Steam Cloud enabled, you can pick up right where you left off on a different computer.</li>
-        <li>If a save file gets corrupted, the game automatically falls back to the last <strong>backup file</strong> with no progress loss.</li>
-        <li>You can also manually copy your save to the clipboard (export) and paste it back in on another device (import).</li>
-      </ul>
+          <li>The game saves itself, encrypted, every <strong>15 seconds</strong>.</li>
+          <li>It backs up to Steam Cloud about every <strong>45 seconds</strong>, and always when you close or pause - so another computer picks up where you left off.</li>
+          <li>If a save file is damaged the game falls back to its backup by itself.</li>
+          <li>You can also copy your save to the clipboard and paste it back in on another device.</li>
+        </ul>
     </section>
 
-    <footer class="doc-footer">
-      This guide reflects the game's current balance data; numbers may change with future updates.
-      For a developer-facing technical reference, see <code>OYUNCU_PARAMETRE_REHBERI.md</code> in the repository root.
-    </footer>
+    <section id="languages">
+      <div class="section-head"><span class="section-num">22</span><h2>Languages</h2></div>
+      <p class="section-dek">The game ships in 18 languages.</p>
+      <p>English, Turkish, German, French, Spanish, Latin American Spanish, Italian, Polish, Brazilian Portuguese, Russian, Ukrainian, Japanese, Korean, Simplified Chinese, Traditional Chinese, Thai, Indonesian and Vietnamese. The game picks yours on first launch and you can change it any time in settings - this guide is available in all of them, linked at the top of the page.</p>
+    </section>
+
+    <footer class="doc-footer">Numbers here follow the game's current balance and can change with updates. Store prices are set on Steam and shown in your own currency, so they are not listed here.</footer>
   </main>
 </div>

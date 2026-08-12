@@ -1,0 +1,1069 @@
+<title>Clicker Ore Game - คู่มือผู้เล่น</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="เหมืองทำงานอย่างไร: สกุลเงิน อีเต๋อ สัตว์เลี้ยง สกิล เพรสทีจ บอส และร้านค้า อธิบายโดยไม่ใช้สูตร">
+<style>
+  :root {
+    --bg: #14110d;
+    --bg-elevated: #1d1811;
+    --bg-card: #211b13;
+    --text: #ede6d8;
+    --text-dim: #a89a82;
+    --text-faint: #766a55;
+    --accent: #e0a752;
+    --accent-strong: #f2bd6e;
+    --accent-2: #7fb8ad;
+    --border: #3a2f22;
+    --border-soft: #2a2318;
+    --danger: #cf7a5a;
+    --shadow: 0 8px 24px rgba(0,0,0,0.35);
+
+    --cur-gold: #e0a752;
+    --cur-diamond: #7fd1e0;
+    --cur-essence: #b79ef0;
+    --cur-taskium: #93a8d6;
+    --cur-key: #d98a63;
+    --cur-skillstone: #7fc9a0;
+    --cur-orestone: #b5a68c;
+
+    --font-display: "Bahnschrift", "Segoe UI Semibold", "Arial Narrow Bold", "Arial Narrow", sans-serif;
+    --font-body: "Sitka Text", "Iowan Old Style", Georgia, "Times New Roman", serif;
+    --font-mono: "Cascadia Mono", "Consolas", "SF Mono", ui-monospace, monospace;
+  }
+
+  :root[data-theme="light"] {
+    --bg: #efe9da;
+    --bg-elevated: #e6ddc8;
+    --bg-card: #f3ede0;
+    --text: #241d14;
+    --text-dim: #5c5138;
+    --text-faint: #857656;
+    --accent: #a8621a;
+    --accent-strong: #8a4e12;
+    --accent-2: #2f7a70;
+    --border: #d3c5a4;
+    --border-soft: #ddd0b1;
+    --danger: #a3492c;
+    --shadow: 0 8px 20px rgba(90,70,30,0.12);
+  }
+
+  @media (prefers-color-scheme: light) {
+    :root:not([data-theme="dark"]) {
+      --bg: #efe9da;
+      --bg-elevated: #e6ddc8;
+      --bg-card: #f3ede0;
+      --text: #241d14;
+      --text-dim: #5c5138;
+      --text-faint: #857656;
+      --accent: #a8621a;
+      --accent-strong: #8a4e12;
+      --accent-2: #2f7a70;
+      --border: #d3c5a4;
+      --border-soft: #ddd0b1;
+      --danger: #a3492c;
+      --shadow: 0 8px 20px rgba(90,70,30,0.12);
+    }
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: 17px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection { background: var(--accent); color: #14110d; }
+
+  a { color: var(--accent-strong); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  a:focus-visible, button:focus-visible, summary:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    text-wrap: balance;
+    letter-spacing: 0.01em;
+    color: var(--text);
+  }
+
+  p { max-width: 68ch; }
+  ul, ol { max-width: 68ch; }
+
+  .shell {
+    display: grid;
+    grid-template-columns: 260px minmax(0, 1fr);
+    min-height: 100vh;
+  }
+
+  .topbar {
+    display: none;
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: var(--bg-elevated);
+    border-bottom: 1px solid var(--border);
+    padding: 0.7rem 1rem;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .topbar-title {
+    font-family: var(--font-display);
+    font-size: 0.95rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--accent-strong);
+  }
+  #nav-toggle { display: none; }
+  .nav-toggle-btn {
+    font-family: var(--font-display);
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 0.4rem 0.7rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.85rem;
+  }
+
+  nav.toc {
+    position: sticky;
+    top: 0;
+    align-self: start;
+    height: 100vh;
+    overflow-y: auto;
+    padding: 2rem 1.4rem 3rem;
+    background: var(--bg-elevated);
+    border-right: 1px solid var(--border);
+  }
+  .toc-brand {
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    letter-spacing: 0.03em;
+    color: var(--accent-strong);
+    margin-bottom: 0.15rem;
+  }
+  .toc-brand small {
+    display: block;
+    font-family: var(--font-body);
+    font-style: italic;
+    font-size: 0.78rem;
+    color: var(--text-faint);
+    letter-spacing: 0;
+    margin-top: 0.25rem;
+  }
+  .toc-list {
+    list-style: none;
+    margin: 1.6rem 0 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+  }
+  .toc-list a {
+    display: block;
+    color: var(--text-dim);
+    font-size: 0.88rem;
+    padding: 0.32rem 0.5rem;
+    border-radius: 4px;
+    border-left: 2px solid transparent;
+  }
+  .toc-list a:hover {
+    color: var(--text);
+    text-decoration: none;
+    background: rgba(224,167,82,0.08);
+    border-left-color: var(--accent);
+  }
+  .toc-num {
+    font-family: var(--font-mono);
+    color: var(--text-faint);
+    font-size: 0.78rem;
+    margin-right: 0.45rem;
+  }
+
+  main {
+    padding: 3.2rem clamp(1.2rem, 4vw, 4rem) 6rem;
+    max-width: 900px;
+  }
+
+  header.hero {
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .strata {
+    height: 10px;
+    width: 100%;
+    border-radius: 3px;
+    margin-bottom: 1.6rem;
+    background: repeating-linear-gradient(
+      90deg,
+      var(--accent) 0 6%,
+      var(--accent-2) 6% 11%,
+      var(--border-soft) 11% 18%,
+      var(--accent) 18% 24%,
+      var(--border-soft) 24% 34%,
+      var(--accent-2) 34% 40%,
+      var(--accent) 40% 48%,
+      var(--border-soft) 48% 58%,
+      var(--accent-2) 58% 63%,
+      var(--accent) 63% 72%,
+      var(--border-soft) 72% 82%,
+      var(--accent-2) 82% 90%,
+      var(--accent) 90% 100%
+    );
+    opacity: 0.85;
+  }
+  .eyebrow {
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-size: 0.72rem;
+    color: var(--accent);
+    margin-bottom: 0.6rem;
+  }
+  h1.title {
+    font-size: clamp(2rem, 4.2vw, 2.9rem);
+    margin: 0 0 0.7rem;
+    line-height: 1.1;
+  }
+  .subtitle {
+    color: var(--text-dim);
+    font-size: 1.08rem;
+    max-width: 62ch;
+    margin: 0;
+  }
+
+  .langbar {
+    margin: 1.8rem 0 0;
+    padding-top: 1.2rem;
+    border-top: 1px solid var(--border-soft);
+  }
+  .langbar-label {
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 0.68rem;
+    color: var(--text-faint);
+    margin-bottom: 0.55rem;
+  }
+  .langbar-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem 0.4rem;
+  }
+  .langbar-list a, .langbar-list span {
+    font-family: var(--font-display);
+    font-size: 0.78rem;
+    padding: 0.18rem 0.55rem;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    color: var(--text-dim);
+    background: var(--bg-card);
+  }
+  .langbar-list a:hover {
+    text-decoration: none;
+    color: var(--text);
+    border-color: var(--accent);
+  }
+  .langbar-list span {
+    color: #14110d;
+    background: var(--accent);
+    border-color: var(--accent);
+  }
+  :root[data-theme="light"] .langbar-list span { color: #efe9da; }
+
+  section {
+    margin-bottom: 3.6rem;
+    scroll-margin-top: 1.5rem;
+  }
+  .section-head {
+    display: flex;
+    align-items: baseline;
+    gap: 0.7rem;
+    margin-bottom: 0.3rem;
+  }
+  .section-num {
+    font-family: var(--font-mono);
+    color: var(--accent);
+    font-size: 0.95rem;
+  }
+  h2 {
+    font-size: 1.55rem;
+    margin: 0;
+  }
+  .section-dek {
+    color: var(--text-dim);
+    font-size: 0.98rem;
+    margin: 0.3rem 0 1.5rem;
+    max-width: 62ch;
+  }
+
+  .callout {
+    border-left: 3px solid var(--accent);
+    background: var(--bg-card);
+    padding: 0.95rem 1.2rem;
+    border-radius: 0 6px 6px 0;
+    margin: 1.2rem 0;
+    font-size: 0.95rem;
+  }
+  .callout strong { color: var(--accent-strong); }
+  .callout.warn { border-left-color: var(--danger); }
+  .callout-label {
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 0.72rem;
+    color: var(--accent);
+    margin-bottom: 0.35rem;
+  }
+  .callout.warn .callout-label { color: var(--danger); }
+
+  .currency-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 0.9rem;
+    margin: 1.4rem 0;
+  }
+  .cur-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-top: 3px solid var(--dot);
+    border-radius: 6px;
+    padding: 0.95rem 1rem 1.05rem;
+  }
+  .cur-card h4 {
+    margin: 0 0 0.5rem;
+    font-size: 0.98rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .dot {
+    width: 9px; height: 9px; border-radius: 50%;
+    background: var(--dot);
+    flex: none;
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--dot) 20%, transparent);
+  }
+  .cur-card p {
+    margin: 0.15rem 0;
+    font-size: 0.84rem;
+    color: var(--text-dim);
+    max-width: none;
+  }
+  .cur-card p b { color: var(--text); font-weight: 600; }
+
+  .table-wrap {
+    overflow-x: auto;
+    margin: 1.2rem 0;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+  }
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    min-width: 460px;
+    font-size: 0.9rem;
+  }
+  thead th {
+    text-align: left;
+    font-family: var(--font-display);
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    font-size: 0.72rem;
+    color: var(--text-dim);
+    background: var(--bg-elevated);
+    padding: 0.6rem 0.85rem;
+    border-bottom: 1px solid var(--border);
+    white-space: nowrap;
+  }
+  tbody td {
+    padding: 0.55rem 0.85rem;
+    border-bottom: 1px solid var(--border-soft);
+    font-variant-numeric: tabular-nums;
+    color: var(--text);
+  }
+  tbody tr:last-child td { border-bottom: none; }
+  tbody tr:nth-child(even) { background: color-mix(in srgb, var(--accent) 3%, transparent); }
+  td.num, th.num { font-family: var(--font-mono); }
+  td.strong { color: var(--accent-strong); font-weight: 600; }
+
+  .strategy-track {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 1.4rem 0;
+  }
+  .strategy-stage {
+    background: var(--bg-card);
+    padding: 1rem 1.1rem;
+  }
+  .strategy-stage .stage-label {
+    font-family: var(--font-display);
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+    margin-bottom: 0.4rem;
+  }
+  .strategy-stage ul {
+    margin: 0;
+    padding-left: 1.1rem;
+    font-size: 0.86rem;
+    color: var(--text-dim);
+  }
+  .strategy-stage li { margin-bottom: 0.25rem; }
+
+  footer.doc-footer {
+    margin-top: 4rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+    color: var(--text-faint);
+    font-size: 0.8rem;
+  }
+
+  @media (max-width: 880px) {
+    .shell { grid-template-columns: 1fr; }
+    .topbar { display: flex; }
+    nav.toc {
+      position: fixed;
+      inset: 0 20% 0 0;
+      top: 52px;
+      height: calc(100vh - 52px);
+      transform: translateX(-100%);
+      transition: transform 0.22s ease;
+      z-index: 15;
+      box-shadow: var(--shadow);
+    }
+    #nav-toggle:checked ~ .shell nav.toc {
+      transform: translateX(0);
+    }
+    main { padding: 2rem 1.2rem 5rem; }
+  }
+</style>
+
+<input type="checkbox" id="nav-toggle">
+
+<div class="topbar">
+  <span class="topbar-title">&#9935; คู่มือผู้เล่น</span>
+  <label class="nav-toggle-btn" for="nav-toggle">สารบัญ</label>
+</div>
+
+<div class="shell">
+  <nav class="toc" aria-label="สารบัญ">
+    <div class="toc-brand">Clicker Ore Game<small>คู่มือผู้เล่น</small></div>
+    <ul class="toc-list">
+      <li><a href="#start"><span class="toc-num">01</span>เริ่มจากตรงไหน</a></li>
+      <li><a href="#currencies"><span class="toc-num">02</span>สกุลเงิน 7 ชนิด</a></li>
+      <li><a href="#damage"><span class="toc-num">03</span>ความเสียหายจากคลิกและแบบอัตโนมัติ</a></li>
+      <li><a href="#critical"><span class="toc-num">04</span>คริติคอล</a></li>
+      <li><a href="#pickaxes"><span class="toc-num">05</span>อีเต๋อ</a></li>
+      <li><a href="#suits"><span class="toc-num">06</span>ชุดเกราะ</a></li>
+      <li><a href="#temperature"><span class="toc-num">07</span>ความร้อน</a></li>
+      <li><a href="#pets"><span class="toc-num">08</span>สัตว์เลี้ยง</a></li>
+      <li><a href="#floors"><span class="toc-num">09</span>ชั้น แร่ และความลึก</a></li>
+      <li><a href="#skills"><span class="toc-num">10</span>สกิลใช้งาน</a></li>
+      <li><a href="#titles"><span class="toc-num">11</span>ฉายา</a></li>
+      <li><a href="#tasks"><span class="toc-num">12</span>ภารกิจและ Taskium</a></li>
+      <li><a href="#trade"><span class="toc-num">13</span>หน้าต่างแลกเปลี่ยน</a></li>
+      <li><a href="#extras"><span class="toc-num">14</span>ทองที่ได้เปล่า</a></li>
+      <li><a href="#prestige"><span class="toc-num">15</span>เพรสทีจ</a></li>
+      <li><a href="#bosses"><span class="toc-num">16</span>บอส</a></li>
+      <li><a href="#achievements"><span class="toc-num">17</span>ความสำเร็จ</a></li>
+      <li><a href="#daily"><span class="toc-num">18</span>รางวัลรายวัน</a></li>
+      <li><a href="#store"><span class="toc-num">19</span>ร้านค้า</a></li>
+      <li><a href="#progress"><span class="toc-num">20</span>กระดานผู้นำและสถิติ</a></li>
+      <li><a href="#save"><span class="toc-num">21</span>การบันทึก</a></li>
+      <li><a href="#languages"><span class="toc-num">22</span>ภาษา</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <header class="hero">
+      <div class="strata" role="presentation"></div>
+      <div class="eyebrow">คู่มือผู้เล่น - 2026-08-12</div>
+      <h1 class="title">ทั้งเหมือง<br>อธิบายด้วยภาษาง่าย ๆ</h1>
+      <p class="subtitle">แต่ละระบบทำอะไร เปิดที่ชั้นไหน และควรใช้เวลาอีกหนึ่งชั่วโมงถัดไปกับอะไร ไม่มีสูตรคำนวณ มีแต่สิ่งที่ช่วยตัดสินใจ</p>
+      <div class="langbar">
+        <div class="langbar-label">ภาษา</div>
+        <div class="langbar-list"><a href="player_guide_en.html" hreflang="en">English</a><a href="player_guide_tr.html" hreflang="tr">Türkçe</a><a href="player_guide_de.html" hreflang="de">Deutsch</a><a href="player_guide_fr.html" hreflang="fr">Français</a><a href="player_guide_es.html" hreflang="es">Español</a><a href="player_guide_es_la.html" hreflang="es-419">Español (Latinoamérica)</a><a href="player_guide_it.html" hreflang="it">Italiano</a><a href="player_guide_pl.html" hreflang="pl">Polski</a><a href="player_guide_pt_br.html" hreflang="pt-BR">Português (Brasil)</a><a href="player_guide_ru.html" hreflang="ru">Русский</a><a href="player_guide_uk.html" hreflang="uk">Українська</a><a href="player_guide_ja.html" hreflang="ja">日本語</a><a href="player_guide_ko.html" hreflang="ko">한국어</a><a href="player_guide_zh_hans.html" hreflang="zh-Hans">简体中文</a><a href="player_guide_zh_hant.html" hreflang="zh-Hant">繁體中文</a><span>ไทย</span><a href="player_guide_id.html" hreflang="id">Bahasa Indonesia</a><a href="player_guide_vi.html" hreflang="vi">Tiếng Việt</a></div>
+      </div>
+    </header>
+
+    <section id="start">
+      <div class="section-head"><span class="section-num">01</span><h2>เริ่มจากตรงไหน</h2></div>
+      <p class="section-dek">สามช่วง เรียงตามลำดับที่เกมเปิดเนื้อหาให้</p>
+      <div class="strategy-track">
+          <div class="strategy-stage">
+            <div class="stage-label">ช่วงต้น - ชั้น 1 ถึงชั้น 200</div>
+            <ul>
+              <li>อัปเกรดอีเต๋อไม่หยุด และซื้ออันถัดไปทันทีที่เปิด</li>
+              <li>ผู้ทลายแร่ มาที่ชั้น 50 และ คลิกพิโรธ ที่ชั้น 70</li>
+              <li>พอมีเพชรเหลือ ให้ซื้อ เจ้าก้อนหิน</li>
+            </ul>
+          </div>
+          <div class="strategy-stage">
+            <div class="stage-label">ช่วงกลาง - ชั้น 200 ถึงชั้น 350</div>
+            <ul>
+              <li>ทำเพรสทีจครั้งแรกที่ชั้น 200</li>
+              <li>กระจายเอสเซนส์ให้ค่าพลังทั้ง 7 อย่าง อย่าเทลงอย่างเดียว</li>
+              <li>ภารกิจเปิดที่ชั้น 160 ส่วนต้นไม้สกิลและหน้าต่างแลกเปลี่ยนเปิดที่ชั้น 180</li>
+            </ul>
+          </div>
+          <div class="strategy-stage">
+            <div class="stage-label">ช่วงปลาย - ชั้น 350 ขึ้นไป</div>
+            <ul>
+              <li>มีกุญแจก็ไปสู้บอส เพราะเป็นแหล่งเอสเซนส์หลัก</li>
+              <li>ซื้อไอเทมอินฟินิตี เพราะเป็นของถาวรและไม่รีเซ็ตแม้ทำเพรสทีจ</li>
+              <li>อัปเกรดชุดเกราะให้ทัน เพื่อไม่ให้ความร้อนกินความเสียหายของคุณ</li>
+            </ul>
+          </div>
+        </div>
+      <div class="callout">
+          <div class="callout-label">ควรรู้ไว้</div>
+          ตัวเลขยาวขึ้นเร็วมาก เกมจึงเปลี่ยนไปใช้รูปย่อ แล้วเปลี่ยนเป็นสัญกรณ์วิทยาศาสตร์อย่าง <strong>1.23e45</strong> ไม่ได้มีเพดานอะไร เป็นเพียงการเปลี่ยนวิธีเขียน
+        </div>
+    </section>
+
+    <section id="currencies">
+      <div class="section-head"><span class="section-num">02</span><h2>สกุลเงิน 7 ชนิด</h2></div>
+      <p class="section-dek">แต่ละชนิดหล่อเลี้ยงระบบต่างกัน การใช้สกุลเงินที่ถูกผิดที่คือความผิดพลาดที่พบบ่อยที่สุดในช่วงต้น</p>
+      <div class="currency-grid">
+        <div class="cur-card" style="--dot:var(--cur-gold)">
+          <h4><span class="dot"></span>ทองคำ</h4>
+          <p>ได้จาก<b>การทุบแร่</b></p>
+          <p>ใช้อัปเกรดอีเต๋อและชุดเกราะ เป็นสกุลเงินหลักของงานประจำวัน</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-diamond)">
+          <h4><span class="dot"></span>เพชร</h4>
+          <p>ได้จาก<b>การซื้อด้วยเงินจริงเท่านั้น</b></p>
+          <p>ใช้ซื้อสัตว์เลี้ยงและไอเทมอินฟินิตีแบบถาวร</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-essence)">
+          <h4><span class="dot"></span>เอสเซนซ์</h4>
+          <p>ได้จาก<b>เพรสทีจ</b>และการล้มบอส</p>
+          <p>ใช้อัปเกรดค่าพลังเพรสทีจถาวร 7 อย่าง</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-taskium)">
+          <h4><span class="dot"></span>Taskium</h4>
+          <p><b>+1</b> ทุกครั้งที่คลิกเข้าเป้า</p>
+          <p>ใช้รับภารกิจและสุ่มภารกิจใหม่</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-key)">
+          <h4><span class="dot"></span>กุญแจดันเจี้ยน</h4>
+          <p>ฟรีวันละหนึ่งดอก ที่เหลือมาจากแพ็กในร้านค้า</p>
+          <p>ใช้เข้าสู้บอส ครั้งละ 1 ดอก</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-skillstone)">
+          <h4><span class="dot"></span>ศิลาสกิล</h4>
+          <p>ได้จากแพ็กในร้านค้าและหน้าต่างแลกเปลี่ยน</p>
+          <p>ใช้เพิ่มระดับสกิลใช้งาน 8 สกิล</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-orestone)">
+          <h4><span class="dot"></span>ศิลาแร่</h4>
+          <p>ได้ <b>1-5</b> ชิ้นจากแร่ทุกก้อน และจากความสำเร็จ</p>
+          <p>แลกเป็นเอสเซนส์หรือหินสกิลได้ที่หน้าต่างแลกเปลี่ยน</p>
+        </div>
+      </div>
+      <div class="callout">
+          <div class="callout-label">เรื่องเพชร</div>
+          บอส ความสำเร็จ และภารกิจไม่ให้เพชร เพชรและกุญแจดันเจียนเก็บไว้ที่เซิร์ฟเวอร์ ดังนั้นการซื้อสัตว์เลี้ยงต้องออนไลน์
+        </div>
+    </section>
+
+    <section id="damage">
+      <div class="section-head"><span class="section-num">03</span><h2>ความเสียหายจากคลิกและแบบอัตโนมัติ</h2></div>
+      <p class="section-dek">ความเสียหายสองแหล่งที่แยกกัน และสิ่งที่ทำให้โตก็ต่างกัน</p>
+      <p><strong>ความเสียหายจากคลิก</strong> คือสิ่งที่การกดหนึ่งครั้งทำได้ ค่านี้โตตามระดับและสกิลของอีเต๋อด้ามแรก สกิล คลิกพิโรธ ฉายาของคุณ และค่าพลังเพรสทีจ มือทลายศิลา เมื่ออัป เอกภาพแห่งพลัง แล้ว ส่วนหนึ่งของความเสียหายอัตโนมัติจะถูกเติมเข้าไปในทุกคลิกด้วย</p>
+      <p><strong>ความเสียหายอัตโนมัติ</strong> (ต่อวินาที) มาจากอีเต๋อด้ามที่สองขึ้นไป สกิล อาละวาด ค่าพลัง เตาหลอมนิรันดร์ และสัตว์เลี้ยงของคุณ</p>
+      <div class="callout">
+          <div class="callout-label">สัตว์เลี้ยงเป็นข้อยกเว้น</div>
+          ความเสียหายของสัตว์เลี้ยงถูกบวก<strong>หลัง</strong>ตัวคูณทั้งหมด จึงไม่ถูกตัวคูณขยาย ช่วงปลายเกมระดับสัตว์เลี้ยงอย่างเดียวไม่พอ ตัวคูณของอีเต๋อและสกิลต้องโตไปด้วย
+        </div>
+    </section>
+
+    <section id="critical">
+      <div class="section-head"><span class="section-num">04</span><h2>คริติคอล</h2></div>
+      <p class="section-dek">ทุกคลิกมีโอกาสออกคริติคอลและทำความเสียหายมากขึ้น</p>
+      <p>ค่าเริ่มต้นคือโอกาส <strong>5%</strong> และตัวคูณ <strong>x1.5</strong> มีสี่อย่างที่ช่วยดันค่านี้ ได้แก่สกิล คริติคอลสไตรค์ สกิลของอีเต๋อ ค่าพลังเพรสทีจ ผู้หยั่งรู้แร่ กับ พลังหายนะ และฉายา</p>
+    </section>
+
+    <section id="pickaxes">
+      <div class="section-head"><span class="section-num">05</span><h2>อีเต๋อ</h2></div>
+      <p class="section-dek">อีเต๋อ 45 ด้ามที่เปิดตามลำดับ เป็นกระดูกสันหลังของความเสียหาย</p>
+      <ul>
+          <li>อีเต๋อด้ามแรกราคา <strong>5 ทอง</strong> ด้ามถัด ๆ ไปแพงกว่าด้ามก่อนราว <strong>8 เท่า</strong></li>
+          <li>อีเต๋อเปิดเองเมื่อคุณหาทองในรอบนี้ได้มากพอ พูดง่าย ๆ ว่าการอัปเกรดคือสิ่งที่เปิดด้ามถัดไป</li>
+          <li>แต่ละระดับแพงกว่าระดับก่อนราว <strong>7%</strong></li>
+          <li>มีเพียง<strong>ด้ามแรก</strong>ที่เพิ่มความเสียหายจากคลิก ด้ามอื่นทั้งหมดเพิ่มความเสียหายอัตโนมัติต่อวินาที</li>
+          <li>อีเต๋อแต่ละด้ามมี 6 สกิล เปิดที่ระดับ 5 / 10 / 25 / 50 / 100 / 200 บางสกิลช่วยเฉพาะด้ามนั้น บางสกิลช่วยทุกด้าม แบบหลังคุ้มกว่า</li>
+        </ul>
+      <div class="callout">
+          <div class="callout-label">ก้าวกระโดดที่ใหญ่ที่สุด</div>
+          ทุก <strong>100 ระดับ</strong> อีเต๋อจะคูณผลผลิตของตัวเองด้วย <strong>x10</strong> การดันด้ามหนึ่งไปถึงหลักร้อยถัดไปมักเป็นการเพิ่มพลังก้อนใหญ่ที่สุดที่คุณทำได้
+        </div>
+    </section>
+
+    <section id="suits">
+      <div class="section-head"><span class="section-num">06</span><h2>ชุดเกราะ</h2></div>
+      <p class="section-dek">ชุดเกราะ 5 ชุดที่คุณมีครบตั้งแต่ต้น หน้าที่ของมันคือกันความร้อน</p>
+      <ul>
+          <li>ชุดเกราะไม่ต้องซื้อ มีแต่การอัปเกรด แต่ละระดับเพิ่มต้านทานความร้อนราว <strong>5%</strong> โดยเริ่มจาก 50</li>
+          <li>ทุก 100 ระดับ ต้านทานของชุดจะถูกคูณด้วย <strong>x2</strong></li>
+          <li>แต่ละชุดยังมี 6 สกิลที่เปิดตามระดับ</li>
+          <li>หน้าต่างชุดเกราะเปิดที่ชั้น <strong>130</strong> พร้อมกับมาตรวัดความร้อน</li>
+        </ul>
+    </section>
+
+    <section id="temperature">
+      <div class="section-head"><span class="section-num">07</span><h2>ความร้อน</h2></div>
+      <p class="section-dek">ยิ่งลึกยิ่งร้อน และความร้อนจะค่อย ๆ กัดความเสียหายของคุณไปเงียบ ๆ</p>
+      <ul>
+          <li>อุณหภูมิของชั้นเพิ่มขึ้นตลอด ราว <strong>1.04 เท่าต่อชั้น</strong> จึงเพิ่มเป็นสองเท่าทุกยี่สิบชั้นกว่า</li>
+          <li>ถ้าต้านทานของคุณอยู่ที่ <strong>1.5 เท่า</strong>ของอุณหภูมิขึ้นไป มาตรวัดจะสะอาดและคุณไม่เสียอะไร</li>
+          <li>เมื่อต้านทานต่ำกว่าอุณหภูมิ ความเสียหายจะเริ่มรั่ว และที่ <strong>0.5 เท่า</strong> จะเหลือเพียงหนึ่งในยี่สิบ คือเสียไป <strong>95%</strong></li>
+          <li>หน้าต่างชุดเกราะมีสวิตช์ซื้อต้านทานอัตโนมัติ ถ้าลงลึกบ่อยก็เปิดไว้</li>
+        </ul>
+      <div class="callout warn">
+          <div class="callout-label">ถ้าติดอยู่กับที่ทันที</div>
+          กำแพงที่แร่ทุบไม่แตกเสียที มักเป็นเรื่องความร้อน ไม่ใช่ความเสียหายไม่พอ ลองดูมาตรวัดก่อนจะเสียเงินกับอย่างอื่น
+        </div>
+    </section>
+
+    <section id="pets">
+      <div class="section-head"><span class="section-num">08</span><h2>สัตว์เลี้ยง</h2></div>
+      <p class="section-dek">สัตว์เลี้ยง 5 ตัว ซื้อด้วยเพชรแล้วเลี้ยงต่อด้วยทอง</p>
+      <ul>
+          <li>ราคาไล่จาก <strong>150</strong> ถึง <strong>250</strong> เพชร (150 / 175 / 200 / 225 / 250)</li>
+          <li>แต่ละระดับเพิ่มความเสียหายอัตโนมัติราว <strong>1%</strong> ของความเสียหายจากคลิกของอีเต๋อ คูณด้วยลำดับของสัตว์เลี้ยง ที่ระดับเท่ากัน เจ้าเศษเงา จึงให้ห้าเท่าของ เจ้าก้อนหิน</li>
+          <li>ค่าอัประดับแพงขึ้นราว <strong>20%</strong> ทุกครั้ง และทุก 100 ระดับ สัตว์เลี้ยงจะคูณผลผลิตของตัวเองด้วย <strong>x5</strong></li>
+          <li>สัตว์เลี้ยงแต่ละตัวมี 6 สกิล บางสกิลช่วยเฉพาะตัวมันเอง บางสกิลช่วยทุกตัว</li>
+          <li>หน้าต่างสัตว์เลี้ยงเปิดที่ชั้น <strong>30</strong> หรือทันทีที่คุณมีสัตว์เลี้ยงหนึ่งตัว</li>
+        </ul>
+      <div class="callout warn">
+          <div class="callout-label">เพรสทีจกับสัตว์เลี้ยง</div>
+          เพรสทีจจะดึงสัตว์เลี้ยงทุกตัวกลับไป <strong>ระดับ 1</strong> และล้างสกิลของมัน แต่สิทธิ์ครอบครองเป็นของถาวร ไม่ต้องซื้อซ้ำ
+        </div>
+    </section>
+
+    <section id="floors">
+      <div class="section-head"><span class="section-num">09</span><h2>ชั้น แร่ และความลึก</h2></div>
+      <p class="section-dek">ชั้นกำหนดว่าแร่แข็งแค่ไหนและให้ทองเท่าไร ความลึกกำหนดว่าแร่หน้าตาเป็นอย่างไร</p>
+      <ul>
+          <li>แต่ละชั้นมีพลังชีวิตและทองมากกว่าชั้นก่อนเล็กน้อย และยิ่งขึ้นไปเส้นก็ยิ่งชัน</li>
+          <li>ทุก <strong>ชั้นที่ 10</strong> เป็นชั้นจับเวลา จะเริ่มนับ <strong>20 วินาที</strong> พลังชีวิตสูงขึ้นราว 50% และทองราว 51%</li>
+          <li>ความยากยังหมุนเป็นรอบราว 100 ชั้น ชั้นต้น ๆ ของแต่ละรอบให้ทองคุ้มกับพลังชีวิตมากที่สุด</li>
+          <li>แร่ทุกก้อนยังทิ้ง <strong>1-5</strong> หินแร่เพิ่มจากทอง</li>
+        </ul>
+      <div class="callout warn">
+          <div class="callout-label">ชั้นจับเวลากัดเจ็บ</div>
+          ถ้าเวลาหมด คุณจะถูกส่งลงไป <strong>หนึ่งชั้น</strong> ถ้าความเสียหายไม่ถึง การข้ามชั้นจับเวลาคุ้มกว่าการปล่อยให้แพ้
+        </div>
+      <p>คุณลงไปชั้นไหนก็ได้ที่เคยไปถึงในรอบนี้ แล้วฟาร์มที่นั่น การเลือกชั้นด้วยมือจะปิดการไต่อัตโนมัติ เปิดกลับเมื่อจะไต่ต่อ</p>
+      <p>แร่มีทั้งหมด <strong>40</strong> ชนิด และความลึกเป็นตัวกำหนดว่าจะเจอชนิดใด ชนิดของแร่เปลี่ยนแค่หน้าตาและผงของมัน พลังชีวิตกับทองมาจากชั้น</p>
+      <div class="table-wrap">
+        <table>
+        <thead><tr>
+        <th class="num">ความลึก</th>
+        <th class="num">ชนิดแร่</th>
+        <th class="num">ราวชั้น</th>
+        </tr></thead>
+        <tbody>
+        <tr>
+        <td class="num">0-100 ม.</td>
+        <td class="num">9</td>
+        <td class="num">~54</td>
+        </tr>
+        <tr>
+        <td class="num">100-500 ม.</td>
+        <td class="num">20</td>
+        <td class="num">~129</td>
+        </tr>
+        <tr>
+        <td class="num">500-1,500 ม.</td>
+        <td class="num">30</td>
+        <td class="num">~196</td>
+        </tr>
+        <tr>
+        <td class="num">1,500 ม.+</td>
+        <td class="num">40</td>
+        <td class="num">-</td>
+        </tr>
+        </tbody></table></div>
+    </section>
+
+    <section id="skills">
+      <div class="section-head"><span class="section-num">10</span><h2>สกิลใช้งาน</h2></div>
+      <p class="section-dek">สกิล 8 อย่าง แต่ละอย่างคือบัฟชั่วคราวแล้วตามด้วยคูลดาวน์</p>
+      <p>สกิลเปิด<strong>ฟรี</strong>เมื่อถึงชั้นของมัน และใช้ได้ตั้งแต่ระดับ 1 การดันถึงระดับ 7 ใช้ <strong>หินสกิล 63 ก้อน</strong> รวมทั้ง 8 สกิลคือ <strong>504</strong> ก้อน ระดับสูงขึ้นหมายถึงอยู่นานขึ้นและคูลดาวน์สั้นลง</p>
+      <div class="table-wrap">
+        <table>
+        <thead><tr>
+        <th>สกิล</th>
+        <th class="num">ชั้น</th>
+        <th class="num">ระดับ 1 (ระยะเวลา / คูลดาวน์)</th>
+        <th class="num">ระดับ 7 (ระยะเวลา / คูลดาวน์)</th>
+        <th class="num">ผล</th>
+        </tr></thead>
+        <tbody>
+        <tr>
+        <td>ผู้ทลายแร่</td>
+        <td class="num">50</td>
+        <td class="num">30 วิ / 540 วิ</td>
+        <td class="num">90 วิ / 180 วิ</td>
+        <td class="num">7 → 13 /วิ</td>
+        </tr>
+        <tr>
+        <td>คลิกพิโรธ</td>
+        <td class="num">70</td>
+        <td class="num">40 วิ / 660 วิ</td>
+        <td class="num">210 วิ / 300 วิ</td>
+        <td class="num">x2 → x5</td>
+        </tr>
+        <tr>
+        <td>คริติคอลสไตรค์</td>
+        <td class="num">100</td>
+        <td class="num">30 วิ / 600 วิ</td>
+        <td class="num">150 วิ / 240 วิ</td>
+        <td class="num">x1.3 → x1.9</td>
+        </tr>
+        <tr>
+        <td>อาละวาด</td>
+        <td class="num">170</td>
+        <td class="num">40 วิ / 840 วิ</td>
+        <td class="num">160 วิ / 480 วิ</td>
+        <td class="num">x2 → x3.5</td>
+        </tr>
+        <tr>
+        <td>คลั่งทองคำ</td>
+        <td class="num">240</td>
+        <td class="num">50 วิ / 1,020 วิ</td>
+        <td class="num">290 วิ / 660 วิ</td>
+        <td class="num">x2 → x5</td>
+        </tr>
+        <tr>
+        <td>ความต้านทานความร้อน</td>
+        <td class="num">280</td>
+        <td class="num">30 วิ / 660 วิ</td>
+        <td class="num">140 วิ / 300 วิ</td>
+        <td class="num">x2 → x5</td>
+        </tr>
+        <tr>
+        <td>โอเวอร์ชาร์จ</td>
+        <td class="num">330</td>
+        <td class="num">20 วิ / 1,200 วิ</td>
+        <td class="num">20 วิ / 840 วิ</td>
+        <td class="num">x1.5 → x3</td>
+        </tr>
+        <tr>
+        <td>ย้อนเวลา</td>
+        <td class="num">400</td>
+        <td class="num">1,200 วิ</td>
+        <td class="num">840 วิ</td>
+        <td class="num">-300 วิ → -1,020 วิ</td>
+        </tr>
+        </tbody></table></div>
+      <p>สายสกิลแรกเปิดที่ชั้น 50 ส่วนหน้าต่างต้นไม้สกิลที่ใช้จ่ายหินสกิลเปิดที่ชั้น <strong>180</strong> การใช้สกิลเฉย ๆ ไม่ต้องเปิดหน้าต่างนี้</p>
+      <div class="callout">
+          <div class="callout-label">คอมโบ</div>
+          กด โอเวอร์ชาร์จ ก่อน แล้วจึงใช้สกิลที่อยากเสริมจริง ๆ เช่น คลั่งทองคำ หลังจากนั้น ย้อนเวลา จะลดคูลดาวน์ของสกิลที่คุณใช้ล่าสุด ทำให้ได้มันกลับมาเร็วขึ้น
+        </div>
+    </section>
+
+    <section id="titles">
+      <div class="section-head"><span class="section-num">11</span><h2>ฉายา</h2></div>
+      <p class="section-dek">ฉายา 100 อย่างที่ตามมาเองเมื่อคุณไต่ขึ้นไป</p>
+      <ul>
+          <li>ฉายาไล่จากชั้น 1 ถึงชั้น <strong>50,000</strong> และถูกเลือกให้อัตโนมัติตามชั้นสูงสุดของรอบนี้</li>
+          <li>ฉายาแต่ละอันเพิ่มโบนัสที่มันถืออยู่ราว <strong>+0.1</strong> ต่ออย่าง</li>
+          <li>โบนัสมาเป็นขั้น เริ่มจากความเสียหายจากคลิกที่ฉายาแรก ต่อด้วยความเสียหายอัตโนมัติ ต้านทานความร้อน ทอง ตัวคูณคริติคอล โอกาสคริติคอล และสัดส่วนความเสียหายต่อวินาทีที่เติมให้คลิก (ฉายาที่ 1 / 5 / 10 / 15 / 20 / 25 / 30)</li>
+        </ul>
+    </section>
+
+    <section id="tasks">
+      <div class="section-head"><span class="section-num">12</span><h2>ภารกิจและ Taskium</h2></div>
+      <p class="section-dek">เส้นทางเสริมที่เปลี่ยนการคลิกให้เป็นรายได้ที่สอง</p>
+      <ul>
+          <li>ทุกคลิกที่เข้าเป้าให้ <strong>+1 Taskium</strong></li>
+          <li>การรับภารกิจใช้ <strong>200</strong> การสุ่มใหม่ใช้ <strong>25</strong></li>
+          <li>หน้าต่างภารกิจเปิดที่ชั้น 160 ช่องทั้ง 6 ช่องเปิดที่ชั้น 160 / 170 / 180 / 190 / 200 / 210</li>
+          <li>ภารกิจมี 10 ประเภทใน 6 ระดับความหายาก แต่ละภารกิจอยู่ 60 นาที และภารกิจที่ไม่รับจะถูกเปลี่ยนทุกชั่วโมง</li>
+          <li>รางวัลโตตามความหายาก อยู่ระหว่าง <strong>50-500</strong> เท่าของทองจากแร่ในชั้นปัจจุบัน ระดับหายากสุดยังให้เอสเซนส์ด้วย</li>
+        </ul>
+    </section>
+
+    <section id="trade">
+      <div class="section-head"><span class="section-num">13</span><h2>หน้าต่างแลกเปลี่ยน</h2></div>
+      <p class="section-dek">เปิดที่ชั้น 180 เป็นที่เดียวที่หินแร่มีค่า</p>
+      <ul>
+          <li>หินสกิล 1 ก้อน แลกเป็น <strong>หินแร่ 5,000 ชิ้น</strong> ครั้งละไม่เกิน 100,000 ชิ้น</li>
+          <li><strong>หินแร่ 2,000 ชิ้น</strong> แลกเป็นเอสเซนส์ 1</li>
+          <li><strong>หินแร่ 5,000 ชิ้น</strong> แลกเป็นหินสกิล 1 ก้อน</li>
+        </ul>
+      <p>ข้อสุดท้ายสำคัญที่สุด เพราะทำให้การฟาร์มยาว ๆ กลายเป็นระดับสกิลได้โดยไม่ต้องสู้บอส</p>
+    </section>
+
+    <section id="extras">
+      <div class="section-head"><span class="section-num">14</span><h2>ทองที่ได้เปล่า</h2></div>
+      <p class="section-dek">สามแหล่งที่ขอเพียงให้คุณอยู่ในเกม</p>
+      <ul>
+          <li><strong>ลูกโป่งทอง</strong> - ตั้งแต่ชั้น 50 จะลอยมาหนึ่งลูกทุก 70-105 วินาที คลิกแล้วได้ <strong>x6</strong> ของทองจากแร่ในชั้นสูงสุดของรอบนี้</li>
+          <li><strong>รายได้ออฟไลน์</strong> - เริ่มนับหลังหายไป 60 นาที และตัดที่ 12 ชั่วโมง พรีเมียมคูณสอง</li>
+          <li><strong>รางวัลเวลาเล่น</strong> - ทุก 60 นาทีที่เล่น จะได้ราว 100 เท่าของทองหนึ่งนาทีในชั้นสูงสุดของคุณ</li>
+        </ul>
+    </section>
+
+    <section id="prestige">
+      <div class="section-head"><span class="section-num">15</span><h2>เพรสทีจ</h2></div>
+      <p class="section-dek">แลกความคืบหน้าของรอบนี้เป็นพลังถาวร ถ้าจับจังหวะดี นี่คือสิ่งที่เร็วที่สุดในเกม</p>
+      <p>หน้าต่างเพรสทีจเปิดครั้งแรกเมื่อคุณไปถึงชั้น <strong>200</strong> หลังจากนั้นแต่ละครั้งจะขอเพิ่มอีก 100 ชั้น คือชั้น 300 ต่อด้วยชั้น 400 เรื่อยไป</p>
+      <ul>
+          <li><strong>รีเซ็ต:</strong> ทอง Taskium ความคืบหน้าของชั้น การอัปเกรดอีเต๋อและชุดเกราะ ระดับสัตว์เลี้ยง สกิลที่ซื้อไว้ทั้งหมด และความคืบหน้าของบอส</li>
+          <li><strong>คงอยู่:</strong> ระดับเพรสทีจ เอสเซนส์ ระดับของค่าพลังทั้ง 7 อย่าง สัตว์เลี้ยงที่มีอยู่ ไอเทมอินฟินิตี และความสำเร็จ</li>
+          <li>คุณไม่ได้เริ่มจากชั้น 1 ใหม่ รอบถัดไปเริ่มที่ชั้น <strong>100 × ระดับเพรสทีจ</strong> พร้อมทองเริ่มต้นมูลค่าราวแร่ 500 ก้อน</li>
+          <li>คูลดาวน์ทั้งหมดถูกล้าง ดังนั้นเริ่มรอบใหม่พร้อมสกิลครบมือ</li>
+        </ul>
+      <p>รางวัลเอสเซนส์คิดจากสองอย่างเท่านั้น คือ<strong>ชั้นสูงสุด</strong>ที่คุณไปถึง (ชั้นละ 0.5) และ<strong>แร่ที่ทุบ</strong> (ก้อนละ 0.25)</p>
+      <div class="callout">
+          <div class="callout-label">ทุบแร่ ไม่ต้องวิ่ง</div>
+          เพราะจำนวนแร่มีน้ำหนักมากกว่า การฟาร์มชั้นที่ตีสบายในช่วงท้ายจึงได้มากกว่าการวิ่งขึ้นไปชั้นที่แทบตีไม่เข้า
+        </div>
+      <div class="table-wrap">
+        <table>
+        <thead><tr>
+        <th>ค่าพลัง</th>
+        <th>ผล</th>
+        <th class="num">ต่อระดับ</th>
+        </tr></thead>
+        <tbody>
+        <tr>
+        <td>เตาหลอมนิรันดร์</td>
+        <td>ความเสียหายอัตโนมัติต่อวินาที</td>
+        <td class="num">+20%</td>
+        </tr>
+        <tr>
+        <td>มือทลายศิลา</td>
+        <td>ความเสียหายจากคลิก</td>
+        <td class="num">+25%</td>
+        </tr>
+        <tr>
+        <td>เหวทองคำ</td>
+        <td>รายได้ทอง</td>
+        <td class="num">+10%</td>
+        </tr>
+        <tr>
+        <td>ผู้หยั่งรู้แร่</td>
+        <td>โอกาสคริติคอล</td>
+        <td class="num">+5%</td>
+        </tr>
+        <tr>
+        <td>พลังหายนะ</td>
+        <td>ตัวคูณคริติคอล</td>
+        <td class="num">+5%</td>
+        </tr>
+        <tr>
+        <td>โล่นรก</td>
+        <td>ต้านทานความร้อน</td>
+        <td class="num">+10%</td>
+        </tr>
+        <tr>
+        <td>เอกภาพแห่งพลัง</td>
+        <td>สัดส่วนความเสียหายต่อวินาทีที่เติมให้คลิก</td>
+        <td class="num">+1%</td>
+        </tr>
+        </tbody></table></div>
+      <p>โบนัสบวกกันทีละระดับ ไม่ได้คูณทับกัน และค่าเอสเซนส์ก็ขึ้นช้า ดังนั้นใช้บ่อย ๆ คุ้มกว่าเก็บไว้</p>
+    </section>
+
+    <section id="bosses">
+      <div class="section-head"><span class="section-num">16</span><h2>บอส</h2></div>
+      <p class="section-dek">การแข่งทำความเสียหายแข่งกับเวลาเพื่อเอสเซนส์ เปิดที่ชั้น 350</p>
+      <ul>
+          <li>เลือกบอสแล้วจ่าย <strong>กุญแจดันเจียน 1 ดอก</strong> เพื่อเริ่ม ไม่มีอะไรเริ่มเอง</li>
+          <li>บอสเปิดตามลำดับ ต้องล้มตัวหนึ่งก่อนจะเห็นตัวถัดไป พลังชีวิตเพิ่มราวพันเท่าต่อขั้น ขณะที่เวลาสั้นลง</li>
+          <li>รางวัลโตตามระดับเพรสทีจ ราว <strong>+15%</strong> ต่อระดับ</li>
+          <li>เพรสทีจจะดึงความคืบหน้าบอสกลับไปที่ตัวแรก</li>
+        </ul>
+      <div class="table-wrap">
+        <table>
+        <thead><tr>
+        <th>บอส</th>
+        <th class="num">พลังชีวิต</th>
+        <th class="num">เวลา</th>
+        <th>รางวัล</th>
+        </tr></thead>
+        <tbody>
+        <tr>
+        <td>โคลอสซัสคริสตัล</td>
+        <td class="num">1e13</td>
+        <td class="num">30 วิ</td>
+        <td>50 เอสเซนซ์ + 5,000 ศิลาแร่</td>
+        </tr>
+        <tr>
+        <td>ผู้พิทักษ์คริสตัล</td>
+        <td class="num">1e16</td>
+        <td class="num">25 วิ</td>
+        <td>75 เอสเซนซ์ + 7,500 ศิลาแร่</td>
+        </tr>
+        <tr>
+        <td>ทหารยามสีเลือด</td>
+        <td class="num">1e19</td>
+        <td class="num">20 วิ</td>
+        <td>100 เอสเซนซ์ + 10,000 ศิลาแร่</td>
+        </tr>
+        <tr>
+        <td>ผู้พิทักษ์ศิลา</td>
+        <td class="num">1e22</td>
+        <td class="num">20 วิ</td>
+        <td>125 เอสเซนซ์ + 12,500 ศิลาแร่</td>
+        </tr>
+        <tr>
+        <td>ไททันน้ำแข็ง</td>
+        <td class="num">1e25</td>
+        <td class="num">20 วิ</td>
+        <td>150 เอสเซนซ์ + 15,000 ศิลาแร่</td>
+        </tr>
+        <tr>
+        <td>โกเลมคริสตัล 1</td>
+        <td class="num">1e28</td>
+        <td class="num">20 วิ</td>
+        <td>175 เอสเซนซ์ + 17,500 ศิลาแร่</td>
+        </tr>
+        <tr>
+        <td>โคลอสซัสเคราหิน</td>
+        <td class="num">1e31</td>
+        <td class="num">15 วิ</td>
+        <td>200 เอสเซนซ์ + 20,000 ศิลาแร่</td>
+        </tr>
+        <tr>
+        <td>โกเลมคริสตัล 2</td>
+        <td class="num">1e34</td>
+        <td class="num">15 วิ</td>
+        <td>225 เอสเซนซ์ + 22,500 ศิลาแร่</td>
+        </tr>
+        <tr>
+        <td>โกเลมเพลิง</td>
+        <td class="num">1e37</td>
+        <td class="num">15 วิ</td>
+        <td>250 เอสเซนซ์ + 25,000 ศิลาแร่</td>
+        </tr>
+        <tr>
+        <td>โกเลมผู้พิทักษ์</td>
+        <td class="num">1e40</td>
+        <td class="num">10 วิ</td>
+        <td>275 เอสเซนซ์ + 27,500 ศิลาแร่</td>
+        </tr>
+        </tbody></table></div>
+      <div class="callout warn">
+          <div class="callout-label">แพ้แล้วเสีย</div>
+          ถ้าเวลาหมดแล้วบอสยังยืนอยู่ คุณจะ<strong>ไม่ได้อะไรเลย</strong> และกุญแจที่จ่ายไปก็ไม่คืน หลังพลาดคุณจะเห็นพลังชีวิตที่เหลือ ใช้ตัวเลขนั้นประเมินว่ายังต้องเพิ่มความเสียหายอีกเท่าไร
+        </div>
+    </section>
+
+    <section id="achievements">
+      <div class="section-head"><span class="section-num">17</span><h2>ความสำเร็จ</h2></div>
+      <p class="section-dek">ความสำเร็จ 86 รายการใน 24 หมวด ได้แก่การคลิก แร่ บอส เพรสทีจ ความลึก และอื่น ๆ</p>
+      <p>ทุกความสำเร็จจ่ายเป็น<strong>หินแร่</strong> และทั้งเป้าหมายกับรางวัลโตราวสิบเท่าในแต่ละขั้น หมวดส่วนใหญ่มีสามขั้น หมวดทองและความเสียหายไปไกลกว่านั้น</p>
+      <div class="callout">
+          <div class="callout-label">อย่าลืมกดรับ</div>
+          รางวัล<strong>ไม่เข้าอัตโนมัติ</strong> ถ้าไม่ได้เปิดแท็บความสำเร็จมานาน ในนั้นมีกองรออยู่แล้ว
+        </div>
+    </section>
+
+    <section id="daily">
+      <div class="section-head"><span class="section-num">18</span><h2>รางวัลรายวัน</h2></div>
+      <p class="section-dek">เล็ก เรียบง่าย และไม่มีบทลงโทษถ้าพลาดไปหนึ่งวัน</p>
+      <p>เข้าเกมวันละครั้งได้ <strong>กุญแจดันเจียน 1 ดอก</strong> เหมือนกันทุกวัน ไม่มีปฏิทินและไม่มีสตรีคที่ต้องรักษา การรับต้องออนไลน์</p>
+    </section>
+
+    <section id="store">
+      <div class="section-head"><span class="section-num">19</span><h2>ร้านค้า</h2></div>
+      <p class="section-dek">เพชร กุญแจ แพ็ก เวลาพรีเมียม และไอเทมอินฟินิตีแบบถาวร</p>
+      <ul>
+          <li><strong>แพ็กเพชร:</strong> 200 / 550 / 1,150 / 2,400 / 6,250 / 14,000 เพชร แพ็กใหญ่ขึ้นราคาต่อหน่วยก็ถูกลง</li>
+          <li><strong>แพ็กกุญแจ:</strong> กุญแจดันเจียน 3 / 7 / 15 ดอก</li>
+          <li><strong>แพ็กเกจเล็ก:</strong> 500 เพชร, 100 เอสเซนซ์, 10 ศิลาสกิล, 3 กุญแจดันเจี้ยน</li>
+          <li><strong>แพ็กเกจใหญ่:</strong> 1,000 เพชร, 200 เอสเซนซ์, 20 ศิลาสกิล, 5 กุญแจดันเจี้ยน</li>
+          <li><strong>แพ็กเกจพรีเมียม 7 วัน:</strong> 7 วัน โดยความเสียหายจากคลิก x5 ความเสียหายอัตโนมัติ x5 ทอง x3 ต้านทานความร้อน x3 และรายได้ออฟไลน์ x2</li>
+        </ul>
+      <p>ไอเทมอินฟินิตีซื้อ<strong>ด้วยเพชรครั้งเดียว</strong> และไม่รีเซ็ตเลย แม้ทำเพรสทีจ ช่วงปลายเกมมักเป็นการใช้เพชรที่คุ้มที่สุด</p>
+      <div class="table-wrap">
+        <table>
+        <thead><tr>
+        <th>ไอเทม</th>
+        <th class="num">ผล</th>
+        <th class="num">ราคา</th>
+        </tr></thead>
+        <tbody>
+        <tr>
+        <td>พลังอนันต์</td>
+        <td class="num">x4</td>
+        <td class="num">350 💎</td>
+        </tr>
+        <tr>
+        <td>รายได้อนันต์</td>
+        <td class="num">x3</td>
+        <td class="num">350 💎</td>
+        </tr>
+        <tr>
+        <td>เกราะอนันต์</td>
+        <td class="num">x2</td>
+        <td class="num">350 💎</td>
+        </tr>
+        <tr>
+        <td>ความเร็วอนันต์</td>
+        <td class="num">x1.5</td>
+        <td class="num">550 💎</td>
+        </tr>
+        <tr>
+        <td>คลิกเกอร์อนันต์</td>
+        <td class="num">7 /วิ</td>
+        <td class="num">600 💎</td>
+        </tr>
+        </tbody></table></div>
+      <div class="callout">
+          <div class="callout-label">เรื่องราคา</div>
+          ราคาในร้านค้ามาจาก Steam เป็นสกุลเงินของคุณ จึงไม่ได้เขียนไว้ที่นี่ ของในแพ็กไม่เคยเปลี่ยน แต่ราคาขึ้นกับภูมิภาค
+        </div>
+    </section>
+
+    <section id="progress">
+      <div class="section-head"><span class="section-num">20</span><h2>กระดานผู้นำและสถิติ</h2></div>
+      <p class="section-dek">สองที่ที่ดูได้ว่ารอบนี้เป็นอย่างไร</p>
+      <ul>
+          <li>กระดานผู้นำของ Steam เก็บจำนวนคลิก ความเสียหายจากคลิก จำนวนครั้งที่เพรสทีจ จำนวนบอสที่ล้ม และชั้นสูงสุด</li>
+          <li>หน้าสถิติเก็บมากกว่านั้น ทั้งรายได้ รายจ่าย จำนวนคลิก เวลาเล่น และอื่น ๆ</li>
+        </ul>
+    </section>
+
+    <section id="save">
+      <div class="section-head"><span class="section-num">21</span><h2>การบันทึก</h2></div>
+      <p class="section-dek">ตอบสั้น ๆ ว่าความคืบหน้าของคุณถูกป้องกันหลายชั้นพร้อมกัน</p>
+      <ul>
+          <li>เกมบันทึกตัวเองแบบเข้ารหัสทุก <strong>15 วินาที</strong></li>
+          <li>สำรองขึ้น Steam Cloud ราวทุก <strong>45 วินาที</strong> และทำทุกครั้งที่ปิดหรือหยุดเกม ดังนั้นเครื่องอื่นก็เล่นต่อจากจุดเดิมได้</li>
+          <li>ถ้าไฟล์บันทึกเสีย เกมจะย้อนไปใช้ไฟล์สำรองให้เอง</li>
+          <li>คุณยังคัดลอกไฟล์บันทึกไปที่คลิปบอร์ด แล้ววางกลับบนอุปกรณ์อื่นได้</li>
+        </ul>
+    </section>
+
+    <section id="languages">
+      <div class="section-head"><span class="section-num">22</span><h2>ภาษา</h2></div>
+      <p class="section-dek">เกมนี้มี 18 ภาษา</p>
+      <p>อังกฤษ ตุรกี เยอรมัน ฝรั่งเศส สเปน สเปนละตินอเมริกา อิตาลี โปแลนด์ โปรตุเกสบราซิล รัสเซีย ยูเครน ญี่ปุ่น เกาหลี จีนตัวย่อ จีนตัวเต็ม ไทย อินโดนีเซีย และเวียดนาม เกมจะเลือกภาษาของคุณตั้งแต่เปิดครั้งแรก และเปลี่ยนได้ทุกเมื่อในหน้าตั้งค่า คู่มือนี้มีครบทุกภาษาเช่นกัน กดได้จากลิงก์ด้านบนของหน้า</p>
+    </section>
+
+    <footer class="doc-footer">ตัวเลขในหน้านี้อ้างอิงสมดุลปัจจุบันของเกมและอาจเปลี่ยนตามอัปเดต ราคาในร้านค้ากำหนดโดย Steam และแสดงเป็นสกุลเงินของคุณ จึงไม่ได้ระบุไว้ที่นี่</footer>
+  </main>
+</div>

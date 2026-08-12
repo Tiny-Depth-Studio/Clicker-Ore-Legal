@@ -1,0 +1,1069 @@
+<title>Clicker Ore Game - 플레이어 가이드</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="광산이 돌아가는 방식: 화폐, 곡괭이, 펫, 스킬, 프레스티지, 보스, 상점을 수식 없이 정리했습니다.">
+<style>
+  :root {
+    --bg: #14110d;
+    --bg-elevated: #1d1811;
+    --bg-card: #211b13;
+    --text: #ede6d8;
+    --text-dim: #a89a82;
+    --text-faint: #766a55;
+    --accent: #e0a752;
+    --accent-strong: #f2bd6e;
+    --accent-2: #7fb8ad;
+    --border: #3a2f22;
+    --border-soft: #2a2318;
+    --danger: #cf7a5a;
+    --shadow: 0 8px 24px rgba(0,0,0,0.35);
+
+    --cur-gold: #e0a752;
+    --cur-diamond: #7fd1e0;
+    --cur-essence: #b79ef0;
+    --cur-taskium: #93a8d6;
+    --cur-key: #d98a63;
+    --cur-skillstone: #7fc9a0;
+    --cur-orestone: #b5a68c;
+
+    --font-display: "Bahnschrift", "Segoe UI Semibold", "Arial Narrow Bold", "Arial Narrow", sans-serif;
+    --font-body: "Sitka Text", "Iowan Old Style", Georgia, "Times New Roman", serif;
+    --font-mono: "Cascadia Mono", "Consolas", "SF Mono", ui-monospace, monospace;
+  }
+
+  :root[data-theme="light"] {
+    --bg: #efe9da;
+    --bg-elevated: #e6ddc8;
+    --bg-card: #f3ede0;
+    --text: #241d14;
+    --text-dim: #5c5138;
+    --text-faint: #857656;
+    --accent: #a8621a;
+    --accent-strong: #8a4e12;
+    --accent-2: #2f7a70;
+    --border: #d3c5a4;
+    --border-soft: #ddd0b1;
+    --danger: #a3492c;
+    --shadow: 0 8px 20px rgba(90,70,30,0.12);
+  }
+
+  @media (prefers-color-scheme: light) {
+    :root:not([data-theme="dark"]) {
+      --bg: #efe9da;
+      --bg-elevated: #e6ddc8;
+      --bg-card: #f3ede0;
+      --text: #241d14;
+      --text-dim: #5c5138;
+      --text-faint: #857656;
+      --accent: #a8621a;
+      --accent-strong: #8a4e12;
+      --accent-2: #2f7a70;
+      --border: #d3c5a4;
+      --border-soft: #ddd0b1;
+      --danger: #a3492c;
+      --shadow: 0 8px 20px rgba(90,70,30,0.12);
+    }
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: 17px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection { background: var(--accent); color: #14110d; }
+
+  a { color: var(--accent-strong); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  a:focus-visible, button:focus-visible, summary:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    text-wrap: balance;
+    letter-spacing: 0.01em;
+    color: var(--text);
+  }
+
+  p { max-width: 68ch; }
+  ul, ol { max-width: 68ch; }
+
+  .shell {
+    display: grid;
+    grid-template-columns: 260px minmax(0, 1fr);
+    min-height: 100vh;
+  }
+
+  .topbar {
+    display: none;
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: var(--bg-elevated);
+    border-bottom: 1px solid var(--border);
+    padding: 0.7rem 1rem;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .topbar-title {
+    font-family: var(--font-display);
+    font-size: 0.95rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--accent-strong);
+  }
+  #nav-toggle { display: none; }
+  .nav-toggle-btn {
+    font-family: var(--font-display);
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 0.4rem 0.7rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.85rem;
+  }
+
+  nav.toc {
+    position: sticky;
+    top: 0;
+    align-self: start;
+    height: 100vh;
+    overflow-y: auto;
+    padding: 2rem 1.4rem 3rem;
+    background: var(--bg-elevated);
+    border-right: 1px solid var(--border);
+  }
+  .toc-brand {
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    letter-spacing: 0.03em;
+    color: var(--accent-strong);
+    margin-bottom: 0.15rem;
+  }
+  .toc-brand small {
+    display: block;
+    font-family: var(--font-body);
+    font-style: italic;
+    font-size: 0.78rem;
+    color: var(--text-faint);
+    letter-spacing: 0;
+    margin-top: 0.25rem;
+  }
+  .toc-list {
+    list-style: none;
+    margin: 1.6rem 0 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+  }
+  .toc-list a {
+    display: block;
+    color: var(--text-dim);
+    font-size: 0.88rem;
+    padding: 0.32rem 0.5rem;
+    border-radius: 4px;
+    border-left: 2px solid transparent;
+  }
+  .toc-list a:hover {
+    color: var(--text);
+    text-decoration: none;
+    background: rgba(224,167,82,0.08);
+    border-left-color: var(--accent);
+  }
+  .toc-num {
+    font-family: var(--font-mono);
+    color: var(--text-faint);
+    font-size: 0.78rem;
+    margin-right: 0.45rem;
+  }
+
+  main {
+    padding: 3.2rem clamp(1.2rem, 4vw, 4rem) 6rem;
+    max-width: 900px;
+  }
+
+  header.hero {
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .strata {
+    height: 10px;
+    width: 100%;
+    border-radius: 3px;
+    margin-bottom: 1.6rem;
+    background: repeating-linear-gradient(
+      90deg,
+      var(--accent) 0 6%,
+      var(--accent-2) 6% 11%,
+      var(--border-soft) 11% 18%,
+      var(--accent) 18% 24%,
+      var(--border-soft) 24% 34%,
+      var(--accent-2) 34% 40%,
+      var(--accent) 40% 48%,
+      var(--border-soft) 48% 58%,
+      var(--accent-2) 58% 63%,
+      var(--accent) 63% 72%,
+      var(--border-soft) 72% 82%,
+      var(--accent-2) 82% 90%,
+      var(--accent) 90% 100%
+    );
+    opacity: 0.85;
+  }
+  .eyebrow {
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-size: 0.72rem;
+    color: var(--accent);
+    margin-bottom: 0.6rem;
+  }
+  h1.title {
+    font-size: clamp(2rem, 4.2vw, 2.9rem);
+    margin: 0 0 0.7rem;
+    line-height: 1.1;
+  }
+  .subtitle {
+    color: var(--text-dim);
+    font-size: 1.08rem;
+    max-width: 62ch;
+    margin: 0;
+  }
+
+  .langbar {
+    margin: 1.8rem 0 0;
+    padding-top: 1.2rem;
+    border-top: 1px solid var(--border-soft);
+  }
+  .langbar-label {
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 0.68rem;
+    color: var(--text-faint);
+    margin-bottom: 0.55rem;
+  }
+  .langbar-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem 0.4rem;
+  }
+  .langbar-list a, .langbar-list span {
+    font-family: var(--font-display);
+    font-size: 0.78rem;
+    padding: 0.18rem 0.55rem;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    color: var(--text-dim);
+    background: var(--bg-card);
+  }
+  .langbar-list a:hover {
+    text-decoration: none;
+    color: var(--text);
+    border-color: var(--accent);
+  }
+  .langbar-list span {
+    color: #14110d;
+    background: var(--accent);
+    border-color: var(--accent);
+  }
+  :root[data-theme="light"] .langbar-list span { color: #efe9da; }
+
+  section {
+    margin-bottom: 3.6rem;
+    scroll-margin-top: 1.5rem;
+  }
+  .section-head {
+    display: flex;
+    align-items: baseline;
+    gap: 0.7rem;
+    margin-bottom: 0.3rem;
+  }
+  .section-num {
+    font-family: var(--font-mono);
+    color: var(--accent);
+    font-size: 0.95rem;
+  }
+  h2 {
+    font-size: 1.55rem;
+    margin: 0;
+  }
+  .section-dek {
+    color: var(--text-dim);
+    font-size: 0.98rem;
+    margin: 0.3rem 0 1.5rem;
+    max-width: 62ch;
+  }
+
+  .callout {
+    border-left: 3px solid var(--accent);
+    background: var(--bg-card);
+    padding: 0.95rem 1.2rem;
+    border-radius: 0 6px 6px 0;
+    margin: 1.2rem 0;
+    font-size: 0.95rem;
+  }
+  .callout strong { color: var(--accent-strong); }
+  .callout.warn { border-left-color: var(--danger); }
+  .callout-label {
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 0.72rem;
+    color: var(--accent);
+    margin-bottom: 0.35rem;
+  }
+  .callout.warn .callout-label { color: var(--danger); }
+
+  .currency-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 0.9rem;
+    margin: 1.4rem 0;
+  }
+  .cur-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-top: 3px solid var(--dot);
+    border-radius: 6px;
+    padding: 0.95rem 1rem 1.05rem;
+  }
+  .cur-card h4 {
+    margin: 0 0 0.5rem;
+    font-size: 0.98rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .dot {
+    width: 9px; height: 9px; border-radius: 50%;
+    background: var(--dot);
+    flex: none;
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--dot) 20%, transparent);
+  }
+  .cur-card p {
+    margin: 0.15rem 0;
+    font-size: 0.84rem;
+    color: var(--text-dim);
+    max-width: none;
+  }
+  .cur-card p b { color: var(--text); font-weight: 600; }
+
+  .table-wrap {
+    overflow-x: auto;
+    margin: 1.2rem 0;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+  }
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    min-width: 460px;
+    font-size: 0.9rem;
+  }
+  thead th {
+    text-align: left;
+    font-family: var(--font-display);
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    font-size: 0.72rem;
+    color: var(--text-dim);
+    background: var(--bg-elevated);
+    padding: 0.6rem 0.85rem;
+    border-bottom: 1px solid var(--border);
+    white-space: nowrap;
+  }
+  tbody td {
+    padding: 0.55rem 0.85rem;
+    border-bottom: 1px solid var(--border-soft);
+    font-variant-numeric: tabular-nums;
+    color: var(--text);
+  }
+  tbody tr:last-child td { border-bottom: none; }
+  tbody tr:nth-child(even) { background: color-mix(in srgb, var(--accent) 3%, transparent); }
+  td.num, th.num { font-family: var(--font-mono); }
+  td.strong { color: var(--accent-strong); font-weight: 600; }
+
+  .strategy-track {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 1.4rem 0;
+  }
+  .strategy-stage {
+    background: var(--bg-card);
+    padding: 1rem 1.1rem;
+  }
+  .strategy-stage .stage-label {
+    font-family: var(--font-display);
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+    margin-bottom: 0.4rem;
+  }
+  .strategy-stage ul {
+    margin: 0;
+    padding-left: 1.1rem;
+    font-size: 0.86rem;
+    color: var(--text-dim);
+  }
+  .strategy-stage li { margin-bottom: 0.25rem; }
+
+  footer.doc-footer {
+    margin-top: 4rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+    color: var(--text-faint);
+    font-size: 0.8rem;
+  }
+
+  @media (max-width: 880px) {
+    .shell { grid-template-columns: 1fr; }
+    .topbar { display: flex; }
+    nav.toc {
+      position: fixed;
+      inset: 0 20% 0 0;
+      top: 52px;
+      height: calc(100vh - 52px);
+      transform: translateX(-100%);
+      transition: transform 0.22s ease;
+      z-index: 15;
+      box-shadow: var(--shadow);
+    }
+    #nav-toggle:checked ~ .shell nav.toc {
+      transform: translateX(0);
+    }
+    main { padding: 2rem 1.2rem 5rem; }
+  }
+</style>
+
+<input type="checkbox" id="nav-toggle">
+
+<div class="topbar">
+  <span class="topbar-title">&#9935; 플레이어 가이드</span>
+  <label class="nav-toggle-btn" for="nav-toggle">목차</label>
+</div>
+
+<div class="shell">
+  <nav class="toc" aria-label="목차">
+    <div class="toc-brand">Clicker Ore Game<small>플레이어 가이드</small></div>
+    <ul class="toc-list">
+      <li><a href="#start"><span class="toc-num">01</span>무엇부터 할까</a></li>
+      <li><a href="#currencies"><span class="toc-num">02</span>화폐 7종</a></li>
+      <li><a href="#damage"><span class="toc-num">03</span>클릭 피해와 자동 피해</a></li>
+      <li><a href="#critical"><span class="toc-num">04</span>치명타</a></li>
+      <li><a href="#pickaxes"><span class="toc-num">05</span>곡괭이</a></li>
+      <li><a href="#suits"><span class="toc-num">06</span>방어구</a></li>
+      <li><a href="#temperature"><span class="toc-num">07</span>열</a></li>
+      <li><a href="#pets"><span class="toc-num">08</span>펫</a></li>
+      <li><a href="#floors"><span class="toc-num">09</span>층, 광석, 깊이</a></li>
+      <li><a href="#skills"><span class="toc-num">10</span>액티브 스킬</a></li>
+      <li><a href="#titles"><span class="toc-num">11</span>칭호</a></li>
+      <li><a href="#tasks"><span class="toc-num">12</span>임무와 Taskium</a></li>
+      <li><a href="#trade"><span class="toc-num">13</span>교환 창</a></li>
+      <li><a href="#extras"><span class="toc-num">14</span>공짜 골드</a></li>
+      <li><a href="#prestige"><span class="toc-num">15</span>프레스티지</a></li>
+      <li><a href="#bosses"><span class="toc-num">16</span>보스</a></li>
+      <li><a href="#achievements"><span class="toc-num">17</span>업적</a></li>
+      <li><a href="#daily"><span class="toc-num">18</span>일일 보상</a></li>
+      <li><a href="#store"><span class="toc-num">19</span>상점</a></li>
+      <li><a href="#progress"><span class="toc-num">20</span>순위표와 통계</a></li>
+      <li><a href="#save"><span class="toc-num">21</span>저장</a></li>
+      <li><a href="#languages"><span class="toc-num">22</span>언어</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <header class="hero">
+      <div class="strata" role="presentation"></div>
+      <div class="eyebrow">플레이어 가이드 - 2026-08-12</div>
+      <h1 class="title">광산의 모든 것을<br>쉬운 말로</h1>
+      <p class="subtitle">각 시스템이 무엇을 하고, 몇 층에서 열리고, 다음 한 시간을 어디에 쓰면 좋은지 정리했습니다. 수식은 없고 판단에 필요한 내용만 담았습니다.</p>
+      <div class="langbar">
+        <div class="langbar-label">언어</div>
+        <div class="langbar-list"><a href="player_guide_en.html" hreflang="en">English</a><a href="player_guide_tr.html" hreflang="tr">Türkçe</a><a href="player_guide_de.html" hreflang="de">Deutsch</a><a href="player_guide_fr.html" hreflang="fr">Français</a><a href="player_guide_es.html" hreflang="es">Español</a><a href="player_guide_es_la.html" hreflang="es-419">Español (Latinoamérica)</a><a href="player_guide_it.html" hreflang="it">Italiano</a><a href="player_guide_pl.html" hreflang="pl">Polski</a><a href="player_guide_pt_br.html" hreflang="pt-BR">Português (Brasil)</a><a href="player_guide_ru.html" hreflang="ru">Русский</a><a href="player_guide_uk.html" hreflang="uk">Українська</a><a href="player_guide_ja.html" hreflang="ja">日本語</a><span>한국어</span><a href="player_guide_zh_hans.html" hreflang="zh-Hans">简体中文</a><a href="player_guide_zh_hant.html" hreflang="zh-Hant">繁體中文</a><a href="player_guide_th.html" hreflang="th">ไทย</a><a href="player_guide_id.html" hreflang="id">Bahasa Indonesia</a><a href="player_guide_vi.html" hreflang="vi">Tiếng Việt</a></div>
+      </div>
+    </header>
+
+    <section id="start">
+      <div class="section-head"><span class="section-num">01</span><h2>무엇부터 할까</h2></div>
+      <p class="section-dek">게임이 기능을 열어주는 순서에 맞춘 세 단계입니다.</p>
+      <div class="strategy-track">
+          <div class="strategy-stage">
+            <div class="stage-label">초반 - 1층부터 200층</div>
+            <ul>
+              <li>곡괭이를 계속 강화하고, 새 곡괭이가 열리면 바로 구입하세요.</li>
+              <li>광석 파괴자는 50층, 분노의 클릭은 70층에서 열립니다.</li>
+              <li>다이아 여유가 생기면 조약돌을 데려오세요.</li>
+            </ul>
+          </div>
+          <div class="strategy-stage">
+            <div class="stage-label">중반 - 200층부터 350층</div>
+            <ul>
+              <li>첫 프레스티지는 200층에서 합니다.</li>
+              <li>에센스는 하나에 몰지 말고 지표 7가지에 나눠 올리세요.</li>
+              <li>임무는 160층, 스킬 트리와 교환 창은 180층에서 열립니다.</li>
+            </ul>
+          </div>
+          <div class="strategy-stage">
+            <div class="stage-label">후반 - 350층부터</div>
+            <ul>
+              <li>열쇠가 있으면 보스에 도전하세요. 에센스의 주 공급원입니다.</li>
+              <li>무한 아이템을 구입하세요. 영구적이고 프레스티지에도 초기화되지 않습니다.</li>
+              <li>열이 피해를 깎지 않도록 방어구 레벨을 유지하세요.</li>
+            </ul>
+          </div>
+        </div>
+      <div class="callout">
+          <div class="callout-label">알아두면 좋은 점</div>
+          숫자가 금방 길어지기 때문에 게임은 먼저 짧은 표기로, 이어서 <strong>1.23e45</strong> 같은 과학적 표기로 바뀝니다. 상한이 있는 것이 아니라 표기만 달라집니다.
+        </div>
+    </section>
+
+    <section id="currencies">
+      <div class="section-head"><span class="section-num">02</span><h2>화폐 7종</h2></div>
+      <p class="section-dek">각각 다른 시스템을 받쳐줍니다. 맞는 화폐를 엉뚱한 곳에 쓰는 것이 초반에 가장 흔한 실수입니다.</p>
+      <div class="currency-grid">
+        <div class="cur-card" style="--dot:var(--cur-gold)">
+          <h4><span class="dot"></span>골드</h4>
+          <p><b>광석을 깨서</b> 얻습니다.</p>
+          <p>곡괭이와 방어구 강화에 쓰는 기본 화폐입니다.</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-diamond)">
+          <h4><span class="dot"></span>다이아몬드</h4>
+          <p><b>실제 결제로만</b> 들어옵니다.</p>
+          <p>펫과 영구 무한 아이템에 씁니다.</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-essence)">
+          <h4><span class="dot"></span>정수</h4>
+          <p><b>프레스티지</b>와 보스 격파로 얻습니다.</p>
+          <p>영구 프레스티지 지표 7가지에 씁니다.</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-taskium)">
+          <h4><span class="dot"></span>Taskium</h4>
+          <p>클릭이 성공할 때마다 <b>+1</b>.</p>
+          <p>임무 수락과 다시 뽑기에 씁니다.</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-key)">
+          <h4><span class="dot"></span>던전 열쇠</h4>
+          <p>하루 한 개는 무료, 그 외에는 상점 패키지.</p>
+          <p>보스전 입장에 씁니다(시도당 1개).</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-skillstone)">
+          <h4><span class="dot"></span>스킬 스톤</h4>
+          <p>상점 패키지와 교환 창에서 얻습니다.</p>
+          <p>액티브 스킬 8개의 단계를 올리는 데 씁니다.</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-orestone)">
+          <h4><span class="dot"></span>광석 스톤</h4>
+          <p>광석을 깰 때마다 <b>1-5</b>개, 여기에 업적 보상까지.</p>
+          <p>교환 창에서 에센스나 스킬 스톤으로 바꿉니다.</p>
+        </div>
+      </div>
+      <div class="callout">
+          <div class="callout-label">다이아 안내</div>
+          보스, 업적, 임무는 다이아를 주지 않습니다. 다이아와 던전 열쇠는 서버에서 관리하므로 펫을 사려면 온라인 상태여야 합니다.
+        </div>
+    </section>
+
+    <section id="damage">
+      <div class="section-head"><span class="section-num">03</span><h2>클릭 피해와 자동 피해</h2></div>
+      <p class="section-dek">서로 다른 요소가 키우는 두 개의 독립된 피해원입니다.</p>
+      <p><strong>클릭 피해</strong>는 한 번 누를 때 들어가는 양입니다. 첫 곡괭이의 레벨과 스킬, 분노의 클릭, 칭호, 프레스티지 지표 돌 파괴자의 손으로 커집니다. 힘의 단위를 올리면 자동 피해의 일부도 클릭마다 더해집니다.</p>
+      <p><strong>자동 피해</strong>(초당)는 두 번째 곡괭이부터, 광란, 지표 영원의 대장간, 그리고 펫에서 나옵니다.</p>
+      <div class="callout">
+          <div class="callout-label">펫만 예외</div>
+          펫 피해는 모든 배율이 적용된 <strong>뒤에</strong> 더해지므로 배율의 영향을 받지 않습니다. 후반에는 펫 레벨만으로 버티기 어렵고, 곡괭이와 스킬 배율도 함께 커져야 합니다.
+        </div>
+    </section>
+
+    <section id="critical">
+      <div class="section-head"><span class="section-num">04</span><h2>치명타</h2></div>
+      <p class="section-dek">모든 클릭이 치명타로 터져 더 큰 피해를 낼 수 있습니다.</p>
+      <p>기본값은 확률 <strong>5%</strong>, 배율 <strong>x1.5</strong>입니다. 이를 올려주는 것은 네 가지로 치명타 일격, 곡괭이 스킬, 프레스티지 지표 광석의 신탁와 재앙의 힘, 그리고 칭호입니다.</p>
+    </section>
+
+    <section id="pickaxes">
+      <div class="section-head"><span class="section-num">05</span><h2>곡괭이</h2></div>
+      <p class="section-dek">차례대로 열리는 곡괭이 45자루. 피해의 뼈대입니다.</p>
+      <ul>
+          <li>첫 곡괭이는 <strong>5 골드</strong>이고, 이후에는 한 자루마다 앞의 것보다 약 <strong>8배</strong> 비쌉니다.</li>
+          <li>곡괭이는 이번 회차에 번 골드가 일정량을 넘으면 스스로 열립니다. 즉 다음 곡괭이를 여는 것은 강화입니다.</li>
+          <li>레벨마다 앞 레벨보다 약 <strong>7%</strong> 비싸집니다.</li>
+          <li>클릭 피해를 올리는 것은 <strong>첫 번째</strong> 곡괭이뿐이고, 나머지는 모두 초당 자동 피해를 올립니다.</li>
+          <li>곡괭이마다 스킬이 6개 있고 레벨 5 / 10 / 25 / 50 / 100 / 200에서 열립니다. 그 곡괭이만 돕는 것과 전체를 돕는 것이 있으며, 전체에 적용되는 쪽이 더 값집니다.</li>
+        </ul>
+      <div class="callout">
+          <div class="callout-label">가장 큰 상승</div>
+          곡괭이는 <strong>100레벨마다</strong> 자기 출력을 <strong>x10</strong>로 곱합니다. 한 자루를 다음 100레벨까지 밀어 올리는 것이 보통 가장 큰 전력 상승입니다.
+        </div>
+    </section>
+
+    <section id="suits">
+      <div class="section-head"><span class="section-num">06</span><h2>방어구</h2></div>
+      <p class="section-dek">처음부터 모두 보유한 방어구 5종. 역할은 열을 막는 것입니다.</p>
+      <ul>
+          <li>방어구는 구입하지 않고 강화만 합니다. 레벨마다 열 저항이 약 <strong>5%</strong> 늘고, 기준값은 50입니다.</li>
+          <li>100레벨마다 방어구 저항이 <strong>x2</strong>가 됩니다.</li>
+          <li>방어구마다 레벨에 따라 열리는 스킬도 6개 있습니다.</li>
+          <li>방어구 창은 열 게이지와 함께 <strong>130</strong>층에서 열립니다.</li>
+        </ul>
+    </section>
+
+    <section id="temperature">
+      <div class="section-head"><span class="section-num">07</span><h2>열</h2></div>
+      <p class="section-dek">깊이 내려갈수록 더워지고, 열은 조용히 피해를 깎습니다.</p>
+      <ul>
+          <li>층 온도는 계속 오릅니다. 한 층마다 약 <strong>1.04배</strong>라서 스무 층 남짓마다 두 배가 됩니다.</li>
+          <li>저항이 온도의 <strong>1.5배</strong> 이상이면 게이지가 깨끗하고 아무것도 잃지 않습니다.</li>
+          <li>저항이 온도 밑으로 떨어지면 피해가 새기 시작하고, <strong>0.5배</strong>에서는 20분의 1만 남습니다. 즉 <strong>95%</strong> 손실입니다.</li>
+          <li>방어구 창에는 저항을 자동으로 구매하는 스위치가 있습니다. 자주 깊이 내려간다면 켜 두세요.</li>
+        </ul>
+      <div class="callout warn">
+          <div class="callout-label">갑자기 막혔다면</div>
+          광석이 끝없이 버티는 벽은 거의 언제나 피해 부족이 아니라 열 문제입니다. 다른 곳에 쓰기 전에 게이지를 확인하세요.
+        </div>
+    </section>
+
+    <section id="pets">
+      <div class="section-head"><span class="section-num">08</span><h2>펫</h2></div>
+      <p class="section-dek">다이아로 사고 골드로 키우는 펫 5마리.</p>
+      <ul>
+          <li>가격은 <strong>150</strong>에서 <strong>250</strong> 다이아(150 / 175 / 200 / 225 / 250)입니다.</li>
+          <li>레벨마다 곡괭이 클릭 피해의 약 <strong>1%</strong>가 자동 피해로 더해지고, 여기에 펫의 순서가 곱해집니다. 같은 레벨이면 어둠의 파편가 조약돌의 다섯 배입니다.</li>
+          <li>레벨 비용은 매번 약 <strong>20%</strong> 오르고, 100레벨마다 펫이 자기 출력을 <strong>x5</strong>로 곱합니다.</li>
+          <li>펫마다 스킬이 6개 있고, 그 펫만 돕는 것과 전체를 돕는 것이 있습니다.</li>
+          <li>펫 창은 <strong>30</strong>층, 또는 펫을 한 마리라도 보유하면 열립니다.</li>
+        </ul>
+      <div class="callout warn">
+          <div class="callout-label">프레스티지와 펫</div>
+          프레스티지를 하면 모든 펫이 <strong>1레벨</strong>로 돌아가고 스킬도 해제됩니다. 다만 보유 자체는 영구이므로 다시 구입하지는 않습니다.
+        </div>
+    </section>
+
+    <section id="floors">
+      <div class="section-head"><span class="section-num">09</span><h2>층, 광석, 깊이</h2></div>
+      <p class="section-dek">광석의 단단함과 골드는 층이 정하고, 생김새는 깊이가 정합니다.</p>
+      <ul>
+          <li>층이 올라갈수록 체력과 골드가 조금씩 늘고, 그 증가폭은 갈수록 급해집니다.</li>
+          <li><strong>10층마다</strong> 시간 제한 층이 나옵니다. <strong>20초</strong> 타이머가 돌고 체력은 약 50%, 골드는 약 51% 늘어납니다.</li>
+          <li>난이도는 약 100층 주기로도 움직입니다. 주기의 앞쪽 층이 체력 대비 수익이 가장 좋습니다.</li>
+          <li>광석은 골드 외에 <strong>1-5</strong>개의 광석 스톤도 떨굽니다.</li>
+        </ul>
+      <div class="callout warn">
+          <div class="callout-label">시간 제한 층은 아프다</div>
+          시간이 다 되면 <strong>한 층</strong> 아래로 밀려납니다. 피해가 부족하면 실패하기보다 그 층을 건너뛰는 편이 낫습니다.
+        </div>
+      <p>이번 회차에 도달한 층이라면 어디든 내려가 파밍할 수 있습니다. 층을 직접 고르면 자동 상승이 꺼지니, 다시 올라갈 때 켜 주세요.</p>
+      <p>광석은 모두 <strong>40</strong>종이고 어떤 광석이 나오는지는 깊이가 정합니다. 종류는 겉모습과 가루만 바꾸며, 체력과 골드는 층이 정합니다.</p>
+      <div class="table-wrap">
+        <table>
+        <thead><tr>
+        <th class="num">깊이</th>
+        <th class="num">광석 종류</th>
+        <th class="num">대략 층</th>
+        </tr></thead>
+        <tbody>
+        <tr>
+        <td class="num">0-100 m</td>
+        <td class="num">9</td>
+        <td class="num">~54</td>
+        </tr>
+        <tr>
+        <td class="num">100-500 m</td>
+        <td class="num">20</td>
+        <td class="num">~129</td>
+        </tr>
+        <tr>
+        <td class="num">500-1,500 m</td>
+        <td class="num">30</td>
+        <td class="num">~196</td>
+        </tr>
+        <tr>
+        <td class="num">1,500 m+</td>
+        <td class="num">40</td>
+        <td class="num">-</td>
+        </tr>
+        </tbody></table></div>
+    </section>
+
+    <section id="skills">
+      <div class="section-head"><span class="section-num">10</span><h2>액티브 스킬</h2></div>
+      <p class="section-dek">일정 시간 강화 뒤 재사용 대기가 붙는 스킬 8개.</p>
+      <p>스킬은 해당 층에 도달하면 <strong>무료</strong>로 열려 1단계부터 사용합니다. 7단계까지 올리는 데 총 <strong>스킬 스톤 63개</strong>가 들고, 8개 전부는 <strong>504개</strong>입니다. 단계가 오르면 지속이 길어지고 재사용 대기가 짧아집니다.</p>
+      <div class="table-wrap">
+        <table>
+        <thead><tr>
+        <th>스킬</th>
+        <th class="num">층</th>
+        <th class="num">1단계 (지속 / 재사용)</th>
+        <th class="num">7단계 (지속 / 재사용)</th>
+        <th class="num">효과</th>
+        </tr></thead>
+        <tbody>
+        <tr>
+        <td>광석 파괴자</td>
+        <td class="num">50</td>
+        <td class="num">30초 / 540초</td>
+        <td class="num">90초 / 180초</td>
+        <td class="num">7 → 13 /초</td>
+        </tr>
+        <tr>
+        <td>분노의 클릭</td>
+        <td class="num">70</td>
+        <td class="num">40초 / 660초</td>
+        <td class="num">210초 / 300초</td>
+        <td class="num">x2 → x5</td>
+        </tr>
+        <tr>
+        <td>치명타 일격</td>
+        <td class="num">100</td>
+        <td class="num">30초 / 600초</td>
+        <td class="num">150초 / 240초</td>
+        <td class="num">x1.3 → x1.9</td>
+        </tr>
+        <tr>
+        <td>광란</td>
+        <td class="num">170</td>
+        <td class="num">40초 / 840초</td>
+        <td class="num">160초 / 480초</td>
+        <td class="num">x2 → x3.5</td>
+        </tr>
+        <tr>
+        <td>황금 광풍</td>
+        <td class="num">240</td>
+        <td class="num">50초 / 1,020초</td>
+        <td class="num">290초 / 660초</td>
+        <td class="num">x2 → x5</td>
+        </tr>
+        <tr>
+        <td>열 저항</td>
+        <td class="num">280</td>
+        <td class="num">30초 / 660초</td>
+        <td class="num">140초 / 300초</td>
+        <td class="num">x2 → x5</td>
+        </tr>
+        <tr>
+        <td>과부하</td>
+        <td class="num">330</td>
+        <td class="num">20초 / 1,200초</td>
+        <td class="num">20초 / 840초</td>
+        <td class="num">x1.5 → x3</td>
+        </tr>
+        <tr>
+        <td>시간 역행</td>
+        <td class="num">400</td>
+        <td class="num">1,200초</td>
+        <td class="num">840초</td>
+        <td class="num">-300초 → -1,020초</td>
+        </tr>
+        </tbody></table></div>
+      <p>첫 스킬은 50층에서 열리고, 스킬 스톤을 쓰는 스킬 트리 창은 <strong>180</strong>층에서 열립니다. 스킬을 쓰는 것만이라면 창은 필요하지 않습니다.</p>
+      <div class="callout">
+          <div class="callout-label">연계</div>
+          먼저 과부하를 켜고, 그다음에 실제로 강화하고 싶은 스킬(예: 황금 광풍)을 사용하세요. 시간 역행은 마지막에 쓴 스킬의 재사용 대기를 줄여 주므로 그 스킬이 더 빨리 돌아옵니다.
+        </div>
+    </section>
+
+    <section id="titles">
+      <div class="section-head"><span class="section-num">11</span><h2>칭호</h2></div>
+      <p class="section-dek">올라가는 동안 저절로 따라오는 칭호 100개.</p>
+      <ul>
+          <li>칭호는 1층부터 <strong>50,000</strong>층까지 있고, 이번 회차 최고 도달 층에 따라 자동으로 선택됩니다.</li>
+          <li>칭호 하나가 가진 보너스는 각각 약 <strong>+0.1</strong>씩입니다.</li>
+          <li>보너스는 단계적으로 늘어납니다. 클릭 피해는 첫 칭호부터, 이어서 자동 피해, 열 저항, 골드, 치명타 배율, 치명타 확률, 클릭에 더해지는 초당 피해 비율(1 / 5 / 10 / 15 / 20 / 25 / 30번째 칭호)입니다.</li>
+        </ul>
+    </section>
+
+    <section id="tasks">
+      <div class="section-head"><span class="section-num">12</span><h2>임무와 Taskium</h2></div>
+      <p class="section-dek">클릭을 두 번째 수입으로 바꿔 주는 곁길입니다.</p>
+      <ul>
+          <li>클릭이 성공할 때마다 <strong>+1 Taskium</strong>이 들어옵니다.</li>
+          <li>임무 수락은 <strong>200</strong>, 다시 뽑기는 <strong>25</strong>입니다.</li>
+          <li>임무 창은 160층에서 열리고, 칸 6개는 160 / 170 / 180 / 190 / 200 / 210층에서 차례로 열립니다.</li>
+          <li>임무는 등급 6종에 종류 10가지입니다. 하나가 60분 동안 유지되고, 수락하지 않은 임무는 매시간 새로 바뀝니다.</li>
+          <li>보상은 등급에 따라 커지고 현재 층 광석 골드의 <strong>50-500</strong>배 범위입니다. 최고 등급은 에센스도 줍니다.</li>
+        </ul>
+    </section>
+
+    <section id="trade">
+      <div class="section-head"><span class="section-num">13</span><h2>교환 창</h2></div>
+      <p class="section-dek">180층에서 열립니다. 광석 스톤이 값을 가지는 유일한 곳입니다.</p>
+      <ul>
+          <li>스킬 스톤 1개 → <strong>광석 스톤 5,000개</strong>(한 번에 최대 100,000개).</li>
+          <li><strong>광석 스톤 2,000개</strong> → 에센스 1.</li>
+          <li><strong>광석 스톤 5,000개</strong> → 스킬 스톤 1개.</li>
+        </ul>
+      <p>마지막 교환이 핵심입니다. 오래 파밍한 결과를 보스전 없이 스킬 단계로 바꿀 수 있습니다.</p>
+    </section>
+
+    <section id="extras">
+      <div class="section-head"><span class="section-num">14</span><h2>공짜 골드</h2></div>
+      <p class="section-dek">게임에 있기만 하면 들어오는 수입 세 가지.</p>
+      <ul>
+          <li><strong>골드 풍선</strong> - 50층부터 70-105초마다 하나씩 떠옵니다. 클릭하면 이번 회차 최고 층 광석 골드의 <strong>x6</strong>를 받습니다.</li>
+          <li><strong>오프라인 수입</strong> - 자리를 비운 60분부터 계산되고 12시간에서 멈춥니다. 프리미엄이면 두 배입니다.</li>
+          <li><strong>플레이 시간 보상</strong> - 60분 플레이마다 최고 층에서 1분 동안 벌 골드의 약 100배를 줍니다.</li>
+        </ul>
+    </section>
+
+    <section id="prestige">
+      <div class="section-head"><span class="section-num">15</span><h2>프레스티지</h2></div>
+      <p class="section-dek">이번 회차의 진행을 영구적인 힘으로 바꿉니다. 시점을 잘 잡으면 게임에서 가장 빠른 수단입니다.</p>
+      <p>프레스티지 창은 <strong>200</strong>층에 처음 도달하면 열립니다. 이후 한 번마다 조건이 100층씩 올라가 300층, 400층으로 이어집니다.</p>
+      <ul>
+          <li><strong>초기화되는 것:</strong> 골드, Taskium, 층 진행, 곡괭이와 방어구 강화, 펫 레벨, 구입한 모든 스킬, 보스 진행도.</li>
+          <li><strong>남는 것:</strong> 프레스티지 레벨, 에센스, 지표 7가지의 레벨, 보유한 펫, 무한 아이템, 업적.</li>
+          <li>1층부터 다시 시작하지는 않습니다. 다음 회차는 <strong>100 × 프레스티지 레벨</strong> 층에서 시작하고, 광석 약 500개 값어치의 시작 골드도 함께 받습니다.</li>
+          <li>모든 재사용 대기가 초기화되므로 회차를 시작할 때 스킬을 전부 쓸 수 있습니다.</li>
+        </ul>
+      <p>에센스 보상은 딱 두 가지로 정해집니다. <strong>도달한 최고 층</strong>(층마다 0.5)과 <strong>깬 광석</strong>(개당 0.25)입니다.</p>
+      <div class="callout">
+          <div class="callout-label">달리지 말고 광석을 깨자</div>
+          광석 수의 비중이 더 크기 때문에, 마지막 시간을 피해가 거의 통하지 않는 층으로 뛰어오르기보다 편한 층에서 계속 깨는 편이 더 많이 받습니다.
+        </div>
+      <div class="table-wrap">
+        <table>
+        <thead><tr>
+        <th>지표</th>
+        <th>효과</th>
+        <th class="num">레벨당</th>
+        </tr></thead>
+        <tbody>
+        <tr>
+        <td>영원의 대장간</td>
+        <td>초당 자동 피해</td>
+        <td class="num">+20%</td>
+        </tr>
+        <tr>
+        <td>돌 파괴자의 손</td>
+        <td>클릭 피해</td>
+        <td class="num">+25%</td>
+        </tr>
+        <tr>
+        <td>황금의 심연</td>
+        <td>골드 수입</td>
+        <td class="num">+10%</td>
+        </tr>
+        <tr>
+        <td>광석의 신탁</td>
+        <td>치명타 확률</td>
+        <td class="num">+5%</td>
+        </tr>
+        <tr>
+        <td>재앙의 힘</td>
+        <td>치명타 배율</td>
+        <td class="num">+5%</td>
+        </tr>
+        <tr>
+        <td>지옥의 방패</td>
+        <td>열 저항</td>
+        <td class="num">+10%</td>
+        </tr>
+        <tr>
+        <td>힘의 단위</td>
+        <td>클릭에 더해지는 초당 피해 비율</td>
+        <td class="num">+1%</td>
+        </tr>
+        </tbody></table></div>
+      <p>보너스는 곱이 아니라 레벨마다 더해지는 방식이고, 에센스 비용도 천천히 오릅니다. 모아 두기보다 꾸준히 쓰는 편이 이득입니다.</p>
+    </section>
+
+    <section id="bosses">
+      <div class="section-head"><span class="section-num">16</span><h2>보스</h2></div>
+      <p class="section-dek">에센스를 걸고 시간과 겨루는 피해 경쟁. 350층에서 열립니다.</p>
+      <ul>
+          <li>보스를 고르고 <strong>던전 열쇠 1개</strong>를 써서 시작합니다. 자동으로 시작되는 것은 없습니다.</li>
+          <li>보스는 차례대로 열리며 하나를 잡아야 다음이 나옵니다. 단계마다 체력은 약 1000배가 되고 제한 시간은 짧아집니다.</li>
+          <li>보상은 프레스티지 레벨과 함께 커집니다. 레벨당 약 <strong>+15%</strong>입니다.</li>
+          <li>프레스티지를 하면 보스 진행도가 첫 보스로 돌아갑니다.</li>
+        </ul>
+      <div class="table-wrap">
+        <table>
+        <thead><tr>
+        <th>보스</th>
+        <th class="num">체력</th>
+        <th class="num">제한 시간</th>
+        <th>보상</th>
+        </tr></thead>
+        <tbody>
+        <tr>
+        <td>수정 거인</td>
+        <td class="num">1e13</td>
+        <td class="num">30초</td>
+        <td>50 정수 + 5,000 광석 스톤</td>
+        </tr>
+        <tr>
+        <td>수정 수호자</td>
+        <td class="num">1e16</td>
+        <td class="num">25초</td>
+        <td>75 정수 + 7,500 광석 스톤</td>
+        </tr>
+        <tr>
+        <td>진홍의 파수꾼</td>
+        <td class="num">1e19</td>
+        <td class="num">20초</td>
+        <td>100 정수 + 10,000 광석 스톤</td>
+        </tr>
+        <tr>
+        <td>돌 수호자</td>
+        <td class="num">1e22</td>
+        <td class="num">20초</td>
+        <td>125 정수 + 12,500 광석 스톤</td>
+        </tr>
+        <tr>
+        <td>서리 타이탄</td>
+        <td class="num">1e25</td>
+        <td class="num">20초</td>
+        <td>150 정수 + 15,000 광석 스톤</td>
+        </tr>
+        <tr>
+        <td>수정 골렘 1</td>
+        <td class="num">1e28</td>
+        <td class="num">20초</td>
+        <td>175 정수 + 17,500 광석 스톤</td>
+        </tr>
+        <tr>
+        <td>돌수염 거인</td>
+        <td class="num">1e31</td>
+        <td class="num">15초</td>
+        <td>200 정수 + 20,000 광석 스톤</td>
+        </tr>
+        <tr>
+        <td>수정 골렘 2</td>
+        <td class="num">1e34</td>
+        <td class="num">15초</td>
+        <td>225 정수 + 22,500 광석 스톤</td>
+        </tr>
+        <tr>
+        <td>화염 골렘</td>
+        <td class="num">1e37</td>
+        <td class="num">15초</td>
+        <td>250 정수 + 25,000 광석 스톤</td>
+        </tr>
+        <tr>
+        <td>수호자 골렘</td>
+        <td class="num">1e40</td>
+        <td class="num">10초</td>
+        <td>275 정수 + 27,500 광석 스톤</td>
+        </tr>
+        </tbody></table></div>
+      <div class="callout warn">
+          <div class="callout-label">지면 손해</div>
+          시간이 다 됐을 때 보스가 남아 있으면 보상은 <strong>없고</strong> 쓴 열쇠도 돌아오지 않습니다. 실패한 뒤에는 남은 체력이 보이니, 다음에 얼마나 더 피해가 필요한지 가늠하는 데 쓰세요.
+        </div>
+    </section>
+
+    <section id="achievements">
+      <div class="section-head"><span class="section-num">17</span><h2>업적</h2></div>
+      <p class="section-dek">24개 항목에 업적 86개. 클릭, 광석, 보스, 프레스티지, 깊이 등이 있습니다.</p>
+      <p>보상은 모두 <strong>광석 스톤</strong>이고, 목표와 보상 모두 단계마다 약 열 배로 커집니다. 대부분 항목은 3단계이며 골드와 피해 항목은 더 이어집니다.</p>
+      <div class="callout">
+          <div class="callout-label">받는 것을 잊지 마세요</div>
+          보상은 <strong>자동으로 들어오지 않습니다</strong>. 한동안 업적 탭을 열지 않았다면 꽤 쌓여 있을 것입니다.
+        </div>
+    </section>
+
+    <section id="daily">
+      <div class="section-head"><span class="section-num">18</span><h2>일일 보상</h2></div>
+      <p class="section-dek">작고 단순하며, 하루를 놓쳐도 손해는 없습니다.</p>
+      <p>하루 한 번 접속하면 <strong>던전 열쇠 1개</strong>를 받습니다. 매일 같은 보상이고 달력이나 연속 접속 기록은 없습니다. 받으려면 온라인 상태여야 합니다.</p>
+    </section>
+
+    <section id="store">
+      <div class="section-head"><span class="section-num">19</span><h2>상점</h2></div>
+      <p class="section-dek">다이아, 열쇠, 패키지, 프리미엄 기간, 그리고 영구 무한 아이템.</p>
+      <ul>
+          <li><strong>다이아 패키지:</strong> 200 / 550 / 1,150 / 2,400 / 6,250 / 14,000 다이아. 패키지이 클수록 단가가 낮습니다.</li>
+          <li><strong>열쇠 패키지:</strong> 던전 열쇠 3 / 7 / 15개.</li>
+          <li><strong>소형 패키지:</strong> 500 다이아몬드, 100 정수, 10 스킬 스톤, 3 던전 열쇠.</li>
+          <li><strong>대형 패키지:</strong> 1,000 다이아몬드, 200 정수, 20 스킬 스톤, 5 던전 열쇠.</li>
+          <li><strong>7일 프리미엄 패키지:</strong> 7일 동안 클릭 피해 x5, 자동 피해 x5, 골드 x3, 열 저항 x3, 오프라인 수입 x2.</li>
+        </ul>
+      <p>무한 아이템은 <strong>다이아로 한 번만</strong> 구입하고 프레스티지에도 초기화되지 않습니다. 후반에는 보통 다이아를 가장 잘 쓰는 방법입니다.</p>
+      <div class="table-wrap">
+        <table>
+        <thead><tr>
+        <th>아이템</th>
+        <th class="num">효과</th>
+        <th class="num">가격</th>
+        </tr></thead>
+        <tbody>
+        <tr>
+        <td>무한 위력</td>
+        <td class="num">x4</td>
+        <td class="num">350 💎</td>
+        </tr>
+        <tr>
+        <td>무한 수익</td>
+        <td class="num">x3</td>
+        <td class="num">350 💎</td>
+        </tr>
+        <tr>
+        <td>무한 갑옷</td>
+        <td class="num">x2</td>
+        <td class="num">350 💎</td>
+        </tr>
+        <tr>
+        <td>무한 속도</td>
+        <td class="num">x1.5</td>
+        <td class="num">550 💎</td>
+        </tr>
+        <tr>
+        <td>무한 클리커</td>
+        <td class="num">7 /초</td>
+        <td class="num">600 💎</td>
+        </tr>
+        </tbody></table></div>
+      <div class="callout">
+          <div class="callout-label">가격</div>
+          상점 가격은 Steam에서 각자의 통화로 전달되므로 여기에는 적지 않았습니다. 구성은 바뀌지 않지만 가격은 지역에 따라 다릅니다.
+        </div>
+    </section>
+
+    <section id="progress">
+      <div class="section-head"><span class="section-num">20</span><h2>순위표와 통계</h2></div>
+      <p class="section-dek">회차가 어떻게 흘러가는지 볼 수 있는 두 곳입니다.</p>
+      <ul>
+          <li>Steam 순위표는 클릭 수, 클릭 피해, 프레스티지 횟수, 잡은 보스 수, 최고 층을 기록합니다.</li>
+          <li>통계 화면은 더 많은 것을 기록합니다. 수입, 지출, 클릭 수, 플레이 시간 등입니다.</li>
+        </ul>
+    </section>
+
+    <section id="save">
+      <div class="section-head"><span class="section-num">21</span><h2>저장</h2></div>
+      <p class="section-dek">짧게 답하면, 진행 상황은 여러 겹으로 보호됩니다.</p>
+      <ul>
+          <li>게임은 <strong>15초</strong>마다 암호화해 스스로 저장합니다.</li>
+          <li>Steam 클라우드 백업은 약 <strong>45초</strong>마다, 그리고 게임을 닫거나 일시 정지할 때 항상 이루어집니다. 다른 컴퓨터에서도 같은 지점에서 이어집니다.</li>
+          <li>저장 파일이 손상되면 게임이 스스로 백업으로 돌아갑니다.</li>
+          <li>저장 데이터를 클립보드로 복사해 다른 기기에 붙여 넣을 수도 있습니다.</li>
+        </ul>
+    </section>
+
+    <section id="languages">
+      <div class="section-head"><span class="section-num">22</span><h2>언어</h2></div>
+      <p class="section-dek">이 게임은 18개 언어로 제공됩니다.</p>
+      <p>영어, 튀르키예어, 독일어, 프랑스어, 스페인어, 라틴아메리카 스페인어, 이탈리아어, 폴란드어, 브라질 포르투갈어, 러시아어, 우크라이나어, 일본어, 한국어, 중국어 간체, 중국어 번체, 타이어, 인도네시아어, 베트남어입니다. 첫 실행에서 자동으로 선택되고 설정에서 언제든 바꿀 수 있습니다. 이 가이드도 모든 언어로 있으며 페이지 위쪽 링크에서 열 수 있습니다.</p>
+    </section>
+
+    <footer class="doc-footer">여기 적힌 수치는 현재 게임 밸런스를 따르며 업데이트로 바뀔 수 있습니다. 상점 가격은 Steam에서 정해 각자의 통화로 표시되므로 여기에는 적지 않았습니다.</footer>
+  </main>
+</div>

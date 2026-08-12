@@ -1,0 +1,1069 @@
+<title>Clicker Ore Game - Hướng dẫn người chơi</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Mỏ vận hành thế nào: tiền tệ, cúp, thú, kỹ năng, thăng hoa, trùm và cửa hàng - giải thích không cần công thức.">
+<style>
+  :root {
+    --bg: #14110d;
+    --bg-elevated: #1d1811;
+    --bg-card: #211b13;
+    --text: #ede6d8;
+    --text-dim: #a89a82;
+    --text-faint: #766a55;
+    --accent: #e0a752;
+    --accent-strong: #f2bd6e;
+    --accent-2: #7fb8ad;
+    --border: #3a2f22;
+    --border-soft: #2a2318;
+    --danger: #cf7a5a;
+    --shadow: 0 8px 24px rgba(0,0,0,0.35);
+
+    --cur-gold: #e0a752;
+    --cur-diamond: #7fd1e0;
+    --cur-essence: #b79ef0;
+    --cur-taskium: #93a8d6;
+    --cur-key: #d98a63;
+    --cur-skillstone: #7fc9a0;
+    --cur-orestone: #b5a68c;
+
+    --font-display: "Bahnschrift", "Segoe UI Semibold", "Arial Narrow Bold", "Arial Narrow", sans-serif;
+    --font-body: "Sitka Text", "Iowan Old Style", Georgia, "Times New Roman", serif;
+    --font-mono: "Cascadia Mono", "Consolas", "SF Mono", ui-monospace, monospace;
+  }
+
+  :root[data-theme="light"] {
+    --bg: #efe9da;
+    --bg-elevated: #e6ddc8;
+    --bg-card: #f3ede0;
+    --text: #241d14;
+    --text-dim: #5c5138;
+    --text-faint: #857656;
+    --accent: #a8621a;
+    --accent-strong: #8a4e12;
+    --accent-2: #2f7a70;
+    --border: #d3c5a4;
+    --border-soft: #ddd0b1;
+    --danger: #a3492c;
+    --shadow: 0 8px 20px rgba(90,70,30,0.12);
+  }
+
+  @media (prefers-color-scheme: light) {
+    :root:not([data-theme="dark"]) {
+      --bg: #efe9da;
+      --bg-elevated: #e6ddc8;
+      --bg-card: #f3ede0;
+      --text: #241d14;
+      --text-dim: #5c5138;
+      --text-faint: #857656;
+      --accent: #a8621a;
+      --accent-strong: #8a4e12;
+      --accent-2: #2f7a70;
+      --border: #d3c5a4;
+      --border-soft: #ddd0b1;
+      --danger: #a3492c;
+      --shadow: 0 8px 20px rgba(90,70,30,0.12);
+    }
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: 17px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection { background: var(--accent); color: #14110d; }
+
+  a { color: var(--accent-strong); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  a:focus-visible, button:focus-visible, summary:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    text-wrap: balance;
+    letter-spacing: 0.01em;
+    color: var(--text);
+  }
+
+  p { max-width: 68ch; }
+  ul, ol { max-width: 68ch; }
+
+  .shell {
+    display: grid;
+    grid-template-columns: 260px minmax(0, 1fr);
+    min-height: 100vh;
+  }
+
+  .topbar {
+    display: none;
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: var(--bg-elevated);
+    border-bottom: 1px solid var(--border);
+    padding: 0.7rem 1rem;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .topbar-title {
+    font-family: var(--font-display);
+    font-size: 0.95rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--accent-strong);
+  }
+  #nav-toggle { display: none; }
+  .nav-toggle-btn {
+    font-family: var(--font-display);
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 0.4rem 0.7rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.85rem;
+  }
+
+  nav.toc {
+    position: sticky;
+    top: 0;
+    align-self: start;
+    height: 100vh;
+    overflow-y: auto;
+    padding: 2rem 1.4rem 3rem;
+    background: var(--bg-elevated);
+    border-right: 1px solid var(--border);
+  }
+  .toc-brand {
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    letter-spacing: 0.03em;
+    color: var(--accent-strong);
+    margin-bottom: 0.15rem;
+  }
+  .toc-brand small {
+    display: block;
+    font-family: var(--font-body);
+    font-style: italic;
+    font-size: 0.78rem;
+    color: var(--text-faint);
+    letter-spacing: 0;
+    margin-top: 0.25rem;
+  }
+  .toc-list {
+    list-style: none;
+    margin: 1.6rem 0 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+  }
+  .toc-list a {
+    display: block;
+    color: var(--text-dim);
+    font-size: 0.88rem;
+    padding: 0.32rem 0.5rem;
+    border-radius: 4px;
+    border-left: 2px solid transparent;
+  }
+  .toc-list a:hover {
+    color: var(--text);
+    text-decoration: none;
+    background: rgba(224,167,82,0.08);
+    border-left-color: var(--accent);
+  }
+  .toc-num {
+    font-family: var(--font-mono);
+    color: var(--text-faint);
+    font-size: 0.78rem;
+    margin-right: 0.45rem;
+  }
+
+  main {
+    padding: 3.2rem clamp(1.2rem, 4vw, 4rem) 6rem;
+    max-width: 900px;
+  }
+
+  header.hero {
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .strata {
+    height: 10px;
+    width: 100%;
+    border-radius: 3px;
+    margin-bottom: 1.6rem;
+    background: repeating-linear-gradient(
+      90deg,
+      var(--accent) 0 6%,
+      var(--accent-2) 6% 11%,
+      var(--border-soft) 11% 18%,
+      var(--accent) 18% 24%,
+      var(--border-soft) 24% 34%,
+      var(--accent-2) 34% 40%,
+      var(--accent) 40% 48%,
+      var(--border-soft) 48% 58%,
+      var(--accent-2) 58% 63%,
+      var(--accent) 63% 72%,
+      var(--border-soft) 72% 82%,
+      var(--accent-2) 82% 90%,
+      var(--accent) 90% 100%
+    );
+    opacity: 0.85;
+  }
+  .eyebrow {
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-size: 0.72rem;
+    color: var(--accent);
+    margin-bottom: 0.6rem;
+  }
+  h1.title {
+    font-size: clamp(2rem, 4.2vw, 2.9rem);
+    margin: 0 0 0.7rem;
+    line-height: 1.1;
+  }
+  .subtitle {
+    color: var(--text-dim);
+    font-size: 1.08rem;
+    max-width: 62ch;
+    margin: 0;
+  }
+
+  .langbar {
+    margin: 1.8rem 0 0;
+    padding-top: 1.2rem;
+    border-top: 1px solid var(--border-soft);
+  }
+  .langbar-label {
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 0.68rem;
+    color: var(--text-faint);
+    margin-bottom: 0.55rem;
+  }
+  .langbar-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem 0.4rem;
+  }
+  .langbar-list a, .langbar-list span {
+    font-family: var(--font-display);
+    font-size: 0.78rem;
+    padding: 0.18rem 0.55rem;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    color: var(--text-dim);
+    background: var(--bg-card);
+  }
+  .langbar-list a:hover {
+    text-decoration: none;
+    color: var(--text);
+    border-color: var(--accent);
+  }
+  .langbar-list span {
+    color: #14110d;
+    background: var(--accent);
+    border-color: var(--accent);
+  }
+  :root[data-theme="light"] .langbar-list span { color: #efe9da; }
+
+  section {
+    margin-bottom: 3.6rem;
+    scroll-margin-top: 1.5rem;
+  }
+  .section-head {
+    display: flex;
+    align-items: baseline;
+    gap: 0.7rem;
+    margin-bottom: 0.3rem;
+  }
+  .section-num {
+    font-family: var(--font-mono);
+    color: var(--accent);
+    font-size: 0.95rem;
+  }
+  h2 {
+    font-size: 1.55rem;
+    margin: 0;
+  }
+  .section-dek {
+    color: var(--text-dim);
+    font-size: 0.98rem;
+    margin: 0.3rem 0 1.5rem;
+    max-width: 62ch;
+  }
+
+  .callout {
+    border-left: 3px solid var(--accent);
+    background: var(--bg-card);
+    padding: 0.95rem 1.2rem;
+    border-radius: 0 6px 6px 0;
+    margin: 1.2rem 0;
+    font-size: 0.95rem;
+  }
+  .callout strong { color: var(--accent-strong); }
+  .callout.warn { border-left-color: var(--danger); }
+  .callout-label {
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 0.72rem;
+    color: var(--accent);
+    margin-bottom: 0.35rem;
+  }
+  .callout.warn .callout-label { color: var(--danger); }
+
+  .currency-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 0.9rem;
+    margin: 1.4rem 0;
+  }
+  .cur-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-top: 3px solid var(--dot);
+    border-radius: 6px;
+    padding: 0.95rem 1rem 1.05rem;
+  }
+  .cur-card h4 {
+    margin: 0 0 0.5rem;
+    font-size: 0.98rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .dot {
+    width: 9px; height: 9px; border-radius: 50%;
+    background: var(--dot);
+    flex: none;
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--dot) 20%, transparent);
+  }
+  .cur-card p {
+    margin: 0.15rem 0;
+    font-size: 0.84rem;
+    color: var(--text-dim);
+    max-width: none;
+  }
+  .cur-card p b { color: var(--text); font-weight: 600; }
+
+  .table-wrap {
+    overflow-x: auto;
+    margin: 1.2rem 0;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+  }
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    min-width: 460px;
+    font-size: 0.9rem;
+  }
+  thead th {
+    text-align: left;
+    font-family: var(--font-display);
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    font-size: 0.72rem;
+    color: var(--text-dim);
+    background: var(--bg-elevated);
+    padding: 0.6rem 0.85rem;
+    border-bottom: 1px solid var(--border);
+    white-space: nowrap;
+  }
+  tbody td {
+    padding: 0.55rem 0.85rem;
+    border-bottom: 1px solid var(--border-soft);
+    font-variant-numeric: tabular-nums;
+    color: var(--text);
+  }
+  tbody tr:last-child td { border-bottom: none; }
+  tbody tr:nth-child(even) { background: color-mix(in srgb, var(--accent) 3%, transparent); }
+  td.num, th.num { font-family: var(--font-mono); }
+  td.strong { color: var(--accent-strong); font-weight: 600; }
+
+  .strategy-track {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 1.4rem 0;
+  }
+  .strategy-stage {
+    background: var(--bg-card);
+    padding: 1rem 1.1rem;
+  }
+  .strategy-stage .stage-label {
+    font-family: var(--font-display);
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+    margin-bottom: 0.4rem;
+  }
+  .strategy-stage ul {
+    margin: 0;
+    padding-left: 1.1rem;
+    font-size: 0.86rem;
+    color: var(--text-dim);
+  }
+  .strategy-stage li { margin-bottom: 0.25rem; }
+
+  footer.doc-footer {
+    margin-top: 4rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+    color: var(--text-faint);
+    font-size: 0.8rem;
+  }
+
+  @media (max-width: 880px) {
+    .shell { grid-template-columns: 1fr; }
+    .topbar { display: flex; }
+    nav.toc {
+      position: fixed;
+      inset: 0 20% 0 0;
+      top: 52px;
+      height: calc(100vh - 52px);
+      transform: translateX(-100%);
+      transition: transform 0.22s ease;
+      z-index: 15;
+      box-shadow: var(--shadow);
+    }
+    #nav-toggle:checked ~ .shell nav.toc {
+      transform: translateX(0);
+    }
+    main { padding: 2rem 1.2rem 5rem; }
+  }
+</style>
+
+<input type="checkbox" id="nav-toggle">
+
+<div class="topbar">
+  <span class="topbar-title">&#9935; Hướng dẫn người chơi</span>
+  <label class="nav-toggle-btn" for="nav-toggle">Mục lục</label>
+</div>
+
+<div class="shell">
+  <nav class="toc" aria-label="Mục lục">
+    <div class="toc-brand">Clicker Ore Game<small>Hướng dẫn người chơi</small></div>
+    <ul class="toc-list">
+      <li><a href="#start"><span class="toc-num">01</span>Bắt đầu từ đâu</a></li>
+      <li><a href="#currencies"><span class="toc-num">02</span>7 loại tiền tệ</a></li>
+      <li><a href="#damage"><span class="toc-num">03</span>Sát thương nhấp và sát thương tự động</a></li>
+      <li><a href="#critical"><span class="toc-num">04</span>Chí mạng</a></li>
+      <li><a href="#pickaxes"><span class="toc-num">05</span>Cúp</a></li>
+      <li><a href="#suits"><span class="toc-num">06</span>Giáp</a></li>
+      <li><a href="#temperature"><span class="toc-num">07</span>Nhiệt</a></li>
+      <li><a href="#pets"><span class="toc-num">08</span>Thú</a></li>
+      <li><a href="#floors"><span class="toc-num">09</span>Tầng, quặng và độ sâu</a></li>
+      <li><a href="#skills"><span class="toc-num">10</span>Kỹ năng chủ động</a></li>
+      <li><a href="#titles"><span class="toc-num">11</span>Danh hiệu</a></li>
+      <li><a href="#tasks"><span class="toc-num">12</span>Nhiệm vụ và Taskium</a></li>
+      <li><a href="#trade"><span class="toc-num">13</span>Bảng trao đổi</a></li>
+      <li><a href="#extras"><span class="toc-num">14</span>Vàng miễn phí</a></li>
+      <li><a href="#prestige"><span class="toc-num">15</span>Thăng hoa</a></li>
+      <li><a href="#bosses"><span class="toc-num">16</span>Trùm</a></li>
+      <li><a href="#achievements"><span class="toc-num">17</span>Thành tích</a></li>
+      <li><a href="#daily"><span class="toc-num">18</span>Thưởng hằng ngày</a></li>
+      <li><a href="#store"><span class="toc-num">19</span>Cửa hàng</a></li>
+      <li><a href="#progress"><span class="toc-num">20</span>Bảng xếp hạng và thống kê</a></li>
+      <li><a href="#save"><span class="toc-num">21</span>Lưu game</a></li>
+      <li><a href="#languages"><span class="toc-num">22</span>Ngôn ngữ</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <header class="hero">
+      <div class="strata" role="presentation"></div>
+      <div class="eyebrow">Hướng dẫn người chơi - 2026-08-12</div>
+      <h1 class="title">Cả khu mỏ,<br>nói bằng lời dễ hiểu</h1>
+      <p class="subtitle">Mỗi hệ thống làm gì, mở ở tầng nào, và giờ tiếp theo bạn nên dồn vào đâu. Không có công thức, chỉ có những quyết định thật sự quan trọng.</p>
+      <div class="langbar">
+        <div class="langbar-label">Ngôn ngữ</div>
+        <div class="langbar-list"><a href="player_guide_en.html" hreflang="en">English</a><a href="player_guide_tr.html" hreflang="tr">Türkçe</a><a href="player_guide_de.html" hreflang="de">Deutsch</a><a href="player_guide_fr.html" hreflang="fr">Français</a><a href="player_guide_es.html" hreflang="es">Español</a><a href="player_guide_es_la.html" hreflang="es-419">Español (Latinoamérica)</a><a href="player_guide_it.html" hreflang="it">Italiano</a><a href="player_guide_pl.html" hreflang="pl">Polski</a><a href="player_guide_pt_br.html" hreflang="pt-BR">Português (Brasil)</a><a href="player_guide_ru.html" hreflang="ru">Русский</a><a href="player_guide_uk.html" hreflang="uk">Українська</a><a href="player_guide_ja.html" hreflang="ja">日本語</a><a href="player_guide_ko.html" hreflang="ko">한국어</a><a href="player_guide_zh_hans.html" hreflang="zh-Hans">简体中文</a><a href="player_guide_zh_hant.html" hreflang="zh-Hant">繁體中文</a><a href="player_guide_th.html" hreflang="th">ไทย</a><a href="player_guide_id.html" hreflang="id">Bahasa Indonesia</a><span>Tiếng Việt</span></div>
+      </div>
+    </header>
+
+    <section id="start">
+      <div class="section-head"><span class="section-num">01</span><h2>Bắt đầu từ đâu</h2></div>
+      <p class="section-dek">Ba giai đoạn, theo đúng thứ tự game mở nội dung.</p>
+      <div class="strategy-track">
+          <div class="strategy-stage">
+            <div class="stage-label">Đầu - tầng 1 đến tầng 200</div>
+            <ul>
+              <li>Nâng cúp liên tục; mua cúp kế tiếp ngay khi nó mở.</li>
+              <li>Kẻ Phá Quặng xuất hiện ở tầng 50, Nhấp Phẫn Nộ ở tầng 70.</li>
+              <li>Khi dư kim cương thì mua Đá Cuội.</li>
+            </ul>
+          </div>
+          <div class="strategy-stage">
+            <div class="stage-label">Giữa - tầng 200 đến tầng 350</div>
+            <ul>
+              <li>Thăng hoa lần đầu ở tầng 200.</li>
+              <li>Rải Tinh Chất cho cả 7 chỉ số, đừng dồn vào một cái.</li>
+              <li>Nhiệm vụ mở ở tầng 160, cây kỹ năng và bảng trao đổi mở ở tầng 180.</li>
+            </ul>
+          </div>
+          <div class="strategy-stage">
+            <div class="stage-label">Cuối - từ tầng 350 trở đi</div>
+            <ul>
+              <li>Có chìa thì đi đánh trùm; đó là nguồn Tinh Chất chính.</li>
+              <li>Mua các vật phẩm Vô Hạn - chúng vĩnh viễn và không bao giờ bị xóa.</li>
+              <li>Giữ giáp đủ cấp để nhiệt không ăn mất sát thương của bạn.</li>
+            </ul>
+          </div>
+        </div>
+      <div class="callout">
+          <div class="callout-label">Nên biết</div>
+          Các số dài lên rất nhanh nên game chuyển sang dạng viết tắt, rồi sang ký hiệu khoa học kiểu <strong>1,23e45</strong>. Không có giới hạn nào cả - chỉ là cách viết đổi.
+        </div>
+    </section>
+
+    <section id="currencies">
+      <div class="section-head"><span class="section-num">02</span><h2>7 loại tiền tệ</h2></div>
+      <p class="section-dek">Mỗi loại nuôi một hệ thống khác nhau. Dùng đúng tiền nhưng sai chỗ là lỗi phổ biến nhất khi mới chơi.</p>
+      <div class="currency-grid">
+        <div class="cur-card" style="--dot:var(--cur-gold)">
+          <h4><span class="dot"></span>Vàng</h4>
+          <p>Có được từ việc <b>đập quặng</b>.</p>
+          <p>Dùng để nâng cúp và giáp - đồng tiền làm việc hằng ngày.</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-diamond)">
+          <h4><span class="dot"></span>Kim Cương</h4>
+          <p>Chỉ đến từ <b>giao dịch bằng tiền thật</b>.</p>
+          <p>Dùng để mua thú và các vật phẩm Vô Hạn vĩnh viễn.</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-essence)">
+          <h4><span class="dot"></span>Tinh Chất</h4>
+          <p>Đến từ <b>thăng hoa</b> và các lần thắng trùm.</p>
+          <p>Dùng cho 7 chỉ số thăng hoa vĩnh viễn.</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-taskium)">
+          <h4><span class="dot"></span>Taskium</h4>
+          <p><b>+1</b> cho mỗi lần nhấp trúng.</p>
+          <p>Dùng để nhận và đổi lại nhiệm vụ.</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-key)">
+          <h4><span class="dot"></span>Chìa Khóa Hầm Ngục</h4>
+          <p>Mỗi ngày một chìa miễn phí, còn lại từ các gói trong cửa hàng.</p>
+          <p>Dùng để vào đánh trùm - 1 chìa mỗi lượt.</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-skillstone)">
+          <h4><span class="dot"></span>Đá Kỹ Năng</h4>
+          <p>Đến từ các gói trong cửa hàng và bảng trao đổi.</p>
+          <p>Dùng để nâng cấp 8 kỹ năng chủ động.</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-orestone)">
+          <h4><span class="dot"></span>Đá Quặng</h4>
+          <p><b>1-5</b> viên từ mỗi quặng đập được, cộng thêm thành tích.</p>
+          <p>Đổi thành Tinh Chất hoặc Đá Kỹ Năng ở bảng trao đổi.</p>
+        </div>
+      </div>
+      <div class="callout">
+          <div class="callout-label">Về kim cương</div>
+          Trùm, thành tích và nhiệm vụ không bao giờ cho kim cương. Kim cương và chìa hầm ngục được giữ trên máy chủ, nên muốn mua thú thì phải trực tuyến.
+        </div>
+    </section>
+
+    <section id="damage">
+      <div class="section-head"><span class="section-num">03</span><h2>Sát thương nhấp và sát thương tự động</h2></div>
+      <p class="section-dek">Hai nguồn sát thương riêng biệt, và thứ làm chúng lớn lên cũng khác nhau.</p>
+      <p><strong>Sát thương nhấp</strong> là lượng một lần nhấn gây ra. Nó tăng theo cấp và kỹ năng của cúp đầu tiên, kỹ năng Nhấp Phẫn Nộ, danh hiệu của bạn và chỉ số thăng hoa Bàn Tay Nghiền Đá. Khi đã nâng Hợp Nhất Sức Mạnh, một phần sát thương tự động cũng được cộng vào từng lần nhấp.</p>
+      <p><strong>Sát thương tự động</strong> (mỗi giây) đến từ cúp thứ hai trở đi, kỹ năng Cuồng Nộ, chỉ số Lò Rèn Vĩnh Cửu và các thú của bạn.</p>
+      <div class="callout">
+          <div class="callout-label">Thú là ngoại lệ</div>
+          Sát thương của thú được cộng <strong>sau</strong> mọi hệ số, nên không được các hệ số nhân lên. Về cuối game, chỉ nâng cấp thú là không đủ: hệ số của cúp và kỹ năng cũng phải lớn theo.
+        </div>
+    </section>
+
+    <section id="critical">
+      <div class="section-head"><span class="section-num">04</span><h2>Chí mạng</h2></div>
+      <p class="section-dek">Mỗi lần nhấp đều có thể nổ chí mạng và đánh mạnh hơn.</p>
+      <p>Bạn bắt đầu với tỉ lệ <strong>5%</strong> và hệ số <strong>x1,5</strong>. Bốn thứ đẩy chúng lên: kỹ năng Đòn Chí Mạng, kỹ năng của cúp, chỉ số thăng hoa Nhà Tiên Tri Quặng và Sức Mạnh Đại Họa, cùng danh hiệu.</p>
+    </section>
+
+    <section id="pickaxes">
+      <div class="section-head"><span class="section-num">05</span><h2>Cúp</h2></div>
+      <p class="section-dek">45 cây cúp mở lần lượt. Đây là xương sống của sát thương.</p>
+      <ul>
+          <li>Cúp đầu tiên giá <strong>5 vàng</strong>; mỗi cây sau đắt hơn cây trước khoảng <strong>8 lần</strong>.</li>
+          <li>Cúp tự mở khi số vàng bạn kiếm trong lượt này đủ nhiều - nghĩa là chính việc nâng cấp mới mở ra cây kế tiếp.</li>
+          <li>Mỗi cấp đắt hơn cấp trước khoảng <strong>7%</strong>.</li>
+          <li>Chỉ cây <strong>đầu tiên</strong> góp vào sát thương nhấp. Tất cả các cây còn lại góp vào sát thương tự động mỗi giây.</li>
+          <li>Mỗi cúp có 6 kỹ năng, mở ở cấp 5 / 10 / 25 / 50 / 100 / 200. Có kỹ năng chỉ giúp cây đó, có kỹ năng giúp tất cả - loại giúp tất cả đáng giá hơn.</li>
+        </ul>
+      <div class="callout">
+          <div class="callout-label">Bước nhảy lớn nhất</div>
+          Mỗi <strong>100 cấp</strong>, cúp nhân sản lượng của chính nó lên <strong>x10</strong>. Đẩy một cây cúp tới mốc trăm kế tiếp thường là mức tăng sức mạnh lớn nhất bạn có.
+        </div>
+    </section>
+
+    <section id="suits">
+      <div class="section-head"><span class="section-num">06</span><h2>Giáp</h2></div>
+      <p class="section-dek">5 bộ giáp, bạn có đủ ngay từ đầu. Việc của chúng là chắn nhiệt.</p>
+      <ul>
+          <li>Giáp không phải mua, chỉ nâng cấp. Mỗi cấp thêm khoảng <strong>5%</strong> kháng nhiệt, tính từ mốc 50.</li>
+          <li>Mỗi 100 cấp, kháng nhiệt của bộ giáp được nhân <strong>x2</strong>.</li>
+          <li>Mỗi bộ còn có 6 kỹ năng mở dần theo cấp.</li>
+          <li>Bảng giáp mở ở tầng <strong>130</strong>, cùng với thanh nhiệt.</li>
+        </ul>
+    </section>
+
+    <section id="temperature">
+      <div class="section-head"><span class="section-num">07</span><h2>Nhiệt</h2></div>
+      <p class="section-dek">Càng xuống sâu càng nóng, và nhiệt âm thầm cắt bớt sát thương của bạn.</p>
+      <ul>
+          <li>Nhiệt độ của tầng tăng liên tục - khoảng <strong>1,04 lần mỗi tầng</strong>, tức cứ hai chục tầng lại gấp đôi.</li>
+          <li>Khi kháng nhiệt còn đạt ít nhất <strong>1,5 lần</strong> nhiệt độ, thanh nhiệt vẫn sạch và bạn không mất gì.</li>
+          <li>Khi kháng nhiệt tụt xuống dưới nhiệt độ, sát thương bắt đầu rò rỉ; ở mức <strong>0,5 lần</strong> chỉ còn một phần hai mươi - mất <strong>95%</strong>.</li>
+          <li>Bảng giáp có công tắc tự mua kháng nhiệt; nếu hay xuống sâu thì cứ để bật.</li>
+        </ul>
+      <div class="callout warn">
+          <div class="callout-label">Nếu tự nhiên đứng máy</div>
+          Bức tường mà quặng mãi không vỡ gần như luôn là chuyện nhiệt, không phải thiếu sát thương. Hãy xem thanh nhiệt trước khi tiêu vào thứ khác.
+        </div>
+    </section>
+
+    <section id="pets">
+      <div class="section-head"><span class="section-num">08</span><h2>Thú</h2></div>
+      <p class="section-dek">5 thú, mua bằng kim cương rồi nâng cấp bằng vàng.</p>
+      <ul>
+          <li>Giá từ <strong>150</strong> đến <strong>250</strong> kim cương (150 / 175 / 200 / 225 / 250).</li>
+          <li>Mỗi cấp thêm khoảng <strong>1%</strong> sát thương nhấp của cúp dưới dạng sát thương tự động, nhân với thứ tự của thú - nên cùng cấp thì Mảnh Bóng Tối mạnh gấp năm Đá Cuội.</li>
+          <li>Chi phí mỗi cấp tăng khoảng <strong>20%</strong> mỗi lần, và mỗi 100 cấp thú nhân sản lượng của chính nó lên <strong>x5</strong>.</li>
+          <li>Mỗi thú có 6 kỹ năng; có cái chỉ giúp nó, có cái giúp cả đàn.</li>
+          <li>Bảng thú mở ở tầng <strong>30</strong>, hoặc ngay khi bạn có một con.</li>
+        </ul>
+      <div class="callout warn">
+          <div class="callout-label">Thăng hoa và thú</div>
+          Thăng hoa đưa mọi thú về <strong>cấp 1</strong> và xóa kỹ năng của chúng. Nhưng quyền sở hữu là vĩnh viễn - bạn không phải mua lại.
+        </div>
+    </section>
+
+    <section id="floors">
+      <div class="section-head"><span class="section-num">09</span><h2>Tầng, quặng và độ sâu</h2></div>
+      <p class="section-dek">Tầng quyết định quặng cứng ra sao và trả bao nhiêu vàng. Độ sâu quyết định quặng trông thế nào.</p>
+      <ul>
+          <li>Mỗi tầng có sinh lực và vàng nhiều hơn tầng trước một chút, và càng lên đường cong càng dốc.</li>
+          <li>Cứ <strong>tầng thứ 10</strong> là một tầng tính giờ: đồng hồ <strong>20 giây</strong> chạy, sinh lực cao hơn khoảng 50% và vàng khoảng 51%.</li>
+          <li>Độ khó còn chạy theo chu kỳ khoảng 100 tầng - những tầng đầu chu kỳ có tỉ lệ vàng trên sinh lực tốt nhất.</li>
+          <li>Mỗi quặng còn rơi <strong>1-5</strong> Đá Quặng bên cạnh vàng.</li>
+        </ul>
+      <div class="callout warn">
+          <div class="callout-label">Tầng tính giờ rất rát</div>
+          Nếu hết giờ, bạn bị đẩy xuống <strong>một tầng</strong>. Khi sát thương chưa đủ, bỏ qua tầng tính giờ còn hơn để thua ở đó.
+        </div>
+      <p>Bạn có thể xuống bất kỳ tầng nào đã tới trong lượt này để farm. Chọn tầng thủ công sẽ tắt chế độ tự lên tầng; bật lại khi muốn leo tiếp.</p>
+      <p>Có tất cả <strong>40</strong> loại quặng, và độ sâu quyết định loại nào xuất hiện. Loại quặng chỉ đổi hình dáng và bụi của nó - sinh lực và vàng do tầng quyết định.</p>
+      <div class="table-wrap">
+        <table>
+        <thead><tr>
+        <th class="num">Độ sâu</th>
+        <th class="num">Loại quặng</th>
+        <th class="num">Khoảng tầng</th>
+        </tr></thead>
+        <tbody>
+        <tr>
+        <td class="num">0-100 m</td>
+        <td class="num">9</td>
+        <td class="num">~54</td>
+        </tr>
+        <tr>
+        <td class="num">100-500 m</td>
+        <td class="num">20</td>
+        <td class="num">~129</td>
+        </tr>
+        <tr>
+        <td class="num">500-1.500 m</td>
+        <td class="num">30</td>
+        <td class="num">~196</td>
+        </tr>
+        <tr>
+        <td class="num">1.500 m+</td>
+        <td class="num">40</td>
+        <td class="num">-</td>
+        </tr>
+        </tbody></table></div>
+    </section>
+
+    <section id="skills">
+      <div class="section-head"><span class="section-num">10</span><h2>Kỹ năng chủ động</h2></div>
+      <p class="section-dek">8 kỹ năng, mỗi cái là một đợt tăng lực có hạn rồi tới thời gian hồi.</p>
+      <p>Kỹ năng <strong>miễn phí</strong> khi bạn tới tầng của nó và dùng được ngay từ cấp 1. Nâng lên cấp 7 tốn tổng <strong>63 Đá Kỹ Năng</strong>, cả 8 kỹ năng là <strong>504</strong> viên. Cấp cao hơn nghĩa là kéo dài hơn và hồi nhanh hơn.</p>
+      <div class="table-wrap">
+        <table>
+        <thead><tr>
+        <th>Kỹ năng</th>
+        <th class="num">Tầng</th>
+        <th class="num">Cấp 1 (thời gian / hồi)</th>
+        <th class="num">Cấp 7 (thời gian / hồi)</th>
+        <th class="num">Hiệu ứng</th>
+        </tr></thead>
+        <tbody>
+        <tr>
+        <td>Kẻ Phá Quặng</td>
+        <td class="num">50</td>
+        <td class="num">30 giây / 540 giây</td>
+        <td class="num">90 giây / 180 giây</td>
+        <td class="num">7 → 13 /giây</td>
+        </tr>
+        <tr>
+        <td>Nhấp Phẫn Nộ</td>
+        <td class="num">70</td>
+        <td class="num">40 giây / 660 giây</td>
+        <td class="num">210 giây / 300 giây</td>
+        <td class="num">x2 → x5</td>
+        </tr>
+        <tr>
+        <td>Đòn Chí Mạng</td>
+        <td class="num">100</td>
+        <td class="num">30 giây / 600 giây</td>
+        <td class="num">150 giây / 240 giây</td>
+        <td class="num">x1,3 → x1,9</td>
+        </tr>
+        <tr>
+        <td>Cuồng Nộ</td>
+        <td class="num">170</td>
+        <td class="num">40 giây / 840 giây</td>
+        <td class="num">160 giây / 480 giây</td>
+        <td class="num">x2 → x3,5</td>
+        </tr>
+        <tr>
+        <td>Cuồng Vàng</td>
+        <td class="num">240</td>
+        <td class="num">50 giây / 1.020 giây</td>
+        <td class="num">290 giây / 660 giây</td>
+        <td class="num">x2 → x5</td>
+        </tr>
+        <tr>
+        <td>Kháng Nhiệt</td>
+        <td class="num">280</td>
+        <td class="num">30 giây / 660 giây</td>
+        <td class="num">140 giây / 300 giây</td>
+        <td class="num">x2 → x5</td>
+        </tr>
+        <tr>
+        <td>Quá Tải</td>
+        <td class="num">330</td>
+        <td class="num">20 giây / 1.200 giây</td>
+        <td class="num">20 giây / 840 giây</td>
+        <td class="num">x1,5 → x3</td>
+        </tr>
+        <tr>
+        <td>Đảo Ngược Thời Gian</td>
+        <td class="num">400</td>
+        <td class="num">1.200 giây</td>
+        <td class="num">840 giây</td>
+        <td class="num">-300 giây → -1.020 giây</td>
+        </tr>
+        </tbody></table></div>
+      <p>Nhánh kỹ năng đầu mở ở tầng 50; bảng cây kỹ năng nơi bạn tiêu Đá Kỹ Năng mở ở tầng <strong>180</strong>. Chỉ để dùng kỹ năng thì không cần bảng đó.</p>
+      <div class="callout">
+          <div class="callout-label">Chuỗi kết hợp</div>
+          Bật Quá Tải trước, rồi mới dùng kỹ năng bạn thật sự muốn tăng lực - ví dụ Cuồng Vàng. Sau đó Đảo Ngược Thời Gian cắt thời gian hồi của kỹ năng bạn dùng gần nhất, nên nó quay lại sớm hơn.
+        </div>
+    </section>
+
+    <section id="titles">
+      <div class="section-head"><span class="section-num">11</span><h2>Danh hiệu</h2></div>
+      <p class="section-dek">100 danh hiệu tự đến khi bạn leo lên.</p>
+      <ul>
+          <li>Danh hiệu trải từ tầng 1 tới tầng <strong>50.000</strong> và được chọn tự động theo tầng cao nhất của lượt này.</li>
+          <li>Mỗi danh hiệu thêm khoảng <strong>+0,1</strong> vào những phần thưởng nó mang.</li>
+          <li>Các thưởng đến theo từng chặng: sát thương nhấp từ danh hiệu đầu tiên, rồi tới sát thương tự động, kháng nhiệt, vàng, hệ số chí mạng, tỉ lệ chí mạng và phần sát thương mỗi giây cộng vào nhấp (danh hiệu 1 / 5 / 10 / 15 / 20 / 25 / 30).</li>
+        </ul>
+    </section>
+
+    <section id="tasks">
+      <div class="section-head"><span class="section-num">12</span><h2>Nhiệm vụ và Taskium</h2></div>
+      <p class="section-dek">Nhánh phụ biến việc nhấp của bạn thành nguồn thu thứ hai.</p>
+      <ul>
+          <li>Mỗi lần nhấp trúng cho <strong>+1 Taskium</strong>.</li>
+          <li>Nhận một nhiệm vụ tốn <strong>200</strong>, đổi lại tốn <strong>25</strong>.</li>
+          <li>Bảng nhiệm vụ mở ở tầng 160; 6 ô mở ở các tầng 160 / 170 / 180 / 190 / 200 / 210.</li>
+          <li>Có 10 loại nhiệm vụ ở 6 mức độ hiếm. Mỗi nhiệm vụ kéo dài 60 phút, và những nhiệm vụ chưa nhận sẽ được thay mỗi giờ.</li>
+          <li>Thưởng lớn dần theo độ hiếm - trong khoảng <strong>50-500</strong> lần vàng quặng của tầng hiện tại. Mức hiếm nhất còn cho thêm Tinh Chất.</li>
+        </ul>
+    </section>
+
+    <section id="trade">
+      <div class="section-head"><span class="section-num">13</span><h2>Bảng trao đổi</h2></div>
+      <p class="section-dek">Mở ở tầng 180. Chỗ duy nhất Đá Quặng có giá trị.</p>
+      <ul>
+          <li>1 Đá Kỹ Năng thành <strong>5.000 Đá Quặng</strong> - tối đa 100.000 mỗi lần đổi.</li>
+          <li><strong>2.000 Đá Quặng</strong> thành 1 Tinh Chất.</li>
+          <li><strong>5.000 Đá Quặng</strong> thành 1 Đá Kỹ Năng.</li>
+        </ul>
+      <p>Mục cuối mới là quan trọng: nó biến một buổi farm dài thành cấp kỹ năng mà không cần đánh trùm.</p>
+    </section>
+
+    <section id="extras">
+      <div class="section-head"><span class="section-num">14</span><h2>Vàng miễn phí</h2></div>
+      <p class="section-dek">Ba nguồn chỉ cần bạn có mặt.</p>
+      <ul>
+          <li><strong>Bóng vàng</strong> - từ tầng 50, cứ 70-105 giây lại có một quả bay vào. Nhấp vào sẽ nhận <strong>x6</strong> vàng quặng của tầng cao nhất trong lượt này.</li>
+          <li><strong>Thu nhập ngoại tuyến</strong> - tính từ khi bạn rời game 60 phút và dừng ở 12 giờ. Premium nhân đôi.</li>
+          <li><strong>Thưởng thời gian chơi</strong> - mỗi 60 phút chơi cho khoảng 100 lần lượng vàng một phút ở tầng cao nhất của bạn.</li>
+        </ul>
+    </section>
+
+    <section id="prestige">
+      <div class="section-head"><span class="section-num">15</span><h2>Thăng hoa</h2></div>
+      <p class="section-dek">Bạn đổi tiến độ của lượt này lấy sức mạnh vĩnh viễn. Chọn đúng thời điểm thì đây là cách nhanh nhất trong game.</p>
+      <p>Bảng thăng hoa mở lần đầu khi bạn tới tầng <strong>200</strong>. Sau đó mỗi lần thăng hoa đòi thêm 100 tầng: 300, rồi 400, và tiếp tục như vậy.</p>
+      <ul>
+          <li><strong>Bị xóa:</strong> vàng, Taskium, tiến độ tầng, các nâng cấp cúp và giáp, cấp thú, toàn bộ kỹ năng đã mua, và tiến độ trùm.</li>
+          <li><strong>Giữ lại:</strong> cấp thăng hoa, Tinh Chất, cấp của 7 chỉ số, những thú đã sở hữu, vật phẩm Vô Hạn, thành tích.</li>
+          <li>Bạn không phải bắt đầu lại từ tầng 1: lượt sau mở ở tầng <strong>100 x cấp thăng hoa</strong>, kèm số vàng khởi đầu trị giá khoảng 500 quặng.</li>
+          <li>Mọi thời gian hồi đều được xóa, nên bạn vào lượt mới với tất cả kỹ năng sẵn sàng.</li>
+        </ul>
+      <p>Thưởng Tinh Chất chỉ tính từ hai thứ: <strong>tầng cao nhất</strong> bạn đạt được (mỗi tầng 0,5) và <strong>số quặng đã đập</strong> (mỗi viên 0,25).</p>
+      <div class="callout">
+          <div class="callout-label">Đập quặng, đừng chạy</div>
+          Vì số quặng nặng hơn trong phép tính, những phút cuối nên farm ở tầng đánh thoải mái thay vì lao lên tầng gần như không xuyên nổi.
+        </div>
+      <div class="table-wrap">
+        <table>
+        <thead><tr>
+        <th>Chỉ số</th>
+        <th>Hiệu ứng</th>
+        <th class="num">Mỗi cấp</th>
+        </tr></thead>
+        <tbody>
+        <tr>
+        <td>Lò Rèn Vĩnh Cửu</td>
+        <td>Sát thương tự động mỗi giây</td>
+        <td class="num">+20%</td>
+        </tr>
+        <tr>
+        <td>Bàn Tay Nghiền Đá</td>
+        <td>Sát thương nhấp</td>
+        <td class="num">+25%</td>
+        </tr>
+        <tr>
+        <td>Vực Thẳm Vàng</td>
+        <td>Thu nhập vàng</td>
+        <td class="num">+10%</td>
+        </tr>
+        <tr>
+        <td>Nhà Tiên Tri Quặng</td>
+        <td>Tỉ lệ chí mạng</td>
+        <td class="num">+5%</td>
+        </tr>
+        <tr>
+        <td>Sức Mạnh Đại Họa</td>
+        <td>Hệ số chí mạng</td>
+        <td class="num">+5%</td>
+        </tr>
+        <tr>
+        <td>Khiên Địa Ngục</td>
+        <td>Kháng nhiệt</td>
+        <td class="num">+10%</td>
+        </tr>
+        <tr>
+        <td>Hợp Nhất Sức Mạnh</td>
+        <td>Phần sát thương mỗi giây cộng vào nhấp</td>
+        <td class="num">+1%</td>
+        </tr>
+        </tbody></table></div>
+      <p>Các thưởng cộng dồn theo từng cấp chứ không nhân lũy tiến, và chi phí Tinh Chất tăng chậm - nên tiêu đều đặn lợi hơn để dành.</p>
+    </section>
+
+    <section id="bosses">
+      <div class="section-head"><span class="section-num">16</span><h2>Trùm</h2></div>
+      <p class="section-dek">Cuộc đua sát thương với đồng hồ để lấy Tinh Chất. Mở ở tầng 350.</p>
+      <ul>
+          <li>Bạn chọn một trùm và trả <strong>1 chìa hầm ngục</strong> để bắt đầu. Không có gì tự khởi động.</li>
+          <li>Trùm mở lần lượt - hạ được một con mới thấy con sau. Sinh lực tăng khoảng một nghìn lần mỗi bậc trong khi đồng hồ ngắn dần.</li>
+          <li>Thưởng lớn dần theo cấp thăng hoa: khoảng <strong>+15%</strong> mỗi cấp.</li>
+          <li>Thăng hoa đưa tiến độ trùm về con đầu tiên.</li>
+        </ul>
+      <div class="table-wrap">
+        <table>
+        <thead><tr>
+        <th>Trùm</th>
+        <th class="num">Sinh lực</th>
+        <th class="num">Thời gian</th>
+        <th>Thưởng</th>
+        </tr></thead>
+        <tbody>
+        <tr>
+        <td>Khổng Lồ Pha Lê</td>
+        <td class="num">1e13</td>
+        <td class="num">30 giây</td>
+        <td>50 Tinh Chất + 5.000 Đá Quặng</td>
+        </tr>
+        <tr>
+        <td>Vệ Binh Pha Lê</td>
+        <td class="num">1e16</td>
+        <td class="num">25 giây</td>
+        <td>75 Tinh Chất + 7.500 Đá Quặng</td>
+        </tr>
+        <tr>
+        <td>Lính Gác Đỏ Thẫm</td>
+        <td class="num">1e19</td>
+        <td class="num">20 giây</td>
+        <td>100 Tinh Chất + 10.000 Đá Quặng</td>
+        </tr>
+        <tr>
+        <td>Vệ Binh Đá</td>
+        <td class="num">1e22</td>
+        <td class="num">20 giây</td>
+        <td>125 Tinh Chất + 12.500 Đá Quặng</td>
+        </tr>
+        <tr>
+        <td>Titan Băng Giá</td>
+        <td class="num">1e25</td>
+        <td class="num">20 giây</td>
+        <td>150 Tinh Chất + 15.000 Đá Quặng</td>
+        </tr>
+        <tr>
+        <td>Golem Pha Lê 1</td>
+        <td class="num">1e28</td>
+        <td class="num">20 giây</td>
+        <td>175 Tinh Chất + 17.500 Đá Quặng</td>
+        </tr>
+        <tr>
+        <td>Khổng Lồ Râu Đá</td>
+        <td class="num">1e31</td>
+        <td class="num">15 giây</td>
+        <td>200 Tinh Chất + 20.000 Đá Quặng</td>
+        </tr>
+        <tr>
+        <td>Golem Pha Lê 2</td>
+        <td class="num">1e34</td>
+        <td class="num">15 giây</td>
+        <td>225 Tinh Chất + 22.500 Đá Quặng</td>
+        </tr>
+        <tr>
+        <td>Golem Lửa</td>
+        <td class="num">1e37</td>
+        <td class="num">15 giây</td>
+        <td>250 Tinh Chất + 25.000 Đá Quặng</td>
+        </tr>
+        <tr>
+        <td>Golem Vệ Binh</td>
+        <td class="num">1e40</td>
+        <td class="num">10 giây</td>
+        <td>275 Tinh Chất + 27.500 Đá Quặng</td>
+        </tr>
+        </tbody></table></div>
+      <div class="callout warn">
+          <div class="callout-label">Thua là mất</div>
+          Nếu hết giờ mà trùm còn đứng, bạn <strong>không nhận được gì</strong> và chìa đã trả cũng không hoàn lại. Sau một lượt thất bại bạn thấy được phần sinh lực còn lại - dùng nó để ước lượng còn cần thêm bao nhiêu sát thương.
+        </div>
+    </section>
+
+    <section id="achievements">
+      <div class="section-head"><span class="section-num">17</span><h2>Thành tích</h2></div>
+      <p class="section-dek">86 thành tích trong 24 hạng mục: nhấp, quặng, trùm, thăng hoa, độ sâu và hơn nữa.</p>
+      <p>Mọi thành tích đều trả bằng <strong>Đá Quặng</strong>, và cả mục tiêu lẫn phần thưởng đều tăng khoảng mười lần mỗi bậc. Phần lớn hạng mục có ba bậc; nhóm vàng và sát thương đi xa hơn.</p>
+      <div class="callout">
+          <div class="callout-label">Nhớ nhận</div>
+          Thưởng <strong>không tự vào túi</strong>. Nếu lâu rồi bạn chưa mở thẻ thành tích, trong đó đang có một chồng chờ sẵn.
+        </div>
+    </section>
+
+    <section id="daily">
+      <div class="section-head"><span class="section-num">18</span><h2>Thưởng hằng ngày</h2></div>
+      <p class="section-dek">Nhỏ, đơn giản, và bỏ một ngày cũng không bị phạt.</p>
+      <p>Đăng nhập một lần mỗi ngày cho <strong>1 chìa hầm ngục</strong>. Ngày nào cũng như nhau - không có lịch và không có chuỗi ngày cần giữ. Muốn nhận thì phải trực tuyến.</p>
+    </section>
+
+    <section id="store">
+      <div class="section-head"><span class="section-num">19</span><h2>Cửa hàng</h2></div>
+      <p class="section-dek">Kim cương, chìa, gói, thời gian premium, và các vật phẩm Vô Hạn vĩnh viễn.</p>
+      <ul>
+          <li><strong>Gói kim cương:</strong> 200 / 550 / 1.150 / 2.400 / 6.250 / 14.000 kim cương. Gói càng lớn, giá mỗi viên càng rẻ.</li>
+          <li><strong>Gói chìa:</strong> 3 / 7 / 15 chìa hầm ngục.</li>
+          <li><strong>Gói Nhỏ:</strong> 500 Kim Cương, 100 Tinh Chất, 10 Đá Kỹ Năng, 3 Chìa Khóa Hầm Ngục.</li>
+          <li><strong>Gói Lớn:</strong> 1.000 Kim Cương, 200 Tinh Chất, 20 Đá Kỹ Năng, 5 Chìa Khóa Hầm Ngục.</li>
+          <li><strong>Gói Premium 7 Ngày:</strong> 7 ngày với sát thương nhấp x5, sát thương tự động x5, vàng x3, kháng nhiệt x3 và thu nhập ngoại tuyến x2.</li>
+        </ul>
+      <p>Vật phẩm Vô Hạn chỉ <strong>mua một lần bằng kim cương</strong> và không bao giờ bị xóa, kể cả khi thăng hoa. Về cuối game, đây thường là cách dùng kim cương hiệu quả nhất.</p>
+      <div class="table-wrap">
+        <table>
+        <thead><tr>
+        <th>Vật phẩm</th>
+        <th class="num">Hiệu ứng</th>
+        <th class="num">Giá</th>
+        </tr></thead>
+        <tbody>
+        <tr>
+        <td>Sức Mạnh Vô Cực</td>
+        <td class="num">x4</td>
+        <td class="num">350 💎</td>
+        </tr>
+        <tr>
+        <td>Thu Nhập Vô Cực</td>
+        <td class="num">x3</td>
+        <td class="num">350 💎</td>
+        </tr>
+        <tr>
+        <td>Giáp Vô Cực</td>
+        <td class="num">x2</td>
+        <td class="num">350 💎</td>
+        </tr>
+        <tr>
+        <td>Tốc Độ Vô Cực</td>
+        <td class="num">x1,5</td>
+        <td class="num">550 💎</td>
+        </tr>
+        <tr>
+        <td>Clicker Vô Cực</td>
+        <td class="num">7 /giây</td>
+        <td class="num">600 💎</td>
+        </tr>
+        </tbody></table></div>
+      <div class="callout">
+          <div class="callout-label">Về giá</div>
+          Giá cửa hàng lấy từ Steam theo tiền tệ của bạn nên không ghi ở đây. Nội dung một gói không bao giờ đổi; giá thì tùy khu vực.
+        </div>
+    </section>
+
+    <section id="progress">
+      <div class="section-head"><span class="section-num">20</span><h2>Bảng xếp hạng và thống kê</h2></div>
+      <p class="section-dek">Hai nơi để xem lượt chơi đang đi tới đâu.</p>
+      <ul>
+          <li>Bảng xếp hạng Steam ghi số lần nhấp, sát thương nhấp, số lần thăng hoa, số trùm đã hạ và tầng cao nhất.</li>
+          <li>Màn hình thống kê giữ nhiều hơn: thu nhập, chi tiêu, số lần nhấp, thời gian chơi và hơn nữa.</li>
+        </ul>
+    </section>
+
+    <section id="save">
+      <div class="section-head"><span class="section-num">21</span><h2>Lưu game</h2></div>
+      <p class="section-dek">Trả lời ngắn: tiến độ của bạn được bảo vệ bằng nhiều lớp cùng lúc.</p>
+      <ul>
+          <li>Game tự lưu, có mã hóa, mỗi <strong>15 giây</strong>.</li>
+          <li>Nó sao lưu lên Steam Cloud khoảng mỗi <strong>45 giây</strong>, và luôn sao lưu khi bạn tắt hoặc tạm dừng - nên máy khác vẫn tiếp tục đúng chỗ bạn dừng.</li>
+          <li>Nếu tệp lưu bị hỏng, game tự chuyển sang bản sao lưu.</li>
+          <li>Bạn cũng có thể chép bản lưu vào bộ nhớ tạm rồi dán lại trên thiết bị khác.</li>
+        </ul>
+    </section>
+
+    <section id="languages">
+      <div class="section-head"><span class="section-num">22</span><h2>Ngôn ngữ</h2></div>
+      <p class="section-dek">Game có 18 ngôn ngữ.</p>
+      <p>Anh, Thổ Nhĩ Kỳ, Đức, Pháp, Tây Ban Nha, Tây Ban Nha Mỹ Latinh, Ý, Ba Lan, Bồ Đào Nha Brazil, Nga, Ukraina, Nhật, Hàn, Trung giản thể, Trung phồn thể, Thái, Indonesia và Việt. Lần chạy đầu game tự chọn ngôn ngữ của bạn, và bạn có thể đổi bất cứ lúc nào trong phần cài đặt - hướng dẫn này cũng có đủ mọi ngôn ngữ, qua các liên kết ở đầu trang.</p>
+    </section>
+
+    <footer class="doc-footer">Các số ở đây theo cân bằng hiện tại của game và có thể đổi sau mỗi bản cập nhật. Giá cửa hàng do Steam đặt và hiển thị theo tiền tệ của bạn, nên không ghi ở đây.</footer>
+  </main>
+</div>

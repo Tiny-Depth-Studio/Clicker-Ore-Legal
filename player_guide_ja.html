@@ -1,0 +1,1069 @@
+<title>Clicker Ore Game - プレイヤーガイド</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="鉱山の仕組み: 通貨、ツルハシ、ペット、スキル、プレステージ、ボス、ストアを数式なしで解説します。">
+<style>
+  :root {
+    --bg: #14110d;
+    --bg-elevated: #1d1811;
+    --bg-card: #211b13;
+    --text: #ede6d8;
+    --text-dim: #a89a82;
+    --text-faint: #766a55;
+    --accent: #e0a752;
+    --accent-strong: #f2bd6e;
+    --accent-2: #7fb8ad;
+    --border: #3a2f22;
+    --border-soft: #2a2318;
+    --danger: #cf7a5a;
+    --shadow: 0 8px 24px rgba(0,0,0,0.35);
+
+    --cur-gold: #e0a752;
+    --cur-diamond: #7fd1e0;
+    --cur-essence: #b79ef0;
+    --cur-taskium: #93a8d6;
+    --cur-key: #d98a63;
+    --cur-skillstone: #7fc9a0;
+    --cur-orestone: #b5a68c;
+
+    --font-display: "Bahnschrift", "Segoe UI Semibold", "Arial Narrow Bold", "Arial Narrow", sans-serif;
+    --font-body: "Sitka Text", "Iowan Old Style", Georgia, "Times New Roman", serif;
+    --font-mono: "Cascadia Mono", "Consolas", "SF Mono", ui-monospace, monospace;
+  }
+
+  :root[data-theme="light"] {
+    --bg: #efe9da;
+    --bg-elevated: #e6ddc8;
+    --bg-card: #f3ede0;
+    --text: #241d14;
+    --text-dim: #5c5138;
+    --text-faint: #857656;
+    --accent: #a8621a;
+    --accent-strong: #8a4e12;
+    --accent-2: #2f7a70;
+    --border: #d3c5a4;
+    --border-soft: #ddd0b1;
+    --danger: #a3492c;
+    --shadow: 0 8px 20px rgba(90,70,30,0.12);
+  }
+
+  @media (prefers-color-scheme: light) {
+    :root:not([data-theme="dark"]) {
+      --bg: #efe9da;
+      --bg-elevated: #e6ddc8;
+      --bg-card: #f3ede0;
+      --text: #241d14;
+      --text-dim: #5c5138;
+      --text-faint: #857656;
+      --accent: #a8621a;
+      --accent-strong: #8a4e12;
+      --accent-2: #2f7a70;
+      --border: #d3c5a4;
+      --border-soft: #ddd0b1;
+      --danger: #a3492c;
+      --shadow: 0 8px 20px rgba(90,70,30,0.12);
+    }
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: 17px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection { background: var(--accent); color: #14110d; }
+
+  a { color: var(--accent-strong); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  a:focus-visible, button:focus-visible, summary:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    text-wrap: balance;
+    letter-spacing: 0.01em;
+    color: var(--text);
+  }
+
+  p { max-width: 68ch; }
+  ul, ol { max-width: 68ch; }
+
+  .shell {
+    display: grid;
+    grid-template-columns: 260px minmax(0, 1fr);
+    min-height: 100vh;
+  }
+
+  .topbar {
+    display: none;
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: var(--bg-elevated);
+    border-bottom: 1px solid var(--border);
+    padding: 0.7rem 1rem;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .topbar-title {
+    font-family: var(--font-display);
+    font-size: 0.95rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--accent-strong);
+  }
+  #nav-toggle { display: none; }
+  .nav-toggle-btn {
+    font-family: var(--font-display);
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 0.4rem 0.7rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.85rem;
+  }
+
+  nav.toc {
+    position: sticky;
+    top: 0;
+    align-self: start;
+    height: 100vh;
+    overflow-y: auto;
+    padding: 2rem 1.4rem 3rem;
+    background: var(--bg-elevated);
+    border-right: 1px solid var(--border);
+  }
+  .toc-brand {
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    letter-spacing: 0.03em;
+    color: var(--accent-strong);
+    margin-bottom: 0.15rem;
+  }
+  .toc-brand small {
+    display: block;
+    font-family: var(--font-body);
+    font-style: italic;
+    font-size: 0.78rem;
+    color: var(--text-faint);
+    letter-spacing: 0;
+    margin-top: 0.25rem;
+  }
+  .toc-list {
+    list-style: none;
+    margin: 1.6rem 0 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+  }
+  .toc-list a {
+    display: block;
+    color: var(--text-dim);
+    font-size: 0.88rem;
+    padding: 0.32rem 0.5rem;
+    border-radius: 4px;
+    border-left: 2px solid transparent;
+  }
+  .toc-list a:hover {
+    color: var(--text);
+    text-decoration: none;
+    background: rgba(224,167,82,0.08);
+    border-left-color: var(--accent);
+  }
+  .toc-num {
+    font-family: var(--font-mono);
+    color: var(--text-faint);
+    font-size: 0.78rem;
+    margin-right: 0.45rem;
+  }
+
+  main {
+    padding: 3.2rem clamp(1.2rem, 4vw, 4rem) 6rem;
+    max-width: 900px;
+  }
+
+  header.hero {
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .strata {
+    height: 10px;
+    width: 100%;
+    border-radius: 3px;
+    margin-bottom: 1.6rem;
+    background: repeating-linear-gradient(
+      90deg,
+      var(--accent) 0 6%,
+      var(--accent-2) 6% 11%,
+      var(--border-soft) 11% 18%,
+      var(--accent) 18% 24%,
+      var(--border-soft) 24% 34%,
+      var(--accent-2) 34% 40%,
+      var(--accent) 40% 48%,
+      var(--border-soft) 48% 58%,
+      var(--accent-2) 58% 63%,
+      var(--accent) 63% 72%,
+      var(--border-soft) 72% 82%,
+      var(--accent-2) 82% 90%,
+      var(--accent) 90% 100%
+    );
+    opacity: 0.85;
+  }
+  .eyebrow {
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-size: 0.72rem;
+    color: var(--accent);
+    margin-bottom: 0.6rem;
+  }
+  h1.title {
+    font-size: clamp(2rem, 4.2vw, 2.9rem);
+    margin: 0 0 0.7rem;
+    line-height: 1.1;
+  }
+  .subtitle {
+    color: var(--text-dim);
+    font-size: 1.08rem;
+    max-width: 62ch;
+    margin: 0;
+  }
+
+  .langbar {
+    margin: 1.8rem 0 0;
+    padding-top: 1.2rem;
+    border-top: 1px solid var(--border-soft);
+  }
+  .langbar-label {
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 0.68rem;
+    color: var(--text-faint);
+    margin-bottom: 0.55rem;
+  }
+  .langbar-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem 0.4rem;
+  }
+  .langbar-list a, .langbar-list span {
+    font-family: var(--font-display);
+    font-size: 0.78rem;
+    padding: 0.18rem 0.55rem;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    color: var(--text-dim);
+    background: var(--bg-card);
+  }
+  .langbar-list a:hover {
+    text-decoration: none;
+    color: var(--text);
+    border-color: var(--accent);
+  }
+  .langbar-list span {
+    color: #14110d;
+    background: var(--accent);
+    border-color: var(--accent);
+  }
+  :root[data-theme="light"] .langbar-list span { color: #efe9da; }
+
+  section {
+    margin-bottom: 3.6rem;
+    scroll-margin-top: 1.5rem;
+  }
+  .section-head {
+    display: flex;
+    align-items: baseline;
+    gap: 0.7rem;
+    margin-bottom: 0.3rem;
+  }
+  .section-num {
+    font-family: var(--font-mono);
+    color: var(--accent);
+    font-size: 0.95rem;
+  }
+  h2 {
+    font-size: 1.55rem;
+    margin: 0;
+  }
+  .section-dek {
+    color: var(--text-dim);
+    font-size: 0.98rem;
+    margin: 0.3rem 0 1.5rem;
+    max-width: 62ch;
+  }
+
+  .callout {
+    border-left: 3px solid var(--accent);
+    background: var(--bg-card);
+    padding: 0.95rem 1.2rem;
+    border-radius: 0 6px 6px 0;
+    margin: 1.2rem 0;
+    font-size: 0.95rem;
+  }
+  .callout strong { color: var(--accent-strong); }
+  .callout.warn { border-left-color: var(--danger); }
+  .callout-label {
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 0.72rem;
+    color: var(--accent);
+    margin-bottom: 0.35rem;
+  }
+  .callout.warn .callout-label { color: var(--danger); }
+
+  .currency-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 0.9rem;
+    margin: 1.4rem 0;
+  }
+  .cur-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-top: 3px solid var(--dot);
+    border-radius: 6px;
+    padding: 0.95rem 1rem 1.05rem;
+  }
+  .cur-card h4 {
+    margin: 0 0 0.5rem;
+    font-size: 0.98rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .dot {
+    width: 9px; height: 9px; border-radius: 50%;
+    background: var(--dot);
+    flex: none;
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--dot) 20%, transparent);
+  }
+  .cur-card p {
+    margin: 0.15rem 0;
+    font-size: 0.84rem;
+    color: var(--text-dim);
+    max-width: none;
+  }
+  .cur-card p b { color: var(--text); font-weight: 600; }
+
+  .table-wrap {
+    overflow-x: auto;
+    margin: 1.2rem 0;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+  }
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    min-width: 460px;
+    font-size: 0.9rem;
+  }
+  thead th {
+    text-align: left;
+    font-family: var(--font-display);
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    font-size: 0.72rem;
+    color: var(--text-dim);
+    background: var(--bg-elevated);
+    padding: 0.6rem 0.85rem;
+    border-bottom: 1px solid var(--border);
+    white-space: nowrap;
+  }
+  tbody td {
+    padding: 0.55rem 0.85rem;
+    border-bottom: 1px solid var(--border-soft);
+    font-variant-numeric: tabular-nums;
+    color: var(--text);
+  }
+  tbody tr:last-child td { border-bottom: none; }
+  tbody tr:nth-child(even) { background: color-mix(in srgb, var(--accent) 3%, transparent); }
+  td.num, th.num { font-family: var(--font-mono); }
+  td.strong { color: var(--accent-strong); font-weight: 600; }
+
+  .strategy-track {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 1.4rem 0;
+  }
+  .strategy-stage {
+    background: var(--bg-card);
+    padding: 1rem 1.1rem;
+  }
+  .strategy-stage .stage-label {
+    font-family: var(--font-display);
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+    margin-bottom: 0.4rem;
+  }
+  .strategy-stage ul {
+    margin: 0;
+    padding-left: 1.1rem;
+    font-size: 0.86rem;
+    color: var(--text-dim);
+  }
+  .strategy-stage li { margin-bottom: 0.25rem; }
+
+  footer.doc-footer {
+    margin-top: 4rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+    color: var(--text-faint);
+    font-size: 0.8rem;
+  }
+
+  @media (max-width: 880px) {
+    .shell { grid-template-columns: 1fr; }
+    .topbar { display: flex; }
+    nav.toc {
+      position: fixed;
+      inset: 0 20% 0 0;
+      top: 52px;
+      height: calc(100vh - 52px);
+      transform: translateX(-100%);
+      transition: transform 0.22s ease;
+      z-index: 15;
+      box-shadow: var(--shadow);
+    }
+    #nav-toggle:checked ~ .shell nav.toc {
+      transform: translateX(0);
+    }
+    main { padding: 2rem 1.2rem 5rem; }
+  }
+</style>
+
+<input type="checkbox" id="nav-toggle">
+
+<div class="topbar">
+  <span class="topbar-title">&#9935; プレイヤーガイド</span>
+  <label class="nav-toggle-btn" for="nav-toggle">目次</label>
+</div>
+
+<div class="shell">
+  <nav class="toc" aria-label="目次">
+    <div class="toc-brand">Clicker Ore Game<small>プレイヤーガイド</small></div>
+    <ul class="toc-list">
+      <li><a href="#start"><span class="toc-num">01</span>まず何をするか</a></li>
+      <li><a href="#currencies"><span class="toc-num">02</span>7種類の通貨</a></li>
+      <li><a href="#damage"><span class="toc-num">03</span>クリックダメージと自動ダメージ</a></li>
+      <li><a href="#critical"><span class="toc-num">04</span>クリティカル</a></li>
+      <li><a href="#pickaxes"><span class="toc-num">05</span>ツルハシ</a></li>
+      <li><a href="#suits"><span class="toc-num">06</span>装備</a></li>
+      <li><a href="#temperature"><span class="toc-num">07</span>熱</a></li>
+      <li><a href="#pets"><span class="toc-num">08</span>ペット</a></li>
+      <li><a href="#floors"><span class="toc-num">09</span>階・鉱石・深度</a></li>
+      <li><a href="#skills"><span class="toc-num">10</span>アクティブスキル</a></li>
+      <li><a href="#titles"><span class="toc-num">11</span>称号</a></li>
+      <li><a href="#tasks"><span class="toc-num">12</span>任務とTaskium</a></li>
+      <li><a href="#trade"><span class="toc-num">13</span>交換パネル</a></li>
+      <li><a href="#extras"><span class="toc-num">14</span>無料のゴールド</a></li>
+      <li><a href="#prestige"><span class="toc-num">15</span>プレステージ</a></li>
+      <li><a href="#bosses"><span class="toc-num">16</span>ボス</a></li>
+      <li><a href="#achievements"><span class="toc-num">17</span>実績</a></li>
+      <li><a href="#daily"><span class="toc-num">18</span>デイリー報酬</a></li>
+      <li><a href="#store"><span class="toc-num">19</span>ストア</a></li>
+      <li><a href="#progress"><span class="toc-num">20</span>ランキングと統計</a></li>
+      <li><a href="#save"><span class="toc-num">21</span>セーブ</a></li>
+      <li><a href="#languages"><span class="toc-num">22</span>対応言語</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <header class="hero">
+      <div class="strata" role="presentation"></div>
+      <div class="eyebrow">プレイヤーガイド - 2026-08-12</div>
+      <h1 class="title">鉱山のすべてを<br>やさしい言葉で</h1>
+      <p class="subtitle">どのシステムが何をして、どの階で開放され、次の1時間をどこに使うべきか。数式はありません。判断に必要なことだけをまとめています。</p>
+      <div class="langbar">
+        <div class="langbar-label">言語</div>
+        <div class="langbar-list"><a href="player_guide_en.html" hreflang="en">English</a><a href="player_guide_tr.html" hreflang="tr">Türkçe</a><a href="player_guide_de.html" hreflang="de">Deutsch</a><a href="player_guide_fr.html" hreflang="fr">Français</a><a href="player_guide_es.html" hreflang="es">Español</a><a href="player_guide_es_la.html" hreflang="es-419">Español (Latinoamérica)</a><a href="player_guide_it.html" hreflang="it">Italiano</a><a href="player_guide_pl.html" hreflang="pl">Polski</a><a href="player_guide_pt_br.html" hreflang="pt-BR">Português (Brasil)</a><a href="player_guide_ru.html" hreflang="ru">Русский</a><a href="player_guide_uk.html" hreflang="uk">Українська</a><span>日本語</span><a href="player_guide_ko.html" hreflang="ko">한국어</a><a href="player_guide_zh_hans.html" hreflang="zh-Hans">简体中文</a><a href="player_guide_zh_hant.html" hreflang="zh-Hant">繁體中文</a><a href="player_guide_th.html" hreflang="th">ไทย</a><a href="player_guide_id.html" hreflang="id">Bahasa Indonesia</a><a href="player_guide_vi.html" hreflang="vi">Tiếng Việt</a></div>
+      </div>
+    </header>
+
+    <section id="start">
+      <div class="section-head"><span class="section-num">01</span><h2>まず何をするか</h2></div>
+      <p class="section-dek">ゲームが機能を開放していく順に、3つの段階に分けています。</p>
+      <div class="strategy-track">
+          <div class="strategy-stage">
+            <div class="stage-label">序盤 - 1階から200階</div>
+            <ul>
+              <li>ツルハシは休まず強化し、次のツルハシが開いたらすぐ買いましょう。</li>
+              <li>鉱石破砕は50階、憤怒のクリックは70階で手に入ります。</li>
+              <li>ダイヤに余裕ができたらロッキーを買いましょう。</li>
+            </ul>
+          </div>
+          <div class="strategy-stage">
+            <div class="stage-label">中盤 - 200階から350階</div>
+            <ul>
+              <li>最初のプレステージは200階で行います。</li>
+              <li>エッセンスは1つに集中させず、7つのパラメーターに分けて伸ばします。</li>
+              <li>任務は160階、スキルツリーと交換パネルは180階で開きます。</li>
+            </ul>
+          </div>
+          <div class="strategy-stage">
+            <div class="stage-label">終盤 - 350階から先</div>
+            <ul>
+              <li>鍵があるうちはボスに挑みましょう。エッセンスの主な供給源です。</li>
+              <li>無限アイテムを買いましょう。永続で、プレステージでもリセットされません。</li>
+              <li>熱にダメージを削られないよう、装備のレベルを保ちましょう。</li>
+            </ul>
+          </div>
+        </div>
+      <div class="callout">
+          <div class="callout-label">知っておくと便利</div>
+          数値はすぐ長くなるため、ゲームはまず短縮表記に、その後 <strong>1.23e45</strong> のような指数表記に切り替わります。上限があるわけではなく、表記が変わるだけです。
+        </div>
+    </section>
+
+    <section id="currencies">
+      <div class="section-head"><span class="section-num">02</span><h2>7種類の通貨</h2></div>
+      <p class="section-dek">それぞれ別のシステムを支えています。通貨を間違った場所に使ってしまうのが、序盤で最も多い失敗です。</p>
+      <div class="currency-grid">
+        <div class="cur-card" style="--dot:var(--cur-gold)">
+          <h4><span class="dot"></span>ゴールド</h4>
+          <p><b>鉱石を砕く</b>と手に入ります。</p>
+          <p>ツルハシと装備の強化に使う、いちばん基本の通貨です。</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-diamond)">
+          <h4><span class="dot"></span>ダイヤ</h4>
+          <p><b>実際の課金だけ</b>で手に入ります。</p>
+          <p>ペットと永続の無限アイテムに使います。</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-essence)">
+          <h4><span class="dot"></span>エッセンス</h4>
+          <p><b>プレステージ</b>とボス撃破で手に入ります。</p>
+          <p>7つの永続プレステージパラメーターに使います。</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-taskium)">
+          <h4><span class="dot"></span>Taskium</h4>
+          <p>クリックが当たるごとに <b>+1</b>。</p>
+          <p>任務の受注と引き直しに使います。</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-key)">
+          <h4><span class="dot"></span>ダンジョンキー</h4>
+          <p>1日1個は無料、あとはストアのパックから。</p>
+          <p>ボス戦への入場に使います（1回につき1個）。</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-skillstone)">
+          <h4><span class="dot"></span>スキルストーン</h4>
+          <p>ストアのパックと交換パネルから手に入ります。</p>
+          <p>8種のアクティブスキルのレベル上げに使います。</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-orestone)">
+          <h4><span class="dot"></span>鉱石ストーン</h4>
+          <p>砕いた鉱石ごとに <b>1-5</b> 個、さらに実績から。</p>
+          <p>交換パネルでエッセンスやスキルストーンに替えられます。</p>
+        </div>
+      </div>
+      <div class="callout">
+          <div class="callout-label">ダイヤについて</div>
+          ボス、実績、任務からダイヤは出ません。ダイヤとダンジョンキーはサーバー側で管理されるため、ペットの購入にはオンライン接続が必要です。
+        </div>
+    </section>
+
+    <section id="damage">
+      <div class="section-head"><span class="section-num">03</span><h2>クリックダメージと自動ダメージ</h2></div>
+      <p class="section-dek">2つの独立したダメージ源で、伸ばす要素も別です。</p>
+      <p><strong>クリックダメージ</strong>は1回のタップで与える量です。最初のツルハシのレベルとスキル、憤怒のクリック、称号、プレステージパラメーターの砕岩の手で伸びます。力の統合を上げると、自動ダメージの一部もクリックに加算されます。</p>
+      <p><strong>自動ダメージ</strong>（毎秒）は2本目以降のツルハシ、暴走、永劫の炉、そしてペットから生まれます。</p>
+      <div class="callout">
+          <div class="callout-label">ペットだけは例外</div>
+          ペットのダメージはすべての倍率が掛かった<strong>あと</strong>に加算されるため、倍率の影響を受けません。終盤はペットのレベルだけでは足りず、ツルハシとスキルの倍率も伸ばす必要があります。
+        </div>
+    </section>
+
+    <section id="critical">
+      <div class="section-head"><span class="section-num">04</span><h2>クリティカル</h2></div>
+      <p class="section-dek">どのクリックもクリティカルになり、より大きなダメージを出せます。</p>
+      <p>初期値は発生率 <strong>5%</strong>、倍率 <strong>x1.5</strong> です。これを伸ばすのは4つ、クリティカルストライク、ツルハシのスキル、プレステージパラメーターの鉱石の神託と破局の力、そして称号です。</p>
+    </section>
+
+    <section id="pickaxes">
+      <div class="section-head"><span class="section-num">05</span><h2>ツルハシ</h2></div>
+      <p class="section-dek">順番に開放される45本のツルハシ。ダメージの土台です。</p>
+      <ul>
+          <li>最初のツルハシは <strong>5 ゴールド</strong>。以降は1本ごとに約 <strong>8 倍</strong>の値段になります。</li>
+          <li>ツルハシはこの周回で稼いだゴールドが一定量に達すると自動で開放されます。つまり強化こそが次の1本を開く手段です。</li>
+          <li>1レベルごとに前より約 <strong>7%</strong> 高くなります。</li>
+          <li>クリックダメージを担うのは<strong>1本目だけ</strong>で、残りはすべて毎秒の自動ダメージを担います。</li>
+          <li>各ツルハシには6個のスキルがあり、レベル 5 / 10 / 25 / 50 / 100 / 200 で開放されます。そのツルハシだけに効くものと全体に効くものがあり、全体に効くほうが価値が高いです。</li>
+        </ul>
+      <div class="callout">
+          <div class="callout-label">大きな伸び</div>
+          ツルハシは <strong>100 レベルごと</strong>に自身の出力を <strong>x10</strong> します。1本を次の100レベルまで押し上げるのが、たいてい最大の強化になります。
+        </div>
+    </section>
+
+    <section id="suits">
+      <div class="section-head"><span class="section-num">06</span><h2>装備</h2></div>
+      <p class="section-dek">最初からすべて所持している5種の装備。役割は熱を防ぐことです。</p>
+      <ul>
+          <li>装備は購入せず、強化するだけです。1レベルごとに熱耐性が約 <strong>5%</strong> 増え、基準値は50です。</li>
+          <li>100 レベルごとに装備の耐性が <strong>x2</strong> されます。</li>
+          <li>各装備にはレベルに応じて開く6個のスキルもあります。</li>
+          <li>装備パネルは熱ゲージと一緒に <strong>130</strong> 階で開きます。</li>
+        </ul>
+    </section>
+
+    <section id="temperature">
+      <div class="section-head"><span class="section-num">07</span><h2>熱</h2></div>
+      <p class="section-dek">深く潜るほど温度は上がり、熱は静かにダメージを削っていきます。</p>
+      <ul>
+          <li>階の温度は上がり続けます。1階あたり約 <strong>1.04倍</strong>で、20階ほどごとに倍になります。</li>
+          <li>耐性が温度の <strong>1.5倍</strong>以上あるあいだはゲージがきれいなままで、何も失いません。</li>
+          <li>耐性が温度を下回るとダメージが漏れ始め、<strong>0.5倍</strong>では20分の1しか残りません。つまり <strong>95%</strong> の損失です。</li>
+          <li>装備パネルには耐性を自動購入するスイッチがあります。よく深く潜るならオンのままにしましょう。</li>
+        </ul>
+      <div class="callout warn">
+          <div class="callout-label">進みが急に止まったら</div>
+          鉱石がいつまでも割れない壁は、ほぼ必ずダメージ不足ではなく熱です。ほかに課金・投資をする前にゲージを確認してください。
+        </div>
+    </section>
+
+    <section id="pets">
+      <div class="section-head"><span class="section-num">08</span><h2>ペット</h2></div>
+      <p class="section-dek">ダイヤで購入し、ゴールドでレベルを上げる5体のペット。</p>
+      <ul>
+          <li>価格は <strong>150</strong> から <strong>250</strong> ダイヤ（150 / 175 / 200 / 225 / 250）です。</li>
+          <li>1レベルごとにツルハシのクリックダメージの約 <strong>1%</strong> が自動ダメージとして加わり、ペットの順番が掛かります。同じレベルならシャドウシャードはロッキーの5倍です。</li>
+          <li>レベル費用は毎回およそ <strong>20%</strong> 上がり、100 レベルごとにペットは自身の出力を <strong>x5</strong> します。</li>
+          <li>各ペットには6個のスキルがあり、そのペットだけに効くものと全ペットに効くものがあります。</li>
+          <li>ペットパネルは <strong>30</strong> 階、またはペットを1体でも持った時点で開きます。</li>
+        </ul>
+      <div class="callout warn">
+          <div class="callout-label">プレステージとペット</div>
+          プレステージでペットはすべて<strong>レベル1</strong>に戻り、スキルも解除されます。ただし所持自体は永続で、買い直す必要はありません。
+        </div>
+    </section>
+
+    <section id="floors">
+      <div class="section-head"><span class="section-num">09</span><h2>階・鉱石・深度</h2></div>
+      <p class="section-dek">鉱石の硬さと稼げるゴールドを決めるのは階、見た目を決めるのは深度です。</p>
+      <ul>
+          <li>階が進むごとに体力とゴールドが少しずつ増え、その伸びは進むほど急になります。</li>
+          <li><strong>10階ごと</strong>は時間制の階です。<strong>20秒</strong>のカウントが始まり、体力は約50%、ゴールドは約51%増えます。</li>
+          <li>難易度は約100階の周期でも変化します。周期の最初のほうの階は体力に対する稼ぎが最も良くなります。</li>
+          <li>鉱石はゴールドに加えて <strong>1-5</strong> 個の鉱石ストーンを落とします。</li>
+        </ul>
+      <div class="callout warn">
+          <div class="callout-label">時間制の階は痛い</div>
+          時間切れになると<strong>1階</strong>下に戻されます。ダメージが足りないときは、失敗するより時間制の階を飛ばしたほうが得です。
+        </div>
+      <p>この周回で到達した階なら、どこへでも戻って周回できます。手動で階を選ぶと自動で上がる動作は止まります。また登りたくなったら戻してください。</p>
+      <p>鉱石は全部で <strong>40</strong> 種類あり、どれが出るかは深度で決まります。種類が変えるのは見た目と粉だけで、体力とゴールドは階が決めます。</p>
+      <div class="table-wrap">
+        <table>
+        <thead><tr>
+        <th class="num">深度</th>
+        <th class="num">鉱石の種類</th>
+        <th class="num">おおよその階</th>
+        </tr></thead>
+        <tbody>
+        <tr>
+        <td class="num">0-100 m</td>
+        <td class="num">9</td>
+        <td class="num">~54</td>
+        </tr>
+        <tr>
+        <td class="num">100-500 m</td>
+        <td class="num">20</td>
+        <td class="num">~129</td>
+        </tr>
+        <tr>
+        <td class="num">500-1,500 m</td>
+        <td class="num">30</td>
+        <td class="num">~196</td>
+        </tr>
+        <tr>
+        <td class="num">1,500 m+</td>
+        <td class="num">40</td>
+        <td class="num">-</td>
+        </tr>
+        </tbody></table></div>
+    </section>
+
+    <section id="skills">
+      <div class="section-head"><span class="section-num">10</span><h2>アクティブスキル</h2></div>
+      <p class="section-dek">8種のスキル。どれも一定時間の強化と、そのあとの再使用待ちで動きます。</p>
+      <p>スキルは対応する階に着いた時点で<strong>無料</strong>で開き、レベル1から使えます。レベル7まで上げるのに必要なのは合計 <strong>63 スキルストーン</strong>、8種すべてで <strong>504</strong> です。レベルが上がると効果時間が延び、再使用時間が短くなります。</p>
+      <div class="table-wrap">
+        <table>
+        <thead><tr>
+        <th>スキル</th>
+        <th class="num">階</th>
+        <th class="num">レベル1 (効果時間 / 再使用)</th>
+        <th class="num">レベル7 (効果時間 / 再使用)</th>
+        <th class="num">効果</th>
+        </tr></thead>
+        <tbody>
+        <tr>
+        <td>鉱石破砕</td>
+        <td class="num">50</td>
+        <td class="num">30秒 / 540秒</td>
+        <td class="num">90秒 / 180秒</td>
+        <td class="num">7 → 13 /秒</td>
+        </tr>
+        <tr>
+        <td>憤怒のクリック</td>
+        <td class="num">70</td>
+        <td class="num">40秒 / 660秒</td>
+        <td class="num">210秒 / 300秒</td>
+        <td class="num">x2 → x5</td>
+        </tr>
+        <tr>
+        <td>クリティカルストライク</td>
+        <td class="num">100</td>
+        <td class="num">30秒 / 600秒</td>
+        <td class="num">150秒 / 240秒</td>
+        <td class="num">x1.3 → x1.9</td>
+        </tr>
+        <tr>
+        <td>暴走</td>
+        <td class="num">170</td>
+        <td class="num">40秒 / 840秒</td>
+        <td class="num">160秒 / 480秒</td>
+        <td class="num">x2 → x3.5</td>
+        </tr>
+        <tr>
+        <td>黄金の狂乱</td>
+        <td class="num">240</td>
+        <td class="num">50秒 / 1,020秒</td>
+        <td class="num">290秒 / 660秒</td>
+        <td class="num">x2 → x5</td>
+        </tr>
+        <tr>
+        <td>熱耐性</td>
+        <td class="num">280</td>
+        <td class="num">30秒 / 660秒</td>
+        <td class="num">140秒 / 300秒</td>
+        <td class="num">x2 → x5</td>
+        </tr>
+        <tr>
+        <td>オーバーチャージ</td>
+        <td class="num">330</td>
+        <td class="num">20秒 / 1,200秒</td>
+        <td class="num">20秒 / 840秒</td>
+        <td class="num">x1.5 → x3</td>
+        </tr>
+        <tr>
+        <td>時間逆行</td>
+        <td class="num">400</td>
+        <td class="num">1,200秒</td>
+        <td class="num">840秒</td>
+        <td class="num">-300秒 → -1,020秒</td>
+        </tr>
+        </tbody></table></div>
+      <p>最初のスキルは50階で開き、スキルストーンを使うスキルツリーのパネルは <strong>180</strong> 階で開きます。スキルを使うだけならパネルは不要です。</p>
+      <div class="callout">
+          <div class="callout-label">組み合わせ</div>
+          まずオーバーチャージを使い、そのあとに本当に強化したいスキル（たとえば黄金の狂乱）を使います。時間逆行は最後に使ったスキルの再使用時間を縮めるので、そのスキルが早く戻ってきます。
+        </div>
+    </section>
+
+    <section id="titles">
+      <div class="section-head"><span class="section-num">11</span><h2>称号</h2></div>
+      <p class="section-dek">登るにつれて自動でついてくる100個の称号。</p>
+      <ul>
+          <li>称号は1階から <strong>50,000</strong> 階まであり、その周回の最高到達階に応じて自動で選ばれます。</li>
+          <li>1つの称号が持つボーナスは、それぞれ約 <strong>+0.1</strong> 分です。</li>
+          <li>ボーナスは段階的に増えます。クリックダメージは最初の称号から、続いて自動ダメージ、熱耐性、ゴールド、クリティカル倍率、クリティカル率、クリックへ加算される秒間ダメージの割合（1 / 5 / 10 / 15 / 20 / 25 / 30番目の称号）です。</li>
+        </ul>
+    </section>
+
+    <section id="tasks">
+      <div class="section-head"><span class="section-num">12</span><h2>任務とTaskium</h2></div>
+      <p class="section-dek">クリックを第二の収入に変えるサブ要素です。</p>
+      <ul>
+          <li>クリックが当たるごとに <strong>+1 Taskium</strong> 入ります。</li>
+          <li>任務の受注は <strong>200</strong>、引き直しは <strong>25</strong> です。</li>
+          <li>任務パネルは160階で開き、6個の枠は 160 / 170 / 180 / 190 / 200 / 210 階で順に開きます。</li>
+          <li>任務は6段階のレアリティで10種類。1件60分で、受注していない任務は1時間ごとに入れ替わります。</li>
+          <li>報酬はレアリティで伸び、現在の階の鉱石ゴールドの <strong>50-500</strong> 倍の範囲です。最上位のレアリティはエッセンスも出ます。</li>
+        </ul>
+    </section>
+
+    <section id="trade">
+      <div class="section-head"><span class="section-num">13</span><h2>交換パネル</h2></div>
+      <p class="section-dek">180階で開きます。鉱石ストーンが役に立つ唯一の場所です。</p>
+      <ul>
+          <li>スキルストーン1個 → <strong>鉱石ストーン5,000個</strong>（1回の交換で最大100,000個）。</li>
+          <li><strong>鉱石ストーン2,000個</strong> → エッセンス1。</li>
+          <li><strong>鉱石ストーン5,000個</strong> → スキルストーン1個。</li>
+        </ul>
+      <p>最後の交換が重要です。長く周回した成果を、ボス戦なしでスキルのレベルに変えられます。</p>
+    </section>
+
+    <section id="extras">
+      <div class="section-head"><span class="section-num">14</span><h2>無料のゴールド</h2></div>
+      <p class="section-dek">遊んでいるだけで入る3つの収入。</p>
+      <ul>
+          <li><strong>ゴールドバルーン</strong> - 50階から、70-105秒ごとに1つ流れてきます。クリックすると、その周回の最高階の鉱石ゴールドの <strong>x6</strong> がもらえます。</li>
+          <li><strong>オフライン収入</strong> - 離席60分から計算され、12時間で上限になります。プレミアムで2倍です。</li>
+          <li><strong>プレイ時間報酬</strong> - 60分プレイするごとに、最高階での1分あたりのゴールドの約100倍が入ります。</li>
+        </ul>
+    </section>
+
+    <section id="prestige">
+      <div class="section-head"><span class="section-num">15</span><h2>プレステージ</h2></div>
+      <p class="section-dek">その周回の進行を永続的な強さに交換します。タイミングが合えばゲーム内で最も速い手段です。</p>
+      <p>プレステージパネルは <strong>200</strong> 階に初めて到達すると開きます。以降は1回ごとに100階ずつ条件が上がり、300階、400階…と続きます。</p>
+      <ul>
+          <li><strong>リセットされるもの:</strong> ゴールド、Taskium、階の進行、ツルハシと装備の強化、ペットのレベル、購入したすべてのスキル、ボスの進行度。</li>
+          <li><strong>残るもの:</strong> プレステージレベル、エッセンス、7つのパラメーターのレベル、ペットの所持、無限アイテム、実績。</li>
+          <li>1階からやり直しではありません。次の周回は <strong>100 × プレステージレベル</strong>の階から始まり、鉱石500個分ほどの開始ゴールドももらえます。</li>
+          <li>スキルの再使用待ちはすべて消えるので、周回開始時から全スキルが使えます。</li>
+        </ul>
+      <p>エッセンスの報酬は2つだけで決まります。<strong>到達した最高階</strong>（1階につき0.5）と<strong>砕いた鉱石</strong>（1個につき0.25）です。</p>
+      <div class="callout">
+          <div class="callout-label">走るより砕く</div>
+          鉱石の数のほうが比重が大きいため、最後の時間はダメージが通らない階へ駆け上がるより、快適な階で砕き続けたほうが多くもらえます。
+        </div>
+      <div class="table-wrap">
+        <table>
+        <thead><tr>
+        <th>パラメーター</th>
+        <th>効果</th>
+        <th class="num">1レベルあたり</th>
+        </tr></thead>
+        <tbody>
+        <tr>
+        <td>永劫の炉</td>
+        <td>毎秒の自動ダメージ</td>
+        <td class="num">+20%</td>
+        </tr>
+        <tr>
+        <td>砕岩の手</td>
+        <td>クリックダメージ</td>
+        <td class="num">+25%</td>
+        </tr>
+        <tr>
+        <td>黄金の深淵</td>
+        <td>ゴールド収入</td>
+        <td class="num">+10%</td>
+        </tr>
+        <tr>
+        <td>鉱石の神託</td>
+        <td>クリティカル率</td>
+        <td class="num">+5%</td>
+        </tr>
+        <tr>
+        <td>破局の力</td>
+        <td>クリティカル倍率</td>
+        <td class="num">+5%</td>
+        </tr>
+        <tr>
+        <td>業火の盾</td>
+        <td>熱耐性</td>
+        <td class="num">+10%</td>
+        </tr>
+        <tr>
+        <td>力の統合</td>
+        <td>クリックに加算される秒間ダメージの割合</td>
+        <td class="num">+1%</td>
+        </tr>
+        </tbody></table></div>
+      <p>ボーナスは掛け算ではなくレベルごとの足し算で、エッセンスの費用もゆっくり上がります。ためこむより、こまめに使うほうが得です。</p>
+    </section>
+
+    <section id="bosses">
+      <div class="section-head"><span class="section-num">16</span><h2>ボス</h2></div>
+      <p class="section-dek">エッセンスを賭けた時間制のダメージ勝負。350階で開きます。</p>
+      <ul>
+          <li>ボスを選び <strong>ダンジョンキー1個</strong>を使って開始します。自動では始まりません。</li>
+          <li>ボスは順番に開放され、1体倒すと次が現れます。段階ごとに体力は約1000倍になり、制限時間は短くなります。</li>
+          <li>報酬はプレステージレベルとともに増え、1レベルあたり約 <strong>+15%</strong> です。</li>
+          <li>プレステージするとボスの進行度は最初のボスに戻ります。</li>
+        </ul>
+      <div class="table-wrap">
+        <table>
+        <thead><tr>
+        <th>ボス</th>
+        <th class="num">体力</th>
+        <th class="num">制限時間</th>
+        <th>報酬</th>
+        </tr></thead>
+        <tbody>
+        <tr>
+        <td>クリスタルコロッサス</td>
+        <td class="num">1e13</td>
+        <td class="num">30秒</td>
+        <td>50 エッセンス + 5,000 鉱石ストーン</td>
+        </tr>
+        <tr>
+        <td>クリスタルガーディアン</td>
+        <td class="num">1e16</td>
+        <td class="num">25秒</td>
+        <td>75 エッセンス + 7,500 鉱石ストーン</td>
+        </tr>
+        <tr>
+        <td>クリムゾンセンチネル</td>
+        <td class="num">1e19</td>
+        <td class="num">20秒</td>
+        <td>100 エッセンス + 10,000 鉱石ストーン</td>
+        </tr>
+        <tr>
+        <td>ストーンガーディアン</td>
+        <td class="num">1e22</td>
+        <td class="num">20秒</td>
+        <td>125 エッセンス + 12,500 鉱石ストーン</td>
+        </tr>
+        <tr>
+        <td>フロストタイタン</td>
+        <td class="num">1e25</td>
+        <td class="num">20秒</td>
+        <td>150 エッセンス + 15,000 鉱石ストーン</td>
+        </tr>
+        <tr>
+        <td>クリスタルゴーレム 1</td>
+        <td class="num">1e28</td>
+        <td class="num">20秒</td>
+        <td>175 エッセンス + 17,500 鉱石ストーン</td>
+        </tr>
+        <tr>
+        <td>ストーンベアードコロッサス</td>
+        <td class="num">1e31</td>
+        <td class="num">15秒</td>
+        <td>200 エッセンス + 20,000 鉱石ストーン</td>
+        </tr>
+        <tr>
+        <td>クリスタルゴーレム 2</td>
+        <td class="num">1e34</td>
+        <td class="num">15秒</td>
+        <td>225 エッセンス + 22,500 鉱石ストーン</td>
+        </tr>
+        <tr>
+        <td>ブレイズゴーレム</td>
+        <td class="num">1e37</td>
+        <td class="num">15秒</td>
+        <td>250 エッセンス + 25,000 鉱石ストーン</td>
+        </tr>
+        <tr>
+        <td>ゴーレムガーディアン</td>
+        <td class="num">1e40</td>
+        <td class="num">10秒</td>
+        <td>275 エッセンス + 27,500 鉱石ストーン</td>
+        </tr>
+        </tbody></table></div>
+      <div class="callout warn">
+          <div class="callout-label">負けると損</div>
+          時間切れの時点でボスが残っていると報酬は<strong>ゼロ</strong>で、使った鍵も戻りません。失敗後は残り体力が表示されるので、次にどれだけダメージが必要かの目安にしてください。
+        </div>
+    </section>
+
+    <section id="achievements">
+      <div class="section-head"><span class="section-num">17</span><h2>実績</h2></div>
+      <p class="section-dek">24カテゴリーに86個の実績。クリック、鉱石、ボス、プレステージ、深度などがあります。</p>
+      <p>報酬はすべて<strong>鉱石ストーン</strong>で、条件と報酬はどちらも段階ごとに約10倍になります。多くのカテゴリーは3段階で、ゴールド系とダメージ系はさらに続きます。</p>
+      <div class="callout">
+          <div class="callout-label">受け取りを忘れずに</div>
+          報酬は<strong>自動では入りません</strong>。しばらく実績タブを開いていないなら、かなりの量がたまっているはずです。
+        </div>
+    </section>
+
+    <section id="daily">
+      <div class="section-head"><span class="section-num">18</span><h2>デイリー報酬</h2></div>
+      <p class="section-dek">小さく単純で、1日抜けても罰はありません。</p>
+      <p>1日1回のログインで <strong>ダンジョンキー1個</strong>。内容は毎日同じで、カレンダーも連続ログイン記録もありません。受け取りにはオンライン接続が必要です。</p>
+    </section>
+
+    <section id="store">
+      <div class="section-head"><span class="section-num">19</span><h2>ストア</h2></div>
+      <p class="section-dek">ダイヤ、鍵、パッケージ、プレミアム期間、そして永続の無限アイテム。</p>
+      <ul>
+          <li><strong>ダイヤパック:</strong> 200 / 550 / 1,150 / 2,400 / 6,250 / 14,000 ダイヤ。大きいパックほど単価が下がります。</li>
+          <li><strong>鍵パック:</strong> ダンジョンキー 3 / 7 / 15 個。</li>
+          <li><strong>スモールパック:</strong> 500 ダイヤ, 100 エッセンス, 10 スキルストーン, 3 ダンジョンキー。</li>
+          <li><strong>ビッグパック:</strong> 1,000 ダイヤ, 200 エッセンス, 20 スキルストーン, 5 ダンジョンキー。</li>
+          <li><strong>7日間プレミアムパック:</strong> 7日間、クリックダメージ x5、自動ダメージ x5、ゴールド x3、熱耐性 x3、オフライン収入 x2。</li>
+        </ul>
+      <p>無限アイテムは<strong>ダイヤで1回買うだけ</strong>で、プレステージでもリセットされません。終盤ではダイヤの使い道として最も効率が良いことが多いです。</p>
+      <div class="table-wrap">
+        <table>
+        <thead><tr>
+        <th>アイテム</th>
+        <th class="num">効果</th>
+        <th class="num">価格</th>
+        </tr></thead>
+        <tbody>
+        <tr>
+        <td>インフィニティパワー</td>
+        <td class="num">x4</td>
+        <td class="num">350 💎</td>
+        </tr>
+        <tr>
+        <td>インフィニティインカム</td>
+        <td class="num">x3</td>
+        <td class="num">350 💎</td>
+        </tr>
+        <tr>
+        <td>インフィニティアーマー</td>
+        <td class="num">x2</td>
+        <td class="num">350 💎</td>
+        </tr>
+        <tr>
+        <td>インフィニティスピード</td>
+        <td class="num">x1.5</td>
+        <td class="num">550 💎</td>
+        </tr>
+        <tr>
+        <td>インフィニティクリッカー</td>
+        <td class="num">7 /秒</td>
+        <td class="num">600 💎</td>
+        </tr>
+        </tbody></table></div>
+      <div class="callout">
+          <div class="callout-label">価格について</div>
+          ストアの価格はSteamからお客様の通貨で届くため、ここには記載していません。パックの中身は変わりませんが、価格は地域によって変わります。
+        </div>
+    </section>
+
+    <section id="progress">
+      <div class="section-head"><span class="section-num">20</span><h2>ランキングと統計</h2></div>
+      <p class="section-dek">周回の進み具合を確認できる2か所。</p>
+      <ul>
+          <li>Steamのランキングはクリック数、クリックダメージ、プレステージ回数、討伐ボス数、最高到達階を記録します。</li>
+          <li>統計画面はさらに多くを記録します。収入、支出、クリック数、プレイ時間などです。</li>
+        </ul>
+    </section>
+
+    <section id="save">
+      <div class="section-head"><span class="section-num">21</span><h2>セーブ</h2></div>
+      <p class="section-dek">結論から言えば、進行データは複数の仕組みで守られています。</p>
+      <ul>
+          <li>ゲームは <strong>15秒</strong>ごとに暗号化して自動保存します。</li>
+          <li>Steam Cloudへのバックアップは約 <strong>45秒</strong>ごと、さらに終了時と一時停止時にも必ず行います。別のPCでも同じところから続けられます。</li>
+          <li>セーブファイルが壊れた場合は、ゲームが自動でバックアップに切り替えます。</li>
+          <li>セーブデータをクリップボードにコピーして、別の端末で貼り付けることもできます。</li>
+        </ul>
+    </section>
+
+    <section id="languages">
+      <div class="section-head"><span class="section-num">22</span><h2>対応言語</h2></div>
+      <p class="section-dek">本作は18言語で提供されます。</p>
+      <p>英語、トルコ語、ドイツ語、フランス語、スペイン語、ラテンアメリカスペイン語、イタリア語、ポーランド語、ブラジルポルトガル語、ロシア語、ウクライナ語、日本語、韓国語、簡体字中国語、繁体字中国語、タイ語、インドネシア語、ベトナム語。初回起動時に自動で選ばれ、設定からいつでも変更できます。このガイドも全言語ぶんあり、ページ上部のリンクから開けます。</p>
+    </section>
+
+    <footer class="doc-footer">ここに載せた数値は現在のゲームバランスに基づいており、アップデートで変わることがあります。ストアの価格はSteamが設定し、お客様の通貨で表示されるため、ここには記載していません。</footer>
+  </main>
+</div>

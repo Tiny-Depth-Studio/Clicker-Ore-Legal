@@ -1,0 +1,342 @@
+LANG = {
+    "code": "id",
+    "name": "Bahasa Indonesia",
+    "html_lang": "id",
+    "locale": {"group": ".", "decimal": ","},
+    "title": "Clicker Ore Game - Panduan Pemain",
+    "description": "Cara kerja tambang: mata uang, beliung, hewan, skill, prestise, bos, dan toko - dijelaskan tanpa rumus.",
+    "brand": "Clicker Ore Game",
+    "brand_sub": "Panduan Pemain",
+    "eyebrow": "Panduan Pemain - {date}",
+    "headline": "Seisi tambang,<br>dijelaskan sederhana",
+    "subtitle": "Apa fungsi tiap sistem, di lantai berapa ia terbuka, dan ke mana sebaiknya satu jam berikutnya kamu pakai. Tanpa rumus, hanya keputusan yang penting.",
+    "footer": "Angka di sini mengikuti keseimbangan game saat ini dan bisa berubah seiring pembaruan. Harga toko ditetapkan Steam dan tampil dalam mata uangmu, jadi tidak dicantumkan di sini.",
+    "labels": {
+        "contents": "Isi",
+        "per_second": "/detik",
+        "second_short": " dtk",
+        "meter_short": "m",
+        "language": "Bahasa",
+        "skill": "Skill",
+        "unlock_floor": "Lantai",
+        "level_first": "Level 1 (durasi / jeda)",
+        "level_last": "Level 7 (durasi / jeda)",
+        "effect": "Efek",
+        "boss": "Bos",
+        "health": "Nyawa",
+        "time_limit": "Waktu",
+        "reward": "Hadiah",
+        "parameter": "Parameter",
+        "per_level": "Per level",
+        "effect_dps": "Kerusakan otomatis per detik",
+        "effect_click": "Kerusakan klik",
+        "effect_gold": "Pemasukan emas",
+        "effect_crit_chance": "Peluang kritis",
+        "effect_crit_multiplier": "Pengali kritis",
+        "effect_heat": "Ketahanan panas",
+        "effect_click_from_dps": "Bagian kerusakan per detik yang masuk ke klik",
+        "depth": "Kedalaman",
+        "ore_types": "Jenis bijih",
+        "around_floor": "Sekitar lantai",
+        "item": "Item",
+        "cost": "Harga",
+    },
+    "currencies": {
+        "gold": ["Didapat dari <b>memecah bijih</b>.", "Dipakai untuk level beliung dan baju - mata uang kerja sehari-hari."],
+        "diamond": ["Hanya masuk dari <b>pembelian uang sungguhan</b>.", "Dipakai untuk hewan dan item Infinity yang permanen."],
+        "essence": ["Datang dari <b>prestise</b> dan kemenangan atas bos.", "Dipakai untuk {prestige_parameter_count} parameter prestise permanen."],
+        "taskium": ["<b>+{taskium_per_click}</b> setiap klik yang kena.", "Dipakai untuk menerima dan mengacak ulang tugas."],
+        "dungeon_key": ["Satu kunci gratis tiap hari, sisanya dari paket toko.", "Dipakai untuk masuk pertarungan bos - {boss_key_cost} per percobaan."],
+        "skill_stone": ["Datang dari paket toko dan panel tukar.", "Dipakai untuk menaikkan level {skill_count} skill aktif."],
+        "ore_stone": ["<b>{ore_stone_min}-{ore_stone_max}</b> dari setiap bijih yang dipecah, ditambah pencapaian.", "Ditukar jadi Esensi atau Batu Skill di panel tukar."],
+    },
+    "sections": [
+        {
+            "id": "start",
+            "title": "Mulai dari mana",
+            "dek": "Tiga tahap, mengikuti urutan game membuka isinya.",
+            "blocks": [
+                ("stages", [
+                    ["Awal - lantai 1 sampai {prestige_first_floor}", [
+                        "Tingkatkan beliung terus-terusan; beli yang berikutnya begitu terbuka.",
+                        "{skill_ore_breaker} datang di lantai {skill_line_floor}, {skill_anger_click} di lantai 70.",
+                        "Ambil {pet_1} begitu diamond kamu longgar.",
+                    ]],
+                    ["Tengah - lantai {prestige_first_floor} sampai {boss_floor}", [
+                        "Lakukan prestise pertama di lantai {prestige_first_floor}.",
+                        "Sebar Esensi ke {prestige_parameter_count} parameter, jangan menumpuk di satu.",
+                        "Tugas terbuka di lantai {task_panel_floor}, pohon skill dan panel tukar di lantai {skill_tree_floor}.",
+                    ]],
+                    ["Akhir - dari lantai {boss_floor}", [
+                        "Lawan bos setiap kali punya kunci; itu sumber Esensi utamamu.",
+                        "Beli item Infinity - permanen dan tidak pernah direset.",
+                        "Jaga level baju supaya panas tidak memakan kerusakanmu.",
+                    ]],
+                ]),
+                ("note", ["Perlu diketahui", "Angka cepat memanjang, jadi game beralih ke bentuk singkat lalu ke notasi ilmiah seperti <strong>1,23e45</strong>. Tidak ada batas atas - hanya cara penulisannya yang berubah."]),
+            ],
+        },
+        {
+            "id": "currencies",
+            "title": "{currency_count} mata uang",
+            "dek": "Masing-masing menopang sistem yang berbeda. Membelanjakan mata uang yang benar di tempat yang salah adalah kesalahan paling umum di awal.",
+            "blocks": [
+                ("currencies", None),
+                ("note", ["Soal diamond", "Bos, pencapaian, dan tugas tidak pernah memberi diamond. Diamond dan kunci ruang bawah tanah disimpan di server, jadi membeli hewan butuh koneksi online."]),
+            ],
+        },
+        {
+            "id": "damage",
+            "title": "Kerusakan klik dan kerusakan otomatis",
+            "dek": "Dua sumber kerusakan terpisah, dan yang menumbuhkannya pun berbeda.",
+            "blocks": [
+                ("p", "<strong>Kerusakan klik</strong> adalah hasil satu ketukan. Ia tumbuh dari level dan skill beliung pertamamu, skill {skill_anger_click}, gelarmu, serta parameter prestise {prestige_click}. Setelah {prestige_click_from_dps} dinaikkan, sebagian kerusakan otomatis juga ikut masuk ke setiap klik."),
+                ("p", "<strong>Kerusakan otomatis</strong> (per detik) datang dari beliung kedua dan seterusnya, skill {skill_rampage}, parameter {prestige_dps}, serta hewan-hewanmu."),
+                ("note", ["Hewan adalah pengecualian", "Kerusakan hewan ditambahkan <strong>setelah</strong> semua pengali, jadi tidak diperbesar olehnya. Di akhir permainan level hewan saja tidak cukup: pengali beliung dan skill harus tumbuh juga."]),
+            ],
+        },
+        {
+            "id": "critical",
+            "title": "Serangan kritis",
+            "dek": "Setiap klik bisa keluar kritis dan menghantam lebih keras.",
+            "blocks": [
+                ("p", "Kamu mulai dengan peluang <strong>{crit_chance_percent}%</strong> dan pengali <strong>x{crit_multiplier}</strong>. Empat hal menaikkannya: skill {skill_critical_strike}, skill beliung, parameter prestise {prestige_crit_chance} dan {prestige_crit_multiplier}, serta gelar."),
+            ],
+        },
+        {
+            "id": "pickaxes",
+            "title": "Beliung",
+            "dek": "{pickaxe_count} beliung yang terbuka berurutan. Inilah tulang punggung kerusakanmu.",
+            "blocks": [
+                ("ul", [
+                    "Beliung pertama <strong>{pickaxe_first_cost} emas</strong>; tiap beliung berikutnya sekitar <strong>{pickaxe_cost_growth} kali</strong> lebih mahal dari sebelumnya.",
+                    "Beliung terbuka sendiri begitu emas yang kamu kumpulkan di putaran ini cukup - jadi peningkatanlah yang membuka beliung berikutnya.",
+                    "Setiap level sekitar <strong>{pickaxe_upgrade_growth_percent}%</strong> lebih mahal dari level sebelumnya.",
+                    "Hanya beliung <strong>pertama</strong> yang menambah kerusakan klik. Semua sisanya menambah kerusakan otomatis per detik.",
+                    "Setiap beliung punya {pickaxe_skill_count} skill yang terbuka di level {pickaxe_skill_levels}. Ada yang menolong beliung itu saja, ada yang menolong semuanya - yang menyeluruh lebih berharga.",
+                ]),
+                ("note", ["Lompatan terbesar", "Setiap <strong>{pickaxe_bonus_interval} level</strong>, beliung mengalikan keluarannya sendiri dengan <strong>x{pickaxe_bonus_multiplier}</strong>. Mendorong satu beliung ke ratusan berikutnya biasanya lompatan kekuatan terbesar yang tersedia."]),
+            ],
+        },
+        {
+            "id": "suits",
+            "title": "Baju tambang",
+            "dek": "{suit_count} baju yang sudah jadi milikmu sejak awal. Tugasnya menahan panas.",
+            "blocks": [
+                ("ul", [
+                    "Baju tidak dibeli, hanya dinaikkan levelnya. Tiap level menambah sekitar <strong>{suit_heat_per_level_percent}%</strong> ketahanan panas, mulai dari {suit_base_heat_resistance}.",
+                    "Setiap {suit_bonus_interval} level, ketahanan baju dikalikan <strong>x{suit_bonus_multiplier}</strong>.",
+                    "Setiap baju juga punya {suit_skill_count} skill yang terbuka seiring level.",
+                    "Panel baju terbuka di lantai <strong>{suit_panel_floor}</strong>, bersama indikator panas.",
+                ]),
+            ],
+        },
+        {
+            "id": "temperature",
+            "title": "Panas",
+            "dek": "Semakin dalam semakin panas, dan panas memotong kerusakanmu tanpa terasa.",
+            "blocks": [
+                ("ul", [
+                    "Suhu lantai naik terus - sekitar <strong>{temperature_growth}x per lantai</strong>, jadi berlipat dua setiap dua puluhan lantai.",
+                    "Selama ketahananmu setidaknya <strong>{temperature_safe_ratio}x</strong> suhu lantai, indikator tetap bersih dan kamu tidak kehilangan apa pun.",
+                    "Begitu ketahanan turun di bawah suhu, kerusakan mulai bocor; pada <strong>{temperature_worst_ratio}x</strong> hanya tinggal seperdua puluh - kehilangan <strong>{temperature_worst_damage_percent}%</strong>.",
+                    "Panel baju punya tombol beli ketahanan otomatis; biarkan menyala kalau kamu sering turun jauh.",
+                ]),
+                ("warn", ["Kalau tiba-tiba mandek", "Dinding tempat bijih tak habis-habis hampir selalu soal panas, bukan kerusakan. Lihat indikatornya sebelum membelanjakan apa pun."]),
+            ],
+        },
+        {
+            "id": "pets",
+            "title": "Hewan",
+            "dek": "{pet_count} hewan, dibeli dengan diamond lalu dinaikkan dengan emas.",
+            "blocks": [
+                ("ul", [
+                    "Harganya dari <strong>{pet_cost_first}</strong> sampai <strong>{pet_cost_last}</strong> diamond ({pet_cost_list}).",
+                    "Setiap level menambah sekitar <strong>{pet_dps_percent_per_level}%</strong> dari kerusakan klik beliungmu sebagai kerusakan otomatis, dikalikan urutan hewan itu - jadi {pet_5} memberi lima kali {pet_1} pada level sama.",
+                    "Biaya level naik sekitar <strong>{pet_upgrade_growth_percent}%</strong> tiap kali, dan setiap {pet_bonus_interval} level hewan mengalikan keluarannya sendiri dengan <strong>x{pet_bonus_multiplier}</strong>.",
+                    "Setiap hewan punya {pet_skill_count} skill; ada yang hanya untuk dirinya, ada yang untuk semua.",
+                    "Panel hewan terbuka di lantai <strong>{pet_panel_floor}</strong>, atau begitu kamu punya satu hewan.",
+                ]),
+                ("warn", ["Prestise dan hewan", "Prestise mengembalikan setiap hewan ke <strong>level 1</strong> dan menghapus skill mereka. Namun kepemilikan bersifat permanen - kamu tidak perlu membeli ulang."]),
+            ],
+        },
+        {
+            "id": "floors",
+            "title": "Lantai, bijih, dan kedalaman",
+            "dek": "Lantai menentukan sekeras apa bijihnya dan berapa emasnya. Kedalaman menentukan tampilannya.",
+            "blocks": [
+                ("ul", [
+                    "Setiap lantai punya sedikit lebih banyak nyawa dan emas dari lantai sebelumnya, dan kurvanya makin curam.",
+                    "Setiap <strong>lantai ke-{duration_floor_interval}</strong> adalah lantai berwaktu: hitungan <strong>{duration_floor_seconds} detik</strong> mulai berjalan, nyawa naik sekitar {duration_floor_health_percent}% dan emas sekitar {duration_floor_gold_percent}%.",
+                    "Kesulitan juga berjalan dalam siklus sekitar {difficulty_cycle_floors} lantai - lantai-lantai awal sebuah siklus paling untung dibanding nyawanya.",
+                    "Setiap bijih juga menjatuhkan <strong>{ore_stone_min}-{ore_stone_max}</strong> Batu Bijih di samping emas.",
+                ]),
+                ("warn", ["Lantai berwaktu menggigit", "Kalau waktunya habis, kamu didorong <strong>satu lantai</strong> ke bawah. Kalau kerusakanmu kurang, lewati saja lantai berwaktu daripada gagal di sana."]),
+                ("p", "Kamu bisa turun ke lantai mana pun yang sudah kamu capai di putaran ini dan farming di situ. Memilih lantai secara manual mematikan naik otomatis; nyalakan lagi kalau ingin memanjat."),
+                ("p", "Ada <strong>{ore_type_count}</strong> jenis bijih seluruhnya, dan kedalaman menentukan mana yang muncul. Jenis bijih hanya mengubah tampilan dan debunya - nyawa dan emas datang dari lantai."),
+                ("table", "depth"),
+            ],
+        },
+        {
+            "id": "skills",
+            "title": "Skill aktif",
+            "dek": "{skill_count} skill, masing-masing dorongan berbatas waktu lalu jeda pemulihan.",
+            "blocks": [
+                ("p", "Sebuah skill <strong>gratis</strong> ketika lantainya tercapai - kamu langsung memakainya di level 1. Menaikkannya ke level {skill_levels} butuh total <strong>{skill_total_cost} Batu Skill</strong>, atau <strong>{skill_all_total_cost}</strong> untuk semua {skill_count} skill. Level lebih tinggi berarti durasi lebih panjang dan jeda lebih pendek."),
+                ("table", "skills"),
+                ("p", "Jalur skill pertama terbuka di lantai {skill_line_floor}; panel pohon skill tempat kamu membelanjakan Batu Skill terbuka di lantai <strong>{skill_tree_floor}</strong>. Untuk memakai skill, panel itu tidak diperlukan."),
+                ("note", ["Kombinasinya", "Nyalakan {skill_overcharge} dulu, lalu skill yang benar-benar ingin kamu perkuat - misalnya {skill_golden_frenzy}. Setelah itu {skill_time_reversal} memotong jeda skill yang terakhir kamu pakai, jadi ia kembali lebih cepat."]),
+            ],
+        },
+        {
+            "id": "titles",
+            "title": "Gelar",
+            "dek": "{title_count} gelar yang datang sendiri saat kamu memanjat.",
+            "blocks": [
+                ("ul", [
+                    "Gelar terbentang dari lantai {title_first_floor} sampai lantai <strong>{title_last_floor}</strong> dan dipilih otomatis dari lantai tertinggi di putaran ini.",
+                    "Setiap gelar menambah sekitar <strong>+{title_effect_step}</strong> pada bonus yang dibawanya.",
+                    "Bonusnya datang bertahap: kerusakan klik sejak gelar pertama, lalu kerusakan otomatis, ketahanan panas, emas, pengali kritis, peluang kritis, dan bagian kerusakan per detik yang masuk ke klik (gelar {title_effect_unlocks}).",
+                ]),
+            ],
+        },
+        {
+            "id": "tasks",
+            "title": "Tugas dan {currency_taskium}",
+            "dek": "Jalur samping yang mengubah klikmu jadi penghasilan kedua.",
+            "blocks": [
+                ("ul", [
+                    "Setiap klik yang kena memberi <strong>+{taskium_per_click} {currency_taskium}</strong>.",
+                    "Menerima tugas butuh <strong>{task_accept_cost}</strong>, mengacak ulang butuh <strong>{task_refresh_cost}</strong>.",
+                    "Panel tugas terbuka di lantai {task_panel_floor}; {task_slot_count} slotnya terbuka di lantai {task_slot_floors}.",
+                    "Ada {task_type_count} jenis tugas dalam {task_rarity_count} tingkat kelangkaan. Tiap tugas berjalan {task_duration_minutes} menit, dan yang tidak diterima diganti setiap jam.",
+                    "Hadiahnya tumbuh dengan kelangkaan - antara <strong>{task_reward_range}</strong> kali emas bijih di lantai saat itu. Yang paling langka juga memberi Esensi.",
+                ]),
+            ],
+        },
+        {
+            "id": "trade",
+            "title": "Panel tukar",
+            "dek": "Terbuka di lantai {trade_floor}. Satu-satunya tempat Batu Bijih ada gunanya.",
+            "blocks": [
+                ("ul", [
+                    "1 Batu Skill jadi <strong>{trade_skill_stone_to_ore_stone} Batu Bijih</strong> - maksimal {trade_skill_stone_max} per penukaran.",
+                    "<strong>{trade_ore_stone_to_essence} Batu Bijih</strong> jadi 1 Esensi.",
+                    "<strong>{trade_ore_stone_to_skill_stone} Batu Bijih</strong> jadi 1 Batu Skill.",
+                ]),
+                ("p", "Yang terakhir itu penting: begitulah sesi farming panjang berubah jadi level skill tanpa melawan bos."),
+            ],
+        },
+        {
+            "id": "extras",
+            "title": "Emas gratis",
+            "dek": "Tiga sumber yang hanya minta kamu ada di sana.",
+            "blocks": [
+                ("ul", [
+                    "<strong>Balon emas</strong> - dari lantai {balloon_floor}, satu melayang masuk setiap {balloon_min_seconds}-{balloon_max_seconds} detik. Mengkliknya memberi <strong>x{balloon_multiplier}</strong> emas bijih lantai terbaikmu di putaran ini.",
+                    "<strong>Penghasilan offline</strong> - dihitung setelah {offline_min_minutes} menit pergi dan berhenti di {offline_max_hours} jam. Premium menggandakannya.",
+                    "<strong>Hadiah waktu bermain</strong> - setiap {playtime_reward_minutes} menit bermain memberi sekitar {playtime_reward_multiplier} kali emas satu menit di lantai terbaikmu.",
+                ]),
+            ],
+        },
+        {
+            "id": "prestige",
+            "title": "Prestise",
+            "dek": "Kamu menukar kemajuan putaran ini dengan kekuatan permanen. Kalau waktunya tepat, ini hal tercepat di dalam game.",
+            "blocks": [
+                ("p", "Panel prestise terbuka saat pertama kali kamu mencapai lantai <strong>{prestige_first_floor}</strong>. Sesudahnya tiap prestise minta {prestige_floor_step} lantai lagi: {prestige_second_floor}, lalu {prestige_third_floor}, dan seterusnya."),
+                ("ul", [
+                    "<strong>Direset:</strong> emas, {currency_taskium}, kemajuan lantai, peningkatan beliung dan baju, level hewan, semua skill yang dibeli, dan kemajuan bos.",
+                    "<strong>Tetap:</strong> level prestise, Esensi, level {prestige_parameter_count} parameter, hewan yang sudah dimiliki, item Infinity, dan pencapaian.",
+                    "Kamu tidak mulai dari lantai 1: putaran berikutnya dimulai di <strong>{prestige_floor_step} x level prestisemu</strong>, ditambah emas awal senilai sekitar {prestige_gold_multiplier} bijih.",
+                    "Semua jeda skill dibersihkan, jadi kamu memulai putaran dengan semua skill siap.",
+                ]),
+                ("p", "Hadiah Esensi hanya dihitung dari dua hal: <strong>lantai tertinggi</strong> yang kamu capai (masing-masing {prestige_essence_per_floor}) dan <strong>bijih yang dipecah</strong> (masing-masing {prestige_essence_per_ore})."),
+                ("note", ["Pecahkan bijih, jangan berlari", "Karena jumlah bijih berbobot lebih besar, farming di lantai yang nyaman pada menit-menit terakhir lebih menghasilkan daripada memaksa naik ke lantai yang nyaris tak tertembus."]),
+                ("table", "prestige"),
+                ("p", "Bonusnya bertambah level demi level, bukan berlipat, dan biaya Esensi naik lambat - jadi membelanjakan Esensi secara rutin lebih untung daripada menumpuknya."),
+            ],
+        },
+        {
+            "id": "bosses",
+            "title": "Bos",
+            "dek": "Lomba kerusakan melawan waktu untuk Esensi. Terbuka di lantai {boss_floor}.",
+            "blocks": [
+                ("ul", [
+                    "Kamu memilih bos dan membayar <strong>{boss_key_cost} kunci ruang bawah tanah</strong> untuk memulai. Tidak ada yang mulai sendiri.",
+                    "Bos terbuka berurutan - kalahkan satu untuk melihat yang berikutnya. Nyawa naik sekitar seribu kali per tingkat sementara waktunya makin pendek.",
+                    "Hadiah tumbuh bersama level prestisemu: sekitar <strong>+{boss_prestige_bonus_percent}%</strong> per level.",
+                    "Prestise mengembalikan kemajuan bos ke bos pertama.",
+                ]),
+                ("table", "bosses"),
+                ("warn", ["Kalah itu mahal", "Kalau bos masih berdiri saat waktu habis, kamu tidak dapat <strong>apa pun</strong> dan kuncinya hilang. Setelah gagal kamu bisa melihat sisa nyawanya - pakai itu untuk menaksir berapa kerusakan lagi yang kamu butuh."]),
+            ],
+        },
+        {
+            "id": "achievements",
+            "title": "Pencapaian",
+            "dek": "{achievement_count} pencapaian dalam {achievement_type_count} kategori: klik, bijih, bos, prestise, kedalaman, dan lainnya.",
+            "blocks": [
+                ("p", "Semua pencapaian dibayar dengan <strong>Batu Bijih</strong>, dan target maupun hadiahnya naik sekitar sepuluh kali tiap tingkat. Sebagian besar kategori punya tiga tingkat; kategori emas dan kerusakan lebih panjang."),
+                ("note", ["Jangan lupa diambil", "Hadiahnya <strong>tidak masuk otomatis</strong>. Kalau sudah lama tidak membuka tab pencapaian, di sana pasti sudah menumpuk."]),
+            ],
+        },
+        {
+            "id": "daily",
+            "title": "Hadiah harian",
+            "dek": "Kecil, sederhana, dan melewatkan satu hari tidak dihukum.",
+            "blocks": [
+                ("p", "Masuk sekali sehari memberi <strong>{daily_key_amount} kunci ruang bawah tanah</strong>. Sama setiap hari - tidak ada kalender dan tidak ada rentetan yang perlu dijaga. Untuk mengambilnya kamu harus online."),
+            ],
+        },
+        {
+            "id": "store",
+            "title": "Toko",
+            "dek": "Diamond, kunci, paket, waktu premium, dan item Infinity permanen.",
+            "blocks": [
+                ("ul", [
+                    "<strong>Paket diamond:</strong> {diamond_pack_list} diamond. Makin besar paketnya, makin murah per satuannya.",
+                    "<strong>Paket kunci:</strong> {key_pack_list} kunci ruang bawah tanah.",
+                    "<strong>{package_small}:</strong> {package_small_contents}.",
+                    "<strong>{package_big}:</strong> {package_big_contents}.",
+                    "<strong>{package_premium}:</strong> {premium_days} hari dengan kerusakan klik x{premium_click_multiplier}, kerusakan otomatis x{premium_dps_multiplier}, emas x{premium_gold_multiplier}, ketahanan panas x{premium_heat_multiplier}, dan penghasilan offline x{premium_offline_multiplier}.",
+                ]),
+                ("p", "Item Infinity dibeli <strong>sekali dengan diamond</strong> dan tidak pernah direset, bahkan oleh prestise. Di akhir permainan biasanya inilah pemakaian diamond yang paling berguna."),
+                ("table", "infinity"),
+                ("note", ["Soal harga", "Harga toko datang dari Steam dalam mata uangmu, jadi tidak ditulis di sini. Isi paket tidak pernah berubah; harganya tergantung wilayahmu."]),
+            ],
+        },
+        {
+            "id": "progress",
+            "title": "Papan peringkat dan statistik",
+            "dek": "Dua tempat untuk melihat bagaimana putaran ini berjalan.",
+            "blocks": [
+                ("ul", [
+                    "Papan peringkat Steam mencatat jumlah klik, kerusakan klik, jumlah prestise, bos yang dikalahkan, dan lantai tertinggi.",
+                    "Layar statistik menyimpan lebih banyak: pemasukan, pengeluaran, klik, waktu bermain, dan lainnya.",
+                ]),
+            ],
+        },
+        {
+            "id": "save",
+            "title": "Simpanan",
+            "dek": "Jawaban singkatnya: kemajuanmu dilindungi beberapa lapis sekaligus.",
+            "blocks": [
+                ("ul", [
+                    "Game menyimpan sendiri, terenkripsi, setiap <strong>{save_seconds} detik</strong>.",
+                    "Ia mencadangkan ke Steam Cloud sekitar setiap <strong>{cloud_save_seconds} detik</strong>, dan selalu saat ditutup atau dijeda - jadi komputer lain melanjutkan dari titik yang sama.",
+                    "Kalau berkas simpanan rusak, game beralih sendiri ke cadangannya.",
+                    "Kamu juga bisa menyalin simpananmu ke papan klip dan menempelkannya di perangkat lain.",
+                ]),
+            ],
+        },
+        {
+            "id": "languages",
+            "title": "Bahasa",
+            "dek": "Game ini tersedia dalam {language_count} bahasa.",
+            "blocks": [
+                ("p", "Inggris, Turki, Jerman, Prancis, Spanyol, Spanyol Amerika Latin, Italia, Polandia, Portugis Brasil, Rusia, Ukraina, Jepang, Korea, Tionghoa Sederhana, Tionghoa Tradisional, Thai, Indonesia, dan Vietnam. Game memilih bahasamu saat pertama dijalankan dan kamu bisa menggantinya kapan saja di pengaturan - panduan ini pun ada dalam semuanya, lewat tautan di bagian atas halaman."),
+            ],
+        },
+    ],
+}

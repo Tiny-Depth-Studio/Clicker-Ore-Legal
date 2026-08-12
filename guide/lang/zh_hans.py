@@ -1,0 +1,342 @@
+LANG = {
+    "code": "zh_hans",
+    "name": "简体中文",
+    "html_lang": "zh-Hans",
+    "locale": {"group": ",", "decimal": "."},
+    "title": "Clicker Ore Game - 玩家指南",
+    "description": "矿场怎么运作：货币、镐子、宠物、技能、转生、首领和商店，不用公式讲清楚。",
+    "brand": "Clicker Ore Game",
+    "brand_sub": "玩家指南",
+    "eyebrow": "玩家指南 - {date}",
+    "headline": "整座矿场，<br>用大白话说清",
+    "subtitle": "每个系统做什么、在第几层开放、下一个小时该花在哪里。没有公式，只有真正影响选择的信息。",
+    "footer": "这里的数值对应当前的游戏平衡，可能随更新变化。商店价格由 Steam 设定并以你所在地区的货币显示，因此本页不列出。",
+    "labels": {
+        "contents": "目录",
+        "per_second": "/秒",
+        "second_short": "秒",
+        "meter_short": "米",
+        "language": "语言",
+        "skill": "技能",
+        "unlock_floor": "层数",
+        "level_first": "1级（持续 / 冷却）",
+        "level_last": "7级（持续 / 冷却）",
+        "effect": "效果",
+        "boss": "首领",
+        "health": "生命",
+        "time_limit": "时限",
+        "reward": "奖励",
+        "parameter": "属性",
+        "per_level": "每级",
+        "effect_dps": "每秒自动伤害",
+        "effect_click": "点击伤害",
+        "effect_gold": "金币收入",
+        "effect_crit_chance": "暴击率",
+        "effect_crit_multiplier": "暴击倍率",
+        "effect_heat": "抗热",
+        "effect_click_from_dps": "计入点击的秒伤比例",
+        "depth": "深度",
+        "ore_types": "矿石种类",
+        "around_floor": "大约层数",
+        "item": "物品",
+        "cost": "价格",
+    },
+    "currencies": {
+        "gold": ["靠<b>敲碎矿石</b>获得。", "用来升级镐子和护甲，是最主要的日常货币。"],
+        "diamond": ["<b>只能通过真实付费</b>获得。", "用来买宠物和永久的无限物品。"],
+        "essence": ["来自<b>转生</b>和击杀首领。", "用来升级 {prestige_parameter_count} 项永久转生属性。"],
+        "taskium": ["每次点击命中 <b>+{taskium_per_click}</b>。", "用来接取任务和重新刷新任务。"],
+        "dungeon_key": ["每天一把免费，其余来自商店礼包。", "用来进入首领战，每次 {boss_key_cost} 把。"],
+        "skill_stone": ["来自商店礼包和交易面板。", "用来提升 {skill_count} 个主动技能的等级。"],
+        "ore_stone": ["每敲碎一块矿石得 <b>{ore_stone_min}-{ore_stone_max}</b> 颗，成就也会给。", "在交易面板换成精华或技能石。"],
+    },
+    "sections": [
+        {
+            "id": "start",
+            "title": "从哪里开始",
+            "dek": "按游戏开放内容的顺序，分成三个阶段。",
+            "blocks": [
+                ("stages", [
+                    ["前期 - 第 1 层到第 {prestige_first_floor} 层", [
+                        "不停升级镐子；下一把一开放就买。",
+                        "{skill_ore_breaker} 在第 {skill_line_floor} 层开放，{skill_anger_click} 在第 70 层。",
+                        "钻石有余量时把 {pet_1} 买下来。",
+                    ]],
+                    ["中期 - 第 {prestige_first_floor} 层到第 {boss_floor} 层", [
+                        "第一次转生在第 {prestige_first_floor} 层进行。",
+                        "精华不要堆在一项上，分给 {prestige_parameter_count} 项属性。",
+                        "任务在第 {task_panel_floor} 层开放，技能树和交易面板在第 {skill_tree_floor} 层。",
+                    ]],
+                    ["后期 - 第 {boss_floor} 层之后", [
+                        "手里有钥匙就去打首领，那是精华的主要来源。",
+                        "买下无限物品，它们是永久的，转生也不会清空。",
+                        "护甲要跟上等级，别让热量吃掉你的伤害。",
+                    ]],
+                ]),
+                ("note", ["值得知道", "数字很快会变长，所以游戏先换成缩写，再换成 <strong>1.23e45</strong> 这样的科学记数法。这不是上限，只是写法变了。"]),
+            ],
+        },
+        {
+            "id": "currencies",
+            "title": "{currency_count} 种货币",
+            "dek": "每种支撑一个系统。把对的货币花在错的地方，是新手最常犯的错。",
+            "blocks": [
+                ("currencies", None),
+                ("note", ["关于钻石", "首领、成就和任务都不会给钻石。钻石和地牢钥匙保存在服务器上，所以买宠物时需要联网。"]),
+            ],
+        },
+        {
+            "id": "damage",
+            "title": "点击伤害与自动伤害",
+            "dek": "两个各自独立的伤害来源，成长靠的东西也不同。",
+            "blocks": [
+                ("p", "<strong>点击伤害</strong>是点一下造成的伤害。它随第一把镐子的等级和技能、{skill_anger_click}、称号以及转生属性 {prestige_click} 增长。升级 {prestige_click_from_dps} 后，自动伤害的一部分也会加进每次点击。"),
+                ("p", "<strong>自动伤害</strong>（每秒）来自第二把镐子及之后的所有镐子、{skill_rampage}、属性 {prestige_dps} 和你的宠物。"),
+                ("note", ["宠物是例外", "宠物伤害是在所有倍率算完<strong>之后</strong>才加上去的，不会被倍率放大。后期光靠宠物等级不够，镐子和技能的倍率也得一起涨。"]),
+            ],
+        },
+        {
+            "id": "critical",
+            "title": "暴击",
+            "dek": "每次点击都可能暴击，打出更高的伤害。",
+            "blocks": [
+                ("p", "初始为 <strong>{crit_chance_percent}%</strong> 暴击率、<strong>x{crit_multiplier}</strong> 暴击倍率。有四样东西能提升它们：{skill_critical_strike} 技能、镐子技能、转生属性 {prestige_crit_chance} 与 {prestige_crit_multiplier}，以及称号。"),
+            ],
+        },
+        {
+            "id": "pickaxes",
+            "title": "镐子",
+            "dek": "按顺序开放的 {pickaxe_count} 把镐子，是伤害的骨架。",
+            "blocks": [
+                ("ul", [
+                    "第一把镐子 <strong>{pickaxe_first_cost} 金币</strong>；之后每一把大约是上一把的 <strong>{pickaxe_cost_growth} 倍</strong>。",
+                    "镐子会自动开放：本轮赚到的金币够了就解锁，所以真正打开下一把的是升级。",
+                    "每一级比上一级大约贵 <strong>{pickaxe_upgrade_growth_percent}%</strong>。",
+                    "只有<strong>第一把</strong>镐子提供点击伤害，其余全部提供每秒自动伤害。",
+                    "每把镐子有 {pickaxe_skill_count} 个技能，在等级 {pickaxe_skill_levels} 开放。有的只加成这把镐子，有的加成全部——全局的更值。",
+                ]),
+                ("note", ["最大的一次跃升", "镐子每到 <strong>{pickaxe_bonus_interval} 级</strong>，自身产出就乘 <strong>x{pickaxe_bonus_multiplier}</strong>。把一把镐子推到下一个百级，通常是你能拿到的最大提升。"]),
+            ],
+        },
+        {
+            "id": "suits",
+            "title": "护甲",
+            "dek": "开局就全部拥有的 {suit_count} 套护甲，作用是挡住热量。",
+            "blocks": [
+                ("ul", [
+                    "护甲不用买，只需要升级。每一级增加约 <strong>{suit_heat_per_level_percent}%</strong> 抗热，基础值为 {suit_base_heat_resistance}。",
+                    "每 {suit_bonus_interval} 级，护甲的抗热会乘 <strong>x{suit_bonus_multiplier}</strong>。",
+                    "每套护甲还有 {suit_skill_count} 个随等级开放的技能。",
+                    "护甲面板和热量条一起在第 <strong>{suit_panel_floor}</strong> 层开放。",
+                ]),
+            ],
+        },
+        {
+            "id": "temperature",
+            "title": "热量",
+            "dek": "越往下越热，而热量会悄悄削掉你的伤害。",
+            "blocks": [
+                ("ul", [
+                    "层温度一直在涨，大约每层 <strong>{temperature_growth} 倍</strong>，也就是每二十几层翻一倍。",
+                    "只要抗热达到温度的 <strong>{temperature_safe_ratio} 倍</strong>，热量条就是干净的，什么都不会损失。",
+                    "抗热一旦低于温度，伤害就开始流失；到 <strong>{temperature_worst_ratio} 倍</strong>时只剩二十分之一，也就是损失 <strong>{temperature_worst_damage_percent}%</strong>。",
+                    "护甲面板上有自动购买抗热的开关；经常往深处走就一直开着。",
+                ]),
+                ("warn", ["如果突然卡住", "矿石半天打不完的那种墙，几乎总是热量问题，而不是伤害不足。在花钱升别的东西之前，先看热量条。"]),
+            ],
+        },
+        {
+            "id": "pets",
+            "title": "宠物",
+            "dek": "用钻石购买、再用金币升级的 {pet_count} 只宠物。",
+            "blocks": [
+                ("ul", [
+                    "价格从 <strong>{pet_cost_first}</strong> 到 <strong>{pet_cost_last}</strong> 钻石（{pet_cost_list}）。",
+                    "每一级会把镐子点击伤害的约 <strong>{pet_dps_percent_per_level}%</strong> 加成自动伤害，并乘上宠物的序号：同等级下 {pet_5} 是 {pet_1} 的五倍。",
+                    "每一级大约贵 <strong>{pet_upgrade_growth_percent}%</strong>，并且每 {pet_bonus_interval} 级宠物会把自身产出乘 <strong>x{pet_bonus_multiplier}</strong>。",
+                    "每只宠物有 {pet_skill_count} 个技能，有的只加成自己，有的加成全部宠物。",
+                    "宠物面板在第 <strong>{pet_panel_floor}</strong> 层开放，或者你一拥有宠物就开放。",
+                ]),
+                ("warn", ["转生与宠物", "转生会把每只宠物退回<strong>1 级</strong>并清掉它们的技能。但拥有状态是永久的，不需要重新购买。"]),
+            ],
+        },
+        {
+            "id": "floors",
+            "title": "层数、矿石与深度",
+            "dek": "矿石有多硬、给多少金币由层数决定；长什么样由深度决定。",
+            "blocks": [
+                ("ul", [
+                    "每层的生命和金币都比上一层多一点，而且越往上涨得越快。",
+                    "每 <strong>{duration_floor_interval} 层</strong>是一个计时层：开始 <strong>{duration_floor_seconds} 秒</strong>倒计时，生命提高约 {duration_floor_health_percent}%，金币提高约 {duration_floor_gold_percent}%。",
+                    "难度还会以大约 {difficulty_cycle_floors} 层为周期变化，周期开头几层的金币与生命之比最划算。",
+                    "每块矿石除了金币还会掉 <strong>{ore_stone_min}-{ore_stone_max}</strong> 颗矿石之石。",
+                ]),
+                ("warn", ["计时层会咬人", "倒计时结束时如果没打完，你会被退回<strong>下一层</strong>。伤害不够时，跳过计时层比失败更划算。"]),
+                ("p", "本轮到过的任何一层都可以退回去刷。手动选层会关掉自动上层，想继续爬时再打开。"),
+                ("p", "矿石一共 <strong>{ore_type_count}</strong> 种，出哪一种由深度决定。种类只改变外观和它的粉末，生命和金币都由层数决定。"),
+                ("table", "depth"),
+            ],
+        },
+        {
+            "id": "skills",
+            "title": "主动技能",
+            "dek": "{skill_count} 个技能，每个都是限时增益，随后进入冷却。",
+            "blocks": [
+                ("p", "走到对应层数时技能<strong>免费</strong>开放，从 1 级就能用。升到 {skill_levels} 级一共要 <strong>{skill_total_cost} 颗技能石</strong>，{skill_count} 个全升要 <strong>{skill_all_total_cost}</strong> 颗。等级越高，持续越长、冷却越短。"),
+                ("table", "skills"),
+                ("p", "第一条技能线在第 {skill_line_floor} 层开放；花技能石的技能树面板在第 <strong>{skill_tree_floor}</strong> 层开放。单纯使用技能并不需要这个面板。"),
+                ("note", ["连招", "先开 {skill_overcharge}，再放真正想加强的技能，比如 {skill_golden_frenzy}。之后 {skill_time_reversal} 会缩短你最后使用的那个技能的冷却，让它更早回来。"]),
+            ],
+        },
+        {
+            "id": "titles",
+            "title": "称号",
+            "dek": "随着往上爬自动到手的 {title_count} 个称号。",
+            "blocks": [
+                ("ul", [
+                    "称号从第 {title_first_floor} 层一直排到第 <strong>{title_last_floor}</strong> 层，按本轮到过的最高层自动选择。",
+                    "每个称号给它所带的加成各加约 <strong>+{title_effect_step}</strong>。",
+                    "加成是分段开放的：第一个称号就有点击伤害，之后依次是自动伤害、抗热、金币、暴击倍率、暴击率，以及计入点击的秒伤比例（第 {title_effect_unlocks} 个称号）。",
+                ]),
+            ],
+        },
+        {
+            "id": "tasks",
+            "title": "任务与 {currency_taskium}",
+            "dek": "把点击变成第二份收入的支线。",
+            "blocks": [
+                ("ul", [
+                    "每次点击命中给 <strong>+{taskium_per_click} {currency_taskium}</strong>。",
+                    "接一个任务要 <strong>{task_accept_cost}</strong>，重新刷新要 <strong>{task_refresh_cost}</strong>。",
+                    "任务面板在第 {task_panel_floor} 层开放；{task_slot_count} 个格子分别在第 {task_slot_floors} 层开放。",
+                    "任务有 {task_type_count} 种类型、{task_rarity_count} 个稀有度。每个任务持续 {task_duration_minutes} 分钟，没接的任务每小时换一批。",
+                    "奖励随稀有度提高，为当前层矿石金币的 <strong>{task_reward_range}</strong> 倍之间。最稀有的还会给精华。",
+                ]),
+            ],
+        },
+        {
+            "id": "trade",
+            "title": "交易面板",
+            "dek": "在第 {trade_floor} 层开放，是矿石之石唯一有用的地方。",
+            "blocks": [
+                ("ul", [
+                    "1 颗技能石换 <strong>{trade_skill_stone_to_ore_stone} 颗矿石之石</strong>，每次最多 {trade_skill_stone_max} 颗。",
+                    "<strong>{trade_ore_stone_to_essence} 颗矿石之石</strong>换 1 精华。",
+                    "<strong>{trade_ore_stone_to_skill_stone} 颗矿石之石</strong>换 1 颗技能石。",
+                ]),
+                ("p", "最后一条最重要：它让一段长时间的刷矿，不打首领也能变成技能等级。"),
+            ],
+        },
+        {
+            "id": "extras",
+            "title": "白拿的金币",
+            "dek": "三种只要你在线就有的收入。",
+            "blocks": [
+                ("ul", [
+                    "<strong>金气球</strong> - 从第 {balloon_floor} 层起，每 {balloon_min_seconds}-{balloon_max_seconds} 秒飘来一个。点掉它会给出本轮最高层矿石金币的 <strong>x{balloon_multiplier}</strong>。",
+                    "<strong>离线收益</strong> - 离开 {offline_min_minutes} 分钟后开始计算，{offline_max_hours} 小时封顶。会员翻一倍。",
+                    "<strong>游戏时长奖励</strong> - 每玩 {playtime_reward_minutes} 分钟，给出你最高层一分钟金币的约 {playtime_reward_multiplier} 倍。",
+                ]),
+            ],
+        },
+        {
+            "id": "prestige",
+            "title": "转生",
+            "dek": "用本轮的进度换永久战力。时机选得好，它是游戏里最快的一步。",
+            "blocks": [
+                ("p", "第一次到第 <strong>{prestige_first_floor}</strong> 层时转生面板开放。之后每次转生要求再高 {prestige_floor_step} 层：第 {prestige_second_floor} 层、第 {prestige_third_floor} 层，以此类推。"),
+                ("ul", [
+                    "<strong>会重置：</strong>金币、{currency_taskium}、层数进度、镐子和护甲的升级、宠物等级、买过的全部技能，以及首领进度。",
+                    "<strong>会保留：</strong>转生等级、精华、{prestige_parameter_count} 项属性的等级、已拥有的宠物、无限物品、成就。",
+                    "你不会从第 1 层重来：下一轮直接从 <strong>{prestige_floor_step} × 转生等级</strong> 层开始，还会附带价值约 {prestige_gold_multiplier} 块矿石的启动金币。",
+                    "所有技能冷却都会清空，所以开局就能把技能全放出来。",
+                ]),
+                ("p", "精华奖励只由两件事决定：<strong>到过的最高层</strong>（每层 {prestige_essence_per_floor}）和<strong>敲碎的矿石</strong>（每块 {prestige_essence_per_ore}）。"),
+                ("note", ["多敲矿石，别硬冲", "因为矿石数量占的比重更大，最后一段时间留在打得舒服的层里刷，比冲到几乎打不动的层更划算。"]),
+                ("table", "prestige"),
+                ("p", "加成是逐级相加而不是相乘，而且精华的花费涨得很慢——所以定期花掉比一直攒着更值。"),
+            ],
+        },
+        {
+            "id": "bosses",
+            "title": "首领",
+            "dek": "为精华而战的限时输出赛，在第 {boss_floor} 层开放。",
+            "blocks": [
+                ("ul", [
+                    "选一个首领，花 <strong>{boss_key_cost} 把地牢钥匙</strong>开战。没有任何战斗会自动开始。",
+                    "首领按顺序开放，打过一个才会出现下一个。每一阶生命大约是上一阶的一千倍，而时限越来越短。",
+                    "奖励随转生等级提高，每级约 <strong>+{boss_prestige_bonus_percent}%</strong>。",
+                    "转生会把首领进度退回第一个。",
+                ]),
+                ("table", "bosses"),
+                ("warn", ["输了要付代价", "时限归零时首领还站着，你<strong>什么都拿不到</strong>，钥匙也不退。失败后可以看到剩余生命，用它估算下次还需要多少伤害。"]),
+            ],
+        },
+        {
+            "id": "achievements",
+            "title": "成就",
+            "dek": "{achievement_type_count} 类共 {achievement_count} 个成就：点击、矿石、首领、转生、深度等等。",
+            "blocks": [
+                ("p", "所有成就奖励都是<strong>矿石之石</strong>，目标和奖励每一档大约乘十。多数类别有三档，金币和伤害相关的更长。"),
+                ("note", ["记得领取", "奖励<strong>不会自动到账</strong>。如果你有一段时间没开成就页，那里已经堆了一批。"]),
+            ],
+        },
+        {
+            "id": "daily",
+            "title": "每日奖励",
+            "dek": "很小、很简单，漏一天也没有惩罚。",
+            "blocks": [
+                ("p", "每天登录一次给 <strong>{daily_key_amount} 把地牢钥匙</strong>。每天都一样，没有日历也没有连续登录要守。领取需要联网。"),
+            ],
+        },
+        {
+            "id": "store",
+            "title": "商店",
+            "dek": "钻石、钥匙、礼包、会员时长，以及永久的无限物品。",
+            "blocks": [
+                ("ul", [
+                    "<strong>钻石礼包：</strong>{diamond_pack_list} 钻石。包越大，单价越低。",
+                    "<strong>钥匙礼包：</strong>{key_pack_list} 把地牢钥匙。",
+                    "<strong>{package_small}：</strong>{package_small_contents}。",
+                    "<strong>{package_big}：</strong>{package_big_contents}。",
+                    "<strong>{package_premium}：</strong>{premium_days} 天内点击伤害 x{premium_click_multiplier}、自动伤害 x{premium_dps_multiplier}、金币 x{premium_gold_multiplier}、抗热 x{premium_heat_multiplier}、离线收益 x{premium_offline_multiplier}。",
+                ]),
+                ("p", "无限物品<strong>用钻石买一次</strong>就永久生效，转生也不会清空。后期通常是钻石最划算的去处。"),
+                ("table", "infinity"),
+                ("note", ["价格说明", "商店价格由 Steam 按你所在地区的货币给出，所以本页不写。礼包内容永远不变，价格随地区不同。"]),
+            ],
+        },
+        {
+            "id": "progress",
+            "title": "排行榜与统计",
+            "dek": "两处可以看这一轮进展的地方。",
+            "blocks": [
+                ("ul", [
+                    "Steam 排行榜记录点击次数、点击伤害、转生次数、击杀首领数和最高层数。",
+                    "统计界面记的更多：收入、支出、点击数、游戏时长等等。",
+                ]),
+            ],
+        },
+        {
+            "id": "save",
+            "title": "存档",
+            "dek": "简单说：你的进度有好几层保护同时生效。",
+            "blocks": [
+                ("ul", [
+                    "游戏每 <strong>{save_seconds} 秒</strong>自动加密保存一次。",
+                    "大约每 <strong>{cloud_save_seconds} 秒</strong>备份到 Steam 云，关闭和暂停时也一定会备份，所以换一台电脑也能接着玩。",
+                    "存档文件损坏时，游戏会自动改用备份。",
+                    "你也可以把存档复制到剪贴板，在另一台设备上粘贴回去。",
+                ]),
+            ],
+        },
+        {
+            "id": "languages",
+            "title": "语言",
+            "dek": "本作提供 {language_count} 种语言。",
+            "blocks": [
+                ("p", "英语、土耳其语、德语、法语、西班牙语、拉丁美洲西班牙语、意大利语、波兰语、巴西葡萄牙语、俄语、乌克兰语、日语、韩语、简体中文、繁体中文、泰语、印尼语和越南语。首次启动时游戏会自动选择，之后可以随时在设置里更改——本指南也有全部语言版本，页面顶部即可切换。"),
+            ],
+        },
+    ],
+}
