@@ -30,10 +30,16 @@ LANGUAGES = [
 
 _CACHE = {}
 
-PAGE = """<title>{title}</title>
+PAGE = """<!DOCTYPE html>
+<html lang="{html_lang}">
+<head>
+<meta charset="utf-8">
+<title>{title}</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="{description}">
 <style>{css}</style>
+</head>
+<body>
 
 <input type="checkbox" id="nav-toggle">
 
@@ -64,6 +70,9 @@ PAGE = """<title>{title}</title>
     <footer class="doc-footer">{footer}</footer>
   </main>
 </div>
+
+</body>
+</html>
 """
 
 SECTION = """<section id="{id}">
@@ -125,6 +134,7 @@ def render(code):
         ))
 
     return PAGE.format(
+        html_lang=lang["html_lang"],
         title=fill(lang["title"], values),
         description=fill(lang["description"], values),
         css=style_module.CSS,
