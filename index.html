@@ -1,10 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
+<meta charset="utf-8">
+<title>Clicker Ore - Idle mining and clicker game</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Clicker Ore — Tiny Depth Studio</title>
-<meta name="description" content="Player guides, privacy policy, and terms of service for Clicker Ore by Tiny Depth Studio.">
+<meta name="description" content="Grab your pickaxe, descend into the depths, and become the master of wealth! 45 pickaxes, 8 skills, 10 bosses and endless upgrades. Your mines keep working even when you are away.">
+<meta property="og:title" content="Clicker Ore">
+<meta property="og:description" content="Grab your pickaxe, descend into the depths, and become the master of wealth! 45 pickaxes, 8 skills, 10 bosses and endless upgrades. Your mines keep working even when you are away.">
+<meta property="og:image" content="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3810540/7a280bb9a06816fcdbf60c377d092257e7c07175/header.jpg?t=1786563388">
+<meta property="og:type" content="website">
 <style>
   :root {
     --bg: #14110d;
@@ -18,6 +22,16 @@
     --accent-2: #7fb8ad;
     --border: #3a2f22;
     --border-soft: #2a2318;
+    --danger: #cf7a5a;
+    --shadow: 0 8px 24px rgba(0,0,0,0.35);
+
+    --cur-gold: #e0a752;
+    --cur-diamond: #7fd1e0;
+    --cur-essence: #b79ef0;
+    --cur-taskium: #93a8d6;
+    --cur-key: #d98a63;
+    --cur-skillstone: #7fc9a0;
+    --cur-orestone: #b5a68c;
 
     --font-display: "Bahnschrift", "Segoe UI Semibold", "Arial Narrow Bold", "Arial Narrow", sans-serif;
     --font-body: "Sitka Text", "Iowan Old Style", Georgia, "Times New Roman", serif;
@@ -36,6 +50,8 @@
     --accent-2: #2f7a70;
     --border: #d3c5a4;
     --border-soft: #ddd0b1;
+    --danger: #a3492c;
+    --shadow: 0 8px 20px rgba(90,70,30,0.12);
   }
 
   @media (prefers-color-scheme: light) {
@@ -51,37 +67,149 @@
       --accent-2: #2f7a70;
       --border: #d3c5a4;
       --border-soft: #ddd0b1;
+      --danger: #a3492c;
+      --shadow: 0 8px 20px rgba(90,70,30,0.12);
     }
   }
 
   * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
   body {
     margin: 0;
-    min-height: 100vh;
     background: var(--bg);
     color: var(--text);
     font-family: var(--font-body);
     font-size: 17px;
-    line-height: 1.6;
+    line-height: 1.65;
     -webkit-font-smoothing: antialiased;
-    display: flex;
-    justify-content: center;
   }
 
-  a { color: inherit; }
   ::selection { background: var(--accent); color: #14110d; }
 
-  .page {
-    width: 100%;
-    max-width: 640px;
-    padding: clamp(2.5rem, 6vw, 5rem) 1.5rem 3rem;
+  a { color: var(--accent-strong); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  a:focus-visible, button:focus-visible, summary:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
   }
 
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    text-wrap: balance;
+    letter-spacing: 0.01em;
+    color: var(--text);
+  }
+
+  p { max-width: 68ch; }
+  ul, ol { max-width: 68ch; }
+
+  .shell {
+    display: grid;
+    grid-template-columns: 260px minmax(0, 1fr);
+    min-height: 100vh;
+  }
+
+  .topbar {
+    display: none;
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: var(--bg-elevated);
+    border-bottom: 1px solid var(--border);
+    padding: 0.7rem 1rem;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .topbar-title {
+    font-family: var(--font-display);
+    font-size: 0.95rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--accent-strong);
+  }
+  #nav-toggle { display: none; }
+  .nav-toggle-btn {
+    font-family: var(--font-display);
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 0.4rem 0.7rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.85rem;
+  }
+
+  nav.toc {
+    position: sticky;
+    top: 0;
+    align-self: start;
+    height: 100vh;
+    overflow-y: auto;
+    padding: 2rem 1.4rem 3rem;
+    background: var(--bg-elevated);
+    border-right: 1px solid var(--border);
+  }
+  .toc-brand {
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    letter-spacing: 0.03em;
+    color: var(--accent-strong);
+    margin-bottom: 0.15rem;
+  }
+  .toc-brand small {
+    display: block;
+    font-family: var(--font-body);
+    font-style: italic;
+    font-size: 0.78rem;
+    color: var(--text-faint);
+    letter-spacing: 0;
+    margin-top: 0.25rem;
+  }
+  .toc-list {
+    list-style: none;
+    margin: 1.6rem 0 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+  }
+  .toc-list a {
+    display: block;
+    color: var(--text-dim);
+    font-size: 0.88rem;
+    padding: 0.32rem 0.5rem;
+    border-radius: 4px;
+    border-left: 2px solid transparent;
+  }
+  .toc-list a:hover {
+    color: var(--text);
+    text-decoration: none;
+    background: rgba(224,167,82,0.08);
+    border-left-color: var(--accent);
+  }
+  .toc-num {
+    font-family: var(--font-mono);
+    color: var(--text-faint);
+    font-size: 0.78rem;
+    margin-right: 0.45rem;
+  }
+
+  main {
+    padding: 3.2rem clamp(1.2rem, 4vw, 4rem) 6rem;
+    max-width: 900px;
+  }
+
+  header.hero {
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--border);
+  }
   .strata {
-    height: 8px;
+    height: 10px;
     width: 100%;
     border-radius: 3px;
-    margin-bottom: 2.2rem;
+    margin-bottom: 1.6rem;
     background: repeating-linear-gradient(
       90deg,
       var(--accent) 0 6%,
@@ -100,202 +228,352 @@
     );
     opacity: 0.85;
   }
-
   .eyebrow {
     font-family: var(--font-display);
     text-transform: uppercase;
-    letter-spacing: 0.16em;
-    font-size: 0.74rem;
-    color: var(--accent);
-    margin-bottom: 0.7rem;
-  }
-
-  h1 {
-    font-family: var(--font-display);
-    font-weight: 700;
-    letter-spacing: 0.01em;
-    text-wrap: balance;
-    font-size: clamp(2.1rem, 6vw, 2.7rem);
-    margin: 0 0 0.75rem;
-    line-height: 1.08;
-  }
-
-  .tagline {
-    color: var(--text-dim);
-    font-size: 1.05rem;
-    max-width: 46ch;
-    margin: 0 0 3rem;
-  }
-
-  .group {
-    margin-bottom: 2.4rem;
-  }
-
-  .group-label {
-    font-family: var(--font-mono);
+    letter-spacing: 0.14em;
     font-size: 0.72rem;
+    color: var(--accent);
+    margin-bottom: 0.6rem;
+  }
+  h1.title {
+    font-size: clamp(2rem, 4.2vw, 2.9rem);
+    margin: 0 0 0.7rem;
+    line-height: 1.1;
+  }
+  .subtitle {
+    color: var(--text-dim);
+    font-size: 1.08rem;
+    max-width: 62ch;
+    margin: 0;
+  }
+
+  .langbar {
+    margin: 1.8rem 0 0;
+    padding-top: 1.2rem;
+    border-top: 1px solid var(--border-soft);
+  }
+  .langbar-label {
+    font-family: var(--font-display);
     text-transform: uppercase;
     letter-spacing: 0.1em;
+    font-size: 0.68rem;
     color: var(--text-faint);
-    margin-bottom: 0.8rem;
+    margin-bottom: 0.55rem;
   }
-
-  .links {
+  .langbar-list {
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 0.35rem 0.4rem;
+  }
+  .langbar-list a, .langbar-list span {
+    font-family: var(--font-display);
+    font-size: 0.78rem;
+    padding: 0.18rem 0.55rem;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    color: var(--text-dim);
+    background: var(--bg-card);
+  }
+  .langbar-list a:hover {
+    text-decoration: none;
+    color: var(--text);
+    border-color: var(--accent);
+  }
+  .langbar-list span {
+    color: #14110d;
+    background: var(--accent);
+    border-color: var(--accent);
+  }
+  :root[data-theme="light"] .langbar-list span { color: #efe9da; }
+
+  section {
+    margin-bottom: 3.6rem;
+    scroll-margin-top: 1.5rem;
+  }
+  .section-head {
+    display: flex;
+    align-items: baseline;
     gap: 0.7rem;
+    margin-bottom: 0.3rem;
+  }
+  .section-num {
+    font-family: var(--font-mono);
+    color: var(--accent);
+    font-size: 0.95rem;
+  }
+  h2 {
+    font-size: 1.55rem;
+    margin: 0;
+  }
+  .section-dek {
+    color: var(--text-dim);
+    font-size: 0.98rem;
+    margin: 0.3rem 0 1.5rem;
+    max-width: 62ch;
   }
 
-  .link-card {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
+  .callout {
+    border-left: 3px solid var(--accent);
+    background: var(--bg-card);
+    padding: 0.95rem 1.2rem;
+    border-radius: 0 6px 6px 0;
+    margin: 1.2rem 0;
+    font-size: 0.95rem;
+  }
+  .callout strong { color: var(--accent-strong); }
+  .callout.warn { border-left-color: var(--danger); }
+  .callout-label {
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 0.72rem;
+    color: var(--accent);
+    margin-bottom: 0.35rem;
+  }
+  .callout.warn .callout-label { color: var(--danger); }
+
+  .currency-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 0.9rem;
+    margin: 1.4rem 0;
+  }
+  .cur-card {
     background: var(--bg-card);
     border: 1px solid var(--border);
-    border-left: 3px solid var(--accent);
-    border-radius: 0 8px 8px 0;
-    padding: 1rem 1.2rem;
-    text-decoration: none;
-    transition: border-color 0.15s ease, transform 0.15s ease, background 0.15s ease;
+    border-top: 3px solid var(--dot);
+    border-radius: 6px;
+    padding: 0.95rem 1rem 1.05rem;
   }
-  .link-card:hover,
-  .link-card:focus-visible {
-    border-left-color: var(--accent-strong);
-    background: color-mix(in srgb, var(--accent) 6%, var(--bg-card));
-    transform: translateX(2px);
+  .cur-card h4 {
+    margin: 0 0 0.5rem;
+    font-size: 0.98rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
   }
-  .link-card:focus-visible {
-    outline: 2px solid var(--accent);
-    outline-offset: 2px;
+  .dot {
+    width: 9px; height: 9px; border-radius: 50%;
+    background: var(--dot);
+    flex: none;
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--dot) 20%, transparent);
   }
-  .group.legal .link-card {
-    border-left-color: var(--accent-2);
+  .cur-card p {
+    margin: 0.15rem 0;
+    font-size: 0.84rem;
+    color: var(--text-dim);
+    max-width: none;
   }
-  .group.legal .link-card:hover,
-  .group.legal .link-card:focus-visible {
-    border-left-color: var(--accent-2);
-    background: color-mix(in srgb, var(--accent-2) 6%, var(--bg-card));
-  }
+  .cur-card p b { color: var(--text); font-weight: 600; }
 
-  .link-text h2 {
-    font-family: var(--font-display);
-    font-size: 1.02rem;
-    margin: 0 0 0.2rem;
-    color: var(--text);
-    font-weight: 600;
+  .table-wrap {
+    overflow-x: auto;
+    margin: 1.2rem 0;
+    border: 1px solid var(--border);
+    border-radius: 8px;
   }
-  .link-text p {
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    min-width: 460px;
+    font-size: 0.9rem;
+  }
+  thead th {
+    text-align: left;
+    font-family: var(--font-display);
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    font-size: 0.72rem;
+    color: var(--text-dim);
+    background: var(--bg-elevated);
+    padding: 0.6rem 0.85rem;
+    border-bottom: 1px solid var(--border);
+    white-space: nowrap;
+  }
+  tbody td {
+    padding: 0.55rem 0.85rem;
+    border-bottom: 1px solid var(--border-soft);
+    font-variant-numeric: tabular-nums;
+    color: var(--text);
+  }
+  tbody tr:last-child td { border-bottom: none; }
+  tbody tr:nth-child(even) { background: color-mix(in srgb, var(--accent) 3%, transparent); }
+  td.num, th.num { font-family: var(--font-mono); }
+  td.strong { color: var(--accent-strong); font-weight: 600; }
+
+  .strategy-track {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 1.4rem 0;
+  }
+  .strategy-stage {
+    background: var(--bg-card);
+    padding: 1rem 1.1rem;
+  }
+  .strategy-stage .stage-label {
+    font-family: var(--font-display);
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+    margin-bottom: 0.4rem;
+  }
+  .strategy-stage ul {
     margin: 0;
+    padding-left: 1.1rem;
     font-size: 0.86rem;
     color: var(--text-dim);
   }
+  .strategy-stage li { margin-bottom: 0.25rem; }
 
-  .arrow {
-    font-family: var(--font-mono);
-    color: var(--text-faint);
-    font-size: 1.1rem;
-    flex: none;
-  }
-  .link-card:hover .arrow { color: var(--accent-strong); }
-
-  footer {
-    margin-top: 3rem;
+  footer.doc-footer {
+    margin-top: 4rem;
     padding-top: 1.5rem;
     border-top: 1px solid var(--border);
     color: var(--text-faint);
-    font-size: 0.82rem;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.4rem 1rem;
-    justify-content: space-between;
-  }
-  footer a { color: var(--text-dim); text-decoration: underline; text-underline-offset: 2px; }
-  footer a:hover { color: var(--accent-strong); }
-
-  .group-note {
-    color: var(--text-dim);
-    font-size: 0.9rem;
-    margin: -0.3rem 0 1rem;
-    max-width: 52ch;
+    font-size: 0.8rem;
   }
 
-  .lang-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(196px, 1fr));
-    gap: 0.6rem;
-  }
-
-  .lang-card {
-    display: flex;
-    align-items: center;
-    gap: 0.7rem;
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 0.72rem 0.85rem;
-    text-decoration: none;
-    transition: border-color 0.15s ease, background 0.15s ease, transform 0.15s ease;
-  }
-  .lang-card:hover,
-  .lang-card:focus-visible {
-    border-color: var(--accent);
-    background: color-mix(in srgb, var(--accent) 6%, var(--bg-card));
-    transform: translateY(-1px);
-  }
-  .lang-card:focus-visible {
-    outline: 2px solid var(--accent);
-    outline-offset: 2px;
-  }
-
-  .lang-code {
-    font-family: var(--font-mono);
-    font-size: 0.68rem;
-    letter-spacing: 0.04em;
-    color: var(--accent);
-    background: color-mix(in srgb, var(--accent) 12%, transparent);
-    border: 1px solid color-mix(in srgb, var(--accent) 30%, var(--border));
-    border-radius: 5px;
-    padding: 0.22rem 0.4rem;
-    flex: none;
-    min-width: 3.4rem;
-    text-align: center;
-  }
-  .lang-card:hover .lang-code { color: var(--accent-strong); }
-
-  .lang-text {
-    display: flex;
-    flex-direction: column;
-    min-width: 0;
-  }
-  .lang-text strong {
-    font-family: var(--font-display);
-    font-size: 0.95rem;
-    font-weight: 600;
-    color: var(--text);
-    line-height: 1.25;
-  }
-  .lang-text span {
-    font-size: 0.78rem;
-    color: var(--text-dim);
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+  @media (max-width: 880px) {
+    .shell { grid-template-columns: 1fr; }
+    .topbar { display: flex; }
+    nav.toc {
+      position: fixed;
+      inset: 0 20% 0 0;
+      top: 52px;
+      height: calc(100vh - 52px);
+      transform: translateX(-100%);
+      transition: transform 0.22s ease;
+      z-index: 15;
+      box-shadow: var(--shadow);
+    }
+    #nav-toggle:checked ~ .shell nav.toc {
+      transform: translateX(0);
+    }
+    main { padding: 2rem 1.2rem 5rem; }
   }
 </style>
 </head>
 <body>
-<div class="page">
-  <div class="strata" role="presentation"></div>
-  <div class="eyebrow">Tiny Depth Studio</div>
-  <h1>Clicker Ore</h1>
-  <p class="tagline">An idle mining &amp; clicker game. Below you'll find the full player guide and the legal documents for the game.</p>
 
-  <div class="group guide">
-    <div class="group-label">Player Guide</div>
-    <p class="group-note">Pickaxes, skills, pets, prestige, bosses and the store, explained in plain terms - the same guide in every language the game ships in. Pick yours:</p>
+<div class="topbar">
+  <span class="topbar-brand">&#9935; Clicker Ore</span>
+  <nav class="topbar-nav" aria-label="Sections">
+    <a href="#news">Updates</a>
+    <a href="#media">Screenshots</a>
+    <a href="#guide">Player guide</a>
+    <a href="#legal">Legal</a>
+  </nav>
+  <a class="btn" href="https://store.steampowered.com/app/3810540/">Play free on Steam</a>
+</div>
+
+<div class="wrap">
+  <div class="strata" role="presentation"></div>
+
+  <header class="hero">
+    <div>
+      <div class="eyebrow">Tiny Depth Studio</div>
+      <h1>Clicker Ore</h1>
+      <p class="lede">Grab your pickaxe, descend into the depths, and become the master of wealth! 45 pickaxes, 8 skills, 10 bosses and endless upgrades. Your mines keep working even when you are away.</p>
+      <div class="chips"><span class="chip free">Free to play</span><span class="chip">Released 26 Jul, 2026</span><span class="chip">Windows</span><span class="chip">Mac</span><span class="chip">Adventure</span><span class="chip">Casual</span><span class="chip">Indie</span><span class="chip">Strategy</span></div>
+      <div class="hero-actions">
+        <a class="btn" href="https://store.steampowered.com/app/3810540/">Play free on Steam</a>
+        <a class="btn ghost" href="#guide">Read the player guide</a>
+      </div>
+    </div>
+    <a class="hero-art" href="https://store.steampowered.com/app/3810540/" aria-label="Clicker Ore on Steam">
+      <img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3810540/7a280bb9a06816fcdbf60c377d092257e7c07175/header.jpg?t=1786563388" alt="Clicker Ore store artwork" width="920" height="430">
+    </a>
+  </header>
+
+  <section class="block" id="news">
+    <div class="block-head">
+      <h2>Latest updates</h2>
+      <a href="https://steamcommunity.com/app/3810540/allnews/">All announcements on Steam →</a>
+    </div>
+    <p class="block-dek">Straight from the Steam announcements - this page rebuilds itself when a new one goes up.</p>
+    <div class="news-grid">
+      <a class="news-card" href="https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1840944183774848">
+        <span class="news-meta"><span>12 Aug 2026</span><span>Community Announcements</span></span>
+        <h3>Update 1.2.8 — 18 Languages and a Much Sturdier Game</h3>
+        <p>We spent the last eleven days on one thing: going through every corner of the game. This update doesn&#x27;t add a new floor or a new pickaxe — instead it lets far more people play in their own language, makes sure the…</p>
+        <span class="more">Read on Steam →</span>
+      </a>
+      <a class="news-card" href="https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1839676055895848">
+        <span class="news-meta"><span>3 Aug 2026</span><span>Community Announcements</span></span>
+        <h3>Clicker Ore — Development Roadmap</h3>
+        <p>Hey miners, I wanted to open up the workshop for a moment and show you what&#x27;s coming next. Below is everything currently on my desk, roughly in the order I plan to ship it. One thing worth saying up front: Clicker Ore…</p>
+        <span class="more">Read on Steam →</span>
+      </a>
+      <a class="news-card" href="https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1839676055889602">
+        <span class="news-meta"><span>1 Aug 2026</span><span>Community Announcements</span></span>
+        <h3>1.1.7 Update Notes</h3>
+        <p>New Features Prestige Boss Reward Bonus Boss rewards now scale with your prestige! Every prestige level grants +15% to all boss rewards — at Prestige 10, that&#x27;s 2.5× loot from every single boss. The boss selection…</p>
+        <span class="more">Read on Steam →</span>
+      </a>
+      <a class="news-card" href="https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1839676055889451">
+        <span class="news-meta"><span>31 Jul 2026</span><span>Community Announcements</span></span>
+        <h3>1.1.6 Update Notes</h3>
+        <p>New Features Playtime Reward A brand-new reward timer has arrived in the shop! Every 60 minutes , you can claim a gold reward based on the highest ore floor you&#x27;ve reached. The reward also scales with your Prestige…</p>
+        <span class="more">Read on Steam →</span>
+      </a>
+    </div>
+  </section>
+
+  <section class="block" id="media">
+    <div class="block-head">
+      <h2>Screenshots</h2>
+      <a href="https://store.steampowered.com/app/3810540/">More on the store page →</a>
+    </div>
+    <p class="block-dek">9 shots from the mine, plus the trailer.</p>
+    <div class="media-grid">
+      <a class="shot trailer" href="https://store.steampowered.com/app/3810540/">
+        <img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/257212616/be9a1b66abbbaccdfead951338a714a0a3c2533e/movie_600x337.jpg?t=1765391838" alt="Clicker Ore trailer" loading="lazy" width="600" height="338">
+      </a>
+      <a class="shot" href="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3810540/cd7647bdcf6abe197af03ebc9ed779b58d8fec99/ss_cd7647bdcf6abe197af03ebc9ed779b58d8fec99.1920x1080.jpg?t=1786563388">
+        <img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3810540/cd7647bdcf6abe197af03ebc9ed779b58d8fec99/ss_cd7647bdcf6abe197af03ebc9ed779b58d8fec99.600x338.jpg?t=1786563388" alt="Clicker Ore screenshot 1" loading="lazy" width="600" height="338">
+      </a>
+      <a class="shot" href="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3810540/9eebd0adbd12437efeee3f3385992a6d0146d40c/ss_9eebd0adbd12437efeee3f3385992a6d0146d40c.1920x1080.jpg?t=1786563388">
+        <img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3810540/9eebd0adbd12437efeee3f3385992a6d0146d40c/ss_9eebd0adbd12437efeee3f3385992a6d0146d40c.600x338.jpg?t=1786563388" alt="Clicker Ore screenshot 2" loading="lazy" width="600" height="338">
+      </a>
+      <a class="shot" href="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3810540/f23f918d7e2d1e3ef6dba74098bb6353560927a9/ss_f23f918d7e2d1e3ef6dba74098bb6353560927a9.1920x1080.jpg?t=1786563388">
+        <img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3810540/f23f918d7e2d1e3ef6dba74098bb6353560927a9/ss_f23f918d7e2d1e3ef6dba74098bb6353560927a9.600x338.jpg?t=1786563388" alt="Clicker Ore screenshot 3" loading="lazy" width="600" height="338">
+      </a>
+      <a class="shot" href="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3810540/aeb6a045b4f8bdcecb8744ee6bd99af4f17773a1/ss_aeb6a045b4f8bdcecb8744ee6bd99af4f17773a1.1920x1080.jpg?t=1786563388">
+        <img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3810540/aeb6a045b4f8bdcecb8744ee6bd99af4f17773a1/ss_aeb6a045b4f8bdcecb8744ee6bd99af4f17773a1.600x338.jpg?t=1786563388" alt="Clicker Ore screenshot 4" loading="lazy" width="600" height="338">
+      </a>
+      <a class="shot" href="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3810540/2438e61e43bd0e64c840b9fb9976ccead3844498/ss_2438e61e43bd0e64c840b9fb9976ccead3844498.1920x1080.jpg?t=1786563388">
+        <img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3810540/2438e61e43bd0e64c840b9fb9976ccead3844498/ss_2438e61e43bd0e64c840b9fb9976ccead3844498.600x338.jpg?t=1786563388" alt="Clicker Ore screenshot 5" loading="lazy" width="600" height="338">
+      </a>
+      <a class="shot" href="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3810540/7d050203dd51d008acd7715ea7f97dc50f17b450/ss_7d050203dd51d008acd7715ea7f97dc50f17b450.1920x1080.jpg?t=1786563388">
+        <img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3810540/7d050203dd51d008acd7715ea7f97dc50f17b450/ss_7d050203dd51d008acd7715ea7f97dc50f17b450.600x338.jpg?t=1786563388" alt="Clicker Ore screenshot 6" loading="lazy" width="600" height="338">
+      </a>
+      <a class="shot" href="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3810540/3f587cec1af23a8689a132e0f0dfa2a32f5b728b/ss_3f587cec1af23a8689a132e0f0dfa2a32f5b728b.1920x1080.jpg?t=1786563388">
+        <img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3810540/3f587cec1af23a8689a132e0f0dfa2a32f5b728b/ss_3f587cec1af23a8689a132e0f0dfa2a32f5b728b.600x338.jpg?t=1786563388" alt="Clicker Ore screenshot 7" loading="lazy" width="600" height="338">
+      </a>
+      <a class="shot" href="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3810540/38ee52f2a332d7174615a706e4096b37e5932533/ss_38ee52f2a332d7174615a706e4096b37e5932533.1920x1080.jpg?t=1786563388">
+        <img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3810540/38ee52f2a332d7174615a706e4096b37e5932533/ss_38ee52f2a332d7174615a706e4096b37e5932533.600x338.jpg?t=1786563388" alt="Clicker Ore screenshot 8" loading="lazy" width="600" height="338">
+      </a>
+      <a class="shot" href="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3810540/abbc7ba032baa4a2d56eb8bea5acc0ab9ba66b92/ss_abbc7ba032baa4a2d56eb8bea5acc0ab9ba66b92.1920x1080.jpg?t=1786563388">
+        <img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3810540/abbc7ba032baa4a2d56eb8bea5acc0ab9ba66b92/ss_abbc7ba032baa4a2d56eb8bea5acc0ab9ba66b92.600x338.jpg?t=1786563388" alt="Clicker Ore screenshot 9" loading="lazy" width="600" height="338">
+      </a>
+    </div>
+  </section>
+
+  <section class="block" id="guide">
+    <div class="block-head">
+      <h2>Player guide</h2>
+      <span class="chip">18 languages</span>
+    </div>
+    <p class="block-dek">Pickaxes, skills, pets, prestige, bosses and the store, explained in plain terms - the same guide in every language the game ships in. Pick yours:</p>
     <div class="lang-grid">
-      <!-- guide-links:start -->
       <a class="lang-card" href="player_guide_id.html" hreflang="id" lang="id">
         <span class="lang-code">ID</span>
         <span class="lang-text">
@@ -422,34 +700,24 @@
           <span>플레이어 가이드</span>
         </span>
       </a>
-      <!-- guide-links:end -->
     </div>
-  </div>
+  </section>
 
-  <div class="group legal">
-    <div class="group-label">Legal</div>
-    <div class="links">
-      <a class="link-card" href="privacy-policy.html">
-        <span class="link-text">
-          <h2>Privacy Policy</h2>
-          <p>What data we collect and how it's used.</p>
-        </span>
-        <span class="arrow">→</span>
-      </a>
-      <a class="link-card" href="terms-of-service.html">
-        <span class="link-text">
-          <h2>Terms of Service</h2>
-          <p>The rules for using the game and this site.</p>
-        </span>
-        <span class="arrow">→</span>
-      </a>
+  <section class="block" id="legal">
+    <div class="block-head"><h2>Legal</h2></div>
+    <p class="block-dek">What data the game collects, and the rules for using it.</p>
+    <div class="legal-row">
+      <a href="privacy-policy.html">Privacy Policy</a>
+      <a href="terms-of-service.html">Terms of Service</a>
     </div>
-  </div>
+  </section>
 
-  <footer>
+  <footer class="site">
     <span>© 2026 Tiny Depth Studio</span>
+    <span>Updated 12 Aug 2026</span>
     <a href="mailto:tinydeptystudio@gmail.com">tinydeptystudio@gmail.com</a>
   </footer>
 </div>
+
 </body>
 </html>

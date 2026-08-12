@@ -1,0 +1,118 @@
+{
+  "app": {
+    "capsule_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3810540/44ad5e9a4ee99e60e24941c847b0812aa8224a3c/capsule_231x87.jpg?t=1786563388",
+    "developers": [
+      "Tiny Depth Studio"
+    ],
+    "genres": [
+      "Adventure",
+      "Casual",
+      "Indie",
+      "Strategy",
+      "Free To Play"
+    ],
+    "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3810540/7a280bb9a06816fcdbf60c377d092257e7c07175/header.jpg?t=1786563388",
+    "id": 3810540,
+    "is_free": true,
+    "name": "Clicker Ore",
+    "platforms": [
+      "windows",
+      "mac"
+    ],
+    "release_date": "26 Jul, 2026",
+    "short_description": "Grab your pickaxe, descend into the depths, and become the master of wealth! 45 pickaxes, 8 skills, 10 bosses and endless upgrades. Your mines keep working even when you are away.",
+    "store_url": "https://store.steampowered.com/app/3810540/"
+  },
+  "news": [
+    {
+      "date": 1786562414,
+      "excerpt": "We spent the last eleven days on one thing: going through every corner of the game. This update doesn't add a new floor or a new pickaxe — instead it lets far more people play in their own language, makes sure the…",
+      "feedlabel": "Community Announcements",
+      "gid": "1840944183774848",
+      "title": "Update 1.2.8 — 18 Languages and a Much Sturdier Game",
+      "url": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1840944183774848"
+    },
+    {
+      "date": 1785790845,
+      "excerpt": "Hey miners, I wanted to open up the workshop for a moment and show you what's coming next. Below is everything currently on my desk, roughly in the order I plan to ship it. One thing worth saying up front: Clicker Ore…",
+      "feedlabel": "Community Announcements",
+      "gid": "1839676055895848",
+      "title": "Clicker Ore — Development Roadmap",
+      "url": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1839676055895848"
+    },
+    {
+      "date": 1785542806,
+      "excerpt": "New Features Prestige Boss Reward Bonus Boss rewards now scale with your prestige! Every prestige level grants +15% to all boss rewards — at Prestige 10, that's 2.5× loot from every single boss. The boss selection…",
+      "feedlabel": "Community Announcements",
+      "gid": "1839676055889602",
+      "title": "1.1.7 Update Notes",
+      "url": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1839676055889602"
+    },
+    {
+      "date": 1785535524,
+      "excerpt": "New Features Playtime Reward A brand-new reward timer has arrived in the shop! Every 60 minutes , you can claim a gold reward based on the highest ore floor you've reached. The reward also scales with your Prestige…",
+      "feedlabel": "Community Announcements",
+      "gid": "1839676055889451",
+      "title": "1.1.6 Update Notes",
+      "url": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1839676055889451"
+    },
+    {
+      "date": 1785361204,
+      "excerpt": "New Feature Infinity Attack Speed A new permanent item has arrived in the shop! It boosts your auto-attack speed by x1.5 — meaning more frequent hits and more gold per minute. (Price: 550 diamonds) Pet System Reworked…",
+      "feedlabel": "Community Announcements",
+      "gid": "1839676055883606",
+      "title": "1.1.5 Update Notes (July 28–30)",
+      "url": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1839676055883606"
+    },
+    {
+      "date": 1785277782,
+      "excerpt": "Balance Changes (Nerfs) Infinity Items Rebalanced These items were making the game too easy, so their values were lowered: Infinity Clicker: 10 → 7 auto-clicks per second Infinity Power (Damage): +500% → +300% damage…",
+      "feedlabel": "Community Announcements",
+      "gid": "1839676055881064",
+      "title": "1.1.4 Update Notes — July 27",
+      "url": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1839676055881064"
+    }
+  ],
+  "screenshots": [
+    {
+      "full": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3810540/cd7647bdcf6abe197af03ebc9ed779b58d8fec99/ss_cd7647bdcf6abe197af03ebc9ed779b58d8fec99.1920x1080.jpg?t=1786563388",
+      "thumb": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3810540/cd7647bdcf6abe197af03ebc9ed779b58d8fec99/ss_cd7647bdcf6abe197af03ebc9ed779b58d8fec99.600x338.jpg?t=1786563388"
+    },
+    {
+      "full": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3810540/9eebd0adbd12437efeee3f3385992a6d0146d40c/ss_9eebd0adbd12437efeee3f3385992a6d0146d40c.1920x1080.jpg?t=1786563388",
+      "thumb": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3810540/9eebd0adbd12437efeee3f3385992a6d0146d40c/ss_9eebd0adbd12437efeee3f3385992a6d0146d40c.600x338.jpg?t=1786563388"
+    },
+    {
+      "full": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3810540/f23f918d7e2d1e3ef6dba74098bb6353560927a9/ss_f23f918d7e2d1e3ef6dba74098bb6353560927a9.1920x1080.jpg?t=1786563388",
+      "thumb": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3810540/f23f918d7e2d1e3ef6dba74098bb6353560927a9/ss_f23f918d7e2d1e3ef6dba74098bb6353560927a9.600x338.jpg?t=1786563388"
+    },
+    {
+      "full": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3810540/aeb6a045b4f8bdcecb8744ee6bd99af4f17773a1/ss_aeb6a045b4f8bdcecb8744ee6bd99af4f17773a1.1920x1080.jpg?t=1786563388",
+      "thumb": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3810540/aeb6a045b4f8bdcecb8744ee6bd99af4f17773a1/ss_aeb6a045b4f8bdcecb8744ee6bd99af4f17773a1.600x338.jpg?t=1786563388"
+    },
+    {
+      "full": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3810540/2438e61e43bd0e64c840b9fb9976ccead3844498/ss_2438e61e43bd0e64c840b9fb9976ccead3844498.1920x1080.jpg?t=1786563388",
+      "thumb": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3810540/2438e61e43bd0e64c840b9fb9976ccead3844498/ss_2438e61e43bd0e64c840b9fb9976ccead3844498.600x338.jpg?t=1786563388"
+    },
+    {
+      "full": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3810540/7d050203dd51d008acd7715ea7f97dc50f17b450/ss_7d050203dd51d008acd7715ea7f97dc50f17b450.1920x1080.jpg?t=1786563388",
+      "thumb": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3810540/7d050203dd51d008acd7715ea7f97dc50f17b450/ss_7d050203dd51d008acd7715ea7f97dc50f17b450.600x338.jpg?t=1786563388"
+    },
+    {
+      "full": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3810540/3f587cec1af23a8689a132e0f0dfa2a32f5b728b/ss_3f587cec1af23a8689a132e0f0dfa2a32f5b728b.1920x1080.jpg?t=1786563388",
+      "thumb": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3810540/3f587cec1af23a8689a132e0f0dfa2a32f5b728b/ss_3f587cec1af23a8689a132e0f0dfa2a32f5b728b.600x338.jpg?t=1786563388"
+    },
+    {
+      "full": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3810540/38ee52f2a332d7174615a706e4096b37e5932533/ss_38ee52f2a332d7174615a706e4096b37e5932533.1920x1080.jpg?t=1786563388",
+      "thumb": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3810540/38ee52f2a332d7174615a706e4096b37e5932533/ss_38ee52f2a332d7174615a706e4096b37e5932533.600x338.jpg?t=1786563388"
+    },
+    {
+      "full": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3810540/abbc7ba032baa4a2d56eb8bea5acc0ab9ba66b92/ss_abbc7ba032baa4a2d56eb8bea5acc0ab9ba66b92.1920x1080.jpg?t=1786563388",
+      "thumb": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3810540/abbc7ba032baa4a2d56eb8bea5acc0ab9ba66b92/ss_abbc7ba032baa4a2d56eb8bea5acc0ab9ba66b92.600x338.jpg?t=1786563388"
+    }
+  ],
+  "trailer": {
+    "name": "Gameplay",
+    "thumb": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/257212616/be9a1b66abbbaccdfead951338a714a0a3c2533e/movie_600x337.jpg?t=1765391838"
+  }
+}

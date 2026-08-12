@@ -40,4 +40,5 @@ python guide/build.py tr de       # or just some languages
 1. Add the code to `LANGUAGES` in `build.py`.
 2. Add its translation table name to `TABLES` in `extract_names.py` and re-run it.
 3. Copy `lang/en.py` to `lang/<code>.py`, translate, and set `name`, `html_lang`, `locale`.
-4. Run `python guide/build.py`, then add the new page to the language list in `index.html`.
+4. Run `python guide/build.py`, then `python site/build_site.py` - the home page reads the
+   language tiles from these same modules, so it picks the new language up on its own.
