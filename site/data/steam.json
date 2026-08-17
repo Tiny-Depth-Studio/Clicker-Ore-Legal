@@ -25,6 +25,14 @@
   },
   "news": [
     {
+      "date": 1786902818,
+      "excerpt": "New Worker System Five worker slots have been added — workers mine for you while you play. Each worker generates income on a one-minute tick, the income collects into a pool, and you claim it whenever you like. Worker…",
+      "feedlabel": "Community Announcements",
+      "gid": "1840944183784326",
+      "title": "1.3.9 Patch Notes — August 16, 2026",
+      "url": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1840944183784326"
+    },
+    {
       "date": 1786562414,
       "excerpt": "We spent the last eleven days on one thing: going through every corner of the game. This update doesn't add a new floor or a new pickaxe — instead it lets far more people play in their own language, makes sure the…",
       "feedlabel": "Community Announcements",
@@ -63,14 +71,6 @@
       "gid": "1839676055883606",
       "title": "1.1.5 Update Notes (July 28–30)",
       "url": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1839676055883606"
-    },
-    {
-      "date": 1785277782,
-      "excerpt": "Balance Changes (Nerfs) Infinity Items Rebalanced These items were making the game too easy, so their values were lowered: Infinity Clicker: 10 → 7 auto-clicks per second Infinity Power (Damage): +500% → +300% damage…",
-      "feedlabel": "Community Announcements",
-      "gid": "1839676055881064",
-      "title": "1.1.4 Update Notes — July 27",
-      "url": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1839676055881064"
     }
   ],
   "screenshots": [
