@@ -25,6 +25,14 @@
   },
   "news": [
     {
+      "date": 1787169918,
+      "excerpt": "NEW - Added the Lucky Spin: an 8-slice wheel that refreshes every 3 hours. - 2 free spins per cycle; further spins cost diamonds, and each spin raises the next price. - Won slices stay closed for the cycle; the wheel…",
+      "feedlabel": "Community Announcements",
+      "gid": "1841579228663642",
+      "title": "1.4.11 Update Notes — August 19, 2026",
+      "url": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1841579228663642"
+    },
+    {
       "date": 1786902818,
       "excerpt": "New Worker System Five worker slots have been added — workers mine for you while you play. Each worker generates income on a one-minute tick, the income collects into a pool, and you claim it whenever you like. Worker…",
       "feedlabel": "Community Announcements",
@@ -63,14 +71,6 @@
       "gid": "1839676055889451",
       "title": "1.1.6 Update Notes",
       "url": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1839676055889451"
-    },
-    {
-      "date": 1785361204,
-      "excerpt": "New Feature Infinity Attack Speed A new permanent item has arrived in the shop! It boosts your auto-attack speed by x1.5 — meaning more frequent hits and more gold per minute. (Price: 550 diamonds) Pet System Reworked…",
-      "feedlabel": "Community Announcements",
-      "gid": "1839676055883606",
-      "title": "1.1.5 Update Notes (July 28–30)",
-      "url": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1839676055883606"
     }
   ],
   "screenshots": [
