@@ -25,6 +25,14 @@
   },
   "news": [
     {
+      "date": 1787502285,
+      "excerpt": "NEW - Added time skip: spend diamonds to advance 2, 4 or 8 hours, with rewards based on your current speed and floor. - A summary panel now shows everything you earned when the skip ends. - Added rare ores: five special…",
+      "feedlabel": "Community Announcements",
+      "gid": "1841579228673682",
+      "title": "1.5.12 Update Notes — August 23, 2026",
+      "url": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1841579228673682"
+    },
+    {
       "date": 1787169918,
       "excerpt": "NEW - Added the Lucky Spin: an 8-slice wheel that refreshes every 3 hours. - 2 free spins per cycle; further spins cost diamonds, and each spin raises the next price. - Won slices stay closed for the cycle; the wheel…",
       "feedlabel": "Community Announcements",
@@ -63,14 +71,6 @@
       "gid": "1839676055889602",
       "title": "1.1.7 Update Notes",
       "url": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1839676055889602"
-    },
-    {
-      "date": 1785535524,
-      "excerpt": "New Features Playtime Reward A brand-new reward timer has arrived in the shop! Every 60 minutes , you can claim a gold reward based on the highest ore floor you've reached. The reward also scales with your Prestige…",
-      "feedlabel": "Community Announcements",
-      "gid": "1839676055889451",
-      "title": "1.1.6 Update Notes",
-      "url": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1839676055889451"
     }
   ],
   "screenshots": [
