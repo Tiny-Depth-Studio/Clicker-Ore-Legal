@@ -251,7 +251,6 @@ LANG = {
                 ("ul", [
                     "<strong>Bị xóa:</strong> vàng, {currency_taskium}, tiến độ tầng, các nâng cấp cúp và giáp, cấp thú, toàn bộ kỹ năng đã mua, và tiến độ trùm.",
                     "<strong>Giữ lại:</strong> cấp thăng hoa, Tinh Chất, cấp của {prestige_parameter_count} chỉ số, những thú đã sở hữu, vật phẩm Vô Hạn, thành tích.",
-                    "Các bảng và ô nhiệm vụ đã mở <strong>vẫn mở</strong> - thăng hoa không lấy lại chúng.",
                     "Bạn không phải bắt đầu lại từ tầng 1: lượt sau mở ở tầng <strong>{prestige_floor_step} x cấp thăng hoa</strong>, kèm số vàng khởi đầu trị giá khoảng {prestige_gold_multiplier} quặng.",
                     "Mọi thời gian hồi đều được xóa, nên bạn vào lượt mới với tất cả kỹ năng sẵn sàng.",
                 ]),

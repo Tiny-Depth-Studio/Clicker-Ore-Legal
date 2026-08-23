@@ -251,7 +251,6 @@ LANG = {
                 ("ul", [
                     "<strong>Sıfırlanır:</strong> altın, {currency_taskium}, kat ilerlemesi, kazma ve zırh yükseltmeleri, pet seviyeleri, satın alınmış tüm skill'ler ve boss seviyesi.",
                     "<strong>Kalır:</strong> prestij seviyesi, Öz, {prestige_parameter_count} parametrenin seviyeleri, pet sahipliği, Sonsuz eşyalar, başarımlar.",
-                    "Bir kez açtığınız paneller ve görev slotları <strong>açık kalır</strong> - prestige onları geri almaz.",
                     "Kat 1'den başlamazsın: yeni tur <strong>{prestige_floor_step} x prestij seviyesi</strong> katından açılır ve yanına yaklaşık {prestige_gold_multiplier} cevher değerinde başlangıç altını gelir.",
                     "Tüm yetenek beklemeleri temizlenir, yani tura hepsi hazırken başlarsın.",
                 ]),

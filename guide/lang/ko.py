@@ -251,7 +251,6 @@ LANG = {
                 ("ul", [
                     "<strong>초기화되는 것:</strong> 골드, {currency_taskium}, 층 진행, 곡괭이와 방어구 강화, 펫 레벨, 구입한 모든 스킬, 보스 진행도.",
                     "<strong>남는 것:</strong> 프레스티지 레벨, 에센스, 지표 {prestige_parameter_count}가지의 레벨, 보유한 펫, 무한 아이템, 업적.",
-                    "이미 열린 창과 임무 슬롯은 <strong>계속 열린 상태로 유지</strong>되며, 프레스티지가 이를 되돌리지 않습니다.",
                     "1층부터 다시 시작하지는 않습니다. 다음 회차는 <strong>{prestige_floor_step} × 프레스티지 레벨</strong> 층에서 시작하고, 광석 약 {prestige_gold_multiplier}개 값어치의 시작 골드도 함께 받습니다.",
                     "모든 재사용 대기가 초기화되므로 회차를 시작할 때 스킬을 전부 쓸 수 있습니다.",
                 ]),

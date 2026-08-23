@@ -251,7 +251,6 @@ LANG = {
                 ("ul", [
                     "<strong>Direset:</strong> emas, {currency_taskium}, kemajuan lantai, peningkatan beliung dan baju, level hewan, semua skill yang dibeli, dan kemajuan bos.",
                     "<strong>Tetap:</strong> level prestise, Esensi, level {prestige_parameter_count} parameter, hewan yang sudah dimiliki, item Infinity, dan pencapaian.",
-                    "Panel dan slot misi yang sudah terbuka <strong>tetap terbuka</strong> - prestise tidak mengambilnya kembali.",
                     "Kamu tidak mulai dari lantai 1: putaran berikutnya dimulai di <strong>{prestige_floor_step} x level prestisemu</strong>, ditambah emas awal senilai sekitar {prestige_gold_multiplier} bijih.",
                     "Semua jeda skill dibersihkan, jadi kamu memulai putaran dengan semua skill siap.",
                 ]),

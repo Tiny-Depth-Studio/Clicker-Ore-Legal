@@ -251,7 +251,6 @@ LANG = {
                 ("ul", [
                     "<strong>Réinitialisé :</strong> l'or, le {currency_taskium}, la progression d'étages, les niveaux de pioche et d'armure, les niveaux de compagnon, toutes les compétences achetées et ton niveau de boss.",
                     "<strong>Conservé :</strong> le niveau de prestige, l'Essence, les niveaux des {prestige_parameter_count} paramètres, la possession des compagnons, les objets Infini, les succès.",
-                    "Les panneaux et emplacements de quête déjà débloqués <strong>restent débloqués</strong> - un prestige ne les reprend jamais.",
                     "Tu ne repars pas de l'étage 1 : la partie suivante commence à <strong>{prestige_floor_step} x ton niveau de prestige</strong>, avec un pactole de départ valant environ {prestige_gold_multiplier} minerais.",
                     "Toutes les recharges sont vidées : tu commences la partie avec chaque compétence prête.",
                 ]),

@@ -251,7 +251,6 @@ LANG = {
                 ("ul", [
                     "<strong>Reset:</strong> gold, {currency_taskium}, floor progress, pickaxe and armour upgrades, pet levels, all bought skills, and your boss level.",
                     "<strong>Kept:</strong> prestige level, Essence, the {prestige_parameter_count} parameter levels, pet ownership, Infinity items, achievements.",
-                    "Panels and task slots you have already unlocked <strong>stay unlocked</strong> - a prestige never takes them back.",
                     "You do not restart at floor 1: your next run starts at <strong>{prestige_floor_step} x your prestige level</strong>, with a pile of starting gold worth about {prestige_gold_multiplier} ore.",
                     "Every skill cooldown is cleared, so you begin the run with all of them ready.",
                 ]),

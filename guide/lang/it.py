@@ -251,7 +251,6 @@ LANG = {
                 ("ul", [
                     "<strong>Si azzera:</strong> oro, {currency_taskium}, avanzamento dei piani, livelli di piccone e armatura, livelli dei compagni, tutte le abilità comprate e il tuo livello dei boss.",
                     "<strong>Resta:</strong> livello di prestigio, Essenza, i livelli dei {prestige_parameter_count} parametri, i compagni già tuoi, gli oggetti Infinito, gli obiettivi.",
-                    "I pannelli e gli slot delle missioni già sbloccati <strong>restano sbloccati</strong>: un prestigio non li richiude mai.",
                     "Non riparti dal piano 1: la partita seguente comincia a <strong>{prestige_floor_step} x il tuo livello di prestigio</strong>, con un oro iniziale che vale circa {prestige_gold_multiplier} minerali.",
                     "Tutti i recuperi vengono azzerati, quindi cominci la partita con ogni abilità pronta.",
                 ]),

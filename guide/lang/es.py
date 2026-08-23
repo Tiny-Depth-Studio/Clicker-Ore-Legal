@@ -251,7 +251,6 @@ LANG = {
                 ("ul", [
                     "<strong>Se reinicia:</strong> el oro, el {currency_taskium}, el avance de pisos, los niveles de pico y armadura, los niveles de mascota, todas las habilidades compradas y tu nivel de jefe.",
                     "<strong>Se queda:</strong> el nivel de prestigio, la Esencia, los niveles de los {prestige_parameter_count} parámetros, las mascotas que ya tienes, los objetos Infinito y los logros.",
-                    "Los paneles y las ranuras de misión que ya desbloqueaste <strong>siguen desbloqueados</strong>: un prestigio nunca los cierra.",
                     "No vuelves al piso 1: la siguiente partida arranca en <strong>{prestige_floor_step} x tu nivel de prestigio</strong>, con un oro inicial que vale unos {prestige_gold_multiplier} minerales.",
                     "Todas las esperas se vacían, así que empiezas la partida con todas las habilidades listas.",
                 ]),

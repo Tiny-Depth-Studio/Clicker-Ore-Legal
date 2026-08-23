@@ -251,7 +251,6 @@ LANG = {
                 ("ul", [
                     "<strong>Zera:</strong> ouro, {currency_taskium}, progresso de andares, níveis de picareta e armadura, níveis de mascote, todas as habilidades compradas e o seu nível de chefe.",
                     "<strong>Fica:</strong> nível de prestígio, Essência, os níveis dos {prestige_parameter_count} parâmetros, os mascotes que você já tem, os itens Infinito e as conquistas.",
-                    "Painéis e espaços de missão já desbloqueados <strong>continuam desbloqueados</strong> - um prestígio nunca os retoma.",
                     "Você não volta ao andar 1: a rodada seguinte começa em <strong>{prestige_floor_step} x o seu nível de prestígio</strong>, com um ouro inicial que vale cerca de {prestige_gold_multiplier} minérios.",
                     "Todas as recargas são limpas, então você começa a rodada com todas as habilidades prontas.",
                 ]),

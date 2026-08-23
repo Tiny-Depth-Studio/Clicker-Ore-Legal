@@ -251,7 +251,6 @@ LANG = {
                 ("ul", [
                     "<strong>Zurückgesetzt:</strong> Gold, {currency_taskium}, Etagenfortschritt, Spitzhacken- und Rüstungsstufen, Begleiterstufen, alle gekauften Fähigkeiten und dein Bosslevel.",
                     "<strong>Bleibt:</strong> Prestigestufe, Essenz, die Stufen der {prestige_parameter_count} Parameter, Begleiterbesitz, Unendlich-Gegenstände, Erfolge.",
-                    "Bereits freigeschaltete Fenster und Auftragsplätze <strong>bleiben freigeschaltet</strong> - ein Prestige nimmt sie nie zurück.",
                     "Du fängst nicht auf Etage 1 an: der nächste Durchlauf startet auf <strong>{prestige_floor_step} x deiner Prestigestufe</strong>, dazu Startgold im Wert von etwa {prestige_gold_multiplier} Erz.",
                     "Alle Abklingzeiten werden geleert, du beginnst also mit allen Fähigkeiten bereit.",
                 ]),

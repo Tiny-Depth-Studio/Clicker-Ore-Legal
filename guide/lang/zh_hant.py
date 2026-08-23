@@ -251,7 +251,6 @@ LANG = {
                 ("ul", [
                     "<strong>會重置：</strong>金幣、{currency_taskium}、層數進度、鎬子與護甲的升級、寵物等級、買過的全部技能，以及首領進度。",
                     "<strong>會保留：</strong>轉生等級、精華、{prestige_parameter_count} 項屬性的等級、已擁有的寵物、無限物品、成就。",
-                    "已解鎖的面板與任務欄位<strong>保持解鎖</strong>，轉生不會收回。",
                     "你不會從第 1 層重來：下一輪直接從 <strong>{prestige_floor_step} × 轉生等級</strong> 層開始，還會附上價值約 {prestige_gold_multiplier} 塊礦石的起始金幣。",
                     "所有技能冷卻都會清空，所以開局就能把技能全放出來。",
                 ]),

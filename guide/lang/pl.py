@@ -251,7 +251,6 @@ LANG = {
                 ("ul", [
                     "<strong>Zeruje się:</strong> złoto, {currency_taskium}, postęp pięter, poziomy kilofów i zbroi, poziomy towarzyszy, wszystkie kupione umiejętności i twój poziom bossa.",
                     "<strong>Zostaje:</strong> poziom prestiżu, Esencja, poziomy {prestige_parameter_count} parametrów, posiadani towarzysze, przedmioty Nieskończoności, osiągnięcia.",
-                    "Odblokowane panele i miejsca na zadania <strong>pozostają odblokowane</strong> - prestiż nigdy ich nie zabiera.",
                     "Nie wracasz na piętro 1: kolejny przebieg startuje na <strong>{prestige_floor_step} x twój poziom prestiżu</strong>, a do tego dostajesz startowe złoto warte około {prestige_gold_multiplier} rud.",
                     "Wszystkie odnowienia są czyszczone, więc zaczynasz przebieg z każdą umiejętnością gotową.",
                 ]),
