@@ -109,6 +109,8 @@ def build_tokens(lang, names):
             for amount, currency in zip(contents, PACKAGE_CURRENCIES)
         ]
         values["package_{0}_contents".format(slug)] = ", ".join(parts)
+    values["time_skip_hour_list"] = locale.joined(numbers_module.TIME_SKIP_HOURS)
+    values["rare_ore_names"] = ", ".join(names[key] for key in numbers_module.RARE_ORE_NAME_KEYS)
     values.update(names)
     values.update(lang.get("extra_tokens", {}))
     return values, locale, labels

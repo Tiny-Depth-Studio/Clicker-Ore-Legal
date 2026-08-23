@@ -171,6 +171,7 @@ LANG = {
                     "Каждый <strong>{duration_floor_interval}-й этаж</strong> идёт на время: запускается отсчёт на <strong>{duration_floor_seconds} секунд</strong>, здоровье выше примерно на {duration_floor_health_percent}%, золото - примерно на {duration_floor_gold_percent}%.",
                     "Сложность идёт ещё и циклами примерно по {difficulty_cycle_floors} этажей: первые этажи цикла выгоднее всего по отношению золота к здоровью.",
                     "Каждая руда дополнительно даёт <strong>{ore_stone_min}-{ore_stone_max}</strong> Рудных камней.",
+                    "<strong>{rare_ore_count} редких руд</strong> ({rare_ore_names}) могут появиться вместо обычной руды. Шанс идёт примерно от 1 к {rare_ore_best_odds} до 1 к {rare_ore_worst_odds}, а добытая редкая руда записывается навсегда и больше никогда не появляется.",
                 ]),
                 ("warn", ["Этажи на время кусаются", "Если отсчёт закончится, тебя отправят <strong>на этаж ниже</strong>. Когда урона не хватает, лучше пропустить этаж на время, чем провалить его."]),
                 ("p", "Можно спуститься на любой этаж, до которого ты дошёл в этом заходе, и фармить там. Ручной выбор этажа выключает автоподъём; включи его снова, когда захочешь лезть выше."),
@@ -235,6 +236,7 @@ LANG = {
             "blocks": [
                 ("ul", [
                     "<strong>Золотой шар</strong> - с этажа {balloon_floor} пролетает раз в {balloon_min_seconds}-{balloon_max_seconds} секунд. Клик по нему даёт <strong>x{balloon_multiplier}</strong> золота руды твоего лучшего этажа в этом заходе.",
+                    "<strong>{ore_gold_crystal}</strong> - с этажа {crystal_floor} появляется каждые {crystal_min_seconds}-{crystal_max_seconds} секунд и ждёт {crystal_visible_seconds} секунд. Нажатие меняет руду на бонусную на {crystal_bonus_seconds} секунд с x{crystal_bonus_health_multiplier} здоровья и x{crystal_bonus_gold_multiplier} золота, выплата идёт удар за ударом.",
                     "<strong>Доход офлайн</strong> - считается после {offline_min_minutes} минут отсутствия и упирается в {offline_max_hours} часов. Премиум удваивает.",
                     "<strong>Награда за время игры</strong> - каждые {playtime_reward_minutes} минут игры даёт примерно {playtime_reward_multiplier} минутных доходов на твоём лучшем этаже.",
                 ]),
@@ -249,6 +251,7 @@ LANG = {
                 ("ul", [
                     "<strong>Сбрасывается:</strong> золото, {currency_taskium}, прогресс этажей, уровни кирок и брони, уровни питомцев, все купленные умения и твой уровень боссов.",
                     "<strong>Остаётся:</strong> уровень престижа, Эссенция, уровни {prestige_parameter_count} параметров, купленные питомцы, предметы Бесконечности, достижения.",
+                    "Уже открытые панели и слоты заданий <strong>остаются открытыми</strong> - престиж их не забирает.",
                     "Ты не начинаешь с 1-го этажа: следующий заход стартует на <strong>{prestige_floor_step} x твой уровень престижа</strong>, и к этому даётся стартовое золото примерно за {prestige_gold_multiplier} руд.",
                     "Все откаты обнуляются, так что заход начинается со всеми умениями наготове.",
                 ]),
@@ -302,6 +305,7 @@ LANG = {
                     "<strong>{package_big}:</strong> {package_big_contents}.",
                     "<strong>{package_premium_7}:</strong> {premium7_days} дней с x{premium7_click_multiplier} уроном от клика, x{premium7_dps_multiplier} автоуроном, x{premium7_gold_multiplier} золотом, x{premium7_heat_multiplier} сопротивлением жару и x{premium7_offline_multiplier} доходом офлайн.",
                     "<strong>{package_premium_30}:</strong> {premium30_days} дней с x{premium30_click_multiplier} уроном от клика, x{premium30_dps_multiplier} автоуроном, x{premium30_gold_multiplier} золотом, x{premium30_heat_multiplier} сопротивлением жару и x{premium30_offline_multiplier} доходом офлайн.",
+                    "<strong>Скачок времени:</strong> наборы на {time_skip_hour_list} часов. Алмазы покупают время, а доход считается по вашему урону, вашему этажу и вашим рабочим - фиксированной таблицы нет.",
                 ]),
                 ("p", "Предметы Бесконечности покупаются <strong>один раз за алмазы</strong> и не сбрасываются никогда, даже при престиже. В поздней игре это обычно лучшее применение алмазов."),
                 ("table", "infinity"),

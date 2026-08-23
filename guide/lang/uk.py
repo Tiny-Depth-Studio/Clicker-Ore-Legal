@@ -171,6 +171,7 @@ LANG = {
                     "Кожен <strong>{duration_floor_interval}-й поверх</strong> іде на час: запускається відлік на <strong>{duration_floor_seconds} секунд</strong>, здоров'я вище приблизно на {duration_floor_health_percent}%, золото - приблизно на {duration_floor_gold_percent}%.",
                     "Складність іде ще й циклами приблизно по {difficulty_cycle_floors} поверхів: перші поверхи циклу найвигідніші за співвідношенням золота до здоров'я.",
                     "Кожна руда додатково дає <strong>{ore_stone_min}-{ore_stone_max}</strong> Рудних каменів.",
+                    "<strong>{rare_ore_count} рідкісних руд</strong> ({rare_ore_names}) можуть з'явитися замість звичайної руди. Шанс іде приблизно від 1 до {rare_ore_best_odds} до 1 до {rare_ore_worst_odds}, а видобута рідкісна руда записується назавжди і більше ніколи не з'являється.",
                 ]),
                 ("warn", ["Поверхи на час кусаються", "Якщо відлік скінчиться, тебе відправлять <strong>на поверх нижче</strong>. Коли шкоди не вистачає, краще пропустити поверх на час, ніж провалити його."]),
                 ("p", "Можна спуститися на будь-який поверх, до якого ти дійшов у цьому заході, і фармити там. Ручний вибір поверху вимикає автопідйом; увімкни його знову, коли захочеш лізти вище."),
@@ -235,6 +236,7 @@ LANG = {
             "blocks": [
                 ("ul", [
                     "<strong>Золота куля</strong> - з поверху {balloon_floor} пролітає раз на {balloon_min_seconds}-{balloon_max_seconds} секунд. Клік по ній дає <strong>x{balloon_multiplier}</strong> золота руди твого найкращого поверху в цьому заході.",
+                    "<strong>{ore_gold_crystal}</strong> - з поверху {crystal_floor} з'являється кожні {crystal_min_seconds}-{crystal_max_seconds} секунд і чекає {crystal_visible_seconds} секунд. Натискання змінює руду на бонусну на {crystal_bonus_seconds} секунд з x{crystal_bonus_health_multiplier} здоров'я та x{crystal_bonus_gold_multiplier} золота, виплата йде удар за ударом.",
                     "<strong>Прибуток офлайн</strong> - лічиться після {offline_min_minutes} хвилин відсутності й упирається в {offline_max_hours} годин. Преміум подвоює.",
                     "<strong>Нагорода за час гри</strong> - кожні {playtime_reward_minutes} хвилин гри дають приблизно {playtime_reward_multiplier} хвилинних прибутків на твоєму найкращому поверсі.",
                 ]),
@@ -249,6 +251,7 @@ LANG = {
                 ("ul", [
                     "<strong>Скидається:</strong> золото, {currency_taskium}, прогрес поверхів, рівні кайл і броні, рівні улюбленців, усі куплені вміння та твій рівень босів.",
                     "<strong>Залишається:</strong> рівень престижу, Есенція, рівні {prestige_parameter_count} параметрів, куплені улюбленці, предмети Безмежності, досягнення.",
+                    "Уже відкриті панелі та слоти завдань <strong>залишаються відкритими</strong> - престиж їх не забирає.",
                     "Ти не починаєш з 1-го поверху: наступний захід стартує на <strong>{prestige_floor_step} x твій рівень престижу</strong>, і до цього дається стартове золото приблизно за {prestige_gold_multiplier} руд.",
                     "Усі відновлення обнуляються, тож захід починається з усіма вміннями напоготові.",
                 ]),
@@ -302,6 +305,7 @@ LANG = {
                     "<strong>{package_big}:</strong> {package_big_contents}.",
                     "<strong>{package_premium_7}:</strong> {premium7_days} днів із x{premium7_click_multiplier} шкодою від кліку, x{premium7_dps_multiplier} автошкодою, x{premium7_gold_multiplier} золотом, x{premium7_heat_multiplier} опором спеці та x{premium7_offline_multiplier} прибутком офлайн.",
                     "<strong>{package_premium_30}:</strong> {premium30_days} днів із x{premium30_click_multiplier} шкодою від кліку, x{premium30_dps_multiplier} автошкодою, x{premium30_gold_multiplier} золотом, x{premium30_heat_multiplier} опором спеці та x{premium30_offline_multiplier} прибутком офлайн.",
+                    "<strong>Стрибок часу:</strong> набори на {time_skip_hour_list} годин. Алмази купують час, а дохід рахується за вашою шкодою, вашим поверхом і вашими робітниками - фіксованої таблиці немає.",
                 ]),
                 ("p", "Предмети Безмежності купуються <strong>один раз за алмази</strong> і не скидаються ніколи, навіть при престижі. У пізній грі це зазвичай найкраще застосування алмазів."),
                 ("table", "infinity"),

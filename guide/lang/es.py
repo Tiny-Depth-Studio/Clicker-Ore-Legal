@@ -171,6 +171,7 @@ LANG = {
                     "Cada <strong>piso {duration_floor_interval}</strong> es un piso con reloj: arranca una cuenta de <strong>{duration_floor_seconds} segundos</strong>, la vida sube cerca del {duration_floor_health_percent}% y el oro cerca del {duration_floor_gold_percent}%.",
                     "La dificultad también avanza en ciclos de unos {difficulty_cycle_floors} pisos: los primeros pisos de un ciclo pagan mejor en relación con su vida.",
                     "Cada mineral suelta además <strong>{ore_stone_min}-{ore_stone_max}</strong> Piedras de mineral.",
+                    "<strong>{rare_ore_count} minerales raros</strong> ({rare_ore_names}) pueden ocupar el lugar de un mineral normal. Las probabilidades van de aproximadamente 1 entre {rare_ore_best_odds} hasta 1 entre {rare_ore_worst_odds}, y un mineral raro roto queda registrado para siempre y no vuelve a aparecer.",
                 ]),
                 ("warn", ["Los pisos con reloj muerden", "Si se agota el tiempo, bajas <strong>un piso</strong>. Si tu daño no llega, mejor saltarse el piso con reloj que perderlo."]),
                 ("p", "Puedes volver a cualquier piso que ya hayas alcanzado en esta partida y farmear ahí. Elegir piso a mano apaga el avance automático; vuélvelo a encender cuando quieras seguir subiendo."),
@@ -235,6 +236,7 @@ LANG = {
             "blocks": [
                 ("ul", [
                     "<strong>Globo de oro</strong>: desde el piso {balloon_floor} aparece uno cada {balloon_min_seconds}-{balloon_max_seconds} segundos. Al clicarlo paga <strong>x{balloon_multiplier}</strong> el oro del mineral de tu mejor piso en esta partida.",
+                    "<strong>{ore_gold_crystal}</strong> - desde el piso {crystal_floor} aparece uno cada {crystal_min_seconds}-{crystal_max_seconds} segundos y espera {crystal_visible_seconds} segundos. Al tocarlo, el mineral se cambia por un mineral bonus de {crystal_bonus_seconds} segundos con x{crystal_bonus_health_multiplier} vida y x{crystal_bonus_gold_multiplier} oro, pagado golpe a golpe.",
                     "<strong>Ganancias sin conexión</strong>: cuentan a partir de {offline_min_minutes} minutos fuera y se cortan a las {offline_max_hours} horas. El premium las duplica.",
                     "<strong>Recompensa por tiempo jugado</strong>: cada {playtime_reward_minutes} minutos de juego paga unas {playtime_reward_multiplier} veces el oro de un minuto en tu mejor piso.",
                 ]),
@@ -249,6 +251,7 @@ LANG = {
                 ("ul", [
                     "<strong>Se reinicia:</strong> el oro, el {currency_taskium}, el avance de pisos, los niveles de pico y armadura, los niveles de mascota, todas las habilidades compradas y tu nivel de jefe.",
                     "<strong>Se queda:</strong> el nivel de prestigio, la Esencia, los niveles de los {prestige_parameter_count} parámetros, las mascotas que ya tienes, los objetos Infinito y los logros.",
+                    "Los paneles y las ranuras de misión que ya desbloqueaste <strong>siguen desbloqueados</strong>: un prestigio nunca los cierra.",
                     "No vuelves al piso 1: la siguiente partida arranca en <strong>{prestige_floor_step} x tu nivel de prestigio</strong>, con un oro inicial que vale unos {prestige_gold_multiplier} minerales.",
                     "Todas las esperas se vacían, así que empiezas la partida con todas las habilidades listas.",
                 ]),
@@ -302,6 +305,7 @@ LANG = {
                     "<strong>{package_big}:</strong> {package_big_contents}.",
                     "<strong>{package_premium_7}:</strong> {premium7_days} días con x{premium7_click_multiplier} daño por clic, x{premium7_dps_multiplier} daño automático, x{premium7_gold_multiplier} oro, x{premium7_heat_multiplier} resistencia al calor y x{premium7_offline_multiplier} ganancias sin conexión.",
                     "<strong>{package_premium_30}:</strong> {premium30_days} días con x{premium30_click_multiplier} daño por clic, x{premium30_dps_multiplier} daño automático, x{premium30_gold_multiplier} oro, x{premium30_heat_multiplier} resistencia al calor y x{premium30_offline_multiplier} ganancias sin conexión.",
+                    "<strong>Salto temporal:</strong> paquetes de {time_skip_hour_list} horas. Los diamantes compran el tiempo y la ganancia se calcula con tu propio daño, tu piso y tus trabajadores; no hay una tabla fija.",
                 ]),
                 ("p", "Los objetos Infinito se compran <strong>una vez con diamantes</strong> y no se reinician nunca, ni con el prestigio. En la parte avanzada suelen ser el mejor destino para tus diamantes."),
                 ("table", "infinity"),

@@ -153,9 +153,10 @@ TRADE_ORE_STONE_TO_SKILL_STONE = 5000
 TRADE_ESSENCE_MAX = 1000
 
 # GoldBalloonSystem/Prefabs/Core/GoldBalloon.prefab
-BALLOON_FLOOR = 50
-BALLOON_MIN_SECONDS = 70
-BALLOON_MAX_SECONDS = 105
+BALLOON_FLOOR = 200
+BALLOON_MIN_SECONDS = 900
+BALLOON_MAX_SECONDS = 1300
+BALLOON_VISIBLE_SECONDS = 20
 BALLOON_MULTIPLIER = 6
 
 # OfflineEarnSystem + PlaytimeRewardSystem
@@ -203,5 +204,25 @@ CLOUD_SAVE_SECONDS = 45
 
 # LanguageSystem/Data/ScriptableObjects
 LANGUAGE_COUNT = 18
+
+# PickupSystem/Data/ScriptableObjects/GoldCrystalPickupDataSo.asset
+# + OreSystem/Data/ScriptableObjects/Bonus/BonusOreDataSo_GoldCrystal.asset
+CRYSTAL_FLOOR = 100
+CRYSTAL_MIN_SECONDS = 900
+CRYSTAL_MAX_SECONDS = 1300
+CRYSTAL_VISIBLE_SECONDS = 20
+CRYSTAL_BONUS_SECONDS = 10
+CRYSTAL_BONUS_HEALTH_MULTIPLIER = 10
+CRYSTAL_BONUS_GOLD_MULTIPLIER = 14
+
+# OreSystem/Data/ScriptableObjects/Rare/RareOreDataSo_*.asset
+RARE_ORE_COUNT = 5
+RARE_ORE_BEST_ODDS = 10000
+RARE_ORE_WORST_ODDS = 1000000
+RARE_ORE_NAME_KEYS = ["rare_ore_1", "rare_ore_2", "rare_ore_3", "rare_ore_4", "rare_ore_5"]
+
+# StoreSystem/Data/ScriptableObjects/Products/TimeSkip/*.asset
+# Elmas fiyati sunucudan gelir (game.shop_items), bu yuzden burada yok.
+TIME_SKIP_HOURS = [2, 4, 8]
 
 SCALARS = [key for key, value in list(globals().items()) if key.isupper() and isinstance(value, (int, float))]

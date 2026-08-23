@@ -171,6 +171,7 @@ LANG = {
                     "Co <strong>{duration_floor_interval}. piętro</strong> jest na czas: startuje zegar na <strong>{duration_floor_seconds} sekund</strong>, zdrowie rośnie o około {duration_floor_health_percent}%, a złoto o około {duration_floor_gold_percent}%.",
                     "Trudność idzie też cyklami po około {difficulty_cycle_floors} pięter - pierwsze piętra cyklu płacą najlepiej w stosunku do zdrowia.",
                     "Każda ruda upuszcza dodatkowo <strong>{ore_stone_min}-{ore_stone_max}</strong> Kamieni rudy.",
+                    "<strong>{rare_ore_count} rzadkie rudy</strong> ({rare_ore_names}) mogą zająć miejsce zwykłej rudy. Szanse sięgają od około 1 na {rare_ore_best_odds} do 1 na {rare_ore_worst_odds}, a rozbita rzadka ruda zostaje zapisana na stałe i nigdy się nie pojawia ponownie.",
                 ]),
                 ("warn", ["Piętra na czas gryzą", "Jeśli zegar dojdzie do zera, wracasz <strong>o jedno piętro</strong> niżej. Gdy obrażenia nie wystarczają, lepiej pominąć piętro na czas niż je przegrać."]),
                 ("p", "Możesz zejść na dowolne piętro, które osiągnąłeś w tym przebiegu, i tam farmić. Ręczny wybór piętra wyłącza automatyczne wchodzenie wyżej; włącz je z powrotem, gdy chcesz znowu się wspinać."),
@@ -235,6 +236,7 @@ LANG = {
             "blocks": [
                 ("ul", [
                     "<strong>Złoty balon</strong> - od piętra {balloon_floor} przelatuje jeden co {balloon_min_seconds}-{balloon_max_seconds} sekund. Kliknięcie płaci <strong>x{balloon_multiplier}</strong> złota z rudy twojego najlepszego piętra w tym przebiegu.",
+                    "<strong>{ore_gold_crystal}</strong> - od poziomu {crystal_floor} pojawia się co {crystal_min_seconds}-{crystal_max_seconds} sekund i czeka {crystal_visible_seconds} sekund. Dotknięcie zamienia rudę na rudę bonusową na {crystal_bonus_seconds} sekund z x{crystal_bonus_health_multiplier} zdrowia i x{crystal_bonus_gold_multiplier} złota, wypłacanym cios po ciosie.",
                     "<strong>Zarobek offline</strong> - liczy się po {offline_min_minutes} minutach nieobecności i kończy na {offline_max_hours} godzinach. Premium podwaja.",
                     "<strong>Nagroda za czas gry</strong> - co {playtime_reward_minutes} minut gry płaci około {playtime_reward_multiplier} razy tyle, ile daje minuta na twoim najlepszym piętrze.",
                 ]),
@@ -249,6 +251,7 @@ LANG = {
                 ("ul", [
                     "<strong>Zeruje się:</strong> złoto, {currency_taskium}, postęp pięter, poziomy kilofów i zbroi, poziomy towarzyszy, wszystkie kupione umiejętności i twój poziom bossa.",
                     "<strong>Zostaje:</strong> poziom prestiżu, Esencja, poziomy {prestige_parameter_count} parametrów, posiadani towarzysze, przedmioty Nieskończoności, osiągnięcia.",
+                    "Odblokowane panele i miejsca na zadania <strong>pozostają odblokowane</strong> - prestiż nigdy ich nie zabiera.",
                     "Nie wracasz na piętro 1: kolejny przebieg startuje na <strong>{prestige_floor_step} x twój poziom prestiżu</strong>, a do tego dostajesz startowe złoto warte około {prestige_gold_multiplier} rud.",
                     "Wszystkie odnowienia są czyszczone, więc zaczynasz przebieg z każdą umiejętnością gotową.",
                 ]),
@@ -302,6 +305,7 @@ LANG = {
                     "<strong>{package_big}:</strong> {package_big_contents}.",
                     "<strong>{package_premium_7}:</strong> {premium7_days} dni z x{premium7_click_multiplier} obrażeniami kliknięcia, x{premium7_dps_multiplier} obrażeniami automatycznymi, x{premium7_gold_multiplier} złotem, x{premium7_heat_multiplier} odpornością na ciepło i x{premium7_offline_multiplier} zarobkiem offline.",
                     "<strong>{package_premium_30}:</strong> {premium30_days} dni z x{premium30_click_multiplier} obrażeniami kliknięcia, x{premium30_dps_multiplier} obrażeniami automatycznymi, x{premium30_gold_multiplier} złotem, x{premium30_heat_multiplier} odpornością na ciepło i x{premium30_offline_multiplier} zarobkiem offline.",
+                    "<strong>Przeskok czasu:</strong> pakiety {time_skip_hour_list} godzin. Diamenty kupują czas, a zysk liczy się z twoich obrażeń, twojego poziomu i twoich robotników - nie ma stałej tabeli.",
                 ]),
                 ("p", "Przedmioty Nieskończoności kupujesz <strong>raz za diamenty</strong> i nigdy się nie zerują, nawet przy prestiżu. W późnej grze to zwykle najlepsze wykorzystanie diamentów."),
                 ("table", "infinity"),

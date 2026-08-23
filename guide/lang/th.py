@@ -171,6 +171,7 @@ LANG = {
                     "ทุก <strong>ชั้นที่ {duration_floor_interval}</strong> เป็นชั้นจับเวลา จะเริ่มนับ <strong>{duration_floor_seconds} วินาที</strong> พลังชีวิตสูงขึ้นราว {duration_floor_health_percent}% และทองราว {duration_floor_gold_percent}%",
                     "ความยากยังหมุนเป็นรอบราว {difficulty_cycle_floors} ชั้น ชั้นต้น ๆ ของแต่ละรอบให้ทองคุ้มกับพลังชีวิตมากที่สุด",
                     "แร่ทุกก้อนยังทิ้ง <strong>{ore_stone_min}-{ore_stone_max}</strong> หินแร่เพิ่มจากทอง",
+                    "<strong>แร่หายาก {rare_ore_count} ชนิด</strong> ({rare_ore_names}) สามารถปรากฏแทนแร่ปกติได้ โอกาสอยู่ราว 1 ใน {rare_ore_best_odds} ไปจนถึง 1 ใน {rare_ore_worst_odds} และแร่หายากที่คุณทุบแล้วจะถูกบันทึกอย่างถาวรและไม่ปรากฏอีก",
                 ]),
                 ("warn", ["ชั้นจับเวลากัดเจ็บ", "ถ้าเวลาหมด คุณจะถูกส่งลงไป <strong>หนึ่งชั้น</strong> ถ้าความเสียหายไม่ถึง การข้ามชั้นจับเวลาคุ้มกว่าการปล่อยให้แพ้"]),
                 ("p", "คุณลงไปชั้นไหนก็ได้ที่เคยไปถึงในรอบนี้ แล้วฟาร์มที่นั่น การเลือกชั้นด้วยมือจะปิดการไต่อัตโนมัติ เปิดกลับเมื่อจะไต่ต่อ"),
@@ -235,6 +236,7 @@ LANG = {
             "blocks": [
                 ("ul", [
                     "<strong>ลูกโป่งทอง</strong> - ตั้งแต่ชั้น {balloon_floor} จะลอยมาหนึ่งลูกทุก {balloon_min_seconds}-{balloon_max_seconds} วินาที คลิกแล้วได้ <strong>x{balloon_multiplier}</strong> ของทองจากแร่ในชั้นสูงสุดของรอบนี้",
+                    "<strong>{ore_gold_crystal}</strong> - ตั้งแต่ชั้น {crystal_floor} จะปรากฏหนึ่งชิ้นทุก {crystal_min_seconds}-{crystal_max_seconds} วินาที และอยู่นาน {crystal_visible_seconds} วินาที เมื่อแตะ แร่บนสนามจะเปลี่ยนเป็นแร่โบนัสนาน {crystal_bonus_seconds} วินาที พลังชีวิต x{crystal_bonus_health_multiplier} และทอง x{crystal_bonus_gold_multiplier} จ่ายทีละครั้งที่คุณตี",
                     "<strong>รายได้ออฟไลน์</strong> - เริ่มนับหลังหายไป {offline_min_minutes} นาที และตัดที่ {offline_max_hours} ชั่วโมง พรีเมียมคูณสอง",
                     "<strong>รางวัลเวลาเล่น</strong> - ทุก {playtime_reward_minutes} นาทีที่เล่น จะได้ราว {playtime_reward_multiplier} เท่าของทองหนึ่งนาทีในชั้นสูงสุดของคุณ",
                 ]),
@@ -249,6 +251,7 @@ LANG = {
                 ("ul", [
                     "<strong>รีเซ็ต:</strong> ทอง {currency_taskium} ความคืบหน้าของชั้น การอัปเกรดอีเต๋อและชุดเกราะ ระดับสัตว์เลี้ยง สกิลที่ซื้อไว้ทั้งหมด และความคืบหน้าของบอส",
                     "<strong>คงอยู่:</strong> ระดับเพรสทีจ เอสเซนส์ ระดับของค่าพลังทั้ง {prestige_parameter_count} อย่าง สัตว์เลี้ยงที่มีอยู่ ไอเทมอินฟินิตี และความสำเร็จ",
+                    "แผงและช่องภารกิจที่ปลดล็อกแล้วจะ<strong>ยังปลดล็อกอยู่</strong> เพรสทีจไม่ยึดคืน",
                     "คุณไม่ได้เริ่มจากชั้น 1 ใหม่ รอบถัดไปเริ่มที่ชั้น <strong>{prestige_floor_step} × ระดับเพรสทีจ</strong> พร้อมทองเริ่มต้นมูลค่าราวแร่ {prestige_gold_multiplier} ก้อน",
                     "คูลดาวน์ทั้งหมดถูกล้าง ดังนั้นเริ่มรอบใหม่พร้อมสกิลครบมือ",
                 ]),
@@ -302,6 +305,7 @@ LANG = {
                     "<strong>{package_big}:</strong> {package_big_contents}",
                     "<strong>{package_premium_7}:</strong> {premium7_days} วัน โดยความเสียหายจากคลิก x{premium7_click_multiplier} ความเสียหายอัตโนมัติ x{premium7_dps_multiplier} ทอง x{premium7_gold_multiplier} ต้านทานความร้อน x{premium7_heat_multiplier} และรายได้ออฟไลน์ x{premium7_offline_multiplier}",
                     "<strong>{package_premium_30}:</strong> {premium30_days} วัน โดยความเสียหายจากคลิก x{premium30_click_multiplier} ความเสียหายอัตโนมัติ x{premium30_dps_multiplier} ทอง x{premium30_gold_multiplier} ต้านทานความร้อน x{premium30_heat_multiplier} และรายได้ออฟไลน์ x{premium30_offline_multiplier}",
+                    "<strong>การข้ามเวลา:</strong> แพ็ก {time_skip_hour_list} ชั่วโมง เพชรซื้อเวลา และรายได้คำนวณจากความเสียหาย ชั้น และคนงานของคุณเอง ไม่มีตารางคงที่",
                 ]),
                 ("p", "ไอเทมอินฟินิตีซื้อ<strong>ด้วยเพชรครั้งเดียว</strong> และไม่รีเซ็ตเลย แม้ทำเพรสทีจ ช่วงปลายเกมมักเป็นการใช้เพชรที่คุ้มที่สุด"),
                 ("table", "infinity"),

@@ -171,6 +171,7 @@ LANG = {
                     "Jede <strong>{duration_floor_interval}. Etage</strong> ist eine Zeitetage: eine Uhr über <strong>{duration_floor_seconds} Sekunden</strong> läuft, Leben liegt etwa {duration_floor_health_percent}% und Gold etwa {duration_floor_gold_percent}% höher.",
                     "Die Schwierigkeit läuft außerdem in Zyklen von etwa {difficulty_cycle_floors} Etagen - die ersten Etagen eines Zyklus zahlen im Verhältnis zum Leben am besten.",
                     "Jedes Erz lässt zusätzlich <strong>{ore_stone_min}-{ore_stone_max}</strong> Erzstein fallen.",
+                    "<strong>{rare_ore_count} seltene Erze</strong> ({rare_ore_names}) können an die Stelle eines normalen Erzes treten. Die Chance reicht von etwa 1 zu {rare_ore_best_odds} bis 1 zu {rare_ore_worst_odds}, und ein abgebautes seltenes Erz wird dauerhaft vermerkt und erscheint nie wieder.",
                 ]),
                 ("warn", ["Zeitetagen beißen", "Läuft die Uhr ab, wirst du <strong>eine Etage</strong> zurückgeschickt. Überspringe die Zeitetage lieber, als sie zu verlieren, wenn dein Schaden nicht reicht."]),
                 ("p", "Du kannst auf jede Etage zurück, die du in diesem Durchlauf erreicht hast, und dort farmen. Eine Etage per Hand zu wählen schaltet das automatische Aufsteigen ab; schalte es wieder ein, wenn du weiterklettern willst."),
@@ -235,6 +236,7 @@ LANG = {
             "blocks": [
                 ("ul", [
                     "<strong>Goldballon</strong> - ab Etage {balloon_floor} schwebt alle {balloon_min_seconds}-{balloon_max_seconds} Sekunden einer herein. Ein Klick zahlt <strong>x{balloon_multiplier}</strong> das Erzgold deiner besten Etage in diesem Durchlauf.",
+                    "<strong>{ore_gold_crystal}</strong> - ab Etage {crystal_floor} erscheint alle {crystal_min_seconds}-{crystal_max_seconds} Sekunden einer und bleibt {crystal_visible_seconds} Sekunden. Ein Klick tauscht das Erz gegen ein {crystal_bonus_seconds} Sekunden langes Bonus-Erz mit x{crystal_bonus_health_multiplier} Leben und x{crystal_bonus_gold_multiplier} Gold, ausgezahlt Schlag für Schlag.",
                     "<strong>Offline-Einnahmen</strong> - werden nach {offline_min_minutes} Minuten Abwesenheit gezählt und bei {offline_max_hours} Stunden gekappt. Premium verdoppelt sie.",
                     "<strong>Spielzeit-Belohnung</strong> - alle {playtime_reward_minutes} Minuten Spielzeit zahlt sie etwa das {playtime_reward_multiplier}-fache einer Minute Gold auf deiner besten Etage.",
                 ]),
@@ -249,6 +251,7 @@ LANG = {
                 ("ul", [
                     "<strong>Zurückgesetzt:</strong> Gold, {currency_taskium}, Etagenfortschritt, Spitzhacken- und Rüstungsstufen, Begleiterstufen, alle gekauften Fähigkeiten und dein Bosslevel.",
                     "<strong>Bleibt:</strong> Prestigestufe, Essenz, die Stufen der {prestige_parameter_count} Parameter, Begleiterbesitz, Unendlich-Gegenstände, Erfolge.",
+                    "Bereits freigeschaltete Fenster und Auftragsplätze <strong>bleiben freigeschaltet</strong> - ein Prestige nimmt sie nie zurück.",
                     "Du fängst nicht auf Etage 1 an: der nächste Durchlauf startet auf <strong>{prestige_floor_step} x deiner Prestigestufe</strong>, dazu Startgold im Wert von etwa {prestige_gold_multiplier} Erz.",
                     "Alle Abklingzeiten werden geleert, du beginnst also mit allen Fähigkeiten bereit.",
                 ]),
@@ -302,6 +305,7 @@ LANG = {
                     "<strong>{package_big}:</strong> {package_big_contents}.",
                     "<strong>{package_premium_7}:</strong> {premium7_days} Tage mit x{premium7_click_multiplier} Klickschaden, x{premium7_dps_multiplier} Automatikschaden, x{premium7_gold_multiplier} Gold, x{premium7_heat_multiplier} Hitzewiderstand und x{premium7_offline_multiplier} Offline-Einnahmen.",
                     "<strong>{package_premium_30}:</strong> {premium30_days} Tage mit x{premium30_click_multiplier} Klickschaden, x{premium30_dps_multiplier} Automatikschaden, x{premium30_gold_multiplier} Gold, x{premium30_heat_multiplier} Hitzewiderstand und x{premium30_offline_multiplier} Offline-Einnahmen.",
+                    "<strong>Zeitsprung:</strong> Pakete über {time_skip_hour_list} Stunden. Diamanten kaufen die Zeit, der Ertrag wird aus deinem eigenen Schaden, deiner Etage und deinen Arbeitern berechnet - es gibt keine feste Tabelle.",
                 ]),
                 ("p", "Die Unendlich-Gegenstände kaufst du <strong>einmal mit Diamanten</strong>, und sie werden nie zurückgesetzt, auch nicht bei Prestige. Im späten Spiel sind sie meist die beste Verwendung für Diamanten."),
                 ("table", "infinity"),

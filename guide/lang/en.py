@@ -171,6 +171,7 @@ LANG = {
                     "Every <strong>{duration_floor_interval}th floor</strong> is a timed floor: a <strong>{duration_floor_seconds} second</strong> clock starts, health is up about {duration_floor_health_percent}% and gold about {duration_floor_gold_percent}%.",
                     "Difficulty also runs in cycles of about {difficulty_cycle_floors} floors - the first floors of a cycle pay best relative to their health.",
                     "Every ore drops <strong>{ore_stone_min}-{ore_stone_max}</strong> Ore Stone on top of its gold.",
+                    "<strong>{rare_ore_count} rare ores</strong> ({rare_ore_names}) can take the place of a normal ore. The odds run from about 1 in {rare_ore_best_odds} down to 1 in {rare_ore_worst_odds}, and once you break one it is recorded for good and never spawns again.",
                 ]),
                 ("warn", ["Timed floors bite", "If the clock runs out you are pushed back <strong>one floor</strong>. Skip the timed floor rather than fail it if your damage is short."]),
                 ("p", "You can drop back to any floor you have already reached this run and farm there. Picking a floor by hand turns auto-advance off; turn it back on when you want to climb again."),
@@ -235,6 +236,7 @@ LANG = {
             "blocks": [
                 ("ul", [
                     "<strong>Gold balloon</strong> - from floor {balloon_floor}, one drifts in every {balloon_min_seconds}-{balloon_max_seconds} seconds. Clicking it pays <strong>x{balloon_multiplier}</strong> the ore gold of your best floor this run.",
+                    "<strong>{ore_gold_crystal}</strong> - from floor {crystal_floor}, one shows up every {crystal_min_seconds}-{crystal_max_seconds} seconds and waits {crystal_visible_seconds} seconds. Clicking it swaps the ore for a {crystal_bonus_seconds} second bonus ore with x{crystal_bonus_health_multiplier} health and x{crystal_bonus_gold_multiplier} gold, paid out hit by hit.",
                     "<strong>Offline earnings</strong> - counted after {offline_min_minutes} minutes away and capped at {offline_max_hours} hours. Premium doubles it.",
                     "<strong>Play time reward</strong> - every {playtime_reward_minutes} minutes of play pays about {playtime_reward_multiplier} times a minute's worth of gold at your best floor.",
                 ]),
@@ -249,6 +251,7 @@ LANG = {
                 ("ul", [
                     "<strong>Reset:</strong> gold, {currency_taskium}, floor progress, pickaxe and armour upgrades, pet levels, all bought skills, and your boss level.",
                     "<strong>Kept:</strong> prestige level, Essence, the {prestige_parameter_count} parameter levels, pet ownership, Infinity items, achievements.",
+                    "Panels and task slots you have already unlocked <strong>stay unlocked</strong> - a prestige never takes them back.",
                     "You do not restart at floor 1: your next run starts at <strong>{prestige_floor_step} x your prestige level</strong>, with a pile of starting gold worth about {prestige_gold_multiplier} ore.",
                     "Every skill cooldown is cleared, so you begin the run with all of them ready.",
                 ]),
@@ -302,6 +305,7 @@ LANG = {
                     "<strong>{package_big}:</strong> {package_big_contents}.",
                     "<strong>{package_premium_7}:</strong> {premium7_days} days of x{premium7_click_multiplier} click damage, x{premium7_dps_multiplier} auto damage, x{premium7_gold_multiplier} gold, x{premium7_heat_multiplier} heat resistance and x{premium7_offline_multiplier} offline earnings.",
                     "<strong>{package_premium_30}:</strong> {premium30_days} days of x{premium30_click_multiplier} click damage, x{premium30_dps_multiplier} auto damage, x{premium30_gold_multiplier} gold, x{premium30_heat_multiplier} heat resistance and x{premium30_offline_multiplier} offline earnings.",
+                    "<strong>Time skip:</strong> {time_skip_hour_list} hour packs. Diamonds buy the time, and the reward is worked out from your own damage, your floor and your workers - there is no fixed table.",
                 ]),
                 ("p", "The Infinity items are bought <strong>once with diamonds</strong> and never reset, not even on prestige. Late game they are usually the best diamond spend you have."),
                 ("table", "infinity"),

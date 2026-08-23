@@ -171,6 +171,7 @@ LANG = {
                     "Cứ <strong>tầng thứ {duration_floor_interval}</strong> là một tầng tính giờ: đồng hồ <strong>{duration_floor_seconds} giây</strong> chạy, sinh lực cao hơn khoảng {duration_floor_health_percent}% và vàng khoảng {duration_floor_gold_percent}%.",
                     "Độ khó còn chạy theo chu kỳ khoảng {difficulty_cycle_floors} tầng - những tầng đầu chu kỳ có tỉ lệ vàng trên sinh lực tốt nhất.",
                     "Mỗi quặng còn rơi <strong>{ore_stone_min}-{ore_stone_max}</strong> Đá Quặng bên cạnh vàng.",
+                    "<strong>{rare_ore_count} quặng hiếm</strong> ({rare_ore_names}) có thể xuất hiện thay cho quặng thường. Tỉ lệ từ khoảng 1 trên {rare_ore_best_odds} xuống 1 trên {rare_ore_worst_odds}, và quặng hiếm đã đập vỡ được ghi lại vĩnh viễn, không xuất hiện lại.",
                 ]),
                 ("warn", ["Tầng tính giờ rất rát", "Nếu hết giờ, bạn bị đẩy xuống <strong>một tầng</strong>. Khi sát thương chưa đủ, bỏ qua tầng tính giờ còn hơn để thua ở đó."]),
                 ("p", "Bạn có thể xuống bất kỳ tầng nào đã tới trong lượt này để farm. Chọn tầng thủ công sẽ tắt chế độ tự lên tầng; bật lại khi muốn leo tiếp."),
@@ -235,6 +236,7 @@ LANG = {
             "blocks": [
                 ("ul", [
                     "<strong>Bóng vàng</strong> - từ tầng {balloon_floor}, cứ {balloon_min_seconds}-{balloon_max_seconds} giây lại có một quả bay vào. Nhấp vào sẽ nhận <strong>x{balloon_multiplier}</strong> vàng quặng của tầng cao nhất trong lượt này.",
+                    "<strong>{ore_gold_crystal}</strong> - từ tầng {crystal_floor}, một viên xuất hiện mỗi {crystal_min_seconds}-{crystal_max_seconds} giây và chờ {crystal_visible_seconds} giây. Chạm vào sẽ đổi quặng trên sân thành quặng thưởng kéo dài {crystal_bonus_seconds} giây với x{crystal_bonus_health_multiplier} máu và x{crystal_bonus_gold_multiplier} vàng, trả theo từng cú đánh.",
                     "<strong>Thu nhập ngoại tuyến</strong> - tính từ khi bạn rời game {offline_min_minutes} phút và dừng ở {offline_max_hours} giờ. Premium nhân đôi.",
                     "<strong>Thưởng thời gian chơi</strong> - mỗi {playtime_reward_minutes} phút chơi cho khoảng {playtime_reward_multiplier} lần lượng vàng một phút ở tầng cao nhất của bạn.",
                 ]),
@@ -249,6 +251,7 @@ LANG = {
                 ("ul", [
                     "<strong>Bị xóa:</strong> vàng, {currency_taskium}, tiến độ tầng, các nâng cấp cúp và giáp, cấp thú, toàn bộ kỹ năng đã mua, và tiến độ trùm.",
                     "<strong>Giữ lại:</strong> cấp thăng hoa, Tinh Chất, cấp của {prestige_parameter_count} chỉ số, những thú đã sở hữu, vật phẩm Vô Hạn, thành tích.",
+                    "Các bảng và ô nhiệm vụ đã mở <strong>vẫn mở</strong> - thăng hoa không lấy lại chúng.",
                     "Bạn không phải bắt đầu lại từ tầng 1: lượt sau mở ở tầng <strong>{prestige_floor_step} x cấp thăng hoa</strong>, kèm số vàng khởi đầu trị giá khoảng {prestige_gold_multiplier} quặng.",
                     "Mọi thời gian hồi đều được xóa, nên bạn vào lượt mới với tất cả kỹ năng sẵn sàng.",
                 ]),
@@ -302,6 +305,7 @@ LANG = {
                     "<strong>{package_big}:</strong> {package_big_contents}.",
                     "<strong>{package_premium_7}:</strong> {premium7_days} ngày với sát thương nhấp x{premium7_click_multiplier}, sát thương tự động x{premium7_dps_multiplier}, vàng x{premium7_gold_multiplier}, kháng nhiệt x{premium7_heat_multiplier} và thu nhập ngoại tuyến x{premium7_offline_multiplier}.",
                     "<strong>{package_premium_30}:</strong> {premium30_days} ngày với sát thương nhấp x{premium30_click_multiplier}, sát thương tự động x{premium30_dps_multiplier}, vàng x{premium30_gold_multiplier}, kháng nhiệt x{premium30_heat_multiplier} và thu nhập ngoại tuyến x{premium30_offline_multiplier}.",
+                    "<strong>Nhảy thời gian:</strong> các gói {time_skip_hour_list} giờ. Kim cương mua thời gian, còn phần thưởng được tính từ sát thương, tầng và công nhân của bạn - không có bảng cố định.",
                 ]),
                 ("p", "Vật phẩm Vô Hạn chỉ <strong>mua một lần bằng kim cương</strong> và không bao giờ bị xóa, kể cả khi thăng hoa. Về cuối game, đây thường là cách dùng kim cương hiệu quả nhất."),
                 ("table", "infinity"),

@@ -171,6 +171,7 @@ LANG = {
                     "Chaque <strong>{duration_floor_interval}e étage</strong> est un étage chronométré : un compte à rebours de <strong>{duration_floor_seconds} secondes</strong> démarre, la vie monte d'environ {duration_floor_health_percent}% et l'or d'environ {duration_floor_gold_percent}%.",
                     "La difficulté avance aussi par cycles d'environ {difficulty_cycle_floors} étages - les premiers étages d'un cycle paient le mieux par rapport à leur vie.",
                     "Chaque minerai lâche en plus <strong>{ore_stone_min}-{ore_stone_max}</strong> Pierre de minerai.",
+                    "<strong>{rare_ore_count} minerais rares</strong> ({rare_ore_names}) peuvent prendre la place d'un minerai normal. Les chances vont d'environ 1 sur {rare_ore_best_odds} à 1 sur {rare_ore_worst_odds}, et un minerai rare brisé est enregistré définitivement et ne réapparaît jamais.",
                 ]),
                 ("warn", ["Les étages chronométrés mordent", "Si le temps s'écoule, tu es renvoyé <strong>un étage</strong> plus bas. Mieux vaut sauter l'étage chronométré que le perdre si tes dégâts ne suivent pas."]),
                 ("p", "Tu peux redescendre à n'importe quel étage déjà atteint dans cette partie et y farmer. Choisir un étage à la main coupe la montée automatique ; réactive-la quand tu veux remonter."),
@@ -235,6 +236,7 @@ LANG = {
             "blocks": [
                 ("ul", [
                     "<strong>Ballon d'or</strong> - à partir de l'étage {balloon_floor}, il en passe un toutes les {balloon_min_seconds}-{balloon_max_seconds} secondes. Un clic rapporte <strong>x{balloon_multiplier}</strong> l'or du minerai de ton meilleur étage de la partie.",
+                    "<strong>{ore_gold_crystal}</strong> - à partir de l'étage {crystal_floor}, il en apparaît un toutes les {crystal_min_seconds}-{crystal_max_seconds} secondes et il reste {crystal_visible_seconds} secondes. Le toucher remplace le minerai par un minerai bonus de {crystal_bonus_seconds} secondes avec x{crystal_bonus_health_multiplier} vie et x{crystal_bonus_gold_multiplier} or, versé coup par coup.",
                     "<strong>Gains hors ligne</strong> - comptés après {offline_min_minutes} minutes d'absence et plafonnés à {offline_max_hours} heures. Le premium les double.",
                     "<strong>Récompense de temps de jeu</strong> - toutes les {playtime_reward_minutes} minutes jouées, environ {playtime_reward_multiplier} fois l'or d'une minute à ton meilleur étage.",
                 ]),
@@ -249,6 +251,7 @@ LANG = {
                 ("ul", [
                     "<strong>Réinitialisé :</strong> l'or, le {currency_taskium}, la progression d'étages, les niveaux de pioche et d'armure, les niveaux de compagnon, toutes les compétences achetées et ton niveau de boss.",
                     "<strong>Conservé :</strong> le niveau de prestige, l'Essence, les niveaux des {prestige_parameter_count} paramètres, la possession des compagnons, les objets Infini, les succès.",
+                    "Les panneaux et emplacements de quête déjà débloqués <strong>restent débloqués</strong> - un prestige ne les reprend jamais.",
                     "Tu ne repars pas de l'étage 1 : la partie suivante commence à <strong>{prestige_floor_step} x ton niveau de prestige</strong>, avec un pactole de départ valant environ {prestige_gold_multiplier} minerais.",
                     "Toutes les recharges sont vidées : tu commences la partie avec chaque compétence prête.",
                 ]),
@@ -302,6 +305,7 @@ LANG = {
                     "<strong>{package_big} :</strong> {package_big_contents}.",
                     "<strong>{package_premium_7} :</strong> {premium7_days} jours avec x{premium7_click_multiplier} dégâts de clic, x{premium7_dps_multiplier} dégâts automatiques, x{premium7_gold_multiplier} or, x{premium7_heat_multiplier} résistance à la chaleur et x{premium7_offline_multiplier} gains hors ligne.",
                     "<strong>{package_premium_30} :</strong> {premium30_days} jours avec x{premium30_click_multiplier} dégâts de clic, x{premium30_dps_multiplier} dégâts automatiques, x{premium30_gold_multiplier} or, x{premium30_heat_multiplier} résistance à la chaleur et x{premium30_offline_multiplier} gains hors ligne.",
+                    "<strong>Saut temporel :</strong> lots de {time_skip_hour_list} heures. Les diamants achètent le temps, et le gain est calculé à partir de vos propres dégâts, de votre étage et de vos ouvriers - il n'y a pas de table fixe.",
                 ]),
                 ("p", "Les objets Infini s'achètent <strong>une seule fois en diamants</strong> et ne se réinitialisent jamais, même au prestige. En fin de partie c'est en général le meilleur usage de tes diamants."),
                 ("table", "infinity"),

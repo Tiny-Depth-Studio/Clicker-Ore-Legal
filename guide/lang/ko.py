@@ -171,6 +171,7 @@ LANG = {
                     "<strong>{duration_floor_interval}층마다</strong> 시간 제한 층이 나옵니다. <strong>{duration_floor_seconds}초</strong> 타이머가 돌고 체력은 약 {duration_floor_health_percent}%, 골드는 약 {duration_floor_gold_percent}% 늘어납니다.",
                     "난이도는 약 {difficulty_cycle_floors}층 주기로도 움직입니다. 주기의 앞쪽 층이 체력 대비 수익이 가장 좋습니다.",
                     "광석은 골드 외에 <strong>{ore_stone_min}-{ore_stone_max}</strong>개의 광석 스톤도 떨굽니다.",
+                    "<strong>희귀 광석 {rare_ore_count}종</strong>({rare_ore_names})이 일반 광석 대신 등장할 수 있습니다. 확률은 약 {rare_ore_best_odds}분의 1에서 {rare_ore_worst_odds}분의 1까지이며, 한 번 부순 희귀 광석은 영구히 기록되어 다시 등장하지 않습니다.",
                 ]),
                 ("warn", ["시간 제한 층은 아프다", "시간이 다 되면 <strong>한 층</strong> 아래로 밀려납니다. 피해가 부족하면 실패하기보다 그 층을 건너뛰는 편이 낫습니다."]),
                 ("p", "이번 회차에 도달한 층이라면 어디든 내려가 파밍할 수 있습니다. 층을 직접 고르면 자동 상승이 꺼지니, 다시 올라갈 때 켜 주세요."),
@@ -235,6 +236,7 @@ LANG = {
             "blocks": [
                 ("ul", [
                     "<strong>골드 풍선</strong> - {balloon_floor}층부터 {balloon_min_seconds}-{balloon_max_seconds}초마다 하나씩 떠옵니다. 클릭하면 이번 회차 최고 층 광석 골드의 <strong>x{balloon_multiplier}</strong>를 받습니다.",
+                    "<strong>{ore_gold_crystal}</strong> - {crystal_floor}층부터 {crystal_min_seconds}~{crystal_max_seconds}초마다 하나가 나타나 {crystal_visible_seconds}초 동안 머무릅니다. 누르면 광석이 {crystal_bonus_seconds}초 동안 체력 x{crystal_bonus_health_multiplier}, 골드 x{crystal_bonus_gold_multiplier}의 보너스 광석으로 바뀌고, 때릴 때마다 골드가 지급됩니다.",
                     "<strong>오프라인 수입</strong> - 자리를 비운 {offline_min_minutes}분부터 계산되고 {offline_max_hours}시간에서 멈춥니다. 프리미엄이면 두 배입니다.",
                     "<strong>플레이 시간 보상</strong> - {playtime_reward_minutes}분 플레이마다 최고 층에서 1분 동안 벌 골드의 약 {playtime_reward_multiplier}배를 줍니다.",
                 ]),
@@ -249,6 +251,7 @@ LANG = {
                 ("ul", [
                     "<strong>초기화되는 것:</strong> 골드, {currency_taskium}, 층 진행, 곡괭이와 방어구 강화, 펫 레벨, 구입한 모든 스킬, 보스 진행도.",
                     "<strong>남는 것:</strong> 프레스티지 레벨, 에센스, 지표 {prestige_parameter_count}가지의 레벨, 보유한 펫, 무한 아이템, 업적.",
+                    "이미 열린 창과 임무 슬롯은 <strong>계속 열린 상태로 유지</strong>되며, 프레스티지가 이를 되돌리지 않습니다.",
                     "1층부터 다시 시작하지는 않습니다. 다음 회차는 <strong>{prestige_floor_step} × 프레스티지 레벨</strong> 층에서 시작하고, 광석 약 {prestige_gold_multiplier}개 값어치의 시작 골드도 함께 받습니다.",
                     "모든 재사용 대기가 초기화되므로 회차를 시작할 때 스킬을 전부 쓸 수 있습니다.",
                 ]),
@@ -302,6 +305,7 @@ LANG = {
                     "<strong>{package_big}:</strong> {package_big_contents}.",
                     "<strong>{package_premium_7}:</strong> {premium7_days}일 동안 클릭 피해 x{premium7_click_multiplier}, 자동 피해 x{premium7_dps_multiplier}, 골드 x{premium7_gold_multiplier}, 열 저항 x{premium7_heat_multiplier}, 오프라인 수입 x{premium7_offline_multiplier}.",
                     "<strong>{package_premium_30}:</strong> {premium30_days}일 동안 클릭 피해 x{premium30_click_multiplier}, 자동 피해 x{premium30_dps_multiplier}, 골드 x{premium30_gold_multiplier}, 열 저항 x{premium30_heat_multiplier}, 오프라인 수입 x{premium30_offline_multiplier}.",
+                    "<strong>시간 건너뛰기:</strong> {time_skip_hour_list}시간 패키지. 다이아몬드로 시간을 사고, 보상은 여러분의 피해량과 층, 일꾼을 기준으로 계산됩니다. 고정된 표는 없습니다.",
                 ]),
                 ("p", "무한 아이템은 <strong>다이아로 한 번만</strong> 구입하고 프레스티지에도 초기화되지 않습니다. 후반에는 보통 다이아를 가장 잘 쓰는 방법입니다."),
                 ("table", "infinity"),

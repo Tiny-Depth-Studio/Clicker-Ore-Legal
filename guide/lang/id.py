@@ -171,6 +171,7 @@ LANG = {
                     "Setiap <strong>lantai ke-{duration_floor_interval}</strong> adalah lantai berwaktu: hitungan <strong>{duration_floor_seconds} detik</strong> mulai berjalan, nyawa naik sekitar {duration_floor_health_percent}% dan emas sekitar {duration_floor_gold_percent}%.",
                     "Kesulitan juga berjalan dalam siklus sekitar {difficulty_cycle_floors} lantai - lantai-lantai awal sebuah siklus paling untung dibanding nyawanya.",
                     "Setiap bijih juga menjatuhkan <strong>{ore_stone_min}-{ore_stone_max}</strong> Batu Bijih di samping emas.",
+                    "<strong>{rare_ore_count} bijih langka</strong> ({rare_ore_names}) bisa muncul menggantikan bijih biasa. Peluangnya sekitar 1 dari {rare_ore_best_odds} sampai 1 dari {rare_ore_worst_odds}, dan bijih langka yang sudah dipecahkan tercatat permanen serta tidak muncul lagi.",
                 ]),
                 ("warn", ["Lantai berwaktu menggigit", "Kalau waktunya habis, kamu didorong <strong>satu lantai</strong> ke bawah. Kalau kerusakanmu kurang, lewati saja lantai berwaktu daripada gagal di sana."]),
                 ("p", "Kamu bisa turun ke lantai mana pun yang sudah kamu capai di putaran ini dan farming di situ. Memilih lantai secara manual mematikan naik otomatis; nyalakan lagi kalau ingin memanjat."),
@@ -235,6 +236,7 @@ LANG = {
             "blocks": [
                 ("ul", [
                     "<strong>Balon emas</strong> - dari lantai {balloon_floor}, satu melayang masuk setiap {balloon_min_seconds}-{balloon_max_seconds} detik. Mengkliknya memberi <strong>x{balloon_multiplier}</strong> emas bijih lantai terbaikmu di putaran ini.",
+                    "<strong>{ore_gold_crystal}</strong> - mulai lantai {crystal_floor}, satu muncul setiap {crystal_min_seconds}-{crystal_max_seconds} detik dan menunggu {crystal_visible_seconds} detik. Mengetuknya menukar bijih di arena dengan bijih bonus selama {crystal_bonus_seconds} detik dengan x{crystal_bonus_health_multiplier} nyawa dan x{crystal_bonus_gold_multiplier} emas, dibayar tiap pukulan.",
                     "<strong>Penghasilan offline</strong> - dihitung setelah {offline_min_minutes} menit pergi dan berhenti di {offline_max_hours} jam. Premium menggandakannya.",
                     "<strong>Hadiah waktu bermain</strong> - setiap {playtime_reward_minutes} menit bermain memberi sekitar {playtime_reward_multiplier} kali emas satu menit di lantai terbaikmu.",
                 ]),
@@ -249,6 +251,7 @@ LANG = {
                 ("ul", [
                     "<strong>Direset:</strong> emas, {currency_taskium}, kemajuan lantai, peningkatan beliung dan baju, level hewan, semua skill yang dibeli, dan kemajuan bos.",
                     "<strong>Tetap:</strong> level prestise, Esensi, level {prestige_parameter_count} parameter, hewan yang sudah dimiliki, item Infinity, dan pencapaian.",
+                    "Panel dan slot misi yang sudah terbuka <strong>tetap terbuka</strong> - prestise tidak mengambilnya kembali.",
                     "Kamu tidak mulai dari lantai 1: putaran berikutnya dimulai di <strong>{prestige_floor_step} x level prestisemu</strong>, ditambah emas awal senilai sekitar {prestige_gold_multiplier} bijih.",
                     "Semua jeda skill dibersihkan, jadi kamu memulai putaran dengan semua skill siap.",
                 ]),
@@ -302,6 +305,7 @@ LANG = {
                     "<strong>{package_big}:</strong> {package_big_contents}.",
                     "<strong>{package_premium_7}:</strong> {premium7_days} hari dengan kerusakan klik x{premium7_click_multiplier}, kerusakan otomatis x{premium7_dps_multiplier}, emas x{premium7_gold_multiplier}, ketahanan panas x{premium7_heat_multiplier}, dan penghasilan offline x{premium7_offline_multiplier}.",
                     "<strong>{package_premium_30}:</strong> {premium30_days} hari dengan kerusakan klik x{premium30_click_multiplier}, kerusakan otomatis x{premium30_dps_multiplier}, emas x{premium30_gold_multiplier}, ketahanan panas x{premium30_heat_multiplier}, dan penghasilan offline x{premium30_offline_multiplier}.",
+                    "<strong>Lompatan waktu:</strong> paket {time_skip_hour_list} jam. Diamond membeli waktunya, dan hasilnya dihitung dari kerusakan, lantai, dan pekerja Anda sendiri - tidak ada tabel tetap.",
                 ]),
                 ("p", "Item Infinity dibeli <strong>sekali dengan diamond</strong> dan tidak pernah direset, bahkan oleh prestise. Di akhir permainan biasanya inilah pemakaian diamond yang paling berguna."),
                 ("table", "infinity"),

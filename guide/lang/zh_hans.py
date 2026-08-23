@@ -171,6 +171,7 @@ LANG = {
                     "每 <strong>{duration_floor_interval} 层</strong>是一个计时层：开始 <strong>{duration_floor_seconds} 秒</strong>倒计时，生命提高约 {duration_floor_health_percent}%，金币提高约 {duration_floor_gold_percent}%。",
                     "难度还会以大约 {difficulty_cycle_floors} 层为周期变化，周期开头几层的金币与生命之比最划算。",
                     "每块矿石除了金币还会掉 <strong>{ore_stone_min}-{ore_stone_max}</strong> 颗矿石之石。",
+                    "<strong>{rare_ore_count} 种稀有矿石</strong>（{rare_ore_names}）可以代替普通矿石出现。概率从约万分之一（1/{rare_ore_best_odds}）低到 1/{rare_ore_worst_odds}，击碎过的稀有矿石会被永久记录，不再出现。",
                 ]),
                 ("warn", ["计时层会咬人", "倒计时结束时如果没打完，你会被退回<strong>下一层</strong>。伤害不够时，跳过计时层比失败更划算。"]),
                 ("p", "本轮到过的任何一层都可以退回去刷。手动选层会关掉自动上层，想继续爬时再打开。"),
@@ -235,6 +236,7 @@ LANG = {
             "blocks": [
                 ("ul", [
                     "<strong>金气球</strong> - 从第 {balloon_floor} 层起，每 {balloon_min_seconds}-{balloon_max_seconds} 秒飘来一个。点掉它会给出本轮最高层矿石金币的 <strong>x{balloon_multiplier}</strong>。",
+                    "<strong>{ore_gold_crystal}</strong> - 从第 {crystal_floor} 层起，每 {crystal_min_seconds}-{crystal_max_seconds} 秒出现一个，停留 {crystal_visible_seconds} 秒。点击后场上的矿石会换成持续 {crystal_bonus_seconds} 秒的奖励矿石，生命 x{crystal_bonus_health_multiplier}、金币 x{crystal_bonus_gold_multiplier}，每次敲击都会结算金币。",
                     "<strong>离线收益</strong> - 离开 {offline_min_minutes} 分钟后开始计算，{offline_max_hours} 小时封顶。会员翻一倍。",
                     "<strong>游戏时长奖励</strong> - 每玩 {playtime_reward_minutes} 分钟，给出你最高层一分钟金币的约 {playtime_reward_multiplier} 倍。",
                 ]),
@@ -249,6 +251,7 @@ LANG = {
                 ("ul", [
                     "<strong>会重置：</strong>金币、{currency_taskium}、层数进度、镐子和护甲的升级、宠物等级、买过的全部技能，以及首领进度。",
                     "<strong>会保留：</strong>转生等级、精华、{prestige_parameter_count} 项属性的等级、已拥有的宠物、无限物品、成就。",
+                    "已解锁的面板和任务槽位<strong>保持解锁</strong>，转生不会收回。",
                     "你不会从第 1 层重来：下一轮直接从 <strong>{prestige_floor_step} × 转生等级</strong> 层开始，还会附带价值约 {prestige_gold_multiplier} 块矿石的启动金币。",
                     "所有技能冷却都会清空，所以开局就能把技能全放出来。",
                 ]),
@@ -302,6 +305,7 @@ LANG = {
                     "<strong>{package_big}：</strong>{package_big_contents}。",
                     "<strong>{package_premium_7}：</strong>{premium7_days} 天内点击伤害 x{premium7_click_multiplier}、自动伤害 x{premium7_dps_multiplier}、金币 x{premium7_gold_multiplier}、抗热 x{premium7_heat_multiplier}、离线收益 x{premium7_offline_multiplier}。",
                     "<strong>{package_premium_30}：</strong>{premium30_days} 天内点击伤害 x{premium30_click_multiplier}、自动伤害 x{premium30_dps_multiplier}、金币 x{premium30_gold_multiplier}、抗热 x{premium30_heat_multiplier}、离线收益 x{premium30_offline_multiplier}。",
+                    "<strong>时间跳跃：</strong>{time_skip_hour_list} 小时礼包。钻石买的是时间，收益根据你的伤害、层数和工人计算，没有固定表格。",
                 ]),
                 ("p", "无限物品<strong>用钻石买一次</strong>就永久生效，转生也不会清空。后期通常是钻石最划算的去处。"),
                 ("table", "infinity"),

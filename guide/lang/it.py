@@ -171,6 +171,7 @@ LANG = {
                     "Ogni <strong>{duration_floor_interval}° piano</strong> è a tempo: parte un conto alla rovescia di <strong>{duration_floor_seconds} secondi</strong>, la salute sale di circa il {duration_floor_health_percent}% e l'oro di circa il {duration_floor_gold_percent}%.",
                     "La difficoltà procede anche a cicli di circa {difficulty_cycle_floors} piani: i primi piani di un ciclo pagano meglio rispetto alla loro salute.",
                     "Ogni minerale lascia anche <strong>{ore_stone_min}-{ore_stone_max}</strong> Pietre minerale.",
+                    "<strong>{rare_ore_count} minerali rari</strong> ({rare_ore_names}) possono prendere il posto di un minerale normale. Le probabilità vanno da circa 1 su {rare_ore_best_odds} fino a 1 su {rare_ore_worst_odds}, e un minerale raro rotto viene registrato per sempre e non ricompare più.",
                 ]),
                 ("warn", ["I piani a tempo mordono", "Se il tempo finisce vieni rispedito <strong>un piano</strong> sotto. Se il danno non basta, meglio saltare il piano a tempo che perderlo."]),
                 ("p", "Puoi tornare a qualunque piano già raggiunto in questa partita e farmare lì. Scegliere un piano a mano spegne l'avanzamento automatico; riattivalo quando vuoi risalire."),
@@ -235,6 +236,7 @@ LANG = {
             "blocks": [
                 ("ul", [
                     "<strong>Palloncino d'oro</strong>: dal piano {balloon_floor} ne passa uno ogni {balloon_min_seconds}-{balloon_max_seconds} secondi. Cliccarlo paga <strong>x{balloon_multiplier}</strong> l'oro del minerale del tuo miglior piano in questa partita.",
+                    "<strong>{ore_gold_crystal}</strong> - dal piano {crystal_floor} ne appare uno ogni {crystal_min_seconds}-{crystal_max_seconds} secondi e resta {crystal_visible_seconds} secondi. Toccarlo sostituisce il minerale con un minerale bonus di {crystal_bonus_seconds} secondi con x{crystal_bonus_health_multiplier} vita e x{crystal_bonus_gold_multiplier} oro, pagato colpo per colpo.",
                     "<strong>Guadagni offline</strong>: contano dopo {offline_min_minutes} minuti di assenza e si fermano a {offline_max_hours} ore. Il premium li raddoppia.",
                     "<strong>Premio per tempo di gioco</strong>: ogni {playtime_reward_minutes} minuti giocati paga circa {playtime_reward_multiplier} volte l'oro di un minuto sul tuo miglior piano.",
                 ]),
@@ -249,6 +251,7 @@ LANG = {
                 ("ul", [
                     "<strong>Si azzera:</strong> oro, {currency_taskium}, avanzamento dei piani, livelli di piccone e armatura, livelli dei compagni, tutte le abilità comprate e il tuo livello dei boss.",
                     "<strong>Resta:</strong> livello di prestigio, Essenza, i livelli dei {prestige_parameter_count} parametri, i compagni già tuoi, gli oggetti Infinito, gli obiettivi.",
+                    "I pannelli e gli slot delle missioni già sbloccati <strong>restano sbloccati</strong>: un prestigio non li richiude mai.",
                     "Non riparti dal piano 1: la partita seguente comincia a <strong>{prestige_floor_step} x il tuo livello di prestigio</strong>, con un oro iniziale che vale circa {prestige_gold_multiplier} minerali.",
                     "Tutti i recuperi vengono azzerati, quindi cominci la partita con ogni abilità pronta.",
                 ]),
@@ -302,6 +305,7 @@ LANG = {
                     "<strong>{package_big}:</strong> {package_big_contents}.",
                     "<strong>{package_premium_7}:</strong> {premium7_days} giorni con x{premium7_click_multiplier} danno da clic, x{premium7_dps_multiplier} danno automatico, x{premium7_gold_multiplier} oro, x{premium7_heat_multiplier} resistenza al calore e x{premium7_offline_multiplier} guadagni offline.",
                     "<strong>{package_premium_30}:</strong> {premium30_days} giorni con x{premium30_click_multiplier} danno da clic, x{premium30_dps_multiplier} danno automatico, x{premium30_gold_multiplier} oro, x{premium30_heat_multiplier} resistenza al calore e x{premium30_offline_multiplier} guadagni offline.",
+                    "<strong>Salto temporale:</strong> pacchetti da {time_skip_hour_list} ore. I diamanti comprano il tempo e il guadagno si calcola dai tuoi danni, dal tuo piano e dai tuoi lavoratori - non c'è una tabella fissa.",
                 ]),
                 ("p", "Gli oggetti Infinito si comprano <strong>una volta sola con i diamanti</strong> e non si azzerano mai, nemmeno col prestigio. A fine partita sono in genere il modo migliore di spendere i diamanti."),
                 ("table", "infinity"),

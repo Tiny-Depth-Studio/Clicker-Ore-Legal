@@ -171,6 +171,7 @@ LANG = {
                     "每 <strong>{duration_floor_interval} 層</strong>是一個計時層：開始 <strong>{duration_floor_seconds} 秒</strong>倒數，生命提高約 {duration_floor_health_percent}%，金幣提高約 {duration_floor_gold_percent}%。",
                     "難度還會以大約 {difficulty_cycle_floors} 層為週期變化，週期開頭幾層的金幣與生命之比最划算。",
                     "每塊礦石除了金幣還會掉 <strong>{ore_stone_min}-{ore_stone_max}</strong> 顆礦石之石。",
+                    "<strong>{rare_ore_count} 種稀有礦石</strong>（{rare_ore_names}）可以代替普通礦石出現。機率從約 1/{rare_ore_best_odds} 低到 1/{rare_ore_worst_odds}，擊碎過的稀有礦石會被永久記錄，不再出現。",
                 ]),
                 ("warn", ["計時層會咬人", "倒數結束時如果沒打完，你會被退回<strong>下一層</strong>。傷害不夠時，跳過計時層比失敗更划算。"]),
                 ("p", "本輪到過的任何一層都可以退回去刷。手動選層會關掉自動往上，想繼續爬時再打開。"),
@@ -235,6 +236,7 @@ LANG = {
             "blocks": [
                 ("ul", [
                     "<strong>金氣球</strong> - 從第 {balloon_floor} 層起，每 {balloon_min_seconds}-{balloon_max_seconds} 秒飄來一個。點掉它會給出本輪最高層礦石金幣的 <strong>x{balloon_multiplier}</strong>。",
+                    "<strong>{ore_gold_crystal}</strong> - 從第 {crystal_floor} 層起，每 {crystal_min_seconds}-{crystal_max_seconds} 秒出現一個，停留 {crystal_visible_seconds} 秒。點擊後場上的礦石會換成持續 {crystal_bonus_seconds} 秒的獎勵礦石，生命 x{crystal_bonus_health_multiplier}、金幣 x{crystal_bonus_gold_multiplier}，每次敲擊都會結算金幣。",
                     "<strong>離線收益</strong> - 離開 {offline_min_minutes} 分鐘後開始計算，{offline_max_hours} 小時封頂。會員翻一倍。",
                     "<strong>遊戲時長獎勵</strong> - 每玩 {playtime_reward_minutes} 分鐘，給出你最高層一分鐘金幣的約 {playtime_reward_multiplier} 倍。",
                 ]),
@@ -249,6 +251,7 @@ LANG = {
                 ("ul", [
                     "<strong>會重置：</strong>金幣、{currency_taskium}、層數進度、鎬子與護甲的升級、寵物等級、買過的全部技能，以及首領進度。",
                     "<strong>會保留：</strong>轉生等級、精華、{prestige_parameter_count} 項屬性的等級、已擁有的寵物、無限物品、成就。",
+                    "已解鎖的面板與任務欄位<strong>保持解鎖</strong>，轉生不會收回。",
                     "你不會從第 1 層重來：下一輪直接從 <strong>{prestige_floor_step} × 轉生等級</strong> 層開始，還會附上價值約 {prestige_gold_multiplier} 塊礦石的起始金幣。",
                     "所有技能冷卻都會清空，所以開局就能把技能全放出來。",
                 ]),
@@ -302,6 +305,7 @@ LANG = {
                     "<strong>{package_big}：</strong>{package_big_contents}。",
                     "<strong>{package_premium_7}：</strong>{premium7_days} 天內點擊傷害 x{premium7_click_multiplier}、自動傷害 x{premium7_dps_multiplier}、金幣 x{premium7_gold_multiplier}、抗熱 x{premium7_heat_multiplier}、離線收益 x{premium7_offline_multiplier}。",
                     "<strong>{package_premium_30}：</strong>{premium30_days} 天內點擊傷害 x{premium30_click_multiplier}、自動傷害 x{premium30_dps_multiplier}、金幣 x{premium30_gold_multiplier}、抗熱 x{premium30_heat_multiplier}、離線收益 x{premium30_offline_multiplier}。",
+                    "<strong>時間跳躍：</strong>{time_skip_hour_list} 小時禮包。鑽石買的是時間，收益依你的傷害、層數與工人計算，沒有固定表格。",
                 ]),
                 ("p", "無限物品<strong>用鑽石買一次</strong>就永久生效，轉生也不會清空。後期通常是鑽石最划算的去處。"),
                 ("table", "infinity"),

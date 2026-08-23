@@ -171,6 +171,7 @@ LANG = {
                     "Todo <strong>{duration_floor_interval}º andar</strong> é cronometrado: começa uma contagem de <strong>{duration_floor_seconds} segundos</strong>, a vida sobe cerca de {duration_floor_health_percent}% e o ouro cerca de {duration_floor_gold_percent}%.",
                     "A dificuldade também anda em ciclos de cerca de {difficulty_cycle_floors} andares: os primeiros andares de um ciclo pagam melhor em relação à vida.",
                     "Cada minério ainda solta <strong>{ore_stone_min}-{ore_stone_max}</strong> Pedras de minério.",
+                    "<strong>{rare_ore_count} minérios raros</strong> ({rare_ore_names}) podem ocupar o lugar de um minério comum. As chances vão de cerca de 1 em {rare_ore_best_odds} até 1 em {rare_ore_worst_odds}, e um minério raro quebrado fica registrado para sempre e nunca aparece de novo.",
                 ]),
                 ("warn", ["Andar cronometrado morde", "Se o tempo acabar, você volta <strong>um andar</strong>. Se o dano não dá conta, é melhor pular o andar cronometrado do que perder nele."]),
                 ("p", "Você pode voltar a qualquer andar já alcançado nesta rodada e farmar ali. Escolher andar na mão desliga o avanço automático; ligue de novo quando quiser subir."),
@@ -235,6 +236,7 @@ LANG = {
             "blocks": [
                 ("ul", [
                     "<strong>Balão de ouro</strong>: do andar {balloon_floor} em diante, um aparece a cada {balloon_min_seconds}-{balloon_max_seconds} segundos. Clicar paga <strong>x{balloon_multiplier}</strong> o ouro do minério do seu melhor andar nesta rodada.",
+                    "<strong>{ore_gold_crystal}</strong> - a partir do andar {crystal_floor} surge um a cada {crystal_min_seconds}-{crystal_max_seconds} segundos e ele espera {crystal_visible_seconds} segundos. Ao tocá-lo, o minério é trocado por um minério bônus de {crystal_bonus_seconds} segundos com x{crystal_bonus_health_multiplier} vida e x{crystal_bonus_gold_multiplier} ouro, pago golpe a golpe.",
                     "<strong>Ganhos offline</strong>: contam depois de {offline_min_minutes} minutos fora e param em {offline_max_hours} horas. O premium dobra.",
                     "<strong>Recompensa por tempo de jogo</strong>: a cada {playtime_reward_minutes} minutos jogados paga cerca de {playtime_reward_multiplier} vezes o ouro de um minuto no seu melhor andar.",
                 ]),
@@ -249,6 +251,7 @@ LANG = {
                 ("ul", [
                     "<strong>Zera:</strong> ouro, {currency_taskium}, progresso de andares, níveis de picareta e armadura, níveis de mascote, todas as habilidades compradas e o seu nível de chefe.",
                     "<strong>Fica:</strong> nível de prestígio, Essência, os níveis dos {prestige_parameter_count} parâmetros, os mascotes que você já tem, os itens Infinito e as conquistas.",
+                    "Painéis e espaços de missão já desbloqueados <strong>continuam desbloqueados</strong> - um prestígio nunca os retoma.",
                     "Você não volta ao andar 1: a rodada seguinte começa em <strong>{prestige_floor_step} x o seu nível de prestígio</strong>, com um ouro inicial que vale cerca de {prestige_gold_multiplier} minérios.",
                     "Todas as recargas são limpas, então você começa a rodada com todas as habilidades prontas.",
                 ]),
@@ -302,6 +305,7 @@ LANG = {
                     "<strong>{package_big}:</strong> {package_big_contents}.",
                     "<strong>{package_premium_7}:</strong> {premium7_days} dias com x{premium7_click_multiplier} dano por clique, x{premium7_dps_multiplier} dano automático, x{premium7_gold_multiplier} ouro, x{premium7_heat_multiplier} resistência ao calor e x{premium7_offline_multiplier} ganhos offline.",
                     "<strong>{package_premium_30}:</strong> {premium30_days} dias com x{premium30_click_multiplier} dano por clique, x{premium30_dps_multiplier} dano automático, x{premium30_gold_multiplier} ouro, x{premium30_heat_multiplier} resistência ao calor e x{premium30_offline_multiplier} ganhos offline.",
+                    "<strong>Salto de tempo:</strong> pacotes de {time_skip_hour_list} horas. Os diamantes compram o tempo, e o ganho é calculado a partir do seu dano, do seu andar e dos seus trabalhadores - não existe tabela fixa.",
                 ]),
                 ("p", "Os itens Infinito são comprados <strong>uma vez com diamantes</strong> e nunca zeram, nem no prestígio. No fim de jogo eles costumam ser o melhor destino dos seus diamantes."),
                 ("table", "infinity"),

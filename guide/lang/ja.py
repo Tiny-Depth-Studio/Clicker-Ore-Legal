@@ -171,6 +171,7 @@ LANG = {
                     "<strong>{duration_floor_interval}階ごと</strong>は時間制の階です。<strong>{duration_floor_seconds}秒</strong>のカウントが始まり、体力は約{duration_floor_health_percent}%、ゴールドは約{duration_floor_gold_percent}%増えます。",
                     "難易度は約{difficulty_cycle_floors}階の周期でも変化します。周期の最初のほうの階は体力に対する稼ぎが最も良くなります。",
                     "鉱石はゴールドに加えて <strong>{ore_stone_min}-{ore_stone_max}</strong> 個の鉱石ストーンを落とします。",
+                    "<strong>{rare_ore_count}種のレア鉱石</strong>（{rare_ore_names}）が通常の鉱石の代わりに出現することがあります。確率はおよそ{rare_ore_best_odds}分の1から{rare_ore_worst_odds}分の1までで、一度砕いたレア鉱石は永久に記録され、二度と出現しません。",
                 ]),
                 ("warn", ["時間制の階は痛い", "時間切れになると<strong>1階</strong>下に戻されます。ダメージが足りないときは、失敗するより時間制の階を飛ばしたほうが得です。"]),
                 ("p", "この周回で到達した階なら、どこへでも戻って周回できます。手動で階を選ぶと自動で上がる動作は止まります。また登りたくなったら戻してください。"),
@@ -235,6 +236,7 @@ LANG = {
             "blocks": [
                 ("ul", [
                     "<strong>ゴールドバルーン</strong> - {balloon_floor}階から、{balloon_min_seconds}-{balloon_max_seconds}秒ごとに1つ流れてきます。クリックすると、その周回の最高階の鉱石ゴールドの <strong>x{balloon_multiplier}</strong> がもらえます。",
+                    "<strong>{ore_gold_crystal}</strong> - {crystal_floor}階から{crystal_min_seconds}〜{crystal_max_seconds}秒ごとに1つ現れ、{crystal_visible_seconds}秒とどまります。タップすると鉱石が{crystal_bonus_seconds}秒間、体力x{crystal_bonus_health_multiplier}・ゴールドx{crystal_bonus_gold_multiplier}のボーナス鉱石に入れ替わり、叩くたびにゴールドが支払われます。",
                     "<strong>オフライン収入</strong> - 離席{offline_min_minutes}分から計算され、{offline_max_hours}時間で上限になります。プレミアムで2倍です。",
                     "<strong>プレイ時間報酬</strong> - {playtime_reward_minutes}分プレイするごとに、最高階での1分あたりのゴールドの約{playtime_reward_multiplier}倍が入ります。",
                 ]),
@@ -249,6 +251,7 @@ LANG = {
                 ("ul", [
                     "<strong>リセットされるもの:</strong> ゴールド、{currency_taskium}、階の進行、ツルハシと装備の強化、ペットのレベル、購入したすべてのスキル、ボスの進行度。",
                     "<strong>残るもの:</strong> プレステージレベル、エッセンス、{prestige_parameter_count}つのパラメーターのレベル、ペットの所持、無限アイテム、実績。",
+                    "すでに解放したパネルと任務スロットは<strong>解放されたまま</strong>で、プレステージで戻ることはありません。",
                     "1階からやり直しではありません。次の周回は <strong>{prestige_floor_step} × プレステージレベル</strong>の階から始まり、鉱石{prestige_gold_multiplier}個分ほどの開始ゴールドももらえます。",
                     "スキルの再使用待ちはすべて消えるので、周回開始時から全スキルが使えます。",
                 ]),
@@ -302,6 +305,7 @@ LANG = {
                     "<strong>{package_big}:</strong> {package_big_contents}。",
                     "<strong>{package_premium_7}:</strong> {premium7_days}日間、クリックダメージ x{premium7_click_multiplier}、自動ダメージ x{premium7_dps_multiplier}、ゴールド x{premium7_gold_multiplier}、熱耐性 x{premium7_heat_multiplier}、オフライン収入 x{premium7_offline_multiplier}。",
                     "<strong>{package_premium_30}:</strong> {premium30_days}日間、クリックダメージ x{premium30_click_multiplier}、自動ダメージ x{premium30_dps_multiplier}、ゴールド x{premium30_gold_multiplier}、熱耐性 x{premium30_heat_multiplier}、オフライン収入 x{premium30_offline_multiplier}。",
+                    "<strong>タイムスキップ：</strong>{time_skip_hour_list}時間のパック。ダイヤで時間を買い、報酬はあなたのダメージ・階層・作業員から計算されます。固定の表はありません。",
                 ]),
                 ("p", "無限アイテムは<strong>ダイヤで1回買うだけ</strong>で、プレステージでもリセットされません。終盤ではダイヤの使い道として最も効率が良いことが多いです。"),
                 ("table", "infinity"),

@@ -171,6 +171,7 @@ LANG = {
                     "Her <strong>{duration_floor_interval}. kat</strong> süreli kattır: <strong>{duration_floor_seconds} saniyelik</strong> sayaç başlar, can yaklaşık %{duration_floor_health_percent}, altın yaklaşık %{duration_floor_gold_percent} artar.",
                     "Zorluk ayrıca yaklaşık {difficulty_cycle_floors} katlık döngülerle işler - bir döngünün ilk katları canına göre en iyi altını verir.",
                     "Her cevher altınının üstüne <strong>{ore_stone_min}-{ore_stone_max}</strong> Cevher Taşı düşürür.",
+                    "<strong>{rare_ore_count} nadir cevher</strong> ({rare_ore_names}) normal bir cevherin yerine gelebilir. Şans yaklaşık {rare_ore_best_odds}'de birden {rare_ore_worst_odds}'da bire kadar iner; kırdığınız nadir cevher kalıcı olarak kaydedilir ve bir daha hiç çıkmaz.",
                 ]),
                 ("warn", ["Süreli kat ceza keser", "Sayaç dolarsa <strong>bir alt kata</strong> geri gönderilirsin. Hasarın yetmiyorsa süreli katta başarısız olmak yerine o katı atla."]),
                 ("p", "Bu prestijte ulaştığın herhangi bir kata inip orada farm yapabilirsin. Kat elle seçmek otomatik ilerlemeyi kapatır; yeniden tırmanmak isteyince geri aç."),
@@ -235,6 +236,7 @@ LANG = {
             "blocks": [
                 ("ul", [
                     "<strong>Altın balonu</strong> - {balloon_floor}. kattan itibaren her {balloon_min_seconds}-{balloon_max_seconds} saniyede bir süzülüp gelir. Tıklayınca bu prestijteki en iyi katın cevher altınının <strong>x{balloon_multiplier}</strong> katını verir.",
+                    "<strong>{ore_gold_crystal}</strong> - {crystal_floor}. kattan itibaren her {crystal_min_seconds}-{crystal_max_seconds} saniyede bir belirir ve {crystal_visible_seconds} saniye bekler. Tıkladığınızda sahnedeki cevher, {crystal_bonus_seconds} saniyelik bir bonus cevherle değişir: x{crystal_bonus_health_multiplier} can, x{crystal_bonus_gold_multiplier} altın, vuruş vuruş ödenir.",
                     "<strong>Çevrimdışı kazanç</strong> - {offline_min_minutes} dakikadan sonra saymaya başlar, {offline_max_hours} saatte kesilir. Premium bunu iki katına çıkarır.",
                     "<strong>Oyun süresi ödülü</strong> - her {playtime_reward_minutes} dakikalık oyun için en iyi katındaki bir dakikalık altının yaklaşık {playtime_reward_multiplier} katı.",
                 ]),
@@ -249,6 +251,7 @@ LANG = {
                 ("ul", [
                     "<strong>Sıfırlanır:</strong> altın, {currency_taskium}, kat ilerlemesi, kazma ve zırh yükseltmeleri, pet seviyeleri, satın alınmış tüm skill'ler ve boss seviyesi.",
                     "<strong>Kalır:</strong> prestij seviyesi, Öz, {prestige_parameter_count} parametrenin seviyeleri, pet sahipliği, Sonsuz eşyalar, başarımlar.",
+                    "Bir kez açtığınız paneller ve görev slotları <strong>açık kalır</strong> - prestige onları geri almaz.",
                     "Kat 1'den başlamazsın: yeni tur <strong>{prestige_floor_step} x prestij seviyesi</strong> katından açılır ve yanına yaklaşık {prestige_gold_multiplier} cevher değerinde başlangıç altını gelir.",
                     "Tüm yetenek beklemeleri temizlenir, yani tura hepsi hazırken başlarsın.",
                 ]),
@@ -302,6 +305,7 @@ LANG = {
                     "<strong>{package_big}:</strong> {package_big_contents}.",
                     "<strong>{package_premium_7}:</strong> {premium7_days} gün boyunca x{premium7_click_multiplier} tıklama hasarı, x{premium7_dps_multiplier} otomatik hasar, x{premium7_gold_multiplier} altın, x{premium7_heat_multiplier} ısı direnci ve x{premium7_offline_multiplier} çevrimdışı kazanç.",
                     "<strong>{package_premium_30}:</strong> {premium30_days} gün boyunca x{premium30_click_multiplier} tıklama hasarı, x{premium30_dps_multiplier} otomatik hasar, x{premium30_gold_multiplier} altın, x{premium30_heat_multiplier} ısı direnci ve x{premium30_offline_multiplier} çevrimdışı kazanç.",
+                    "<strong>Zaman atlama:</strong> {time_skip_hour_list} saatlik paketler. Elmas süreyi satın alır; kazanç sizin hasarınıza, katınıza ve işçilerinize göre hesaplanır - sabit bir tablo yok.",
                 ]),
                 ("p", "Sonsuz eşyalar <strong>elmasla bir kez</strong> alınır ve hiç sıfırlanmaz, prestijte bile. İleri oyunda genelde elmasın en verimli harcandığı yer burasıdır."),
                 ("table", "infinity"),
