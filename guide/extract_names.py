@@ -87,7 +87,23 @@ WANTED = {
     "infinity_clicker": "StoreTextKeys.InfinityClickerName",
     "package_small": "StoreTextKeys.CurrencyPackage1Name",
     "package_big": "StoreTextKeys.CurrencyPackage2Name",
-    "package_premium": "StoreTextKeys.PremiumPackageName",
+    "rare_ore_1": "OreTextKeys.OreFerrovyxName",
+    "rare_ore_2": "OreTextKeys.OreKarnythName",
+    "rare_ore_3": "OreTextKeys.OreThalverisName",
+    "rare_ore_4": "OreTextKeys.OreUmbryssaName",
+    "rare_ore_5": "OreTextKeys.OreZephirisName",
+    "ore_gold_crystal": "OreTextKeys.OreGoldCrystalName",
+}
+
+# Bir anahtari birden fazla urun paylasiyor: metinde {0} yer tutucusu var ve oyun
+# onu calisma aninda dolduruyor. Kilavuz da ayni yer tutucuyu doldurmak zorunda,
+# yoksa sayfaya ham "{0}" dusuyor.
+FORMATTED = {
+    "package_premium_7": ("StoreTextKeys.PremiumPackageName", "7"),
+    "package_premium_30": ("StoreTextKeys.PremiumPackageName", "30"),
+    "time_skip_2h": ("StoreTextKeys.TimeSkipName", "2"),
+    "time_skip_4h": ("StoreTextKeys.TimeSkipName", "4"),
+    "time_skip_8h": ("StoreTextKeys.TimeSkipName", "8"),
 }
 
 
@@ -127,6 +143,17 @@ def pick(raw, code):
             missing.append(key)
         else:
             names[key] = value
+
+    for key, (constant, argument) in FORMATTED.items():
+        template = raw.get(constant)
+
+        if template is None or template == "":
+            missing.append(key)
+
+            continue
+
+        names[key] = template.replace("{0}", argument)
+
     if missing:
         print("  {0}: {1} name(s) fall back to English -> {2}".format(code, len(missing), ", ".join(missing)))
     return names
@@ -142,7 +169,7 @@ def main():
         print("  {0}: mirrors {1} (no table of its own, by design)".format(code, source))
 
     for code, names in result.items():
-        for key in WANTED:
+        for key in list(WANTED) + list(FORMATTED):
             names.setdefault(key, result["en"].get(key, key))
 
     out = os.path.join(os.path.dirname(os.path.abspath(__file__)), "names.py")
@@ -152,7 +179,7 @@ def main():
         handle.write("NAMES = ")
         handle.write(json.dumps(result, ensure_ascii=False, indent=4, sort_keys=True))
         handle.write("\n")
-    print("wrote {0} ({1} languages x {2} names)".format(out, len(result), len(WANTED)))
+    print("wrote {0} ({1} languages x {2} names)".format(out, len(result), len(WANTED) + len(FORMATTED)))
 
 
 if __name__ == "__main__":
