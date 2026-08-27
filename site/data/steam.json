@@ -111,5 +111,8 @@
       "thumb": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3810540/abbc7ba032baa4a2d56eb8bea5acc0ab9ba66b92/ss_abbc7ba032baa4a2d56eb8bea5acc0ab9ba66b92.600x338.jpg"
     }
   ],
-  "trailer": null
+  "trailer": {
+    "name": "Gameplay",
+    "thumb": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/257212616/be9a1b66abbbaccdfead951338a714a0a3c2533e/movie_600x337.jpg"
+  }
 }
