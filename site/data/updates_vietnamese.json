@@ -1,0 +1,33 @@
+{
+ "entries": [
+  {
+   "body": "Trong bản cập nhật tôi sẽ phát hành trong vòng một tuần, tôi thay đổi nghiêm túc phần cân bằng của trò chơi. Tôi làm việc này khi biết rõ nó sẽ ảnh hưởng đến tiến trình bạn đã gây dựng, và trước hết tôi muốn xin lỗi vì điều đó.\n\nTôi làm trò chơi này một mình, nên những dòng này cũng do chính tôi viết bằng lời của mình.\n\nKhi nhìn vào dữ liệu kể từ ngày phát hành và những gì các bạn báo lại, một điều trở nên rõ ràng: một số con số không khớp với nhau. Có những hướng đi nhanh hơn nhiều so với mức đáng có, trong khi những hướng khác lại bị nghẽn một cách không cần thiết. Thay vì vá từng chỗ một, tôi chọn làm lại cân bằng một cách tổng thể, vì những sửa chữa nhỏ chỉ trì hoãn vấn đề thật sự.\n\nĐiều đó có nghĩa rõ ràng: một số giá trị bạn đã quen sẽ thay đổi. Một hướng đi bạn theo đuổi bấy lâu có thể vận hành khác đi, và một phần thu nhập sẽ được tính lại. Tiến trình của bạn không bị xóa và bạn không mất bất cứ thứ gì mình có, nhưng nhịp của trò chơi thay đổi. Tôi biết điều này có thể gây khó chịu với người đã chơi lâu.\n\nĐổi lại, điều tôi có thể nói là: trò chơi trở nên tốt hơn nhiều sau thay đổi này. Tiến trình trở nên nhất quán với chính nó, những chỗ tắc nghẽn ở giai đoạn sau được mở ra, và những chỗ tăng tốc vô lý ở giai đoạn đầu ổn định lại. Đây là phiên bản trụ được về lâu dài.\n\nCùng bản cập nhật đó, nội dung lớn cũng sẽ vào game. Các hệ thống mới, những hướng phát triển mới và những phần bổ sung tôi đã làm trong thời gian dài sẽ đến với phiên bản này. Bạn sẽ thấy chi tiết trong ghi chú cập nhật vào ngày phát hành.\n\nĐể bạn không đơn độc giữa thay đổi này, tôi sẽ tặng 100 kim cương, một lần duy nhất, cho mọi người chơi mở game trong vòng một tuần sau khi bản cập nhật lên sóng. Tôi muốn bạn có chút dư địa trong lúc làm quen với cân bằng mới. Để nhận, bạn chỉ cần tải bản cập nhật và mở trò chơi trong tuần đó.\n\nCảm ơn bạn đã đi cùng tôi đến đây, đã báo lỗi và đã mong trò chơi tốt hơn. Tôi vẫn đang đọc phản hồi của các bạn.\n\nChúc đào mỏ vui vẻ!",
+   "date": "2026-08-31",
+   "id": "2026-08-31_1.6.13",
+   "subtitle": "Trong vòng một tuần sẽ có bản cập nhật cân bằng lớn.",
+   "summary": "Tôi đã làm lại cân bằng một cách tổng thể, và mọi người chơi mở game trong vòng một tuần sau bản cập nhật sẽ nhận được 100 kim cương, một lần duy nhất.",
+   "title": "Về thay đổi cân bằng sắp tới — 31 tháng 8, 2026",
+   "version": "1.6.13"
+  },
+  {
+   "body": "<b>MỚI</b>\n- Thêm nhảy thời gian: dùng kim cương để tiến 2, 4 hoặc 8 giờ, phần thưởng dựa trên tốc độ và tầng hiện tại của bạn.\n- Khi nhảy kết thúc, bảng tổng kết hiển thị mọi thứ bạn nhận được.\n- Thêm quặng hiếm: năm loại quặng đặc biệt xuất hiện rất ít, khi đập vỡ sẽ được ghi lại vĩnh viễn.\n- Thêm thành tựu cho việc đập vỡ toàn bộ quặng hiếm.\n- Thêm tinh thể vàng: chạm vào vật phẩm này để triệu hồi một quặng thưởng có thời hạn, mỗi cú đánh sẽ rơi vàng.\n- Quặng hiếm và quặng thưởng giờ có hiệu ứng phát sáng xung quanh.\n- Premium giờ có hai gói: 7 ngày và 30 ngày.\n- Mua lại cùng một gói premium sẽ gia hạn thời gian; chú giải trên thẻ có ghi rõ.\n- Khi gói premium cao hơn đang hoạt động, không thể mua gói thấp hơn và thẻ hiển thị \"Gói cao hơn đang hoạt động\".\n- Thêm chú giải công nhân, hiển thị thưởng theo cấp, thu nhập hiện tại và thu nhập ở cấp tiếp theo.\n\n<b>CẢI TIẾN</b>\n- Cải thiện hiệu năng toàn game: các bảng đã đóng và thẻ bị ẩn không còn chạy ở chế độ nền.\n- Trong giao dịch, số lượng được chọn theo phần trăm và giới hạn 16,7 triệu cũ đã bị bỏ hoàn toàn.\n- Khi không có gì để đổi, thanh trượt và ô số lượng vẫn bị khóa.\n- Cửa sổ xác nhận dùng Có màu xanh và Không màu đỏ, đảo màu với các hành động không thể hoàn tác.\n- Khi thiếu tiền, loại tiền còn thiếu được hiển thị kèm biểu tượng và cửa hàng tương ứng được đề xuất.\n- Thành tựu được đánh giá lại mỗi lần mở game, nên không còn thành tựu bị bỏ sót.\n- Thống kê được hiển thị trên một dòng dễ đọc hơn.\n- Tính toán vàng mỗi phút giờ dựa trên nhịp đánh thực tế của bạn.\n- Tiêu đề Vòng quay may mắn và văn bản cửa hàng premium đã được cập nhật ở mọi ngôn ngữ.\n\n<b>CÂN BẰNG</b>\n- Các bảng đã mở không còn đóng lại sau khi thăng hoa, và ô nhiệm vụ cũng vẫn mở.\n- Bộ đếm tầng vĩnh viễn vẫn tăng khi tắt tự động lên tầng, nên công nhân không bị mở khóa muộn.\n- Nâng cấp hàng loạt không còn hiển thị tổng vượt quá số vàng của bạn.\n\n<b>SỬA LỖI</b>\n- Sửa việc một số giao dịch đã thanh toán không được trao; các giao dịch còn thiếu sẽ được phục hồi khi mở game.\n- Sửa chi phí nâng cấp biến thành giá trị vô nghĩa ở cấp rất cao.\n- Sửa thành tựu bị khóa dù hiển thị là đã hoàn thành.\n- Sửa một số ghép nối quốc gia và tiền tệ bị lỗi khi chọn tiếng Thổ Nhĩ Kỳ.\n- Sửa thông báo \"không còn phần thưởng\" trên vòng quay hiển thị trống.\n- Sửa lỗi mạng khi gửi phản hồi bị bỏ qua trong im lặng.\n\nChúc đào vui vẻ!",
+   "date": "2026-08-23",
+   "id": "2026-08-23_1.5.12",
+   "subtitle": "Nhảy thời gian và quặng hiếm đã có mặt!",
+   "summary": "Nhảy thời gian, quặng hiếm, tinh thể vàng, hai gói premium và nhiều sửa lỗi.",
+   "title": "1.5.12 Ghi chú cập nhật — 23 tháng 8, 2026",
+   "version": "1.5.12"
+  },
+  {
+   "body": "<b>MỚI</b>\n- Thêm Vòng quay may mắn: vòng quay 8 ô, làm mới mỗi 3 giờ.\n- 2 lượt quay miễn phí mỗi chu kỳ; các lượt sau tốn kim cương, mỗi lượt làm tăng giá lượt kế tiếp.\n- Ô đã trúng sẽ đóng trong chu kỳ; có thể quay đến khi vòng quay trống hoàn toàn.\n- Phần thưởng gồm vàng, đá quặng, Taskium, đá kỹ năng, tinh chất, chìa khóa hầm ngục, kim cương và các buff có thời hạn.\n- Biểu tượng thông tin trên bảng hiển thị số lượng và tỉ lệ trúng hiện tại của từng phần thưởng.\n- Chú giải từng ô hiển thị hiệu ứng buff theo phần trăm và phần thưởng tiền tệ theo số chính xác.\n- Thêm tùy chọn bỏ qua hoạt ảnh quay.\n- Chấm thông báo xuất hiện trên nút vòng quay khi có lượt quay miễn phí.\n- Các buff đang hoạt động hiển thị trên màn hình kèm thời gian còn lại.\n\n<b>CẢI TIẾN</b>\n- Phần thưởng vàng tăng theo tầng hiện tại của bạn.\n- Chú giải thành tựu giờ hiển thị phần trăm tiến độ.\n- Chuyển đổi tối đa trong giao dịch giờ được tính tự động.\n- Bảo trì máy chủ và sự cố kết nối giờ có thông báo riêng.\n- Cập nhật bản dịch cho 18 ngôn ngữ.\n\n<b>SỬA LỖI</b>\n- Sửa nút nhận nhiệm vụ đôi khi không hiển thị giá.\n- Sửa chú giải nhấp nháy dưới con trỏ và chặn các nút bên dưới.\n\nChúc đào vui vẻ!",
+   "date": "2026-08-19",
+   "id": "2026-08-19_1.4.11",
+   "subtitle": "Vòng quay may mắn đã đến: quay là trúng!",
+   "summary": "Vòng quay may mắn, hiển thị tỉ lệ trực tiếp, bỏ qua hoạt ảnh và nhiều sửa lỗi.",
+   "title": "1.4.11 Ghi chú cập nhật — 19 tháng 8, 2026",
+   "version": "1.4.11"
+  }
+ ],
+ "language": "vietnamese",
+ "schema": 1
+}

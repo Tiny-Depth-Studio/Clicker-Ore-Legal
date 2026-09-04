@@ -1,0 +1,33 @@
+{
+ "entries": [
+  {
+   "body": "In the update I will release within a week, I am making a serious change to the game's balance. I am doing it knowing it will affect the progress you have built, and I want to apologise for that first.\n\nI make this game on my own, so I am writing these lines in my own words.\n\nLooking at the data since launch and at what you have reported, I saw one thing clearly: some numbers did not add up. Some paths were far faster than they should be, while others were needlessly blocked. Instead of patching them one by one, I chose to rework the balance as a whole, because small fixes only postponed the real problem.\n\nWhat this means is plain: some values you are used to will change. A path you have been taking for a while may work differently, and some gains will be recalculated. Your progress is not being wiped and you are not losing anything you own, but the rhythm of the game is changing. I know this can be unsettling for someone who has played for a long time.\n\nWhat I can offer in return is this: the game comes out of this change much better. Progression becomes consistent with itself, the late-game bottlenecks open up, and the spots that sped up for no reason early on settle down. This is the version that holds up over the long run.\n\nThe same update also brings major content. New systems, new paths of progression and additions I have been working on for a long time arrive with this version. You will find the details in the patch notes on release day.\n\nSo that you are not left alone in the middle of this change, every player who opens the game within one week of the update going live will receive 100 diamonds from me, once. I wanted you to have some room to move while you settle into the new balance. All you need to do to claim it is download the update and launch the game within that week.\n\nThank you for coming this far with me, for reporting the problems and for wanting the game to be better. I am still reading your feedback.\n\nHappy mining!",
+   "date": "2026-08-31",
+   "id": "2026-08-31_1.6.13",
+   "subtitle": "A major balance update arrives within a week.",
+   "summary": "I reworked the balance as a whole, and every player who opens the game within one week of the update will receive 100 diamonds, once.",
+   "title": "About the Upcoming Balance Change — August 31, 2026",
+   "version": "1.6.13"
+  },
+  {
+   "body": "<b>NEW</b>\n- Added time skip: spend diamonds to advance 2, 4 or 8 hours, with rewards based on your current speed and floor.\n- A summary panel now shows everything you earned when the skip ends.\n- Added rare ores: five special ores that appear very rarely and are recorded for good once broken.\n- Added an achievement for breaking every rare ore.\n- Added the gold crystal: tap this collectible to summon a timed bonus ore that drops gold as you hit it.\n- Rare and bonus ores now have a glow effect around them.\n- Premium now comes in two packages: 7 days and 30 days.\n- Buying the same premium package again extends its duration; the card tooltip explains this.\n- While a higher premium package is active the lower one cannot be bought, and the card reads \"Higher package active\".\n- Added a worker tooltip showing the level bonus, the current income and the income at the next level.\n\n<b>IMPROVEMENTS</b>\n- Improved performance across the game: closed panels and hidden tabs no longer run in the background.\n- Trade amounts are now picked as a percentage, and the old 16.7 million cap is gone for good.\n- The slider and amount field stay locked when you have nothing to convert.\n- Confirmation windows use a green Yes and a red No, with the colors reversed for irreversible actions.\n- When you cannot afford something, the missing currency is shown with its icon and the matching store is offered.\n- Achievements are re-evaluated every time the game starts, so none are left behind.\n- Statistics are shown on a single, more readable line.\n- The gold per minute figure is now based on your real hit rate.\n- The Lucky Spin title and the premium store texts were updated in every language.\n\n<b>BALANCE</b>\n- Panels you have unlocked no longer close after a prestige, and task slots stay open too.\n- The permanent floor counter now rises even with auto floor off, so worker unlocks are no longer delayed.\n- Bulk upgrade no longer shows a total above your gold.\n\n<b>FIXES</b>\n- Fixed some paid purchases not being delivered; missing purchases are now recovered when you launch the game.\n- Fixed upgrade costs turning into a meaningless value at very high levels.\n- Fixed an achievement staying locked while showing as complete.\n- Fixed some country and currency matches breaking while Turkish was selected.\n- Fixed the \"no rewards left\" message on the wheel showing up empty.\n- Fixed network errors during feedback submission failing silently.\n\nHappy mining!",
+   "date": "2026-08-23",
+   "id": "2026-08-23_1.5.12",
+   "subtitle": "Time skip and rare ores are here!",
+   "summary": "Time skip, rare ores, the gold crystal, two premium packages and plenty of fixes.",
+   "title": "1.5.12 Update Notes — August 23, 2026",
+   "version": "1.5.12"
+  },
+  {
+   "body": "<b>NEW</b>\n- Added the Lucky Spin: an 8-slice wheel that refreshes every 3 hours.\n- 2 free spins per cycle; further spins cost diamonds, and each spin raises the next price.\n- Won slices stay closed for the cycle; the wheel can be fully cleared.\n- Rewards include gold, ore stone, Taskium, skill stone, essence, dungeon key, diamonds and timed boosts.\n- The info icon on the wheel panel shows each reward's count and current win chance.\n- Slice tooltips show boost effects as percentages and currency rewards as exact amounts.\n- Added an option to skip the spin animation.\n- A notification dot appears on the wheel button when a free spin is ready.\n- Active boosts are listed on screen with their remaining time.\n\n<b>IMPROVEMENTS</b>\n- The gold reward scales with your current floor.\n- Achievement tooltips now show your progress percentage.\n- Max conversion in trading is now calculated automatically.\n- Server maintenance and connection issues now show separate messages.\n- Translation updates across 18 languages.\n\n<b>FIXES</b>\n- Fixed the task accept button sometimes not showing the price.\n- Fixed tooltips flickering under the cursor and blocking buttons beneath them.\n\nHappy mining!",
+   "date": "2026-08-19",
+   "id": "2026-08-19_1.4.11",
+   "subtitle": "The Lucky Spin is here: spin and win!",
+   "summary": "Lucky Spin wheel, live odds display, skip animation option and plenty of fixes.",
+   "title": "1.4.11 Update Notes — August 19, 2026",
+   "version": "1.4.11"
+  }
+ ],
+ "language": "english",
+ "schema": 1
+}
