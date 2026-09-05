@@ -25,6 +25,14 @@
   },
   "news": [
     {
+      "date": 1788128394,
+      "excerpt": "In the update I will release within a week, I am making a serious change to the game's balance. I am doing it knowing it will affect the progress you have built, and I want to apologise for that first. I make this game…",
+      "feedlabel": "Community Announcements",
+      "gid": "1842212951308587",
+      "title": "About the Upcoming Balance Change — August 31, 2026",
+      "url": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1842212951308587"
+    },
+    {
       "date": 1787502285,
       "excerpt": "NEW - Added time skip: spend diamonds to advance 2, 4 or 8 hours, with rewards based on your current speed and floor. - A summary panel now shows everything you earned when the skip ends. - Added rare ores: five special…",
       "feedlabel": "Community Announcements",
@@ -63,14 +71,6 @@
       "gid": "1839676055895848",
       "title": "Clicker Ore — Development Roadmap",
       "url": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1839676055895848"
-    },
-    {
-      "date": 1785542806,
-      "excerpt": "New Features Prestige Boss Reward Bonus Boss rewards now scale with your prestige! Every prestige level grants +15% to all boss rewards — at Prestige 10, that's 2.5× loot from every single boss. The boss selection…",
-      "feedlabel": "Community Announcements",
-      "gid": "1839676055889602",
-      "title": "1.1.7 Update Notes",
-      "url": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1839676055889602"
     }
   ],
   "screenshots": [
@@ -111,5 +111,8 @@
       "thumb": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3810540/abbc7ba032baa4a2d56eb8bea5acc0ab9ba66b92/ss_abbc7ba032baa4a2d56eb8bea5acc0ab9ba66b92.600x338.jpg"
     }
   ],
-  "trailer": null
+  "trailer": {
+    "name": "Gameplay",
+    "thumb": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/257212616/be9a1b66abbbaccdfead951338a714a0a3c2533e/movie_600x337.jpg"
+  }
 }
