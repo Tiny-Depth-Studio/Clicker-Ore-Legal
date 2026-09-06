@@ -25,6 +25,14 @@
   },
   "news": [
     {
+      "date": 1788721691,
+      "excerpt": "NEW - The enchantment system is here: enchantments fitted to your pickaxes, suits and pets raise your damage, critical hits, gold gain and heat resistance. - Enchantments come in four tiers: Common, Rare, Epic and…",
+      "feedlabel": "Community Announcements",
+      "gid": "1842846814451509",
+      "title": "1.6.13 Major Update — September 6, 2026",
+      "url": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1842846814451509"
+    },
+    {
       "date": 1788128394,
       "excerpt": "In the update I will release within a week, I am making a serious change to the game's balance. I am doing it knowing it will affect the progress you have built, and I want to apologise for that first. I make this game…",
       "feedlabel": "Community Announcements",
@@ -63,14 +71,6 @@
       "gid": "1840944183774844",
       "title": "Update 1.2.8 — 18 Languages and a Much Sturdier Game",
       "url": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1840944183774844"
-    },
-    {
-      "date": 1785790845,
-      "excerpt": "Hey miners, I wanted to open up the workshop for a moment and show you what's coming next. Below is everything currently on my desk, roughly in the order I plan to ship it. One thing worth saying up front: Clicker Ore…",
-      "feedlabel": "Community Announcements",
-      "gid": "1839676055895848",
-      "title": "Clicker Ore — Development Roadmap",
-      "url": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1839676055895848"
     }
   ],
   "screenshots": [
