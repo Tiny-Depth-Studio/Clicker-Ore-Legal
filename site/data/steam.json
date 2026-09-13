@@ -25,6 +25,14 @@
   },
   "news": [
     {
+      "date": 1789315528,
+      "excerpt": "NEW - Added a region panel: you now switch between the main mine and the dungeon from a single panel. - Added promo codes: type a code into the Promo Codes tab under Settings and claim your reward. - Added a chest to…",
+      "feedlabel": "Community Announcements",
+      "gid": "1843481262699782",
+      "title": "1.7.16 Update Notes — September 13, 2026",
+      "url": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1843481262699782"
+    },
+    {
       "date": 1788721691,
       "excerpt": "NEW - The enchantment system is here: enchantments fitted to your pickaxes, suits and pets raise your damage, critical hits, gold gain and heat resistance. - Enchantments come in four tiers: Common, Rare, Epic and…",
       "feedlabel": "Community Announcements",
@@ -63,14 +71,6 @@
       "gid": "1840944183784326",
       "title": "1.3.9 Patch Notes — August 16, 2026",
       "url": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1840944183784326"
-    },
-    {
-      "date": 1786562241,
-      "excerpt": "We spent the last eleven days on one thing: going through every corner of the game. This update doesn't add a new floor or a new pickaxe — instead it lets far more people play in their own language, makes sure the…",
-      "feedlabel": "Community Announcements",
-      "gid": "1840944183774844",
-      "title": "Update 1.2.8 — 18 Languages and a Much Sturdier Game",
-      "url": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1840944183774844"
     }
   ],
   "screenshots": [
