@@ -341,18 +341,15 @@ CSS = """
     background: var(--card-hover);
     border-color: var(--line-strong);
   }
-  .lang-code {
+  .lang-flag {
     flex: none;
-    min-width: 3.5rem;
-    text-align: center;
-    font-family: var(--font-mono);
-    font-size: 0.68rem;
-    padding: 0.28rem 0.42rem;
-    border-radius: 8px;
-    color: var(--accent-strong);
-    border: 1px solid var(--line-strong);
-    background: color-mix(in srgb, var(--accent) 10%, transparent);
+    width: 2.5rem;
+    height: 2.5rem;
+    object-fit: contain;
+    filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.35));
+    transition: transform 0.16s ease;
   }
+  .lang-card:hover .lang-flag { transform: scale(1.08); }
   .lang-text { display: flex; flex-direction: column; min-width: 0; }
   .lang-text strong { font-size: 0.96rem; font-weight: 600; color: var(--text); line-height: 1.25; }
   .lang-text span {

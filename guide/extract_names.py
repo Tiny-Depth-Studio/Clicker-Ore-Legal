@@ -93,6 +93,29 @@ WANTED = {
     "rare_ore_4": "OreTextKeys.OreUmbryssaName",
     "rare_ore_5": "OreTextKeys.OreZephirisName",
     "ore_gold_crystal": "OreTextKeys.OreGoldCrystalName",
+    "rarity_common": "RarityTextKeys.CommonName",
+    "rarity_rare": "RarityTextKeys.RareName",
+    "rarity_epic": "RarityTextKeys.EpicName",
+    "rarity_legendary": "RarityTextKeys.LegendaryName",
+    "enchantment_item": "EnchantmentTextKeys.ItemName",
+    "enchantment_name_format": "EnchantmentTextKeys.Name",
+    "enchantment_dust_format": "EnchantmentTextKeys.DustName",
+    "enchantment_piece_format": "EnchantmentTextKeys.PieceName",
+    "panel_enchantments": "EnchantmentTextKeys.Title",
+    "panel_inventory": "InventoryTextKeys.Title",
+    "panel_crafter": "UiTextKeys.CrafterTitle",
+    "panel_trader": "UiTextKeys.TraderTitle",
+    "panel_workers": "ActivityTextKeys.PanelWorkers",
+    "panel_lucky_spin": "LuckyWheelTextKeys.Title",
+    "panel_daily_missions": "MissionTextKeys.DailyTitle",
+    "panel_activity_log": "ActivityTextKeys.Title",
+    "panel_updates": "UiTextKeys.UpdateNewsTitle",
+    "panel_locations": "EnvironmentTextKeys.Title",
+    "panel_elevator": "UiTextKeys.ElevatorTitle",
+    "panel_skill_tree": "UiTextKeys.SkillTreeTitle",
+    "panel_store": "UiTextKeys.StoreTitle",
+    "tab_promo_codes": "UiTextKeys.SettingsTabPromoCode",
+    "chest_enchantment": 'StoreTextKeys.ChestName("enchantment")',
 }
 
 # Bir anahtari birden fazla urun paylasiyor: metinde {0} yer tutucusu var ve oyun
@@ -101,9 +124,9 @@ WANTED = {
 FORMATTED = {
     "package_premium_7": ("StoreTextKeys.PremiumPackageName", "7"),
     "package_premium_30": ("StoreTextKeys.PremiumPackageName", "30"),
-    "time_skip_2h": ("StoreTextKeys.TimeSkipName", "2"),
-    "time_skip_4h": ("StoreTextKeys.TimeSkipName", "4"),
     "time_skip_8h": ("StoreTextKeys.TimeSkipName", "8"),
+    "time_skip_16h": ("StoreTextKeys.TimeSkipName", "16"),
+    "time_skip_24h": ("StoreTextKeys.TimeSkipName", "24"),
 }
 
 
@@ -125,13 +148,13 @@ def collect_english():
     for name in os.listdir(LOC):
         if not name.endswith("TextTable.cs"):
             continue
-        found.update(scan(os.path.join(LOC, name), r'table\.Add(?:Shared)?\(\s*([\w.()\d, ]+?),\s*"((?:[^"\\]|\\.)*)"'))
+        found.update(scan(os.path.join(LOC, name), r'table\.Add(?:Shared)?\(\s*([\w.()\d, "]+?),\s*"((?:[^"\\]|\\.)*)"'))
     return found
 
 
 def collect(language_file):
     path = os.path.join(LOC, "Translations", language_file)
-    return scan(path, r'AddTranslation\(Id,\s*([\w.()\d, ]+?),\s*"((?:[^"\\]|\\.)*)"')
+    return scan(path, r'AddTranslation\(Id,\s*([\w.()\d, "]+?),\s*"((?:[^"\\]|\\.)*)"')
 
 
 def pick(raw, code):

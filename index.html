@@ -345,18 +345,15 @@
     background: var(--card-hover);
     border-color: var(--line-strong);
   }
-  .lang-code {
+  .lang-flag {
     flex: none;
-    min-width: 3.5rem;
-    text-align: center;
-    font-family: var(--font-mono);
-    font-size: 0.68rem;
-    padding: 0.28rem 0.42rem;
-    border-radius: 8px;
-    color: var(--accent-strong);
-    border: 1px solid var(--line-strong);
-    background: color-mix(in srgb, var(--accent) 10%, transparent);
+    width: 2.5rem;
+    height: 2.5rem;
+    object-fit: contain;
+    filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.35));
+    transition: transform 0.16s ease;
   }
+  .lang-card:hover .lang-flag { transform: scale(1.08); }
   .lang-text { display: flex; flex-direction: column; min-width: 0; }
   .lang-text strong { font-size: 0.96rem; font-weight: 600; color: var(--text); line-height: 1.25; }
   .lang-text span {
@@ -504,130 +501,130 @@
       <div class="block-head">
         <span class="kicker">18 languages</span>
         <h2>Player guide</h2>
-        <p class="block-dek">Pickaxes, skills, pets, prestige, bosses and the store, explained in plain terms - the same guide in every language the game ships in. Pick yours:</p>
+        <p class="block-dek">Pickaxes, skills, pets, workers, enchantments, prestige, bosses and the store, explained in plain terms - the same guide in every language the game ships in. Pick yours:</p>
       </div>
       <div class="lang-grid">
       <a class="lang-card" href="player_guide_id.html" hreflang="id" lang="id">
-        <span class="lang-code">ID</span>
+        <img class="lang-flag" src="assets/flags/id.png" alt="" width="40" height="40" loading="lazy">
         <span class="lang-text">
           <strong>Bahasa Indonesia</strong>
           <span>Panduan Pemain</span>
         </span>
       </a>
       <a class="lang-card" href="player_guide_de.html" hreflang="de" lang="de">
-        <span class="lang-code">DE</span>
+        <img class="lang-flag" src="assets/flags/de.png" alt="" width="40" height="40" loading="lazy">
         <span class="lang-text">
           <strong>Deutsch</strong>
           <span>Spielerhandbuch</span>
         </span>
       </a>
       <a class="lang-card" href="player_guide_en.html" hreflang="en" lang="en">
-        <span class="lang-code">EN</span>
+        <img class="lang-flag" src="assets/flags/en.png" alt="" width="40" height="40" loading="lazy">
         <span class="lang-text">
           <strong>English</strong>
           <span>Player Guide</span>
         </span>
       </a>
       <a class="lang-card" href="player_guide_es.html" hreflang="es" lang="es">
-        <span class="lang-code">ES</span>
+        <img class="lang-flag" src="assets/flags/es.png" alt="" width="40" height="40" loading="lazy">
         <span class="lang-text">
           <strong>Español</strong>
           <span>Guía del jugador</span>
         </span>
       </a>
       <a class="lang-card" href="player_guide_es_la.html" hreflang="es-419" lang="es-419">
-        <span class="lang-code">ES-419</span>
+        <img class="lang-flag" src="assets/flags/es_la.png" alt="" width="40" height="40" loading="lazy">
         <span class="lang-text">
           <strong>Español (Latinoamérica)</strong>
           <span>Guía del jugador</span>
         </span>
       </a>
       <a class="lang-card" href="player_guide_fr.html" hreflang="fr" lang="fr">
-        <span class="lang-code">FR</span>
+        <img class="lang-flag" src="assets/flags/fr.png" alt="" width="40" height="40" loading="lazy">
         <span class="lang-text">
           <strong>Français</strong>
           <span>Guide du joueur</span>
         </span>
       </a>
       <a class="lang-card" href="player_guide_it.html" hreflang="it" lang="it">
-        <span class="lang-code">IT</span>
+        <img class="lang-flag" src="assets/flags/it.png" alt="" width="40" height="40" loading="lazy">
         <span class="lang-text">
           <strong>Italiano</strong>
           <span>Guida del giocatore</span>
         </span>
       </a>
       <a class="lang-card" href="player_guide_pl.html" hreflang="pl" lang="pl">
-        <span class="lang-code">PL</span>
+        <img class="lang-flag" src="assets/flags/pl.png" alt="" width="40" height="40" loading="lazy">
         <span class="lang-text">
           <strong>Polski</strong>
           <span>Poradnik gracza</span>
         </span>
       </a>
       <a class="lang-card" href="player_guide_pt_br.html" hreflang="pt-BR" lang="pt-BR">
-        <span class="lang-code">PT-BR</span>
+        <img class="lang-flag" src="assets/flags/pt_br.png" alt="" width="40" height="40" loading="lazy">
         <span class="lang-text">
           <strong>Português (Brasil)</strong>
           <span>Guia do jogador</span>
         </span>
       </a>
       <a class="lang-card" href="player_guide_vi.html" hreflang="vi" lang="vi">
-        <span class="lang-code">VI</span>
+        <img class="lang-flag" src="assets/flags/vi.png" alt="" width="40" height="40" loading="lazy">
         <span class="lang-text">
           <strong>Tiếng Việt</strong>
           <span>Hướng dẫn người chơi</span>
         </span>
       </a>
       <a class="lang-card" href="player_guide_tr.html" hreflang="tr" lang="tr">
-        <span class="lang-code">TR</span>
+        <img class="lang-flag" src="assets/flags/tr.png" alt="" width="40" height="40" loading="lazy">
         <span class="lang-text">
           <strong>Türkçe</strong>
           <span>Oyuncu Rehberi</span>
         </span>
       </a>
       <a class="lang-card" href="player_guide_ru.html" hreflang="ru" lang="ru">
-        <span class="lang-code">RU</span>
+        <img class="lang-flag" src="assets/flags/ru.png" alt="" width="40" height="40" loading="lazy">
         <span class="lang-text">
           <strong>Русский</strong>
           <span>Руководство игрока</span>
         </span>
       </a>
       <a class="lang-card" href="player_guide_uk.html" hreflang="uk" lang="uk">
-        <span class="lang-code">UK</span>
+        <img class="lang-flag" src="assets/flags/uk.png" alt="" width="40" height="40" loading="lazy">
         <span class="lang-text">
           <strong>Українська</strong>
           <span>Посібник гравця</span>
         </span>
       </a>
       <a class="lang-card" href="player_guide_th.html" hreflang="th" lang="th">
-        <span class="lang-code">TH</span>
+        <img class="lang-flag" src="assets/flags/th.png" alt="" width="40" height="40" loading="lazy">
         <span class="lang-text">
           <strong>ไทย</strong>
           <span>คู่มือผู้เล่น</span>
         </span>
       </a>
       <a class="lang-card" href="player_guide_ja.html" hreflang="ja" lang="ja">
-        <span class="lang-code">JA</span>
+        <img class="lang-flag" src="assets/flags/ja.png" alt="" width="40" height="40" loading="lazy">
         <span class="lang-text">
           <strong>日本語</strong>
           <span>プレイヤーガイド</span>
         </span>
       </a>
       <a class="lang-card" href="player_guide_zh_hans.html" hreflang="zh-Hans" lang="zh-Hans">
-        <span class="lang-code">ZH-CN</span>
+        <img class="lang-flag" src="assets/flags/zh_hans.png" alt="" width="40" height="40" loading="lazy">
         <span class="lang-text">
           <strong>简体中文</strong>
           <span>玩家指南</span>
         </span>
       </a>
       <a class="lang-card" href="player_guide_zh_hant.html" hreflang="zh-Hant" lang="zh-Hant">
-        <span class="lang-code">ZH-TW</span>
+        <img class="lang-flag" src="assets/flags/zh_hant.png" alt="" width="40" height="40" loading="lazy">
         <span class="lang-text">
           <strong>繁體中文</strong>
           <span>玩家指南</span>
         </span>
       </a>
       <a class="lang-card" href="player_guide_ko.html" hreflang="ko" lang="ko">
-        <span class="lang-code">KO</span>
+        <img class="lang-flag" src="assets/flags/ko.png" alt="" width="40" height="40" loading="lazy">
         <span class="lang-text">
           <strong>한국어</strong>
           <span>플레이어 가이드</span>

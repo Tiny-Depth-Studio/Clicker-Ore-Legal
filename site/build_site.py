@@ -32,11 +32,7 @@ OUT = os.path.join(ROOT, "index.html")
 NEWS_SHOWN = 4
 MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
 
-BADGES = {
-    "en": "EN", "tr": "TR", "de": "DE", "fr": "FR", "es": "ES", "es_la": "ES-419",
-    "it": "IT", "pl": "PL", "pt_br": "PT-BR", "ru": "RU", "uk": "UK", "ja": "JA",
-    "ko": "KO", "zh_hans": "ZH-CN", "zh_hant": "ZH-TW", "th": "TH", "id": "ID", "vi": "VI",
-}
+FLAG_DIR = os.path.join(ROOT, "assets", "flags")
 
 PAGE = """<!DOCTYPE html>
 <html lang="en">
@@ -116,7 +112,7 @@ PAGE = """<!DOCTYPE html>
       <div class="block-head">
         <span class="kicker">{language_count} languages</span>
         <h2>Player guide</h2>
-        <p class="block-dek">Pickaxes, skills, pets, prestige, bosses and the store, explained in plain terms - the same guide in every language the game ships in. Pick yours:</p>
+        <p class="block-dek">Pickaxes, skills, pets, workers, enchantments, prestige, bosses and the store, explained in plain terms - the same guide in every language the game ships in. Pick yours:</p>
       </div>
       <div class="lang-grid">
 {languages}
@@ -162,7 +158,7 @@ SHOT = """      <a class="shot{extra}" href="{href}">
       </a>"""
 
 LANG_CARD = """      <a class="lang-card" href="player_guide_{code}.html" hreflang="{html_lang}" lang="{html_lang}">
-        <span class="lang-code">{badge}</span>
+        <img class="lang-flag" src="assets/flags/{code}.png" alt="" width="40" height="40" loading="lazy">
         <span class="lang-text">
           <strong>{name}</strong>
           <span>{subtitle}</span>
@@ -230,13 +226,14 @@ def media_tiles(data):
 def language_cards():
     entries = []
     for code in guide_build.available_languages():
+        if not os.path.exists(os.path.join(FLAG_DIR, code + ".png")):
+            raise FileNotFoundError("missing flag image assets/flags/{0}.png".format(code))
         lang = guide_build.load_language(code)
         entries.append({
             "code": code,
             "html_lang": lang["html_lang"],
             "name": lang["name"],
             "subtitle": lang["brand_sub"],
-            "badge": BADGES.get(code, code.upper()),
         })
     entries.sort(key=lambda entry: entry["name"].casefold())
     return "\n".join(LANG_CARD.format(**entry) for entry in entries), len(entries)
