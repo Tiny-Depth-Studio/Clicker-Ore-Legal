@@ -25,6 +25,14 @@
   },
   "news": [
     {
+      "date": 1789906385,
+      "excerpt": "NEW - Added Ascension: a second prestige layer that sits on top of Awakening. You give up your Awakening upgrades and your Essence and earn Pure Essence. - Pure Essence is spent on two Ascension parameters: one grows…",
+      "feedlabel": "Community Announcements",
+      "gid": "1844115010498817",
+      "title": "1.9.21 Major Update — September 20, 2026",
+      "url": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1844115010498817"
+    },
+    {
       "date": 1789593242,
       "excerpt": "NEW - Added the Abyss: a new region that opens after floor 700. You break six stages against the clock; each stage the ore gets tougher and you take penalties. - Abyss stages reward ore stone and enchantment materials.…",
       "feedlabel": "Community Announcements",
@@ -63,14 +71,6 @@
       "gid": "1841579228673682",
       "title": "1.5.12 Update Notes — August 23, 2026",
       "url": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1841579228673682"
-    },
-    {
-      "date": 1787169918,
-      "excerpt": "NEW - Added the Lucky Spin: an 8-slice wheel that refreshes every 3 hours. - 2 free spins per cycle; further spins cost diamonds, and each spin raises the next price. - Won slices stay closed for the cycle; the wheel…",
-      "feedlabel": "Community Announcements",
-      "gid": "1841579228663642",
-      "title": "1.4.11 Update Notes — August 19, 2026",
-      "url": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1841579228663642"
     }
   ],
   "screenshots": [
