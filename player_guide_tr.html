@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <title>Clicker Ore Game - Oyuncu Rehberi</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Madende ne nasıl işliyor: kazmalar, evcil hayvanlar, işçiler, efsunlar, yetenekler, prestij, bosslar ve mağaza - kısaca.">
+<meta name="description" content="Madende ne nasıl işliyor: kazmalar, evcil hayvanlar, işçiler, efsunlar, yetenekler, Uyanış, Yükseliş, bosslar, Uçurum ve mağaza - kısaca.">
 <style>
   :root {
     --bg: #14110d;
@@ -28,6 +28,8 @@
     --cur-key: #d98a63;
     --cur-skillstone: #7fc9a0;
     --cur-orestone: #b5a68c;
+    --cur-abysskey: #8f7fd6;
+    --cur-pureessence: #d7bff5;
 
     --font-display: "Bahnschrift", "Segoe UI Semibold", "Arial Narrow Bold", "Arial Narrow", sans-serif;
     --font-body: "Sitka Text", "Iowan Old Style", Georgia, "Times New Roman", serif;
@@ -492,17 +494,18 @@
       <li><a href="#tasks"><span class="toc-num">10</span>Görevler</a></li>
       <li><a href="#trade"><span class="toc-num">11</span>Tüccar</a></li>
       <li><a href="#extras"><span class="toc-num">12</span>Bedava Ödüller</a></li>
-      <li><a href="#prestige"><span class="toc-num">13</span>Prestij</a></li>
-      <li><a href="#bosses"><span class="toc-num">14</span>Bosslar</a></li>
-      <li><a href="#store"><span class="toc-num">15</span>Mağaza ve Başarımlar</a></li>
-      <li><a href="#progress"><span class="toc-num">16</span>İlerleme ve Kayıt</a></li>
+      <li><a href="#awakening"><span class="toc-num">13</span>Uyanış</a></li>
+      <li><a href="#ascension"><span class="toc-num">14</span>Yükseliş</a></li>
+      <li><a href="#dungeons"><span class="toc-num">15</span>Bosslar ve Uçurum</a></li>
+      <li><a href="#store"><span class="toc-num">16</span>Mağaza ve Başarımlar</a></li>
+      <li><a href="#progress"><span class="toc-num">17</span>İlerleme ve Kayıt</a></li>
     </ul>
   </nav>
 
   <main>
     <header class="hero">
       <div class="strata" role="presentation"></div>
-      <div class="eyebrow">Oyuncu Rehberi - 2026-09-14</div>
+      <div class="eyebrow">Oyuncu Rehberi - 2026-09-21</div>
       <h1 class="title">Madenin Tamamı,<br>Kısaca</h1>
       <p class="subtitle">Hangi sistem ne işe yarar ve zamanını nereye harcamalısın. Sayı ve formül yok - yalnızca bilmen gerekenler.</p>
       <div class="langbar">
@@ -519,14 +522,14 @@
             <div class="stage-label">Başlangıç</div>
             <ul>
               <li>Kazmanı durmadan yükselt; derine indikçe yeni kazmalar açılır.</li>
-              <li>Altın balonu gördükçe tıkla, ilk yeteneklerini kullanmaya başla.</li>
+              <li>Altın balonu ve Altın Kristal gördükçe tıkla, ilk yeteneklerini kullanmaya başla.</li>
               <li>Elmasın yettiğinde ilk evcil hayvanını al.</li>
             </ul>
           </div>
           <div class="strategy-stage">
             <div class="stage-label">Orta</div>
             <ul>
-              <li>İlerleme yavaşlayınca prestij yap ve Öz kazan.</li>
+              <li>İlerleme yavaşlayınca Uyanış yap ve Öz kazan.</li>
               <li>Görevler, zırhlar, yetenek ağacı ve tüccar bu dönemde açılır.</li>
               <li>Öz'ü tek parametreye yığmak yerine dağıt.</li>
             </ul>
@@ -534,9 +537,16 @@
           <div class="strategy-stage">
             <div class="stage-label">İleri</div>
             <ul>
-              <li>Anahtarın oldukça bosslarla dövüş.</li>
+              <li>Anahtarın oldukça bosslarla dövüş, sonra Uçurum koşularına gir.</li>
               <li>İşçiler katılır, efsun malzemeleri düşmeye başlar.</li>
               <li>Isı hasarını yemesin diye zırhını yükseltmeyi ihmal etme.</li>
+            </ul>
+          </div>
+          <div class="strategy-stage">
+            <div class="stage-label">Uzun vade</div>
+            <ul>
+              <li>Çok daha derinde Yükseliş açılır ve Uyanış döngüsünün tamamını sıfırlar.</li>
+              <li>Karşılığında Saf Öz kazanırsın; o da sonraki her koşuyu kalıcı olarak hızlandırır.</li>
             </ul>
           </div>
         </div>
@@ -558,12 +568,12 @@
         <div class="cur-card" style="--dot:var(--cur-diamond)">
           <h4><span class="dot"></span>Elmas</h4>
           <p><b>Gerçek para alışverişinden</b>, Şans Çarkı ödüllerinden ve promosyon kodlarından gelir.</p>
-          <p>Evcil hayvanlara, Sonsuz eşyalara, zaman atlamaya ve sandıklara harcanır.</p>
+          <p>Evcil hayvanlara, Sonsuz eşyalara, zaman atlamaya, sandıklara ve anahtar paketlerine harcanır.</p>
         </div>
         <div class="cur-card" style="--dot:var(--cur-essence)">
           <h4><span class="dot"></span>Öz</h4>
-          <p><b>Prestijden</b>, bosslardan ve Tüccar panelinden gelir.</p>
-          <p>Kalıcı prestij parametrelerine harcanır.</p>
+          <p><b>Uyanış</b> ödülüdür; bosslar ve Tüccar da verir.</p>
+          <p>Kalıcı Uyanış parametrelerine harcanır.</p>
         </div>
         <div class="cur-card" style="--dot:var(--cur-taskium)">
           <h4><span class="dot"></span>Taskium</h4>
@@ -572,7 +582,7 @@
         </div>
         <div class="cur-card" style="--dot:var(--cur-key)">
           <h4><span class="dot"></span>Zindan Anahtarı</h4>
-          <p>Günde bir bedava anahtar, ayrıca mağaza ve Şans Çarkı.</p>
+          <p>Günde bir bedava, ayrıca mağaza ve Şans Çarkı.</p>
           <p>Boss dövüşüne girmek için harcanır.</p>
         </div>
         <div class="cur-card" style="--dot:var(--cur-skillstone)">
@@ -582,13 +592,23 @@
         </div>
         <div class="cur-card" style="--dot:var(--cur-orestone)">
           <h4><span class="dot"></span>Cevher Taşı</h4>
-          <p>Kırdığın her cevherden, başarımlardan ve bosslardan gelir.</p>
+          <p>Kırdığın her cevherden, başarımlardan, bosslardan ve Uçurum koşularından gelir.</p>
           <p>Takaslara, efsun üretimine ve işçi yükseltmelerine harcanır.</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-abysskey)">
+          <h4><span class="dot"></span>Uçurum Anahtarı</h4>
+          <p>Günde bir bedava, ayrıca mağazadan elmasla alınır.</p>
+          <p>Uçurum koşusuna girmek için harcanır.</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-pureessence)">
+          <h4><span class="dot"></span>Saf Öz</h4>
+          <p><b>Yükseliş</b> ödülüdür; başka hiçbir yerden gelmez.</p>
+          <p>Yalnızca Yükseliş parametrelerine harcanır.</p>
         </div>
       </div>
       <div class="callout">
           <div class="callout-label">Sunucu paraları</div>
-          Elmas ve zindan anahtarı sunucuda tutulur; bunlarla alışveriş için çevrimiçi olman gerekir.
+          Elmas, zindan anahtarı ve Uçurum Anahtarı sunucuda tutulur; bunlarla alışveriş için çevrimiçi olman gerekir.
         </div>
     </section>
 
@@ -596,10 +616,10 @@
       <div class="section-head"><span class="section-num">03</span><h2>Hasar ve Kritik Vuruş</h2></div>
       <p class="section-dek">İki ayrı hasar kaynağı ve onları katlayan kritik vuruşlar.</p>
       <ul>
-          <li><strong>Tıklama hasarı</strong> ilk kazmandan, Öfkeli Tıklama yeteneğinden, unvanından, prestij parametrelerinden ve efsunlardan gelir.</li>
+          <li><strong>Tıklama hasarı</strong> ilk kazmandan, Öfkeli Tıklama yeteneğinden, unvanından, Uyanış parametrelerinden ve efsunlardan gelir.</li>
           <li><strong>Otomatik hasar</strong> diğer kazmalardan, Cinnet yeteneğinden, evcil hayvanlarından ve efsunlardan gelir; cevher canlı olduğu sürece kesintisiz işler.</li>
           <li>Güç Birliği yükseldikçe otomatik hasarının bir payı her tıklamaya da eklenir.</li>
-          <li>Her tıklama <strong>kritik</strong> olup daha sert vurabilir. Kritik şansı ve çarpanı yetenekler, prestij, unvanlar ve efsunlarla artar.</li>
+          <li>Her tıklama <strong>kritik</strong> olup daha sert vurabilir. Kritik şansı ve çarpanı yetenekler, Uyanış parametreleri, unvanlar ve efsunlarla artar.</li>
         </ul>
     </section>
 
@@ -617,8 +637,8 @@
           Belirli seviyelere ulaştıkça bir eşyanın gücü büyük bir sıçrama yapar. Bir eşyayı bir sonraki eşiğe taşımak genelde en iyi yükseltmedir.
         </div>
       <div class="callout warn">
-          <div class="callout-label">Prestijde ne olur</div>
-          Prestij kazmaları yeniden kilitler, zırh ve evcil hayvan yükseltmelerini sıfırlar. Evcil hayvanların senin kalır.
+          <div class="callout-label">Uyanış sonrası</div>
+          Uyanış kazmaları yeniden kilitler, zırh ve evcil hayvan yükseltmelerini sıfırlar. Evcil hayvanların senin kalır.
         </div>
     </section>
 
@@ -641,8 +661,8 @@
           <li>Gelir bir havuzda birikir, sen toplayana kadar bekler. İşçileri Cevher Taşı ile yükseltebilirsin.</li>
         </ul>
       <div class="callout warn">
-          <div class="callout-label">Prestijden önce topla</div>
-          İşçiler yalnızca oyun açıkken kazanır. Prestij seviyelerini korur ama toplanmamış geliri siler.
+          <div class="callout-label">Uyanış öncesi topla</div>
+          İşçiler yalnızca oyun açıkken kazanır. Uyanış seviyelerini korur ama toplanmamış geliri siler.
         </div>
     </section>
 
@@ -656,8 +676,8 @@
           <li>İşine yaramayan efsunu tüccarda toza çevirebilir, malzemeleri bir üst kademeye takas edebilirsin.</li>
         </ul>
       <div class="callout">
-          <div class="callout-label">Prestij güvenli</div>
-          Prestij efsunları asla silmez; kilitlenen bir eşyanın efsunları Envanter bölümüne geri döner.
+          <div class="callout-label">Uyanış güvenli</div>
+          Uyanış efsunları asla silmez; kilitlenen bir eşyanın efsunları Envanter bölümüne geri döner.
         </div>
     </section>
 
@@ -668,16 +688,20 @@
           <li>Arada bir <strong>süreli kat</strong> gelir: cevheri süre bitmeden kırman gerekir, karşılığında daha çok altın verir. Süre dolarsa bir kat geri düşersin ve otomatik ilerleme kapanır.</li>
           <li>Her cevher altının yanında Cevher Taşı da düşürür.</li>
           <li>Çok nadiren <strong>nadir cevherler</strong> (Ferroviks, Karnit, Talveris, Umbrissa, Zefiris) çıkar; her biri bir kez bulunur.</li>
-          <li>Asansör ile ulaştığın katlar arasında gidip gelebilirsin. Bölgeler paneli ana maden ile zindanlar arasında geçiş yapar.</li>
+          <li>Asansör ile ulaştığın katlar arasında gidip gelebilirsin. Bölgeler paneli ana maden, zindan ve Uçurum arasında geçiş yapar.</li>
         </ul>
+      <div class="callout">
+          <div class="callout-label">Aşağıda farm verimsizdir</div>
+          Efsun tozu ve parçası en çok ulaştığın en derin katın yakınında düşer; çok aşağıda kalırsan düşme şansı belirgin biçimde azalır.
+        </div>
     </section>
 
     <section id="skills">
       <div class="section-head"><span class="section-num">09</span><h2>Yetenekler ve Unvanlar</h2></div>
       <p class="section-dek">Süreli güçlendirmeler ve tırmandıkça kendiliğinden gelen bonuslar.</p>
       <ul>
-          <li><strong>Aktif yetenekler</strong> derine indikçe bedava açılır; kısa süre güçlendirir, sonra bekleme süresine girer. Yetenek Taşı ile Yetenek Ağacı üzerinden güçlenir ve prestijde kaybolmaz.</li>
-          <li><strong>Unvanlar</strong> tırmandıkça kendiliğinden gelir ve hasar, altın, ısı direnci gibi bonuslar verir. Prestijde baştan kazanılır.</li>
+          <li><strong>Aktif yetenekler</strong> derine indikçe bedava açılır; kısa süre güçlendirir, sonra bekleme süresine girer. Yetenek Taşı ile Yetenek Ağacı üzerinden güçlenir ve Uyanış ile kaybolmaz.</li>
+          <li><strong>Unvanlar</strong> tırmandıkça kendiliğinden gelir ve hasar, altın, ısı direnci gibi bonuslar verir. Uyanış sonrası baştan kazanılır.</li>
         </ul>
       <div class="callout">
           <div class="callout-label">Kombo</div>
@@ -697,70 +721,91 @@
     <section id="trade">
       <div class="section-head"><span class="section-num">11</span><h2>Tüccar</h2></div>
       <p class="section-dek">Artan kaynakları işe yarar şeylere çevirdiğin yer.</p>
-      <p>Cevher Taşı'nı Öz'e ya da Yetenek Taşı'na, efsun malzemelerini üst kademeye çevirebilir, istemediğin efsunları parçalayabilirsin. En değerlisi Yetenek Taşı takasıdır: mağazadan bir şey almadan yeteneklerini güçlendirmenin yolu.</p>
+      <p>Cevher Taşı taşını Öz'e ya da Yetenek Taşı taşına, efsun malzemelerini üst kademeye çevirebilir, istemediğin efsunları parçalayabilirsin. En değerlisi Yetenek Taşı takasıdır: mağazadan bir şey almadan yeteneklerini güçlendirmenin yolu.</p>
     </section>
 
     <section id="extras">
       <div class="section-head"><span class="section-num">12</span><h2>Bedava Ödüller</h2></div>
       <p class="section-dek">Oyuna uğramaktan fazlasını istemeyen kaynaklar.</p>
       <ul>
-          <li><strong>Altın balonu</strong> ara ara ekrana gelir; tıkla, altın kazan.</li>
-          <li><strong>Altın Kristal</strong> tıkladığında cevheri kısa süreliğine bol altınlı bir bonus cevhere çevirir.</li>
+          <li><strong>Altın balonu</strong> ara ara ekrana gelir; tıkla, altın kazan. Kaçırma diye bir şey yok - tıklayana kadar ekranda bekler.</li>
+          <li><strong>Altın Kristal</strong> tıkladığında cevheri kısa süreliğine bol altınlı bir bonus cevhere çevirir; yalnızca ana madende toplanır.</li>
           <li><strong>Çevrimdışı kazanç</strong> oyun kapalıyken birikir.</li>
           <li><strong>Oyun süresi ödülü</strong> oynadıkça altın verir.</li>
-          <li><strong>Günlük ödül</strong> her gün mağazada bedava anahtar verir.</li>
+          <li><strong>Günlük ödül</strong> mağazada her gün bir bedava zindan anahtarı ve bir bedava Uçurum Anahtarı verir; ikisi birbirinden bağımsızdır.</li>
           <li><strong>Şans Çarkı</strong> belirli aralıklarla yenilenir ve bedava çevirme hakkı verir.</li>
           <li><strong>Promosyon Kodları</strong> - duyurularda paylaştığımız kodları Ayarlar menüsünden kullanabilirsin.</li>
         </ul>
     </section>
 
-    <section id="prestige">
-      <div class="section-head"><span class="section-num">13</span><h2>Prestij</h2></div>
+    <section id="awakening">
+      <div class="section-head"><span class="section-num">13</span><h2>Uyanış</h2></div>
       <p class="section-dek">Bu koşunun ilerlemesini kalıcı güce çevir.</p>
       <ul>
-          <li>Belirli bir derinliği geçince prestij yapabilirsin. Her koşu yeniden ilk kattan başlar.</li>
-          <li><strong>Sıfırlananlar:</strong> altın, kat ilerlemesi, kazma, zırh ve evcil hayvan yükseltmeleri, unvanlar, görev ilerlemesi ve toplanmamış işçi geliri.</li>
-          <li><strong>Korunanlar:</strong> elmaslar ve elmasla alınanlar, anahtarlar, boss ilerlemesi, Öz, prestij parametreleri, yetenek ağacı, efsunlar, başarımlar ve işçi seviyeleri.</li>
+          <li>Belirli bir derinliği geçince Uyanış yapabilirsin. Her koşu yeniden ilk kattan başlar.</li>
+          <li><strong>Sıfırlananlar:</strong> altın, kat ilerlemesi, kazma kilitleri ve yükseltmeleri, zırh ve evcil hayvan yükseltmeleri, eşya yetenekleri, unvanlar, Taskium, görev ilerlemesi, işçilere verilen kazmalar ve toplanmamış işçi geliri.</li>
+          <li><strong>Korunanlar:</strong> elmaslar ve elmasla alınanlar, anahtarlar, boss ve Uçurum ilerlemesi, Öz, Uyanış parametreleri, yetenek ağacı, Yetenek Taşı, Cevher Taşı, efsunlar, başarımlar, işçi seviyeleri ve Yükseliş tarafındaki her şey.</li>
           <li>Kazandığın Öz ulaştığın en derin kata bağlıdır ve derinlikle hızla büyür. Öz'ü kalıcı parametrelere harca.</li>
         </ul>
       <div class="callout">
           <div class="callout-label">Biraz daha derine in</div>
-          Prestijden önce birkaç kat daha inmek, hemen yeniden prestij yapmaktan genelde daha değerlidir.
+          Uyanış yapmadan önce birkaç kat daha inmek, hemen yeniden Uyanış yapmaktan genelde daha değerlidir.
         </div>
     </section>
 
-    <section id="bosses">
-      <div class="section-head"><span class="section-num">14</span><h2>Bosslar</h2></div>
-      <p class="section-dek">Öz ve Cevher Taşı için süreli bir hasar yarışı.</p>
+    <section id="ascension">
+      <div class="section-head"><span class="section-num">14</span><h2>Yükseliş</h2></div>
+      <p class="section-dek">Uyanış üzerine binen ikinci katman.</p>
       <ul>
-          <li>Bölgeler panelinden zindanı seç, zindan anahtarı harcayıp bossla dövüş.</li>
-          <li>Bosslar sırayla açılır; birini yenince sıradaki gelir. Boss ilerlemesi prestijde korunur.</li>
+          <li>Çok daha derin bir kata ulaşınca Yükseliş açılır; prestij sekmesinin altında kendi sayfası vardır.</li>
+          <li><strong>Sıfırlananlar:</strong> Uyanış parametreleri ve Öz - yani o döngü tamamen baştan başlar; kazmalar, katlar ve yükseltmeler de Uyanış ile aynı şekilde sıfırlanır.</li>
+          <li><strong>Korunanlar:</strong> Uyanış seviyen, elmaslar ve elmasla alınanlar, anahtarlar, boss ve Uçurum ilerlemesi, efsunlar, yetenek ağacı, başarımlar, işçi seviyeleri ve biriken Saf Öz.</li>
+          <li>Karşılığında <strong>Saf Öz</strong> kazanırsın. İki parametreye harcanır: <strong>Uyanış Yankısı</strong> her Uyanış parametresinin bonusunu büyütür, <strong>Kaynak</strong> ise Uyanış başına aldığın Öz'ü artırır.</li>
+          <li>İki parametre de bileşik büyür: her seviye bir öncekinin üzerine çarparak biner.</li>
+        </ul>
+      <div class="callout">
+          <div class="callout-label">Ne zaman yükselmeli</div>
+          Yükseliş tek bir koşuyu değil, koşu döngüsünün tamamını hızlandırır. Öz ile alınan parametrelerin pahalılaştığı ve yeni Uyanış turlarının artık az şey kattığı noktada değerlidir.
+        </div>
+    </section>
+
+    <section id="dungeons">
+      <div class="section-head"><span class="section-num">15</span><h2>Bosslar ve Uçurum</h2></div>
+      <p class="section-dek">Ana madenin dışındaki iki süreli meydan okuma.</p>
+      <ul>
+          <li>İkisine de Bölgeler panelinden geçersin; oradayken ana madenin ısısı ve kat ilerlemesi durur.</li>
+          <li><strong>Bosslar</strong> zindan anahtarıyla açılır: süre dolmadan bossu indirirsen Öz ve Cevher Taşı kazanırsın. Bosslar sırayla açılır ve yenilen boss kalıcı olarak açık kalır.</li>
+          <li><strong>Uçurum</strong> Uçurum Anahtarı ile açılır ve tek bir geri sayımla işler: taşları arka arkaya kırarsın, her aşama bir öncekinden serttir.</li>
+          <li>Her uçurum aşamasının kendi <strong>cezası</strong> vardır - biri otomatik hasarını, biri tıklama hasarını, biri kritiğini kısar. Ceza yalnızca o aşama sürerken geçerlidir.</li>
+          <li>Uçurumda kırdığın her aşamanın ödülü senindir: süre dolsa da, koşuyu bıraksan da o ana kadar kazandığını alırsın. Tüm aşamaları bitirirsen sıradaki uçurum açılır.</li>
         </ul>
       <div class="callout warn">
-          <div class="callout-label">Kaybetmenin bedeli var</div>
-          Süre önce biterse ödül alamazsın ve anahtar gider.
+          <div class="callout-label">Boss kaybı bedava değil</div>
+          Süre boss ölmeden biterse ödül alamazsın ve harcadığın anahtar geri gelmez.
         </div>
     </section>
 
     <section id="store">
-      <div class="section-head"><span class="section-num">15</span><h2>Mağaza ve Başarımlar</h2></div>
-      <p class="section-dek">Elmas, anahtar, paketler, premium, zaman atlama, sandıklar ve kalıcı Sonsuz eşyalar.</p>
+      <div class="section-head"><span class="section-num">16</span><h2>Mağaza ve Başarımlar</h2></div>
+      <p class="section-dek">Elmas, anahtarlar, paketler, premium, zaman atlama, sandıklar ve kalıcı Sonsuz eşyalar.</p>
       <ul>
           <li><strong>Premium</strong> belirli bir süre boyunca hasarını, altınını ve çevrimdışı kazancını artırır.</li>
           <li><strong>Zaman atlama</strong> oyunu birkaç saat ileri sarar; kazancın o anki gücüne göre hesaplanır.</li>
           <li><strong>Efsun Sandığı</strong> anında açılır ve efsun malzemesi verir.</li>
-          <li><strong>Sonsuz eşyalar</strong> bir kez alınır ve prestijde bile kaybolmaz.</li>
+          <li><strong>Anahtar paketleri</strong> elmasla alınır; hem zindan anahtarı hem Uçurum Anahtarı için paket vardır.</li>
+          <li><strong>Sonsuz eşyalar</strong> bir kez alınır; Uyanış ile de Yükseliş ile de kaybolmaz.</li>
           <li><strong>Başarımlar</strong> Cevher Taşı verir; ödülleri kendin alman gerekir.</li>
         </ul>
     </section>
 
     <section id="progress">
-      <div class="section-head"><span class="section-num">16</span><h2>İlerleme ve Kayıt</h2></div>
+      <div class="section-head"><span class="section-num">17</span><h2>İlerleme ve Kayıt</h2></div>
       <p class="section-dek">Koşunu takip ettiğin yerler ve ilerlemenin nasıl korunduğu.</p>
       <ul>
           <li>Steam liderlik tabloları, istatistik ekranı ve <strong>Etkinlik Günlüğü</strong> ilerlemeni gösterir.</li>
           <li><strong>Güncellemeler</strong> paneli son güncelleme notlarını gösterir.</li>
           <li>Oyun kendini düzenli olarak kaydeder ve Steam Cloud'a yedekler; başka bir bilgisayarda kaldığın yerden devam edebilirsin.</li>
+          <li>Discord açıksa profilinde hangi kattasın ve Uyanış / Yükseliş seviyen görünür.</li>
         </ul>
     </section>
 

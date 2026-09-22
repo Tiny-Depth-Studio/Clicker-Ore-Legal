@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <title>Clicker Ore Game - Spielerhandbuch</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="So funktioniert die Mine: Währungen, Spitzhacken, Begleiter, Arbeiter, Verzauberungen, Fertigkeiten, Prestige, Bosse und der Shop - ohne Formeln erklärt.">
+<meta name="description" content="Wie die Mine funktioniert: Spitzhacken, Gefährten, Arbeiter, Verzauberungen, Fertigkeiten, Erwachen, Aufstieg, Bosse, der Abgrund und der Shop - kurz gefasst.">
 <style>
   :root {
     --bg: #14110d;
@@ -28,6 +28,8 @@
     --cur-key: #d98a63;
     --cur-skillstone: #7fc9a0;
     --cur-orestone: #b5a68c;
+    --cur-abysskey: #8f7fd6;
+    --cur-pureessence: #d7bff5;
 
     --font-display: "Bahnschrift", "Segoe UI Semibold", "Arial Narrow Bold", "Arial Narrow", sans-serif;
     --font-body: "Sitka Text", "Iowan Old Style", Georgia, "Times New Roman", serif;
@@ -480,39 +482,32 @@
     <a class="toc-home" href="index.html">← Startseite</a>
     <div class="toc-brand">Clicker Ore Game<small>Spielerhandbuch</small></div>
     <ul class="toc-list">
-      <li><a href="#start"><span class="toc-num">01</span>Der Einstieg</a></li>
-      <li><a href="#currencies"><span class="toc-num">02</span>Die 7 Währungen</a></li>
-      <li><a href="#damage"><span class="toc-num">03</span>Klickschaden und automatischer Schaden</a></li>
-      <li><a href="#critical"><span class="toc-num">04</span>Kritische Treffer</a></li>
-      <li><a href="#pickaxes"><span class="toc-num">05</span>Spitzhacken</a></li>
-      <li><a href="#suits"><span class="toc-num">06</span>Rüstungen</a></li>
-      <li><a href="#temperature"><span class="toc-num">07</span>Hitze</a></li>
-      <li><a href="#pets"><span class="toc-num">08</span>Begleiter</a></li>
-      <li><a href="#workers"><span class="toc-num">09</span>Arbeiter</a></li>
-      <li><a href="#enchantments"><span class="toc-num">10</span>Verzauberungen</a></li>
-      <li><a href="#floors"><span class="toc-num">11</span>Etagen, Erz und Tiefe</a></li>
-      <li><a href="#skills"><span class="toc-num">12</span>Aktive Fertigkeiten</a></li>
-      <li><a href="#titles"><span class="toc-num">13</span>Titel</a></li>
-      <li><a href="#tasks"><span class="toc-num">14</span>Aufgaben und Taskium</a></li>
-      <li><a href="#missions"><span class="toc-num">15</span>Tägliche Missionen</a></li>
-      <li><a href="#trade"><span class="toc-num">16</span>Händler</a></li>
-      <li><a href="#extras"><span class="toc-num">17</span>Gratisbelohnungen</a></li>
-      <li><a href="#prestige"><span class="toc-num">18</span>Prestige</a></li>
-      <li><a href="#bosses"><span class="toc-num">19</span>Bosse</a></li>
-      <li><a href="#achievements"><span class="toc-num">20</span>Erfolge</a></li>
-      <li><a href="#store"><span class="toc-num">21</span>Shop</a></li>
-      <li><a href="#progress"><span class="toc-num">22</span>Deinen Fortschritt verfolgen</a></li>
-      <li><a href="#save"><span class="toc-num">23</span>Spielstände</a></li>
-      <li><a href="#languages"><span class="toc-num">24</span>Sprachen</a></li>
+      <li><a href="#start"><span class="toc-num">01</span>Womit anfangen</a></li>
+      <li><a href="#currencies"><span class="toc-num">02</span>Währungen</a></li>
+      <li><a href="#damage"><span class="toc-num">03</span>Schaden und kritische Treffer</a></li>
+      <li><a href="#equipment"><span class="toc-num">04</span>Spitzhacken, Rüstungen und Gefährten</a></li>
+      <li><a href="#temperature"><span class="toc-num">05</span>Hitze</a></li>
+      <li><a href="#workers"><span class="toc-num">06</span>Arbeiter</a></li>
+      <li><a href="#enchantments"><span class="toc-num">07</span>Verzauberungen</a></li>
+      <li><a href="#floors"><span class="toc-num">08</span>Etagen und Erze</a></li>
+      <li><a href="#skills"><span class="toc-num">09</span>Fertigkeiten und Titel</a></li>
+      <li><a href="#tasks"><span class="toc-num">10</span>Aufgaben</a></li>
+      <li><a href="#trade"><span class="toc-num">11</span>Händler</a></li>
+      <li><a href="#extras"><span class="toc-num">12</span>Kostenlose Belohnungen</a></li>
+      <li><a href="#awakening"><span class="toc-num">13</span>Erwachen</a></li>
+      <li><a href="#ascension"><span class="toc-num">14</span>Aufstieg</a></li>
+      <li><a href="#dungeons"><span class="toc-num">15</span>Bosse und Abgrund</a></li>
+      <li><a href="#store"><span class="toc-num">16</span>Shop und Erfolge</a></li>
+      <li><a href="#progress"><span class="toc-num">17</span>Fortschritt und Speichern</a></li>
     </ul>
   </nav>
 
   <main>
     <header class="hero">
       <div class="strata" role="presentation"></div>
-      <div class="eyebrow">Spielerhandbuch - 2026-09-14</div>
-      <h1 class="title">Alles in der Mine,<br>einfach erklärt</h1>
-      <p class="subtitle">Was jedes System macht, wann es freigeschaltet wird und wo deine nächste Stunde am besten investiert ist. Keine Formeln - nur die Entscheidungen, die zählen.</p>
+      <div class="eyebrow">Spielerhandbuch - 2026-09-21</div>
+      <h1 class="title">Die ganze Mine,<br>kurz gefasst</h1>
+      <p class="subtitle">Was jedes System bringt und wofür sich deine Zeit lohnt. Keine Zahlen, keine Formeln - nur das, was du wissen musst.</p>
       <div class="langbar">
         <div class="langbar-label">Sprache</div>
         <div class="langbar-list"><a href="player_guide_en.html" hreflang="en">English</a><a href="player_guide_tr.html" hreflang="tr">Türkçe</a><span>Deutsch</span><a href="player_guide_fr.html" hreflang="fr">Français</a><a href="player_guide_es.html" hreflang="es">Español</a><a href="player_guide_es_la.html" hreflang="es-419">Español (Latinoamérica)</a><a href="player_guide_it.html" hreflang="it">Italiano</a><a href="player_guide_pl.html" hreflang="pl">Polski</a><a href="player_guide_pt_br.html" hreflang="pt-BR">Português (Brasil)</a><a href="player_guide_ru.html" hreflang="ru">Русский</a><a href="player_guide_uk.html" hreflang="uk">Українська</a><a href="player_guide_ja.html" hreflang="ja">日本語</a><a href="player_guide_ko.html" hreflang="ko">한국어</a><a href="player_guide_zh_hans.html" hreflang="zh-Hans">简体中文</a><a href="player_guide_zh_hant.html" hreflang="zh-Hant">繁體中文</a><a href="player_guide_th.html" hreflang="th">ไทย</a><a href="player_guide_id.html" hreflang="id">Bahasa Indonesia</a><a href="player_guide_vi.html" hreflang="vi">Tiếng Việt</a></div>
@@ -520,712 +515,301 @@
     </header>
 
     <section id="start">
-      <div class="section-head"><span class="section-num">01</span><h2>Der Einstieg</h2></div>
-      <p class="section-dek">Drei Phasen, in der Reihenfolge, in der das Spiel die Systeme freischaltet.</p>
+      <div class="section-head"><span class="section-num">01</span><h2>Womit anfangen</h2></div>
+      <p class="section-dek">Das Spiel öffnet seine Systeme nach und nach, je tiefer du gräbst.</p>
       <div class="strategy-track">
           <div class="strategy-stage">
-            <div class="stage-label">Früh - Etage 1 bis 100</div>
+            <div class="stage-label">Früh</div>
             <ul>
-              <li>Werte deine Spitzhacke ständig auf; neue Spitzhacken öffnen sich, wenn du tiefer kommst.</li>
-              <li>Erzbrecher kommt auf Etage 50, Zornklick auf Etage 100.</li>
-              <li>Klick den Goldballon, sobald er auftaucht, und kauf Felsi, wenn du die Diamanten übrig hast.</li>
+              <li>Verbessere deine Spitzhacke ununterbrochen; tiefere Etagen schalten neue frei.</li>
+              <li>Klicke jeden Goldballon und jeden Goldkristall, und setze deine ersten Fertigkeiten ein.</li>
+              <li>Kauf deinen ersten Gefährten, sobald die Diamanten reichen.</li>
             </ul>
           </div>
           <div class="strategy-stage">
-            <div class="stage-label">Mitte - Etage 100 bis 350</div>
+            <div class="stage-label">Mitte</div>
             <ul>
-              <li>Mach Prestige, sobald du Etage 100 überschritten hast und der Fortschritt zäh wird.</li>
-              <li>Aufgaben öffnen auf Etage 125, Rüstung auf 130, der Fertigkeitsbaum auf 180 und der Händler auf 200.</li>
-              <li>Verteile Essenz auf die 7 Parameter, statt einen zu maximieren.</li>
+              <li>Wenn der Fortschritt stockt, mach ein Erwachen und verdiene Essenz.</li>
+              <li>Aufgaben, Rüstungen, der Fertigkeitsbaum und der Händler öffnen sich in dieser Phase.</li>
+              <li>Verteile die Essenz, statt sie auf einen Parameter zu stapeln.</li>
             </ul>
           </div>
           <div class="strategy-stage">
-            <div class="stage-label">Spät - ab Etage 350</div>
+            <div class="stage-label">Spät</div>
             <ul>
-              <li>Kämpf gegen Bosse, wann immer du einen Schlüssel hast; sie zahlen Essenz und Erzstein.</li>
-              <li>Verzauberungsmaterial droppt ab Etage 500, Arbeiter kommen ab Etage 600 dazu.</li>
-              <li>Halte deine Rüstung auf Stand, damit die Hitze deinen Schaden nicht frisst.</li>
+              <li>Kämpfe gegen Bosse, sobald du einen Schlüssel hast, und beginne danach mit Abgrund-Läufen.</li>
+              <li>Arbeiter stoßen dazu, Verzauberungsmaterial fängt an zu fallen.</li>
+              <li>Verbessere deine Rüstung weiter, damit die Hitze deinen Schaden nicht auffrisst.</li>
+            </ul>
+          </div>
+          <div class="strategy-stage">
+            <div class="stage-label">Langfristig</div>
+            <ul>
+              <li>Viel tiefer schaltet sich Aufstieg frei und setzt die gesamte Erwachen-Schleife zurück.</li>
+              <li>Dafür bekommst du Reine Essenz, das jeden späteren Lauf dauerhaft beschleunigt.</li>
             </ul>
           </div>
         </div>
       <div class="callout">
           <div class="callout-label">Gut zu wissen</div>
-          Zahlen werden schnell lang, deshalb wechselt das Spiel erst zu Kurzformen und dann zur wissenschaftlichen Schreibweise wie <strong>1,23e45</strong>. Nichts ist gedeckelt - nur die Schreibweise ändert sich.
+          Die Zahlen wachsen schnell; das Spiel wechselt erst zur Kurzschreibweise und später zur wissenschaftlichen. Nichts wird gedeckelt - nur die Schreibweise ändert sich.
         </div>
     </section>
 
     <section id="currencies">
-      <div class="section-head"><span class="section-num">02</span><h2>Die 7 Währungen</h2></div>
-      <p class="section-dek">Jede speist ein anderes System. Die richtige Währung am falschen Ort auszugeben, ist der häufigste Anfängerfehler.</p>
+      <div class="section-head"><span class="section-num">02</span><h2>Währungen</h2></div>
+      <p class="section-dek">Jede speist ein anderes System.</p>
       <div class="currency-grid">
         <div class="cur-card" style="--dot:var(--cur-gold)">
           <h4><span class="dot"></span>Gold</h4>
-          <p>Durch <b>Erz abbauen</b>, dazu Ballons, Arbeiter, Aufgaben und Offline-Zeit.</p>
-          <p>Geht in Spitzhacken, Upgrades und Gegenstandsfertigkeiten - dein Arbeitspferd.</p>
+          <p>Wird durch <b>Erzabbau</b> verdient; auch Ballons, Arbeiter, Aufgaben und Offline-Zeit bringen Gold.</p>
+          <p>Fließt in Spitzhacken, Verbesserungen und Gegenstandsfertigkeiten.</p>
         </div>
         <div class="cur-card" style="--dot:var(--cur-diamond)">
           <h4><span class="dot"></span>Diamant</h4>
-          <p>Aus <b>Echtgeldkäufen</b>, dem Glücksrad und Aktionscodes.</p>
-          <p>Für Begleiter, Unendlich-Gegenstände, Zeitsprünge, Truhen und zusätzliche Drehungen.</p>
+          <p>Kommt aus <b>Echtgeld-Käufen</b>, Glücksrad-Belohnungen und Promo-Codes.</p>
+          <p>Wird für Gefährten, Unendlichkeits-Gegenstände, Zeitsprünge, Truhen und Schlüsselpakete ausgegeben.</p>
         </div>
         <div class="cur-card" style="--dot:var(--cur-essence)">
           <h4><span class="dot"></span>Essenz</h4>
-          <p>Aus <b>Prestige</b>, Bosssiegen und beim Händler.</p>
-          <p>Für die 7 dauerhaften Prestige-Parameter.</p>
+          <p>Die Belohnung des <b>Erwachen</b>; auch Bosse und Händler geben etwas.</p>
+          <p>Wird für dauerhafte Erwachen-Parameter ausgegeben.</p>
         </div>
         <div class="cur-card" style="--dot:var(--cur-taskium)">
           <h4><span class="dot"></span>Taskium</h4>
-          <p><b>+1</b> für jeden erfolgreichen Klick.</p>
-          <p>Zum Annehmen und Neuwürfeln von Aufgaben.</p>
+          <p>Bei jedem erfolgreichen Klick fällt etwas davon ab.</p>
+          <p>Wird zum Annehmen und Neuwürfeln von Aufgaben gebraucht.</p>
         </div>
         <div class="cur-card" style="--dot:var(--cur-key)">
           <h4><span class="dot"></span>Verliesschlüssel</h4>
-          <p>Ein Gratisschlüssel pro Tag, dazu Shop-Pakete und das Glücksrad.</p>
-          <p>Für den Einstieg in einen Bosskampf - 1 pro Versuch.</p>
+          <p>Ein Gratisschlüssel pro Tag, dazu Shop und Glücksrad.</p>
+          <p>Wird für den Eintritt in einen Bosskampf ausgegeben.</p>
         </div>
         <div class="cur-card" style="--dot:var(--cur-skillstone)">
           <h4><span class="dot"></span>Fertigkeitsstein</h4>
-          <p>Aus Shop-Paketen und beim Händler.</p>
-          <p>Zum Aufwerten der 8 aktiven Fertigkeiten.</p>
+          <p>Kommt aus dem Shop und von Händler.</p>
+          <p>Wird zum Verstärken aktiver Fertigkeiten ausgegeben.</p>
         </div>
         <div class="cur-card" style="--dot:var(--cur-orestone)">
           <h4><span class="dot"></span>Erzstein</h4>
-          <p><b>1-5</b> aus jedem abgebauten Erz, dazu Erfolge und Bosse.</p>
-          <p>Für Tausch, Verzauberungsherstellung und Arbeiter-Upgrades.</p>
+          <p>Fällt bei jedem Erz, außerdem aus Erfolgen, von Bossen und aus Abgrund-Läufen.</p>
+          <p>Wird für Tauschgeschäfte, Verzauberungen und Arbeiter-Verbesserungen ausgegeben.</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-abysskey)">
+          <h4><span class="dot"></span>Abgrundschlüssel</h4>
+          <p>Ein Gratisschlüssel pro Tag, dazu Diamanten im Shop.</p>
+          <p>Wird für einen Abgrund-Lauf ausgegeben.</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-pureessence)">
+          <h4><span class="dot"></span>Reine Essenz</h4>
+          <p>Die Belohnung des <b>Aufstieg</b>; es gibt keine andere Quelle.</p>
+          <p>Wird ausschließlich für Aufstieg-Parameter ausgegeben.</p>
         </div>
       </div>
       <div class="callout">
           <div class="callout-label">Server-Währungen</div>
-          Diamanten und Verliesschlüssel liegen auf dem Server, für Käufe damit musst du online sein. Ist die Verbindung abgerissen, stellt das Spiel sie beim Kaufversuch selbst wieder her.
+          Diamanten, Verliesschlüssel und Abgrundschlüssel liegen auf dem Server; zum Ausgeben musst du online sein.
         </div>
     </section>
 
     <section id="damage">
-      <div class="section-head"><span class="section-num">03</span><h2>Klickschaden und automatischer Schaden</h2></div>
-      <p class="section-dek">Zwei getrennte Schadensquellen, gespeist aus unterschiedlichen Dingen.</p>
-      <p><strong>Klickschaden</strong> ist das, was ein Tippen anrichtet. Er wächst mit Stufe und Fertigkeiten deiner ersten Spitzhacke, der Fertigkeit Zornklick, deinem Titel, dem Prestige-Parameter Hand des Steinbrechers und Verzauberungen. Sobald Einheit der Kraft aufgewertet ist, fließt außerdem ein Teil deines automatischen Schadens in jeden Klick.</p>
-      <p><strong>Automatischer Schaden</strong> (pro Sekunde) kommt ab der zweiten Spitzhacke, von der Fertigkeit Amoklauf, dem Parameter Ewige Schmiede, Verzauberungen und deinen Begleitern. Er wirkt ununterbrochen, solange ein Erz lebt.</p>
-      <div class="callout">
-          <div class="callout-label">Begleiter sind die Ausnahme</div>
-          Begleiterschaden kommt <strong>nach</strong> den meisten Multiplikatoren dazu - Hitze, Titel, Prestige und Boosts skalieren ihn nicht, nur Premium. Begleiterstufen allein tragen dich im späten Spiel nicht.
-        </div>
-    </section>
-
-    <section id="critical">
-      <div class="section-head"><span class="section-num">04</span><h2>Kritische Treffer</h2></div>
-      <p class="section-dek">Jeder Klick kann kritisch treffen und härter zuschlagen.</p>
-      <p>Du startest mit <strong>5 %</strong> Chance und einem Multiplikator von <strong>x1,5</strong>. Die Fertigkeit Kritischer Schlag, Spitzhackenfertigkeiten, die Prestige-Parameter Erzorakel und Kataklysmische Kraft, Titel und Verzauberungen erhöhen beides. Die kritische Chance endet bei <strong>100 %</strong>, darüber hinaus lässt sich der Prestige-Parameter nicht kaufen.</p>
-    </section>
-
-    <section id="pickaxes">
-      <div class="section-head"><span class="section-num">05</span><h2>Spitzhacken</h2></div>
-      <p class="section-dek">45 Spitzhacken, freigeschaltet nach Tiefe. Das Rückgrat deines Schadens.</p>
+      <div class="section-head"><span class="section-num">03</span><h2>Schaden und kritische Treffer</h2></div>
+      <p class="section-dek">Zwei getrennte Schadensquellen und die kritischen Treffer, die sie vervielfachen.</p>
       <ul>
-          <li>Eine Spitzhacke <strong>öffnet sich über die Etage</strong>: die zweite auf Etage 15, die zehnte auf Etage 782, die letzte auf Etage <strong>13.624</strong>. Je tiefer, desto größer die Abstände.</li>
-          <li>Die erste kostet <strong>5 Gold</strong>, die zweite 50, jede weitere etwa <strong>das 8-Fache</strong> der vorigen.</li>
-          <li>Jede Stufe kostet etwa <strong>6 %</strong> mehr als die vorherige.</li>
-          <li>Nur die <strong>erste</strong> Spitzhacke speist den Klickschaden. Alle anderen speisen den automatischen Schaden pro Sekunde.</li>
-          <li>Jede Spitzhacke hat 6 Fertigkeiten. Sie erscheinen und öffnen sich entlang einer Stufenleiter - 5 / 25 / 125 / 625 / 3.125 / 15.625 - die letzten sind also Langzeitziele. Manche helfen nur dieser Spitzhacke, manche allen.</li>
+          <li><strong>Klickschaden</strong> kommt von deiner ersten Spitzhacke, der Fertigkeit Zornklick, deinem Titel, den Erwachen-Parametern und Verzauberungen.</li>
+          <li><strong>Automatischer Schaden</strong> kommt von den übrigen Spitzhacken, der Fertigkeit Amoklauf, deinen Gefährten und Verzauberungen; er läuft durchgehend, solange das Erz lebt.</li>
+          <li>Je höher Einheit der Kraft, desto größer der Anteil deines automatischen Schadens, der zusätzlich auf jeden Klick kommt.</li>
+          <li>Jeder Klick kann <strong>kritisch</strong> sein und deutlich härter treffen. Kritische Chance und Multiplikator wachsen mit Fertigkeiten, Erwachen-Parametern, Titeln und Verzauberungen.</li>
+        </ul>
+    </section>
+
+    <section id="equipment">
+      <div class="section-head"><span class="section-num">04</span><h2>Spitzhacken, Rüstungen und Gefährten</h2></div>
+      <p class="section-dek">Die Grundlage deines Schadens und deiner Widerstandsfähigkeit.</p>
+      <ul>
+          <li><strong>Spitzhacken</strong> schalten sich mit der Tiefe frei. Die erste speist den Klickschaden, die übrigen den automatischen Schaden.</li>
+          <li><strong>Rüstungen</strong> gehören dir von Anfang an; sie werden nicht gekauft, nur verbessert, und schützen dich vor Hitze.</li>
+          <li><strong>Gefährten</strong> werden mit Diamanten gekauft, mit Gold verbessert und verursachen automatischen Schaden. Der Besitz ist dauerhaft.</li>
+          <li>Alle drei haben eigene Fertigkeiten, die mit den Stufen aufgehen; manche helfen nur diesem Gegenstand, manche der ganzen Familie.</li>
         </ul>
       <div class="callout">
           <div class="callout-label">Der große Sprung</div>
-          Ab Stufe <strong>100</strong> und danach alle 150 Stufen (250, 400, ...) potenziert eine Spitzhacke ihren eigenen Ertrag: erst <strong>^1,05</strong>, dann ^1,1 und so weiter. Bei großen Zahlen ist das ein enormer Gewinn, deshalb ist die nächste Schwelle meist das beste Upgrade, das du hast.
+          Auf bestimmten Stufen macht die Kraft eines Gegenstands einen großen Sprung. Einen Gegenstand bis zur nächsten Schwelle zu bringen ist meist die beste Verbesserung.
         </div>
       <div class="callout warn">
-          <div class="callout-label">Prestige sperrt sie wieder</div>
-          Prestige sperrt und setzt alle Spitzhacken zurück; sie öffnen sich wieder, wenn du im neuen Lauf ihre Etagen überschreitest.
+          <div class="callout-label">Nach einem Erwachen</div>
+          Erwachen sperrt Spitzhacken wieder und setzt Rüstungs- und Gefährten-Verbesserungen zurück. Die Gefährten selbst bleiben dir.
         </div>
-    </section>
-
-    <section id="suits">
-      <div class="section-head"><span class="section-num">06</span><h2>Rüstungen</h2></div>
-      <p class="section-dek">5 Rüstungen, alle von Anfang an in deinem Besitz. Sie halten dir die Hitze vom Leib.</p>
-      <ul>
-          <li>Rüstung kaufst du nie - du wertest sie nur auf. Jede Stufe bringt etwa <strong>5 %</strong> Hitzeresistenz, ausgehend von 50, und kostet etwa 8,4 % mehr als die letzte.</li>
-          <li>Rüstungen nutzen denselben Potenzsprung wie Spitzhacken, ab Stufe 100 und dann alle 150 Stufen.</li>
-          <li>Jede Rüstung hat 6 Fertigkeiten auf derselben Stufenleiter (5 / 25 / 125 / 625 / 3.125 / 15.625).</li>
-          <li>Das Rüstungsmenü öffnet sich auf Etage <strong>130</strong>, zusammen mit der Hitzeanzeige.</li>
-        </ul>
     </section>
 
     <section id="temperature">
-      <div class="section-head"><span class="section-num">07</span><h2>Hitze</h2></div>
-      <p class="section-dek">Je tiefer du kommst, desto heißer wird es - und Hitze kürzt still deinen Schaden.</p>
-      <ul>
-          <li>Die Etagentemperatur steigt stetig - etwa <strong>x1,04 pro Etage</strong>, sie verdoppelt sich also alle paar Dutzend Etagen.</li>
-          <li>Solange deine Resistenz mindestens das <strong>1,5-Fache</strong> der Etagentemperatur beträgt, bleibt die Anzeige frei und nichts geht verloren.</li>
-          <li>Fällt die Resistenz unter die Temperatur, schwindet der Schaden; beim <strong>0,5-Fachen</strong> behältst du nur ein Zwanzigstel - ein Verlust von <strong>95 %</strong>.</li>
-          <li>Im Rüstungsmenü gibt es einen Autokauf-Schalter für Resistenz; lass ihn an, wenn du oft tiefer gehst. Hitze gibt es nur in der Hauptmine, nicht in Bosskämpfen.</li>
-        </ul>
+      <div class="section-head"><span class="section-num">05</span><h2>Hitze</h2></div>
+      <p class="section-dek">Je tiefer du kommst, desto heißer wird es - und Hitze senkt stillschweigend deinen Schaden.</p>
+      <p>Kommt deine Hitzeresistenz der Etagentemperatur nicht hinterher, schmilzt dein Schaden dahin. Im Rüstungsfenster gibt es einen Schalter für den automatischen Kauf von Resistenz. Hitze gibt es nur in der Hauptmine.</p>
       <div class="callout warn">
-          <div class="callout-label">Wenn es stockt</div>
-          Eine plötzliche Wand, an der Erz ewig braucht, ist fast immer Hitze, nicht Schaden. Schau auf die Anzeige, bevor du etwas anderes ausgibst.
-        </div>
-    </section>
-
-    <section id="pets">
-      <div class="section-head"><span class="section-num">08</span><h2>Begleiter</h2></div>
-      <p class="section-dek">5 Begleiter, mit Diamanten gekauft und mit Gold aufgewertet.</p>
-      <ul>
-          <li>Die Preise reichen von <strong>150</strong> bis <strong>250</strong> Diamanten (150 / 175 / 200 / 225 / 250).</li>
-          <li>Jede Stufe fügt etwa <strong>1 %</strong> deines Spitzhacken-Klickschadens als automatischen Schaden hinzu, multipliziert mit der Position des Begleiters - Schattensplitter bringt auf gleicher Stufe fünfmal so viel wie Felsi.</li>
-          <li>Stufen werden jedes Mal etwa <strong>20 %</strong> teurer, und Begleiter haben ab Stufe 100 denselben Potenzsprung wie Spitzhacken.</li>
-          <li>Jeder Begleiter hat 6 Fertigkeiten; manche helfen nur ihm, manche allen.</li>
-          <li>Das Begleitermenü öffnet sich auf Etage <strong>30</strong> oder sobald du einen Begleiter besitzt.</li>
-        </ul>
-      <div class="callout warn">
-          <div class="callout-label">Prestige und Begleiter</div>
-          Prestige setzt jeden Begleiter auf <strong>Stufe 1</strong> zurück und löscht seine Fertigkeiten. Der Besitz bleibt aber - einen Begleiter kaufst du nie zweimal.
+          <div class="callout-label">Wenn nichts mehr vorangeht</div>
+          Die Wand, an der das Erz plötzlich nicht mehr zerbricht, ist meistens die Hitze. Schau auf die Hitzeanzeige, bevor du dein Gold woanders ausgibst.
         </div>
     </section>
 
     <section id="workers">
-      <div class="section-head"><span class="section-num">09</span><h2>Arbeiter</h2></div>
-      <p class="section-dek">5 Helfer, die für dich graben, solange das Spiel läuft.</p>
+      <div class="section-head"><span class="section-num">06</span><h2>Arbeiter</h2></div>
+      <p class="section-dek">Helfer, die für dich graben, solange das Spiel offen ist.</p>
       <ul>
-          <li>Arbeiter kommen hinzu, wenn du die Etagen <strong>600 / 800 / 1.000 / 1.200 / 1.400</strong> überschreitest. Gezählt wird deine beste Etage überhaupt, sie sperren sich also nie wieder.</li>
-          <li>Gib jedem Arbeiter eine Spitzhacke - eine Spitzhacke kann immer nur für einen arbeiten, und dein eigener Schaden sinkt dadurch nicht. Ohne Spitzhacke verdient ein Arbeiter nichts.</li>
-          <li>Einkommen kommt jede 1 Sekunde dazu und wartet in einem Topf, bis du einsammelst. Eine stärkere Spitzhacke bringt mehr.</li>
-          <li>Ein Arbeiter-Upgrade kostet Erzstein - 100 für die erste Stufe, danach jeweils etwa 2 % mehr - und bringt etwa 1 % Einkommen pro Stufe.</li>
+          <li>Mit der Tiefe stoßen neue Arbeiter dazu und werden nie wieder gesperrt.</li>
+          <li>Gib jedem Arbeiter eine Spitzhacke; ohne eine verdient er nichts. Die Übergabe senkt deinen eigenen Schaden nicht.</li>
+          <li>Das Einkommen sammelt sich in einem Topf und wartet, bis du es einsammelst. Arbeiter werden mit Erzstein verbessert.</li>
         </ul>
       <div class="callout warn">
-          <div class="callout-label">Vor dem Prestige einsammeln</div>
-          Arbeiter verdienen nur, solange das Spiel läuft, nicht offline. Prestige behält ihre Stufen, <strong>löscht aber nicht eingesammeltes Einkommen</strong> und nimmt ihnen die Spitzhacken ab.
+          <div class="callout-label">Vor dem Erwachen einsammeln</div>
+          Arbeiter verdienen nur, solange das Spiel offen ist. Erwachen behält ihre Stufen, löscht aber nicht eingesammeltes Einkommen.
         </div>
     </section>
 
     <section id="enchantments">
-      <div class="section-head"><span class="section-num">10</span><h2>Verzauberungen</h2></div>
-      <p class="section-dek">Stelle Verzauberungen aus ausgegrabenem Material her und setze sie in Spitzhacken, Rüstungen und Begleiter ein.</p>
-      <p>Erz kann <strong>Verzauberungsstaub</strong> und <strong>Verzauberungsfragmente</strong> in 4 Stufen droppen. Jede Stufe droppt, sobald deine höchste Etage in diesem Lauf ihre Schwelle überschreitet. Wer mehr als 100 Etagen unter seiner besten Etage farmt, bekommt eine geringere Chance - bis hinunter auf 10 % des Normalwerts.</p>
-      <div class="table-wrap">
-        <table>
-        <thead><tr>
-        <th>Stufe</th>
-        <th class="num">Werte</th>
-        <th class="num">Droppt ab Etage</th>
-        <th class="num">Staub-Chance</th>
-        <th class="num">Fragment-Chance</th>
-        <th class="num">Herstellung (Staub / Fragment / Erzstein)</th>
-        </tr></thead>
-        <tbody>
-        <tr>
-        <td>Gewöhnlich</td>
-        <td class="num">1</td>
-        <td class="num">500</td>
-        <td class="num">5 %</td>
-        <td class="num">0,5 %</td>
-        <td class="num">10 / 1 / 40</td>
-        </tr>
-        <tr>
-        <td>Selten</td>
-        <td class="num">1-2</td>
-        <td class="num">1.000</td>
-        <td class="num">2 %</td>
-        <td class="num">0,1 %</td>
-        <td class="num">20 / 1 / 200</td>
-        </tr>
-        <tr>
-        <td>Episch</td>
-        <td class="num">2-3</td>
-        <td class="num">2.000</td>
-        <td class="num">1 %</td>
-        <td class="num">0,03 %</td>
-        <td class="num">30 / 1 / 1.000</td>
-        </tr>
-        <tr>
-        <td>Legendär</td>
-        <td class="num">3-4</td>
-        <td class="num">4.000</td>
-        <td class="num">0,5 %</td>
-        <td class="num">0,01 %</td>
-        <td class="num">50 / 1 / 5.000</td>
-        </tr>
-        </tbody></table></div>
+      <div class="section-head"><span class="section-num">07</span><h2>Verzauberungen</h2></div>
+      <p class="section-dek">Stelle aus deiner Ausbeute Verzauberungen her und setze sie in Spitzhacken, Rüstungen und Gefährten ein.</p>
       <ul>
-          <li>Der Handwerker macht aus Staub, einem Fragment und einer Gebühr in Erzstein eine Verzauberung mit zufälligen Werten. Höhere Stufen würfeln mehr Werte und verstärken sie kräftiger (x1 / x2 / x4 / x6).</li>
-          <li>Jede Spitzhacke, Rüstung und jeder Begleiter hat <strong>8 Plätze</strong>, die sich auf den Etagen 1.000 / 3.000 / 6.000 / 9.000 / 12.000 / 15.000 / 18.000 / 21.000 öffnen. Gezählt wird deine beste Etage überhaupt, ein Platz schließt sich also nie wieder.</li>
-          <li>Manche Werte helfen nur dem Gegenstand, in dem sie stecken (Klickschaden, automatischer Schaden, Hitzeresistenz); andere helfen allem (Gold, kritische Treffer, SpS-Anteil, Upgradekosten). Ein besonderer Wert verstärkt stattdessen die eigenen Fertigkeiten des Gegenstands und wirkt daher nur bei gekauften Fertigkeiten.</li>
-          <li>Die Auswahl zeigt nur Verzauberungen, die bei diesem Gegenstand tatsächlich etwas bewirken.</li>
-          <li>Beim Händler werden 10 Staub oder Fragmente einer Stufe zu 1 der nächsten Stufe. Unerwünschte Verzauberungen kannst du auch zu Staub zerlegen (5 / 10 / 15 / 25 je nach Stufe) - das Zerlegen ist endgültig.</li>
+          <li>Beim Erzabbau fallen <strong>Verzauberungsstaub</strong> und <strong>Verzauberungsfragmente</strong>. Höhere Stufen erscheinen weiter unten.</li>
+          <li>Handwerker macht aus Staub und Fragmenten eine Verzauberung mit zufälligen Werten. Höhere Stufen tragen mehr und stärkere Werte.</li>
+          <li>Jeder Gegenstand hat Verzauberungsplätze, die sich mit der Tiefe öffnen.</li>
+          <li>Eine Verzauberung, die du nicht brauchst, kannst du beim Händler zu Staub zerlegen, und Material lässt sich eine Stufe hochtauschen.</li>
         </ul>
       <div class="callout">
-          <div class="callout-label">Prestige ist sicher</div>
-          Prestige löscht nie Verzauberungen. Wird ein Gegenstand wieder gesperrt, landen seine Verzauberungen einfach im Inventar, das sich auf Etage 500 öffnet.
+          <div class="callout-label">Erwachen ist sicher</div>
+          Erwachen löscht niemals Verzauberungen; die eines wieder gesperrten Gegenstands wandern zurück ins Inventar.
         </div>
     </section>
 
     <section id="floors">
-      <div class="section-head"><span class="section-num">11</span><h2>Etagen, Erz und Tiefe</h2></div>
-      <p class="section-dek">Etagen bestimmen, wie zäh Erz ist und wie viel Gold es bringt. Die Tiefe bestimmt, wie es aussieht.</p>
+      <div class="section-head"><span class="section-num">08</span><h2>Etagen und Erze</h2></div>
+      <p class="section-dek">Jede Etage ist ein wenig härter und ein wenig einträglicher als die davor.</p>
       <ul>
-          <li>Jede Etage hat etwas mehr Leben und etwas mehr Gold als die vorige, und die Kurve wird immer steiler.</li>
-          <li>Jede <strong>10. Etage</strong> ist eine Zeitetage: Eine Uhr mit <strong>20 Sekunden</strong> startet, das Leben ist x5, das Gold x2.</li>
-          <li>Die Schwierigkeit läuft außerdem in Zyklen von 100 Etagen - manche Etagen eines Zyklus zahlen im Verhältnis zu ihrem Leben besser als andere.</li>
-          <li>Jedes Erz droppt zusätzlich zum Gold <strong>1-5</strong> Erzstein.</li>
-          <li><strong>5 seltene Erze</strong> (Ferrovyx, Karnyth, Thalveris, Umbryssa, Zephiris) können an die Stelle eines normalen Erzes treten. Die Chance liegt zwischen etwa 1 zu 10.000 und 1 zu 1.000.000; einmal abgebaut, wird es dauerhaft gespeichert und erscheint nie wieder.</li>
+          <li>Ab und zu kommt eine <strong>Etage mit Zeitlimit</strong>: Zerbrich das Erz, bevor die Zeit abläuft, dafür gibt es mehr Gold. Läuft die Zeit ab, fällst du eine Etage zurück und der automatische Vorstoß schaltet sich ab.</li>
+          <li>Jedes Erz lässt neben Gold auch Erzstein fallen.</li>
+          <li>Sehr selten erscheint ein <strong>seltenes Erz</strong> (Ferrovyx, Karnyth, Thalveris, Umbryssa, Zephiris); jedes davon findest du nur ein einziges Mal.</li>
+          <li>Mit Aufzug bewegst du dich zwischen bereits erreichten Etagen. Orte wechselt zwischen Hauptmine, Verlies und Abgrund.</li>
         </ul>
-      <div class="callout warn">
-          <div class="callout-label">Zeitetagen beißen</div>
-          Läuft die Uhr ab, wirst du <strong>eine Etage</strong> zurückgeworfen und der automatische Aufstieg schaltet sich ab. Farme etwas, bevor du es erneut versuchst.
+      <div class="callout">
+          <div class="callout-label">Weiter unten farmen lohnt nicht</div>
+          Verzauberungsstaub und -fragmente fallen am besten nahe deiner tiefsten erreichten Etage; weit darunter sinkt die Chance deutlich.
         </div>
-      <p>Der Aufzug bringt dich auf jede Etage, die du in diesem Lauf erreicht hast. Wählst du eine Etage von Hand, schaltet sich der automatische Aufstieg ab; schalte ihn wieder ein, wenn du weiter klettern willst. Das Menü Orte wechselt zwischen Hauptmine und Boss-Verlies.</p>
-      <p>Es gibt insgesamt <strong>40</strong> Erzarten, und die Tiefe entscheidet, welche erscheinen. Die Erzart ändert nur das Aussehen - Leben und Gold kommen von der Etage.</p>
-      <div class="table-wrap">
-        <table>
-        <thead><tr>
-        <th class="num">Tiefe</th>
-        <th class="num">Erzarten</th>
-        <th class="num">Etwa Etage</th>
-        </tr></thead>
-        <tbody>
-        <tr>
-        <td class="num">0-100 m</td>
-        <td class="num">9</td>
-        <td class="num">~54</td>
-        </tr>
-        <tr>
-        <td class="num">100-500 m</td>
-        <td class="num">20</td>
-        <td class="num">~129</td>
-        </tr>
-        <tr>
-        <td class="num">500-1.500 m</td>
-        <td class="num">30</td>
-        <td class="num">~196</td>
-        </tr>
-        <tr>
-        <td class="num">1.500 m+</td>
-        <td class="num">40</td>
-        <td class="num">-</td>
-        </tr>
-        </tbody></table></div>
     </section>
 
     <section id="skills">
-      <div class="section-head"><span class="section-num">12</span><h2>Aktive Fertigkeiten</h2></div>
-      <p class="section-dek">8 Fertigkeiten, jede ein zeitlich begrenzter Schub mit anschließender Abklingzeit.</p>
-      <p>Eine Fertigkeit ist <strong>kostenlos</strong>, sobald ihre Etage erreicht ist - du nutzt sie ab Stufe 1. Bis Stufe 7 kostet sie insgesamt <strong>63 Fertigkeitsstein</strong>, alle 8 zusammen <strong>504</strong>. Höhere Stufen bedeuten längere Dauer und kürzere Abklingzeit.</p>
-      <div class="table-wrap">
-        <table>
-        <thead><tr>
-        <th>Fertigkeit</th>
-        <th class="num">Etage</th>
-        <th class="num">Stufe 1 (Dauer / Abklingzeit)</th>
-        <th class="num">Stufe 7 (Dauer / Abklingzeit)</th>
-        <th class="num">Effekt</th>
-        </tr></thead>
-        <tbody>
-        <tr>
-        <td>Erzbrecher</td>
-        <td class="num">50</td>
-        <td class="num">30 s / 540 s</td>
-        <td class="num">90 s / 180 s</td>
-        <td class="num">7 → 13 /s</td>
-        </tr>
-        <tr>
-        <td>Zornklick</td>
-        <td class="num">100</td>
-        <td class="num">40 s / 660 s</td>
-        <td class="num">210 s / 300 s</td>
-        <td class="num">x2 → x5</td>
-        </tr>
-        <tr>
-        <td>Kritischer Schlag</td>
-        <td class="num">150</td>
-        <td class="num">30 s / 600 s</td>
-        <td class="num">150 s / 240 s</td>
-        <td class="num">x1,3 → x1,9</td>
-        </tr>
-        <tr>
-        <td>Amoklauf</td>
-        <td class="num">200</td>
-        <td class="num">40 s / 840 s</td>
-        <td class="num">160 s / 480 s</td>
-        <td class="num">x2 → x3,5</td>
-        </tr>
-        <tr>
-        <td>Goldrausch</td>
-        <td class="num">250</td>
-        <td class="num">50 s / 1.020 s</td>
-        <td class="num">290 s / 660 s</td>
-        <td class="num">x2 → x5</td>
-        </tr>
-        <tr>
-        <td>Hitzeresistenz</td>
-        <td class="num">300</td>
-        <td class="num">30 s / 660 s</td>
-        <td class="num">140 s / 300 s</td>
-        <td class="num">x2 → x5</td>
-        </tr>
-        <tr>
-        <td>Überladung</td>
-        <td class="num">350</td>
-        <td class="num">20 s / 1.200 s</td>
-        <td class="num">20 s / 840 s</td>
-        <td class="num">x1,5 → x3</td>
-        </tr>
-        <tr>
-        <td>Zeitumkehr</td>
-        <td class="num">400</td>
-        <td class="num">1.200 s</td>
-        <td class="num">840 s</td>
-        <td class="num">-300 s → -1.020 s</td>
-        </tr>
-        </tbody></table></div>
-      <p>Die erste Fertigkeitsleiste öffnet sich auf Etage 50; der Fertigkeitsbaum, in dem du Fertigkeitsstein ausgibst, auf Etage <strong>180</strong>. Fertigkeitsstufen überstehen Prestige.</p>
+      <div class="section-head"><span class="section-num">09</span><h2>Fertigkeiten und Titel</h2></div>
+      <p class="section-dek">Zeitlich begrenzte Schübe und Boni, die beim Aufstieg von selbst kommen.</p>
+      <ul>
+          <li><strong>Aktive Fertigkeiten</strong> schalten sich mit der Tiefe kostenlos frei; sie verstärken dich kurz und gehen dann auf Abklingzeit. Mit Fertigkeitsstein werden sie im Fertigkeitsbaum stärker und überstehen das Erwachen.</li>
+          <li><strong>Titel</strong> kommen beim Aufstieg von selbst und geben Boni wie Schaden, Gold und Hitzeresistenz. Nach einem Erwachen werden sie neu verdient.</li>
+        </ul>
       <div class="callout">
-          <div class="callout-label">Die Kombo</div>
-          Zünde zuerst Überladung, dann die Fertigkeit, die du wirklich verstärken willst - zum Beispiel Goldrausch. Zeitumkehr verkürzt danach die Abklingzeit der zuletzt genutzten Fertigkeit, sodass du sie früher zurückbekommst.
+          <div class="callout-label">Kombo</div>
+          Erst Überladung, dann die Fertigkeit, die du verstärken willst - zum Beispiel Goldrausch. Zeitumkehr danach verkürzt die Abklingzeit deiner letzten Fertigkeit.
         </div>
     </section>
 
-    <section id="titles">
-      <div class="section-head"><span class="section-num">13</span><h2>Titel</h2></div>
-      <p class="section-dek">100 Titel, die du beim Klettern ganz von selbst bekommst.</p>
-      <ul>
-          <li>Titel reichen von Etage 1 bis Etage <strong>50.000</strong> und werden automatisch nach deiner höchsten Etage in diesem Lauf gewählt.</li>
-          <li>Jeder Titel legt etwa <strong>+0,1</strong> auf seine Boni drauf.</li>
-          <li>Die Boni kommen schrittweise - Klickschaden, automatischer Schaden, Hitzeresistenz, Gold, kritischer Multiplikator, kritische Chance und der SpS-Anteil für Klicks beginnen bei den Titeln 2 / 6 / 11 / 16 / 21 / 26 / 31.</li>
-          <li>Prestige bringt dich zu den frühen Titeln zurück; beim erneuten Klettern kommen sie wieder.</li>
-        </ul>
-    </section>
-
     <section id="tasks">
-      <div class="section-head"><span class="section-num">14</span><h2>Aufgaben und Taskium</h2></div>
-      <p class="section-dek">Ein Nebenstrang, der dein Klicken in ein zweites Einkommen verwandelt.</p>
+      <div class="section-head"><span class="section-num">10</span><h2>Aufgaben</h2></div>
+      <p class="section-dek">Der Nebenweg, der deine Klicks in ein zweites Einkommen verwandelt.</p>
       <ul>
-          <li>Jeder erfolgreiche Klick bringt <strong>+1 Taskium</strong>.</li>
-          <li>Eine Aufgabe annehmen kostet <strong>200</strong>, neu würfeln <strong>25</strong>.</li>
-          <li>Das Aufgabenmenü öffnet sich auf Etage 125; die 6 Plätze öffnen sich auf den Etagen 125 / 225 / 325 / 425 / 525 / 625.</li>
-          <li>Es gibt 10 Aufgabentypen in 6 Seltenheiten. Jede Aufgabe dauert 60 Minuten, nicht angenommene werden stündlich ersetzt.</li>
-          <li>Die Goldbelohnung wächst mit der Seltenheit - das <strong>50-500</strong>-Fache des Erzgolds deiner besten Etage in diesem Lauf. Die seltensten zahlen zusätzlich Essenz.</li>
-        </ul>
-    </section>
-
-    <section id="missions">
-      <div class="section-head"><span class="section-num">15</span><h2>Tägliche Missionen</h2></div>
-      <p class="section-dek">Eine kurze Zielliste, die sich jeden Tag erneuert.</p>
-      <ul>
-          <li>Du bekommst <strong>5 Missionen</strong> pro Tag - Erz abbauen, klicken, das Rad drehen, einen Boss besiegen, Fertigkeiten nutzen und so weiter.</li>
-          <li>Jede erledigte Mission zahlt einen <strong>Boost x2 für 10 Minuten</strong> (automatischer Schaden, Klickschaden, kritische Treffer oder Gold).</li>
-          <li>Belohnungen kommen nicht automatisch - hol sie dir im Missionsmenü ab. Die Liste setzt sich um Mitternacht UTC zurück.</li>
+          <li><strong>Aufgaben</strong> nimmst du mit Taskium an; seltenere Aufgaben zahlen mehr.</li>
+          <li><strong>Tägliche Missionen</strong> erneuern sich täglich und geben beim Abschluss kurze Schübe. Vergiss nicht, die Belohnungen im Fenster abzuholen.</li>
         </ul>
     </section>
 
     <section id="trade">
-      <div class="section-head"><span class="section-num">16</span><h2>Händler</h2></div>
-      <p class="section-dek">Öffnet sich auf Etage 200. Hier wird aus Erzstein und übrigem Material etwas Nützliches.</p>
-      <ul>
-          <li>1 Fertigkeitsstein wird zu <strong>5.000 Erzstein</strong>.</li>
-          <li><strong>2.000 Erzstein</strong> werden zu 1 Essenz.</li>
-          <li><strong>5.000 Erzstein</strong> werden zu 1 Fertigkeitsstein.</li>
-          <li>Jeder Währungstausch kostet pauschal 100.000 Gold Gebühr. Materialtausch und Zerlegen kosten stattdessen Erzstein.</li>
-        </ul>
-      <p>Am wichtigsten ist der Tausch zu Fertigkeitsstein: So wird eine lange Farm-Session ohne Shopkauf zu Fertigkeitsstufen.</p>
+      <div class="section-head"><span class="section-num">11</span><h2>Händler</h2></div>
+      <p class="section-dek">Wo überschüssige Ressourcen zu etwas Nützlichem werden.</p>
+      <p>Du kannst Erzstein in Essenz oder Fertigkeitsstein tauschen, Verzauberungsmaterial eine Stufe hochtauschen und ungewollte Verzauberungen zerlegen. Am wertvollsten ist der Fertigkeitsstein-Tausch: So verstärkst du Fertigkeiten, ohne im Shop etwas zu kaufen.</p>
     </section>
 
     <section id="extras">
-      <div class="section-head"><span class="section-num">17</span><h2>Gratisbelohnungen</h2></div>
-      <p class="section-dek">Quellen, die kaum mehr verlangen, als vorbeizuschauen.</p>
+      <div class="section-head"><span class="section-num">12</span><h2>Kostenlose Belohnungen</h2></div>
+      <p class="section-dek">Ressourcen, die nichts weiter verlangen als vorbeizuschauen.</p>
       <ul>
-          <li><strong>Goldballon</strong> - ab Etage 50 schwebt alle 500-700 Sekunden einer herein und wartet, bis du klickst. Er zahlt das <strong>6-Fache</strong> des Erzgolds deiner besten Etage in diesem Lauf.</li>
-          <li><strong>Goldkristall</strong> - ab Etage 100 erscheint alle 800-1.300 Sekunden einer. Ein Klick in der Hauptmine verwandelt das Erz für 10 Sekunden in ein Bonuserz mit x10 Leben und x14 Gold, ausgezahlt Treffer für Treffer.</li>
-          <li><strong>Offline-Einnahmen</strong> - zählen nach 60 Minuten Abwesenheit, höchstens 12 Stunden. Premium erhöht sie.</li>
-          <li><strong>Spielzeitbelohnung</strong> - alle 60 Minuten Spielzeit gibt es etwa das 100-Fache einer Minute Gold auf deiner besten Etage.</li>
-          <li><strong>Tagesbelohnung</strong> - 1 Gratis-Verliesschlüssel pro Tag im Shop. Keine Serie zu verlieren; du musst online sein.</li>
-          <li><strong>Glücksrad</strong> - ab Etage 100 ein Rad mit 8 Feldern, das sich alle 3 Stunden erneuert und 1 Gratisdrehung gibt. Weitere Drehungen kosten Diamanten, beginnend bei 10 und jedes Mal doppelt so viel. Gewonnene Felder bleiben bis zur Erneuerung zu; Preise sind unter anderem Gold passend zu deiner Etage, Erzstein, Boosts, Taskium, 50 Diamanten und Verliesschlüssel.</li>
-          <li><strong>Aktionscodes</strong> - Codes aus Ankündigungen und der Community gibst du unter Einstellungen > Aktionscodes ein. Jeder Code funktioniert einmal pro Konto, manche haben eine begrenzte Anzahl an Einlösungen.</li>
+          <li><strong>Goldballons</strong> treiben hin und wieder über den Bildschirm; ein Klick bringt Gold. Verpassen kann man sie nicht - sie warten, bis du klickst.</li>
+          <li><strong>Goldkristall</strong> verwandelt das Erz kurzzeitig in ein goldreiches Bonus-Erz; einsammeln lässt er sich nur in der Hauptmine.</li>
+          <li><strong>Offline-Einnahmen</strong> sammeln sich, während das Spiel geschlossen ist.</li>
+          <li><strong>Spielzeit-Belohnungen</strong> zahlen Gold, je länger du spielst.</li>
+          <li><strong>Tägliche Belohnungen</strong> geben im Shop jeden Tag einen kostenlosen Verliesschlüssel und einen kostenlosen Abgrundschlüssel, unabhängig voneinander.</li>
+          <li><strong>Glücksrad</strong> füllt sich in Abständen wieder auf und gibt dir einen Gratisdreh.</li>
+          <li><strong>Aktionscodes</strong> - Codes aus unseren Ankündigungen kannst du im Einstellungsmenü einlösen.</li>
         </ul>
     </section>
 
-    <section id="prestige">
-      <div class="section-head"><span class="section-num">18</span><h2>Prestige</h2></div>
-      <p class="section-dek">Tausche den Fortschritt dieses Laufs gegen dauerhafte Stärke. Gut getimt ist es das Schnellste im Spiel.</p>
-      <p>Das Prestige-Menü erscheint auf Etage 70. Prestige machen kannst du, sobald du im aktuellen Lauf <strong>Etage 100 überschreitest</strong> - jeder Lauf verlangt dieselbe Etage.</p>
+    <section id="awakening">
+      <div class="section-head"><span class="section-num">13</span><h2>Erwachen</h2></div>
+      <p class="section-dek">Verwandle den Fortschritt dieses Laufs in dauerhafte Kraft.</p>
       <ul>
-          <li><strong>Zurückgesetzt:</strong> Gold, Etagenfortschritt, Upgrades und Fertigkeiten von Spitzhacken, Rüstungen und Begleitern, Abklingzeiten, Titelfortschritt, Taskium, Aufgabenfortschritt, Spitzhacken-Zuweisungen der Arbeiter und nicht eingesammeltes Arbeitereinkommen.</li>
-          <li><strong>Bleibt:</strong> Diamanten und alles damit Gekaufte, Verliesschlüssel, Verliesfortschritt, Essenz, Prestige-Parameter, Fertigkeitsbaum-Stufen, Fertigkeitsstein, Erzstein, Verzauberungen und Inventar, Erfolge, Statistiken, Bestenlisten und Arbeiterstufen.</li>
-          <li>Jeder Lauf beginnt wieder auf <strong>Etage 1</strong>, ohne Startgold.</li>
+          <li>Ab einer bestimmten Tiefe kannst du ein Erwachen durchführen. Jeder Lauf beginnt wieder auf der ersten Etage.</li>
+          <li><strong>Zurückgesetzt:</strong> Gold, Etagenfortschritt, freigeschaltete und verbesserte Spitzhacken, Rüstungs- und Gefährten-Verbesserungen, Gegenstandsfertigkeiten, Titel, Taskium, Aufgabenfortschritt, an Arbeiter vergebene Spitzhacken und nicht eingesammeltes Arbeitereinkommen.</li>
+          <li><strong>Behalten:</strong> Diamanten und alles damit Gekaufte, Schlüssel, Boss- und Abgrund-Fortschritt, Essenz, Erwachen-Parameter, der Fertigkeitsbaum, Fertigkeitsstein, Erzstein, Verzauberungen, Erfolge, Arbeiterstufen und alles auf der Aufstieg-Seite.</li>
+          <li>Die Essenz richtet sich nach der tiefsten erreichten Etage und wächst mit der Tiefe schnell an. Gib sie für dauerhafte Parameter aus.</li>
         </ul>
-      <p>Die Belohnung in Essenz hängt nur von deiner <strong>höchsten Etage</strong> ab und wächst schnell: etwa 331 auf Etage 200, 1.098 auf Etage 300, 12.068 auf Etage 500 und 4.827.341 auf Etage 1.000.</p>
       <div class="callout">
-          <div class="callout-label">Geh ein Stück tiefer</div>
-          Weil die Belohnung mit der Tiefe so steil steigt, sind ein paar Etagen mehr vor dem Prestige meist mehr wert als sofort erneut Prestige zu machen.
+          <div class="callout-label">Grab noch ein Stück tiefer</div>
+          Vor dem Erwachen noch ein paar Etagen zu schaffen ist meist mehr wert als sofort ein weiteres Erwachen.
         </div>
-      <div class="table-wrap">
-        <table>
-        <thead><tr>
-        <th>Parameter</th>
-        <th>Effekt</th>
-        <th class="num">Pro Stufe</th>
-        </tr></thead>
-        <tbody>
-        <tr>
-        <td>Ewige Schmiede</td>
-        <td>Automatischer Schaden pro Sekunde</td>
-        <td class="num">+2,5 %</td>
-        </tr>
-        <tr>
-        <td>Hand des Steinbrechers</td>
-        <td>Klickschaden</td>
-        <td class="num">+2,5 %</td>
-        </tr>
-        <tr>
-        <td>Goldener Abgrund</td>
-        <td>Goldeinkommen</td>
-        <td class="num">+1 %</td>
-        </tr>
-        <tr>
-        <td>Erzorakel</td>
-        <td>Kritische Chance</td>
-        <td class="num">+0,1 %</td>
-        </tr>
-        <tr>
-        <td>Kataklysmische Kraft</td>
-        <td>Kritischer Multiplikator</td>
-        <td class="num">+0,1 %</td>
-        </tr>
-        <tr>
-        <td>Höllenschild</td>
-        <td>Hitzeresistenz</td>
-        <td class="num">+1 %</td>
-        </tr>
-        <tr>
-        <td>Einheit der Kraft</td>
-        <td>Anteil des SpS, der auf Klicks kommt</td>
-        <td class="num">+0,1 %</td>
-        </tr>
-        </tbody></table></div>
-      <p>Jede Stufe baut multiplikativ auf den vorherigen auf. Eine Stufe kostet anfangs 2 Essenz und jedes Mal etwa 2,5 % mehr - oft auszugeben schlägt also das Horten.</p>
     </section>
 
-    <section id="bosses">
-      <div class="section-head"><span class="section-num">19</span><h2>Bosse</h2></div>
-      <p class="section-dek">Ein Schadensrennen gegen die Uhr um Essenz und Erzstein. Öffnet sich auf Etage 350.</p>
+    <section id="ascension">
+      <div class="section-head"><span class="section-num">14</span><h2>Aufstieg</h2></div>
+      <p class="section-dek">Die zweite Ebene, die auf dem Erwachen aufsitzt.</p>
       <ul>
-          <li>Öffne das Menü Orte, wähle das Verlies und einen Boss und gib <strong>1 Verliesschlüssel</strong> für den Start aus. Nichts startet von selbst.</li>
-          <li>Bosse öffnen sich der Reihe nach - besiege einen, um den nächsten freizuschalten. Das Leben steigt steil, während die Uhr kürzer wird.</li>
-          <li>Der Bossfortschritt <strong>bleibt beim Prestige erhalten</strong>, und jeden bereits besiegten Boss kannst du erneut bekämpfen.</li>
+          <li>Erreichst du eine deutlich tiefere Etage, schaltet sich Aufstieg frei; es bekommt eine eigene Seite unter dem Prestige-Reiter.</li>
+          <li><strong>Zurückgesetzt:</strong> deine Erwachen-Parameter und die Essenz - diese Schleife beginnt komplett von vorn; Spitzhacken, Etagen und Verbesserungen werden wie beim Erwachen zurückgesetzt.</li>
+          <li><strong>Behalten:</strong> deine Erwachen-Stufe, Diamanten und alles damit Gekaufte, Schlüssel, Boss- und Abgrund-Fortschritt, Verzauberungen, der Fertigkeitsbaum, Erfolge, Arbeiterstufen und das angesparte Reine Essenz.</li>
+          <li>Dafür bekommst du <strong>Reine Essenz</strong>. Es kauft zwei Parameter: <strong>Echo des Erwachens</strong> verstärkt den Bonus jedes Erwachen-Parameters, <strong>Quellborn</strong> erhöht die Essenz, die jedes Erwachen auszahlt.</li>
+          <li>Beide Parameter wirken zusammengesetzt: Jede Stufe multipliziert auf der vorigen auf.</li>
         </ul>
-      <div class="table-wrap">
-        <table>
-        <thead><tr>
-        <th>Boss</th>
-        <th class="num">Leben</th>
-        <th class="num">Zeit</th>
-        <th>Belohnung</th>
-        </tr></thead>
-        <tbody>
-        <tr>
-        <td>Kristallkoloss</td>
-        <td class="num">1e15</td>
-        <td class="num">30 s</td>
-        <td>1.000 Essenz + 50.000 Erzstein</td>
-        </tr>
-        <tr>
-        <td>Kristallwächter</td>
-        <td class="num">1e18</td>
-        <td class="num">25 s</td>
-        <td>2.000 Essenz + 75.000 Erzstein</td>
-        </tr>
-        <tr>
-        <td>Purpurner Wächter</td>
-        <td class="num">1e22</td>
-        <td class="num">20 s</td>
-        <td>3.000 Essenz + 100.000 Erzstein</td>
-        </tr>
-        <tr>
-        <td>Steinwächter</td>
-        <td class="num">1e27</td>
-        <td class="num">20 s</td>
-        <td>4.000 Essenz + 125.000 Erzstein</td>
-        </tr>
-        <tr>
-        <td>Frosttitan</td>
-        <td class="num">1e33</td>
-        <td class="num">20 s</td>
-        <td>5.000 Essenz + 150.000 Erzstein</td>
-        </tr>
-        <tr>
-        <td>Kristallgolem 1</td>
-        <td class="num">1e40</td>
-        <td class="num">20 s</td>
-        <td>6.000 Essenz + 175.000 Erzstein</td>
-        </tr>
-        <tr>
-        <td>Steinbart-Koloss</td>
-        <td class="num">1e48</td>
-        <td class="num">15 s</td>
-        <td>7.000 Essenz + 200.000 Erzstein</td>
-        </tr>
-        <tr>
-        <td>Kristallgolem 2</td>
-        <td class="num">1e57</td>
-        <td class="num">15 s</td>
-        <td>8.000 Essenz + 225.000 Erzstein</td>
-        </tr>
-        <tr>
-        <td>Flammengolem</td>
-        <td class="num">1e67</td>
-        <td class="num">15 s</td>
-        <td>9.000 Essenz + 250.000 Erzstein</td>
-        </tr>
-        <tr>
-        <td>Golemwächter</td>
-        <td class="num">1e78</td>
-        <td class="num">10 s</td>
-        <td>10.000 Essenz + 275.000 Erzstein</td>
-        </tr>
-        </tbody></table></div>
+      <div class="callout">
+          <div class="callout-label">Wann aufsteigen</div>
+          Aufstieg beschleunigt nicht einen einzelnen Lauf, sondern die ganze Schleife. Es lohnt sich, sobald Essenz-Parameter teuer geworden sind und ein weiteres Erwachen kaum noch etwas bringt.
+        </div>
+    </section>
+
+    <section id="dungeons">
+      <div class="section-head"><span class="section-num">15</span><h2>Bosse und Abgrund</h2></div>
+      <p class="section-dek">Die zwei zeitlich begrenzten Herausforderungen außerhalb der Hauptmine.</p>
+      <ul>
+          <li>Zu beiden gelangst du über Orte; solange du dort bist, ruhen Hitze und Etagenfortschritt der Hauptmine.</li>
+          <li><strong>Bosse</strong> öffnest du mit einem Verliesschlüssel: Streckst du den Boss vor Ablauf der Zeit nieder, gibt es Essenz und Erzstein. Bosse schalten sich der Reihe nach frei, ein besiegter Boss bleibt dauerhaft offen.</li>
+          <li><strong>Abgrund</strong> öffnest du mit einem Abgrundschlüssel; alles läuft über eine einzige Uhr: Du zerbrichst Erz um Erz, jede Stufe härter als die davor.</li>
+          <li>Jede Abgrundstufe bringt ihre eigene <strong>Strafe</strong> mit - eine senkt deinen automatischen Schaden, eine den Klickschaden, eine die Kritischen. Die Strafe gilt nur, solange die Stufe läuft.</li>
+          <li>Jede im Abgrund zerbrochene Stufe wird ausgezahlt: Ob die Zeit abläuft oder du den Lauf verlässt, das bis dahin Verdiente gehört dir. Schaffst du alle Stufen, öffnet sich der nächste Abgrund.</li>
+        </ul>
       <div class="callout warn">
-          <div class="callout-label">Verlieren kostet</div>
-          Läuft die Zeit zuerst ab, bekommst du <strong>nichts</strong> und der Schlüssel ist weg. Nach einem gescheiterten Versuch siehst du, wie viel Leben übrig war - daran erkennst du, wie viel Schaden dir noch fehlt.
-        </div>
-    </section>
-
-    <section id="achievements">
-      <div class="section-head"><span class="section-num">20</span><h2>Erfolge</h2></div>
-      <p class="section-dek">100 Erfolge in 31 Kategorien - Klicks, Erz, Bosse, Prestige, Tiefe, Herstellung und mehr.</p>
-      <p>Jeder Erfolg zahlt <strong>Erzstein</strong>, und Ziel wie Belohnung wachsen Stufe für Stufe.</p>
-      <div class="callout">
-          <div class="callout-label">Abholen nicht vergessen</div>
-          Belohnungen kommen <strong>nicht automatisch</strong>. Warst du länger nicht im Erfolge-Tab, wartet dort ein Stapel - der Alles-abholen-Knopf nimmt alles auf einmal.
+          <div class="callout-label">Ein verlorener Boss kostet</div>
+          Endet die Zeit, bevor der Boss fällt, bekommst du keine Belohnung und der Schlüssel ist weg.
         </div>
     </section>
 
     <section id="store">
-      <div class="section-head"><span class="section-num">21</span><h2>Shop</h2></div>
-      <p class="section-dek">Diamanten, Schlüssel, Pakete, Premium-Zeit, Zeitsprünge, Truhen und die dauerhaften Unendlich-Gegenstände.</p>
+      <div class="section-head"><span class="section-num">16</span><h2>Shop und Erfolge</h2></div>
+      <p class="section-dek">Diamanten, Schlüssel, Pakete, Premium, Zeitsprünge, Truhen und dauerhafte Unendlichkeits-Gegenstände.</p>
       <ul>
-          <li><strong>Diamantenpakete:</strong> 200 / 550 / 1.150 / 2.400 / 6.250 / 14.000 Diamanten. Je größer das Paket, desto besser der Kurs.</li>
-          <li><strong>Schlüsselpakete:</strong> 3 / 7 / 15 Verliesschlüssel.</li>
-          <li><strong>Kleines Paket:</strong> 500 Diamant, 100 Essenz, 10 Fertigkeitsstein, 3 Verliesschlüssel.</li>
-          <li><strong>Großes Paket:</strong> 1.000 Diamant, 200 Essenz, 20 Fertigkeitsstein, 5 Verliesschlüssel.</li>
-          <li><strong>7-Tage-Premiumpaket:</strong> 7 Tage lang x5 Klickschaden, x5 automatischer Schaden, x3 Gold, x3 Hitzeresistenz und x2 Offline-Einnahmen.</li>
-          <li><strong>30-Tage-Premiumpaket:</strong> 30 Tage lang x7 Klickschaden, x7 automatischer Schaden, x4,5 Gold, x3,5 Hitzeresistenz und x2,5 Offline-Einnahmen.</li>
-          <li><strong>Zeitsprung:</strong> 8 / 16 / 24 Stunden für 100 / 190 / 370 Diamanten. Die Belohnung wird aus deinem eigenen Schaden, deiner Etage und deinen Arbeitern berechnet - inklusive Erz, Verzauberungsdrops und seltenen Erzen. Boosts, Abklingzeiten und Timer laufen nicht weiter, und im Verlies ist er nicht verfügbar.</li>
+          <li><strong>Premium</strong> erhöht für einen festgelegten Zeitraum Schaden, Gold und Offline-Einnahmen.</li>
+          <li><strong>Zeitsprünge</strong> spulen das Spiel um einige Stunden vor; die Auszahlung richtet sich nach deiner aktuellen Stärke.</li>
+          <li><strong>Verzauberungstruhe</strong> öffnet sich sofort und gibt Verzauberungsmaterial.</li>
+          <li><strong>Schlüsselpakete</strong> werden mit Diamanten gekauft; es gibt Pakete für Verliesschlüssel und für Abgrundschlüssel.</li>
+          <li><strong>Unendlichkeits-Gegenstände</strong> kaufst du einmal; sie überstehen sowohl Erwachen als auch Aufstieg.</li>
+          <li><strong>Erfolge</strong> zahlen Erzstein; die Belohnungen musst du selbst abholen.</li>
         </ul>
-      <p>Die <strong>Verzauberungstruhe</strong> kostet 100 Diamanten und öffnet sich sofort. Die Karte zeigt jeden Preis und seine Chance:</p>
-      <div class="table-wrap">
-        <table>
-        <thead><tr>
-        <th>Gegenstand</th>
-        <th class="num">Menge</th>
-        <th class="num">Chance</th>
-        </tr></thead>
-        <tbody>
-        <tr>
-        <td>Gewöhnlich Verzauberungsstaub</td>
-        <td class="num">250</td>
-        <td class="num">17 %</td>
-        </tr>
-        <tr>
-        <td>Gewöhnlich Verzauberungsfragment</td>
-        <td class="num">26</td>
-        <td class="num">16 %</td>
-        </tr>
-        <tr>
-        <td>Selten Verzauberungsstaub</td>
-        <td class="num">180</td>
-        <td class="num">15 %</td>
-        </tr>
-        <tr>
-        <td>Selten Verzauberungsfragment</td>
-        <td class="num">9</td>
-        <td class="num">15 %</td>
-        </tr>
-        <tr>
-        <td>Episch Verzauberungsstaub</td>
-        <td class="num">150</td>
-        <td class="num">10 %</td>
-        </tr>
-        <tr>
-        <td>Episch Verzauberungsfragment</td>
-        <td class="num">5</td>
-        <td class="num">10 %</td>
-        </tr>
-        <tr>
-        <td>Legendär Verzauberungsstaub</td>
-        <td class="num">130</td>
-        <td class="num">9 %</td>
-        </tr>
-        <tr>
-        <td>Legendär Verzauberungsfragment</td>
-        <td class="num">3</td>
-        <td class="num">8 %</td>
-        </tr>
-        </tbody></table></div>
-      <p>Die Unendlich-Gegenstände kaufst du <strong>einmal mit Diamanten</strong>, und sie werden nie zurückgesetzt, nicht einmal durch Prestige. Im späten Spiel sind sie meist die beste Diamantenausgabe.</p>
-      <div class="table-wrap">
-        <table>
-        <thead><tr>
-        <th>Gegenstand</th>
-        <th class="num">Effekt</th>
-        <th class="num">Preis</th>
-        </tr></thead>
-        <tbody>
-        <tr>
-        <td>Unendliche Kraft</td>
-        <td class="num">x4</td>
-        <td class="num">350 💎</td>
-        </tr>
-        <tr>
-        <td>Unendliches Einkommen</td>
-        <td class="num">x3</td>
-        <td class="num">350 💎</td>
-        </tr>
-        <tr>
-        <td>Unendliche Rüstung</td>
-        <td class="num">x2</td>
-        <td class="num">350 💎</td>
-        </tr>
-        <tr>
-        <td>Unendliche Geschwindigkeit</td>
-        <td class="num">x1,5</td>
-        <td class="num">550 💎</td>
-        </tr>
-        <tr>
-        <td>Unendlicher Klicker</td>
-        <td class="num">7 /s</td>
-        <td class="num">600 💎</td>
-        </tr>
-        </tbody></table></div>
-      <div class="callout">
-          <div class="callout-label">Preise</div>
-          Echtgeldpreise kommen von Steam in deiner Währung und stehen deshalb nicht hier. Was ein Paket enthält, ändert sich nie; was es kostet, hängt von deiner Region ab.
-        </div>
     </section>
 
     <section id="progress">
-      <div class="section-head"><span class="section-num">22</span><h2>Deinen Fortschritt verfolgen</h2></div>
-      <p class="section-dek">Hier siehst du, wie der Lauf läuft und was gerade passiert ist.</p>
+      <div class="section-head"><span class="section-num">17</span><h2>Fortschritt und Speichern</h2></div>
+      <p class="section-dek">Wo du deinen Lauf verfolgst und wie dein Fortschritt gesichert wird.</p>
       <ul>
-          <li>Steam-Bestenlisten erfassen Klicks, Klickschaden, Prestige-Anzahl, besiegte Bosse und höchste Etage.</li>
-          <li>Der Statistikbildschirm führt lange Buch - Einnahmen, Ausgaben, Klicks, Herstellung, Spielzeit und mehr.</li>
-          <li>Das <strong>Aktivitätsprotokoll</strong> listet, was in dieser Sitzung passiert ist - Belohnungen, Freischaltungen, Bosse, Käufe - und die Eckmeldung öffnet es.</li>
-          <li>Das Menü <strong>Updates</strong> zeigt die neuesten Patchnotes in deiner Sprache und öffnet sich nach einem neuen Update einmal von selbst.</li>
+          <li>Steam-Bestenlisten, der Statistikbildschirm und das <strong>Aktivitätsprotokoll</strong> zeigen deinen Fortschritt.</li>
+          <li>Das Fenster <strong>Updates</strong> zeigt die neuesten Update-Notizen.</li>
+          <li>Das Spiel speichert regelmäßig und sichert in der Steam Cloud; so machst du an einem anderen Rechner weiter.</li>
+          <li>Ist Discord offen, zeigt dein Profil, auf welcher Etage du bist und welche Erwachen- / Aufstieg-Stufe du hast.</li>
         </ul>
     </section>
 
-    <section id="save">
-      <div class="section-head"><span class="section-num">23</span><h2>Spielstände</h2></div>
-      <p class="section-dek">Kurz gesagt: Dein Fortschritt ist auf mehreren Wegen gleichzeitig sicher.</p>
-      <ul>
-          <li>Das Spiel speichert verschlüsselt alle <strong>15 Sekunden</strong>.</li>
-          <li>Etwa alle <strong>45 Sekunden</strong> und immer beim Schließen oder Pausieren sichert es in der Steam Cloud - ein anderer Computer macht dort weiter, wo du aufgehört hast.</li>
-          <li>Ist eine Speicherdatei beschädigt, greift das Spiel von selbst auf die Sicherung zurück.</li>
-          <li>Du kannst deinen Spielstand auch in die Zwischenablage kopieren und auf einem anderen Gerät wieder einfügen.</li>
-        </ul>
-    </section>
-
-    <section id="languages">
-      <div class="section-head"><span class="section-num">24</span><h2>Sprachen</h2></div>
-      <p class="section-dek">Das Spiel erscheint in 18 Sprachen.</p>
-      <p>Englisch, Türkisch, Deutsch, Französisch, Spanisch, lateinamerikanisches Spanisch, Italienisch, Polnisch, brasilianisches Portugiesisch, Russisch, Ukrainisch, Japanisch, Koreanisch, vereinfachtes Chinesisch, traditionelles Chinesisch, Thai, Indonesisch und Vietnamesisch. Das Spiel wählt deine Sprache beim ersten Start, in den Einstellungen kannst du sie jederzeit ändern - dieses Handbuch gibt es in allen, verlinkt oben auf der Seite.</p>
-    </section>
-
-    <footer class="doc-footer">Die Zahlen hier entsprechen dem aktuellen Balancing und können sich mit Updates ändern. Echtgeldpreise legt Steam fest und zeigt sie in deiner Währung an, deshalb stehen sie hier nicht.</footer>
+    <footer class="doc-footer">Das Spiel ändert sich mit Updates; dieses Handbuch gibt einen Überblick. Preise für Echtgeld-Artikel zeigt Steam in deiner eigenen Währung an.</footer>
   </main>
 </div>
 

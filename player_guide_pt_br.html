@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <title>Clicker Ore Game - Guia do jogador</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Como a mina funciona: moedas, picaretas, mascotes, trabalhadores, encantamentos, habilidades, prestígio, chefes e loja, explicados sem fórmulas.">
+<meta name="description" content="Como a mina funciona: picaretas, mascotes, trabalhadores, encantamentos, habilidades, Despertar, Ascensão, chefes, o Abismo e a loja - em resumo.">
 <style>
   :root {
     --bg: #14110d;
@@ -28,6 +28,8 @@
     --cur-key: #d98a63;
     --cur-skillstone: #7fc9a0;
     --cur-orestone: #b5a68c;
+    --cur-abysskey: #8f7fd6;
+    --cur-pureessence: #d7bff5;
 
     --font-display: "Bahnschrift", "Segoe UI Semibold", "Arial Narrow Bold", "Arial Narrow", sans-serif;
     --font-body: "Sitka Text", "Iowan Old Style", Georgia, "Times New Roman", serif;
@@ -481,38 +483,31 @@
     <div class="toc-brand">Clicker Ore Game<small>Guia do jogador</small></div>
     <ul class="toc-list">
       <li><a href="#start"><span class="toc-num">01</span>Por onde começar</a></li>
-      <li><a href="#currencies"><span class="toc-num">02</span>As 7 moedas</a></li>
-      <li><a href="#damage"><span class="toc-num">03</span>Dano de clique e dano automático</a></li>
-      <li><a href="#critical"><span class="toc-num">04</span>Acertos críticos</a></li>
-      <li><a href="#pickaxes"><span class="toc-num">05</span>Picaretas</a></li>
-      <li><a href="#suits"><span class="toc-num">06</span>Armaduras</a></li>
-      <li><a href="#temperature"><span class="toc-num">07</span>Calor</a></li>
-      <li><a href="#pets"><span class="toc-num">08</span>Mascotes</a></li>
-      <li><a href="#workers"><span class="toc-num">09</span>Trabalhadores</a></li>
-      <li><a href="#enchantments"><span class="toc-num">10</span>Encantamentos</a></li>
-      <li><a href="#floors"><span class="toc-num">11</span>Andares, minério e profundidade</a></li>
-      <li><a href="#skills"><span class="toc-num">12</span>Habilidades ativas</a></li>
-      <li><a href="#titles"><span class="toc-num">13</span>Títulos</a></li>
-      <li><a href="#tasks"><span class="toc-num">14</span>Tarefas e Taskium</a></li>
-      <li><a href="#missions"><span class="toc-num">15</span>Missões diárias</a></li>
-      <li><a href="#trade"><span class="toc-num">16</span>Mercador</a></li>
-      <li><a href="#extras"><span class="toc-num">17</span>Recompensas grátis</a></li>
-      <li><a href="#prestige"><span class="toc-num">18</span>Prestígio</a></li>
-      <li><a href="#bosses"><span class="toc-num">19</span>Chefes</a></li>
-      <li><a href="#achievements"><span class="toc-num">20</span>Conquistas</a></li>
-      <li><a href="#store"><span class="toc-num">21</span>Loja</a></li>
-      <li><a href="#progress"><span class="toc-num">22</span>Acompanhando seu progresso</a></li>
-      <li><a href="#save"><span class="toc-num">23</span>Salvamento</a></li>
-      <li><a href="#languages"><span class="toc-num">24</span>Idiomas</a></li>
+      <li><a href="#currencies"><span class="toc-num">02</span>Moedas</a></li>
+      <li><a href="#damage"><span class="toc-num">03</span>Dano e acertos críticos</a></li>
+      <li><a href="#equipment"><span class="toc-num">04</span>Picaretas, armaduras e mascotes</a></li>
+      <li><a href="#temperature"><span class="toc-num">05</span>Calor</a></li>
+      <li><a href="#workers"><span class="toc-num">06</span>Trabalhadores</a></li>
+      <li><a href="#enchantments"><span class="toc-num">07</span>Encantamentos</a></li>
+      <li><a href="#floors"><span class="toc-num">08</span>Andares e minérios</a></li>
+      <li><a href="#skills"><span class="toc-num">09</span>Habilidades e títulos</a></li>
+      <li><a href="#tasks"><span class="toc-num">10</span>Tarefas</a></li>
+      <li><a href="#trade"><span class="toc-num">11</span>Mercador</a></li>
+      <li><a href="#extras"><span class="toc-num">12</span>Recompensas grátis</a></li>
+      <li><a href="#awakening"><span class="toc-num">13</span>Despertar</a></li>
+      <li><a href="#ascension"><span class="toc-num">14</span>Ascensão</a></li>
+      <li><a href="#dungeons"><span class="toc-num">15</span>Chefes e Abismo</a></li>
+      <li><a href="#store"><span class="toc-num">16</span>Loja e conquistas</a></li>
+      <li><a href="#progress"><span class="toc-num">17</span>Progresso e salvamento</a></li>
     </ul>
   </nav>
 
   <main>
     <header class="hero">
       <div class="strata" role="presentation"></div>
-      <div class="eyebrow">Guia do jogador - 2026-09-14</div>
-      <h1 class="title">Tudo sobre a mina,<br>em palavras simples</h1>
-      <p class="subtitle">O que cada sistema faz, quando ele é liberado e onde a sua próxima hora rende mais. Sem fórmulas - só as decisões que importam.</p>
+      <div class="eyebrow">Guia do jogador - 2026-09-21</div>
+      <h1 class="title">A mina inteira,<br>em resumo</h1>
+      <p class="subtitle">Para que serve cada sistema e onde vale a pena gastar seu tempo. Sem números nem fórmulas - só o que você precisa saber.</p>
       <div class="langbar">
         <div class="langbar-label">Idioma</div>
         <div class="langbar-list"><a href="player_guide_en.html" hreflang="en">English</a><a href="player_guide_tr.html" hreflang="tr">Türkçe</a><a href="player_guide_de.html" hreflang="de">Deutsch</a><a href="player_guide_fr.html" hreflang="fr">Français</a><a href="player_guide_es.html" hreflang="es">Español</a><a href="player_guide_es_la.html" hreflang="es-419">Español (Latinoamérica)</a><a href="player_guide_it.html" hreflang="it">Italiano</a><a href="player_guide_pl.html" hreflang="pl">Polski</a><span>Português (Brasil)</span><a href="player_guide_ru.html" hreflang="ru">Русский</a><a href="player_guide_uk.html" hreflang="uk">Українська</a><a href="player_guide_ja.html" hreflang="ja">日本語</a><a href="player_guide_ko.html" hreflang="ko">한국어</a><a href="player_guide_zh_hans.html" hreflang="zh-Hans">简体中文</a><a href="player_guide_zh_hant.html" hreflang="zh-Hant">繁體中文</a><a href="player_guide_th.html" hreflang="th">ไทย</a><a href="player_guide_id.html" hreflang="id">Bahasa Indonesia</a><a href="player_guide_vi.html" hreflang="vi">Tiếng Việt</a></div>
@@ -521,711 +516,300 @@
 
     <section id="start">
       <div class="section-head"><span class="section-num">01</span><h2>Por onde começar</h2></div>
-      <p class="section-dek">Três etapas, na ordem em que o jogo libera seus sistemas.</p>
+      <p class="section-dek">O jogo abre seus sistemas aos poucos, conforme você desce.</p>
       <div class="strategy-track">
           <div class="strategy-stage">
-            <div class="stage-label">Começo - andares 1 a 100</div>
+            <div class="stage-label">Começo</div>
             <ul>
-              <li>Melhore a picareta sem parar; novas picaretas são liberadas conforme você desce.</li>
-              <li>Quebra-Minérios chega no andar 50, Clique de Ira no andar 100.</li>
-              <li>Clique no balão dourado sempre que ele aparecer e compre Pedrinha quando tiver diamantes sobrando.</li>
+              <li>Melhore a picareta sem parar; andares mais fundos liberam novas.</li>
+              <li>Clique em cada balão de ouro e em cada Cristal de Ouro, e comece a usar suas primeiras habilidades.</li>
+              <li>Compre o primeiro mascote assim que os diamantes derem.</li>
             </ul>
           </div>
           <div class="strategy-stage">
-            <div class="stage-label">Meio - andares 100 a 350</div>
+            <div class="stage-label">Meio</div>
             <ul>
-              <li>Faça prestígio depois de passar do andar 100, quando o progresso ficar lento.</li>
-              <li>As tarefas abrem no andar 125, a armadura no 130, a árvore de habilidades no 180 e o Mercador no 200.</li>
-              <li>Distribua a Essência entre os 7 parâmetros em vez de maximizar um só.</li>
+              <li>Quando o avanço travar, faça um Despertar e ganhe Essência.</li>
+              <li>Tarefas, armaduras, a árvore de habilidades e o mercador aparecem nessa fase.</li>
+              <li>Distribua a Essência em vez de empilhar tudo em um parâmetro.</li>
             </ul>
           </div>
           <div class="strategy-stage">
-            <div class="stage-label">Final - andar 350 em diante</div>
+            <div class="stage-label">Avançado</div>
             <ul>
-              <li>Enfrente chefes sempre que tiver chave; eles dão Essência e Pedra de minério.</li>
-              <li>Materiais de encantamento começam a cair no andar 500, e os trabalhadores chegam a partir do andar 600.</li>
-              <li>Mantenha a armadura em dia para o calor não comer seu dano.</li>
+              <li>Enfrente chefes sempre que tiver chave e depois comece as corridas do Abismo.</li>
+              <li>Os trabalhadores chegam e os materiais de encantamento começam a cair.</li>
+              <li>Continue melhorando a armadura para o calor não comer seu dano.</li>
+            </ul>
+          </div>
+          <div class="strategy-stage">
+            <div class="stage-label">Longo prazo</div>
+            <ul>
+              <li>Bem mais fundo, a Ascensão é liberada e zera todo o ciclo do Despertar.</li>
+              <li>Em troca você ganha Essência Pura, que deixa cada partida seguinte permanentemente mais rápida.</li>
             </ul>
           </div>
         </div>
       <div class="callout">
-          <div class="callout-label">Bom saber</div>
-          Os números crescem rápido, então o jogo passa para formas curtas e depois para notação científica como <strong>1,23e45</strong>. Nada tem limite - só muda a forma de escrever.
+          <div class="callout-label">Vale saber</div>
+          Os números crescem rápido; o jogo passa primeiro para notação curta e depois para notação científica. Nada tem teto - só muda a forma de escrever.
         </div>
     </section>
 
     <section id="currencies">
-      <div class="section-head"><span class="section-num">02</span><h2>As 7 moedas</h2></div>
-      <p class="section-dek">Cada uma alimenta um sistema diferente. Gastar a moeda certa no lugar errado é o erro mais comum no começo.</p>
+      <div class="section-head"><span class="section-num">02</span><h2>Moedas</h2></div>
+      <p class="section-dek">Cada uma alimenta um sistema diferente.</p>
       <div class="currency-grid">
         <div class="cur-card" style="--dot:var(--cur-gold)">
           <h4><span class="dot"></span>Ouro</h4>
-          <p>Ganho <b>quebrando minério</b>, além de balões, trabalhadores, tarefas e tempo offline.</p>
-          <p>Gasto em picaretas, melhorias e habilidades de itens - o seu cavalo de batalha.</p>
+          <p>Ganho <b>quebrando minério</b>; balões, trabalhadores, tarefas e tempo offline também rendem ouro.</p>
+          <p>Vai para picaretas, melhorias e habilidades de item.</p>
         </div>
         <div class="cur-card" style="--dot:var(--cur-diamond)">
           <h4><span class="dot"></span>Diamante</h4>
-          <p>Vem de <b>compras com dinheiro real</b>, da Roleta da Sorte e de códigos promocionais.</p>
-          <p>Gasto em mascotes, itens Infinitos, avanços de tempo, baús e giros extras.</p>
+          <p>Vem de <b>compras com dinheiro real</b>, de prêmios da Roleta da Sorte e de códigos promocionais.</p>
+          <p>Gasto em mascotes, itens Infinity, saltos de tempo, baús e pacotes de chaves.</p>
         </div>
         <div class="cur-card" style="--dot:var(--cur-essence)">
           <h4><span class="dot"></span>Essência</h4>
-          <p>Vem do <b>prestígio</b>, das vitórias contra chefes e do Mercador.</p>
-          <p>Gasta nos 7 parâmetros de prestígio permanentes.</p>
+          <p>É a recompensa do <b>Despertar</b>; chefes e Mercador também dão um pouco.</p>
+          <p>Gasta em parâmetros permanentes de Despertar.</p>
         </div>
         <div class="cur-card" style="--dot:var(--cur-taskium)">
           <h4><span class="dot"></span>Taskium</h4>
-          <p><b>+1</b> a cada clique certeiro.</p>
-          <p>Serve para aceitar e renovar tarefas.</p>
+          <p>Um pouco é ganho a cada clique que acerta.</p>
+          <p>Gasto para aceitar e renovar tarefas.</p>
         </div>
         <div class="cur-card" style="--dot:var(--cur-key)">
           <h4><span class="dot"></span>Chave de masmorra</h4>
-          <p>Uma chave grátis por dia, além dos pacotes da loja e da Roleta da Sorte.</p>
-          <p>Serve para entrar numa luta contra chefe - 1 por tentativa.</p>
+          <p>Uma chave grátis por dia, além da loja e da Roleta da Sorte.</p>
+          <p>Gasta para entrar em uma luta contra chefe.</p>
         </div>
         <div class="cur-card" style="--dot:var(--cur-skillstone)">
           <h4><span class="dot"></span>Pedra de habilidade</h4>
-          <p>Vem de pacotes da loja e do Mercador.</p>
-          <p>Serve para subir as 8 habilidades ativas.</p>
+          <p>Vem da loja e do Mercador.</p>
+          <p>Gasta para fortalecer habilidades ativas.</p>
         </div>
         <div class="cur-card" style="--dot:var(--cur-orestone)">
           <h4><span class="dot"></span>Pedra de minério</h4>
-          <p><b>1-5</b> de cada minério quebrado, além de conquistas e chefes.</p>
-          <p>Gasta em trocas, criação de encantamentos e melhorias de trabalhadores.</p>
+          <p>Cai de cada minério quebrado, além de conquistas, chefes e corridas do Abismo.</p>
+          <p>Gasta em trocas, na criação de encantamentos e na melhoria dos trabalhadores.</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-abysskey)">
+          <h4><span class="dot"></span>Chave de abismo</h4>
+          <p>Uma chave grátis por dia, além de diamantes na loja.</p>
+          <p>Gasta para entrar em uma corrida do Abismo.</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-pureessence)">
+          <h4><span class="dot"></span>Essência Pura</h4>
+          <p>É a recompensa da <b>Ascensão</b>; não vem de nenhum outro lugar.</p>
+          <p>Gasta somente em parâmetros de Ascensão.</p>
         </div>
       </div>
       <div class="callout">
           <div class="callout-label">Moedas do servidor</div>
-          Diamantes e chaves de masmorra ficam guardados no servidor, então para comprar com eles você precisa estar online. Se a conexão caiu, o jogo reconecta sozinho quando você tenta comprar.
+          Diamantes, chaves de masmorra e Chave de abismo ficam no servidor; é preciso estar online para gastá-los.
         </div>
     </section>
 
     <section id="damage">
-      <div class="section-head"><span class="section-num">03</span><h2>Dano de clique e dano automático</h2></div>
-      <p class="section-dek">Duas fontes de dano separadas, alimentadas por coisas diferentes.</p>
-      <p>O <strong>dano de clique</strong> é o que um toque causa. Ele cresce com o nível e as habilidades da sua primeira picareta, a habilidade Clique de Ira, o seu título, o parâmetro de prestígio Mão do Quebra-Pedras e os encantamentos. Uma parte do seu dano automático também entra em cada clique depois que você melhora Unidade de Força.</p>
-      <p>O <strong>dano automático</strong> (por segundo) vem das picaretas a partir da segunda, da habilidade Fúria, do parâmetro Forja Eterna, dos encantamentos e dos seus mascotes. Ele é aplicado sem parar enquanto o minério estiver vivo.</p>
-      <div class="callout">
-          <div class="callout-label">Mascotes são a exceção</div>
-          O dano dos mascotes entra <strong>depois</strong> da maioria dos multiplicadores - calor, títulos, prestígio e bônus temporários não o aumentam; só o Premium aumenta. Níveis de mascote sozinhos não vão te carregar no fim do jogo.
-        </div>
-    </section>
-
-    <section id="critical">
-      <div class="section-head"><span class="section-num">04</span><h2>Acertos críticos</h2></div>
-      <p class="section-dek">Todo clique pode ser crítico e bater mais forte.</p>
-      <p>Você começa com <strong>5%</strong> de chance e multiplicador <strong>x1,5</strong>. A habilidade Golpe Crítico, as habilidades das picaretas, os parâmetros de prestígio Oráculo do Minério e Força Cataclísmica, os títulos e os encantamentos aumentam esses valores. A chance crítica para em <strong>100%</strong>, e o parâmetro de prestígio não pode ser comprado além disso.</p>
-    </section>
-
-    <section id="pickaxes">
-      <div class="section-head"><span class="section-num">05</span><h2>Picaretas</h2></div>
-      <p class="section-dek">45 picaretas, liberadas pela profundidade. São a espinha dorsal do seu dano.</p>
+      <div class="section-head"><span class="section-num">03</span><h2>Dano e acertos críticos</h2></div>
+      <p class="section-dek">Duas fontes de dano separadas e os críticos que multiplicam as duas.</p>
       <ul>
-          <li>Uma picareta <strong>é liberada por andar</strong>: a segunda no andar 15, a décima no andar 782 e a última no andar <strong>13.624</strong>. Quanto mais fundo, maiores os intervalos.</li>
-          <li>A primeira custa <strong>5 de ouro</strong>, a segunda 50, e cada uma das seguintes cerca de <strong>8 vezes</strong> mais que a anterior.</li>
-          <li>Cada nível custa cerca de <strong>6%</strong> a mais que o anterior.</li>
-          <li>Só a <strong>primeira</strong> picareta alimenta o dano de clique. Todas as outras alimentam o dano automático por segundo.</li>
-          <li>Cada picareta tem 6 habilidades. Elas aparecem e são liberadas ao longo de uma escada de níveis - 5 / 25 / 125 / 625 / 3.125 / 15.625 - então as últimas são metas de longo prazo. Algumas ajudam aquela picareta, outras ajudam todas.</li>
+          <li>O <strong>dano de clique</strong> vem da primeira picareta, da habilidade Clique de Ira, do seu título, dos parâmetros de Despertar e dos encantamentos.</li>
+          <li>O <strong>dano automático</strong> vem das outras picaretas, da habilidade Fúria, dos mascotes e dos encantamentos; corre sem parar enquanto o minério estiver vivo.</li>
+          <li>Conforme Unidade de Força sobe, uma parte do seu dano automático também é somada a cada clique.</li>
+          <li>Todo clique pode ser <strong>crítico</strong> e bater muito mais forte. Chance e multiplicador crítico sobem com habilidades, parâmetros de Despertar, títulos e encantamentos.</li>
+        </ul>
+    </section>
+
+    <section id="equipment">
+      <div class="section-head"><span class="section-num">04</span><h2>Picaretas, armaduras e mascotes</h2></div>
+      <p class="section-dek">A base do seu dano e da sua resistência.</p>
+      <ul>
+          <li>As <strong>picaretas</strong> são liberadas conforme você desce. A primeira alimenta o dano de clique; as demais, o dano automático.</li>
+          <li>As <strong>armaduras</strong> são suas desde o início; não se compram, só se melhoram, e protegem você do calor.</li>
+          <li>Os <strong>mascotes</strong> são comprados com diamantes, melhorados com ouro e causam dano automático. A posse é permanente.</li>
+          <li>Cada um tem suas próprias habilidades que abrem com os níveis; algumas ajudam só aquele item, outras a família inteira.</li>
         </ul>
       <div class="callout">
           <div class="callout-label">O grande salto</div>
-          A partir do nível <strong>100</strong>, e depois a cada 150 níveis (250, 400, ...), a picareta eleva a própria produção a uma potência: <strong>^1,05</strong>, depois ^1,1, e assim por diante. Em números grandes o ganho é enorme, então levar uma picareta ao próximo limiar costuma ser a melhor melhoria disponível.
+          Em certos níveis a força de um item dá um salto grande. Levar um item até o próximo limiar costuma ser a melhor melhoria.
         </div>
       <div class="callout warn">
-          <div class="callout-label">O prestígio bloqueia de novo</div>
-          O prestígio bloqueia e zera todas as picaretas; elas voltam a abrir quando você passa pelos andares delas na nova partida.
+          <div class="callout-label">Depois de um Despertar</div>
+          O Despertar tranca as picaretas de novo e zera as melhorias de armadura e mascote. Os mascotes em si continuam seus.
         </div>
-    </section>
-
-    <section id="suits">
-      <div class="section-head"><span class="section-num">06</span><h2>Armaduras</h2></div>
-      <p class="section-dek">5 armaduras, todas suas desde o início. Existem para te proteger do calor.</p>
-      <ul>
-          <li>Você nunca compra armadura - só sobe o nível. Cada nível adiciona cerca de <strong>5%</strong> de resistência ao calor, a partir de 50, e custa cerca de 8,4% a mais que o anterior.</li>
-          <li>As armaduras usam o mesmo salto de potência das picaretas, a partir do nível 100 e depois a cada 150 níveis.</li>
-          <li>Cada armadura tem 6 habilidades na mesma escada de níveis (5 / 25 / 125 / 625 / 3.125 / 15.625).</li>
-          <li>O painel de armaduras abre no andar <strong>130</strong>, junto com o medidor de calor.</li>
-        </ul>
     </section>
 
     <section id="temperature">
-      <div class="section-head"><span class="section-num">07</span><h2>Calor</h2></div>
-      <p class="section-dek">Quanto mais fundo, mais quente, e o calor corta o seu dano em silêncio.</p>
-      <ul>
-          <li>A temperatura do andar sobe sem parar - cerca de <strong>x1,04 por andar</strong>, então dobra a cada duas dúzias de andares.</li>
-          <li>Enquanto a sua resistência for pelo menos <strong>1,5 vezes</strong> a temperatura do andar, o medidor fica limpo e você não perde nada.</li>
-          <li>Quando a resistência cai abaixo da temperatura, o dano começa a escapar; em <strong>0,5 vez</strong> você fica com só um vigésimo - uma perda de <strong>95%</strong>.</li>
-          <li>O painel de armaduras tem um botão de compra automática de resistência; deixe ligado se você desce com frequência. O calor só existe na mina principal, não nas lutas contra chefes.</li>
-        </ul>
+      <div class="section-head"><span class="section-num">05</span><h2>Calor</h2></div>
+      <p class="section-dek">Quanto mais fundo, mais quente, e o calor corta seu dano em silêncio.</p>
+      <p>Se a resistência ao calor não acompanhar a temperatura do andar, seu dano começa a derreter. O painel de armaduras tem um botão de compra automática de resistência. O calor só existe na mina principal.</p>
       <div class="callout warn">
-          <div class="callout-label">Se o progresso travar</div>
-          Uma parede repentina em que o minério demora uma eternidade quase sempre é calor, não dano. Olhe o medidor antes de gastar em outra coisa.
-        </div>
-    </section>
-
-    <section id="pets">
-      <div class="section-head"><span class="section-num">08</span><h2>Mascotes</h2></div>
-      <p class="section-dek">5 mascotes, comprados com diamantes e depois melhorados com ouro.</p>
-      <ul>
-          <li>Os preços vão de <strong>150</strong> a <strong>250</strong> diamantes (150 / 175 / 200 / 225 / 250).</li>
-          <li>Cada nível adiciona cerca de <strong>1%</strong> do dano de clique da picareta como dano automático, multiplicado pela ordem do mascote - Fragmento Sombrio dá cinco vezes o que Pedrinha dá no mesmo nível.</li>
-          <li>Os níveis ficam cerca de <strong>20%</strong> mais caros a cada vez, e os mascotes compartilham o salto de potência das picaretas a partir do nível 100.</li>
-          <li>Cada mascote tem 6 habilidades; algumas ajudam só ele, outras ajudam todos.</li>
-          <li>O painel de mascotes abre no andar <strong>30</strong>, ou assim que você tiver um mascote.</li>
-        </ul>
-      <div class="callout warn">
-          <div class="callout-label">Prestígio e mascotes</div>
-          O prestígio devolve cada mascote ao <strong>nível 1</strong> e apaga as habilidades dele. A posse, porém, é permanente - você nunca compra um mascote de novo.
+          <div class="callout-label">Se o avanço parar</div>
+          A parede em que o minério de repente não quebra mais quase sempre é o calor. Olhe o medidor antes de gastar em outra coisa.
         </div>
     </section>
 
     <section id="workers">
-      <div class="section-head"><span class="section-num">09</span><h2>Trabalhadores</h2></div>
-      <p class="section-dek">5 ajudantes que mineram por você enquanto o jogo está aberto.</p>
+      <div class="section-head"><span class="section-num">06</span><h2>Trabalhadores</h2></div>
+      <p class="section-dek">Ajudantes que cavam por você enquanto o jogo está aberto.</p>
       <ul>
-          <li>Os trabalhadores chegam quando você passa dos andares <strong>600 / 800 / 1.000 / 1.200 / 1.400</strong>. Conta o seu melhor andar de todos os tempos, então eles nunca voltam a bloquear.</li>
-          <li>Dê uma picareta a cada trabalhador - uma picareta só trabalha para um de cada vez, e o seu próprio dano não diminui. Um trabalhador sem picareta não ganha nada.</li>
-          <li>A renda entra a cada 1 segundo e espera numa reserva até você coletar. Uma picareta mais forte rende mais.</li>
-          <li>Melhorar um trabalhador custa Pedra de minério - 100 no primeiro nível, depois cerca de 2% a mais a cada vez - e adiciona cerca de 1% de renda por nível.</li>
+          <li>Novos trabalhadores entram conforme você desce e nunca voltam a ficar trancados.</li>
+          <li>Dê uma picareta a cada trabalhador; sem picareta ele não ganha nada. Emprestar não reduz o seu próprio dano.</li>
+          <li>A renda se acumula em um bolo e espera você recolher. Os trabalhadores são melhorados com Pedra de minério.</li>
         </ul>
       <div class="callout warn">
-          <div class="callout-label">Colete antes do prestígio</div>
-          Os trabalhadores só ganham com o jogo aberto, não offline. O prestígio mantém os níveis deles, mas <strong>apaga a renda não coletada</strong> e recolhe as picaretas.
+          <div class="callout-label">Recolha antes de um Despertar</div>
+          Os trabalhadores só ganham com o jogo aberto. O Despertar mantém os níveis deles, mas apaga a renda não recolhida.
         </div>
     </section>
 
     <section id="enchantments">
-      <div class="section-head"><span class="section-num">10</span><h2>Encantamentos</h2></div>
-      <p class="section-dek">Crie encantamentos com os materiais que você escava e equipe-os em picaretas, armaduras e mascotes.</p>
-      <p>Quebrar minério pode soltar <strong>pó de encantamento</strong> e <strong>fragmentos de encantamento</strong> em 4 níveis de raridade. Cada um começa a cair quando o seu melhor andar da partida passa do limiar dele. Farmar mais de 100 andares abaixo do seu melhor andar reduz a chance, até 10% do normal.</p>
-      <div class="table-wrap">
-        <table>
-        <thead><tr>
-        <th>Nível de raridade</th>
-        <th class="num">Atributos</th>
-        <th class="num">Cai a partir do andar</th>
-        <th class="num">Chance de pó</th>
-        <th class="num">Chance de fragmento</th>
-        <th class="num">Criação (pó / fragmento / pedra de minério)</th>
-        </tr></thead>
-        <tbody>
-        <tr>
-        <td>Comum</td>
-        <td class="num">1</td>
-        <td class="num">500</td>
-        <td class="num">5%</td>
-        <td class="num">0,5%</td>
-        <td class="num">10 / 1 / 40</td>
-        </tr>
-        <tr>
-        <td>Raro</td>
-        <td class="num">1-2</td>
-        <td class="num">1.000</td>
-        <td class="num">2%</td>
-        <td class="num">0,1%</td>
-        <td class="num">20 / 1 / 200</td>
-        </tr>
-        <tr>
-        <td>Épico</td>
-        <td class="num">2-3</td>
-        <td class="num">2.000</td>
-        <td class="num">1%</td>
-        <td class="num">0,03%</td>
-        <td class="num">30 / 1 / 1.000</td>
-        </tr>
-        <tr>
-        <td>Lendário</td>
-        <td class="num">3-4</td>
-        <td class="num">4.000</td>
-        <td class="num">0,5%</td>
-        <td class="num">0,01%</td>
-        <td class="num">50 / 1 / 5.000</td>
-        </tr>
-        </tbody></table></div>
+      <div class="section-head"><span class="section-num">07</span><h2>Encantamentos</h2></div>
+      <p class="section-dek">Crie encantamentos com o que você extrai e encaixe em picaretas, armaduras e mascotes.</p>
       <ul>
-          <li>O Artesão transforma pó, um fragmento e uma taxa em Pedra de minério num encantamento com atributos aleatórios. Raridades maiores sorteiam mais atributos e os multiplicam com mais força (x1 / x2 / x4 / x6).</li>
-          <li>Cada picareta, armadura e mascote tem <strong>8 espaços</strong>, que abrem nos andares 1.000 / 3.000 / 6.000 / 9.000 / 12.000 / 15.000 / 18.000 / 21.000. Eles usam o seu melhor andar de todos os tempos, então um espaço nunca volta a fechar.</li>
-          <li>Alguns atributos ajudam só o item em que estão (dano de clique, dano automático, resistência ao calor); outros ajudam tudo (ouro, acertos críticos, parte do DPS, custo de melhoria). Um atributo especial fortalece as habilidades do próprio item, então só funciona em itens com habilidades compradas.</li>
-          <li>O seletor só lista encantamentos que realmente fariam algo naquele item.</li>
-          <li>No Mercador, 10 pós ou fragmentos de uma raridade viram 1 da raridade seguinte. Você também pode desmontar um encantamento que não quer para obter pó (5 / 10 / 15 / 25 conforme a raridade) - desmontar é permanente.</li>
+          <li>Quebrar minério solta <strong>pó de encantamento</strong> e <strong>fragmentos de encantamento</strong>. Materiais de nível mais alto aparecem mais fundo.</li>
+          <li>Artesão transforma pó e fragmentos em um encantamento com atributos aleatórios. Níveis mais altos trazem mais atributos e mais fortes.</li>
+          <li>Cada item tem espaços de encantamento que abrem conforme a profundidade.</li>
+          <li>Um encantamento que não serve pode ser desmontado em pó com o mercador, e os materiais trocados pelo nível acima.</li>
         </ul>
       <div class="callout">
-          <div class="callout-label">O prestígio é seguro</div>
-          O prestígio nunca apaga encantamentos. Se um item for bloqueado de novo, os encantamentos dele simplesmente voltam ao seu Inventário, que abre no andar 500.
+          <div class="callout-label">O Despertar não mexe</div>
+          O Despertar nunca apaga encantamentos; os de um item que volta a ficar trancado retornam ao seu Inventário.
         </div>
     </section>
 
     <section id="floors">
-      <div class="section-head"><span class="section-num">11</span><h2>Andares, minério e profundidade</h2></div>
-      <p class="section-dek">Os andares definem quão resistente é o minério e quanto ouro ele dá. A profundidade define a aparência.</p>
+      <div class="section-head"><span class="section-num">08</span><h2>Andares e minérios</h2></div>
+      <p class="section-dek">Cada andar é um pouco mais difícil e um pouco mais lucrativo que o anterior.</p>
       <ul>
-          <li>Cada andar tem um pouco mais de vida e um pouco mais de ouro que o anterior, e a curva fica mais íngreme conforme você avança.</li>
-          <li>Um a cada <strong>10 andares</strong> é cronometrado: começa um relógio de <strong>20 segundos</strong>, a vida fica x5 e o ouro x2.</li>
-          <li>A dificuldade também segue ciclos de 100 andares - alguns andares de cada ciclo rendem melhor que outros em relação à vida.</li>
-          <li>Cada minério solta <strong>1-5</strong> Pedra de minério além do ouro.</li>
-          <li><strong>5 minérios raros</strong> (Ferrovyx, Karnyth, Thalveris, Umbryssa, Zephiris) podem aparecer no lugar de um minério normal. A chance vai de cerca de 1 em 10.000 a 1 em 1.000.000, e depois de quebrado ele fica registrado para sempre e nunca mais aparece.</li>
+          <li>De vez em quando aparece um <strong>andar cronometrado</strong>: quebre o minério antes de o tempo acabar e ele paga mais ouro. Se o tempo vencer, você cai um andar e o avanço automático desliga.</li>
+          <li>Todo minério solta Pedra de minério além do ouro.</li>
+          <li>Muito raramente surge um <strong>minério raro</strong> (Ferrovyx, Karnyth, Thalveris, Umbryssa, Zephiris); cada um é encontrado uma única vez.</li>
+          <li>O Elevador leva você entre os andares já alcançados. Locais alterna entre a mina principal, a masmorra e o Abismo.</li>
         </ul>
-      <div class="callout warn">
-          <div class="callout-label">Andares cronometrados mordem</div>
-          Se o tempo acabar, você volta <strong>um andar</strong> e o avanço automático desliga. Farme um pouco antes de tentar de novo.
+      <div class="callout">
+          <div class="callout-label">Farmar embaixo rende pouco</div>
+          Pó e fragmentos caem melhor perto do andar mais fundo que você alcançou; ficar muito abaixo derruba bastante a chance.
         </div>
-      <p>O Elevador leva você a qualquer andar já alcançado nesta partida. Escolher um andar manualmente desliga o avanço automático; ligue de novo quando quiser descer. O painel Locais alterna entre a mina principal e a masmorra dos chefes.</p>
-      <p>Existem <strong>40</strong> tipos de minério no total, e a profundidade define quais aparecem. O tipo só muda a aparência - vida e ouro vêm do andar.</p>
-      <div class="table-wrap">
-        <table>
-        <thead><tr>
-        <th class="num">Profundidade</th>
-        <th class="num">Tipos de minério</th>
-        <th class="num">Por volta do andar</th>
-        </tr></thead>
-        <tbody>
-        <tr>
-        <td class="num">0-100 m</td>
-        <td class="num">9</td>
-        <td class="num">~54</td>
-        </tr>
-        <tr>
-        <td class="num">100-500 m</td>
-        <td class="num">20</td>
-        <td class="num">~129</td>
-        </tr>
-        <tr>
-        <td class="num">500-1.500 m</td>
-        <td class="num">30</td>
-        <td class="num">~196</td>
-        </tr>
-        <tr>
-        <td class="num">1.500 m+</td>
-        <td class="num">40</td>
-        <td class="num">-</td>
-        </tr>
-        </tbody></table></div>
     </section>
 
     <section id="skills">
-      <div class="section-head"><span class="section-num">12</span><h2>Habilidades ativas</h2></div>
-      <p class="section-dek">8 habilidades, cada uma um bônus temporário seguido de recarga.</p>
-      <p>Uma habilidade é <strong>grátis</strong> quando o andar dela chega - você usa desde o nível 1. Subir até o nível 7 custa <strong>63 de Pedra de habilidade</strong> no total, ou <strong>504</strong> para as 8. Níveis maiores significam mais duração e menos recarga.</p>
-      <div class="table-wrap">
-        <table>
-        <thead><tr>
-        <th>Habilidade</th>
-        <th class="num">Andar</th>
-        <th class="num">Nível 1 (duração / recarga)</th>
-        <th class="num">Nível 7 (duração / recarga)</th>
-        <th class="num">Efeito</th>
-        </tr></thead>
-        <tbody>
-        <tr>
-        <td>Quebra-Minérios</td>
-        <td class="num">50</td>
-        <td class="num">30s / 540s</td>
-        <td class="num">90s / 180s</td>
-        <td class="num">7 → 13 /s</td>
-        </tr>
-        <tr>
-        <td>Clique de Ira</td>
-        <td class="num">100</td>
-        <td class="num">40s / 660s</td>
-        <td class="num">210s / 300s</td>
-        <td class="num">x2 → x5</td>
-        </tr>
-        <tr>
-        <td>Golpe Crítico</td>
-        <td class="num">150</td>
-        <td class="num">30s / 600s</td>
-        <td class="num">150s / 240s</td>
-        <td class="num">x1,3 → x1,9</td>
-        </tr>
-        <tr>
-        <td>Fúria</td>
-        <td class="num">200</td>
-        <td class="num">40s / 840s</td>
-        <td class="num">160s / 480s</td>
-        <td class="num">x2 → x3,5</td>
-        </tr>
-        <tr>
-        <td>Frenesi Dourado</td>
-        <td class="num">250</td>
-        <td class="num">50s / 1.020s</td>
-        <td class="num">290s / 660s</td>
-        <td class="num">x2 → x5</td>
-        </tr>
-        <tr>
-        <td>Resistência ao Calor</td>
-        <td class="num">300</td>
-        <td class="num">30s / 660s</td>
-        <td class="num">140s / 300s</td>
-        <td class="num">x2 → x5</td>
-        </tr>
-        <tr>
-        <td>Sobrecarga</td>
-        <td class="num">350</td>
-        <td class="num">20s / 1.200s</td>
-        <td class="num">20s / 840s</td>
-        <td class="num">x1,5 → x3</td>
-        </tr>
-        <tr>
-        <td>Reversão Temporal</td>
-        <td class="num">400</td>
-        <td class="num">1.200s</td>
-        <td class="num">840s</td>
-        <td class="num">-300s → -1.020s</td>
-        </tr>
-        </tbody></table></div>
-      <p>A primeira linha de habilidades abre no andar 50; a Árvore de habilidades, onde você gasta Pedra de habilidade, abre no andar <strong>180</strong>. Os níveis das habilidades sobrevivem ao prestígio.</p>
+      <div class="section-head"><span class="section-num">09</span><h2>Habilidades e títulos</h2></div>
+      <p class="section-dek">Reforços temporários e bônus que chegam sozinhos conforme você desce.</p>
+      <ul>
+          <li>As <strong>habilidades ativas</strong> são liberadas de graça conforme você desce; reforçam por pouco tempo e depois entram em recarga. Elas ficam mais fortes com Pedra de habilidade na Árvore de habilidades e sobrevivem ao Despertar.</li>
+          <li>Os <strong>títulos</strong> chegam sozinhos conforme você desce e dão bônus de dano, ouro e resistência ao calor. Depois de um Despertar são conquistados de novo.</li>
+        </ul>
       <div class="callout">
-          <div class="callout-label">O combo</div>
-          Ative primeiro Sobrecarga, depois a habilidade que você quer mesmo fortalecer - por exemplo Frenesi Dourado. Em seguida, Reversão Temporal corta a recarga da última que você usou, para tê-la de volta antes.
+          <div class="callout-label">Combo</div>
+          Primeiro Sobrecarga, depois a habilidade que você quer amplificar - Frenesi Dourado, por exemplo. Em seguida Reversão Temporal encurta a recarga da última habilidade.
         </div>
     </section>
 
-    <section id="titles">
-      <div class="section-head"><span class="section-num">13</span><h2>Títulos</h2></div>
-      <p class="section-dek">100 títulos que chegam sozinhos conforme você desce.</p>
-      <ul>
-          <li>Os títulos vão do andar 1 ao andar <strong>50.000</strong> e são escolhidos automaticamente pelo seu melhor andar da partida.</li>
-          <li>Cada título adiciona cerca de <strong>+0,1</strong> aos bônus que carrega.</li>
-          <li>Os bônus chegam por etapas - dano de clique, dano automático, resistência ao calor, ouro, multiplicador crítico, chance crítica e a parte do DPS nos cliques começam nos títulos 2 / 6 / 11 / 16 / 21 / 26 / 31.</li>
-          <li>O prestígio te leva de volta aos primeiros títulos; eles voltam quando você desce de novo.</li>
-        </ul>
-    </section>
-
     <section id="tasks">
-      <div class="section-head"><span class="section-num">14</span><h2>Tarefas e Taskium</h2></div>
-      <p class="section-dek">Um caminho paralelo que transforma seus cliques numa segunda renda.</p>
+      <div class="section-head"><span class="section-num">10</span><h2>Tarefas</h2></div>
+      <p class="section-dek">O caminho paralelo que transforma seus cliques em uma segunda renda.</p>
       <ul>
-          <li>Cada clique certeiro dá <strong>+1 Taskium</strong>.</li>
-          <li>Aceitar uma tarefa custa <strong>200</strong>, renovar custa <strong>25</strong>.</li>
-          <li>O painel de tarefas abre no andar 125; os 6 espaços abrem nos andares 125 / 225 / 325 / 425 / 525 / 625.</li>
-          <li>Há 10 tipos de tarefa em 6 raridades. Cada tarefa dura 60 minutos, e as não aceitas são trocadas a cada hora.</li>
-          <li>A recompensa em ouro cresce com a raridade - entre <strong>50-500</strong> vezes o ouro do minério do seu melhor andar da partida. As mais raras também dão Essência.</li>
-        </ul>
-    </section>
-
-    <section id="missions">
-      <div class="section-head"><span class="section-num">15</span><h2>Missões diárias</h2></div>
-      <p class="section-dek">Uma lista curta de metas que se renova todo dia.</p>
-      <ul>
-          <li>Você recebe <strong>5 missões</strong> por dia - quebrar minério, clicar, girar a roleta, vencer um chefe, usar habilidades e assim por diante.</li>
-          <li>Cada missão concluída dá um <strong>bônus x2 de 10 minutos</strong> (dano automático, dano de clique, acertos críticos ou ouro).</li>
-          <li>As recompensas não são automáticas - resgate no painel de missões. A lista reinicia à meia-noite UTC.</li>
+          <li>As <strong>tarefas</strong> são aceitas com Taskium; as mais raras pagam mais.</li>
+          <li>As <strong>Missões diárias</strong> se renovam todo dia e dão reforços curtos conforme você as conclui. Não esqueça de resgatar as recompensas no painel.</li>
         </ul>
     </section>
 
     <section id="trade">
-      <div class="section-head"><span class="section-num">16</span><h2>Mercador</h2></div>
-      <p class="section-dek">Abre no andar 200. Aqui a Pedra de minério e os materiais que sobram viram algo útil.</p>
-      <ul>
-          <li>1 Pedra de habilidade vira <strong>5.000 Pedra de minério</strong>.</li>
-          <li><strong>2.000 Pedra de minério</strong> viram 1 Essência.</li>
-          <li><strong>5.000 Pedra de minério</strong> viram 1 Pedra de habilidade.</li>
-          <li>Cada troca de moedas cobra uma taxa fixa de 100.000 de ouro. Trocas de materiais e desmontagem cobram Pedra de minério no lugar.</li>
-        </ul>
-      <p>A troca para Pedra de habilidade é a mais importante: é assim que uma longa sessão de farm vira níveis de habilidade sem compra na loja.</p>
+      <div class="section-head"><span class="section-num">11</span><h2>Mercador</h2></div>
+      <p class="section-dek">Onde os recursos que sobram viram algo útil.</p>
+      <p>Você pode converter Pedra de minério em Essência ou Pedra de habilidade, trocar materiais de encantamento pelo nível acima e desmontar encantamentos indesejados. A troca mais valiosa é a de Pedra de habilidade: é assim que se fortalecem habilidades sem comprar nada na loja.</p>
     </section>
 
     <section id="extras">
-      <div class="section-head"><span class="section-num">17</span><h2>Recompensas grátis</h2></div>
-      <p class="section-dek">Fontes que pedem pouco mais do que aparecer no jogo.</p>
+      <div class="section-head"><span class="section-num">12</span><h2>Recompensas grátis</h2></div>
+      <p class="section-dek">Recursos que só pedem que você apareça.</p>
       <ul>
-          <li><strong>Balão dourado</strong> - a partir do andar 50, um aparece a cada 500-700 segundos e espera até você clicar. Ele paga <strong>x6</strong> o ouro do minério do seu melhor andar da partida.</li>
-          <li><strong>Cristal de Ouro</strong> - a partir do andar 100, surge um a cada 800-1.300 segundos. Clicar nele na mina principal troca o minério por um minério bônus de 10 segundos com x10 de vida e x14 de ouro, pago golpe a golpe.</li>
-          <li><strong>Ganhos offline</strong> - contados depois de 60 minutos fora, até no máximo 12 horas. O Premium aumenta.</li>
-          <li><strong>Recompensa por tempo de jogo</strong> - a cada 60 minutos de jogo você recebe cerca de 100 vezes o ouro de um minuto no seu melhor andar.</li>
-          <li><strong>Recompensa diária</strong> - 1 chave de masmorra grátis por dia na loja. Não há sequência para proteger; você precisa estar online.</li>
-          <li><strong>Roleta da Sorte</strong> - a partir do andar 100, uma roleta de 8 fatias que renova a cada 3 horas com 1 giro grátis. Giros extras custam diamantes, começando em 10 e dobrando a cada vez. As fatias ganhas ficam fechadas até a renovação; os prêmios incluem ouro de acordo com o seu andar, Pedra de minério, bônus temporários, Taskium, 50 diamantes e chaves de masmorra.</li>
-          <li><strong>Códigos promocionais</strong> - os códigos que compartilhamos nos anúncios e na comunidade vão em Configurações > Códigos promocionais. Cada código funciona uma vez por conta, e alguns têm usos limitados.</li>
+          <li>Os <strong>balões de ouro</strong> cruzam a tela de vez em quando; clique e ganhe ouro. Não tem como perder - eles esperam até você clicar.</li>
+          <li><strong>Cristal de Ouro</strong> transforma o minério por um tempo em um minério bônus cheio de ouro; só dá para pegar na mina principal.</li>
+          <li>Os <strong>ganhos offline</strong> se acumulam com o jogo fechado.</li>
+          <li>A <strong>recompensa por tempo de jogo</strong> paga ouro quanto mais você joga.</li>
+          <li>A <strong>recompensa diária</strong> dá todo dia na loja uma chave de masmorra grátis e uma Chave de abismo grátis, independentes entre si.</li>
+          <li>A <strong>Roleta da Sorte</strong> recarrega de tempos em tempos e dá um giro grátis.</li>
+          <li><strong>Códigos promocionais</strong> - os códigos que divulgamos nos anúncios são resgatados no menu de Configurações.</li>
         </ul>
     </section>
 
-    <section id="prestige">
-      <div class="section-head"><span class="section-num">18</span><h2>Prestígio</h2></div>
-      <p class="section-dek">Troque o progresso desta partida por poder permanente. Na hora certa, é a coisa mais rápida do jogo.</p>
-      <p>O painel de prestígio aparece no andar 70. Você pode fazer prestígio assim que <strong>passar do andar 100</strong> na partida atual - toda partida pede o mesmo andar.</p>
+    <section id="awakening">
+      <div class="section-head"><span class="section-num">13</span><h2>Despertar</h2></div>
+      <p class="section-dek">Transforme o avanço desta partida em poder permanente.</p>
       <ul>
-          <li><strong>Zera:</strong> ouro, progresso dos andares, melhorias e habilidades de picaretas, armaduras e mascotes, recargas das habilidades, progresso dos títulos, Taskium, progresso das tarefas, picaretas atribuídas aos trabalhadores e renda de trabalhadores não coletada.</li>
-          <li><strong>Fica:</strong> diamantes e tudo comprado com eles, chaves de masmorra, progresso da masmorra, Essência, parâmetros de prestígio, níveis da árvore de habilidades, Pedra de habilidade, Pedra de minério, encantamentos e inventário, conquistas, estatísticas, rankings e níveis dos trabalhadores.</li>
-          <li>Toda partida recomeça do <strong>andar 1</strong>, sem ouro inicial.</li>
+          <li>Depois de passar de certa profundidade você pode fazer um Despertar. Cada partida recomeça do primeiro andar.</li>
+          <li><strong>Zerado:</strong> ouro, avanço de andares, picaretas liberadas e melhoradas, melhorias de armadura e mascote, habilidades de item, títulos, Taskium, avanço das tarefas, picaretas entregues aos trabalhadores e renda de trabalhador não recolhida.</li>
+          <li><strong>Mantido:</strong> diamantes e tudo comprado com eles, chaves, avanço de chefes e do Abismo, Essência, parâmetros de Despertar, árvore de habilidades, Pedra de habilidade, Pedra de minério, encantamentos, conquistas, níveis dos trabalhadores e tudo do lado da Ascensão.</li>
+          <li>A Essência ganha depende do andar mais fundo alcançado e cresce rápido com a profundidade. Gaste em parâmetros permanentes.</li>
         </ul>
-      <p>A recompensa em Essência depende só do seu <strong>melhor andar</strong> e cresce rápido: cerca de 331 no andar 200, 1.098 no 300, 12.068 no 500 e 4.827.341 no andar 1.000.</p>
       <div class="callout">
           <div class="callout-label">Desça mais um pouco</div>
-          Como a recompensa sobe tão rápido com a profundidade, alguns andares a mais antes do prestígio costumam valer mais do que fazer outro prestígio na hora.
+          Conseguir alguns andares a mais antes do Despertar costuma valer mais do que emendar outro Despertar na hora.
         </div>
-      <div class="table-wrap">
-        <table>
-        <thead><tr>
-        <th>Parâmetro</th>
-        <th>Efeito</th>
-        <th class="num">Por nível</th>
-        </tr></thead>
-        <tbody>
-        <tr>
-        <td>Forja Eterna</td>
-        <td>Dano automático por segundo</td>
-        <td class="num">+2,5%</td>
-        </tr>
-        <tr>
-        <td>Mão do Quebra-Pedras</td>
-        <td>Dano de clique</td>
-        <td class="num">+2,5%</td>
-        </tr>
-        <tr>
-        <td>Abismo Dourado</td>
-        <td>Renda de ouro</td>
-        <td class="num">+1%</td>
-        </tr>
-        <tr>
-        <td>Oráculo do Minério</td>
-        <td>Chance crítica</td>
-        <td class="num">+0,1%</td>
-        </tr>
-        <tr>
-        <td>Força Cataclísmica</td>
-        <td>Multiplicador crítico</td>
-        <td class="num">+0,1%</td>
-        </tr>
-        <tr>
-        <td>Escudo Infernal</td>
-        <td>Resistência ao calor</td>
-        <td class="num">+1%</td>
-        </tr>
-        <tr>
-        <td>Unidade de Força</td>
-        <td>Parte do DPS somada aos cliques</td>
-        <td class="num">+0,1%</td>
-        </tr>
-        </tbody></table></div>
-      <p>Cada nível se acumula de forma composta com os anteriores. Um nível custa 2 de Essência no começo e cerca de 2,5% a mais a cada vez, então gastar com frequência é melhor que acumular.</p>
     </section>
 
-    <section id="bosses">
-      <div class="section-head"><span class="section-num">19</span><h2>Chefes</h2></div>
-      <p class="section-dek">Uma corrida de dano contra o relógio por Essência e Pedra de minério. Abre no andar 350.</p>
+    <section id="ascension">
+      <div class="section-head"><span class="section-num">14</span><h2>Ascensão</h2></div>
+      <p class="section-dek">A segunda camada, montada em cima do Despertar.</p>
       <ul>
-          <li>Abra o painel Locais, escolha a masmorra, escolha um chefe e gaste <strong>1 chave de masmorra</strong> para começar. Nada começa sozinho.</li>
-          <li>Os chefes são liberados em ordem - vença um para abrir o próximo. A vida sobe muito enquanto o relógio encurta.</li>
-          <li>O progresso dos chefes <strong>é mantido no prestígio</strong>, e você pode enfrentar de novo qualquer chefe já vencido.</li>
+          <li>Ao chegar a um andar bem mais fundo a Ascensão é liberada; ela tem uma página própria dentro da aba de prestígio.</li>
+          <li><strong>Zerado:</strong> seus parâmetros de Despertar e a Essência - esse ciclo recomeça do zero; picaretas, andares e melhorias zeram igual a um Despertar.</li>
+          <li><strong>Mantido:</strong> seu nível de Despertar, diamantes e tudo comprado com eles, chaves, avanço de chefes e do Abismo, encantamentos, árvore de habilidades, conquistas, níveis dos trabalhadores e a Essência Pura acumulada.</li>
+          <li>Em troca você ganha <strong>Essência Pura</strong>. Ela compra dois parâmetros: <strong>Eco do Despertar</strong> amplia o bônus de cada parâmetro de Despertar e <strong>Nascente</strong> aumenta a Essência paga por cada Despertar.</li>
+          <li>Os dois parâmetros são compostos: cada nível multiplica em cima do anterior.</li>
         </ul>
-      <div class="table-wrap">
-        <table>
-        <thead><tr>
-        <th>Chefe</th>
-        <th class="num">Vida</th>
-        <th class="num">Tempo</th>
-        <th>Recompensa</th>
-        </tr></thead>
-        <tbody>
-        <tr>
-        <td>Colosso de Cristal</td>
-        <td class="num">1e15</td>
-        <td class="num">30s</td>
-        <td>1.000 Essência + 50.000 Pedra de minério</td>
-        </tr>
-        <tr>
-        <td>Guardião de Cristal</td>
-        <td class="num">1e18</td>
-        <td class="num">25s</td>
-        <td>2.000 Essência + 75.000 Pedra de minério</td>
-        </tr>
-        <tr>
-        <td>Sentinela Carmesim</td>
-        <td class="num">1e22</td>
-        <td class="num">20s</td>
-        <td>3.000 Essência + 100.000 Pedra de minério</td>
-        </tr>
-        <tr>
-        <td>Guardião de Pedra</td>
-        <td class="num">1e27</td>
-        <td class="num">20s</td>
-        <td>4.000 Essência + 125.000 Pedra de minério</td>
-        </tr>
-        <tr>
-        <td>Titã de Gelo</td>
-        <td class="num">1e33</td>
-        <td class="num">20s</td>
-        <td>5.000 Essência + 150.000 Pedra de minério</td>
-        </tr>
-        <tr>
-        <td>Golem de Cristal 1</td>
-        <td class="num">1e40</td>
-        <td class="num">20s</td>
-        <td>6.000 Essência + 175.000 Pedra de minério</td>
-        </tr>
-        <tr>
-        <td>Colosso Barbapedra</td>
-        <td class="num">1e48</td>
-        <td class="num">15s</td>
-        <td>7.000 Essência + 200.000 Pedra de minério</td>
-        </tr>
-        <tr>
-        <td>Golem de Cristal 2</td>
-        <td class="num">1e57</td>
-        <td class="num">15s</td>
-        <td>8.000 Essência + 225.000 Pedra de minério</td>
-        </tr>
-        <tr>
-        <td>Golem de Chamas</td>
-        <td class="num">1e67</td>
-        <td class="num">15s</td>
-        <td>9.000 Essência + 250.000 Pedra de minério</td>
-        </tr>
-        <tr>
-        <td>Golem Guardião</td>
-        <td class="num">1e78</td>
-        <td class="num">10s</td>
-        <td>10.000 Essência + 275.000 Pedra de minério</td>
-        </tr>
-        </tbody></table></div>
-      <div class="callout warn">
-          <div class="callout-label">Perder custa caro</div>
-          Se o tempo acabar primeiro, você não ganha <strong>nada</strong> e perde a chave. Depois de uma tentativa fracassada, dá para ver quanta vida restava - use isso para calcular quanto dano ainda falta.
+      <div class="callout">
+          <div class="callout-label">Quando ascender</div>
+          A Ascensão não acelera uma partida, e sim o ciclo inteiro. Compensa quando os parâmetros de Essência já ficaram caros e outro Despertar acrescenta pouco.
         </div>
     </section>
 
-    <section id="achievements">
-      <div class="section-head"><span class="section-num">20</span><h2>Conquistas</h2></div>
-      <p class="section-dek">100 conquistas em 31 categorias - cliques, minério, chefes, prestígio, profundidade, criação e mais.</p>
-      <p>Toda conquista paga <strong>Pedra de minério</strong>, e tanto a meta quanto a recompensa crescem de nível em nível.</p>
-      <div class="callout">
-          <div class="callout-label">Resgate</div>
-          As recompensas <strong>não são automáticas</strong>. Se faz tempo que você não abre a aba de conquistas, há uma pilha esperando - o botão de resgatar tudo pega tudo de uma vez.
+    <section id="dungeons">
+      <div class="section-head"><span class="section-num">15</span><h2>Chefes e Abismo</h2></div>
+      <p class="section-dek">Os dois desafios cronometrados fora da mina principal.</p>
+      <ul>
+          <li>Chega-se aos dois pelo Locais; enquanto você está lá, o calor e o avanço de andares da mina principal param.</li>
+          <li>Os <strong>chefes</strong> abrem com uma chave de masmorra: derrube o chefe antes do fim do tempo e ganhe Essência e Pedra de minério. Os chefes são liberados em ordem e o chefe vencido fica aberto para sempre.</li>
+          <li>O <strong>Abismo</strong> abre com uma Chave de abismo e roda em uma única contagem: você quebra minério atrás de minério, e cada estágio é mais duro que o anterior.</li>
+          <li>Cada estágio do abismo traz a própria <strong>penalidade</strong> - uma corta seu dano automático, outra o dano de clique, outra os críticos. A penalidade só vale enquanto aquele estágio dura.</li>
+          <li>Cada estágio quebrado no abismo é pago: se o tempo acabar ou se você sair, fica com o que ganhou até ali. Complete todos os estágios e o próximo abismo é liberado.</li>
+        </ul>
+      <div class="callout warn">
+          <div class="callout-label">Perder para um chefe custa</div>
+          Se o tempo acabar antes de o chefe cair, você não recebe recompensa e a chave se perde.
         </div>
     </section>
 
     <section id="store">
-      <div class="section-head"><span class="section-num">21</span><h2>Loja</h2></div>
-      <p class="section-dek">Diamantes, chaves, pacotes, tempo Premium, avanços de tempo, baús e os itens Infinitos permanentes.</p>
+      <div class="section-head"><span class="section-num">16</span><h2>Loja e conquistas</h2></div>
+      <p class="section-dek">Diamantes, chaves, pacotes, premium, saltos de tempo, baús e itens Infinity permanentes.</p>
       <ul>
-          <li><strong>Pacotes de diamantes:</strong> 200 / 550 / 1.150 / 2.400 / 6.250 / 14.000 diamantes. Quanto maior o pacote, melhor a proporção.</li>
-          <li><strong>Pacotes de chaves:</strong> 3 / 7 / 15 chaves de masmorra.</li>
-          <li><strong>Pacote pequeno:</strong> 500 Diamante, 100 Essência, 10 Pedra de habilidade, 3 Chave de masmorra.</li>
-          <li><strong>Pacote grande:</strong> 1.000 Diamante, 200 Essência, 20 Pedra de habilidade, 5 Chave de masmorra.</li>
-          <li><strong>Pacote Premium de 7 dias:</strong> 7 dias de x5 dano de clique, x5 dano automático, x3 ouro, x3 resistência ao calor e x2 ganhos offline.</li>
-          <li><strong>Pacote Premium de 30 dias:</strong> 30 dias de x7 dano de clique, x7 dano automático, x4,5 ouro, x3,5 resistência ao calor e x2,5 ganhos offline.</li>
-          <li><strong>Avanço de tempo:</strong> 8 / 16 / 24 horas por 100 / 190 / 370 diamantes. A recompensa é calculada com o seu próprio dano, andar e trabalhadores - incluindo minério, drops de encantamento e minérios raros. Bônus, recargas e cronômetros não avançam, e não dá para usar dentro da masmorra.</li>
+          <li>O <strong>premium</strong> aumenta seu dano, seu ouro e seus ganhos offline por um período definido.</li>
+          <li>Os <strong>saltos de tempo</strong> adiantam o jogo em algumas horas; o ganho é calculado pela sua força atual.</li>
+          <li><strong>Baú de encantamentos</strong> abre na hora e dá materiais de encantamento.</li>
+          <li>Os <strong>pacotes de chaves</strong> são comprados com diamantes; há pacotes tanto de chave de masmorra quanto de Chave de abismo.</li>
+          <li>Os <strong>itens Infinity</strong> são comprados uma vez e sobrevivem tanto ao Despertar quanto à Ascensão.</li>
+          <li>As <strong>conquistas</strong> pagam Pedra de minério; as recompensas você precisa resgatar.</li>
         </ul>
-      <p>O <strong>Baú de encantamentos</strong> custa 100 diamantes e abre na hora. O card mostra cada prêmio e a chance dele:</p>
-      <div class="table-wrap">
-        <table>
-        <thead><tr>
-        <th>Item</th>
-        <th class="num">Quantidade</th>
-        <th class="num">Chance</th>
-        </tr></thead>
-        <tbody>
-        <tr>
-        <td>Pó de encantamento Comum</td>
-        <td class="num">250</td>
-        <td class="num">17%</td>
-        </tr>
-        <tr>
-        <td>Fragmento de encantamento Comum</td>
-        <td class="num">26</td>
-        <td class="num">16%</td>
-        </tr>
-        <tr>
-        <td>Pó de encantamento Raro</td>
-        <td class="num">180</td>
-        <td class="num">15%</td>
-        </tr>
-        <tr>
-        <td>Fragmento de encantamento Raro</td>
-        <td class="num">9</td>
-        <td class="num">15%</td>
-        </tr>
-        <tr>
-        <td>Pó de encantamento Épico</td>
-        <td class="num">150</td>
-        <td class="num">10%</td>
-        </tr>
-        <tr>
-        <td>Fragmento de encantamento Épico</td>
-        <td class="num">5</td>
-        <td class="num">10%</td>
-        </tr>
-        <tr>
-        <td>Pó de encantamento Lendário</td>
-        <td class="num">130</td>
-        <td class="num">9%</td>
-        </tr>
-        <tr>
-        <td>Fragmento de encantamento Lendário</td>
-        <td class="num">3</td>
-        <td class="num">8%</td>
-        </tr>
-        </tbody></table></div>
-      <p>Os itens Infinitos são comprados <strong>uma vez com diamantes</strong> e nunca zeram, nem com prestígio. No fim do jogo costumam ser o melhor uso dos seus diamantes.</p>
-      <div class="table-wrap">
-        <table>
-        <thead><tr>
-        <th>Item</th>
-        <th class="num">Efeito</th>
-        <th class="num">Preço</th>
-        </tr></thead>
-        <tbody>
-        <tr>
-        <td>Poder Infinito</td>
-        <td class="num">x4</td>
-        <td class="num">350 💎</td>
-        </tr>
-        <tr>
-        <td>Renda Infinita</td>
-        <td class="num">x3</td>
-        <td class="num">350 💎</td>
-        </tr>
-        <tr>
-        <td>Armadura Infinita</td>
-        <td class="num">x2</td>
-        <td class="num">350 💎</td>
-        </tr>
-        <tr>
-        <td>Velocidade Infinita</td>
-        <td class="num">x1,5</td>
-        <td class="num">550 💎</td>
-        </tr>
-        <tr>
-        <td>Clicador Infinito</td>
-        <td class="num">7 /s</td>
-        <td class="num">600 💎</td>
-        </tr>
-        </tbody></table></div>
-      <div class="callout">
-          <div class="callout-label">Preços</div>
-          Os preços em dinheiro real vêm da Steam na sua moeda, por isso não aparecem aqui. O conteúdo de um pacote não muda; o preço depende da sua região.
-        </div>
     </section>
 
     <section id="progress">
-      <div class="section-head"><span class="section-num">22</span><h2>Acompanhando seu progresso</h2></div>
-      <p class="section-dek">Onde ver como vai a partida e o que acabou de acontecer.</p>
+      <div class="section-head"><span class="section-num">17</span><h2>Progresso e salvamento</h2></div>
+      <p class="section-dek">Onde acompanhar sua partida e como o progresso é protegido.</p>
       <ul>
-          <li>Os rankings da Steam acompanham cliques, dano de clique, número de prestígios, chefes derrotados e andar mais fundo.</li>
-          <li>A tela de estatísticas guarda um histórico longo - ganhos, gastos, cliques, criação, tempo de jogo e mais.</li>
-          <li>O <strong>Registro de atividades</strong> lista o que aconteceu nesta sessão - recompensas, liberações, chefes, compras - e a notificação no canto abre o registro.</li>
-          <li>O painel <strong>Atualizações</strong> mostra as notas de atualização mais recentes no seu idioma e abre sozinho uma vez depois de cada atualização nova.</li>
+          <li>Os placares da Steam, a tela de estatísticas e o <strong>Registro de atividades</strong> mostram seu progresso.</li>
+          <li>O painel <strong>Atualizações</strong> mostra as notas das últimas atualizações.</li>
+          <li>O jogo salva sozinho com frequência e faz backup na Steam Cloud; dá para continuar em outro computador.</li>
+          <li>Com o Discord aberto, seu perfil mostra em que andar você está e seu nível de Despertar / Ascensão.</li>
         </ul>
     </section>
 
-    <section id="save">
-      <div class="section-head"><span class="section-num">23</span><h2>Salvamento</h2></div>
-      <p class="section-dek">Resposta curta: o seu progresso está seguro de várias formas ao mesmo tempo.</p>
-      <ul>
-          <li>O jogo salva sozinho, criptografado, a cada <strong>15 segundos</strong>.</li>
-          <li>Faz backup na Steam Cloud mais ou menos a cada <strong>45 segundos</strong>, e sempre que você fecha ou pausa - outro computador continua de onde você parou.</li>
-          <li>Se um arquivo de salvamento estragar, o jogo volta sozinho para o backup.</li>
-          <li>Você também pode copiar o seu salvamento para a área de transferência e colar em outro dispositivo.</li>
-        </ul>
-    </section>
-
-    <section id="languages">
-      <div class="section-head"><span class="section-num">24</span><h2>Idiomas</h2></div>
-      <p class="section-dek">O jogo está disponível em 18 idiomas.</p>
-      <p>Inglês, turco, alemão, francês, espanhol, espanhol latino-americano, italiano, polonês, português do Brasil, russo, ucraniano, japonês, coreano, chinês simplificado, chinês tradicional, tailandês, indonésio e vietnamita. O jogo escolhe o seu idioma na primeira abertura e você pode trocar quando quiser nas configurações - este guia está disponível em todos, com links no topo da página.</p>
-    </section>
-
-    <footer class="doc-footer">Os números seguem o balanceamento atual do jogo e podem mudar com as atualizações. Os preços em dinheiro real são definidos pela Steam e mostrados na sua moeda, por isso não aparecem aqui.</footer>
+    <footer class="doc-footer">O jogo muda com as atualizações; este guia é uma visão geral. Os preços dos itens vendidos com dinheiro real são exibidos pela Steam na sua própria moeda.</footer>
   </main>
 </div>
 

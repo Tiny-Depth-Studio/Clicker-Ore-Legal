@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <title>Clicker Ore Game - Poradnik gracza</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Jak działa kopalnia: waluty, kilofy, zbroje, pupile, robotnicy, zaklęcia, umiejętności, prestiż, bossowie i sklep - wyjaśnione bez wzorów.">
+<meta name="description" content="Jak działa kopalnia: kilofy, pupile, pracownicy, zaklęcia, umiejętności, Przebudzenie, Wniebowstąpienie, bossowie, Otchłań i sklep - w skrócie.">
 <style>
   :root {
     --bg: #14110d;
@@ -28,6 +28,8 @@
     --cur-key: #d98a63;
     --cur-skillstone: #7fc9a0;
     --cur-orestone: #b5a68c;
+    --cur-abysskey: #8f7fd6;
+    --cur-pureessence: #d7bff5;
 
     --font-display: "Bahnschrift", "Segoe UI Semibold", "Arial Narrow Bold", "Arial Narrow", sans-serif;
     --font-body: "Sitka Text", "Iowan Old Style", Georgia, "Times New Roman", serif;
@@ -481,38 +483,31 @@
     <div class="toc-brand">Clicker Ore Game<small>Poradnik gracza</small></div>
     <ul class="toc-list">
       <li><a href="#start"><span class="toc-num">01</span>Od czego zacząć</a></li>
-      <li><a href="#currencies"><span class="toc-num">02</span>Waluty (7)</a></li>
-      <li><a href="#damage"><span class="toc-num">03</span>Obrażenia od kliknięcia i automatyczne</a></li>
-      <li><a href="#critical"><span class="toc-num">04</span>Trafienia krytyczne</a></li>
-      <li><a href="#pickaxes"><span class="toc-num">05</span>Kilofy</a></li>
-      <li><a href="#suits"><span class="toc-num">06</span>Zbroje</a></li>
-      <li><a href="#temperature"><span class="toc-num">07</span>Ciepło</a></li>
-      <li><a href="#pets"><span class="toc-num">08</span>Pupile</a></li>
-      <li><a href="#workers"><span class="toc-num">09</span>Robotnicy</a></li>
-      <li><a href="#enchantments"><span class="toc-num">10</span>Zaklęcia</a></li>
-      <li><a href="#floors"><span class="toc-num">11</span>Piętra, ruda i głębokość</a></li>
-      <li><a href="#skills"><span class="toc-num">12</span>Aktywne umiejętności</a></li>
-      <li><a href="#titles"><span class="toc-num">13</span>Tytuły</a></li>
-      <li><a href="#tasks"><span class="toc-num">14</span>Zadania i Taskium</a></li>
-      <li><a href="#missions"><span class="toc-num">15</span>Misje dzienne</a></li>
-      <li><a href="#trade"><span class="toc-num">16</span>Handlarz</a></li>
-      <li><a href="#extras"><span class="toc-num">17</span>Darmowe nagrody</a></li>
-      <li><a href="#prestige"><span class="toc-num">18</span>Prestiż</a></li>
-      <li><a href="#bosses"><span class="toc-num">19</span>Bossowie</a></li>
-      <li><a href="#achievements"><span class="toc-num">20</span>Osiągnięcia</a></li>
-      <li><a href="#store"><span class="toc-num">21</span>Sklep</a></li>
-      <li><a href="#progress"><span class="toc-num">22</span>Śledzenie postępów</a></li>
-      <li><a href="#save"><span class="toc-num">23</span>Zapisy</a></li>
-      <li><a href="#languages"><span class="toc-num">24</span>Języki</a></li>
+      <li><a href="#currencies"><span class="toc-num">02</span>Waluty</a></li>
+      <li><a href="#damage"><span class="toc-num">03</span>Obrażenia i trafienia krytyczne</a></li>
+      <li><a href="#equipment"><span class="toc-num">04</span>Kilofy, zbroje i pupile</a></li>
+      <li><a href="#temperature"><span class="toc-num">05</span>Ciepło</a></li>
+      <li><a href="#workers"><span class="toc-num">06</span>Robotnicy</a></li>
+      <li><a href="#enchantments"><span class="toc-num">07</span>Zaklęcia</a></li>
+      <li><a href="#floors"><span class="toc-num">08</span>Piętra i rudy</a></li>
+      <li><a href="#skills"><span class="toc-num">09</span>Umiejętności i tytuły</a></li>
+      <li><a href="#tasks"><span class="toc-num">10</span>Zadania</a></li>
+      <li><a href="#trade"><span class="toc-num">11</span>Handlarz</a></li>
+      <li><a href="#extras"><span class="toc-num">12</span>Darmowe nagrody</a></li>
+      <li><a href="#awakening"><span class="toc-num">13</span>Przebudzenie</a></li>
+      <li><a href="#ascension"><span class="toc-num">14</span>Wzniesienie</a></li>
+      <li><a href="#dungeons"><span class="toc-num">15</span>Bossowie i Otchłań</a></li>
+      <li><a href="#store"><span class="toc-num">16</span>Sklep i osiągnięcia</a></li>
+      <li><a href="#progress"><span class="toc-num">17</span>Postęp i zapis</a></li>
     </ul>
   </nav>
 
   <main>
     <header class="hero">
       <div class="strata" role="presentation"></div>
-      <div class="eyebrow">Poradnik gracza - 2026-09-14</div>
-      <h1 class="title">Wszystko o kopalni,<br>prostymi słowami</h1>
-      <p class="subtitle">Co robi każdy system, kiedy się odblokowuje i w co najlepiej zainwestować następną godzinę. Bez wzorów - tylko decyzje, które mają znaczenie.</p>
+      <div class="eyebrow">Poradnik gracza - 2026-09-21</div>
+      <h1 class="title">Cała kopalnia,<br>w skrócie</h1>
+      <p class="subtitle">Do czego służy każdy system i gdzie warto poświęcić czas. Bez liczb i wzorów - tylko to, co trzeba wiedzieć.</p>
       <div class="langbar">
         <div class="langbar-label">Język</div>
         <div class="langbar-list"><a href="player_guide_en.html" hreflang="en">English</a><a href="player_guide_tr.html" hreflang="tr">Türkçe</a><a href="player_guide_de.html" hreflang="de">Deutsch</a><a href="player_guide_fr.html" hreflang="fr">Français</a><a href="player_guide_es.html" hreflang="es">Español</a><a href="player_guide_es_la.html" hreflang="es-419">Español (Latinoamérica)</a><a href="player_guide_it.html" hreflang="it">Italiano</a><span>Polski</span><a href="player_guide_pt_br.html" hreflang="pt-BR">Português (Brasil)</a><a href="player_guide_ru.html" hreflang="ru">Русский</a><a href="player_guide_uk.html" hreflang="uk">Українська</a><a href="player_guide_ja.html" hreflang="ja">日本語</a><a href="player_guide_ko.html" hreflang="ko">한국어</a><a href="player_guide_zh_hans.html" hreflang="zh-Hans">简体中文</a><a href="player_guide_zh_hant.html" hreflang="zh-Hant">繁體中文</a><a href="player_guide_th.html" hreflang="th">ไทย</a><a href="player_guide_id.html" hreflang="id">Bahasa Indonesia</a><a href="player_guide_vi.html" hreflang="vi">Tiếng Việt</a></div>
@@ -521,711 +516,300 @@
 
     <section id="start">
       <div class="section-head"><span class="section-num">01</span><h2>Od czego zacząć</h2></div>
-      <p class="section-dek">Trzy etapy, w kolejności, w jakiej gra odblokowuje swoje systemy.</p>
+      <p class="section-dek">Gra otwiera swoje systemy stopniowo, w miarę jak schodzisz głębiej.</p>
       <div class="strategy-track">
           <div class="strategy-stage">
-            <div class="stage-label">Początek - piętra 1-100</div>
+            <div class="stage-label">Początek</div>
             <ul>
-              <li>Ulepszaj kilof bez przerwy; nowe kilofy otwierają się, gdy schodzisz niżej.</li>
-              <li>Łamacz Rud pojawia się na piętrze 50, Gniewne Kliknięcie na piętrze 100.</li>
-              <li>Klikaj złoty balon, gdy tylko się pojawi, i kup Kamyk, gdy będzie cię stać na diamenty.</li>
+              <li>Ulepszaj kilof bez przerwy; głębsze piętra odblokowują nowe.</li>
+              <li>Klikaj każdy złoty balon i każdy Złoty kryształ, i zacznij używać pierwszych umiejętności.</li>
+              <li>Kup pierwszego pupila, gdy tylko starczy diamentów.</li>
             </ul>
           </div>
           <div class="strategy-stage">
-            <div class="stage-label">Środek - piętra 100-350</div>
+            <div class="stage-label">Środek</div>
             <ul>
-              <li>Zrób prestiż, gdy miniesz piętro 100 i postęp zwolni.</li>
-              <li>Zadania otwierają się na piętrze 125, zbroje na 130, drzewko umiejętności na 180, a handlarz na 200.</li>
-              <li>Rozdzielaj esencję między 7 parametrów, zamiast maksować jeden.</li>
+              <li>Gdy postęp zwolni, wykonaj Przebudzenie i zdobądź Esencję.</li>
+              <li>Zadania, zbroje, drzewko umiejętności i handlarz otwierają się właśnie wtedy.</li>
+              <li>Rozłóż Esencję zamiast pakować wszystko w jeden parametr.</li>
             </ul>
           </div>
           <div class="strategy-stage">
-            <div class="stage-label">Później - od piętra 350</div>
+            <div class="stage-label">Późna gra</div>
             <ul>
-              <li>Walcz z bossami, gdy tylko masz klucz; dają esencję i kamień rudy.</li>
-              <li>Materiały do zaklęć wypadają od piętra 500, a robotnicy dołączają od piętra 600.</li>
-              <li>Utrzymuj zbroję na poziomie, żeby ciepło nie zjadało obrażeń.</li>
+              <li>Walcz z bossami, gdy masz klucz, a potem zacznij wyprawy do Otchłań.</li>
+              <li>Dołączają pracownicy, zaczynają wypadać materiały na zaklęcia.</li>
+              <li>Ulepszaj zbroję, żeby ciepło nie zjadało twoich obrażeń.</li>
+            </ul>
+          </div>
+          <div class="strategy-stage">
+            <div class="stage-label">Długi dystans</div>
+            <ul>
+              <li>Dużo głębiej odblokowuje się Wzniesienie i zeruje całą pętlę Przebudzenie.</li>
+              <li>W zamian zdobywasz Czysta Esencja, która trwale przyspiesza każdą kolejną grę.</li>
             </ul>
           </div>
         </div>
       <div class="callout">
           <div class="callout-label">Warto wiedzieć</div>
-          Liczby szybko rosną, więc gra przechodzi na skróty, a potem na zapis naukowy, np. <strong>1,23e45</strong>. Nic nie ma limitu - zmienia się tylko sposób zapisu.
+          Liczby rosną szybko; gra przechodzi najpierw na skrócony, a później na naukowy zapis. Nic nie jest ograniczane - zmienia się tylko sposób zapisu.
         </div>
     </section>
 
     <section id="currencies">
-      <div class="section-head"><span class="section-num">02</span><h2>Waluty (7)</h2></div>
-      <p class="section-dek">Każda zasila inny system. Wydanie właściwej waluty w złym miejscu to najczęstszy błąd na początku.</p>
+      <div class="section-head"><span class="section-num">02</span><h2>Waluty</h2></div>
+      <p class="section-dek">Każda zasila inny system.</p>
       <div class="currency-grid">
         <div class="cur-card" style="--dot:var(--cur-gold)">
           <h4><span class="dot"></span>Złoto</h4>
-          <p>Zdobywasz je, <b>rozbijając rudę</b>, a także z balonów, robotników, zadań i czasu offline.</p>
-          <p>Idzie na kilofy, ulepszenia i umiejętności przedmiotów - twój główny zasób.</p>
+          <p>Zdobywasz je, <b>rozbijając rudę</b>; balony, pracownicy, zadania i czas offline też dają złoto.</p>
+          <p>Idzie na kilofy, ulepszenia i umiejętności przedmiotów.</p>
         </div>
         <div class="cur-card" style="--dot:var(--cur-diamond)">
           <h4><span class="dot"></span>Diament</h4>
-          <p>Pochodzą z <b>zakupów za prawdziwe pieniądze</b>, z koła (Koło Fortuny) i z kodów promocyjnych.</p>
-          <p>Wydajesz je na pupile, przedmioty Nieskończoności, przeskoki czasu, skrzynie i dodatkowe obroty.</p>
+          <p>Pochodzą z <b>zakupów za prawdziwe pieniądze</b>, nagród z Koło Fortuny i kodów promocyjnych.</p>
+          <p>Wydajesz je na pupili, przedmioty Infinity, przeskoki czasu, skrzynie i paczki kluczy.</p>
         </div>
         <div class="cur-card" style="--dot:var(--cur-essence)">
           <h4><span class="dot"></span>Esencja</h4>
-          <p>Pochodzi z <b>prestiżu</b>, zwycięstw nad bossami i od handlarza.</p>
-          <p>Wydajesz ją na 7 stałych parametrów prestiżu.</p>
+          <p>To nagroda z <b>Przebudzenie</b>; bossowie i Handlarz też ją dają.</p>
+          <p>Wydajesz ją na stałe parametry Przebudzenie.</p>
         </div>
         <div class="cur-card" style="--dot:var(--cur-taskium)">
           <h4><span class="dot"></span>Taskium</h4>
-          <p><b>+1</b> za każde udane kliknięcie.</p>
-          <p>Służy do przyjmowania i losowania zadań od nowa.</p>
+          <p>Odrobina wpada przy każdym trafionym kliknięciu.</p>
+          <p>Idzie na przyjmowanie i odświeżanie zadań.</p>
         </div>
         <div class="cur-card" style="--dot:var(--cur-key)">
           <h4><span class="dot"></span>Klucz do lochu</h4>
-          <p>Jeden darmowy klucz dziennie, do tego pakiety w sklepie i koło szczęścia.</p>
-          <p>Wejście do walki z bossem - 1 na próbę.</p>
+          <p>Jeden darmowy klucz dziennie, a poza tym sklep i Koło Fortuny.</p>
+          <p>Wydajesz go na wejście do walki z bossem.</p>
         </div>
         <div class="cur-card" style="--dot:var(--cur-skillstone)">
           <h4><span class="dot"></span>Kamień umiejętności</h4>
-          <p>Pochodzi z pakietów w sklepie i od handlarza.</p>
-          <p>Służy do rozwijania 8 aktywnych umiejętności.</p>
+          <p>Pochodzi ze sklepu i od Handlarz.</p>
+          <p>Wydajesz go na wzmacnianie umiejętności aktywnych.</p>
         </div>
         <div class="cur-card" style="--dot:var(--cur-orestone)">
           <h4><span class="dot"></span>Kamień rudy</h4>
-          <p><b>1-5</b> z każdej rozbitej rudy, do tego osiągnięcia i bossowie.</p>
-          <p>Wydajesz go na wymiany, wytwarzanie zaklęć i ulepszenia robotników.</p>
+          <p>Wypada z każdej rozbitej rudy, a także z osiągnięć, bossów i wypraw do Otchłań.</p>
+          <p>Idzie na wymiany, wytwarzanie zaklęć i ulepszanie pracowników.</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-abysskey)">
+          <h4><span class="dot"></span>Klucz do otchłani</h4>
+          <p>Jeden darmowy klucz dziennie, a poza tym diamenty w sklepie.</p>
+          <p>Wydajesz go na wejście do Otchłań.</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-pureessence)">
+          <h4><span class="dot"></span>Czysta Esencja</h4>
+          <p>To nagroda z <b>Wzniesienie</b>; nie pochodzi znikąd indziej.</p>
+          <p>Wydajesz ją wyłącznie na parametry Wzniesienie.</p>
         </div>
       </div>
       <div class="callout">
-          <div class="callout-label">Waluty na serwerze</div>
-          Diamenty i klucze do lochu są przechowywane na serwerze, więc do zakupów za nie musisz być online. Jeśli połączenie zerwało się, gra sama je przywróci, gdy spróbujesz coś kupić.
+          <div class="callout-label">Waluty serwerowe</div>
+          Diamenty, klucze do lochu i Klucz do otchłani trzymane są na serwerze; żeby je wydać, musisz być online.
         </div>
     </section>
 
     <section id="damage">
-      <div class="section-head"><span class="section-num">03</span><h2>Obrażenia od kliknięcia i automatyczne</h2></div>
-      <p class="section-dek">Dwa osobne źródła obrażeń, zasilane przez różne rzeczy.</p>
-      <p><strong>Obrażenia od kliknięcia</strong> to to, co robi jedno dotknięcie. Rosną wraz z poziomem i umiejętnościami pierwszego kilofa, umiejętnością Gniewne Kliknięcie, tytułem, parametrem prestiżu Dłoń Łamacza Kamieni i zaklęciami. Gdy rozwiniesz Jedność Siły, część obrażeń automatycznych trafia też do każdego kliknięcia.</p>
-      <p><strong>Obrażenia automatyczne</strong> (na sekundę) pochodzą od kilofów od drugiego wzwyż, umiejętności Szał, parametru Wieczna Kuźnia, zaklęć i twoich pupili. Działają bez przerwy, dopóki ruda żyje.</p>
-      <div class="callout">
-          <div class="callout-label">Pupile to wyjątek</div>
-          Obrażenia pupili dodawane są <strong>po</strong> większości mnożników - ciepło, tytuły, prestiż i wzmocnienia ich nie skalują, robi to tylko Premium. Same poziomy pupili nie pociągną cię w późnej grze.
-        </div>
-    </section>
-
-    <section id="critical">
-      <div class="section-head"><span class="section-num">04</span><h2>Trafienia krytyczne</h2></div>
-      <p class="section-dek">Każde kliknięcie może być krytyczne i uderzyć mocniej.</p>
-      <p>Zaczynasz z szansą <strong>5%</strong> i mnożnikiem <strong>x1,5</strong>. Podnoszą je umiejętność Cios Krytyczny, umiejętności kilofów, parametry prestiżu Wyrocznia Rudy i Kataklizmiczna Siła, tytuły oraz zaklęcia. Szansa na krytyk zatrzymuje się na <strong>100%</strong>, a powyżej tej granicy parametru prestiżu nie da się kupić.</p>
-    </section>
-
-    <section id="pickaxes">
-      <div class="section-head"><span class="section-num">05</span><h2>Kilofy</h2></div>
-      <p class="section-dek">45 kilofów odblokowywanych głębokością. Podstawa twoich obrażeń.</p>
+      <div class="section-head"><span class="section-num">03</span><h2>Obrażenia i trafienia krytyczne</h2></div>
+      <p class="section-dek">Dwa osobne źródła obrażeń i krytyki, które je mnożą.</p>
       <ul>
-          <li>Kilof <strong>odblokowuje się piętrem</strong>: drugi na piętrze 15, dziesiąty na piętrze 782, ostatni na piętrze <strong>13 624</strong>. Im głębiej, tym większe odstępy.</li>
-          <li>Pierwszy kosztuje <strong>5 złota</strong>, drugi 50, a każdy kolejny około <strong>8 razy</strong> więcej od poprzedniego.</li>
-          <li>Każdy poziom kosztuje około <strong>6%</strong> więcej od poprzedniego.</li>
-          <li>Tylko <strong>pierwszy</strong> kilof zasila obrażenia od kliknięcia. Wszystkie pozostałe zasilają obrażenia automatyczne na sekundę.</li>
-          <li>Każdy kilof ma 6 umiejętności. Pojawiają się i odblokowują na drabinie poziomów - 5 / 25 / 125 / 625 / 3 125 / 15 625 - więc ostatnie to cele długoterminowe. Jedne pomagają temu kilofowi, inne wszystkim.</li>
+          <li><strong>Obrażenia od kliknięcia</strong> pochodzą z pierwszego kilofa, umiejętności Gniewne Kliknięcie, tytułu, parametrów Przebudzenie i zaklęć.</li>
+          <li><strong>Obrażenia automatyczne</strong> pochodzą z pozostałych kilofów, umiejętności Szał, pupili i zaklęć; działają bez przerwy, dopóki ruda żyje.</li>
+          <li>Im wyższy Jedność Siły, tym większa część obrażeń automatycznych dolicza się również do każdego kliknięcia.</li>
+          <li>Każde kliknięcie może być <strong>krytyczne</strong> i uderzyć znacznie mocniej. Szansa i mnożnik krytyka rosną dzięki umiejętnościom, parametrom Przebudzenie, tytułom i zaklęciom.</li>
+        </ul>
+    </section>
+
+    <section id="equipment">
+      <div class="section-head"><span class="section-num">04</span><h2>Kilofy, zbroje i pupile</h2></div>
+      <p class="section-dek">Podstawa twoich obrażeń i wytrzymałości.</p>
+      <ul>
+          <li><strong>Kilofy</strong> odblokowują się wraz z głębokością. Pierwszy zasila obrażenia od kliknięcia, pozostałe - automatyczne.</li>
+          <li><strong>Zbroje</strong> masz od początku; nie kupuje się ich, tylko ulepsza, i chronią cię przed ciepłem.</li>
+          <li><strong>Pupile</strong> kupuje się za diamenty, ulepsza za złoto i zadają obrażenia automatyczne. Posiadanie jest trwałe.</li>
+          <li>Każde z nich ma własne umiejętności otwierane poziomami; część pomaga tylko temu przedmiotowi, część całej rodzinie.</li>
         </ul>
       <div class="callout">
           <div class="callout-label">Wielki skok</div>
-          Od poziomu <strong>100</strong>, a potem co 150 poziomów (250, 400, ...), kilof podnosi własny wynik do potęgi: <strong>^1,05</strong>, potem ^1,1 i tak dalej. Przy dużych liczbach to ogromny zysk, więc doprowadzenie kilofa do kolejnego progu jest zwykle najlepszym ulepszeniem.
+          Na pewnych poziomach moc przedmiotu robi duży skok. Dociągnięcie jednego przedmiotu do kolejnego progu to zwykle najlepsze ulepszenie.
         </div>
       <div class="callout warn">
-          <div class="callout-label">Prestiż znów je blokuje</div>
-          Prestiż blokuje i resetuje wszystkie kilofy; otwierają się ponownie, gdy w nowym przebiegu miniesz ich piętra.
+          <div class="callout-label">Po Przebudzenie</div>
+          Przebudzenie ponownie blokuje kilofy i zeruje ulepszenia zbroi oraz pupili. Sami pupile zostają twoi.
         </div>
-    </section>
-
-    <section id="suits">
-      <div class="section-head"><span class="section-num">06</span><h2>Zbroje</h2></div>
-      <p class="section-dek">5 zbroi, wszystkie masz od początku. Służą do ochrony przed ciepłem.</p>
-      <ul>
-          <li>Zbroi nigdy nie kupujesz - tylko ją ulepszasz. Każdy poziom dodaje około <strong>5%</strong> odporności na ciepło, zaczynając od 50, i kosztuje około 8,4% więcej od poprzedniego.</li>
-          <li>Zbroje mają ten sam skok potęgi co kilofy, od poziomu 100 i potem co 150 poziomów.</li>
-          <li>Każda zbroja ma 6 umiejętności na tej samej drabinie poziomów (5 / 25 / 125 / 625 / 3 125 / 15 625).</li>
-          <li>Panel zbroi otwiera się na piętrze <strong>130</strong>, razem ze wskaźnikiem ciepła.</li>
-        </ul>
     </section>
 
     <section id="temperature">
-      <div class="section-head"><span class="section-num">07</span><h2>Ciepło</h2></div>
-      <p class="section-dek">Im głębiej, tym goręcej, a ciepło po cichu obcina obrażenia.</p>
-      <ul>
-          <li>Temperatura piętra stale rośnie - około <strong>x1,04 na piętro</strong>, więc podwaja się co kilkadziesiąt pięter.</li>
-          <li>Dopóki twoja odporność wynosi co najmniej <strong>1,5 raza</strong> temperatury piętra, wskaźnik jest czysty i nic nie tracisz.</li>
-          <li>Gdy odporność spadnie poniżej temperatury, obrażenia zaczynają się ulatniać; przy <strong>0,5 raza</strong> zostaje ci tylko jedna dwudziesta - strata <strong>95%</strong>.</li>
-          <li>Panel zbroi ma przełącznik automatycznego kupowania odporności; zostaw go włączonego, jeśli często schodzisz głębiej. Ciepło występuje tylko w głównej kopalni, nie w walkach z bossami.</li>
-        </ul>
+      <div class="section-head"><span class="section-num">05</span><h2>Ciepło</h2></div>
+      <p class="section-dek">Im głębiej, tym goręcej, a ciepło po cichu obniża twoje obrażenia.</p>
+      <p>Jeśli odporność na ciepło nie nadąża za temperaturą piętra, twoje obrażenia zaczynają topnieć. W panelu zbroi jest przełącznik automatycznego kupowania odporności. Ciepło występuje wyłącznie w głównej kopalni.</p>
       <div class="callout warn">
           <div class="callout-label">Gdy postęp staje</div>
-          Nagła ściana, przy której ruda rozbija się w nieskończoność, to prawie zawsze ciepło, a nie obrażenia. Sprawdź wskaźnik, zanim cokolwiek wydasz.
-        </div>
-    </section>
-
-    <section id="pets">
-      <div class="section-head"><span class="section-num">08</span><h2>Pupile</h2></div>
-      <p class="section-dek">5 pupili kupowanych za diamenty i ulepszanych złotem.</p>
-      <ul>
-          <li>Ceny wynoszą od <strong>150</strong> do <strong>250</strong> diamentów (150 / 175 / 200 / 225 / 250).</li>
-          <li>Każdy poziom dodaje około <strong>1%</strong> obrażeń od kliknięcia kilofa jako obrażenia automatyczne, pomnożone przez numer pupila - Mroczny Odłamek daje pięć razy więcej niż Kamyk na tym samym poziomie.</li>
-          <li>Każdy poziom jest około <strong>20%</strong> droższy, a od poziomu 100 pupile mają ten sam skok potęgi co kilofy.</li>
-          <li>Każdy pupil ma 6 umiejętności; jedne pomagają tylko jemu, inne wszystkim.</li>
-          <li>Panel pupili otwiera się na piętrze <strong>30</strong> albo gdy tylko masz pupila.</li>
-        </ul>
-      <div class="callout warn">
-          <div class="callout-label">Prestiż a pupile</div>
-          Prestiż cofa każdego pupila do <strong>poziomu 1</strong> i czyści jego umiejętności. Posiadanie jest jednak trwałe - pupila nigdy nie kupujesz drugi raz.
+          Ściana, o którą ruda nagle przestaje pękać, to prawie zawsze ciepło. Zajrzyj na wskaźnik, zanim wydasz złoto gdzie indziej.
         </div>
     </section>
 
     <section id="workers">
-      <div class="section-head"><span class="section-num">09</span><h2>Robotnicy</h2></div>
-      <p class="section-dek">5 pomocników, którzy kopią za ciebie, gdy gra jest włączona.</p>
+      <div class="section-head"><span class="section-num">06</span><h2>Robotnicy</h2></div>
+      <p class="section-dek">Pomocnicy, którzy kopią za ciebie, dopóki gra jest włączona.</p>
       <ul>
-          <li>Robotnicy dołączają, gdy mijasz piętra <strong>600 / 800 / 1 000 / 1 200 / 1 400</strong>. Liczy się twoje najlepsze piętro w historii, więc nigdy się ponownie nie blokują.</li>
-          <li>Daj każdemu robotnikowi kilof - jeden kilof może pracować tylko dla jednego naraz, a twoje własne obrażenia nie spadają. Robotnik bez kilofa nic nie zarabia.</li>
-          <li>Dochód dopisuje się co 1 sekundę i czeka w puli, aż go odbierzesz. Mocniejszy kilof zarabia więcej.</li>
-          <li>Ulepszenie robotnika kosztuje kamień rudy - 100 za pierwszy poziom, potem za każdym razem około 2% więcej - i dodaje około 1% dochodu na poziom.</li>
+          <li>W miarę schodzenia dołączają nowi pracownicy i już nigdy się nie blokują.</li>
+          <li>Daj każdemu pracownikowi kilof; bez kilofa nic nie zarabia. Oddanie kilofa nie obniża twoich własnych obrażeń.</li>
+          <li>Zarobek zbiera się w puli i czeka, aż go odbierzesz. Pracowników ulepsza się za Kamień rudy.</li>
         </ul>
       <div class="callout warn">
-          <div class="callout-label">Odbierz przed prestiżem</div>
-          Robotnicy zarabiają tylko przy włączonej grze, nie offline. Prestiż zachowuje ich poziomy, ale <strong>kasuje nieodebrany dochód</strong> i zabiera im kilofy.
+          <div class="callout-label">Odbierz przed Przebudzenie</div>
+          Pracownicy zarabiają tylko przy włączonej grze. Przebudzenie zachowuje ich poziomy, ale kasuje nieodebrany zarobek.
         </div>
     </section>
 
     <section id="enchantments">
-      <div class="section-head"><span class="section-num">10</span><h2>Zaklęcia</h2></div>
-      <p class="section-dek">Wytwarzaj zaklęcia z wykopanych materiałów i nakładaj je na kilofy, zbroje i pupile.</p>
-      <p>Rozbijanie rudy może dać <strong>pył zaklęć</strong> i <strong>fragmenty zaklęć</strong> w 4 rangach. Każda ranga zaczyna wypadać, gdy twoje najlepsze piętro w tym przebiegu przekroczy jej próg. Farmienie ponad 100 pięter poniżej najlepszego piętra obniża szansę, nawet do 10% normalnej.</p>
-      <div class="table-wrap">
-        <table>
-        <thead><tr>
-        <th>Ranga</th>
-        <th class="num">Cechy</th>
-        <th class="num">Wypada od piętra</th>
-        <th class="num">Szansa na pył</th>
-        <th class="num">Szansa na fragment</th>
-        <th class="num">Wytwarzanie (pył / fragment / kamień rudy)</th>
-        </tr></thead>
-        <tbody>
-        <tr>
-        <td>Pospolity</td>
-        <td class="num">1</td>
-        <td class="num">500</td>
-        <td class="num">5%</td>
-        <td class="num">0,5%</td>
-        <td class="num">10 / 1 / 40</td>
-        </tr>
-        <tr>
-        <td>Rzadki</td>
-        <td class="num">1-2</td>
-        <td class="num">1 000</td>
-        <td class="num">2%</td>
-        <td class="num">0,1%</td>
-        <td class="num">20 / 1 / 200</td>
-        </tr>
-        <tr>
-        <td>Epicki</td>
-        <td class="num">2-3</td>
-        <td class="num">2 000</td>
-        <td class="num">1%</td>
-        <td class="num">0,03%</td>
-        <td class="num">30 / 1 / 1 000</td>
-        </tr>
-        <tr>
-        <td>Legendarny</td>
-        <td class="num">3-4</td>
-        <td class="num">4 000</td>
-        <td class="num">0,5%</td>
-        <td class="num">0,01%</td>
-        <td class="num">50 / 1 / 5 000</td>
-        </tr>
-        </tbody></table></div>
+      <div class="section-head"><span class="section-num">07</span><h2>Zaklęcia</h2></div>
+      <p class="section-dek">Twórz zaklęcia z tego, co wykopiesz, i wstawiaj je w kilofy, zbroje i pupili.</p>
       <ul>
-          <li>Rzemieślnik zamienia pył, jeden fragment i opłatę w kamieniu rudy w zaklęcie z losowymi cechami. Wyższe rangi losują więcej cech i mocniej je mnożą (x1 / x2 / x4 / x6).</li>
-          <li>Każdy kilof, zbroja i pupil ma <strong>8 miejsc</strong>, otwieranych na piętrach 1 000 / 3 000 / 6 000 / 9 000 / 12 000 / 15 000 / 18 000 / 21 000. Liczy się najlepsze piętro w historii, więc miejsce nigdy się nie zamyka.</li>
-          <li>Niektóre cechy pomagają tylko przedmiotowi, na którym są (obrażenia od kliknięcia, automatyczne, odporność na ciepło); inne pomagają wszystkiemu (złoto, krytyki, część ONS, koszt ulepszeń). Specjalna cecha wzmacnia za to umiejętności samego przedmiotu, więc działa tylko na przedmiotach z kupionymi umiejętnościami.</li>
-          <li>Wybór pokazuje tylko zaklęcia, które na danym przedmiocie naprawdę coś dadzą.</li>
-          <li>U handlarza 10 pyłów lub fragmentów jednej rangi zamienia się w 1 z rangi wyższej. Niepotrzebne zaklęcie możesz też rozłożyć na pył (5 / 10 / 15 / 25 zależnie od rangi) - rozłożenie jest nieodwracalne.</li>
+          <li>Rozbijanie rudy daje <strong>pył zaklęć</strong> i <strong>fragmenty zaklęć</strong>. Materiały wyższych rang pojawiają się głębiej.</li>
+          <li>Rzemieślnik zamienia pył i fragmenty w zaklęcie o losowych cechach. Wyższe rangi niosą więcej cech i mocniejsze.</li>
+          <li>Każdy przedmiot ma gniazda na zaklęcia, które otwierają się wraz z głębokością.</li>
+          <li>Niepotrzebne zaklęcie można rozłożyć na pył u handlarza, a materiały wymienić na wyższą rangę.</li>
         </ul>
       <div class="callout">
-          <div class="callout-label">Prestiż jest bezpieczny</div>
-          Prestiż nigdy nie usuwa zaklęć. Jeśli przedmiot znów zostanie zablokowany, jego zaklęcia po prostu wracają do ekwipunku, który otwiera się na piętrze 500.
+          <div class="callout-label">Przebudzenie nic nie rusza</div>
+          Przebudzenie nigdy nie kasuje zaklęć; te z ponownie zablokowanego przedmiotu wracają do Ekwipunek.
         </div>
     </section>
 
     <section id="floors">
-      <div class="section-head"><span class="section-num">11</span><h2>Piętra, ruda i głębokość</h2></div>
-      <p class="section-dek">Piętra decydują, jak twarda jest ruda i ile daje złota. Głębokość decyduje, jak wygląda.</p>
+      <div class="section-head"><span class="section-num">08</span><h2>Piętra i rudy</h2></div>
+      <p class="section-dek">Każde piętro jest nieco trudniejsze i nieco bardziej opłacalne od poprzedniego.</p>
       <ul>
-          <li>Każde piętro ma trochę więcej zdrowia i złota niż poprzednie, a krzywa robi się coraz bardziej stroma.</li>
-          <li>Co <strong>10. piętro</strong> jest piętrem na czas: rusza zegar <strong>20 sekund</strong>, zdrowie jest x5, a złoto x2.</li>
-          <li>Trudność idzie też w cyklach po 100 pięter - niektóre piętra w cyklu płacą lepiej od innych w stosunku do zdrowia.</li>
-          <li>Każda ruda daje oprócz złota <strong>1-5</strong> kamienia rudy.</li>
-          <li><strong>Rzadkie rudy (5)</strong>: Ferrovyx, Karnyth, Thalveris, Umbryssa, Zephiris - mogą zastąpić zwykłą rudę. Szansa to od około 1 na 10 000 do 1 na 1 000 000; rozbitą rudę zapisuje się na zawsze i nigdy więcej się nie pojawia.</li>
+          <li>Co jakiś czas trafia się <strong>piętro na czas</strong>: rozbij rudę, zanim odliczanie się skończy, a zapłaci więcej złota. Jeśli czas wygra, spadasz o piętro i automatyczne schodzenie się wyłącza.</li>
+          <li>Każda ruda daje Kamień rudy obok złota.</li>
+          <li>Bardzo rzadko pojawia się <strong>rzadka ruda</strong> (Ferrovyx, Karnyth, Thalveris, Umbryssa, Zephiris); każdą znajduje się tylko raz.</li>
+          <li>Winda pozwala poruszać się między osiągniętymi piętrami. Lokacje przełącza między główną kopalnią, lochem i Otchłań.</li>
         </ul>
-      <div class="callout warn">
-          <div class="callout-label">Piętra na czas gryzą</div>
-          Gdy czas się skończy, cofasz się <strong>o jedno piętro</strong>, a automatyczne schodzenie się wyłącza. Pofarm trochę przed kolejną próbą.
+      <div class="callout">
+          <div class="callout-label">Farmienie nisko się nie opłaca</div>
+          Pył i fragmenty wypadają najlepiej blisko najgłębszego osiągniętego piętra; siedzenie dużo niżej wyraźnie obniża szansę.
         </div>
-      <p>Winda przenosi cię na każde piętro osiągnięte w tym przebiegu. Ręczny wybór piętra wyłącza automatyczne schodzenie; włącz je, gdy zechcesz dalej iść w dół. Panel lokacji przełącza między główną kopalnią a lochem bossów.</p>
-      <p>Jest łącznie <strong>40</strong> rodzajów rud, a głębokość decyduje, które się pojawiają. Rodzaj zmienia tylko wygląd - zdrowie i złoto zależą od piętra.</p>
-      <div class="table-wrap">
-        <table>
-        <thead><tr>
-        <th class="num">Głębokość</th>
-        <th class="num">Rodzaje rud</th>
-        <th class="num">Około piętra</th>
-        </tr></thead>
-        <tbody>
-        <tr>
-        <td class="num">0-100 m</td>
-        <td class="num">9</td>
-        <td class="num">~54</td>
-        </tr>
-        <tr>
-        <td class="num">100-500 m</td>
-        <td class="num">20</td>
-        <td class="num">~129</td>
-        </tr>
-        <tr>
-        <td class="num">500-1 500 m</td>
-        <td class="num">30</td>
-        <td class="num">~196</td>
-        </tr>
-        <tr>
-        <td class="num">1 500 m+</td>
-        <td class="num">40</td>
-        <td class="num">-</td>
-        </tr>
-        </tbody></table></div>
     </section>
 
     <section id="skills">
-      <div class="section-head"><span class="section-num">12</span><h2>Aktywne umiejętności</h2></div>
-      <p class="section-dek">8 umiejętności, każda to czasowe wzmocnienie z późniejszym odnowieniem.</p>
-      <p>Umiejętność jest <strong>darmowa</strong>, gdy dotrzesz do jej piętra - używasz jej od poziomu 1. Rozwinięcie do poziomu 7 kosztuje łącznie <strong>63</strong> kamieni umiejętności, a wszystkich 8 - <strong>504</strong>. Wyższy poziom to dłuższe działanie i krótsze odnowienie.</p>
-      <div class="table-wrap">
-        <table>
-        <thead><tr>
-        <th>Umiejętność</th>
-        <th class="num">Piętro</th>
-        <th class="num">Poziom 1 (czas / odnowienie)</th>
-        <th class="num">Poziom 7 (czas / odnowienie)</th>
-        <th class="num">Efekt</th>
-        </tr></thead>
-        <tbody>
-        <tr>
-        <td>Łamacz Rud</td>
-        <td class="num">50</td>
-        <td class="num">30 s / 540 s</td>
-        <td class="num">90 s / 180 s</td>
-        <td class="num">7 → 13 /s</td>
-        </tr>
-        <tr>
-        <td>Gniewne Kliknięcie</td>
-        <td class="num">100</td>
-        <td class="num">40 s / 660 s</td>
-        <td class="num">210 s / 300 s</td>
-        <td class="num">x2 → x5</td>
-        </tr>
-        <tr>
-        <td>Cios Krytyczny</td>
-        <td class="num">150</td>
-        <td class="num">30 s / 600 s</td>
-        <td class="num">150 s / 240 s</td>
-        <td class="num">x1,3 → x1,9</td>
-        </tr>
-        <tr>
-        <td>Szał</td>
-        <td class="num">200</td>
-        <td class="num">40 s / 840 s</td>
-        <td class="num">160 s / 480 s</td>
-        <td class="num">x2 → x3,5</td>
-        </tr>
-        <tr>
-        <td>Złota Furia</td>
-        <td class="num">250</td>
-        <td class="num">50 s / 1 020 s</td>
-        <td class="num">290 s / 660 s</td>
-        <td class="num">x2 → x5</td>
-        </tr>
-        <tr>
-        <td>Odporność na Ciepło</td>
-        <td class="num">300</td>
-        <td class="num">30 s / 660 s</td>
-        <td class="num">140 s / 300 s</td>
-        <td class="num">x2 → x5</td>
-        </tr>
-        <tr>
-        <td>Przeciążenie</td>
-        <td class="num">350</td>
-        <td class="num">20 s / 1 200 s</td>
-        <td class="num">20 s / 840 s</td>
-        <td class="num">x1,5 → x3</td>
-        </tr>
-        <tr>
-        <td>Odwrócenie Czasu</td>
-        <td class="num">400</td>
-        <td class="num">1 200 s</td>
-        <td class="num">840 s</td>
-        <td class="num">-300 s → -1 020 s</td>
-        </tr>
-        </tbody></table></div>
-      <p>Pierwszy pasek umiejętności otwiera się na piętrze 50; drzewko umiejętności, w którym wydajesz kamienie, na piętrze <strong>180</strong>. Poziomy umiejętności przetrwają prestiż.</p>
+      <div class="section-head"><span class="section-num">09</span><h2>Umiejętności i tytuły</h2></div>
+      <p class="section-dek">Czasowe wzmocnienia i bonusy, które przychodzą same w miarę schodzenia.</p>
+      <ul>
+          <li><strong>Umiejętności aktywne</strong> odblokowują się za darmo wraz z głębokością; wzmacniają cię na chwilę, a potem idą na odnowienie. Wzmacnia się je Kamień umiejętności w Drzewko umiejętności i przetrwają Przebudzenie.</li>
+          <li><strong>Tytuły</strong> przychodzą same w miarę schodzenia i dają bonusy do obrażeń, złota czy odporności na ciepło. Po Przebudzenie zdobywa się je od nowa.</li>
+        </ul>
       <div class="callout">
-          <div class="callout-label">Kombo</div>
-          Najpierw odpal Przeciążenie, potem umiejętność, którą naprawdę chcesz wzmocnić - np. Złota Furia. Odwrócenie Czasu skraca następnie odnowienie ostatnio użytej umiejętności, więc szybciej ją odzyskasz.
+          <div class="callout-label">Kombinacja</div>
+          Najpierw Przeciążenie, potem umiejętność, którą chcesz wzmocnić - na przykład Złota Furia. Następnie Odwrócenie Czasu skraca odnowienie ostatniej umiejętności.
         </div>
     </section>
 
-    <section id="titles">
-      <div class="section-head"><span class="section-num">13</span><h2>Tytuły</h2></div>
-      <p class="section-dek">100 tytułów, które zdobywasz same z siebie, schodząc w dół.</p>
-      <ul>
-          <li>Tytuły obejmują piętra od 1 do <strong>50 000</strong> i są wybierane automatycznie według najlepszego piętra w tym przebiegu.</li>
-          <li>Każdy tytuł dodaje około <strong>+0,1</strong> do swoich bonusów.</li>
-          <li>Bonusy przychodzą etapami - obrażenia od kliknięcia, automatyczne, odporność na ciepło, złoto, mnożnik krytyka, szansa na krytyk i część ONS w kliknięciach zaczynają się od tytułów 2 / 6 / 11 / 16 / 21 / 26 / 31.</li>
-          <li>Prestiż cofa cię do pierwszych tytułów; wracają, gdy znów zejdziesz niżej.</li>
-        </ul>
-    </section>
-
     <section id="tasks">
-      <div class="section-head"><span class="section-num">14</span><h2>Zadania i Taskium</h2></div>
-      <p class="section-dek">Boczna ścieżka, która zamienia klikanie w drugi dochód.</p>
+      <div class="section-head"><span class="section-num">10</span><h2>Zadania</h2></div>
+      <p class="section-dek">Boczna ścieżka, która zamienia twoje kliknięcia w drugi przychód.</p>
       <ul>
-          <li>Każde udane kliknięcie daje <strong>+1 Taskium</strong>.</li>
-          <li>Przyjęcie zadania kosztuje <strong>200</strong>, wylosowanie nowego <strong>25</strong>.</li>
-          <li>Panel zadań otwiera się na piętrze 125; 6 miejsc otwiera się na piętrach 125 / 225 / 325 / 425 / 525 / 625.</li>
-          <li>Jest 10 rodzajów zadań w 6 rzadkościach. Każde zadanie trwa 60 minut, a nieprzyjęte są wymieniane co godzinę.</li>
-          <li>Nagroda w złocie rośnie z rzadkością - od <strong>50-500</strong> razy złoto rudy z najlepszego piętra w tym przebiegu. Najrzadsze dają też esencję.</li>
-        </ul>
-    </section>
-
-    <section id="missions">
-      <div class="section-head"><span class="section-num">15</span><h2>Misje dzienne</h2></div>
-      <p class="section-dek">Krótka lista celów, która odnawia się każdego dnia.</p>
-      <ul>
-          <li>Codziennie dostajesz <strong>5 misji</strong> - rozbij rudę, klikaj, zakręć kołem, pokonaj bossa, użyj umiejętności itd.</li>
-          <li>Każda ukończona misja daje <strong>wzmocnienie x2 na 10 minut</strong> (obrażenia automatyczne, od kliknięcia, krytyki albo złoto).</li>
-          <li>Nagrody nie przychodzą same - odbierz je w panelu misji. Lista resetuje się o północy UTC.</li>
+          <li><strong>Zadania</strong> przyjmuje się za Taskium; rzadsze płacą więcej.</li>
+          <li><strong>Misje dzienne</strong> odświeżają się codziennie i dają krótkie wzmocnienia w miarę wykonywania. Pamiętaj, żeby odebrać nagrody w panelu.</li>
         </ul>
     </section>
 
     <section id="trade">
-      <div class="section-head"><span class="section-num">16</span><h2>Handlarz</h2></div>
-      <p class="section-dek">Otwiera się na piętrze 200. Tu kamień rudy i nadmiarowe materiały zamieniają się w coś przydatnego.</p>
-      <ul>
-          <li>1 kamień umiejętności zamienia się w <strong>5 000</strong> kamienia rudy.</li>
-          <li><strong>2 000</strong> kamienia rudy zamienia się w 1 esencję.</li>
-          <li><strong>5 000</strong> kamienia rudy zamienia się w 1 kamień umiejętności.</li>
-          <li>Każda wymiana walut pobiera stałą opłatę 100 000 złota. Wymiany materiałów i rozkładanie pobierają zamiast tego kamień rudy.</li>
-        </ul>
-      <p>Najważniejsza jest wymiana na kamień umiejętności: tak długie farmienie zamienia się w poziomy umiejętności bez zakupów w sklepie.</p>
+      <div class="section-head"><span class="section-num">11</span><h2>Handlarz</h2></div>
+      <p class="section-dek">Miejsce, w którym nadmiar surowców zamienia się w coś przydatnego.</p>
+      <p>Możesz zamienić Kamień rudy na Esencję albo Kamień umiejętności, wymienić materiały na wyższą rangę i rozłożyć niechciane zaklęcia. Najcenniejsza jest wymiana na Kamień umiejętności: tak wzmacnia się umiejętności bez kupowania czegokolwiek w sklepie.</p>
     </section>
 
     <section id="extras">
-      <div class="section-head"><span class="section-num">17</span><h2>Darmowe nagrody</h2></div>
-      <p class="section-dek">Źródła, które wymagają niewiele więcej niż zajrzenia do gry.</p>
+      <div class="section-head"><span class="section-num">12</span><h2>Darmowe nagrody</h2></div>
+      <p class="section-dek">Surowce, które wymagają tylko tego, żebyś zajrzał do gry.</p>
       <ul>
-          <li><strong>Złoty balon</strong> - od piętra 50 przylatuje co 500-700 sekund i czeka, aż go klikniesz. Daje <strong>x6</strong> złota rudy z najlepszego piętra w tym przebiegu.</li>
-          <li><strong>Złoty kryształ</strong> - od piętra 100 pojawia się co 800-1 300 sekund. Kliknięcie w głównej kopalni zamienia rudę na 10 sekund w rudę bonusową z x10 zdrowia i x14 złota, wypłacanego z każdym uderzeniem.</li>
-          <li><strong>Zarobki offline</strong> - liczone po 60 minutach nieobecności, maksymalnie 12 godzin. Premium je zwiększa.</li>
-          <li><strong>Nagroda za czas gry</strong> - co 60 minut gry dostajesz około 100 razy złoto z jednej minuty na najlepszym piętrze.</li>
-          <li><strong>Nagroda dzienna</strong> - 1 darmowy klucz do lochu dziennie w sklepie. Nie ma serii do pilnowania; musisz być online.</li>
-          <li><strong>Koło Fortuny</strong> - od piętra 100 koło z 8 polami, które odnawia się co 3 godziny i daje 1 darmowy obrót. Kolejne obroty kosztują diamenty: zaczynają się od 10 i za każdym razem się podwajają. Wygrane pola zostają zamknięte do odnowienia; nagrody to m.in. złoto zależne od piętra, kamień rudy, wzmocnienia, Taskium, 50 diamentów i klucze do lochu.</li>
-          <li><strong>Kody promocyjne</strong> - kody z ogłoszeń i społeczności wpisujesz w Ustawienia > Kody promocyjne. Każdy kod działa raz na konto, a niektóre mają ograniczoną liczbę użyć.</li>
+          <li><strong>Złote balony</strong> przelatują co jakiś czas przez ekran; kliknij i masz złoto. Nie da się ich przegapić - czekają, aż klikniesz.</li>
+          <li><strong>Złoty kryształ</strong> zamienia rudę na krótko w bonusową rudę pełną złota; zbierzesz go tylko w głównej kopalni.</li>
+          <li><strong>Zarobek offline</strong> zbiera się, gdy gra jest zamknięta.</li>
+          <li><strong>Nagroda za czas gry</strong> płaci złotem, im dłużej grasz.</li>
+          <li><strong>Nagroda dzienna</strong> daje codziennie w sklepie darmowy klucz do lochu i darmowy Klucz do otchłani, niezależnie od siebie.</li>
+          <li><strong>Koło Fortuny</strong> odnawia się co jakiś czas i daje darmowe losowanie.</li>
+          <li><strong>Kody promocyjne</strong> - kody udostępniane w ogłoszeniach wpisuje się w menu Ustawień.</li>
         </ul>
     </section>
 
-    <section id="prestige">
-      <div class="section-head"><span class="section-num">18</span><h2>Prestiż</h2></div>
-      <p class="section-dek">Wymień postęp tego przebiegu na stałą siłę. Dobrze wyczuty to najszybsza rzecz w grze.</p>
-      <p>Panel prestiżu pojawia się na piętrze 70. Prestiż możesz zrobić, gdy w obecnym przebiegu <strong>miniesz piętro 100</strong> - każdy przebieg wymaga tego samego piętra.</p>
+    <section id="awakening">
+      <div class="section-head"><span class="section-num">13</span><h2>Przebudzenie</h2></div>
+      <p class="section-dek">Zamień postęp tej gry w trwałą moc.</p>
       <ul>
-          <li><strong>Resetuje się:</strong> złoto, postęp pięter, ulepszenia i umiejętności kilofów, zbroi i pupili, odnowienia umiejętności, postęp tytułów, Taskium, postęp zadań, przydział kilofów robotnikom i nieodebrany dochód robotników.</li>
-          <li><strong>Zostaje:</strong> diamenty i wszystko za nie kupione, klucze do lochu, postęp w lochu, esencja, parametry prestiżu, poziomy drzewka umiejętności, kamienie umiejętności, kamień rudy, zaklęcia i ekwipunek, osiągnięcia, statystyki, rankingi i poziomy robotników.</li>
-          <li>Każdy przebieg zaczyna się znów od <strong>piętra 1</strong>, bez złota na start.</li>
+          <li>Po przekroczeniu pewnej głębokości możesz wykonać Przebudzenie. Każde podejście zaczyna się znów od pierwszego piętra.</li>
+          <li><strong>Zerowane:</strong> złoto, postęp pięter, odblokowane i ulepszone kilofy, ulepszenia zbroi i pupili, umiejętności przedmiotów, tytuły, Taskium, postęp zadań, kilofy oddane pracownikom i nieodebrany zarobek pracowników.</li>
+          <li><strong>Zachowane:</strong> diamenty i wszystko za nie kupione, klucze, postęp bossów i Otchłań, Esencja, parametry Przebudzenie, drzewko umiejętności, Kamień umiejętności, Kamień rudy, zaklęcia, osiągnięcia, poziomy pracowników i wszystko po stronie Wzniesienie.</li>
+          <li>Zdobyta Esencja zależy od najgłębszego osiągniętego piętra i szybko rośnie z głębokością. Wydawaj ją na stałe parametry.</li>
         </ul>
-      <p>Nagroda w esencji zależy tylko od <strong>najlepszego piętra</strong> i szybko rośnie: około 331 na piętrze 200, 1 098 na 300, 12 068 na 500 i 4 827 341 na piętrze 1000.</p>
       <div class="callout">
-          <div class="callout-label">Zejdź trochę niżej</div>
-          Ponieważ nagroda tak stromo rośnie z głębokością, kilka pięter więcej przed prestiżem jest zwykle warte więcej niż natychmiastowy kolejny prestiż.
+          <div class="callout-label">Zejdź jeszcze trochę</div>
+          Zdobycie kilku pięter więcej przed Przebudzenie jest zwykle warte więcej niż natychmiastowe kolejne Przebudzenie.
         </div>
-      <div class="table-wrap">
-        <table>
-        <thead><tr>
-        <th>Parametr</th>
-        <th>Efekt</th>
-        <th class="num">Na poziom</th>
-        </tr></thead>
-        <tbody>
-        <tr>
-        <td>Wieczna Kuźnia</td>
-        <td>Obrażenia automatyczne na sekundę</td>
-        <td class="num">+2,5%</td>
-        </tr>
-        <tr>
-        <td>Dłoń Łamacza Kamieni</td>
-        <td>Obrażenia od kliknięcia</td>
-        <td class="num">+2,5%</td>
-        </tr>
-        <tr>
-        <td>Złota Otchłań</td>
-        <td>Przychód złota</td>
-        <td class="num">+1%</td>
-        </tr>
-        <tr>
-        <td>Wyrocznia Rudy</td>
-        <td>Szansa na krytyk</td>
-        <td class="num">+0,1%</td>
-        </tr>
-        <tr>
-        <td>Kataklizmiczna Siła</td>
-        <td>Mnożnik krytyka</td>
-        <td class="num">+0,1%</td>
-        </tr>
-        <tr>
-        <td>Piekielna Tarcza</td>
-        <td>Odporność na ciepło</td>
-        <td class="num">+1%</td>
-        </tr>
-        <tr>
-        <td>Jedność Siły</td>
-        <td>Część ONS dodawana do kliknięć</td>
-        <td class="num">+0,1%</td>
-        </tr>
-        </tbody></table></div>
-      <p>Każdy poziom kumuluje się z poprzednimi. Poziom kosztuje na początku 2 esencji i za każdym razem około 2,5% więcej, więc częste wydawanie wygrywa z odkładaniem.</p>
     </section>
 
-    <section id="bosses">
-      <div class="section-head"><span class="section-num">19</span><h2>Bossowie</h2></div>
-      <p class="section-dek">Wyścig obrażeń z czasem o esencję i kamień rudy. Otwiera się na piętrze 350.</p>
+    <section id="ascension">
+      <div class="section-head"><span class="section-num">14</span><h2>Wzniesienie</h2></div>
+      <p class="section-dek">Druga warstwa, położona na Przebudzenie.</p>
       <ul>
-          <li>Otwórz panel lokacji, wybierz loch i bossa, a potem wydaj <strong>1 klucz do lochu</strong>, żeby zacząć. Nic nie startuje samo.</li>
-          <li>Bossowie odblokowują się po kolei - pokonaj jednego, żeby otworzyć następnego. Zdrowie rośnie stromo, a czasu jest coraz mniej.</li>
-          <li>Postęp z bossami <strong>zostaje po prestiżu</strong>, a z każdym pokonanym bossem możesz walczyć ponownie.</li>
+          <li>Po dotarciu na znacznie głębsze piętro odblokowuje się Wzniesienie; ma własną stronę w zakładce prestiżu.</li>
+          <li><strong>Zerowane:</strong> twoje parametry Przebudzenie i Esencja - ta pętla startuje od zera; kilofy, piętra i ulepszenia zerują się tak samo jak przy Przebudzenie.</li>
+          <li><strong>Zachowane:</strong> twój poziom Przebudzenie, diamenty i wszystko za nie kupione, klucze, postęp bossów i Otchłań, zaklęcia, drzewko umiejętności, osiągnięcia, poziomy pracowników oraz odłożona Czysta Esencja.</li>
+          <li>W zamian zdobywasz <strong>Czysta Esencja</strong>. Kupuje ona dwa parametry: <strong>Echo Przebudzenia</strong> wzmacnia bonus każdego parametru Przebudzenie, a <strong>Źródło</strong> zwiększa Esencję wypłacaną przez każde Przebudzenie.</li>
+          <li>Oba parametry działają składanie: każdy poziom mnoży się na poprzednim.</li>
         </ul>
-      <div class="table-wrap">
-        <table>
-        <thead><tr>
-        <th>Boss</th>
-        <th class="num">Zdrowie</th>
-        <th class="num">Czas</th>
-        <th>Nagroda</th>
-        </tr></thead>
-        <tbody>
-        <tr>
-        <td>Kryształowy Kolos</td>
-        <td class="num">1e15</td>
-        <td class="num">30 s</td>
-        <td>1 000 Esencja + 50 000 Kamień rudy</td>
-        </tr>
-        <tr>
-        <td>Kryształowy Strażnik</td>
-        <td class="num">1e18</td>
-        <td class="num">25 s</td>
-        <td>2 000 Esencja + 75 000 Kamień rudy</td>
-        </tr>
-        <tr>
-        <td>Karmazynowy Wartownik</td>
-        <td class="num">1e22</td>
-        <td class="num">20 s</td>
-        <td>3 000 Esencja + 100 000 Kamień rudy</td>
-        </tr>
-        <tr>
-        <td>Kamienny Strażnik</td>
-        <td class="num">1e27</td>
-        <td class="num">20 s</td>
-        <td>4 000 Esencja + 125 000 Kamień rudy</td>
-        </tr>
-        <tr>
-        <td>Lodowy Tytan</td>
-        <td class="num">1e33</td>
-        <td class="num">20 s</td>
-        <td>5 000 Esencja + 150 000 Kamień rudy</td>
-        </tr>
-        <tr>
-        <td>Kryształowy Golem 1</td>
-        <td class="num">1e40</td>
-        <td class="num">20 s</td>
-        <td>6 000 Esencja + 175 000 Kamień rudy</td>
-        </tr>
-        <tr>
-        <td>Kolos Kamienna Broda</td>
-        <td class="num">1e48</td>
-        <td class="num">15 s</td>
-        <td>7 000 Esencja + 200 000 Kamień rudy</td>
-        </tr>
-        <tr>
-        <td>Kryształowy Golem 2</td>
-        <td class="num">1e57</td>
-        <td class="num">15 s</td>
-        <td>8 000 Esencja + 225 000 Kamień rudy</td>
-        </tr>
-        <tr>
-        <td>Płomienny Golem</td>
-        <td class="num">1e67</td>
-        <td class="num">15 s</td>
-        <td>9 000 Esencja + 250 000 Kamień rudy</td>
-        </tr>
-        <tr>
-        <td>Golem Strażnik</td>
-        <td class="num">1e78</td>
-        <td class="num">10 s</td>
-        <td>10 000 Esencja + 275 000 Kamień rudy</td>
-        </tr>
-        </tbody></table></div>
+      <div class="callout">
+          <div class="callout-label">Kiedy wznosić</div>
+          Wzniesienie przyspiesza nie jedno podejście, tylko całą pętlę. Opłaca się, gdy parametry za Esencję zdrożały, a kolejne Przebudzenie niewiele już daje.
+        </div>
+    </section>
+
+    <section id="dungeons">
+      <div class="section-head"><span class="section-num">15</span><h2>Bossowie i Otchłań</h2></div>
+      <p class="section-dek">Dwa wyzwania na czas poza główną kopalnią.</p>
+      <ul>
+          <li>Do obu wchodzi się przez Lokacje; w tym czasie ciepło i postęp pięter w głównej kopalni stoją.</li>
+          <li><strong>Bossów</strong> otwiera klucz do lochu: połóż bossa przed końcem czasu, a zdobędziesz Esencję i Kamień rudy. Bossowie odblokowują się po kolei, a pokonany zostaje otwarty na stałe.</li>
+          <li><strong>Otchłań</strong> otwiera Klucz do otchłani i działa na jednym odliczaniu: rozbijasz rudę za rudą, a każdy etap jest trudniejszy od poprzedniego.</li>
+          <li>Każdy etap otchłani niesie własną <strong>karę</strong> - jedna tnie obrażenia automatyczne, inna obrażenia od kliknięcia, jeszcze inna krytyki. Kara obowiązuje tylko na czas tego etapu.</li>
+          <li>Każdy rozbity etap w otchłani jest wypłacany: czy skończy się czas, czy sam wyjdziesz, zostaje ci to, co zdobyłeś do tej pory. Ukończ wszystkie etapy, a otworzy się kolejna otchłań.</li>
+        </ul>
       <div class="callout warn">
-          <div class="callout-label">Porażka kosztuje</div>
-          Jeśli czas skończy się pierwszy, nie dostajesz <strong>nic</strong>, a klucz przepada. Po nieudanej próbie widzisz, ile zdrowia zostało - to podpowiada, ile obrażeń ci brakuje.
-        </div>
-    </section>
-
-    <section id="achievements">
-      <div class="section-head"><span class="section-num">20</span><h2>Osiągnięcia</h2></div>
-      <p class="section-dek">100 osiągnięć w 31 kategoriach - kliknięcia, ruda, bossowie, prestiż, głębokość, wytwarzanie i więcej.</p>
-      <p>Każde osiągnięcie daje <strong>kamień rudy</strong>, a cel i nagroda rosną poziom po poziomie.</p>
-      <div class="callout">
-          <div class="callout-label">Odbieraj je</div>
-          Nagrody <strong>nie przychodzą same</strong>. Jeśli dawno nie zaglądałeś do zakładki osiągnięć, czeka tam cała sterta - przycisk odbierania wszystkiego zbiera je naraz.
+          <div class="callout-label">Przegrana z bossem kosztuje</div>
+          Jeśli czas skończy się przed śmiercią bossa, nie dostajesz nagrody, a klucz przepada.
         </div>
     </section>
 
     <section id="store">
-      <div class="section-head"><span class="section-num">21</span><h2>Sklep</h2></div>
-      <p class="section-dek">Diamenty, klucze, pakiety, czas Premium, przeskoki czasu, skrzynie i stałe przedmioty Nieskończoności.</p>
+      <div class="section-head"><span class="section-num">16</span><h2>Sklep i osiągnięcia</h2></div>
+      <p class="section-dek">Diamenty, klucze, paczki, premium, przeskoki czasu, skrzynie i trwałe przedmioty Infinity.</p>
       <ul>
-          <li><strong>Pakiety diamentów:</strong> 200 / 550 / 1 150 / 2 400 / 6 250 / 14 000 diamentów. Im większy pakiet, tym lepszy przelicznik.</li>
-          <li><strong>Pakiety kluczy:</strong> 3 / 7 / 15 kluczy do lochu.</li>
-          <li><strong>Mały pakiet:</strong> 500 Diament, 100 Esencja, 10 Kamień umiejętności, 3 Klucz do lochu.</li>
-          <li><strong>Duży pakiet:</strong> 1 000 Diament, 200 Esencja, 20 Kamień umiejętności, 5 Klucz do lochu.</li>
-          <li><strong>7-dniowy pakiet Premium:</strong> przez 7 dni x5 obrażeń od kliknięcia, x5 obrażeń automatycznych, x3 złota, x3 odporności na ciepło i x2 zarobków offline.</li>
-          <li><strong>30-dniowy pakiet Premium:</strong> przez 30 dni x7 obrażeń od kliknięcia, x7 obrażeń automatycznych, x4,5 złota, x3,5 odporności na ciepło i x2,5 zarobków offline.</li>
-          <li><strong>Przeskok czasu:</strong> 8 / 16 / 24 godzin za 100 / 190 / 370 diamentów. Nagroda liczona jest z twoich obrażeń, piętra i robotników - razem z rudą, łupami do zaklęć i rzadkimi rudami. Wzmocnienia, odnowienia i liczniki nie przesuwają się, a w lochu przeskok jest niedostępny.</li>
+          <li><strong>Premium</strong> podnosi obrażenia, złoto i zarobek offline na określony czas.</li>
+          <li><strong>Przeskoki czasu</strong> przewijają grę o kilka godzin; wypłata liczona jest z twojej obecnej mocy.</li>
+          <li><strong>Skrzynia zaklęć</strong> otwiera się od razu i daje materiały na zaklęcia.</li>
+          <li><strong>Paczki kluczy</strong> kupuje się za diamenty; są paczki zarówno kluczy do lochu, jak i Klucz do otchłani.</li>
+          <li><strong>Przedmioty Infinity</strong> kupuje się raz i przetrwają zarówno Przebudzenie, jak i Wzniesienie.</li>
+          <li><strong>Osiągnięcia</strong> płacą Kamień rudy; nagrody trzeba odebrać samemu.</li>
         </ul>
-      <p><strong>Skrzynia zaklęć</strong> kosztuje 100 diamentów i otwiera się od razu. Karta pokazuje każdą nagrodę i jej szansę:</p>
-      <div class="table-wrap">
-        <table>
-        <thead><tr>
-        <th>Przedmiot</th>
-        <th class="num">Ilość</th>
-        <th class="num">Szansa</th>
-        </tr></thead>
-        <tbody>
-        <tr>
-        <td>Pył zaklęcia: Pospolity</td>
-        <td class="num">250</td>
-        <td class="num">17%</td>
-        </tr>
-        <tr>
-        <td>Fragment zaklęcia: Pospolity</td>
-        <td class="num">26</td>
-        <td class="num">16%</td>
-        </tr>
-        <tr>
-        <td>Pył zaklęcia: Rzadki</td>
-        <td class="num">180</td>
-        <td class="num">15%</td>
-        </tr>
-        <tr>
-        <td>Fragment zaklęcia: Rzadki</td>
-        <td class="num">9</td>
-        <td class="num">15%</td>
-        </tr>
-        <tr>
-        <td>Pył zaklęcia: Epicki</td>
-        <td class="num">150</td>
-        <td class="num">10%</td>
-        </tr>
-        <tr>
-        <td>Fragment zaklęcia: Epicki</td>
-        <td class="num">5</td>
-        <td class="num">10%</td>
-        </tr>
-        <tr>
-        <td>Pył zaklęcia: Legendarny</td>
-        <td class="num">130</td>
-        <td class="num">9%</td>
-        </tr>
-        <tr>
-        <td>Fragment zaklęcia: Legendarny</td>
-        <td class="num">3</td>
-        <td class="num">8%</td>
-        </tr>
-        </tbody></table></div>
-      <p>Przedmioty Nieskończoności kupujesz <strong>raz za diamenty</strong> i nigdy się nie resetują, nawet przy prestiżu. W późnej grze to zwykle najlepszy sposób na wydanie diamentów.</p>
-      <div class="table-wrap">
-        <table>
-        <thead><tr>
-        <th>Przedmiot</th>
-        <th class="num">Efekt</th>
-        <th class="num">Cena</th>
-        </tr></thead>
-        <tbody>
-        <tr>
-        <td>Nieskończona Moc</td>
-        <td class="num">x4</td>
-        <td class="num">350 💎</td>
-        </tr>
-        <tr>
-        <td>Nieskończony Dochód</td>
-        <td class="num">x3</td>
-        <td class="num">350 💎</td>
-        </tr>
-        <tr>
-        <td>Nieskończona Zbroja</td>
-        <td class="num">x2</td>
-        <td class="num">350 💎</td>
-        </tr>
-        <tr>
-        <td>Nieskończona Szybkość</td>
-        <td class="num">x1,5</td>
-        <td class="num">550 💎</td>
-        </tr>
-        <tr>
-        <td>Nieskończony Klikacz</td>
-        <td class="num">7 /s</td>
-        <td class="num">600 💎</td>
-        </tr>
-        </tbody></table></div>
-      <div class="callout">
-          <div class="callout-label">Ceny</div>
-          Ceny za prawdziwe pieniądze pochodzą ze Steama w twojej walucie, więc ich tu nie ma. Zawartość pakietu się nie zmienia; cena zależy od regionu.
-        </div>
     </section>
 
     <section id="progress">
-      <div class="section-head"><span class="section-num">22</span><h2>Śledzenie postępów</h2></div>
-      <p class="section-dek">Miejsca, w których widzisz, jak idzie przebieg i co się właśnie stało.</p>
+      <div class="section-head"><span class="section-num">17</span><h2>Postęp i zapis</h2></div>
+      <p class="section-dek">Gdzie śledzisz swoje podejście i jak chroniony jest postęp.</p>
       <ul>
-          <li>Rankingi Steam śledzą kliknięcia, obrażenia od kliknięcia, liczbę prestiży, pokonanych bossów i najgłębsze piętro.</li>
-          <li>Ekran statystyk prowadzi długą historię - zarobki, wydatki, kliknięcia, wytwarzanie, czas gry i więcej.</li>
-          <li><strong>Dziennik aktywności</strong> pokazuje, co wydarzyło się w tej sesji - nagrody, odblokowania, bossów, zakupy - a otwiera go powiadomienie w rogu.</li>
-          <li>Panel <strong>Aktualizacje</strong> pokazuje najnowsze informacje o aktualizacjach w twoim języku i otwiera się sam raz po nowej aktualizacji.</li>
+          <li>Rankingi Steam, ekran statystyk i <strong>Dziennik aktywności</strong> pokazują twój postęp.</li>
+          <li>Panel <strong>Aktualizacje</strong> pokazuje najnowsze informacje o aktualizacjach.</li>
+          <li>Gra zapisuje się regularnie i robi kopię w Steam Cloud; możesz grać dalej na innym komputerze.</li>
+          <li>Przy włączonym Discordzie profil pokazuje, na którym jesteś piętrze i jaki masz poziom Przebudzenie / Wzniesienie.</li>
         </ul>
     </section>
 
-    <section id="save">
-      <div class="section-head"><span class="section-num">23</span><h2>Zapisy</h2></div>
-      <p class="section-dek">Krótko: twój postęp jest bezpieczny na kilka sposobów jednocześnie.</p>
-      <ul>
-          <li>Gra zapisuje się sama, w formie zaszyfrowanej, co <strong>15 sekund</strong>.</li>
-          <li>Kopię w Steam Cloud robi mniej więcej co <strong>45 sekund</strong> oraz zawsze przy zamknięciu lub pauzie - inny komputer zacznie tam, gdzie skończyłeś.</li>
-          <li>Jeśli plik zapisu jest uszkodzony, gra sama sięga po kopię zapasową.</li>
-          <li>Możesz też skopiować zapis do schowka i wkleić go na innym urządzeniu.</li>
-        </ul>
-    </section>
-
-    <section id="languages">
-      <div class="section-head"><span class="section-num">24</span><h2>Języki</h2></div>
-      <p class="section-dek">Gra jest dostępna w 18 językach.</p>
-      <p>Angielski, turecki, niemiecki, francuski, hiszpański, hiszpański latynoamerykański, włoski, polski, portugalski brazylijski, rosyjski, ukraiński, japoński, koreański, chiński uproszczony, chiński tradycyjny, tajski, indonezyjski i wietnamski. Gra wybiera twój język przy pierwszym uruchomieniu, a zmienisz go w każdej chwili w ustawieniach - ten poradnik jest dostępny we wszystkich, z linkami na górze strony.</p>
-    </section>
-
-    <footer class="doc-footer">Liczby odpowiadają obecnemu balansowi gry i mogą się zmienić z aktualizacjami. Ceny za prawdziwe pieniądze ustala Steam i pokazuje je w twojej walucie, dlatego ich tu nie ma.</footer>
+    <footer class="doc-footer">Gra zmienia się wraz z aktualizacjami; ten poradnik to ogólny przegląd. Ceny przedmiotów za prawdziwe pieniądze pokazuje Steam w twojej walucie.</footer>
   </main>
 </div>
 

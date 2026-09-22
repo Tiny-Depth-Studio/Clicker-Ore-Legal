@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <title>Clicker Ore Game - Guide du joueur</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Comment fonctionne la mine : monnaies, pioches, familiers, ouvriers, enchantements, compétences, prestige, boss et boutique, expliqués sans calculs.">
+<meta name="description" content="Comment fonctionne la mine : pioches, familiers, ouvriers, enchantements, compétences, Éveil, Ascension, boss, Abîme et boutique - en bref.">
 <style>
   :root {
     --bg: #14110d;
@@ -28,6 +28,8 @@
     --cur-key: #d98a63;
     --cur-skillstone: #7fc9a0;
     --cur-orestone: #b5a68c;
+    --cur-abysskey: #8f7fd6;
+    --cur-pureessence: #d7bff5;
 
     --font-display: "Bahnschrift", "Segoe UI Semibold", "Arial Narrow Bold", "Arial Narrow", sans-serif;
     --font-body: "Sitka Text", "Iowan Old Style", Georgia, "Times New Roman", serif;
@@ -481,38 +483,31 @@
     <div class="toc-brand">Clicker Ore Game<small>Guide du joueur</small></div>
     <ul class="toc-list">
       <li><a href="#start"><span class="toc-num">01</span>Par où commencer</a></li>
-      <li><a href="#currencies"><span class="toc-num">02</span>Les 7 monnaies</a></li>
-      <li><a href="#damage"><span class="toc-num">03</span>Dégâts de clic et dégâts automatiques</a></li>
-      <li><a href="#critical"><span class="toc-num">04</span>Coups critiques</a></li>
-      <li><a href="#pickaxes"><span class="toc-num">05</span>Pioches</a></li>
-      <li><a href="#suits"><span class="toc-num">06</span>Armures</a></li>
-      <li><a href="#temperature"><span class="toc-num">07</span>Chaleur</a></li>
-      <li><a href="#pets"><span class="toc-num">08</span>Familiers</a></li>
-      <li><a href="#workers"><span class="toc-num">09</span>Ouvriers</a></li>
-      <li><a href="#enchantments"><span class="toc-num">10</span>Enchantements</a></li>
-      <li><a href="#floors"><span class="toc-num">11</span>Étages, minerai et profondeur</a></li>
-      <li><a href="#skills"><span class="toc-num">12</span>Compétences actives</a></li>
-      <li><a href="#titles"><span class="toc-num">13</span>Titres</a></li>
-      <li><a href="#tasks"><span class="toc-num">14</span>Tâches et Taskium</a></li>
-      <li><a href="#missions"><span class="toc-num">15</span>Missions quotidiennes</a></li>
-      <li><a href="#trade"><span class="toc-num">16</span>Marchand</a></li>
-      <li><a href="#extras"><span class="toc-num">17</span>Récompenses gratuites</a></li>
-      <li><a href="#prestige"><span class="toc-num">18</span>Prestige</a></li>
-      <li><a href="#bosses"><span class="toc-num">19</span>Boss</a></li>
-      <li><a href="#achievements"><span class="toc-num">20</span>Succès</a></li>
-      <li><a href="#store"><span class="toc-num">21</span>Boutique</a></li>
-      <li><a href="#progress"><span class="toc-num">22</span>Suivre ta progression</a></li>
-      <li><a href="#save"><span class="toc-num">23</span>Sauvegardes</a></li>
-      <li><a href="#languages"><span class="toc-num">24</span>Langues</a></li>
+      <li><a href="#currencies"><span class="toc-num">02</span>Monnaies</a></li>
+      <li><a href="#damage"><span class="toc-num">03</span>Dégâts et coups critiques</a></li>
+      <li><a href="#equipment"><span class="toc-num">04</span>Pioches, armures et familiers</a></li>
+      <li><a href="#temperature"><span class="toc-num">05</span>Chaleur</a></li>
+      <li><a href="#workers"><span class="toc-num">06</span>Ouvriers</a></li>
+      <li><a href="#enchantments"><span class="toc-num">07</span>Enchantements</a></li>
+      <li><a href="#floors"><span class="toc-num">08</span>Étages et minerais</a></li>
+      <li><a href="#skills"><span class="toc-num">09</span>Compétences et titres</a></li>
+      <li><a href="#tasks"><span class="toc-num">10</span>Tâches</a></li>
+      <li><a href="#trade"><span class="toc-num">11</span>Marchand</a></li>
+      <li><a href="#extras"><span class="toc-num">12</span>Récompenses gratuites</a></li>
+      <li><a href="#awakening"><span class="toc-num">13</span>Éveil</a></li>
+      <li><a href="#ascension"><span class="toc-num">14</span>Ascension</a></li>
+      <li><a href="#dungeons"><span class="toc-num">15</span>Boss et Abîme</a></li>
+      <li><a href="#store"><span class="toc-num">16</span>Boutique et succès</a></li>
+      <li><a href="#progress"><span class="toc-num">17</span>Progression et sauvegarde</a></li>
     </ul>
   </nav>
 
   <main>
     <header class="hero">
       <div class="strata" role="presentation"></div>
-      <div class="eyebrow">Guide du joueur - 2026-09-14</div>
-      <h1 class="title">Toute la mine,<br>en termes simples</h1>
-      <p class="subtitle">Ce que fait chaque système, quand il se débloque et où ta prochaine heure rapporte le plus. Pas de formules - seulement les décisions qui comptent.</p>
+      <div class="eyebrow">Guide du joueur - 2026-09-21</div>
+      <h1 class="title">Toute la mine,<br>en bref</h1>
+      <p class="subtitle">À quoi sert chaque système et où ton temps rapporte le plus. Ni chiffres ni formules - seulement l'essentiel.</p>
       <div class="langbar">
         <div class="langbar-label">Langue</div>
         <div class="langbar-list"><a href="player_guide_en.html" hreflang="en">English</a><a href="player_guide_tr.html" hreflang="tr">Türkçe</a><a href="player_guide_de.html" hreflang="de">Deutsch</a><span>Français</span><a href="player_guide_es.html" hreflang="es">Español</a><a href="player_guide_es_la.html" hreflang="es-419">Español (Latinoamérica)</a><a href="player_guide_it.html" hreflang="it">Italiano</a><a href="player_guide_pl.html" hreflang="pl">Polski</a><a href="player_guide_pt_br.html" hreflang="pt-BR">Português (Brasil)</a><a href="player_guide_ru.html" hreflang="ru">Русский</a><a href="player_guide_uk.html" hreflang="uk">Українська</a><a href="player_guide_ja.html" hreflang="ja">日本語</a><a href="player_guide_ko.html" hreflang="ko">한국어</a><a href="player_guide_zh_hans.html" hreflang="zh-Hans">简体中文</a><a href="player_guide_zh_hant.html" hreflang="zh-Hant">繁體中文</a><a href="player_guide_th.html" hreflang="th">ไทย</a><a href="player_guide_id.html" hreflang="id">Bahasa Indonesia</a><a href="player_guide_vi.html" hreflang="vi">Tiếng Việt</a></div>
@@ -521,711 +516,300 @@
 
     <section id="start">
       <div class="section-head"><span class="section-num">01</span><h2>Par où commencer</h2></div>
-      <p class="section-dek">Trois étapes, dans l'ordre où le jeu débloque ses systèmes.</p>
+      <p class="section-dek">Le jeu ouvre ses systèmes petit à petit, à mesure que tu descends.</p>
       <div class="strategy-track">
           <div class="strategy-stage">
-            <div class="stage-label">Début - étages 1 à 100</div>
+            <div class="stage-label">Début</div>
             <ul>
-              <li>Améliore ta pioche sans arrêt ; de nouvelles pioches s'ouvrent à mesure que tu descends.</li>
-              <li>Brise-minerai arrive à l'étage 50, Clic de rage à l'étage 100.</li>
-              <li>Clique sur le ballon doré dès qu'il apparaît et achète Rocaille quand tu as des diamants à dépenser.</li>
+              <li>Améliore ta pioche sans relâche ; les étages profonds en débloquent de nouvelles.</li>
+              <li>Clique sur chaque ballon d'or et chaque Cristal d'or, et commence à utiliser tes premières compétences.</li>
+              <li>Achète ton premier familier dès que tes diamants le permettent.</li>
             </ul>
           </div>
           <div class="strategy-stage">
-            <div class="stage-label">Milieu - étages 100 à 350</div>
+            <div class="stage-label">Milieu</div>
             <ul>
-              <li>Fais ton prestige une fois l'étage 100 dépassé et la progression ralentie.</li>
-              <li>Les tâches s'ouvrent à l'étage 125, l'armure à 130, l'arbre de compétences à 180 et le Marchand à 200.</li>
-              <li>Répartis l'Essence entre les 7 paramètres au lieu d'en maximiser un seul.</li>
+              <li>Quand la progression ralentit, fais un Éveil et gagne de l'Essence.</li>
+              <li>Les tâches, les armures, l'arbre de compétences et le marchand s'ouvrent à ce moment-là.</li>
+              <li>Répartis l'Essence au lieu de tout mettre dans un seul paramètre.</li>
             </ul>
           </div>
           <div class="strategy-stage">
-            <div class="stage-label">Fin - étage 350 et au-delà</div>
+            <div class="stage-label">Avancé</div>
             <ul>
-              <li>Affronte les boss dès que tu as une clé ; ils rapportent de l'Essence et de la Pierre de minerai.</li>
-              <li>Les matériaux d'enchantement tombent dès l'étage 500, les ouvriers arrivent à partir de l'étage 600.</li>
-              <li>Garde ton armure à niveau pour que la chaleur ne mange pas tes dégâts.</li>
+              <li>Affronte les boss dès que tu as une clé, puis lance des descentes dans l'Abîme.</li>
+              <li>Les ouvriers arrivent et les matériaux d'enchantement commencent à tomber.</li>
+              <li>Continue d'améliorer ton armure pour que la chaleur ne ronge pas tes dégâts.</li>
+            </ul>
+          </div>
+          <div class="strategy-stage">
+            <div class="stage-label">Long terme</div>
+            <ul>
+              <li>Bien plus bas, l'Ascension se débloque et remet à zéro toute la boucle de l'Éveil.</li>
+              <li>En échange tu gagnes de l'Essence pure, qui accélère définitivement chaque partie suivante.</li>
             </ul>
           </div>
         </div>
       <div class="callout">
           <div class="callout-label">Bon à savoir</div>
-          Les nombres grandissent vite, alors le jeu passe à des formes courtes puis à la notation scientifique comme <strong>1,23e45</strong>. Rien n'est plafonné - seule l'écriture change.
+          Les nombres grossissent vite ; le jeu passe d'abord à la notation courte, puis à la notation scientifique. Rien n'est plafonné - seule l'écriture change.
         </div>
     </section>
 
     <section id="currencies">
-      <div class="section-head"><span class="section-num">02</span><h2>Les 7 monnaies</h2></div>
-      <p class="section-dek">Chacune alimente un système différent. Dépenser la bonne monnaie au mauvais endroit est l'erreur de débutant la plus courante.</p>
+      <div class="section-head"><span class="section-num">02</span><h2>Monnaies</h2></div>
+      <p class="section-dek">Chacune alimente un système différent.</p>
       <div class="currency-grid">
         <div class="cur-card" style="--dot:var(--cur-gold)">
           <h4><span class="dot"></span>Or</h4>
-          <p>Gagné en <b>cassant du minerai</b>, plus les ballons, les ouvriers, les tâches et le temps hors ligne.</p>
-          <p>Dépensé en pioches, améliorations et compétences d'objets - ton cheval de trait.</p>
+          <p>Gagné en <b>cassant du minerai</b> ; les ballons, les ouvriers, les tâches et le temps hors ligne en rapportent aussi.</p>
+          <p>Sert aux pioches, aux améliorations et aux compétences d'objet.</p>
         </div>
         <div class="cur-card" style="--dot:var(--cur-diamond)">
           <h4><span class="dot"></span>Diamant</h4>
-          <p>Vient des <b>achats en argent réel</b>, de la Roue de la chance et des codes promo.</p>
-          <p>Dépensé en familiers, objets Infini, sauts temporels, coffres et tours supplémentaires.</p>
+          <p>Vient des <b>achats en argent réel</b>, des récompenses de Roue de la chance et des codes promo.</p>
+          <p>Sert aux familiers, aux objets Infinity, aux sauts de temps, aux coffres et aux lots de clés.</p>
         </div>
         <div class="cur-card" style="--dot:var(--cur-essence)">
           <h4><span class="dot"></span>Essence</h4>
-          <p>Vient du <b>prestige</b>, des victoires contre les boss et du Marchand.</p>
-          <p>Dépensée dans les 7 paramètres de prestige permanents.</p>
+          <p>La récompense de l'<b>Éveil</b> ; les boss et Marchand en donnent aussi.</p>
+          <p>Sert aux paramètres permanents d'Éveil.</p>
         </div>
         <div class="cur-card" style="--dot:var(--cur-taskium)">
           <h4><span class="dot"></span>Taskium</h4>
-          <p><b>+1</b> à chaque clic réussi.</p>
-          <p>Sert à accepter et relancer des tâches.</p>
+          <p>Un peu est gagné à chaque clic réussi.</p>
+          <p>Sert à accepter et à relancer des tâches.</p>
         </div>
         <div class="cur-card" style="--dot:var(--cur-key)">
           <h4><span class="dot"></span>Clé de donjon</h4>
-          <p>Une clé gratuite par jour, plus les packs de la boutique et la Roue de la chance.</p>
-          <p>Sert à entrer dans un combat de boss - 1 par tentative.</p>
+          <p>Une clé gratuite par jour, plus la boutique et Roue de la chance.</p>
+          <p>Sert à entrer dans un combat de boss.</p>
         </div>
         <div class="cur-card" style="--dot:var(--cur-skillstone)">
           <h4><span class="dot"></span>Pierre de compétence</h4>
-          <p>Vient des packs de la boutique et du Marchand.</p>
-          <p>Sert à monter les 8 compétences actives.</p>
+          <p>Vient de la boutique et de Marchand.</p>
+          <p>Sert à renforcer les compétences actives.</p>
         </div>
         <div class="cur-card" style="--dot:var(--cur-orestone)">
           <h4><span class="dot"></span>Pierre de minerai</h4>
-          <p><b>1-5</b> par minerai cassé, plus les succès et les boss.</p>
-          <p>Dépensée en échanges, fabrication d'enchantements et améliorations d'ouvriers.</p>
+          <p>Tombe de chaque minerai cassé, ainsi que des succès, des boss et des descentes dans l'Abîme.</p>
+          <p>Sert aux échanges, à la fabrication d'enchantements et aux ouvriers.</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-abysskey)">
+          <h4><span class="dot"></span>Clé d'abîme</h4>
+          <p>Une clé gratuite par jour, plus des diamants en boutique.</p>
+          <p>Sert à lancer une descente dans l'Abîme.</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-pureessence)">
+          <h4><span class="dot"></span>Essence pure</h4>
+          <p>La récompense de l'<b>Ascension</b> ; elle ne vient de nulle part ailleurs.</p>
+          <p>Sert uniquement aux paramètres d'Ascension.</p>
         </div>
       </div>
       <div class="callout">
           <div class="callout-label">Monnaies serveur</div>
-          Les diamants et les clés de donjon sont conservés sur le serveur : pour acheter avec, tu dois être en ligne. Si la connexion a sauté, le jeu la rétablit tout seul quand tu tentes un achat.
+          Les diamants, les clés de donjon et l'Clé d'abîme sont conservés sur le serveur ; il faut être en ligne pour les dépenser.
         </div>
     </section>
 
     <section id="damage">
-      <div class="section-head"><span class="section-num">03</span><h2>Dégâts de clic et dégâts automatiques</h2></div>
-      <p class="section-dek">Deux sources de dégâts séparées, nourries par des choses différentes.</p>
-      <p>Les <strong>dégâts de clic</strong> sont ce que fait une pression. Ils grandissent avec le niveau et les compétences de ta première pioche, la compétence Clic de rage, ton titre, le paramètre de prestige Main du Brise-pierre et les enchantements. Une part de tes dégâts automatiques s'ajoute aussi à chaque clic une fois Unité de la force amélioré.</p>
-      <p>Les <strong>dégâts automatiques</strong> (par seconde) viennent des pioches à partir de la deuxième, de la compétence Déchaînement, du paramètre Forge éternelle, des enchantements et de tes familiers. Ils s'appliquent en continu tant qu'un minerai est en vie.</p>
-      <div class="callout">
-          <div class="callout-label">Les familiers font exception</div>
-          Les dégâts des familiers s'ajoutent <strong>après</strong> la plupart des multiplicateurs - chaleur, titres, prestige et bonus ne les augmentent pas, seul le Premium le fait. Les niveaux de familiers ne suffiront pas en fin de partie.
-        </div>
-    </section>
-
-    <section id="critical">
-      <div class="section-head"><span class="section-num">04</span><h2>Coups critiques</h2></div>
-      <p class="section-dek">Chaque clic peut devenir critique et frapper plus fort.</p>
-      <p>Tu commences avec <strong>5 %</strong> de chance et un multiplicateur de <strong>x1,5</strong>. La compétence Frappe critique, les compétences de pioche, les paramètres de prestige Oracle du minerai et Force cataclysmique, les titres et les enchantements les augmentent. La chance critique s'arrête à <strong>100 %</strong>, et le paramètre de prestige ne peut plus être acheté au-delà.</p>
-    </section>
-
-    <section id="pickaxes">
-      <div class="section-head"><span class="section-num">05</span><h2>Pioches</h2></div>
-      <p class="section-dek">45 pioches, débloquées par la profondeur. La colonne vertébrale de tes dégâts.</p>
+      <div class="section-head"><span class="section-num">03</span><h2>Dégâts et coups critiques</h2></div>
+      <p class="section-dek">Deux sources de dégâts distinctes et les coups critiques qui les multiplient.</p>
       <ul>
-          <li>Une pioche <strong>se débloque par étage</strong> : la deuxième à l'étage 15, la dixième à l'étage 782, la dernière à l'étage <strong>13 624</strong>. Plus tu descends, plus les écarts se creusent.</li>
-          <li>La première coûte <strong>5 or</strong>, la deuxième 50, puis chacune environ <strong>8 fois</strong> plus que la précédente.</li>
-          <li>Chaque niveau coûte environ <strong>6 %</strong> de plus que le précédent.</li>
-          <li>Seule la <strong>première</strong> pioche alimente les dégâts de clic. Toutes les autres alimentent les dégâts automatiques par seconde.</li>
-          <li>Chaque pioche a 6 compétences. Elles apparaissent et se débloquent le long d'une échelle de niveaux - 5 / 25 / 125 / 625 / 3 125 / 15 625 - les dernières sont donc des objectifs à long terme. Certaines aident cette pioche, d'autres toutes les pioches.</li>
+          <li>Les <strong>dégâts de clic</strong> viennent de ta première pioche, de la compétence Clic de rage, de ton titre, des paramètres d'Éveil et des enchantements.</li>
+          <li>Les <strong>dégâts automatiques</strong> viennent de tes autres pioches, de la compétence Déchaînement, de tes familiers et des enchantements ; ils s'appliquent sans interruption tant que le minerai est en vie.</li>
+          <li>Plus Unité de la force monte, plus une part de tes dégâts automatiques s'ajoute aussi à chaque clic.</li>
+          <li>Chaque clic peut être <strong>critique</strong> et frapper bien plus fort. La chance et le multiplicateur critiques montent avec les compétences, les paramètres d'Éveil, les titres et les enchantements.</li>
+        </ul>
+    </section>
+
+    <section id="equipment">
+      <div class="section-head"><span class="section-num">04</span><h2>Pioches, armures et familiers</h2></div>
+      <p class="section-dek">La base de tes dégâts et de ta résistance.</p>
+      <ul>
+          <li>Les <strong>pioches</strong> se débloquent en descendant. La première alimente les dégâts de clic, les autres les dégâts automatiques.</li>
+          <li>Les <strong>armures</strong> sont à toi dès le départ ; elles ne s'achètent pas, elles s'améliorent, et elles te protègent de la chaleur.</li>
+          <li>Les <strong>familiers</strong> s'achètent en diamants, s'améliorent en or et infligent des dégâts automatiques. La possession est définitive.</li>
+          <li>Chacun a ses propres compétences qui s'ouvrent avec les niveaux ; certaines n'aident que cet objet, d'autres toute la famille.</li>
         </ul>
       <div class="callout">
-          <div class="callout-label">Le grand bond</div>
-          À partir du niveau <strong>100</strong>, puis tous les 150 niveaux (250, 400, ...), une pioche élève sa propre production à une puissance : <strong>^1,05</strong>, puis ^1,1, et ainsi de suite. Sur de grands nombres, le gain est énorme : amener une pioche à son prochain palier est souvent la meilleure amélioration disponible.
+          <div class="callout-label">Le grand saut</div>
+          À certains niveaux, la puissance d'un objet fait un bond important. Pousser un objet jusqu'à son prochain palier est en général la meilleure amélioration.
         </div>
       <div class="callout warn">
-          <div class="callout-label">Le prestige les reverrouille</div>
-          Le prestige verrouille et remet à zéro toutes les pioches ; elles se rouvrent quand tu dépasses leurs étages dans la nouvelle partie.
+          <div class="callout-label">Après un Éveil</div>
+          L'Éveil reverrouille les pioches et remet à zéro les améliorations d'armure et de familier. Les familiers eux-mêmes restent à toi.
         </div>
-    </section>
-
-    <section id="suits">
-      <div class="section-head"><span class="section-num">06</span><h2>Armures</h2></div>
-      <p class="section-dek">5 armures, toutes possédées dès le départ. Elles servent à te protéger de la chaleur.</p>
-      <ul>
-          <li>Tu n'achètes jamais d'armure - tu la montes seulement de niveau. Chaque niveau ajoute environ <strong>5 %</strong> de résistance à la chaleur, à partir de 50, et coûte environ 8,4 % de plus que le précédent.</li>
-          <li>Les armures profitent du même bond de puissance que les pioches, dès le niveau 100 puis tous les 150 niveaux.</li>
-          <li>Chaque armure a 6 compétences sur la même échelle de niveaux (5 / 25 / 125 / 625 / 3 125 / 15 625).</li>
-          <li>Le panneau d'armure s'ouvre à l'étage <strong>130</strong>, en même temps que la jauge de chaleur.</li>
-        </ul>
     </section>
 
     <section id="temperature">
-      <div class="section-head"><span class="section-num">07</span><h2>Chaleur</h2></div>
-      <p class="section-dek">Plus tu descends, plus il fait chaud, et la chaleur rogne discrètement tes dégâts.</p>
-      <ul>
-          <li>La température grimpe régulièrement - environ <strong>x1,04 par étage</strong>, elle double donc toutes les deux douzaines d'étages.</li>
-          <li>Tant que ta résistance vaut au moins <strong>1,5 fois</strong> la température de l'étage, la jauge reste vide et tu ne perds rien.</li>
-          <li>Dès que ta résistance passe sous la température, les dégâts fondent ; à <strong>0,5 fois</strong>, tu n'en gardes qu'un vingtième - une perte de <strong>95 %</strong>.</li>
-          <li>Le panneau d'armure a un interrupteur d'achat automatique de résistance ; laisse-le activé si tu descends souvent. La chaleur n'existe que dans la mine principale, pas dans les combats de boss.</li>
-        </ul>
+      <div class="section-head"><span class="section-num">05</span><h2>Chaleur</h2></div>
+      <p class="section-dek">Plus tu descends, plus il fait chaud, et la chaleur réduit tes dégâts en silence.</p>
+      <p>Si ta résistance à la chaleur ne suit pas la température de l'étage, tes dégâts commencent à fondre. Le panneau des armures propose un achat automatique de résistance. La chaleur n'existe que dans la mine principale.</p>
       <div class="callout warn">
-          <div class="callout-label">Si tu bloques</div>
-          Un mur soudain où le minerai n'en finit plus, c'est presque toujours la chaleur, pas les dégâts. Regarde la jauge avant de dépenser quoi que ce soit.
-        </div>
-    </section>
-
-    <section id="pets">
-      <div class="section-head"><span class="section-num">08</span><h2>Familiers</h2></div>
-      <p class="section-dek">5 familiers, achetés avec des diamants puis améliorés avec de l'or.</p>
-      <ul>
-          <li>Les prix vont de <strong>150</strong> à <strong>250</strong> diamants (150 / 175 / 200 / 225 / 250).</li>
-          <li>Chaque niveau ajoute environ <strong>1 %</strong> des dégâts de clic de ta pioche en dégâts automatiques, multipliés par le rang du familier - Éclat d'ombre donne cinq fois plus que Rocaille au même niveau.</li>
-          <li>Les niveaux coûtent environ <strong>20 %</strong> de plus à chaque fois, et les familiers profitent du bond de puissance des pioches dès le niveau 100.</li>
-          <li>Chaque familier a 6 compétences ; certaines n'aident que lui, d'autres tous les familiers.</li>
-          <li>Le panneau des familiers s'ouvre à l'étage <strong>30</strong>, ou dès que tu possèdes un familier.</li>
-        </ul>
-      <div class="callout warn">
-          <div class="callout-label">Prestige et familiers</div>
-          Le prestige ramène chaque familier au <strong>niveau 1</strong> et efface ses compétences. La possession, elle, est permanente - tu ne rachètes jamais un familier.
+          <div class="callout-label">Si tu stagnes</div>
+          Le mur où le minerai refuse soudain de casser, c'est presque toujours la chaleur. Regarde la jauge avant de dépenser ailleurs.
         </div>
     </section>
 
     <section id="workers">
-      <div class="section-head"><span class="section-num">09</span><h2>Ouvriers</h2></div>
-      <p class="section-dek">5 aides qui creusent pour toi tant que le jeu est ouvert.</p>
+      <div class="section-head"><span class="section-num">06</span><h2>Ouvriers</h2></div>
+      <p class="section-dek">Des aides qui creusent pour toi tant que le jeu est ouvert.</p>
       <ul>
-          <li>Les ouvriers arrivent quand tu dépasses les étages <strong>600 / 800 / 1 000 / 1 200 / 1 400</strong>. C'est ton meilleur étage de tous les temps qui compte, ils ne se reverrouillent donc jamais.</li>
-          <li>Donne une pioche à chaque ouvrier - une pioche ne peut travailler que pour un seul à la fois, et tes propres dégâts ne baissent pas. Un ouvrier sans pioche ne gagne rien.</li>
-          <li>Le revenu s'ajoute toutes les 1 seconde et attend dans une réserve jusqu'à ce que tu le récupères. Une pioche plus forte rapporte plus.</li>
-          <li>Monter un ouvrier coûte de la Pierre de minerai - 100 pour le premier niveau, environ 2 % de plus à chaque fois - et ajoute environ 1 % de revenu par niveau.</li>
+          <li>De nouveaux ouvriers arrivent au fil de la descente et ne se reverrouillent jamais.</li>
+          <li>Donne une pioche à chaque ouvrier ; sans pioche il ne gagne rien. La prêter ne réduit pas tes propres dégâts.</li>
+          <li>Le revenu s'accumule dans une réserve et attend que tu le récupères. Les ouvriers s'améliorent avec de la Pierre de minerai.</li>
         </ul>
       <div class="callout warn">
-          <div class="callout-label">Récupère avant le prestige</div>
-          Les ouvriers ne gagnent que pendant que le jeu tourne, pas hors ligne. Le prestige garde leurs niveaux mais <strong>efface le revenu non récupéré</strong> et leur reprend leurs pioches.
+          <div class="callout-label">Récupère avant un Éveil</div>
+          Les ouvriers ne gagnent que pendant que le jeu est ouvert. L'Éveil conserve leurs niveaux mais efface le revenu non récupéré.
         </div>
     </section>
 
     <section id="enchantments">
-      <div class="section-head"><span class="section-num">10</span><h2>Enchantements</h2></div>
-      <p class="section-dek">Fabrique des enchantements avec les matériaux que tu déterres, puis équipe-les sur tes pioches, armures et familiers.</p>
-      <p>Casser du minerai peut faire tomber de la <strong>poussière d'enchantement</strong> et des <strong>fragments d'enchantement</strong> sur 4 rangs. Chaque rang commence à tomber quand ton meilleur étage de la partie dépasse son seuil. Farmer à plus de 100 étages sous ton meilleur étage réduit la chance, jusqu'à 10 % de la normale.</p>
-      <div class="table-wrap">
-        <table>
-        <thead><tr>
-        <th>Rang</th>
-        <th class="num">Stats</th>
-        <th class="num">Tombe dès l'étage</th>
-        <th class="num">Chance de poussière</th>
-        <th class="num">Chance de fragment</th>
-        <th class="num">Fabrication (poussière / fragment / pierre de minerai)</th>
-        </tr></thead>
-        <tbody>
-        <tr>
-        <td>Commun</td>
-        <td class="num">1</td>
-        <td class="num">500</td>
-        <td class="num">5 %</td>
-        <td class="num">0,5 %</td>
-        <td class="num">10 / 1 / 40</td>
-        </tr>
-        <tr>
-        <td>Rare</td>
-        <td class="num">1-2</td>
-        <td class="num">1 000</td>
-        <td class="num">2 %</td>
-        <td class="num">0,1 %</td>
-        <td class="num">20 / 1 / 200</td>
-        </tr>
-        <tr>
-        <td>Épique</td>
-        <td class="num">2-3</td>
-        <td class="num">2 000</td>
-        <td class="num">1 %</td>
-        <td class="num">0,03 %</td>
-        <td class="num">30 / 1 / 1 000</td>
-        </tr>
-        <tr>
-        <td>Légendaire</td>
-        <td class="num">3-4</td>
-        <td class="num">4 000</td>
-        <td class="num">0,5 %</td>
-        <td class="num">0,01 %</td>
-        <td class="num">50 / 1 / 5 000</td>
-        </tr>
-        </tbody></table></div>
+      <div class="section-head"><span class="section-num">07</span><h2>Enchantements</h2></div>
+      <p class="section-dek">Fabrique des enchantements avec ce que tu extrais et place-les sur les pioches, les armures et les familiers.</p>
       <ul>
-          <li>L'Artisan transforme de la poussière, un fragment et des frais en Pierre de minerai en un enchantement aux stats aléatoires. Les rangs supérieurs tirent plus de stats et les multiplient plus fort (x1 / x2 / x4 / x6).</li>
-          <li>Chaque pioche, armure et familier a <strong>8 emplacements</strong>, ouverts aux étages 1 000 / 3 000 / 6 000 / 9 000 / 12 000 / 15 000 / 18 000 / 21 000. Ils utilisent ton meilleur étage de tous les temps, un emplacement ne se referme donc jamais.</li>
-          <li>Certaines stats n'aident que l'objet qui les porte (dégâts de clic, dégâts automatiques, résistance à la chaleur) ; d'autres aident tout (or, coups critiques, part des DPS, coût d'amélioration). Une stat spéciale renforce plutôt les compétences propres de l'objet, elle ne sert donc que sur un objet dont des compétences sont achetées.</li>
-          <li>Le sélecteur ne liste que les enchantements qui feraient vraiment quelque chose sur cet objet.</li>
-          <li>Chez le Marchand, 10 poussières ou fragments d'un rang deviennent 1 du rang suivant. Tu peux aussi démanteler un enchantement dont tu ne veux pas pour récupérer de la poussière (5 / 10 / 15 / 25 selon le rang) - le démantèlement est définitif.</li>
+          <li>Casser du minerai fait tomber de la <strong>poussière d'enchantement</strong> et des <strong>fragments d'enchantement</strong>. Les matériaux de rang supérieur apparaissent plus bas.</li>
+          <li>Artisan transforme poussière et fragments en un enchantement aux stats aléatoires. Les rangs supérieurs portent plus de stats, et de meilleures.</li>
+          <li>Chaque objet possède des emplacements d'enchantement qui s'ouvrent avec la profondeur.</li>
+          <li>Un enchantement inutile peut être démantelé en poussière chez le marchand, et les matériaux s'échangent contre le rang au-dessus.</li>
         </ul>
       <div class="callout">
-          <div class="callout-label">Le prestige est sans risque</div>
-          Le prestige ne supprime jamais d'enchantement. Si un objet est reverrouillé, ses enchantements retournent simplement dans ton Inventaire, qui s'ouvre à l'étage 500.
+          <div class="callout-label">L'Éveil ne touche à rien</div>
+          L'Éveil ne supprime jamais les enchantements ; ceux d'un objet reverrouillé retournent dans ton Inventaire.
         </div>
     </section>
 
     <section id="floors">
-      <div class="section-head"><span class="section-num">11</span><h2>Étages, minerai et profondeur</h2></div>
-      <p class="section-dek">Les étages décident de la résistance du minerai et de l'or qu'il rapporte. La profondeur décide de son apparence.</p>
+      <div class="section-head"><span class="section-num">08</span><h2>Étages et minerais</h2></div>
+      <p class="section-dek">Chaque étage est un peu plus dur et un peu plus rentable que le précédent.</p>
       <ul>
-          <li>Chaque étage a un peu plus de vie et un peu plus d'or que le précédent, et la courbe se raidit à mesure que tu avances.</li>
-          <li>Un étage sur <strong>10</strong> est chronométré : un compte à rebours de <strong>20 secondes</strong> démarre, la vie est x5 et l'or x2.</li>
-          <li>La difficulté suit aussi des cycles de 100 étages - certains étages d'un cycle rapportent mieux que d'autres par rapport à leur vie.</li>
-          <li>Chaque minerai lâche <strong>1-5</strong> Pierre de minerai en plus de son or.</li>
-          <li><strong>5 minerais rares</strong> (Ferrovyx, Karnyth, Thalveris, Umbryssa, Zephiris) peuvent remplacer un minerai normal. Les chances vont d'environ 1 sur 10 000 à 1 sur 1 000 000, et une fois cassé, il est enregistré pour de bon et n'apparaît plus jamais.</li>
+          <li>De temps en temps arrive un <strong>étage chronométré</strong> : casse le minerai avant la fin du compte à rebours et il paie plus d'or. Si le temps gagne, tu redescends d'un étage et la progression automatique se coupe.</li>
+          <li>Chaque minerai fait tomber de la Pierre de minerai en plus de l'or.</li>
+          <li>Très rarement, un <strong>minerai rare</strong> (Ferrovyx, Karnyth, Thalveris, Umbryssa, Zephiris) apparaît ; chacun ne se trouve qu'une seule fois.</li>
+          <li>L'Ascenseur te fait circuler entre les étages déjà atteints. Lieux bascule entre la mine principale, le donjon et l'Abîme.</li>
         </ul>
-      <div class="callout warn">
-          <div class="callout-label">Les étages chronométrés mordent</div>
-          Si le temps s'écoule, tu redescends <strong>d'un étage</strong> et la montée automatique se coupe. Farme un peu avant de retenter.
+      <div class="callout">
+          <div class="callout-label">Farmer trop bas ne rapporte pas</div>
+          La poussière et les fragments tombent surtout près de l'étage le plus profond que tu as atteint ; rester bien en dessous réduit nettement les chances.
         </div>
-      <p>L'Ascenseur te ramène à n'importe quel étage atteint pendant cette partie. Choisir un étage à la main coupe la montée automatique ; réactive-la quand tu veux grimper à nouveau. Le panneau Lieux bascule entre la mine principale et le donjon des boss.</p>
-      <p>Il existe <strong>40</strong> types de minerai en tout, et la profondeur décide lesquels apparaissent. Le type ne change que l'apparence - la vie et l'or viennent de l'étage.</p>
-      <div class="table-wrap">
-        <table>
-        <thead><tr>
-        <th class="num">Profondeur</th>
-        <th class="num">Types de minerai</th>
-        <th class="num">Vers l'étage</th>
-        </tr></thead>
-        <tbody>
-        <tr>
-        <td class="num">0-100 m</td>
-        <td class="num">9</td>
-        <td class="num">~54</td>
-        </tr>
-        <tr>
-        <td class="num">100-500 m</td>
-        <td class="num">20</td>
-        <td class="num">~129</td>
-        </tr>
-        <tr>
-        <td class="num">500-1 500 m</td>
-        <td class="num">30</td>
-        <td class="num">~196</td>
-        </tr>
-        <tr>
-        <td class="num">1 500 m+</td>
-        <td class="num">40</td>
-        <td class="num">-</td>
-        </tr>
-        </tbody></table></div>
     </section>
 
     <section id="skills">
-      <div class="section-head"><span class="section-num">12</span><h2>Compétences actives</h2></div>
-      <p class="section-dek">8 compétences, chacune un bonus temporaire suivi d'une recharge.</p>
-      <p>Une compétence est <strong>gratuite</strong> quand son étage arrive - tu l'utilises dès le niveau 1. La monter jusqu'au niveau 7 coûte <strong>63 Pierre de compétence</strong> au total, ou <strong>504</strong> pour les 8. Plus le niveau est haut, plus la durée est longue et la recharge courte.</p>
-      <div class="table-wrap">
-        <table>
-        <thead><tr>
-        <th>Compétence</th>
-        <th class="num">Étage</th>
-        <th class="num">Niveau 1 (durée / recharge)</th>
-        <th class="num">Niveau 7 (durée / recharge)</th>
-        <th class="num">Effet</th>
-        </tr></thead>
-        <tbody>
-        <tr>
-        <td>Brise-minerai</td>
-        <td class="num">50</td>
-        <td class="num">30 s / 540 s</td>
-        <td class="num">90 s / 180 s</td>
-        <td class="num">7 → 13 /s</td>
-        </tr>
-        <tr>
-        <td>Clic de rage</td>
-        <td class="num">100</td>
-        <td class="num">40 s / 660 s</td>
-        <td class="num">210 s / 300 s</td>
-        <td class="num">x2 → x5</td>
-        </tr>
-        <tr>
-        <td>Frappe critique</td>
-        <td class="num">150</td>
-        <td class="num">30 s / 600 s</td>
-        <td class="num">150 s / 240 s</td>
-        <td class="num">x1,3 → x1,9</td>
-        </tr>
-        <tr>
-        <td>Déchaînement</td>
-        <td class="num">200</td>
-        <td class="num">40 s / 840 s</td>
-        <td class="num">160 s / 480 s</td>
-        <td class="num">x2 → x3,5</td>
-        </tr>
-        <tr>
-        <td>Frénésie dorée</td>
-        <td class="num">250</td>
-        <td class="num">50 s / 1 020 s</td>
-        <td class="num">290 s / 660 s</td>
-        <td class="num">x2 → x5</td>
-        </tr>
-        <tr>
-        <td>Résistance à la chaleur</td>
-        <td class="num">300</td>
-        <td class="num">30 s / 660 s</td>
-        <td class="num">140 s / 300 s</td>
-        <td class="num">x2 → x5</td>
-        </tr>
-        <tr>
-        <td>Surcharge</td>
-        <td class="num">350</td>
-        <td class="num">20 s / 1 200 s</td>
-        <td class="num">20 s / 840 s</td>
-        <td class="num">x1,5 → x3</td>
-        </tr>
-        <tr>
-        <td>Retour temporel</td>
-        <td class="num">400</td>
-        <td class="num">1 200 s</td>
-        <td class="num">840 s</td>
-        <td class="num">-300 s → -1 020 s</td>
-        </tr>
-        </tbody></table></div>
-      <p>La première ligne de compétences s'ouvre à l'étage 50 ; l'Arbre de compétences, où tu dépenses la Pierre de compétence, s'ouvre à l'étage <strong>180</strong>. Les niveaux de compétence survivent au prestige.</p>
+      <div class="section-head"><span class="section-num">09</span><h2>Compétences et titres</h2></div>
+      <p class="section-dek">Des renforts temporaires et des bonus qui arrivent d'eux-mêmes en montant.</p>
+      <ul>
+          <li>Les <strong>compétences actives</strong> se débloquent gratuitement en descendant ; elles te renforcent brièvement puis passent en recharge. Elles se renforcent avec la Pierre de compétence dans l'Arbre de compétences et survivent à l'Éveil.</li>
+          <li>Les <strong>titres</strong> arrivent d'eux-mêmes en grimpant et donnent des bonus de dégâts, d'or ou de résistance à la chaleur. Après un Éveil, ils se regagnent depuis le début.</li>
+        </ul>
       <div class="callout">
-          <div class="callout-label">Le combo</div>
-          Lance d'abord Surcharge, puis la compétence que tu veux vraiment renforcer - par exemple Frénésie dorée. Retour temporel réduit ensuite la recharge de la dernière compétence utilisée pour la récupérer plus vite.
+          <div class="callout-label">Combo</div>
+          D'abord Surcharge, puis la compétence à amplifier - Frénésie dorée par exemple. Ensuite Retour temporel raccourcit la recharge de ta dernière compétence.
         </div>
     </section>
 
-    <section id="titles">
-      <div class="section-head"><span class="section-num">13</span><h2>Titres</h2></div>
-      <p class="section-dek">100 titres qui s'obtiennent tout seuls à mesure que tu descends.</p>
-      <ul>
-          <li>Les titres vont de l'étage 1 à l'étage <strong>50 000</strong> et sont choisis automatiquement selon ton meilleur étage de la partie.</li>
-          <li>Chaque titre ajoute environ <strong>+0,1</strong> aux bonus qu'il porte.</li>
-          <li>Les bonus arrivent par étapes - dégâts de clic, dégâts automatiques, résistance à la chaleur, or, multiplicateur critique, chance critique et part des DPS sur les clics commencent aux titres 2 / 6 / 11 / 16 / 21 / 26 / 31.</li>
-          <li>Le prestige te ramène aux premiers titres ; ils reviennent quand tu redescends.</li>
-        </ul>
-    </section>
-
     <section id="tasks">
-      <div class="section-head"><span class="section-num">14</span><h2>Tâches et Taskium</h2></div>
-      <p class="section-dek">Une activité annexe qui transforme tes clics en second revenu.</p>
+      <div class="section-head"><span class="section-num">10</span><h2>Tâches</h2></div>
+      <p class="section-dek">La voie secondaire qui transforme tes clics en deuxième revenu.</p>
       <ul>
-          <li>Chaque clic réussi donne <strong>+1 Taskium</strong>.</li>
-          <li>Accepter une tâche coûte <strong>200</strong>, en relancer une coûte <strong>25</strong>.</li>
-          <li>Le panneau des tâches s'ouvre à l'étage 125 ; les 6 emplacements s'ouvrent aux étages 125 / 225 / 325 / 425 / 525 / 625.</li>
-          <li>Il y a 10 types de tâches répartis en 6 raretés. Chaque tâche dure 60 minutes, et celles non acceptées sont remplacées toutes les heures.</li>
-          <li>La récompense en or grandit avec la rareté - entre <strong>50-500</strong> fois l'or du minerai de ton meilleur étage de la partie. Les plus rares donnent aussi de l'Essence.</li>
-        </ul>
-    </section>
-
-    <section id="missions">
-      <div class="section-head"><span class="section-num">15</span><h2>Missions quotidiennes</h2></div>
-      <p class="section-dek">Une courte liste d'objectifs renouvelée chaque jour.</p>
-      <ul>
-          <li>Tu reçois <strong>5 missions</strong> par jour - casser du minerai, cliquer, tourner la roue, battre un boss, utiliser des compétences, etc.</li>
-          <li>Chaque mission terminée donne un <strong>bonus x2 de 10 minutes</strong> (dégâts automatiques, dégâts de clic, coups critiques ou or).</li>
-          <li>Les récompenses ne sont pas automatiques - réclame-les dans le panneau des missions. La liste se réinitialise à minuit UTC.</li>
+          <li>Les <strong>tâches</strong> s'acceptent avec du Taskium ; les plus rares rapportent davantage.</li>
+          <li>Les <strong>Missions quotidiennes</strong> se renouvellent chaque jour et offrent de courts renforts à mesure que tu les termines. N'oublie pas de réclamer les récompenses dans le panneau.</li>
         </ul>
     </section>
 
     <section id="trade">
-      <div class="section-head"><span class="section-num">16</span><h2>Marchand</h2></div>
-      <p class="section-dek">S'ouvre à l'étage 200. L'endroit où la Pierre de minerai et les matériaux en trop deviennent utiles.</p>
-      <ul>
-          <li>1 Pierre de compétence devient <strong>5 000 Pierre de minerai</strong>.</li>
-          <li><strong>2 000 Pierre de minerai</strong> deviennent 1 Essence.</li>
-          <li><strong>5 000 Pierre de minerai</strong> deviennent 1 Pierre de compétence.</li>
-          <li>Chaque échange de monnaie prend des frais fixes de 100 000 or. Les échanges de matériaux et le démantèlement prennent de la Pierre de minerai à la place.</li>
-        </ul>
-      <p>L'échange vers la Pierre de compétence est le plus important : c'est ainsi qu'une longue session de farm devient des niveaux de compétence sans achat en boutique.</p>
+      <div class="section-head"><span class="section-num">11</span><h2>Marchand</h2></div>
+      <p class="section-dek">Là où les ressources en trop deviennent utiles.</p>
+      <p>Tu peux convertir la Pierre de minerai en Essence ou en Pierre de compétence, échanger les matériaux d'enchantement contre le rang supérieur et démanteler les enchantements dont tu ne veux pas. Le plus précieux reste l'échange de Pierre de compétence : c'est ainsi qu'on renforce ses compétences sans rien acheter en boutique.</p>
     </section>
 
     <section id="extras">
-      <div class="section-head"><span class="section-num">17</span><h2>Récompenses gratuites</h2></div>
-      <p class="section-dek">Des sources qui ne demandent guère plus que de passer.</p>
+      <div class="section-head"><span class="section-num">12</span><h2>Récompenses gratuites</h2></div>
+      <p class="section-dek">Des ressources qui ne demandent qu'un passage.</p>
       <ul>
-          <li><strong>Ballon doré</strong> - dès l'étage 50, un ballon arrive toutes les 500-700 secondes et attend que tu cliques. Il rapporte <strong>x6</strong> l'or du minerai de ton meilleur étage de la partie.</li>
-          <li><strong>Cristal d'or</strong> - dès l'étage 100, il apparaît toutes les 800-1 300 secondes. Un clic dans la mine principale remplace le minerai par un minerai bonus de 10 secondes avec x10 vie et x14 or, payé coup par coup.</li>
-          <li><strong>Gains hors ligne</strong> - comptés après 60 minutes d'absence, jusqu'à 12 heures. Le Premium les augmente.</li>
-          <li><strong>Récompense de temps de jeu</strong> - toutes les 60 minutes de jeu, environ 100 fois l'or d'une minute à ton meilleur étage.</li>
-          <li><strong>Récompense quotidienne</strong> - 1 clé de donjon gratuite par jour dans la boutique. Pas de série à protéger ; il faut être en ligne.</li>
-          <li><strong>Roue de la chance</strong> - dès l'étage 100, une roue à 8 cases qui se renouvelle toutes les 3 heures avec 1 tour gratuit. Les tours suivants coûtent des diamants, à partir de 10 et en doublant à chaque fois. Les cases gagnées restent fermées jusqu'au renouvellement ; les lots comprennent de l'or adapté à ton étage, de la Pierre de minerai, des bonus, du Taskium, 50 diamants et des clés de donjon.</li>
-          <li><strong>Codes promo</strong> - les codes partagés dans les annonces et la communauté se saisissent dans Paramètres > Codes promo. Chaque code fonctionne une fois par compte, et certains ont un nombre d'utilisations limité.</li>
+          <li>Les <strong>ballons d'or</strong> traversent l'écran de temps en temps ; un clic et tu gagnes de l'or. Impossible de les rater - ils attendent ton clic.</li>
+          <li><strong>Cristal d'or</strong> transforme brièvement le minerai en minerai bonus très riche en or ; il ne se ramasse que dans la mine principale.</li>
+          <li>Les <strong>gains hors ligne</strong> s'accumulent quand le jeu est fermé.</li>
+          <li>Les <strong>récompenses de temps de jeu</strong> paient de l'or à mesure que tu joues.</li>
+          <li>La <strong>récompense quotidienne</strong> donne chaque jour en boutique une clé de donjon gratuite et une Clé d'abîme gratuite, indépendamment l'une de l'autre.</li>
+          <li>La <strong>Roue de la chance</strong> se recharge à intervalles réguliers et t'offre un tour gratuit.</li>
+          <li><strong>Codes promo</strong> - les codes partagés dans nos annonces s'utilisent depuis le menu Paramètres.</li>
         </ul>
     </section>
 
-    <section id="prestige">
-      <div class="section-head"><span class="section-num">18</span><h2>Prestige</h2></div>
-      <p class="section-dek">Échange la progression de cette partie contre une puissance permanente. Bien calé, c'est ce qu'il y a de plus rapide dans le jeu.</p>
-      <p>Le panneau de prestige apparaît à l'étage 70. Tu peux faire un prestige dès que tu <strong>dépasses l'étage 100</strong> dans la partie en cours - chaque partie demande le même étage.</p>
+    <section id="awakening">
+      <div class="section-head"><span class="section-num">13</span><h2>Éveil</h2></div>
+      <p class="section-dek">Transforme la progression de cette partie en puissance permanente.</p>
       <ul>
-          <li><strong>Remis à zéro :</strong> or, progression des étages, améliorations et compétences des pioches, armures et familiers, recharges, progression des titres, Taskium, progression des tâches, pioches assignées aux ouvriers et revenu d'ouvrier non récupéré.</li>
-          <li><strong>Conservé :</strong> diamants et tout ce qui a été acheté avec, clés de donjon, progression du donjon, Essence, paramètres de prestige, niveaux de l'arbre de compétences, Pierre de compétence, Pierre de minerai, enchantements et inventaire, succès, statistiques, classements et niveaux des ouvriers.</li>
-          <li>Chaque partie repart de l'<strong>étage 1</strong>, sans or de départ.</li>
+          <li>Passé une certaine profondeur, tu peux faire un Éveil. Chaque partie repart du premier étage.</li>
+          <li><strong>Remis à zéro :</strong> l'or, la progression d'étages, les pioches débloquées et améliorées, les améliorations d'armure et de familier, les compétences d'objet, les titres, le Taskium, la progression des tâches, les pioches confiées aux ouvriers et le revenu d'ouvrier non récupéré.</li>
+          <li><strong>Conservés :</strong> les diamants et tout ce qui a été acheté avec, les clés, la progression des boss et de l'Abîme, l'Essence, les paramètres d'Éveil, l'arbre de compétences, la Pierre de compétence, la Pierre de minerai, les enchantements, les succès, les niveaux d'ouvrier et tout ce qui touche à l'Ascension.</li>
+          <li>L'Essence gagnée dépend de l'étage le plus profond atteint et grandit vite avec la profondeur. Dépense-la en paramètres permanents.</li>
         </ul>
-      <p>La récompense en Essence dépend uniquement de ton <strong>meilleur étage</strong> et grimpe vite : environ 331 à l'étage 200, 1 098 à l'étage 300, 12 068 à l'étage 500 et 4 827 341 à l'étage 1 000.</p>
       <div class="callout">
-          <div class="callout-label">Descends un peu plus</div>
-          Comme la récompense monte très fort avec la profondeur, quelques étages de plus avant le prestige valent en général davantage qu'un nouveau prestige immédiat.
+          <div class="callout-label">Descends encore un peu</div>
+          Gagner quelques étages avant de faire un Éveil vaut en général mieux que d'en enchaîner un tout de suite.
         </div>
-      <div class="table-wrap">
-        <table>
-        <thead><tr>
-        <th>Paramètre</th>
-        <th>Effet</th>
-        <th class="num">Par niveau</th>
-        </tr></thead>
-        <tbody>
-        <tr>
-        <td>Forge éternelle</td>
-        <td>Dégâts automatiques par seconde</td>
-        <td class="num">+2,5 %</td>
-        </tr>
-        <tr>
-        <td>Main du Brise-pierre</td>
-        <td>Dégâts de clic</td>
-        <td class="num">+2,5 %</td>
-        </tr>
-        <tr>
-        <td>Abîme doré</td>
-        <td>Revenu en or</td>
-        <td class="num">+1 %</td>
-        </tr>
-        <tr>
-        <td>Oracle du minerai</td>
-        <td>Chance critique</td>
-        <td class="num">+0,1 %</td>
-        </tr>
-        <tr>
-        <td>Force cataclysmique</td>
-        <td>Multiplicateur critique</td>
-        <td class="num">+0,1 %</td>
-        </tr>
-        <tr>
-        <td>Bouclier infernal</td>
-        <td>Résistance à la chaleur</td>
-        <td class="num">+1 %</td>
-        </tr>
-        <tr>
-        <td>Unité de la force</td>
-        <td>Part des DPS ajoutée aux clics</td>
-        <td class="num">+0,1 %</td>
-        </tr>
-        </tbody></table></div>
-      <p>Chaque niveau se cumule de façon composée avec les précédents. Un niveau coûte 2 Essence au départ et environ 2,5 % de plus à chaque fois : dépenser souvent vaut mieux que thésauriser.</p>
     </section>
 
-    <section id="bosses">
-      <div class="section-head"><span class="section-num">19</span><h2>Boss</h2></div>
-      <p class="section-dek">Une course aux dégâts contre la montre pour de l'Essence et de la Pierre de minerai. S'ouvre à l'étage 350.</p>
+    <section id="ascension">
+      <div class="section-head"><span class="section-num">14</span><h2>Ascension</h2></div>
+      <p class="section-dek">La deuxième couche, posée sur l'Éveil.</p>
       <ul>
-          <li>Ouvre le panneau Lieux, choisis le donjon puis un boss, et dépense <strong>1 clé de donjon</strong> pour commencer. Rien ne démarre tout seul.</li>
-          <li>Les boss se débloquent dans l'ordre - bats-en un pour ouvrir le suivant. La vie grimpe fortement pendant que le chrono raccourcit.</li>
-          <li>La progression des boss <strong>est conservée au prestige</strong>, et tu peux réaffronter n'importe quel boss déjà vaincu.</li>
+          <li>Atteins un étage bien plus profond et l'Ascension se débloque ; elle a sa propre page sous l'onglet prestige.</li>
+          <li><strong>Remis à zéro :</strong> tes paramètres d'Éveil et ton Essence - cette boucle recommence entièrement ; pioches, étages et améliorations se réinitialisent comme lors d'un Éveil.</li>
+          <li><strong>Conservés :</strong> ton niveau d'Éveil, les diamants et tout ce qui a été acheté avec, les clés, la progression des boss et de l'Abîme, les enchantements, l'arbre de compétences, les succès, les niveaux d'ouvrier et l'Essence pure accumulée.</li>
+          <li>En échange tu gagnes de l'<strong>Essence pure</strong>. Elle achète deux paramètres : <strong>Écho de l'Éveil</strong> amplifie le bonus de chaque paramètre d'Éveil, et <strong>Source</strong> augmente l'Essence versée par chaque Éveil.</li>
+          <li>Les deux paramètres sont composés : chaque niveau se multiplie par-dessus le précédent.</li>
         </ul>
-      <div class="table-wrap">
-        <table>
-        <thead><tr>
-        <th>Boss</th>
-        <th class="num">Vie</th>
-        <th class="num">Temps</th>
-        <th>Récompense</th>
-        </tr></thead>
-        <tbody>
-        <tr>
-        <td>Colosse de cristal</td>
-        <td class="num">1e15</td>
-        <td class="num">30 s</td>
-        <td>1 000 Essence + 50 000 Pierre de minerai</td>
-        </tr>
-        <tr>
-        <td>Gardien de cristal</td>
-        <td class="num">1e18</td>
-        <td class="num">25 s</td>
-        <td>2 000 Essence + 75 000 Pierre de minerai</td>
-        </tr>
-        <tr>
-        <td>Sentinelle carmin</td>
-        <td class="num">1e22</td>
-        <td class="num">20 s</td>
-        <td>3 000 Essence + 100 000 Pierre de minerai</td>
-        </tr>
-        <tr>
-        <td>Gardien de pierre</td>
-        <td class="num">1e27</td>
-        <td class="num">20 s</td>
-        <td>4 000 Essence + 125 000 Pierre de minerai</td>
-        </tr>
-        <tr>
-        <td>Titan de givre</td>
-        <td class="num">1e33</td>
-        <td class="num">20 s</td>
-        <td>5 000 Essence + 150 000 Pierre de minerai</td>
-        </tr>
-        <tr>
-        <td>Golem de cristal 1</td>
-        <td class="num">1e40</td>
-        <td class="num">20 s</td>
-        <td>6 000 Essence + 175 000 Pierre de minerai</td>
-        </tr>
-        <tr>
-        <td>Colosse Barbe-de-pierre</td>
-        <td class="num">1e48</td>
-        <td class="num">15 s</td>
-        <td>7 000 Essence + 200 000 Pierre de minerai</td>
-        </tr>
-        <tr>
-        <td>Golem de cristal 2</td>
-        <td class="num">1e57</td>
-        <td class="num">15 s</td>
-        <td>8 000 Essence + 225 000 Pierre de minerai</td>
-        </tr>
-        <tr>
-        <td>Golem de flammes</td>
-        <td class="num">1e67</td>
-        <td class="num">15 s</td>
-        <td>9 000 Essence + 250 000 Pierre de minerai</td>
-        </tr>
-        <tr>
-        <td>Gardien golem</td>
-        <td class="num">1e78</td>
-        <td class="num">10 s</td>
-        <td>10 000 Essence + 275 000 Pierre de minerai</td>
-        </tr>
-        </tbody></table></div>
+      <div class="callout">
+          <div class="callout-label">Quand monter</div>
+          L'Ascension n'accélère pas une partie mais toute la boucle. Elle devient intéressante quand les paramètres d'Essence coûtent cher et qu'un Éveil de plus n'apporte plus grand-chose.
+        </div>
+    </section>
+
+    <section id="dungeons">
+      <div class="section-head"><span class="section-num">15</span><h2>Boss et Abîme</h2></div>
+      <p class="section-dek">Les deux défis chronométrés hors de la mine principale.</p>
+      <ul>
+          <li>On accède aux deux par Lieux ; pendant ce temps, la chaleur et la progression d'étages de la mine principale s'arrêtent.</li>
+          <li>Les <strong>boss</strong> s'ouvrent avec une clé de donjon : abats le boss avant la fin du chrono et tu gagnes de l'Essence et de la Pierre de minerai. Les boss se débloquent dans l'ordre et un boss vaincu reste ouvert pour de bon.</li>
+          <li>L'<strong>Abîme</strong> s'ouvre avec une Clé d'abîme et tourne sur un seul compte à rebours : tu casses minerai après minerai, chaque palier plus dur que le précédent.</li>
+          <li>Chaque palier de l'abîme porte sa propre <strong>pénalité</strong> - l'une réduit tes dégâts automatiques, l'autre tes dégâts de clic, l'autre tes critiques. La pénalité ne s'applique que pendant ce palier.</li>
+          <li>Chaque palier cassé dans l'abîme est payé : que le chrono expire ou que tu quittes la descente, tu gardes ce que tu as gagné jusque-là. Termine tous les paliers et l'abîme suivant s'ouvre.</li>
+        </ul>
       <div class="callout warn">
-          <div class="callout-label">Perdre coûte cher</div>
-          Si le temps s'écoule d'abord, tu n'obtiens <strong>rien</strong> et la clé est perdue. Après un échec, tu vois combien de vie il restait - sers-t'en pour juger combien de dégâts il te manque.
-        </div>
-    </section>
-
-    <section id="achievements">
-      <div class="section-head"><span class="section-num">20</span><h2>Succès</h2></div>
-      <p class="section-dek">100 succès répartis en 31 catégories - clics, minerai, boss, prestige, profondeur, fabrication et plus.</p>
-      <p>Chaque succès rapporte de la <strong>Pierre de minerai</strong>, et l'objectif comme la récompense grandissent palier après palier.</p>
-      <div class="callout">
-          <div class="callout-label">Pense à les réclamer</div>
-          Les récompenses <strong>ne sont pas automatiques</strong>. Si tu n'as pas ouvert l'onglet des succès depuis un moment, une pile t'y attend - le bouton tout récupérer prend tout d'un coup.
+          <div class="callout-label">Perdre contre un boss coûte cher</div>
+          Si le temps s'écoule avant la mort du boss, aucune récompense et la clé est perdue.
         </div>
     </section>
 
     <section id="store">
-      <div class="section-head"><span class="section-num">21</span><h2>Boutique</h2></div>
-      <p class="section-dek">Diamants, clés, packs, temps Premium, sauts temporels, coffres et objets Infini permanents.</p>
+      <div class="section-head"><span class="section-num">16</span><h2>Boutique et succès</h2></div>
+      <p class="section-dek">Diamants, clés, lots, premium, sauts de temps, coffres et objets Infinity permanents.</p>
       <ul>
-          <li><strong>Packs de diamants :</strong> 200 / 550 / 1 150 / 2 400 / 6 250 / 14 000 diamants. Plus le pack est gros, meilleur est le taux.</li>
-          <li><strong>Packs de clés :</strong> 3 / 7 / 15 clés de donjon.</li>
-          <li><strong>Petit pack :</strong> 500 Diamant, 100 Essence, 10 Pierre de compétence, 3 Clé de donjon.</li>
-          <li><strong>Grand pack :</strong> 1 000 Diamant, 200 Essence, 20 Pierre de compétence, 5 Clé de donjon.</li>
-          <li><strong>Pack Premium 7 jours :</strong> 7 jours de x5 dégâts de clic, x5 dégâts automatiques, x3 or, x3 résistance à la chaleur et x2 gains hors ligne.</li>
-          <li><strong>Pack Premium 30 jours :</strong> 30 jours de x7 dégâts de clic, x7 dégâts automatiques, x4,5 or, x3,5 résistance à la chaleur et x2,5 gains hors ligne.</li>
-          <li><strong>Saut temporel :</strong> 8 / 16 / 24 heures pour 100 / 190 / 370 diamants. La récompense est calculée d'après tes propres dégâts, ton étage et tes ouvriers - minerai, butin d'enchantement et minerais rares compris. Les bonus, recharges et minuteurs n'avancent pas, et ce n'est pas disponible dans le donjon.</li>
+          <li>Le <strong>premium</strong> augmente tes dégâts, ton or et tes gains hors ligne pendant une durée définie.</li>
+          <li>Les <strong>sauts de temps</strong> avancent le jeu de plusieurs heures ; le gain est calculé sur ta puissance du moment.</li>
+          <li><strong>Coffre d'enchantements</strong> s'ouvre immédiatement et donne des matériaux d'enchantement.</li>
+          <li>Les <strong>lots de clés</strong> s'achètent en diamants ; il existe des lots pour les clés de donjon comme pour l'Clé d'abîme.</li>
+          <li>Les <strong>objets Infinity</strong> s'achètent une seule fois et survivent à l'Éveil comme à l'Ascension.</li>
+          <li>Les <strong>succès</strong> paient de la Pierre de minerai ; c'est à toi de réclamer les récompenses.</li>
         </ul>
-      <p>Le <strong>Coffre d'enchantements</strong> coûte 100 diamants et s'ouvre sur-le-champ. La carte affiche chaque lot et ses chances :</p>
-      <div class="table-wrap">
-        <table>
-        <thead><tr>
-        <th>Objet</th>
-        <th class="num">Quantité</th>
-        <th class="num">Chance</th>
-        </tr></thead>
-        <tbody>
-        <tr>
-        <td>Poussière d'enchantement Commun</td>
-        <td class="num">250</td>
-        <td class="num">17 %</td>
-        </tr>
-        <tr>
-        <td>Fragment d'enchantement Commun</td>
-        <td class="num">26</td>
-        <td class="num">16 %</td>
-        </tr>
-        <tr>
-        <td>Poussière d'enchantement Rare</td>
-        <td class="num">180</td>
-        <td class="num">15 %</td>
-        </tr>
-        <tr>
-        <td>Fragment d'enchantement Rare</td>
-        <td class="num">9</td>
-        <td class="num">15 %</td>
-        </tr>
-        <tr>
-        <td>Poussière d'enchantement Épique</td>
-        <td class="num">150</td>
-        <td class="num">10 %</td>
-        </tr>
-        <tr>
-        <td>Fragment d'enchantement Épique</td>
-        <td class="num">5</td>
-        <td class="num">10 %</td>
-        </tr>
-        <tr>
-        <td>Poussière d'enchantement Légendaire</td>
-        <td class="num">130</td>
-        <td class="num">9 %</td>
-        </tr>
-        <tr>
-        <td>Fragment d'enchantement Légendaire</td>
-        <td class="num">3</td>
-        <td class="num">8 %</td>
-        </tr>
-        </tbody></table></div>
-      <p>Les objets Infini s'achètent <strong>une seule fois avec des diamants</strong> et ne sont jamais remis à zéro, pas même par le prestige. En fin de partie, c'est souvent la meilleure façon de dépenser tes diamants.</p>
-      <div class="table-wrap">
-        <table>
-        <thead><tr>
-        <th>Objet</th>
-        <th class="num">Effet</th>
-        <th class="num">Prix</th>
-        </tr></thead>
-        <tbody>
-        <tr>
-        <td>Puissance infinie</td>
-        <td class="num">x4</td>
-        <td class="num">350 💎</td>
-        </tr>
-        <tr>
-        <td>Revenu infini</td>
-        <td class="num">x3</td>
-        <td class="num">350 💎</td>
-        </tr>
-        <tr>
-        <td>Armure infinie</td>
-        <td class="num">x2</td>
-        <td class="num">350 💎</td>
-        </tr>
-        <tr>
-        <td>Vitesse infinie</td>
-        <td class="num">x1,5</td>
-        <td class="num">550 💎</td>
-        </tr>
-        <tr>
-        <td>Cliqueur infini</td>
-        <td class="num">7 /s</td>
-        <td class="num">600 💎</td>
-        </tr>
-        </tbody></table></div>
-      <div class="callout">
-          <div class="callout-label">Prix</div>
-          Les prix en argent réel viennent de Steam dans ta devise, ils ne sont donc pas indiqués ici. Le contenu d'un pack ne change jamais ; son prix dépend de ta région.
-        </div>
     </section>
 
     <section id="progress">
-      <div class="section-head"><span class="section-num">22</span><h2>Suivre ta progression</h2></div>
-      <p class="section-dek">Les endroits où voir comment se passe ta partie et ce qui vient d'arriver.</p>
+      <div class="section-head"><span class="section-num">17</span><h2>Progression et sauvegarde</h2></div>
+      <p class="section-dek">Où suivre ta partie et comment ta progression est préservée.</p>
       <ul>
-          <li>Les classements Steam suivent les clics, les dégâts de clic, le nombre de prestiges, les boss vaincus et le meilleur étage.</li>
-          <li>L'écran des statistiques garde un long historique - gains, dépenses, clics, fabrication, temps de jeu et plus.</li>
-          <li>Le <strong>Journal d'activité</strong> liste ce qui s'est passé pendant la session - récompenses, déblocages, boss, achats - et la notification dans le coin l'ouvre.</li>
-          <li>Le panneau <strong>Mises à jour</strong> affiche les dernières notes de mise à jour dans ta langue et s'ouvre tout seul une fois après une nouvelle mise à jour.</li>
+          <li>Les classements Steam, l'écran de statistiques et le <strong>Journal d'activité</strong> montrent ta progression.</li>
+          <li>Le panneau <strong>Mises à jour</strong> affiche les dernières notes de mise à jour.</li>
+          <li>Le jeu se sauvegarde régulièrement et se synchronise avec Steam Cloud ; tu peux continuer sur un autre ordinateur.</li>
+          <li>Si Discord est ouvert, ton profil indique l'étage où tu te trouves et ton niveau d'Éveil / Ascension.</li>
         </ul>
     </section>
 
-    <section id="save">
-      <div class="section-head"><span class="section-num">23</span><h2>Sauvegardes</h2></div>
-      <p class="section-dek">En bref : ta progression est protégée de plusieurs façons à la fois.</p>
-      <ul>
-          <li>Le jeu se sauvegarde, chiffré, toutes les <strong>15 secondes</strong>.</li>
-          <li>Il envoie une copie sur Steam Cloud environ toutes les <strong>45 secondes</strong>, et toujours quand tu quittes ou mets en pause - un autre ordinateur reprend là où tu t'es arrêté.</li>
-          <li>Si un fichier de sauvegarde est endommagé, le jeu revient tout seul à sa copie de secours.</li>
-          <li>Tu peux aussi copier ta sauvegarde dans le presse-papiers et la recoller sur un autre appareil.</li>
-        </ul>
-    </section>
-
-    <section id="languages">
-      <div class="section-head"><span class="section-num">24</span><h2>Langues</h2></div>
-      <p class="section-dek">Le jeu est disponible en 18 langues.</p>
-      <p>Anglais, turc, allemand, français, espagnol, espagnol d'Amérique latine, italien, polonais, portugais du Brésil, russe, ukrainien, japonais, coréen, chinois simplifié, chinois traditionnel, thaï, indonésien et vietnamien. Le jeu choisit ta langue au premier lancement et tu peux la changer à tout moment dans les paramètres - ce guide existe dans toutes, avec les liens en haut de la page.</p>
-    </section>
-
-    <footer class="doc-footer">Les chiffres suivent l'équilibrage actuel du jeu et peuvent changer avec les mises à jour. Les prix en argent réel sont fixés par Steam et affichés dans ta devise, c'est pourquoi ils ne figurent pas ici.</footer>
+    <footer class="doc-footer">Le jeu évolue avec les mises à jour ; ce guide donne une vue d'ensemble. Les prix des articles vendus en argent réel sont affichés par Steam dans ta propre devise.</footer>
   </main>
 </div>
 

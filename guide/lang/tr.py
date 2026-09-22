@@ -4,7 +4,7 @@ LANG = {
     "html_lang": "tr",
     "locale": {"group": ".", "decimal": ",", "percent": "%{0}"},
     "title": "Clicker Ore Game - Oyuncu Rehberi",
-    "description": "Madende ne nasıl işliyor: kazmalar, evcil hayvanlar, işçiler, efsunlar, yetenekler, prestij, bosslar ve mağaza - kısaca.",
+    "description": "Madende ne nasıl işliyor: kazmalar, evcil hayvanlar, işçiler, efsunlar, yetenekler, Uyanış, Yükseliş, bosslar, Uçurum ve mağaza - kısaca.",
     "brand": "Clicker Ore Game",
     "brand_sub": "Oyuncu Rehberi",
     "eyebrow": "Oyuncu Rehberi - {date}",
@@ -52,12 +52,14 @@ LANG = {
     },
     "currencies": {
         "gold": ["<b>Cevher kırarak</b> kazanılır; balon, işçiler, görevler ve çevrimdışı süre de altın getirir.", "Kazmalara, yükseltmelere ve eşya yeteneklerine gider."],
-        "diamond": ["<b>Gerçek para alışverişinden</b>, {panel_lucky_spin} ödüllerinden ve promosyon kodlarından gelir.", "Evcil hayvanlara, Sonsuz eşyalara, zaman atlamaya ve sandıklara harcanır."],
-        "essence": ["<b>Prestijden</b>, bosslardan ve {panel_trader} panelinden gelir.", "Kalıcı prestij parametrelerine harcanır."],
+        "diamond": ["<b>Gerçek para alışverişinden</b>, {panel_lucky_spin} ödüllerinden ve promosyon kodlarından gelir.", "Evcil hayvanlara, Sonsuz eşyalara, zaman atlamaya, sandıklara ve anahtar paketlerine harcanır."],
+        "essence": ["<b>{panel_awakening}</b> ödülüdür; bosslar ve {panel_trader} da verir.", "Kalıcı {panel_awakening} parametrelerine harcanır."],
+        "pure_essence": ["<b>{panel_ascension}</b> ödülüdür; başka hiçbir yerden gelmez.", "Yalnızca {panel_ascension} parametrelerine harcanır."],
         "taskium": ["Her başarılı tıklamada biraz kazanılır.", "Görev kabul etmeye ve görev yenilemeye gider."],
-        "dungeon_key": ["Günde bir bedava anahtar, ayrıca mağaza ve {panel_lucky_spin}.", "Boss dövüşüne girmek için harcanır."],
+        "dungeon_key": ["Günde bir bedava, ayrıca mağaza ve {panel_lucky_spin}.", "Boss dövüşüne girmek için harcanır."],
+        "abyss_key": ["Günde bir bedava, ayrıca mağazadan elmasla alınır.", "{panel_abyss} koşusuna girmek için harcanır."],
         "skill_stone": ["Mağazadan ve {panel_trader} panelinden gelir.", "Aktif yetenekleri güçlendirmeye harcanır."],
-        "ore_stone": ["Kırdığın her cevherden, başarımlardan ve bosslardan gelir.", "Takaslara, efsun üretimine ve işçi yükseltmelerine harcanır."],
+        "ore_stone": ["Kırdığın her cevherden, başarımlardan, bosslardan ve {panel_abyss} koşularından gelir.", "Takaslara, efsun üretimine ve işçi yükseltmelerine harcanır."],
     },
     "sections": [
         {
@@ -68,18 +70,22 @@ LANG = {
                 ("stages", [
                     ["Başlangıç", [
                         "Kazmanı durmadan yükselt; derine indikçe yeni kazmalar açılır.",
-                        "Altın balonu gördükçe tıkla, ilk yeteneklerini kullanmaya başla.",
+                        "Altın balonu ve {ore_gold_crystal} gördükçe tıkla, ilk yeteneklerini kullanmaya başla.",
                         "Elmasın yettiğinde ilk evcil hayvanını al.",
                     ]],
                     ["Orta", [
-                        "İlerleme yavaşlayınca prestij yap ve Öz kazan.",
+                        "İlerleme yavaşlayınca {panel_awakening} yap ve Öz kazan.",
                         "Görevler, zırhlar, yetenek ağacı ve tüccar bu dönemde açılır.",
                         "Öz'ü tek parametreye yığmak yerine dağıt.",
                     ]],
                     ["İleri", [
-                        "Anahtarın oldukça bosslarla dövüş.",
+                        "Anahtarın oldukça bosslarla dövüş, sonra {panel_abyss} koşularına gir.",
                         "İşçiler katılır, efsun malzemeleri düşmeye başlar.",
                         "Isı hasarını yemesin diye zırhını yükseltmeyi ihmal etme.",
+                    ]],
+                    ["Uzun vade", [
+                        "Çok daha derinde {panel_ascension} açılır ve {panel_awakening} döngüsünün tamamını sıfırlar.",
+                        "Karşılığında {currency_pure_essence} kazanırsın; o da sonraki her koşuyu kalıcı olarak hızlandırır.",
                     ]],
                 ]),
                 ("note", ["Bilmekte fayda var", "Sayılar hızla büyür; oyun önce kısa gösterime, sonra bilimsel gösterime geçer. Hiçbir şey sınırlanmaz, değişen yalnızca yazım biçimidir."]),
@@ -91,7 +97,7 @@ LANG = {
             "dek": "Her biri farklı bir sistemi besler.",
             "blocks": [
                 ("currencies", None),
-                ("note", ["Sunucu paraları", "Elmas ve zindan anahtarı sunucuda tutulur; bunlarla alışveriş için çevrimiçi olman gerekir."]),
+                ("note", ["Sunucu paraları", "Elmas, zindan anahtarı ve {currency_abyss_key} sunucuda tutulur; bunlarla alışveriş için çevrimiçi olman gerekir."]),
             ],
         },
         {
@@ -100,10 +106,10 @@ LANG = {
             "dek": "İki ayrı hasar kaynağı ve onları katlayan kritik vuruşlar.",
             "blocks": [
                 ("ul", [
-                    "<strong>Tıklama hasarı</strong> ilk kazmandan, {skill_anger_click} yeteneğinden, unvanından, prestij parametrelerinden ve efsunlardan gelir.",
+                    "<strong>Tıklama hasarı</strong> ilk kazmandan, {skill_anger_click} yeteneğinden, unvanından, {panel_awakening} parametrelerinden ve efsunlardan gelir.",
                     "<strong>Otomatik hasar</strong> diğer kazmalardan, {skill_rampage} yeteneğinden, evcil hayvanlarından ve efsunlardan gelir; cevher canlı olduğu sürece kesintisiz işler.",
                     "{prestige_click_from_dps} yükseldikçe otomatik hasarının bir payı her tıklamaya da eklenir.",
-                    "Her tıklama <strong>kritik</strong> olup daha sert vurabilir. Kritik şansı ve çarpanı yetenekler, prestij, unvanlar ve efsunlarla artar.",
+                    "Her tıklama <strong>kritik</strong> olup daha sert vurabilir. Kritik şansı ve çarpanı yetenekler, {panel_awakening} parametreleri, unvanlar ve efsunlarla artar.",
                 ]),
             ],
         },
@@ -119,7 +125,7 @@ LANG = {
                     "Hepsinin yükseldikçe açılan kendi yetenekleri var; kimisi yalnızca o eşyaya, kimisi hepsine yarar.",
                 ]),
                 ("note", ["Büyük sıçrama", "Belirli seviyelere ulaştıkça bir eşyanın gücü büyük bir sıçrama yapar. Bir eşyayı bir sonraki eşiğe taşımak genelde en iyi yükseltmedir."]),
-                ("warn", ["Prestijde ne olur", "Prestij kazmaları yeniden kilitler, zırh ve evcil hayvan yükseltmelerini sıfırlar. Evcil hayvanların senin kalır."]),
+                ("warn", ["{panel_awakening} sonrası", "{panel_awakening} kazmaları yeniden kilitler, zırh ve evcil hayvan yükseltmelerini sıfırlar. Evcil hayvanların senin kalır."]),
             ],
         },
         {
@@ -139,9 +145,9 @@ LANG = {
                 ("ul", [
                     "Derine indikçe yeni işçiler katılır ve bir daha kilitlenmez.",
                     "Her işçiye bir kazma ver; kazması olmayan işçi kazanmaz. Kazmayı işçiye vermek kendi hasarını azaltmaz.",
-                    "Gelir bir havuzda birikir, sen toplayana kadar bekler. İşçileri Cevher Taşı ile yükseltebilirsin.",
+                    "Gelir bir havuzda birikir, sen toplayana kadar bekler. İşçileri {currency_ore_stone} ile yükseltebilirsin.",
                 ]),
-                ("warn", ["Prestijden önce topla", "İşçiler yalnızca oyun açıkken kazanır. Prestij seviyelerini korur ama toplanmamış geliri siler."]),
+                ("warn", ["{panel_awakening} öncesi topla", "İşçiler yalnızca oyun açıkken kazanır. {panel_awakening} seviyelerini korur ama toplanmamış geliri siler."]),
             ],
         },
         {
@@ -155,7 +161,7 @@ LANG = {
                     "Her eşyanın derine indikçe açılan efsun yuvaları var.",
                     "İşine yaramayan efsunu tüccarda toza çevirebilir, malzemeleri bir üst kademeye takas edebilirsin.",
                 ]),
-                ("note", ["Prestij güvenli", "Prestij efsunları asla silmez; kilitlenen bir eşyanın efsunları {panel_inventory} bölümüne geri döner."]),
+                ("note", ["{panel_awakening} güvenli", "{panel_awakening} efsunları asla silmez; kilitlenen bir eşyanın efsunları {panel_inventory} bölümüne geri döner."]),
             ],
         },
         {
@@ -165,10 +171,11 @@ LANG = {
             "blocks": [
                 ("ul", [
                     "Arada bir <strong>süreli kat</strong> gelir: cevheri süre bitmeden kırman gerekir, karşılığında daha çok altın verir. Süre dolarsa bir kat geri düşersin ve otomatik ilerleme kapanır.",
-                    "Her cevher altının yanında Cevher Taşı da düşürür.",
+                    "Her cevher altının yanında {currency_ore_stone} da düşürür.",
                     "Çok nadiren <strong>nadir cevherler</strong> ({rare_ore_names}) çıkar; her biri bir kez bulunur.",
-                    "{panel_elevator} ile ulaştığın katlar arasında gidip gelebilirsin. {panel_locations} paneli ana maden ile zindanlar arasında geçiş yapar.",
+                    "{panel_elevator} ile ulaştığın katlar arasında gidip gelebilirsin. {panel_locations} paneli ana maden, zindan ve {panel_abyss} arasında geçiş yapar.",
                 ]),
+                ("note", ["Aşağıda farm verimsizdir", "Efsun tozu ve parçası en çok ulaştığın en derin katın yakınında düşer; çok aşağıda kalırsan düşme şansı belirgin biçimde azalır."]),
             ],
         },
         {
@@ -177,8 +184,8 @@ LANG = {
             "dek": "Süreli güçlendirmeler ve tırmandıkça kendiliğinden gelen bonuslar.",
             "blocks": [
                 ("ul", [
-                    "<strong>Aktif yetenekler</strong> derine indikçe bedava açılır; kısa süre güçlendirir, sonra bekleme süresine girer. Yetenek Taşı ile {panel_skill_tree} üzerinden güçlenir ve prestijde kaybolmaz.",
-                    "<strong>Unvanlar</strong> tırmandıkça kendiliğinden gelir ve hasar, altın, ısı direnci gibi bonuslar verir. Prestijde baştan kazanılır.",
+                    "<strong>Aktif yetenekler</strong> derine indikçe bedava açılır; kısa süre güçlendirir, sonra bekleme süresine girer. {currency_skill_stone} ile {panel_skill_tree} üzerinden güçlenir ve {panel_awakening} ile kaybolmaz.",
+                    "<strong>Unvanlar</strong> tırmandıkça kendiliğinden gelir ve hasar, altın, ısı direnci gibi bonuslar verir. {panel_awakening} sonrası baştan kazanılır.",
                 ]),
                 ("note", ["Kombo", "Önce {skill_overcharge}, sonra güçlendirmek istediğin yetenek - örneğin {skill_golden_frenzy}. Ardından {skill_time_reversal} son yeteneğin beklemesini kısaltır."]),
             ],
@@ -199,7 +206,7 @@ LANG = {
             "title": "{panel_trader}",
             "dek": "Artan kaynakları işe yarar şeylere çevirdiğin yer.",
             "blocks": [
-                ("p", "Cevher Taşı'nı Öz'e ya da Yetenek Taşı'na, efsun malzemelerini üst kademeye çevirebilir, istemediğin efsunları parçalayabilirsin. En değerlisi Yetenek Taşı takasıdır: mağazadan bir şey almadan yeteneklerini güçlendirmenin yolu."),
+                ("p", "{currency_ore_stone} taşını Öz'e ya da {currency_skill_stone} taşına, efsun malzemelerini üst kademeye çevirebilir, istemediğin efsunları parçalayabilirsin. En değerlisi {currency_skill_stone} takasıdır: mağazadan bir şey almadan yeteneklerini güçlendirmenin yolu."),
             ],
         },
         {
@@ -208,53 +215,72 @@ LANG = {
             "dek": "Oyuna uğramaktan fazlasını istemeyen kaynaklar.",
             "blocks": [
                 ("ul", [
-                    "<strong>Altın balonu</strong> ara ara ekrana gelir; tıkla, altın kazan.",
-                    "<strong>{ore_gold_crystal}</strong> tıkladığında cevheri kısa süreliğine bol altınlı bir bonus cevhere çevirir.",
+                    "<strong>Altın balonu</strong> ara ara ekrana gelir; tıkla, altın kazan. Kaçırma diye bir şey yok - tıklayana kadar ekranda bekler.",
+                    "<strong>{ore_gold_crystal}</strong> tıkladığında cevheri kısa süreliğine bol altınlı bir bonus cevhere çevirir; yalnızca ana madende toplanır.",
                     "<strong>Çevrimdışı kazanç</strong> oyun kapalıyken birikir.",
                     "<strong>Oyun süresi ödülü</strong> oynadıkça altın verir.",
-                    "<strong>Günlük ödül</strong> her gün mağazada bedava anahtar verir.",
+                    "<strong>Günlük ödül</strong> mağazada her gün bir bedava zindan anahtarı ve bir bedava {currency_abyss_key} verir; ikisi birbirinden bağımsızdır.",
                     "<strong>{panel_lucky_spin}</strong> belirli aralıklarla yenilenir ve bedava çevirme hakkı verir.",
                     "<strong>{tab_promo_codes}</strong> - duyurularda paylaştığımız kodları Ayarlar menüsünden kullanabilirsin.",
                 ]),
             ],
         },
         {
-            "id": "prestige",
-            "title": "Prestij",
+            "id": "awakening",
+            "title": "{panel_awakening}",
             "dek": "Bu koşunun ilerlemesini kalıcı güce çevir.",
             "blocks": [
                 ("ul", [
-                    "Belirli bir derinliği geçince prestij yapabilirsin. Her koşu yeniden ilk kattan başlar.",
-                    "<strong>Sıfırlananlar:</strong> altın, kat ilerlemesi, kazma, zırh ve evcil hayvan yükseltmeleri, unvanlar, görev ilerlemesi ve toplanmamış işçi geliri.",
-                    "<strong>Korunanlar:</strong> elmaslar ve elmasla alınanlar, anahtarlar, boss ilerlemesi, Öz, prestij parametreleri, yetenek ağacı, efsunlar, başarımlar ve işçi seviyeleri.",
+                    "Belirli bir derinliği geçince {panel_awakening} yapabilirsin. Her koşu yeniden ilk kattan başlar.",
+                    "<strong>Sıfırlananlar:</strong> altın, kat ilerlemesi, kazma kilitleri ve yükseltmeleri, zırh ve evcil hayvan yükseltmeleri, eşya yetenekleri, unvanlar, {currency_taskium}, görev ilerlemesi, işçilere verilen kazmalar ve toplanmamış işçi geliri.",
+                    "<strong>Korunanlar:</strong> elmaslar ve elmasla alınanlar, anahtarlar, boss ve {panel_abyss} ilerlemesi, Öz, {panel_awakening} parametreleri, yetenek ağacı, {currency_skill_stone}, {currency_ore_stone}, efsunlar, başarımlar, işçi seviyeleri ve {panel_ascension} tarafındaki her şey.",
                     "Kazandığın Öz ulaştığın en derin kata bağlıdır ve derinlikle hızla büyür. Öz'ü kalıcı parametrelere harca.",
                 ]),
-                ("note", ["Biraz daha derine in", "Prestijden önce birkaç kat daha inmek, hemen yeniden prestij yapmaktan genelde daha değerlidir."]),
+                ("note", ["Biraz daha derine in", "{panel_awakening} yapmadan önce birkaç kat daha inmek, hemen yeniden {panel_awakening} yapmaktan genelde daha değerlidir."]),
             ],
         },
         {
-            "id": "bosses",
-            "title": "Bosslar",
-            "dek": "Öz ve Cevher Taşı için süreli bir hasar yarışı.",
+            "id": "ascension",
+            "title": "{panel_ascension}",
+            "dek": "{panel_awakening} üzerine binen ikinci katman.",
             "blocks": [
                 ("ul", [
-                    "{panel_locations} panelinden zindanı seç, zindan anahtarı harcayıp bossla dövüş.",
-                    "Bosslar sırayla açılır; birini yenince sıradaki gelir. Boss ilerlemesi prestijde korunur.",
+                    "Çok daha derin bir kata ulaşınca {panel_ascension} açılır; prestij sekmesinin altında kendi sayfası vardır.",
+                    "<strong>Sıfırlananlar:</strong> {panel_awakening} parametreleri ve Öz - yani o döngü tamamen baştan başlar; kazmalar, katlar ve yükseltmeler de {panel_awakening} ile aynı şekilde sıfırlanır.",
+                    "<strong>Korunanlar:</strong> {panel_awakening} seviyen, elmaslar ve elmasla alınanlar, anahtarlar, boss ve {panel_abyss} ilerlemesi, efsunlar, yetenek ağacı, başarımlar, işçi seviyeleri ve biriken {currency_pure_essence}.",
+                    "Karşılığında <strong>{currency_pure_essence}</strong> kazanırsın. İki parametreye harcanır: <strong>{ascension_awakening_parameter}</strong> her {panel_awakening} parametresinin bonusunu büyütür, <strong>{ascension_essence_reward}</strong> ise {panel_awakening} başına aldığın Öz'ü artırır.",
+                    "İki parametre de bileşik büyür: her seviye bir öncekinin üzerine çarparak biner.",
                 ]),
-                ("warn", ["Kaybetmenin bedeli var", "Süre önce biterse ödül alamazsın ve anahtar gider."]),
+                ("note", ["Ne zaman yükselmeli", "{panel_ascension} tek bir koşuyu değil, koşu döngüsünün tamamını hızlandırır. Öz ile alınan parametrelerin pahalılaştığı ve yeni {panel_awakening} turlarının artık az şey kattığı noktada değerlidir."]),
+            ],
+        },
+        {
+            "id": "dungeons",
+            "title": "Bosslar ve {panel_abyss}",
+            "dek": "Ana madenin dışındaki iki süreli meydan okuma.",
+            "blocks": [
+                ("ul", [
+                    "İkisine de {panel_locations} panelinden geçersin; oradayken ana madenin ısısı ve kat ilerlemesi durur.",
+                    "<strong>Bosslar</strong> zindan anahtarıyla açılır: süre dolmadan bossu indirirsen Öz ve {currency_ore_stone} kazanırsın. Bosslar sırayla açılır ve yenilen boss kalıcı olarak açık kalır.",
+                    "<strong>{panel_abyss}</strong> {currency_abyss_key} ile açılır ve tek bir geri sayımla işler: taşları arka arkaya kırarsın, her aşama bir öncekinden serttir.",
+                    "Her uçurum aşamasının kendi <strong>cezası</strong> vardır - biri otomatik hasarını, biri tıklama hasarını, biri kritiğini kısar. Ceza yalnızca o aşama sürerken geçerlidir.",
+                    "Uçurumda kırdığın her aşamanın ödülü senindir: süre dolsa da, koşuyu bıraksan da o ana kadar kazandığını alırsın. Tüm aşamaları bitirirsen sıradaki uçurum açılır.",
+                ]),
+                ("warn", ["Boss kaybı bedava değil", "Süre boss ölmeden biterse ödül alamazsın ve harcadığın anahtar geri gelmez."]),
             ],
         },
         {
             "id": "store",
             "title": "{panel_store} ve Başarımlar",
-            "dek": "Elmas, anahtar, paketler, premium, zaman atlama, sandıklar ve kalıcı Sonsuz eşyalar.",
+            "dek": "Elmas, anahtarlar, paketler, premium, zaman atlama, sandıklar ve kalıcı Sonsuz eşyalar.",
             "blocks": [
                 ("ul", [
                     "<strong>Premium</strong> belirli bir süre boyunca hasarını, altınını ve çevrimdışı kazancını artırır.",
                     "<strong>Zaman atlama</strong> oyunu birkaç saat ileri sarar; kazancın o anki gücüne göre hesaplanır.",
                     "<strong>{chest_enchantment}</strong> anında açılır ve efsun malzemesi verir.",
-                    "<strong>Sonsuz eşyalar</strong> bir kez alınır ve prestijde bile kaybolmaz.",
-                    "<strong>Başarımlar</strong> Cevher Taşı verir; ödülleri kendin alman gerekir.",
+                    "<strong>Anahtar paketleri</strong> elmasla alınır; hem zindan anahtarı hem {currency_abyss_key} için paket vardır.",
+                    "<strong>Sonsuz eşyalar</strong> bir kez alınır; {panel_awakening} ile de {panel_ascension} ile de kaybolmaz.",
+                    "<strong>Başarımlar</strong> {currency_ore_stone} verir; ödülleri kendin alman gerekir.",
                 ]),
             ],
         },
@@ -267,6 +293,7 @@ LANG = {
                     "Steam liderlik tabloları, istatistik ekranı ve <strong>{panel_activity_log}</strong> ilerlemeni gösterir.",
                     "<strong>{panel_updates}</strong> paneli son güncelleme notlarını gösterir.",
                     "Oyun kendini düzenli olarak kaydeder ve Steam Cloud'a yedekler; başka bir bilgisayarda kaldığın yerden devam edebilirsin.",
+                    "Discord açıksa profilinde hangi kattasın ve {panel_awakening} / {panel_ascension} seviyen görünür.",
                 ]),
             ],
         },

@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <title>Clicker Ore Game - プレイヤーガイド</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="鉱山のしくみ：通貨、ツルハシ、ペット、作業員、エンチャント、スキル、プレステージ、ボス、ショップを数式なしで解説します。">
+<meta name="description" content="鉱山の仕組み：ツルハシ、ペット、労働者、エンチャント、スキル、覚醒、昇華、ボス、深淵、ショップを手短に。">
 <style>
   :root {
     --bg: #14110d;
@@ -28,6 +28,8 @@
     --cur-key: #d98a63;
     --cur-skillstone: #7fc9a0;
     --cur-orestone: #b5a68c;
+    --cur-abysskey: #8f7fd6;
+    --cur-pureessence: #d7bff5;
 
     --font-display: "Bahnschrift", "Segoe UI Semibold", "Arial Narrow Bold", "Arial Narrow", sans-serif;
     --font-body: "Sitka Text", "Iowan Old Style", Georgia, "Times New Roman", serif;
@@ -481,38 +483,31 @@
     <div class="toc-brand">Clicker Ore Game<small>プレイヤーガイド</small></div>
     <ul class="toc-list">
       <li><a href="#start"><span class="toc-num">01</span>まず何をするか</a></li>
-      <li><a href="#currencies"><span class="toc-num">02</span>7種類の通貨</a></li>
-      <li><a href="#damage"><span class="toc-num">03</span>クリックダメージと自動ダメージ</a></li>
-      <li><a href="#critical"><span class="toc-num">04</span>クリティカル</a></li>
-      <li><a href="#pickaxes"><span class="toc-num">05</span>ツルハシ</a></li>
-      <li><a href="#suits"><span class="toc-num">06</span>アーマー</a></li>
-      <li><a href="#temperature"><span class="toc-num">07</span>熱</a></li>
-      <li><a href="#pets"><span class="toc-num">08</span>ペット</a></li>
-      <li><a href="#workers"><span class="toc-num">09</span>作業員</a></li>
-      <li><a href="#enchantments"><span class="toc-num">10</span>エンチャント</a></li>
-      <li><a href="#floors"><span class="toc-num">11</span>階、鉱石、深さ</a></li>
-      <li><a href="#skills"><span class="toc-num">12</span>アクティブスキル</a></li>
-      <li><a href="#titles"><span class="toc-num">13</span>称号</a></li>
-      <li><a href="#tasks"><span class="toc-num">14</span>任務とTaskium</a></li>
-      <li><a href="#missions"><span class="toc-num">15</span>デイリーミッション</a></li>
-      <li><a href="#trade"><span class="toc-num">16</span>商人</a></li>
-      <li><a href="#extras"><span class="toc-num">17</span>無料でもらえる報酬</a></li>
-      <li><a href="#prestige"><span class="toc-num">18</span>プレステージ</a></li>
-      <li><a href="#bosses"><span class="toc-num">19</span>ボス</a></li>
-      <li><a href="#achievements"><span class="toc-num">20</span>実績</a></li>
-      <li><a href="#store"><span class="toc-num">21</span>ショップ</a></li>
-      <li><a href="#progress"><span class="toc-num">22</span>進行状況を確認する</a></li>
-      <li><a href="#save"><span class="toc-num">23</span>セーブ</a></li>
-      <li><a href="#languages"><span class="toc-num">24</span>言語</a></li>
+      <li><a href="#currencies"><span class="toc-num">02</span>通貨</a></li>
+      <li><a href="#damage"><span class="toc-num">03</span>ダメージとクリティカル</a></li>
+      <li><a href="#equipment"><span class="toc-num">04</span>ツルハシ・アーマー・ペット</a></li>
+      <li><a href="#temperature"><span class="toc-num">05</span>熱</a></li>
+      <li><a href="#workers"><span class="toc-num">06</span>作業員</a></li>
+      <li><a href="#enchantments"><span class="toc-num">07</span>エンチャント</a></li>
+      <li><a href="#floors"><span class="toc-num">08</span>階層と鉱石</a></li>
+      <li><a href="#skills"><span class="toc-num">09</span>スキルと称号</a></li>
+      <li><a href="#tasks"><span class="toc-num">10</span>タスク</a></li>
+      <li><a href="#trade"><span class="toc-num">11</span>商人</a></li>
+      <li><a href="#extras"><span class="toc-num">12</span>無料の報酬</a></li>
+      <li><a href="#awakening"><span class="toc-num">13</span>覚醒</a></li>
+      <li><a href="#ascension"><span class="toc-num">14</span>昇華</a></li>
+      <li><a href="#dungeons"><span class="toc-num">15</span>ボスと深淵</a></li>
+      <li><a href="#store"><span class="toc-num">16</span>ショップと実績</a></li>
+      <li><a href="#progress"><span class="toc-num">17</span>進行とセーブ</a></li>
     </ul>
   </nav>
 
   <main>
     <header class="hero">
       <div class="strata" role="presentation"></div>
-      <div class="eyebrow">プレイヤーガイド - 2026-09-14</div>
-      <h1 class="title">鉱山のすべてを、<br>わかりやすく</h1>
-      <p class="subtitle">各システムが何をするのか、いつ開放されるのか、次の1時間をどこに使うべきか。数式はなし、大事な判断だけをまとめました。</p>
+      <div class="eyebrow">プレイヤーガイド - 2026-09-21</div>
+      <h1 class="title">鉱山のすべてを、<br>手短に</h1>
+      <p class="subtitle">どのシステムが何のためにあり、時間をどこに使うべきか。数字も計算式もなし、必要なことだけ。</p>
       <div class="langbar">
         <div class="langbar-label">言語</div>
         <div class="langbar-list"><a href="player_guide_en.html" hreflang="en">English</a><a href="player_guide_tr.html" hreflang="tr">Türkçe</a><a href="player_guide_de.html" hreflang="de">Deutsch</a><a href="player_guide_fr.html" hreflang="fr">Français</a><a href="player_guide_es.html" hreflang="es">Español</a><a href="player_guide_es_la.html" hreflang="es-419">Español (Latinoamérica)</a><a href="player_guide_it.html" hreflang="it">Italiano</a><a href="player_guide_pl.html" hreflang="pl">Polski</a><a href="player_guide_pt_br.html" hreflang="pt-BR">Português (Brasil)</a><a href="player_guide_ru.html" hreflang="ru">Русский</a><a href="player_guide_uk.html" hreflang="uk">Українська</a><span>日本語</span><a href="player_guide_ko.html" hreflang="ko">한국어</a><a href="player_guide_zh_hans.html" hreflang="zh-Hans">简体中文</a><a href="player_guide_zh_hant.html" hreflang="zh-Hant">繁體中文</a><a href="player_guide_th.html" hreflang="th">ไทย</a><a href="player_guide_id.html" hreflang="id">Bahasa Indonesia</a><a href="player_guide_vi.html" hreflang="vi">Tiếng Việt</a></div>
@@ -521,711 +516,300 @@
 
     <section id="start">
       <div class="section-head"><span class="section-num">01</span><h2>まず何をするか</h2></div>
-      <p class="section-dek">ゲームが機能を開放していく順に、3つの段階に分けています。</p>
+      <p class="section-dek">ゲームは深く掘るにつれて、システムを少しずつ開いていきます。</p>
       <div class="strategy-track">
           <div class="strategy-stage">
-            <div class="stage-label">序盤 - 1階から100階</div>
+            <div class="stage-label">序盤</div>
             <ul>
-              <li>ツルハシは休まず強化しましょう。深く潜るほど新しいツルハシが開きます。</li>
-              <li>鉱石破砕は50階、憤怒のクリックは100階で手に入ります。</li>
-              <li>金のバルーンが来たらクリックし、ダイヤに余裕ができたらロッキーを買いましょう。</li>
+              <li>ツルハシをひたすら強化しましょう。深い階に進むと新しいツルハシが解放されます。</li>
+              <li>ゴールド風船と黄金の水晶は見つけ次第クリックし、最初のスキルを使い始めましょう。</li>
+              <li>ダイヤが足りたら最初のペットを買いましょう。</li>
             </ul>
           </div>
           <div class="strategy-stage">
-            <div class="stage-label">中盤 - 100階から350階</div>
+            <div class="stage-label">中盤</div>
             <ul>
-              <li>100階を越えて進みが遅くなったらプレステージしましょう。</li>
-              <li>任務は125階、アーマーは130階、スキルツリーは180階、商人は200階で開きます。</li>
-              <li>エッセンスは1つに集中させず、7つのパラメーターに分けて伸ばします。</li>
+              <li>進みが鈍ってきたら覚醒を行い、エッセンスを獲得します。</li>
+              <li>タスク、アーマー、スキルツリー、商人がこの時期に開きます。</li>
+              <li>エッセンスは一つのパラメーターに積まず、分けて使いましょう。</li>
             </ul>
           </div>
           <div class="strategy-stage">
-            <div class="stage-label">終盤 - 350階から先</div>
+            <div class="stage-label">終盤</div>
             <ul>
-              <li>鍵があるうちはボスに挑みましょう。エッセンスと鉱石ストーンが手に入ります。</li>
-              <li>エンチャント素材は500階から落ち始め、作業員は600階から加わります。</li>
-              <li>熱にダメージを削られないよう、アーマーのレベルを保ちましょう。</li>
+              <li>鍵があるときはボスに挑み、その後深淵の挑戦を始めましょう。</li>
+              <li>労働者が加わり、エンチャント素材が落ち始めます。</li>
+              <li>熱にダメージを削られないよう、アーマーの強化も続けてください。</li>
+            </ul>
+          </div>
+          <div class="strategy-stage">
+            <div class="stage-label">長期</div>
+            <ul>
+              <li>さらに深い階で昇華が解放され、覚醒のループ全体をリセットします。</li>
+              <li>その代わりに純粋エッセンスが手に入り、以後のプレイが恒久的に速くなります。</li>
             </ul>
           </div>
         </div>
       <div class="callout">
           <div class="callout-label">知っておくと便利</div>
-          数値はすぐ長くなるため、ゲームはまず短縮表記に、その後 <strong>1.23e45</strong> のような指数表記に切り替わります。上限があるわけではなく、表記が変わるだけです。
+          数値は急速に大きくなります。ゲームはまず短縮表記に、さらに指数表記に切り替わります。上限があるわけではなく、書き方が変わるだけです。
         </div>
     </section>
 
     <section id="currencies">
-      <div class="section-head"><span class="section-num">02</span><h2>7種類の通貨</h2></div>
-      <p class="section-dek">それぞれ別のシステムを支えています。通貨を間違った場所に使ってしまうのが、序盤で最も多い失敗です。</p>
+      <div class="section-head"><span class="section-num">02</span><h2>通貨</h2></div>
+      <p class="section-dek">それぞれが別のシステムを支えています。</p>
       <div class="currency-grid">
         <div class="cur-card" style="--dot:var(--cur-gold)">
           <h4><span class="dot"></span>ゴールド</h4>
-          <p><b>鉱石を砕く</b>と手に入ります。バルーン、作業員、任務、オフライン時間からも。</p>
-          <p>ツルハシ、強化、アイテムのスキルに使う、いちばん基本の通貨です。</p>
+          <p><b>鉱石を砕いて</b>手に入ります。風船、労働者、タスク、オフライン時間からもゴールドが入ります。</p>
+          <p>ツルハシ、強化、アイテムスキルに使います。</p>
         </div>
         <div class="cur-card" style="--dot:var(--cur-diamond)">
           <h4><span class="dot"></span>ダイヤ</h4>
-          <p><b>実際の課金</b>、ラッキースピン、プロモコードから手に入ります。</p>
-          <p>ペット、無限アイテム、時間スキップ、宝箱、追加スピンに使います。</p>
+          <p><b>実際のお金での購入</b>、ラッキースピンの報酬、プロモコードから手に入ります。</p>
+          <p>ペット、Infinityアイテム、タイムスキップ、宝箱、鍵パックに使います。</p>
         </div>
         <div class="cur-card" style="--dot:var(--cur-essence)">
           <h4><span class="dot"></span>エッセンス</h4>
-          <p><b>プレステージ</b>、ボス撃破、商人から手に入ります。</p>
-          <p>7つの永続プレステージパラメーターに使います。</p>
+          <p><b>覚醒</b>の報酬です。ボスや商人も少し配ります。</p>
+          <p>永続的な覚醒パラメーターに使います。</p>
         </div>
         <div class="cur-card" style="--dot:var(--cur-taskium)">
           <h4><span class="dot"></span>Taskium</h4>
-          <p>クリックが当たるごとに <b>+1</b>。</p>
-          <p>任務の受注と引き直しに使います。</p>
+          <p>クリックが当たるたびに少しずつ貯まります。</p>
+          <p>タスクの受注と引き直しに使います。</p>
         </div>
         <div class="cur-card" style="--dot:var(--cur-key)">
           <h4><span class="dot"></span>ダンジョンキー</h4>
-          <p>1日1個は無料、ほかにショップのパックとラッキースピンから。</p>
-          <p>ボス戦への入場に使います（1回につき1個）。</p>
+          <p>1日1個は無料。ほかにショップとラッキースピン。</p>
+          <p>ボス戦に入るために使います。</p>
         </div>
         <div class="cur-card" style="--dot:var(--cur-skillstone)">
           <h4><span class="dot"></span>スキルストーン</h4>
-          <p>ショップのパッケージと商人から手に入ります。</p>
-          <p>8種のアクティブスキルのレベル上げに使います。</p>
+          <p>ショップと商人から手に入ります。</p>
+          <p>アクティブスキルの強化に使います。</p>
         </div>
         <div class="cur-card" style="--dot:var(--cur-orestone)">
           <h4><span class="dot"></span>鉱石ストーン</h4>
-          <p>砕いた鉱石ごとに <b>1-5</b> 個、さらに実績とボスから。</p>
-          <p>交換、エンチャント作成、作業員の強化に使います。</p>
+          <p>砕いた鉱石すべてから、さらに実績、ボス、深淵の挑戦から手に入ります。</p>
+          <p>交換、エンチャント作成、労働者の強化に使います。</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-abysskey)">
+          <h4><span class="dot"></span>深淵キー</h4>
+          <p>1日1個は無料。ほかにショップでダイヤと交換。</p>
+          <p>深淵に挑むために使います。</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-pureessence)">
+          <h4><span class="dot"></span>純粋エッセンス</h4>
+          <p><b>昇華</b>の報酬で、ほかに入手先はありません。</p>
+          <p>昇華のパラメーターにのみ使います。</p>
         </div>
       </div>
       <div class="callout">
           <div class="callout-label">サーバー管理の通貨</div>
-          ダイヤとダンジョンキーはサーバーで管理されているため、使って買い物をするにはオンラインである必要があります。接続が切れていても、購入しようとするとゲームが自動で再接続します。
+          ダイヤ、ダンジョンの鍵、深淵キーはサーバーで管理されます。使うにはオンラインである必要があります。
         </div>
     </section>
 
     <section id="damage">
-      <div class="section-head"><span class="section-num">03</span><h2>クリックダメージと自動ダメージ</h2></div>
-      <p class="section-dek">別々のものから伸びる、2つのダメージ源です。</p>
-      <p><strong>クリックダメージ</strong>は1回タップしたときのダメージです。最初のツルハシのレベルとスキル、憤怒のクリックスキル、称号、砕岩の手プレステージパラメーター、エンチャントで伸びます。力の統合を上げると、自動ダメージの一部も毎回のクリックに加わります。</p>
-      <p><strong>自動ダメージ</strong>（毎秒）は2本目以降のツルハシ、暴走スキル、永劫の炉パラメーター、エンチャント、ペットから生まれます。鉱石が生きている間、途切れずに入り続けます。</p>
-      <div class="callout">
-          <div class="callout-label">ペットは例外</div>
-          ペットのダメージはほとんどの倍率の<strong>後</strong>に加算されます。熱、称号、プレステージ、ブーストでは伸びず、伸ばせるのはプレミアムだけです。終盤はペットのレベルだけでは戦えません。
-        </div>
-    </section>
-
-    <section id="critical">
-      <div class="section-head"><span class="section-num">04</span><h2>クリティカル</h2></div>
-      <p class="section-dek">どのクリックもクリティカルになって強く当たる可能性があります。</p>
-      <p>最初はクリティカル率<strong>5%</strong>、倍率<strong>x1.5</strong>です。クリティカルストライクスキル、ツルハシのスキル、鉱石の神託と破局の力のプレステージパラメーター、称号、エンチャントで上がります。クリティカル率は<strong>100%</strong>で止まり、それを超える分のプレステージパラメーターは購入できません。</p>
-    </section>
-
-    <section id="pickaxes">
-      <div class="section-head"><span class="section-num">05</span><h2>ツルハシ</h2></div>
-      <p class="section-dek">深さで開放される45本のツルハシ。ダメージの土台です。</p>
+      <div class="section-head"><span class="section-num">03</span><h2>ダメージとクリティカル</h2></div>
+      <p class="section-dek">二つの別々のダメージ源と、それを倍化するクリティカル。</p>
       <ul>
-          <li>ツルハシは<strong>階で開放</strong>されます。2本目は15階、10本目は782階、最後の1本は<strong>13,624</strong>階です。深くなるほど間隔が広がります。</li>
-          <li>1本目は<strong>5ゴールド</strong>、2本目は50、その後は前の約<strong>8倍</strong>ずつ高くなります。</li>
-          <li>レベルは1つ上げるごとに約<strong>6%</strong>ずつ高くなります。</li>
-          <li>クリックダメージを伸ばすのは<strong>最初</strong>のツルハシだけです。ほかはすべて毎秒の自動ダメージを伸ばします。</li>
-          <li>各ツルハシには6つのスキルがあり、5 / 25 / 125 / 625 / 3,125 / 15,625というレベルの階段に沿って表示・開放されます。最後のほうは長期目標です。そのツルハシだけに効くものと、全ツルハシに効くものがあります。</li>
+          <li><strong>クリックダメージ</strong>は最初のツルハシ、憤怒のクリックスキル、称号、覚醒パラメーター、エンチャントから来ます。</li>
+          <li><strong>自動ダメージ</strong>は他のツルハシ、暴走スキル、ペット、エンチャントから来ます。鉱石が残っている間は途切れず流れ続けます。</li>
+          <li>力の統合が上がるほど、自動ダメージの一部がクリックにも上乗せされます。</li>
+          <li>どのクリックも<strong>クリティカル</strong>になり、はるかに強く当たることがあります。クリティカル率と倍率はスキル、覚醒パラメーター、称号、エンチャントで伸びます。</li>
+        </ul>
+    </section>
+
+    <section id="equipment">
+      <div class="section-head"><span class="section-num">04</span><h2>ツルハシ・アーマー・ペット</h2></div>
+      <p class="section-dek">ダメージと耐久の土台。</p>
+      <ul>
+          <li><strong>ツルハシ</strong>は深く潜るほど解放されます。最初の1本がクリックダメージを、残りが自動ダメージを支えます。</li>
+          <li><strong>アーマー</strong>は最初から所持しています。購入ではなく強化するもので、熱から身を守ります。</li>
+          <li><strong>ペット</strong>はダイヤで購入し、ゴールドで強化して自動ダメージを出します。所有は永久です。</li>
+          <li>どれもレベルで開くスキルを持ちます。そのアイテムだけに効くものと、系統全体に効くものがあります。</li>
         </ul>
       <div class="callout">
-          <div class="callout-label">大きな伸び</div>
-          レベル<strong>100</strong>から、その後は150レベルごと（250、400…）に、ツルハシは自分の出力を累乗します。まず<strong>^1.05</strong>、次に^1.1と続きます。大きな数値では伸びが非常に大きいので、1本を次の区切りまで上げるのが、たいてい一番効く強化です。
+          <div class="callout-label">大きな跳ね上がり</div>
+          特定のレベルでアイテムの力は大きく跳ね上がります。1つのアイテムを次のしきい値まで押し上げるのが、たいてい最良の強化です。
         </div>
       <div class="callout warn">
-          <div class="callout-label">プレステージで再ロック</div>
-          プレステージするとツルハシはすべてロックされてリセットされます。新しい周回でその階を越えると再び開きます。
+          <div class="callout-label">覚醒のあと</div>
+          覚醒はツルハシを再びロックし、アーマーとペットの強化をリセットします。ペット自体はあなたのものとして残ります。
         </div>
-    </section>
-
-    <section id="suits">
-      <div class="section-head"><span class="section-num">06</span><h2>アーマー</h2></div>
-      <p class="section-dek">5つのアーマーは最初から全部持っています。熱から身を守るためのものです。</p>
-      <ul>
-          <li>アーマーは買うものではなく、レベルを上げるだけです。1レベルごとに耐熱が約<strong>5%</strong>増え（初期値50）、費用は前より約8.4%高くなります。</li>
-          <li>アーマーもツルハシと同じ累乗の伸びがあり、レベル100から150レベルごとに発生します。</li>
-          <li>各アーマーには同じレベルの階段（5 / 25 / 125 / 625 / 3,125 / 15,625）に沿って6つのスキルがあります。</li>
-          <li>アーマーパネルは熱ゲージと一緒に<strong>130</strong>階で開きます。</li>
-        </ul>
     </section>
 
     <section id="temperature">
-      <div class="section-head"><span class="section-num">07</span><h2>熱</h2></div>
-      <p class="section-dek">深く潜るほど暑くなり、熱は気づかないうちにダメージを削ります。</p>
-      <ul>
-          <li>階の温度は着実に上がります。<strong>1階ごとに約1.04倍</strong>なので、二十数階ごとに倍になります。</li>
-          <li>耐熱が階の温度の<strong>1.5倍</strong>以上あれば、ゲージは空のままで何も失いません。</li>
-          <li>耐熱が温度を下回るとダメージが減り始め、<strong>0.5倍</strong>では20分の1しか残りません。<strong>95%</strong>の損失です。</li>
-          <li>アーマーパネルには耐熱の自動購入スイッチがあります。よく深く潜るならオンのままにしましょう。熱はメイン鉱山だけのもので、ボス戦にはありません。</li>
-        </ul>
+      <div class="section-head"><span class="section-num">05</span><h2>熱</h2></div>
+      <p class="section-dek">深く潜るほど暑くなり、熱は静かにダメージを削ります。</p>
+      <p>耐熱がその階の温度に追いつかないと、ダメージが溶けるように落ちていきます。アーマー画面には耐熱の自動購入スイッチがあります。熱があるのはメイン鉱山だけです。</p>
       <div class="callout warn">
-          <div class="callout-label">進めなくなったら</div>
-          鉱石がいつまでも砕けない壁は、ほとんどの場合ダメージ不足ではなく熱です。ほかに使う前にゲージを確認しましょう。
-        </div>
-    </section>
-
-    <section id="pets">
-      <div class="section-head"><span class="section-num">08</span><h2>ペット</h2></div>
-      <p class="section-dek">5匹のペットはダイヤで買い、ゴールドで育てます。</p>
-      <ul>
-          <li>価格は<strong>150</strong>から<strong>250</strong>ダイヤ（150 / 175 / 200 / 225 / 250）です。</li>
-          <li>1レベルごとにツルハシのクリックダメージの約<strong>1%</strong>が自動ダメージとして加わり、ペットの番号倍になります。同じレベルならシャドウシャードはロッキーの5倍です。</li>
-          <li>レベルは毎回約<strong>20%</strong>ずつ高くなり、レベル100からはツルハシと同じ累乗の伸びがあります。</li>
-          <li>各ペットには6つのスキルがあり、そのペットだけに効くものと全ペットに効くものがあります。</li>
-          <li>ペットパネルは<strong>30</strong>階か、ペットを持った時点で開きます。</li>
-        </ul>
-      <div class="callout warn">
-          <div class="callout-label">プレステージとペット</div>
-          プレステージするとペットはすべて<strong>レベル1</strong>に戻り、スキルも消えます。ただし所有は永続で、ペットを買い直す必要はありません。
+          <div class="callout-label">進みが止まったら</div>
+          鉱石が急に割れなくなる壁は、たいてい熱です。ほかに使う前に熱のメーターを確認してください。
         </div>
     </section>
 
     <section id="workers">
-      <div class="section-head"><span class="section-num">09</span><h2>作業員</h2></div>
-      <p class="section-dek">ゲームを開いている間、代わりに掘ってくれる5人の助っ人です。</p>
+      <div class="section-head"><span class="section-num">06</span><h2>作業員</h2></div>
+      <p class="section-dek">ゲームを開いている間、代わりに掘ってくれる助手たち。</p>
       <ul>
-          <li>作業員は<strong>600 / 800 / 1,000 / 1,200 / 1,400</strong>階を越えると加わります。これまでの最高階で判定するため、二度とロックされません。</li>
-          <li>各作業員にツルハシを渡しましょう。1本のツルハシが働けるのは同時に1人だけで、自分のダメージは減りません。ツルハシのない作業員は何も稼ぎません。</li>
-          <li>収入は1秒ごとに加算され、回収するまでプールにたまります。強いツルハシほど多く稼ぎます。</li>
-          <li>作業員の強化には鉱石ストーンを使います。最初は100、その後は毎回約2%ずつ高くなり、1レベルごとに収入が約1%増えます。</li>
+          <li>深く潜るほど新しい労働者が加わり、その後ロックされることはありません。</li>
+          <li>各労働者にツルハシを渡しましょう。ツルハシのない労働者は何も稼ぎません。渡してもあなた自身のダメージは下がりません。</li>
+          <li>収入はプールに溜まり、回収するまで待っています。労働者は鉱石ストーンで強化します。</li>
         </ul>
       <div class="callout warn">
-          <div class="callout-label">プレステージ前に回収</div>
-          作業員が稼ぐのはゲームを起動している間だけで、オフライン中は稼ぎません。プレステージではレベルは残りますが、<strong>未回収の収入は消え</strong>、ツルハシも外れます。
+          <div class="callout-label">覚醒の前に回収</div>
+          労働者が稼ぐのはゲームを開いている間だけです。覚醒はレベルを残しますが、未回収の収入は消します。
         </div>
     </section>
 
     <section id="enchantments">
-      <div class="section-head"><span class="section-num">10</span><h2>エンチャント</h2></div>
-      <p class="section-dek">掘り出した素材でエンチャントを作り、ツルハシ、アーマー、ペットに付けます。</p>
-      <p>鉱石を砕くと、4段階のランクで<strong>エンチャントダスト</strong>と<strong>エンチャント片</strong>が落ちることがあります。各ランクは、この周回の最高階がその基準を越えると落ち始めます。最高階より100階以上浅い場所で掘ると確率が下がり、最低で通常の10%になります。</p>
-      <div class="table-wrap">
-        <table>
-        <thead><tr>
-        <th>ランク</th>
-        <th class="num">効果数</th>
-        <th class="num">ドロップ開始階</th>
-        <th class="num">ダスト確率</th>
-        <th class="num">欠片確率</th>
-        <th class="num">作成（ダスト / 欠片 / 鉱石ストーン）</th>
-        </tr></thead>
-        <tbody>
-        <tr>
-        <td>コモン</td>
-        <td class="num">1</td>
-        <td class="num">500</td>
-        <td class="num">5%</td>
-        <td class="num">0.5%</td>
-        <td class="num">10 / 1 / 40</td>
-        </tr>
-        <tr>
-        <td>レア</td>
-        <td class="num">1-2</td>
-        <td class="num">1,000</td>
-        <td class="num">2%</td>
-        <td class="num">0.1%</td>
-        <td class="num">20 / 1 / 200</td>
-        </tr>
-        <tr>
-        <td>エピック</td>
-        <td class="num">2-3</td>
-        <td class="num">2,000</td>
-        <td class="num">1%</td>
-        <td class="num">0.03%</td>
-        <td class="num">30 / 1 / 1,000</td>
-        </tr>
-        <tr>
-        <td>レジェンダリー</td>
-        <td class="num">3-4</td>
-        <td class="num">4,000</td>
-        <td class="num">0.5%</td>
-        <td class="num">0.01%</td>
-        <td class="num">50 / 1 / 5,000</td>
-        </tr>
-        </tbody></table></div>
+      <div class="section-head"><span class="section-num">07</span><h2>エンチャント</h2></div>
+      <p class="section-dek">掘り出した素材でエンチャントを作り、ツルハシ・アーマー・ペットに装着します。</p>
       <ul>
-          <li>職人はダスト、欠片1個、鉱石ストーンの手数料から、ランダムな効果を持つエンチャントを作ります。上位ランクほど効果の数が多く、倍率も大きくなります（x1 / x2 / x4 / x6）。</li>
-          <li>ツルハシ、アーマー、ペットにはそれぞれ<strong>8つのスロット</strong>があり、1,000 / 3,000 / 6,000 / 9,000 / 12,000 / 15,000 / 18,000 / 21,000階で開きます。これまでの最高階で判定するため、一度開いたスロットは閉じません。</li>
-          <li>付けたアイテムだけに効く効果（クリックダメージ、自動ダメージ、耐熱）と、すべてに効く効果（ゴールド、クリティカル、DPSの割合、強化費用）があります。特別な効果はアイテム自身のスキルを強化するもので、スキルを購入済みのアイテムでだけ働きます。</li>
-          <li>選択画面には、そのアイテムで実際に効果のあるエンチャントだけが表示されます。</li>
-          <li>商人では、同じランクのダストや欠片10個を1つ上のランク1個に替えられます。いらないエンチャントは分解してダストに戻せます（ランクごとに5 / 10 / 15 / 25）。分解は取り消せません。</li>
+          <li>鉱石を砕くと<strong>エンチャントダスト</strong>と<strong>エンチャントの欠片</strong>が落ちます。上位ランクの素材はより深い階で出ます。</li>
+          <li>職人はダストと欠片を、ランダムな効果を持つエンチャントに変えます。上位ランクほど効果の数が多く、効果も強くなります。</li>
+          <li>各アイテムには、深く潜るほど開くエンチャントスロットがあります。</li>
+          <li>不要なエンチャントは商人でダストに分解でき、素材は一つ上のランクに交換できます。</li>
         </ul>
       <div class="callout">
-          <div class="callout-label">プレステージでも安心</div>
-          プレステージでエンチャントが消えることはありません。アイテムが再ロックされると、付いていたエンチャントは500階で開くインベントリに戻るだけです。
+          <div class="callout-label">覚醒は安全</div>
+          覚醒がエンチャントを消すことはありません。再びロックされたアイテムのものはインベントリに戻ります。
         </div>
     </section>
 
     <section id="floors">
-      <div class="section-head"><span class="section-num">11</span><h2>階、鉱石、深さ</h2></div>
-      <p class="section-dek">階は鉱石の硬さと落とすゴールドを決め、深さは鉱石の見た目を決めます。</p>
+      <div class="section-head"><span class="section-num">08</span><h2>階層と鉱石</h2></div>
+      <p class="section-dek">どの階も一つ前より少し難しく、少し実入りが良くなります。</p>
       <ul>
-          <li>階が上がるごとにHPとゴールドが少しずつ増え、進むほどカーブが急になります。</li>
-          <li><strong>10階ごと</strong>に時間制限のある階があり、<strong>20秒</strong>のカウントダウンが始まります。HPはx5、ゴールドはx2です。</li>
-          <li>難しさは100階ごとのサイクルでも変わり、サイクルの中にはHPのわりに実入りのいい階があります。</li>
-          <li>鉱石はゴールドに加えて<strong>1-5</strong>個の鉱石ストーンを落とします。</li>
-          <li><strong>5種のレア鉱石</strong>（フェロヴィックス, カルニス, サルヴェリス, ウンブリッサ, ゼフィリス）が通常の鉱石の代わりに出ることがあります。確率は約10,000分の1から1,000,000分の1で、一度砕くと永久に記録され、二度と出ません。</li>
+          <li>ときどき<strong>制限時間つきの階</strong>が来ます。時間内に鉱石を砕けばゴールドが多く出ます。時間切れになると1階下がり、自動進行がオフになります。</li>
+          <li>どの鉱石もゴールドと一緒に鉱石ストーンを落とします。</li>
+          <li>ごくまれに<strong>レア鉱石</strong>（フェロヴィックス, カルニス, サルヴェリス, ウンブリッサ, ゼフィリス）が現れます。それぞれ一度だけ見つかります。</li>
+          <li>エレベーターで到達済みの階を行き来できます。エリアはメイン鉱山、ダンジョン、深淵を切り替えます。</li>
         </ul>
-      <div class="callout warn">
-          <div class="callout-label">時間制限の階は厳しい</div>
-          時間切れになると<strong>1階</strong>戻され、自動進行がオフになります。少し掘ってから再挑戦しましょう。
+      <div class="callout">
+          <div class="callout-label">下の階での周回は効率が悪い</div>
+          ダストと欠片は到達した最深階の近くで最もよく落ちます。かなり下に留まると確率がはっきり下がります。
         </div>
-      <p>エレベーターを使うと、この周回で到達した好きな階に戻れます。手動で階を選ぶと自動進行はオフになるので、また進みたくなったらオンにしましょう。エリアパネルではメイン鉱山とボスダンジョンを切り替えられます。</p>
-      <p>鉱石は全部で<strong>40</strong>種類あり、どれが出るかは深さで決まります。種類が変えるのは見た目だけで、HPとゴールドは階で決まります。</p>
-      <div class="table-wrap">
-        <table>
-        <thead><tr>
-        <th class="num">深さ</th>
-        <th class="num">鉱石の種類</th>
-        <th class="num">目安の階</th>
-        </tr></thead>
-        <tbody>
-        <tr>
-        <td class="num">0-100 m</td>
-        <td class="num">9</td>
-        <td class="num">~54</td>
-        </tr>
-        <tr>
-        <td class="num">100-500 m</td>
-        <td class="num">20</td>
-        <td class="num">~129</td>
-        </tr>
-        <tr>
-        <td class="num">500-1,500 m</td>
-        <td class="num">30</td>
-        <td class="num">~196</td>
-        </tr>
-        <tr>
-        <td class="num">1,500 m+</td>
-        <td class="num">40</td>
-        <td class="num">-</td>
-        </tr>
-        </tbody></table></div>
     </section>
 
     <section id="skills">
-      <div class="section-head"><span class="section-num">12</span><h2>アクティブスキル</h2></div>
-      <p class="section-dek">8種のスキル。どれも一定時間のブーストの後にクールダウンがあります。</p>
-      <p>スキルはその階に着いた時点で<strong>無料</strong>で、レベル1から使えます。レベル7まで上げるには合計<strong>63個のスキルストーン</strong>、8種すべてなら<strong>504個</strong>が必要です。レベルが高いほど効果時間は長く、クールダウンは短くなります。</p>
-      <div class="table-wrap">
-        <table>
-        <thead><tr>
-        <th>スキル</th>
-        <th class="num">階</th>
-        <th class="num">レベル1（効果時間 / クールダウン）</th>
-        <th class="num">レベル7（効果時間 / クールダウン）</th>
-        <th class="num">効果</th>
-        </tr></thead>
-        <tbody>
-        <tr>
-        <td>鉱石破砕</td>
-        <td class="num">50</td>
-        <td class="num">30秒 / 540秒</td>
-        <td class="num">90秒 / 180秒</td>
-        <td class="num">7 → 13 /秒</td>
-        </tr>
-        <tr>
-        <td>憤怒のクリック</td>
-        <td class="num">100</td>
-        <td class="num">40秒 / 660秒</td>
-        <td class="num">210秒 / 300秒</td>
-        <td class="num">x2 → x5</td>
-        </tr>
-        <tr>
-        <td>クリティカルストライク</td>
-        <td class="num">150</td>
-        <td class="num">30秒 / 600秒</td>
-        <td class="num">150秒 / 240秒</td>
-        <td class="num">x1.3 → x1.9</td>
-        </tr>
-        <tr>
-        <td>暴走</td>
-        <td class="num">200</td>
-        <td class="num">40秒 / 840秒</td>
-        <td class="num">160秒 / 480秒</td>
-        <td class="num">x2 → x3.5</td>
-        </tr>
-        <tr>
-        <td>黄金の狂乱</td>
-        <td class="num">250</td>
-        <td class="num">50秒 / 1,020秒</td>
-        <td class="num">290秒 / 660秒</td>
-        <td class="num">x2 → x5</td>
-        </tr>
-        <tr>
-        <td>熱耐性</td>
-        <td class="num">300</td>
-        <td class="num">30秒 / 660秒</td>
-        <td class="num">140秒 / 300秒</td>
-        <td class="num">x2 → x5</td>
-        </tr>
-        <tr>
-        <td>オーバーチャージ</td>
-        <td class="num">350</td>
-        <td class="num">20秒 / 1,200秒</td>
-        <td class="num">20秒 / 840秒</td>
-        <td class="num">x1.5 → x3</td>
-        </tr>
-        <tr>
-        <td>時間逆行</td>
-        <td class="num">400</td>
-        <td class="num">1,200秒</td>
-        <td class="num">840秒</td>
-        <td class="num">-300秒 → -1,020秒</td>
-        </tr>
-        </tbody></table></div>
-      <p>最初のスキル欄は50階で開き、スキルストーンを使うスキルツリーは<strong>180</strong>階で開きます。スキルのレベルはプレステージでも残ります。</p>
+      <div class="section-head"><span class="section-num">09</span><h2>スキルと称号</h2></div>
+      <p class="section-dek">時間制限つきの強化と、潜るだけで勝手に付いてくるボーナス。</p>
+      <ul>
+          <li><strong>アクティブスキル</strong>は深く潜るほど無料で解放されます。短時間強化したあとクールダウンに入ります。スキルストーンを使ってスキルツリーで強化でき、覚醒でも失われません。</li>
+          <li><strong>称号</strong>は潜るだけで自然に手に入り、ダメージ、ゴールド、耐熱などのボーナスを与えます。覚醒のあとは再び獲得し直します。</li>
+        </ul>
       <div class="callout">
-          <div class="callout-label">おすすめの組み合わせ</div>
-          まずオーバーチャージを使い、次に本当に強化したいスキル（たとえば黄金の狂乱）を使います。その後時間逆行で最後に使ったスキルのクールダウンを縮めれば、早く再使用できます。
+          <div class="callout-label">コンボ</div>
+          まずオーバーチャージ、次に強化したいスキル、たとえば黄金の狂乱。続けて時間逆行を使うと、直前のスキルのクールダウンが短くなります。
         </div>
     </section>
 
-    <section id="titles">
-      <div class="section-head"><span class="section-num">13</span><h2>称号</h2></div>
-      <p class="section-dek">潜るにつれて自動で手に入る100個の称号です。</p>
-      <ul>
-          <li>称号は1階から<strong>50,000</strong>階まであり、この周回の最高到達階から自動で選ばれます。</li>
-          <li>称号が1つ上がるごとに、付いているボーナスが約<strong>+0.1</strong>増えます。</li>
-          <li>ボーナスは段階的に加わり、クリックダメージ、自動ダメージ、耐熱、ゴールド、クリティカル倍率、クリティカル率、クリックへのDPS割合がそれぞれ称号2 / 6 / 11 / 16 / 21 / 26 / 31から始まります。</li>
-          <li>プレステージすると最初のほうの称号に戻り、また潜れば戻ってきます。</li>
-        </ul>
-    </section>
-
     <section id="tasks">
-      <div class="section-head"><span class="section-num">14</span><h2>任務とTaskium</h2></div>
-      <p class="section-dek">クリックを第2の収入に変えるサブ要素です。</p>
+      <div class="section-head"><span class="section-num">10</span><h2>タスク</h2></div>
+      <p class="section-dek">クリックを第二の収入に変える横道。</p>
       <ul>
-          <li>クリックが当たるたびに<strong>+1 Taskium</strong>。</li>
-          <li>任務の受注は<strong>200</strong>、引き直しは<strong>25</strong>です。</li>
-          <li>任務パネルは125階で開き、6つの枠は125 / 225 / 325 / 425 / 525 / 625階で開きます。</li>
-          <li>任務は10種類、レア度は6段階です。1つの任務は60分続き、受けていない任務は1時間ごとに入れ替わります。</li>
-          <li>ゴールド報酬はレア度で増え、この周回の最高階の鉱石ゴールドの<strong>50-500</strong>倍です。最もレアな任務はエッセンスもくれます。</li>
-        </ul>
-    </section>
-
-    <section id="missions">
-      <div class="section-head"><span class="section-num">15</span><h2>デイリーミッション</h2></div>
-      <p class="section-dek">毎日入れ替わる短い目標リストです。</p>
-      <ul>
-          <li>毎日<strong>5つのミッション</strong>が出ます。鉱石を砕く、クリックする、スピンを回す、ボスを倒す、スキルを使う、などです。</li>
-          <li>ミッションを1つ達成するごとに<strong>10分間のx2ブースト</strong>（自動ダメージ、クリックダメージ、クリティカル、ゴールドのいずれか）がもらえます。</li>
-          <li>報酬は自動では受け取れないので、ミッションパネルで受け取りましょう。リストはUTCの0時にリセットされます。</li>
+          <li><strong>タスク</strong>はTaskiumで受注します。レアなものほど報酬が大きくなります。</li>
+          <li><strong>デイリーミッション</strong>は毎日更新され、達成するたびに短時間の強化をくれます。パネルでの受け取りを忘れずに。</li>
         </ul>
     </section>
 
     <section id="trade">
-      <div class="section-head"><span class="section-num">16</span><h2>商人</h2></div>
-      <p class="section-dek">200階で開きます。鉱石ストーンや余った素材を役立つものに替える場所です。</p>
-      <ul>
-          <li>スキルストーン1個 → <strong>鉱石ストーン5,000個</strong>。</li>
-          <li><strong>鉱石ストーン2,000個</strong> → エッセンス1個。</li>
-          <li><strong>鉱石ストーン5,000個</strong> → スキルストーン1個。</li>
-          <li>通貨の交換には1回ごとに100,000ゴールドの手数料がかかります。素材の交換と分解では代わりに鉱石ストーンがかかります。</li>
-        </ul>
-      <p>特に大事なのはスキルストーンへの交換です。ショップで買わなくても、長時間の周回をスキルレベルに変えられます。</p>
+      <div class="section-head"><span class="section-num">11</span><h2>商人</h2></div>
+      <p class="section-dek">余った資源が役に立つものに変わる場所。</p>
+      <p>鉱石ストーンをエッセンスやスキルストーンに替え、エンチャント素材を一つ上のランクに交換し、不要なエンチャントを分解できます。もっとも価値があるのはスキルストーンへの交換です。ショップで何も買わずにスキルを強化する道になります。</p>
     </section>
 
     <section id="extras">
-      <div class="section-head"><span class="section-num">17</span><h2>無料でもらえる報酬</h2></div>
-      <p class="section-dek">ゲームに顔を出すだけでもらえるものです。</p>
+      <div class="section-head"><span class="section-num">12</span><h2>無料の報酬</h2></div>
+      <p class="section-dek">顔を出すだけで受け取れる資源。</p>
       <ul>
-          <li><strong>金のバルーン</strong>：50階から、500-700秒ごとに飛んできて、クリックするまで待っています。この周回の最高階の鉱石ゴールドの<strong>x6</strong>がもらえます。</li>
-          <li><strong>黄金の水晶</strong>：100階から、800-1,300秒ごとに現れます。メイン鉱山でクリックすると、鉱石が10秒間のボーナス鉱石（HPx10、ゴールドx14）に変わり、ゴールドは1撃ごとに支払われます。</li>
-          <li><strong>オフライン収入</strong>：60分以上離れていると計算され、上限は12時間です。プレミアムで増えます。</li>
-          <li><strong>プレイ時間報酬</strong>：60分遊ぶごとに、最高階での1分ぶんのゴールドの約100倍がもらえます。</li>
-          <li><strong>デイリー報酬</strong>：ショップで1日1個の無料ダンジョンキー。連続記録を気にする必要はなく、オンラインであれば受け取れます。</li>
-          <li><strong>ラッキースピン</strong>：100階から。8マスのルーレットで、3時間ごとに更新され、無料スピンが1回あります。追加のスピンはダイヤで、10から始まり毎回2倍になります。当たったマスは更新まで閉じたままです。賞品は階に応じたゴールド、鉱石ストーン、ブースト、Taskium、50ダイヤ、ダンジョンキーなどです。</li>
-          <li><strong>プロモコード</strong>：お知らせやコミュニティで配るコードは、設定 > プロモコードに入力します。各コードは1アカウントにつき1回だけ使え、使用回数に限りがあるものもあります。</li>
+          <li><strong>ゴールド風船</strong>はときどき画面に現れます。クリックするとゴールドが入ります。取り逃すことはなく、クリックするまで待っています。</li>
+          <li><strong>黄金の水晶</strong>をクリックすると、鉱石が短時間だけゴールドの多いボーナス鉱石に変わります。拾えるのはメイン鉱山だけです。</li>
+          <li><strong>オフライン収入</strong>はゲームを閉じている間に貯まります。</li>
+          <li><strong>プレイ時間報酬</strong>は遊ぶほどゴールドを配ります。</li>
+          <li><strong>デイリー報酬</strong>はショップで毎日、無料のダンジョンの鍵と無料の深淵キーをくれます。二つは互いに独立しています。</li>
+          <li><strong>ラッキースピン</strong>は一定間隔で補充され、無料で回せます。</li>
+          <li><strong>プロモコード</strong> - お知らせで配るコードは設定メニューから入力できます。</li>
         </ul>
     </section>
 
-    <section id="prestige">
-      <div class="section-head"><span class="section-num">18</span><h2>プレステージ</h2></div>
-      <p class="section-dek">この周回の進行を永続的な強さに替えます。タイミングを合わせれば、ゲームで一番速い成長手段です。</p>
-      <p>プレステージパネルは70階で表示されます。今の周回で<strong>100階を越える</strong>とプレステージでき、毎回同じ階が条件です。</p>
+    <section id="awakening">
+      <div class="section-head"><span class="section-num">13</span><h2>覚醒</h2></div>
+      <p class="section-dek">今回の進みを永続的な力に変えましょう。</p>
       <ul>
-          <li><strong>リセットされるもの：</strong>ゴールド、階の進行、ツルハシ・アーマー・ペットの強化とスキル、スキルのクールダウン、称号の進行、Taskium、任務の進行、作業員のツルハシ割り当て、未回収の作業員収入。</li>
-          <li><strong>残るもの：</strong>ダイヤとダイヤで買ったもの、ダンジョンキー、ダンジョンの進行、エッセンス、プレステージパラメーター、スキルツリーのレベル、スキルストーン、鉱石ストーン、エンチャントとインベントリ、実績、統計、ランキング、作業員のレベル。</li>
-          <li>毎回<strong>1階</strong>から、初期ゴールドなしで始まります。</li>
+          <li>一定の深さを超えると覚醒を行えます。各周回はまた1階から始まります。</li>
+          <li><strong>リセットされるもの：</strong>ゴールド、階層の進行、解放済みと強化済みのツルハシ、アーマーとペットの強化、アイテムスキル、称号、Taskium、タスクの進行、労働者に渡したツルハシ、未回収の労働者収入。</li>
+          <li><strong>残るもの：</strong>ダイヤとそれで買ったすべて、鍵、ボスと深淵の進行、エッセンス、覚醒パラメーター、スキルツリー、スキルストーン、鉱石ストーン、エンチャント、実績、労働者のレベル、そして昇華側のすべて。</li>
+          <li>得られるエッセンスは到達した最深階で決まり、深さとともに急速に増えます。永続パラメーターに使いましょう。</li>
         </ul>
-      <p>エッセンス報酬は<strong>到達した最高階</strong>だけで決まり、急速に増えます。200階で約331、300階で1,098、500階で12,068、1,000階で4,827,341です。</p>
       <div class="callout">
           <div class="callout-label">もう少し深く</div>
-          報酬は深さとともに急激に増えるので、すぐに次のプレステージをするより、あと数階潜ってからのほうが得なことが多いです。
+          覚醒の前にあと数階稼ぐほうが、すぐ次の覚醒を重ねるより価値があることが多いです。
         </div>
-      <div class="table-wrap">
-        <table>
-        <thead><tr>
-        <th>パラメーター</th>
-        <th>効果</th>
-        <th class="num">1レベルごと</th>
-        </tr></thead>
-        <tbody>
-        <tr>
-        <td>永劫の炉</td>
-        <td>毎秒の自動ダメージ</td>
-        <td class="num">+2.5%</td>
-        </tr>
-        <tr>
-        <td>砕岩の手</td>
-        <td>クリックダメージ</td>
-        <td class="num">+2.5%</td>
-        </tr>
-        <tr>
-        <td>黄金の深淵</td>
-        <td>ゴールド収入</td>
-        <td class="num">+1%</td>
-        </tr>
-        <tr>
-        <td>鉱石の神託</td>
-        <td>クリティカル率</td>
-        <td class="num">+0.1%</td>
-        </tr>
-        <tr>
-        <td>破局の力</td>
-        <td>クリティカル倍率</td>
-        <td class="num">+0.1%</td>
-        </tr>
-        <tr>
-        <td>業火の盾</td>
-        <td>耐熱</td>
-        <td class="num">+1%</td>
-        </tr>
-        <tr>
-        <td>力の統合</td>
-        <td>クリックに加わるDPSの割合</td>
-        <td class="num">+0.1%</td>
-        </tr>
-        </tbody></table></div>
-      <p>各レベルは前のレベルと掛け合わさって効きます。最初の1レベルは2エッセンスで、以降は毎回約2.5%ずつ高くなります。ためこむより、こまめに使うほうがお得です。</p>
     </section>
 
-    <section id="bosses">
-      <div class="section-head"><span class="section-num">19</span><h2>ボス</h2></div>
-      <p class="section-dek">エッセンスと鉱石ストーンを賭けた、時間制限つきのダメージ勝負です。350階で開きます。</p>
+    <section id="ascension">
+      <div class="section-head"><span class="section-num">14</span><h2>昇華</h2></div>
+      <p class="section-dek">覚醒の上に重なる第二の層。</p>
       <ul>
-          <li>エリアパネルでダンジョンを選び、ボスを選んで<strong>ダンジョンキーを1個</strong>使うと始まります。勝手に始まることはありません。</li>
-          <li>ボスは順番に開放され、1体倒すと次が開きます。HPは大きく増え、制限時間は短くなっていきます。</li>
-          <li>ボスの進行は<strong>プレステージしても残り</strong>、倒したことのあるボスには何度でも挑めます。</li>
+          <li>はるかに深い階に到達すると昇華が解放され、プレステージタブの中に専用ページができます。</li>
+          <li><strong>リセットされるもの：</strong>覚醒パラメーターとエッセンス。そのループはゼロから始まり、ツルハシ・階層・強化も覚醒と同じようにリセットされます。</li>
+          <li><strong>残るもの：</strong>覚醒レベル、ダイヤとそれで買ったすべて、鍵、ボスと深淵の進行、エンチャント、スキルツリー、実績、労働者のレベル、貯めた純粋エッセンス。</li>
+          <li>代わりに<strong>純粋エッセンス</strong>が手に入ります。使い道は二つのパラメーターです。<strong>覚醒の残響</strong>はすべての覚醒パラメーターのボーナスを増幅し、<strong>源泉</strong>は覚醒ごとのエッセンスを増やします。</li>
+          <li>どちらも複利で伸びます。各レベルが前のレベルの上に掛かっていきます。</li>
         </ul>
-      <div class="table-wrap">
-        <table>
-        <thead><tr>
-        <th>ボス</th>
-        <th class="num">HP</th>
-        <th class="num">制限時間</th>
-        <th>報酬</th>
-        </tr></thead>
-        <tbody>
-        <tr>
-        <td>クリスタルコロッサス</td>
-        <td class="num">1e15</td>
-        <td class="num">30秒</td>
-        <td>1,000 エッセンス + 50,000 鉱石ストーン</td>
-        </tr>
-        <tr>
-        <td>クリスタルガーディアン</td>
-        <td class="num">1e18</td>
-        <td class="num">25秒</td>
-        <td>2,000 エッセンス + 75,000 鉱石ストーン</td>
-        </tr>
-        <tr>
-        <td>クリムゾンセンチネル</td>
-        <td class="num">1e22</td>
-        <td class="num">20秒</td>
-        <td>3,000 エッセンス + 100,000 鉱石ストーン</td>
-        </tr>
-        <tr>
-        <td>ストーンガーディアン</td>
-        <td class="num">1e27</td>
-        <td class="num">20秒</td>
-        <td>4,000 エッセンス + 125,000 鉱石ストーン</td>
-        </tr>
-        <tr>
-        <td>フロストタイタン</td>
-        <td class="num">1e33</td>
-        <td class="num">20秒</td>
-        <td>5,000 エッセンス + 150,000 鉱石ストーン</td>
-        </tr>
-        <tr>
-        <td>クリスタルゴーレム 1</td>
-        <td class="num">1e40</td>
-        <td class="num">20秒</td>
-        <td>6,000 エッセンス + 175,000 鉱石ストーン</td>
-        </tr>
-        <tr>
-        <td>ストーンベアードコロッサス</td>
-        <td class="num">1e48</td>
-        <td class="num">15秒</td>
-        <td>7,000 エッセンス + 200,000 鉱石ストーン</td>
-        </tr>
-        <tr>
-        <td>クリスタルゴーレム 2</td>
-        <td class="num">1e57</td>
-        <td class="num">15秒</td>
-        <td>8,000 エッセンス + 225,000 鉱石ストーン</td>
-        </tr>
-        <tr>
-        <td>ブレイズゴーレム</td>
-        <td class="num">1e67</td>
-        <td class="num">15秒</td>
-        <td>9,000 エッセンス + 250,000 鉱石ストーン</td>
-        </tr>
-        <tr>
-        <td>ゴーレムガーディアン</td>
-        <td class="num">1e78</td>
-        <td class="num">10秒</td>
-        <td>10,000 エッセンス + 275,000 鉱石ストーン</td>
-        </tr>
-        </tbody></table></div>
-      <div class="callout warn">
-          <div class="callout-label">負けると損</div>
-          先に時間切れになると報酬は<strong>何もなく</strong>、鍵も失われます。失敗後にはボスの残りHPが見えるので、あとどれだけダメージが必要かの目安にしましょう。
+      <div class="callout">
+          <div class="callout-label">昇華のタイミング</div>
+          昇華が速くするのは1周回ではなく、ループ全体です。エッセンスのパラメーターが高くなり、もう一度覚醒してもあまり伸びなくなった頃が狙い目です。
         </div>
     </section>
 
-    <section id="achievements">
-      <div class="section-head"><span class="section-num">20</span><h2>実績</h2></div>
-      <p class="section-dek">31カテゴリーに100個の実績。クリック、鉱石、ボス、プレステージ、深さ、作成などです。</p>
-      <p>実績の報酬はすべて<strong>鉱石ストーン</strong>で、目標も報酬も段階ごとに大きくなります。</p>
-      <div class="callout">
-          <div class="callout-label">受け取り忘れに注意</div>
-          報酬は<strong>自動では受け取れません</strong>。しばらく実績タブを開いていなければ、たくさんたまっているはずです。一括受け取りボタンでまとめて受け取れます。
+    <section id="dungeons">
+      <div class="section-head"><span class="section-num">15</span><h2>ボスと深淵</h2></div>
+      <p class="section-dek">メイン鉱山の外にある、時間制限つきの二つの挑戦。</p>
+      <ul>
+          <li>どちらにもエリアから入ります。滞在中はメイン鉱山の熱と階層の進行が止まります。</li>
+          <li><strong>ボス</strong>はダンジョンの鍵で開きます。時間内に倒せばエッセンスと鉱石ストーンが手に入ります。ボスは順番に解放され、倒したボスはずっと開いたままです。</li>
+          <li><strong>深淵</strong>は深淵キーで開き、一つのカウントダウンで進みます。鉱石を次々に砕いていき、各段階は前より厳しくなります。</li>
+          <li>深淵の各段階には固有の<strong>ペナルティ</strong>があります。自動ダメージを削るもの、クリックダメージを削るもの、クリティカルを削るもの。ペナルティはその段階の間だけ有効です。</li>
+          <li>深淵で砕いた段階の報酬はすべてあなたのものです。時間切れでも、自分から抜けても、そこまでの分は残ります。全段階を突破すると次の深淵が解放されます。</li>
+        </ul>
+      <div class="callout warn">
+          <div class="callout-label">ボス戦の敗北は無料ではない</div>
+          ボスを倒す前に時間が切れると報酬はなく、使った鍵も戻りません。
         </div>
     </section>
 
     <section id="store">
-      <div class="section-head"><span class="section-num">21</span><h2>ショップ</h2></div>
-      <p class="section-dek">ダイヤ、鍵、パッケージ、プレミアム期間、時間スキップ、宝箱、そして永続の無限アイテム。</p>
+      <div class="section-head"><span class="section-num">16</span><h2>ショップと実績</h2></div>
+      <p class="section-dek">ダイヤ、鍵、パック、プレミアム、タイムスキップ、宝箱、そして永続のInfinityアイテム。</p>
       <ul>
-          <li><strong>ダイヤパック：</strong>200 / 550 / 1,150 / 2,400 / 6,250 / 14,000ダイヤ。大きいパックほどお得です。</li>
-          <li><strong>鍵パック：</strong>ダンジョンキー3 / 7 / 15個。</li>
-          <li><strong>スモールパック：</strong>500 ダイヤ, 100 エッセンス, 10 スキルストーン, 3 ダンジョンキー。</li>
-          <li><strong>ビッグパック：</strong>1,000 ダイヤ, 200 エッセンス, 20 スキルストーン, 5 ダンジョンキー。</li>
-          <li><strong>7日間プレミアムパック：</strong>7日間、クリックダメージx5、自動ダメージx5、ゴールドx3、耐熱x3、オフライン収入x2。</li>
-          <li><strong>30日間プレミアムパック：</strong>30日間、クリックダメージx7、自動ダメージx7、ゴールドx4.5、耐熱x3.5、オフライン収入x2.5。</li>
-          <li><strong>時間スキップ：</strong>8 / 16 / 24時間を100 / 190 / 370ダイヤで。報酬は自分のダメージ、階、作業員から計算され、鉱石、エンチャントのドロップ、レア鉱石も含まれます。ブースト、クールダウン、タイマーは進まず、ダンジョンの中では使えません。</li>
+          <li><strong>プレミアム</strong>は一定期間、ダメージ・ゴールド・オフライン収入を引き上げます。</li>
+          <li><strong>タイムスキップ</strong>はゲームを数時間進めます。報酬はその時点の強さで計算されます。</li>
+          <li><strong>エンチャントの宝箱</strong>はすぐに開き、エンチャント素材をくれます。</li>
+          <li><strong>鍵パック</strong>はダイヤで買えます。ダンジョンの鍵用と深淵キー用の両方があります。</li>
+          <li><strong>Infinityアイテム</strong>は一度買えば、覚醒でも昇華でも失われません。</li>
+          <li><strong>実績</strong>は鉱石ストーンをくれます。報酬は自分で受け取る必要があります。</li>
         </ul>
-      <p><strong>エンチャントの宝箱</strong>は100ダイヤで、買ってすぐに開きます。カードにはすべての賞品と確率が書かれています：</p>
-      <div class="table-wrap">
-        <table>
-        <thead><tr>
-        <th>アイテム</th>
-        <th class="num">数量</th>
-        <th class="num">確率</th>
-        </tr></thead>
-        <tbody>
-        <tr>
-        <td>コモンエンチャントダスト</td>
-        <td class="num">250</td>
-        <td class="num">17%</td>
-        </tr>
-        <tr>
-        <td>コモンエンチャント片</td>
-        <td class="num">26</td>
-        <td class="num">16%</td>
-        </tr>
-        <tr>
-        <td>レアエンチャントダスト</td>
-        <td class="num">180</td>
-        <td class="num">15%</td>
-        </tr>
-        <tr>
-        <td>レアエンチャント片</td>
-        <td class="num">9</td>
-        <td class="num">15%</td>
-        </tr>
-        <tr>
-        <td>エピックエンチャントダスト</td>
-        <td class="num">150</td>
-        <td class="num">10%</td>
-        </tr>
-        <tr>
-        <td>エピックエンチャント片</td>
-        <td class="num">5</td>
-        <td class="num">10%</td>
-        </tr>
-        <tr>
-        <td>レジェンダリーエンチャントダスト</td>
-        <td class="num">130</td>
-        <td class="num">9%</td>
-        </tr>
-        <tr>
-        <td>レジェンダリーエンチャント片</td>
-        <td class="num">3</td>
-        <td class="num">8%</td>
-        </tr>
-        </tbody></table></div>
-      <p>無限アイテムは<strong>ダイヤで一度だけ</strong>買い、プレステージでもリセットされません。終盤では、たいていダイヤの一番いい使い道です。</p>
-      <div class="table-wrap">
-        <table>
-        <thead><tr>
-        <th>アイテム</th>
-        <th class="num">効果</th>
-        <th class="num">価格</th>
-        </tr></thead>
-        <tbody>
-        <tr>
-        <td>インフィニティパワー</td>
-        <td class="num">x4</td>
-        <td class="num">350 💎</td>
-        </tr>
-        <tr>
-        <td>インフィニティインカム</td>
-        <td class="num">x3</td>
-        <td class="num">350 💎</td>
-        </tr>
-        <tr>
-        <td>インフィニティアーマー</td>
-        <td class="num">x2</td>
-        <td class="num">350 💎</td>
-        </tr>
-        <tr>
-        <td>インフィニティスピード</td>
-        <td class="num">x1.5</td>
-        <td class="num">550 💎</td>
-        </tr>
-        <tr>
-        <td>インフィニティクリッカー</td>
-        <td class="num">7 /秒</td>
-        <td class="num">600 💎</td>
-        </tr>
-        </tbody></table></div>
-      <div class="callout">
-          <div class="callout-label">価格について</div>
-          実際のお金での価格はSteamからお使いの通貨で届くため、ここには載せていません。パックの中身は変わりませんが、価格は地域によって異なります。
-        </div>
     </section>
 
     <section id="progress">
-      <div class="section-head"><span class="section-num">22</span><h2>進行状況を確認する</h2></div>
-      <p class="section-dek">周回の調子や、たった今起きたことを確認できる場所です。</p>
+      <div class="section-head"><span class="section-num">17</span><h2>進行とセーブ</h2></div>
+      <p class="section-dek">周回を確認する場所と、進行が守られる仕組み。</p>
       <ul>
-          <li>Steamのランキングでは、クリック数、クリックダメージ、プレステージ回数、ボス撃破数、最高到達階を競います。</li>
-          <li>統計画面には、収入、支出、クリック、作成、プレイ時間などが長く記録されます。</li>
-          <li><strong>アクティビティログ</strong>には、このセッションで起きたこと（報酬、開放、ボス、購入など）が並び、隅の通知から開けます。</li>
-          <li><strong>アップデート</strong>パネルは最新のアップデート内容をお使いの言語で表示し、新しいアップデートの後に一度だけ自動で開きます。</li>
+          <li>Steamのリーダーボード、統計画面、<strong>アクティビティログ</strong>で進行を確認できます。</li>
+          <li><strong>アップデート</strong>パネルには最新のアップデート情報が表示されます。</li>
+          <li>ゲームは定期的に自動保存し、Steam Cloudにバックアップします。別のPCでも続きから遊べます。</li>
+          <li>Discordを開いていると、今いる階と覚醒 / 昇華のレベルがプロフィールに表示されます。</li>
         </ul>
     </section>
 
-    <section id="save">
-      <div class="section-head"><span class="section-num">23</span><h2>セーブ</h2></div>
-      <p class="section-dek">結論：進行はいくつもの方法で同時に守られています。</p>
-      <ul>
-          <li>ゲームは<strong>15秒</strong>ごとに暗号化して自動セーブします。</li>
-          <li>約<strong>45秒</strong>ごと、そして終了や一時停止のたびにSteamクラウドにバックアップするので、別のPCでも続きから遊べます。</li>
-          <li>セーブファイルが壊れていても、ゲームが自動でバックアップに切り替えます。</li>
-          <li>セーブをクリップボードにコピーして、別の端末に貼り付けることもできます。</li>
-        </ul>
-    </section>
-
-    <section id="languages">
-      <div class="section-head"><span class="section-num">24</span><h2>言語</h2></div>
-      <p class="section-dek">ゲームは18言語に対応しています。</p>
-      <p>英語、トルコ語、ドイツ語、フランス語、スペイン語、中南米スペイン語、イタリア語、ポーランド語、ブラジルポルトガル語、ロシア語、ウクライナ語、日本語、韓国語、簡体字中国語、繁体字中国語、タイ語、インドネシア語、ベトナム語。初回起動時に言語が自動で選ばれ、設定からいつでも変更できます。このガイドもすべての言語で読め、ページ上部から切り替えられます。</p>
-    </section>
-
-    <footer class="doc-footer">ここの数値はゲームの現在のバランスに基づいており、アップデートで変わることがあります。実際のお金で買う商品の価格はSteamが決め、お使いの通貨で表示されるため、ここには載せていません。</footer>
+    <footer class="doc-footer">ゲームはアップデートで変わります。このガイドは全体像を示すものです。実際のお金で売られる商品の価格は、Steamがあなたの通貨で表示します。</footer>
   </main>
 </div>
 

@@ -11,7 +11,7 @@ Turkish, 1,000 / 0.5 in English). build.py formats them with the locale each
 language file declares.
 """
 
-DATE = "2026-09-14"
+DATE = "2026-09-21"
 
 # CurrencySystem/Data/Enums/CurrencyType.cs (released currencies)
 CURRENCY_COUNT = 7

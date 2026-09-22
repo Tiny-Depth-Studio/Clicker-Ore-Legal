@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <title>Clicker Ore Game - 玩家指南</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="礦坑怎麼運作：貨幣、鎬、寵物、工人、附魔、技能、聲望、首領和商店，不用公式也能看懂。">
+<meta name="description" content="礦坑是怎麼運作的：鎬子、寵物、工人、附魔、技能、覺醒、飛升、首領、深淵和商店，簡明扼要。">
 <style>
   :root {
     --bg: #14110d;
@@ -28,6 +28,8 @@
     --cur-key: #d98a63;
     --cur-skillstone: #7fc9a0;
     --cur-orestone: #b5a68c;
+    --cur-abysskey: #8f7fd6;
+    --cur-pureessence: #d7bff5;
 
     --font-display: "Bahnschrift", "Segoe UI Semibold", "Arial Narrow Bold", "Arial Narrow", sans-serif;
     --font-body: "Sitka Text", "Iowan Old Style", Georgia, "Times New Roman", serif;
@@ -481,38 +483,31 @@
     <div class="toc-brand">Clicker Ore Game<small>玩家指南</small></div>
     <ul class="toc-list">
       <li><a href="#start"><span class="toc-num">01</span>從哪裡開始</a></li>
-      <li><a href="#currencies"><span class="toc-num">02</span>7 種貨幣</a></li>
-      <li><a href="#damage"><span class="toc-num">03</span>點擊傷害與自動傷害</a></li>
-      <li><a href="#critical"><span class="toc-num">04</span>暴擊</a></li>
-      <li><a href="#pickaxes"><span class="toc-num">05</span>鎬</a></li>
-      <li><a href="#suits"><span class="toc-num">06</span>護甲</a></li>
-      <li><a href="#temperature"><span class="toc-num">07</span>高溫</a></li>
-      <li><a href="#pets"><span class="toc-num">08</span>寵物</a></li>
-      <li><a href="#workers"><span class="toc-num">09</span>工人</a></li>
-      <li><a href="#enchantments"><span class="toc-num">10</span>附魔</a></li>
-      <li><a href="#floors"><span class="toc-num">11</span>樓層、礦石與深度</a></li>
-      <li><a href="#skills"><span class="toc-num">12</span>主動技能</a></li>
-      <li><a href="#titles"><span class="toc-num">13</span>稱號</a></li>
-      <li><a href="#tasks"><span class="toc-num">14</span>委託與Taskium</a></li>
-      <li><a href="#missions"><span class="toc-num">15</span>每日任務</a></li>
-      <li><a href="#trade"><span class="toc-num">16</span>商人</a></li>
-      <li><a href="#extras"><span class="toc-num">17</span>免費獎勵</a></li>
-      <li><a href="#prestige"><span class="toc-num">18</span>聲望</a></li>
-      <li><a href="#bosses"><span class="toc-num">19</span>首領</a></li>
-      <li><a href="#achievements"><span class="toc-num">20</span>成就</a></li>
-      <li><a href="#store"><span class="toc-num">21</span>商店</a></li>
-      <li><a href="#progress"><span class="toc-num">22</span>查看你的進度</a></li>
-      <li><a href="#save"><span class="toc-num">23</span>存檔</a></li>
-      <li><a href="#languages"><span class="toc-num">24</span>語言</a></li>
+      <li><a href="#currencies"><span class="toc-num">02</span>貨幣</a></li>
+      <li><a href="#damage"><span class="toc-num">03</span>傷害與暴擊</a></li>
+      <li><a href="#equipment"><span class="toc-num">04</span>鎬子、護甲與寵物</a></li>
+      <li><a href="#temperature"><span class="toc-num">05</span>熱度</a></li>
+      <li><a href="#workers"><span class="toc-num">06</span>工人</a></li>
+      <li><a href="#enchantments"><span class="toc-num">07</span>附魔</a></li>
+      <li><a href="#floors"><span class="toc-num">08</span>樓層與礦石</a></li>
+      <li><a href="#skills"><span class="toc-num">09</span>技能與稱號</a></li>
+      <li><a href="#tasks"><span class="toc-num">10</span>任務</a></li>
+      <li><a href="#trade"><span class="toc-num">11</span>商人</a></li>
+      <li><a href="#extras"><span class="toc-num">12</span>免費獎勵</a></li>
+      <li><a href="#awakening"><span class="toc-num">13</span>覺醒</a></li>
+      <li><a href="#ascension"><span class="toc-num">14</span>昇華</a></li>
+      <li><a href="#dungeons"><span class="toc-num">15</span>首領與深淵</a></li>
+      <li><a href="#store"><span class="toc-num">16</span>商店與成就</a></li>
+      <li><a href="#progress"><span class="toc-num">17</span>進度與存檔</a></li>
     </ul>
   </nav>
 
   <main>
     <header class="hero">
       <div class="strata" role="presentation"></div>
-      <div class="eyebrow">玩家指南 - 2026-09-14</div>
-      <h1 class="title">礦坑裡的一切，<br>說得清清楚楚</h1>
-      <p class="subtitle">每個系統做什麼、什麼時候解鎖、下一個小時花在哪裡最划算。沒有公式，只講真正重要的決定。</p>
+      <div class="eyebrow">玩家指南 - 2026-09-21</div>
+      <h1 class="title">整座礦坑，<br>一文講完</h1>
+      <p class="subtitle">每個系統有什麼用，時間該花在哪裡。沒有數字和公式，只講你需要知道的。</p>
       <div class="langbar">
         <div class="langbar-label">語言</div>
         <div class="langbar-list"><a href="player_guide_en.html" hreflang="en">English</a><a href="player_guide_tr.html" hreflang="tr">Türkçe</a><a href="player_guide_de.html" hreflang="de">Deutsch</a><a href="player_guide_fr.html" hreflang="fr">Français</a><a href="player_guide_es.html" hreflang="es">Español</a><a href="player_guide_es_la.html" hreflang="es-419">Español (Latinoamérica)</a><a href="player_guide_it.html" hreflang="it">Italiano</a><a href="player_guide_pl.html" hreflang="pl">Polski</a><a href="player_guide_pt_br.html" hreflang="pt-BR">Português (Brasil)</a><a href="player_guide_ru.html" hreflang="ru">Русский</a><a href="player_guide_uk.html" hreflang="uk">Українська</a><a href="player_guide_ja.html" hreflang="ja">日本語</a><a href="player_guide_ko.html" hreflang="ko">한국어</a><a href="player_guide_zh_hans.html" hreflang="zh-Hans">简体中文</a><span>繁體中文</span><a href="player_guide_th.html" hreflang="th">ไทย</a><a href="player_guide_id.html" hreflang="id">Bahasa Indonesia</a><a href="player_guide_vi.html" hreflang="vi">Tiếng Việt</a></div>
@@ -521,711 +516,300 @@
 
     <section id="start">
       <div class="section-head"><span class="section-num">01</span><h2>從哪裡開始</h2></div>
-      <p class="section-dek">依遊戲解鎖系統的順序分成三個階段。</p>
+      <p class="section-dek">你挖得越深，遊戲就越會一點一點打開它的系統。</p>
       <div class="strategy-track">
           <div class="strategy-stage">
-            <div class="stage-label">前期 - 第 1 層到第 100 層</div>
+            <div class="stage-label">前期</div>
             <ul>
-              <li>持續強化鎬；越往深處走，新的鎬就會解鎖。</li>
-              <li>碎礦在第 50 層出現，憤怒點擊在第 100 層出現。</li>
-              <li>金色氣球飄來就點，鑽石有餘裕時買下洛奇。</li>
+              <li>不停升級鎬子；更深的樓層會解鎖新鎬子。</li>
+              <li>看到金幣氣球和黃金水晶就點，並開始使用最初的技能。</li>
+              <li>鑽石夠了就買下第一隻寵物。</li>
             </ul>
           </div>
           <div class="strategy-stage">
-            <div class="stage-label">中期 - 第 100 層到第 350 層</div>
+            <div class="stage-label">中期</div>
             <ul>
-              <li>越過第 100 層、進度變慢時就去聲望。</li>
-              <li>委託在第 125 層開啟，護甲在第 130 層，技能樹在第 180 層，商人在第 200 層。</li>
-              <li>把精華分配到 7 項屬性上，不要只堆一項。</li>
+              <li>進度變慢時做一次覺醒，換取精華。</li>
+              <li>任務、護甲、技能樹和商人都在這個階段開放。</li>
+              <li>把精華分散投入，別全堆在一個屬性上。</li>
             </ul>
           </div>
           <div class="strategy-stage">
-            <div class="stage-label">後期 - 第 350 層以後</div>
+            <div class="stage-label">後期</div>
             <ul>
-              <li>有鑰匙就去打首領，能拿到精華和礦石結晶。</li>
-              <li>附魔材料從第 500 層開始掉落，工人從第 600 層開始加入。</li>
-              <li>保持護甲等級，別讓高溫吃掉你的傷害。</li>
+              <li>有鑰匙時就去打首領，之後開始深淵挑戰。</li>
+              <li>工人加入，附魔材料開始掉落。</li>
+              <li>繼續升級護甲，別讓熱度吃掉你的傷害。</li>
+            </ul>
+          </div>
+          <div class="strategy-stage">
+            <div class="stage-label">長期</div>
+            <ul>
+              <li>在更深的地方會解鎖昇華，它會重置整個覺醒循環。</li>
+              <li>作為交換你會獲得純淨精華，讓之後每一輪都永久變快。</li>
             </ul>
           </div>
         </div>
       <div class="callout">
-          <div class="callout-label">小知識</div>
-          數字漲得很快，遊戲會先改用縮寫，再改用 <strong>1.23e45</strong> 這樣的科學記號。沒有上限，只是寫法變了。
+          <div class="callout-label">值得一提</div>
+          數字增長很快；遊戲會先切換到簡寫，再切換到科學記數法。並沒有上限，變的只是寫法。
         </div>
     </section>
 
     <section id="currencies">
-      <div class="section-head"><span class="section-num">02</span><h2>7 種貨幣</h2></div>
-      <p class="section-dek">每種貨幣支撐不同的系統。把對的貨幣花錯地方，是前期最常見的失誤。</p>
+      <div class="section-head"><span class="section-num">02</span><h2>貨幣</h2></div>
+      <p class="section-dek">每一種都支撐著不同的系統。</p>
       <div class="currency-grid">
         <div class="cur-card" style="--dot:var(--cur-gold)">
           <h4><span class="dot"></span>金幣</h4>
-          <p><b>擊碎礦石</b>取得，氣球、工人、委託和離線時間也會給。</p>
-          <p>用於鎬、強化和裝備技能，是最主要的貨幣。</p>
+          <p>靠<b>敲碎礦石</b>取得；氣球、工人、任務和離線時間也會帶來金幣。</p>
+          <p>用於鎬子、升級和物品技能。</p>
         </div>
         <div class="cur-card" style="--dot:var(--cur-diamond)">
           <h4><span class="dot"></span>鑽石</h4>
-          <p>來自<b>真實貨幣購買</b>、幸運轉盤和優惠碼。</p>
-          <p>用於寵物、無限道具、時間跳躍、寶箱和額外轉動。</p>
+          <p>來自<b>真實貨幣購買</b>、幸運轉盤獎勵和促銷兌換碼。</p>
+          <p>用於寵物、Infinity 物品、時間跳躍、寶箱和鑰匙禮包。</p>
         </div>
         <div class="cur-card" style="--dot:var(--cur-essence)">
           <h4><span class="dot"></span>精華</h4>
-          <p>來自<b>聲望</b>、擊敗首領和商人。</p>
-          <p>用於 7 項永久聲望屬性。</p>
+          <p>是<b>覺醒</b>的獎勵；首領和商人也會給一些。</p>
+          <p>用於永久的覺醒屬性。</p>
         </div>
         <div class="cur-card" style="--dot:var(--cur-taskium)">
           <h4><span class="dot"></span>Taskium</h4>
-          <p>每次成功點擊 <b>+1</b>。</p>
-          <p>用於接取和刷新委託。</p>
+          <p>每次點擊命中都會攢下一點。</p>
+          <p>用於接受任務和重新刷新任務。</p>
         </div>
         <div class="cur-card" style="--dot:var(--cur-key)">
           <h4><span class="dot"></span>地城鑰匙</h4>
-          <p>每天免費一把，另有商店禮包和幸運轉盤。</p>
-          <p>用於進入首領戰，每次 1 把。</p>
+          <p>每天一把免費，此外來自商店和幸運轉盤。</p>
+          <p>用於進入首領戰。</p>
         </div>
         <div class="cur-card" style="--dot:var(--cur-skillstone)">
           <h4><span class="dot"></span>技能石</h4>
-          <p>來自商店禮包和商人。</p>
-          <p>用於升級 8 個主動技能。</p>
+          <p>來自商店和商人。</p>
+          <p>用於強化主動技能。</p>
         </div>
         <div class="cur-card" style="--dot:var(--cur-orestone)">
           <h4><span class="dot"></span>礦石結晶</h4>
-          <p>每擊碎一塊礦石取得 <b>1-5</b> 個，成就和首領也會給。</p>
-          <p>用於交易、製作附魔和升級工人。</p>
+          <p>每塊敲碎的礦石都會掉落，成就、首領和深淵挑戰也會給。</p>
+          <p>用於兌換、製作附魔和升級工人。</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-abysskey)">
+          <h4><span class="dot"></span>深淵鑰匙</h4>
+          <p>每天一把免費，此外可在商店用鑽石購買。</p>
+          <p>用於進入深淵挑戰。</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-pureessence)">
+          <h4><span class="dot"></span>純淨精華</h4>
+          <p>是<b>昇華</b>的獎勵，別處拿不到。</p>
+          <p>只用於昇華屬性。</p>
         </div>
       </div>
       <div class="callout">
           <div class="callout-label">伺服器貨幣</div>
-          鑽石和地城鑰匙保存在伺服器上，用它們購買時需要連線。如果連線中斷，嘗試購買時遊戲會自動重新連線。
+          鑽石、地城鑰匙和深淵鑰匙保存在伺服器上；要花掉它們需要連線。
         </div>
     </section>
 
     <section id="damage">
-      <div class="section-head"><span class="section-num">03</span><h2>點擊傷害與自動傷害</h2></div>
-      <p class="section-dek">兩種獨立的傷害來源，靠不同的東西成長。</p>
-      <p><strong>點擊傷害</strong>就是點一下造成的傷害。它隨第一把鎬的等級和技能、憤怒點擊技能、稱號、碎岩之手聲望屬性以及附魔成長。升級力量合一後，自動傷害的一部分也會加到每次點擊上。</p>
-      <p><strong>自動傷害</strong>（每秒）來自第二把及之後的鎬、狂暴技能、永恆熔爐屬性、附魔和你的寵物。只要礦石還活著，它就持續生效。</p>
-      <div class="callout">
-          <div class="callout-label">寵物是例外</div>
-          寵物傷害在大多數倍率<strong>之後</strong>才加上——高溫、稱號、聲望和增益都不會放大它，只有尊爵禮包能放大。後期光靠寵物等級撐不住。
-        </div>
-    </section>
-
-    <section id="critical">
-      <div class="section-head"><span class="section-num">04</span><h2>暴擊</h2></div>
-      <p class="section-dek">每次點擊都可能暴擊，打得更狠。</p>
-      <p>初始暴擊率 <strong>5%</strong>，倍率 <strong>x1.5</strong>。爆擊技能、鎬技能、礦石神諭和劫滅之力聲望屬性、稱號和附魔都能提高它們。暴擊率上限為 <strong>100%</strong>，達到後無法再購買該聲望屬性。</p>
-    </section>
-
-    <section id="pickaxes">
-      <div class="section-head"><span class="section-num">05</span><h2>鎬</h2></div>
-      <p class="section-dek">45 把鎬，隨深度解鎖，是你傷害的主心骨。</p>
+      <div class="section-head"><span class="section-num">03</span><h2>傷害與暴擊</h2></div>
+      <p class="section-dek">兩條獨立的傷害來源，以及把它們成倍放大的暴擊。</p>
       <ul>
-          <li>鎬<strong>依樓層解鎖</strong>：第二把在第 15 層，第十把在第 782 層，最後一把在第 <strong>13,624</strong> 層。越往下，間隔越大。</li>
-          <li>第一把 <strong>5 金幣</strong>，第二把 50，之後每把大約是上一把的 <strong>8 倍</strong>。</li>
-          <li>每升一級，費用比上一級高約 <strong>6%</strong>。</li>
-          <li>只有<strong>第一把</strong>鎬提供點擊傷害，其餘全部提供每秒自動傷害。</li>
-          <li>每把鎬有 6 個技能，依 5 / 25 / 125 / 625 / 3,125 / 15,625 的等級階梯出現和解鎖，最後幾個是長期目標。有的只強化這把鎬，有的強化所有鎬。</li>
+          <li><strong>點擊傷害</strong>來自第一把鎬子、憤怒點擊技能、稱號、覺醒屬性和附魔。</li>
+          <li><strong>自動傷害</strong>來自其他鎬子、狂暴技能、寵物和附魔；只要礦石還活著就持續不斷地打。</li>
+          <li>力量合一越高，自動傷害中就有越大一部分也會加到每次點擊上。</li>
+          <li>每次點擊都可能<strong>暴擊</strong>，打出高得多的傷害。暴擊率和暴擊倍率會隨技能、覺醒屬性、稱號和附魔提升。</li>
+        </ul>
+    </section>
+
+    <section id="equipment">
+      <div class="section-head"><span class="section-num">04</span><h2>鎬子、護甲與寵物</h2></div>
+      <p class="section-dek">你的傷害和生存能力的基礎。</p>
+      <ul>
+          <li><strong>鎬子</strong>隨深度解鎖。第一把支撐點擊傷害，其餘支撐自動傷害。</li>
+          <li><strong>護甲</strong>一開始就屬於你；它不用購買，只能升級，用來抵擋熱度。</li>
+          <li><strong>寵物</strong>用鑽石購買、用金幣升級，並造成自動傷害。擁有權是永久的。</li>
+          <li>三者都有隨等級開放的專屬技能；有的只幫該物品，有的惠及整個系列。</li>
         </ul>
       <div class="callout">
-          <div class="callout-label">大躍進</div>
-          從 <strong>100</strong> 級開始，之後每 150 級（250、400……），鎬會把自身產出做一次乘方：先是 <strong>^1.05</strong>，然後 ^1.1，依此類推。數字越大收益越驚人，所以把一把鎬推到下一個門檻通常是最划算的強化。
+          <div class="callout-label">大跨步</div>
+          在特定等級上，物品的威力會出現一次大跳躍。把一件物品推到下一個門檻，通常是最划算的升級。
         </div>
       <div class="callout warn">
-          <div class="callout-label">聲望會重新鎖住</div>
-          聲望會鎖住並重置所有鎬；在新一輪越過對應樓層後會再次解鎖。
+          <div class="callout-label">覺醒之後</div>
+          覺醒會重新鎖住鎬子，並重置護甲和寵物的升級。寵物本身仍然屬於你。
         </div>
-    </section>
-
-    <section id="suits">
-      <div class="section-head"><span class="section-num">06</span><h2>護甲</h2></div>
-      <p class="section-dek">5 套護甲一開始就全部擁有，用來抵禦高溫。</p>
-      <ul>
-          <li>護甲不用買，只需升級。每升一級耐熱增加約 <strong>5%</strong>（初始 50），費用比上一級高約 8.4%。</li>
-          <li>護甲和鎬一樣有乘方躍進，從 100 級開始，之後每 150 級一次。</li>
-          <li>每套護甲有 6 個技能，使用同樣的等級階梯（5 / 25 / 125 / 625 / 3,125 / 15,625）。</li>
-          <li>護甲面板在第 <strong>130</strong> 層開啟，同時出現溫度計。</li>
-        </ul>
     </section>
 
     <section id="temperature">
-      <div class="section-head"><span class="section-num">07</span><h2>高溫</h2></div>
-      <p class="section-dek">越往下越熱，高溫會悄悄削減你的傷害。</p>
-      <ul>
-          <li>樓層溫度穩定上升——<strong>每層約 1.04 倍</strong>，大概每二十多層翻一倍。</li>
-          <li>只要耐熱不低於樓層溫度的 <strong>1.5 倍</strong>，溫度計保持清空，不會有任何損失。</li>
-          <li>耐熱一旦低於溫度，傷害就開始流失；在 <strong>0.5 倍</strong>時只剩二十分之一，損失 <strong>95%</strong>。</li>
-          <li>護甲面板有耐熱自動購買開關；經常往深處推進的話就一直開著。高溫只存在於主礦坑，首領戰裡沒有。</li>
-        </ul>
+      <div class="section-head"><span class="section-num">05</span><h2>熱度</h2></div>
+      <p class="section-dek">越往深處越熱，而熱度會悄悄削掉你的傷害。</p>
+      <p>如果耐熱跟不上樓層溫度，你的傷害就會像被融掉一樣下降。護甲面板裡有耐熱的自動購買開關。熱度只存在於主礦坑。</p>
       <div class="callout warn">
-          <div class="callout-label">卡住的時候</div>
-          礦石怎麼都砸不碎的那道牆，幾乎總是高溫而不是傷害不夠。花錢之前先看看溫度計。
-        </div>
-    </section>
-
-    <section id="pets">
-      <div class="section-head"><span class="section-num">08</span><h2>寵物</h2></div>
-      <p class="section-dek">5 隻寵物，用鑽石購買，用金幣升級。</p>
-      <ul>
-          <li>價格從 <strong>150</strong> 到 <strong>250</strong> 鑽石（150 / 175 / 200 / 225 / 250）。</li>
-          <li>每級把鎬點擊傷害的約 <strong>1%</strong> 轉為自動傷害，並乘以寵物的序號——同等級下暗影碎片是洛奇的五倍。</li>
-          <li>每次升級費用約漲 <strong>20%</strong>，從 100 級起寵物也享有和鎬一樣的乘方躍進。</li>
-          <li>每隻寵物有 6 個技能；有的只強化自己，有的強化所有寵物。</li>
-          <li>寵物面板在第 <strong>30</strong> 層開啟，或者在你擁有寵物時立即開啟。</li>
-        </ul>
-      <div class="callout warn">
-          <div class="callout-label">聲望與寵物</div>
-          聲望會把所有寵物重置回 <strong>1 級</strong>並清空技能。但擁有權是永久的——寵物不用重新買。
+          <div class="callout-label">如果進度卡住</div>
+          礦石突然敲不動的那堵牆，多半就是熱度。在把錢花到別處之前，先看一眼熱度條。
         </div>
     </section>
 
     <section id="workers">
-      <div class="section-head"><span class="section-num">09</span><h2>工人</h2></div>
-      <p class="section-dek">5 名幫手，在遊戲開著時替你挖礦。</p>
+      <div class="section-head"><span class="section-num">06</span><h2>工人</h2></div>
+      <p class="section-dek">在遊戲開著時替你挖礦的幫手。</p>
       <ul>
-          <li>越過第 <strong>600 / 800 / 1,000 / 1,200 / 1,400</strong> 層時工人會加入。依你歷史最高樓層計算，所以不會再被鎖住。</li>
-          <li>給每名工人一把鎬——一把鎬同時只能給一個人用，你自己的傷害不會減少。沒有鎬的工人什麼也賺不到。</li>
-          <li>收入每 1 秒增加一次，存進收益池，直到你領取。鎬越強，賺得越多。</li>
-          <li>升級工人要花礦石結晶——第一級 100，之後每次約貴 2%——每級收入約增加 1%。</li>
+          <li>越往深處會有新工人加入，而且不會再被鎖住。</li>
+          <li>給每個工人一把鎬子；沒有鎬子的工人什麼也賺不到。把鎬子交出去不會降低你自己的傷害。</li>
+          <li>收益會積在池子裡，等你去領取。工人用礦石結晶升級。</li>
         </ul>
       <div class="callout warn">
-          <div class="callout-label">聲望前記得領取</div>
-          工人只在遊戲執行時賺錢，離線不賺。聲望會保留他們的等級，但<strong>會清空未領取的收入</strong>，並收回鎬。
+          <div class="callout-label">覺醒之前記得領取</div>
+          工人只在遊戲開著時賺取收益。覺醒會保留他們的等級，但會清空未領取的收益。
         </div>
     </section>
 
     <section id="enchantments">
-      <div class="section-head"><span class="section-num">10</span><h2>附魔</h2></div>
-      <p class="section-dek">用挖到的材料製作附魔，裝到鎬、護甲和寵物上。</p>
-      <p>擊碎礦石可能掉落 4 種品質的<strong>附魔粉塵</strong>和<strong>附魔碎片</strong>。本輪最高樓層越過某品質的門檻後，該品質才開始掉落。在比最高樓層高出 100 層以上的地方挖礦，機率會降低，最低降到正常的 10%。</p>
-      <div class="table-wrap">
-        <table>
-        <thead><tr>
-        <th>品質</th>
-        <th class="num">屬性數</th>
-        <th class="num">開始掉落樓層</th>
-        <th class="num">粉塵機率</th>
-        <th class="num">碎片機率</th>
-        <th class="num">製作（粉塵 / 碎片 / 礦石結晶）</th>
-        </tr></thead>
-        <tbody>
-        <tr>
-        <td>普通</td>
-        <td class="num">1</td>
-        <td class="num">500</td>
-        <td class="num">5%</td>
-        <td class="num">0.5%</td>
-        <td class="num">10 / 1 / 40</td>
-        </tr>
-        <tr>
-        <td>稀有</td>
-        <td class="num">1-2</td>
-        <td class="num">1,000</td>
-        <td class="num">2%</td>
-        <td class="num">0.1%</td>
-        <td class="num">20 / 1 / 200</td>
-        </tr>
-        <tr>
-        <td>史詩</td>
-        <td class="num">2-3</td>
-        <td class="num">2,000</td>
-        <td class="num">1%</td>
-        <td class="num">0.03%</td>
-        <td class="num">30 / 1 / 1,000</td>
-        </tr>
-        <tr>
-        <td>傳說</td>
-        <td class="num">3-4</td>
-        <td class="num">4,000</td>
-        <td class="num">0.5%</td>
-        <td class="num">0.01%</td>
-        <td class="num">50 / 1 / 5,000</td>
-        </tr>
-        </tbody></table></div>
+      <div class="section-head"><span class="section-num">07</span><h2>附魔</h2></div>
+      <p class="section-dek">用挖到的材料製作附魔，裝到鎬子、護甲和寵物上。</p>
       <ul>
-          <li>工匠用粉塵、一個碎片和礦石結晶手續費製作帶隨機屬性的附魔。品質越高，屬性越多、倍率越大（x1 / x2 / x4 / x6）。</li>
-          <li>每把鎬、每套護甲和每隻寵物都有 <strong>8 個欄位</strong>，在第 1,000 / 3,000 / 6,000 / 9,000 / 12,000 / 15,000 / 18,000 / 21,000 層開啟。依歷史最高樓層計算，欄位開了就不會再關。</li>
-          <li>有些屬性只作用於所在物品（點擊傷害、自動傷害、耐熱）；有些作用於一切（金幣、暴擊、DPS 比例、強化費用）。有一種特殊屬性強化的是物品自身的技能，所以只在已購買技能的物品上生效。</li>
-          <li>選擇清單只顯示在該物品上確實有用的附魔。</li>
-          <li>在商人，10 個同品質的粉塵或碎片可以換成 1 個更高品質的。不需要的附魔也可以分解成粉塵（依品質分別為 5 / 10 / 15 / 25）——分解無法復原。</li>
+          <li>敲碎礦石會掉落<strong>附魔粉塵</strong>和<strong>附魔碎片</strong>。更高品質的材料出現在更深的地方。</li>
+          <li>工匠把粉塵和碎片變成屬性隨機的附魔。品質越高，屬性越多也越強。</li>
+          <li>每件物品都有隨深度開放的附魔欄位。</li>
+          <li>用不上的附魔可以在商人那裡分解成粉塵，材料也能向上兌換一檔品質。</li>
         </ul>
       <div class="callout">
-          <div class="callout-label">聲望很安全</div>
-          聲望絕不會刪除附魔。物品重新上鎖時，上面的附魔會回到在第 500 層開啟的背包裡。
+          <div class="callout-label">覺醒很安全</div>
+          覺醒絕不會刪除附魔；被重新鎖住的物品上的附魔會回到背包。
         </div>
     </section>
 
     <section id="floors">
-      <div class="section-head"><span class="section-num">11</span><h2>樓層、礦石與深度</h2></div>
-      <p class="section-dek">樓層決定礦石有多硬、給多少金幣；深度決定礦石長什麼樣子。</p>
+      <div class="section-head"><span class="section-num">08</span><h2>樓層與礦石</h2></div>
+      <p class="section-dek">每一層都比上一層難一點，也更划算一點。</p>
       <ul>
-          <li>每層的生命值和金幣都比上一層多一點，而且越往後曲線越陡。</li>
-          <li>每 <strong>10 層</strong>有一層限時層：開始 <strong>20 秒</strong>倒數，生命值 x5，金幣 x2。</li>
-          <li>難度也以 100 層為週期變化，週期中有些樓層相對生命值更划算。</li>
-          <li>每塊礦石除了金幣，還掉落 <strong>1-5</strong> 個礦石結晶。</li>
-          <li><strong>5 種稀有礦石</strong>（Ferrovyx, Karnyth, Thalveris, Umbryssa, Zephiris）可能取代普通礦石出現。機率約在 10,000 分之一到 1,000,000 分之一之間，擊碎一次就永久記錄，之後不會再出現。</li>
+          <li>時不時會出現<strong>限時樓層</strong>：在倒數結束前敲碎礦石，它會給出更多金幣。若時間耗盡，你會掉回一層，自動前進也會關閉。</li>
+          <li>每塊礦石在給金幣之外還會掉落礦石結晶。</li>
+          <li>極偶爾會出現<strong>稀有礦石</strong>（Ferrovyx, Karnyth, Thalveris, Umbryssa, Zephiris），每一種只會被找到一次。</li>
+          <li>電梯讓你在已到達的樓層之間往返。區域用於在主礦坑、地城和深淵之間切換。</li>
         </ul>
-      <div class="callout warn">
-          <div class="callout-label">限時層不好惹</div>
-          時間耗盡會讓你<strong>退回一層</strong>，並關閉自動推進。先挖一會兒再重試。
+      <div class="callout">
+          <div class="callout-label">在下層刷效率很低</div>
+          粉塵和碎片在你到達過的最深樓層附近掉得最好；待在低得多的地方，機率會明顯下降。
         </div>
-      <p>電梯可以帶你回到本輪到過的任何樓層。手動選層會關閉自動推進；想繼續往下時再打開。區域面板用來在主礦坑和首領地城之間切換。</p>
-      <p>礦石共有 <strong>40</strong> 種，出現哪些由深度決定。種類只改變外觀——生命值和金幣由樓層決定。</p>
-      <div class="table-wrap">
-        <table>
-        <thead><tr>
-        <th class="num">深度</th>
-        <th class="num">礦石種類</th>
-        <th class="num">約在樓層</th>
-        </tr></thead>
-        <tbody>
-        <tr>
-        <td class="num">0-100 公尺</td>
-        <td class="num">9</td>
-        <td class="num">~54</td>
-        </tr>
-        <tr>
-        <td class="num">100-500 公尺</td>
-        <td class="num">20</td>
-        <td class="num">~129</td>
-        </tr>
-        <tr>
-        <td class="num">500-1,500 公尺</td>
-        <td class="num">30</td>
-        <td class="num">~196</td>
-        </tr>
-        <tr>
-        <td class="num">1,500 公尺+</td>
-        <td class="num">40</td>
-        <td class="num">-</td>
-        </tr>
-        </tbody></table></div>
     </section>
 
     <section id="skills">
-      <div class="section-head"><span class="section-num">12</span><h2>主動技能</h2></div>
-      <p class="section-dek">8 個技能，每個都是限時增益加冷卻。</p>
-      <p>到達對應樓層時技能<strong>免費</strong>取得，從 1 級開始使用。升到 7 級總共需要 <strong>63 個技能石</strong>，8 個全部升滿需要 <strong>504</strong> 個。等級越高，持續越久、冷卻越短。</p>
-      <div class="table-wrap">
-        <table>
-        <thead><tr>
-        <th>技能</th>
-        <th class="num">樓層</th>
-        <th class="num">1 級（持續 / 冷卻）</th>
-        <th class="num">7 級（持續 / 冷卻）</th>
-        <th class="num">效果</th>
-        </tr></thead>
-        <tbody>
-        <tr>
-        <td>碎礦</td>
-        <td class="num">50</td>
-        <td class="num">30秒 / 540秒</td>
-        <td class="num">90秒 / 180秒</td>
-        <td class="num">7 → 13 /秒</td>
-        </tr>
-        <tr>
-        <td>憤怒點擊</td>
-        <td class="num">100</td>
-        <td class="num">40秒 / 660秒</td>
-        <td class="num">210秒 / 300秒</td>
-        <td class="num">x2 → x5</td>
-        </tr>
-        <tr>
-        <td>爆擊</td>
-        <td class="num">150</td>
-        <td class="num">30秒 / 600秒</td>
-        <td class="num">150秒 / 240秒</td>
-        <td class="num">x1.3 → x1.9</td>
-        </tr>
-        <tr>
-        <td>狂暴</td>
-        <td class="num">200</td>
-        <td class="num">40秒 / 840秒</td>
-        <td class="num">160秒 / 480秒</td>
-        <td class="num">x2 → x3.5</td>
-        </tr>
-        <tr>
-        <td>黃金狂熱</td>
-        <td class="num">250</td>
-        <td class="num">50秒 / 1,020秒</td>
-        <td class="num">290秒 / 660秒</td>
-        <td class="num">x2 → x5</td>
-        </tr>
-        <tr>
-        <td>耐熱</td>
-        <td class="num">300</td>
-        <td class="num">30秒 / 660秒</td>
-        <td class="num">140秒 / 300秒</td>
-        <td class="num">x2 → x5</td>
-        </tr>
-        <tr>
-        <td>超載</td>
-        <td class="num">350</td>
-        <td class="num">20秒 / 1,200秒</td>
-        <td class="num">20秒 / 840秒</td>
-        <td class="num">x1.5 → x3</td>
-        </tr>
-        <tr>
-        <td>時光倒流</td>
-        <td class="num">400</td>
-        <td class="num">1,200秒</td>
-        <td class="num">840秒</td>
-        <td class="num">-300秒 → -1,020秒</td>
-        </tr>
-        </tbody></table></div>
-      <p>第一條技能欄在第 50 層開啟；花技能石的技能樹在第 <strong>180</strong> 層開啟。技能等級在聲望後保留。</p>
+      <div class="section-head"><span class="section-num">09</span><h2>技能與稱號</h2></div>
+      <p class="section-dek">限時強化，以及往下挖就會自己到手的加成。</p>
+      <ul>
+          <li><strong>主動技能</strong>隨深度免費解鎖；短暫強化你之後進入冷卻。它們用技能石在技能樹裡變強，而且不會因覺醒而消失。</li>
+          <li><strong>稱號</strong>會在你往下挖時自動到手，提供傷害、金幣和耐熱等加成。覺醒之後需要重新取得。</li>
+        </ul>
       <div class="callout">
           <div class="callout-label">連招</div>
-          先放超載，再放你真正想強化的技能，例如黃金狂熱。之後時光倒流會縮短你上一個用過的技能的冷卻，讓它更快回來。
+          先用超載，再用你想放大的技能，例如黃金狂熱。之後時光倒流會縮短上一個技能的冷卻。
         </div>
     </section>
 
-    <section id="titles">
-      <div class="section-head"><span class="section-num">13</span><h2>稱號</h2></div>
-      <p class="section-dek">100 個稱號，往下挖時自動取得。</p>
-      <ul>
-          <li>稱號涵蓋第 1 層到第 <strong>50,000</strong> 層，依本輪到達的最高樓層自動選擇。</li>
-          <li>每個稱號讓所帶加成增加約 <strong>+0.1</strong>。</li>
-          <li>加成分階段出現——點擊傷害、自動傷害、耐熱、金幣、暴擊倍率、暴擊率和計入點擊的 DPS 比例，分別從第 2 / 6 / 11 / 16 / 21 / 26 / 31 個稱號開始。</li>
-          <li>聲望會讓你回到前面的稱號；再次往下挖時它們會回來。</li>
-        </ul>
-    </section>
-
     <section id="tasks">
-      <div class="section-head"><span class="section-num">14</span><h2>委託與Taskium</h2></div>
-      <p class="section-dek">把點擊變成第二份收入的支線玩法。</p>
+      <div class="section-head"><span class="section-num">10</span><h2>任務</h2></div>
+      <p class="section-dek">把點擊變成第二份收入的支線。</p>
       <ul>
-          <li>每次成功點擊取得 <strong>+1 Taskium</strong>。</li>
-          <li>接取委託花費 <strong>200</strong>，刷新花費 <strong>25</strong>。</li>
-          <li>委託面板在第 125 層開啟；6 個欄位在第 125 / 225 / 325 / 425 / 525 / 625 層開啟。</li>
-          <li>委託有 10 種類型、6 種稀有度。每個委託持續 60 分鐘，未接取的每小時更換一次。</li>
-          <li>金幣獎勵隨稀有度增加——為本輪最高樓層礦石金幣的 <strong>50-500</strong> 倍。最稀有的還會給精華。</li>
-        </ul>
-    </section>
-
-    <section id="missions">
-      <div class="section-head"><span class="section-num">15</span><h2>每日任務</h2></div>
-      <p class="section-dek">每天刷新的一小份目標清單。</p>
-      <ul>
-          <li>每天有 <strong>5 個任務</strong>——擊碎礦石、點擊、轉轉盤、擊敗首領、使用技能等。</li>
-          <li>每完成一個任務取得 <strong>10 分鐘 x2 增益</strong>（自動傷害、點擊傷害、暴擊或金幣）。</li>
-          <li>獎勵不會自動發放，要在任務面板領取。清單在 UTC 午夜重置。</li>
+          <li><strong>任務</strong>用Taskium接受；越稀有的任務獎勵越高。</li>
+          <li><strong>每日任務</strong>每天刷新，完成時會給短時強化。別忘了在面板裡領取獎勵。</li>
         </ul>
     </section>
 
     <section id="trade">
-      <div class="section-head"><span class="section-num">16</span><h2>商人</h2></div>
-      <p class="section-dek">在第 200 層開啟。礦石結晶和多餘材料在這裡變成有用的東西。</p>
-      <ul>
-          <li>1 個技能石 → <strong>5,000 個礦石結晶</strong>。</li>
-          <li><strong>2,000 個礦石結晶</strong> → 1 個精華。</li>
-          <li><strong>5,000 個礦石結晶</strong> → 1 個技能石。</li>
-          <li>每次貨幣交易收取固定 100,000 金幣手續費。材料交易和分解則改收礦石結晶。</li>
-        </ul>
-      <p>最重要的是換成技能石：不用在商店花錢，也能把長時間刷礦變成技能等級。</p>
+      <div class="section-head"><span class="section-num">11</span><h2>商人</h2></div>
+      <p class="section-dek">把多餘資源換成有用東西的地方。</p>
+      <p>你可以把礦石結晶換成精華或技能石，把附魔材料向上兌換一檔，也能分解不想要的附魔。最有價值的是換技能石：那是不在商店花錢也能強化技能的途徑。</p>
     </section>
 
     <section id="extras">
-      <div class="section-head"><span class="section-num">17</span><h2>免費獎勵</h2></div>
-      <p class="section-dek">幾乎只要上線就能拿的來源。</p>
+      <div class="section-head"><span class="section-num">12</span><h2>免費獎勵</h2></div>
+      <p class="section-dek">只要你露個面就能拿到的資源。</p>
       <ul>
-          <li><strong>金色氣球</strong>——從第 50 層起，每 500-700 秒飄來一個，一直等你點擊。給予本輪最高樓層礦石金幣的 <strong>x6</strong>。</li>
-          <li><strong>黃金水晶</strong>——從第 100 層起，每 800-1,300 秒出現一個。在主礦坑點擊後，礦石會變成持續 10 秒的獎勵礦石（生命值 x10、金幣 x14），金幣依每次命中發放。</li>
-          <li><strong>離線收益</strong>——離開 60 分鐘後開始計算，最多 12 小時。尊爵禮包可提高。</li>
-          <li><strong>遊戲時長獎勵</strong>——每玩 60 分鐘，取得最高樓層一分鐘金幣的約 100 倍。</li>
-          <li><strong>每日獎勵</strong>——商店裡每天 1 把免費地城鑰匙。沒有連續簽到要維持；需要連線。</li>
-          <li><strong>幸運轉盤</strong>——從第 100 層起，8 格轉盤每 3 小時刷新，送 1 次免費轉動。額外轉動花鑽石，從 10 起每次翻倍。抽中的格子在刷新前保持關閉；獎品有隨樓層成長的金幣、礦石結晶、增益、Taskium、50 鑽石和地城鑰匙。</li>
-          <li><strong>優惠碼</strong>——我們在公告和社群分享的代碼，填到 設定 > 優惠碼。每個代碼每個帳號只能用一次，部分代碼有使用次數上限。</li>
+          <li><strong>金幣氣球</strong>時不時飄過螢幕；點一下就有金幣。不會錯過——它會一直等到你點。</li>
+          <li>點擊<strong>黃金水晶</strong>會把礦石短暫變成金幣豐厚的獎勵礦石；只能在主礦坑裡撿到。</li>
+          <li><strong>離線收益</strong>在遊戲關閉時累積。</li>
+          <li><strong>遊戲時數獎勵</strong>會隨著你玩得越久給出金幣。</li>
+          <li><strong>每日獎勵</strong>每天在商店給一把免費地城鑰匙和一把免費深淵鑰匙，兩者互不影響。</li>
+          <li><strong>幸運轉盤</strong>每隔一段時間恢復，並給出免費轉盤機會。</li>
+          <li><strong>優惠碼</strong> - 我們在公告裡發布的兌換碼可以在設定選單中使用。</li>
         </ul>
     </section>
 
-    <section id="prestige">
-      <div class="section-head"><span class="section-num">18</span><h2>聲望</h2></div>
-      <p class="section-dek">用本輪進度換取永久實力。時機合適的話，這是遊戲裡成長最快的方式。</p>
-      <p>聲望面板在第 70 層出現。本輪<strong>越過第 100 層</strong>即可聲望——每一輪的要求都是同一層。</p>
+    <section id="awakening">
+      <div class="section-head"><span class="section-num">13</span><h2>覺醒</h2></div>
+      <p class="section-dek">把這一輪的進度換成永久的力量。</p>
       <ul>
-          <li><strong>重置：</strong>金幣、樓層進度、鎬／護甲／寵物的強化與技能、技能冷卻、稱號進度、Taskium、委託進度、工人的鎬分配以及未領取的工人收入。</li>
-          <li><strong>保留：</strong>鑽石及用鑽石買的一切、地城鑰匙、地城進度、精華、聲望屬性、技能樹等級、技能石、礦石結晶、附魔和背包、成就、統計、排行榜以及工人等級。</li>
-          <li>每一輪都從<strong>第 1 層</strong>重新開始，沒有初始金幣。</li>
+          <li>越過一定深度後就可以進行覺醒。每一輪都會重新從第一層開始。</li>
+          <li><strong>會重置：</strong>金幣、樓層進度、已解鎖與已升級的鎬子、護甲和寵物升級、物品技能、稱號、Taskium、任務進度、交給工人的鎬子，以及未領取的工人收益。</li>
+          <li><strong>會保留：</strong>鑽石與用它買到的一切、鑰匙、首領和深淵進度、精華、覺醒屬性、技能樹、技能石、礦石結晶、附魔、成就、工人等級，以及昇華那一側的所有東西。</li>
+          <li>獲得的精華取決於你到達過的最深樓層，並隨深度迅速增長。把它花在永久屬性上。</li>
         </ul>
-      <p>精華獎勵只取決於你到達的<strong>最高樓層</strong>，而且成長很快：第 200 層約 331，第 300 層 1,098，第 500 層 12,068，第 1,000 層 4,827,341。</p>
       <div class="callout">
-          <div class="callout-label">再往下一點</div>
-          獎勵隨深度上漲得非常陡，所以聲望前多挖幾層，通常比馬上再聲望一次更划算。
+          <div class="callout-label">再往下挖一點</div>
+          在覺醒之前多打下幾層，通常比馬上接著再做一次覺醒更划算。
         </div>
-      <div class="table-wrap">
-        <table>
-        <thead><tr>
-        <th>屬性</th>
-        <th>效果</th>
-        <th class="num">每級</th>
-        </tr></thead>
-        <tbody>
-        <tr>
-        <td>永恆熔爐</td>
-        <td>每秒自動傷害</td>
-        <td class="num">+2.5%</td>
-        </tr>
-        <tr>
-        <td>碎岩之手</td>
-        <td>點擊傷害</td>
-        <td class="num">+2.5%</td>
-        </tr>
-        <tr>
-        <td>黃金深淵</td>
-        <td>金幣收入</td>
-        <td class="num">+1%</td>
-        </tr>
-        <tr>
-        <td>礦石神諭</td>
-        <td>暴擊率</td>
-        <td class="num">+0.1%</td>
-        </tr>
-        <tr>
-        <td>劫滅之力</td>
-        <td>暴擊倍率</td>
-        <td class="num">+0.1%</td>
-        </tr>
-        <tr>
-        <td>煉獄之盾</td>
-        <td>耐熱</td>
-        <td class="num">+1%</td>
-        </tr>
-        <tr>
-        <td>力量合一</td>
-        <td>計入點擊的 DPS 比例</td>
-        <td class="num">+0.1%</td>
-        </tr>
-        </tbody></table></div>
-      <p>每一級都會和之前的等級疊乘生效。第一級花 2 精華，之後每次約貴 2.5%，所以勤花精華比囤積更好。</p>
     </section>
 
-    <section id="bosses">
-      <div class="section-head"><span class="section-num">19</span><h2>首領</h2></div>
-      <p class="section-dek">爭奪精華和礦石結晶的限時傷害比拼。第 350 層開啟。</p>
+    <section id="ascension">
+      <div class="section-head"><span class="section-num">14</span><h2>昇華</h2></div>
+      <p class="section-dek">疊在覺醒之上的第二層。</p>
       <ul>
-          <li>打開區域面板，選擇地城和首領，花 <strong>1 把地城鑰匙</strong>開始。不會自動開始。</li>
-          <li>首領依序解鎖——打敗一個才會開放下一個。生命值暴漲，時限卻越來越短。</li>
-          <li>首領進度<strong>在聲望後保留</strong>，已經打敗的首領可以隨時再挑戰。</li>
+          <li>到達深得多的樓層後會解鎖昇華；它在聲望分頁下有自己的頁面。</li>
+          <li><strong>會重置：</strong>你的覺醒屬性和精華——那個循環從零開始；鎬子、樓層和升級也和覺醒一樣重置。</li>
+          <li><strong>會保留：</strong>你的覺醒等級、鑽石與用它買到的一切、鑰匙、首領和深淵進度、附魔、技能樹、成就、工人等級，以及攢下的純淨精華。</li>
+          <li>作為交換你會獲得<strong>純淨精華</strong>。它可以投入兩項屬性：<strong>覺醒迴響</strong>放大每一項覺醒屬性的加成，<strong>源泉</strong>提高每次覺醒給出的精華。</li>
+          <li>兩項屬性都是複利增長：每一級都會在上一級之上再乘一次。</li>
         </ul>
-      <div class="table-wrap">
-        <table>
-        <thead><tr>
-        <th>首領</th>
-        <th class="num">生命值</th>
-        <th class="num">時限</th>
-        <th>獎勵</th>
-        </tr></thead>
-        <tbody>
-        <tr>
-        <td>水晶巨像</td>
-        <td class="num">1e15</td>
-        <td class="num">30秒</td>
-        <td>1,000 精華 + 50,000 礦石結晶</td>
-        </tr>
-        <tr>
-        <td>水晶守衛</td>
-        <td class="num">1e18</td>
-        <td class="num">25秒</td>
-        <td>2,000 精華 + 75,000 礦石結晶</td>
-        </tr>
-        <tr>
-        <td>緋紅哨兵</td>
-        <td class="num">1e22</td>
-        <td class="num">20秒</td>
-        <td>3,000 精華 + 100,000 礦石結晶</td>
-        </tr>
-        <tr>
-        <td>岩石守衛</td>
-        <td class="num">1e27</td>
-        <td class="num">20秒</td>
-        <td>4,000 精華 + 125,000 礦石結晶</td>
-        </tr>
-        <tr>
-        <td>霜凍泰坦</td>
-        <td class="num">1e33</td>
-        <td class="num">20秒</td>
-        <td>5,000 精華 + 150,000 礦石結晶</td>
-        </tr>
-        <tr>
-        <td>水晶魔像 1</td>
-        <td class="num">1e40</td>
-        <td class="num">20秒</td>
-        <td>6,000 精華 + 175,000 礦石結晶</td>
-        </tr>
-        <tr>
-        <td>石鬚巨像</td>
-        <td class="num">1e48</td>
-        <td class="num">15秒</td>
-        <td>7,000 精華 + 200,000 礦石結晶</td>
-        </tr>
-        <tr>
-        <td>水晶魔像 2</td>
-        <td class="num">1e57</td>
-        <td class="num">15秒</td>
-        <td>8,000 精華 + 225,000 礦石結晶</td>
-        </tr>
-        <tr>
-        <td>烈焰魔像</td>
-        <td class="num">1e67</td>
-        <td class="num">15秒</td>
-        <td>9,000 精華 + 250,000 礦石結晶</td>
-        </tr>
-        <tr>
-        <td>魔像守衛</td>
-        <td class="num">1e78</td>
-        <td class="num">10秒</td>
-        <td>10,000 精華 + 275,000 礦石結晶</td>
-        </tr>
-        </tbody></table></div>
+      <div class="callout">
+          <div class="callout-label">什麼時候飛升</div>
+          昇華加速的不是單獨一輪，而是整個循環。當精華屬性變貴、再做一次覺醒也提升不大時，就值得了。
+        </div>
+    </section>
+
+    <section id="dungeons">
+      <div class="section-head"><span class="section-num">15</span><h2>首領與深淵</h2></div>
+      <p class="section-dek">主礦坑之外的兩種限時挑戰。</p>
+      <ul>
+          <li>兩者都從區域進入；你在那裡時，主礦坑的熱度和樓層進度都會暫停。</li>
+          <li><strong>首領</strong>用地城鑰匙開啟：在時限結束前把首領打倒，就能獲得精華和礦石結晶。首領按順序解鎖，打贏過的首領會一直開放。</li>
+          <li><strong>深淵</strong>用深淵鑰匙開啟，並以一個倒數貫穿全程：你接連敲碎礦石，每個階段都比上一個更難。</li>
+          <li>深淵的每個階段都帶有自己的<strong>懲罰</strong>——有的削自動傷害，有的削點擊傷害，有的削暴擊。懲罰只在該階段持續期間生效。</li>
+          <li>你在深淵裡敲碎的每個階段都會結算：無論時間耗盡還是你自己退出，到那時為止賺到的都歸你。通關全部階段後，下一個深淵就會開放。</li>
+        </ul>
       <div class="callout warn">
-          <div class="callout-label">輸了有代價</div>
-          時間先耗盡的話，你<strong>什麼也拿不到</strong>，鑰匙也沒了。失敗後能看到首領還剩多少生命值——用它判斷還差多少傷害。
-        </div>
-    </section>
-
-    <section id="achievements">
-      <div class="section-head"><span class="section-num">20</span><h2>成就</h2></div>
-      <p class="section-dek">31 個類別共 100 個成就——點擊、礦石、首領、聲望、深度、製作等。</p>
-      <p>所有成就都獎勵<strong>礦石結晶</strong>，目標和獎勵都逐級成長。</p>
-      <div class="callout">
-          <div class="callout-label">記得領取</div>
-          獎勵<strong>不會自動發放</strong>。如果很久沒打開成就頁，那裡一定累積了一大堆——全部領取按鈕可以一次拿完。
+          <div class="callout-label">輸給首領是有代價的</div>
+          如果首領倒下之前時間就到了，你拿不到獎勵，鑰匙也沒了。
         </div>
     </section>
 
     <section id="store">
-      <div class="section-head"><span class="section-num">21</span><h2>商店</h2></div>
-      <p class="section-dek">鑽石、鑰匙、禮包、尊爵禮包、時間跳躍、寶箱，以及永久的無限道具。</p>
+      <div class="section-head"><span class="section-num">16</span><h2>商店與成就</h2></div>
+      <p class="section-dek">鑽石、鑰匙、禮包、會員、時間跳躍、寶箱，以及永久的 Infinity 物品。</p>
       <ul>
-          <li><strong>鑽石包：</strong>200 / 550 / 1,150 / 2,400 / 6,250 / 14,000 鑽石。包越大越划算。</li>
-          <li><strong>鑰匙包：</strong>3 / 7 / 15 把地城鑰匙。</li>
-          <li><strong>小型禮包：</strong>500 鑽石, 100 精華, 10 技能石, 3 地城鑰匙。</li>
-          <li><strong>大型禮包：</strong>1,000 鑽石, 200 精華, 20 技能石, 5 地城鑰匙。</li>
-          <li><strong>7 天尊爵禮包：</strong>7 天內點擊傷害 x5、自動傷害 x5、金幣 x3、耐熱 x3、離線收益 x2。</li>
-          <li><strong>30 天尊爵禮包：</strong>30 天內點擊傷害 x7、自動傷害 x7、金幣 x4.5、耐熱 x3.5、離線收益 x2.5。</li>
-          <li><strong>時間跳躍：</strong>8 / 16 / 24 小時，分別需要 100 / 190 / 370 鑽石。獎勵依你自己的傷害、樓層和工人計算——包含礦石、附魔掉落和稀有礦石。增益、冷卻和計時器不會前進，地城內無法使用。</li>
+          <li><strong>會員</strong>在規定期限內提升你的傷害、金幣和離線收益。</li>
+          <li><strong>時間跳躍</strong>把遊戲快轉幾個小時；結算按你當前的實力計算。</li>
+          <li><strong>附魔寶箱</strong>立即開啟並給出附魔材料。</li>
+          <li><strong>鑰匙禮包</strong>用鑽石購買；地城鑰匙和深淵鑰匙都有對應禮包。</li>
+          <li><strong>Infinity 物品</strong>只需買一次，覺醒和昇華都不會讓它消失。</li>
+          <li><strong>成就</strong>給出礦石結晶；獎勵需要你自己領取。</li>
         </ul>
-      <p><strong>附魔寶箱</strong>售價 100 鑽石，買下立即開啟。卡片上列出了每種獎品及其機率：</p>
-      <div class="table-wrap">
-        <table>
-        <thead><tr>
-        <th>物品</th>
-        <th class="num">數量</th>
-        <th class="num">機率</th>
-        </tr></thead>
-        <tbody>
-        <tr>
-        <td>普通附魔粉塵</td>
-        <td class="num">250</td>
-        <td class="num">17%</td>
-        </tr>
-        <tr>
-        <td>普通附魔碎片</td>
-        <td class="num">26</td>
-        <td class="num">16%</td>
-        </tr>
-        <tr>
-        <td>稀有附魔粉塵</td>
-        <td class="num">180</td>
-        <td class="num">15%</td>
-        </tr>
-        <tr>
-        <td>稀有附魔碎片</td>
-        <td class="num">9</td>
-        <td class="num">15%</td>
-        </tr>
-        <tr>
-        <td>史詩附魔粉塵</td>
-        <td class="num">150</td>
-        <td class="num">10%</td>
-        </tr>
-        <tr>
-        <td>史詩附魔碎片</td>
-        <td class="num">5</td>
-        <td class="num">10%</td>
-        </tr>
-        <tr>
-        <td>傳說附魔粉塵</td>
-        <td class="num">130</td>
-        <td class="num">9%</td>
-        </tr>
-        <tr>
-        <td>傳說附魔碎片</td>
-        <td class="num">3</td>
-        <td class="num">8%</td>
-        </tr>
-        </tbody></table></div>
-      <p>無限道具只需<strong>用鑽石買一次</strong>，永不重置，聲望也不會。後期它們通常是鑽石最好的去處。</p>
-      <div class="table-wrap">
-        <table>
-        <thead><tr>
-        <th>物品</th>
-        <th class="num">效果</th>
-        <th class="num">價格</th>
-        </tr></thead>
-        <tbody>
-        <tr>
-        <td>無限力量</td>
-        <td class="num">x4</td>
-        <td class="num">350 💎</td>
-        </tr>
-        <tr>
-        <td>無限收益</td>
-        <td class="num">x3</td>
-        <td class="num">350 💎</td>
-        </tr>
-        <tr>
-        <td>無限護甲</td>
-        <td class="num">x2</td>
-        <td class="num">350 💎</td>
-        </tr>
-        <tr>
-        <td>無限速度</td>
-        <td class="num">x1.5</td>
-        <td class="num">550 💎</td>
-        </tr>
-        <tr>
-        <td>無限點擊</td>
-        <td class="num">7 /秒</td>
-        <td class="num">600 💎</td>
-        </tr>
-        </tbody></table></div>
-      <div class="callout">
-          <div class="callout-label">價格</div>
-          真實貨幣價格由 Steam 以你的貨幣提供，因此這裡不列出。禮包內容不變，價格因地區而異。
-        </div>
     </section>
 
     <section id="progress">
-      <div class="section-head"><span class="section-num">22</span><h2>查看你的進度</h2></div>
-      <p class="section-dek">了解這一輪進展如何、剛剛發生了什麼的地方。</p>
+      <div class="section-head"><span class="section-num">17</span><h2>進度與存檔</h2></div>
+      <p class="section-dek">在哪裡查看這一輪，以及進度如何被保住。</p>
       <ul>
-          <li>Steam 排行榜記錄點擊次數、點擊傷害、聲望次數、擊敗首領數和最高樓層。</li>
-          <li>統計畫面保存長期紀錄——收入、支出、點擊、製作、遊戲時長等。</li>
-          <li><strong>活動日誌</strong>列出本次遊戲中發生的事——獎勵、解鎖、首領、購買——點擊角落的通知即可打開。</li>
-          <li><strong>更新</strong>面板以你的語言顯示最新更新說明，每次新更新後會自動打開一次。</li>
+          <li>Steam 排行榜、統計畫面和<strong>活動日誌</strong>都會顯示你的進度。</li>
+          <li><strong>更新</strong>面板會顯示最新的更新說明。</li>
+          <li>遊戲會定期自動存檔並備份到 Steam 雲端；換一台電腦也能接著玩。</li>
+          <li>開著 Discord 時，你的個人資料會顯示目前樓層和覺醒 / 昇華等級。</li>
         </ul>
     </section>
 
-    <section id="save">
-      <div class="section-head"><span class="section-num">23</span><h2>存檔</h2></div>
-      <p class="section-dek">簡單說：你的進度同時受到多重保護。</p>
-      <ul>
-          <li>遊戲每 <strong>15 秒</strong>自動加密存檔一次。</li>
-          <li>大約每 <strong>45 秒</strong>，以及每次關閉或暫停時，都會備份到 Steam 雲端——換台電腦也能接著玩。</li>
-          <li>存檔檔案損壞時，遊戲會自動回退到備份。</li>
-          <li>你也可以把存檔複製到剪貼簿，再貼到另一台裝置上。</li>
-        </ul>
-    </section>
-
-    <section id="languages">
-      <div class="section-head"><span class="section-num">24</span><h2>語言</h2></div>
-      <p class="section-dek">遊戲支援 18 種語言。</p>
-      <p>英語、土耳其語、德語、法語、西班牙語、拉丁美洲西班牙語、義大利語、波蘭語、巴西葡萄牙語、俄語、烏克蘭語、日語、韓語、簡體中文、繁體中文、泰語、印尼語和越南語。遊戲首次啟動時會自動選擇語言，之後可隨時在設定中變更——本指南也提供所有語言版本，在頁面頂端切換。</p>
-    </section>
-
-    <footer class="doc-footer">本頁數值以遊戲目前的平衡為準，可能隨更新而變動。真實貨幣商品的價格由 Steam 設定並以你的貨幣顯示，因此不在此列出。</footer>
+    <footer class="doc-footer">遊戲會隨更新變化；本指南提供整體概覽。以真實貨幣販售的商品，價格由 Steam 以你所在地區的貨幣顯示。</footer>
   </main>
 </div>
 

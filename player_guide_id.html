@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <title>Clicker Ore Game - Panduan Pemain</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Cara kerja tambang: mata uang, beliung, pet, pekerja, mantra, skill, prestise, bos, dan toko, dijelaskan tanpa rumus.">
+<meta name="description" content="Cara kerja tambang: beliung, peliharaan, pekerja, enchantment, skill, Kebangkitan, Ascension, bos, Jurang, dan toko - secara singkat.">
 <style>
   :root {
     --bg: #14110d;
@@ -28,6 +28,8 @@
     --cur-key: #d98a63;
     --cur-skillstone: #7fc9a0;
     --cur-orestone: #b5a68c;
+    --cur-abysskey: #8f7fd6;
+    --cur-pureessence: #d7bff5;
 
     --font-display: "Bahnschrift", "Segoe UI Semibold", "Arial Narrow Bold", "Arial Narrow", sans-serif;
     --font-body: "Sitka Text", "Iowan Old Style", Georgia, "Times New Roman", serif;
@@ -480,39 +482,32 @@
     <a class="toc-home" href="index.html">← Beranda</a>
     <div class="toc-brand">Clicker Ore Game<small>Panduan Pemain</small></div>
     <ul class="toc-list">
-      <li><a href="#start"><span class="toc-num">01</span>Mulai dari Mana</a></li>
-      <li><a href="#currencies"><span class="toc-num">02</span>7 Mata Uang</a></li>
-      <li><a href="#damage"><span class="toc-num">03</span>Damage Klik dan Damage Otomatis</a></li>
-      <li><a href="#critical"><span class="toc-num">04</span>Serangan Kritis</a></li>
-      <li><a href="#pickaxes"><span class="toc-num">05</span>Beliung</a></li>
-      <li><a href="#suits"><span class="toc-num">06</span>Setelan</a></li>
-      <li><a href="#temperature"><span class="toc-num">07</span>Panas</a></li>
-      <li><a href="#pets"><span class="toc-num">08</span>Pet</a></li>
-      <li><a href="#workers"><span class="toc-num">09</span>Pekerja</a></li>
-      <li><a href="#enchantments"><span class="toc-num">10</span>Mantra</a></li>
-      <li><a href="#floors"><span class="toc-num">11</span>Lantai, Bijih, dan Kedalaman</a></li>
-      <li><a href="#skills"><span class="toc-num">12</span>Skill Aktif</a></li>
-      <li><a href="#titles"><span class="toc-num">13</span>Gelar</a></li>
-      <li><a href="#tasks"><span class="toc-num">14</span>Tugas dan Taskium</a></li>
-      <li><a href="#missions"><span class="toc-num">15</span>Misi Harian</a></li>
-      <li><a href="#trade"><span class="toc-num">16</span>Pedagang</a></li>
-      <li><a href="#extras"><span class="toc-num">17</span>Hadiah Gratis</a></li>
-      <li><a href="#prestige"><span class="toc-num">18</span>Prestise</a></li>
-      <li><a href="#bosses"><span class="toc-num">19</span>Bos</a></li>
-      <li><a href="#achievements"><span class="toc-num">20</span>Pencapaian</a></li>
-      <li><a href="#store"><span class="toc-num">21</span>Toko</a></li>
-      <li><a href="#progress"><span class="toc-num">22</span>Memantau Kemajuan</a></li>
-      <li><a href="#save"><span class="toc-num">23</span>Penyimpanan</a></li>
-      <li><a href="#languages"><span class="toc-num">24</span>Bahasa</a></li>
+      <li><a href="#start"><span class="toc-num">01</span>Mulai dari mana</a></li>
+      <li><a href="#currencies"><span class="toc-num">02</span>Mata Uang</a></li>
+      <li><a href="#damage"><span class="toc-num">03</span>Damage dan Kritis</a></li>
+      <li><a href="#equipment"><span class="toc-num">04</span>Beliung, Baju Zirah, dan Peliharaan</a></li>
+      <li><a href="#temperature"><span class="toc-num">05</span>Panas</a></li>
+      <li><a href="#workers"><span class="toc-num">06</span>Pekerja</a></li>
+      <li><a href="#enchantments"><span class="toc-num">07</span>Mantra</a></li>
+      <li><a href="#floors"><span class="toc-num">08</span>Lantai dan Bijih</a></li>
+      <li><a href="#skills"><span class="toc-num">09</span>Skill dan Gelar</a></li>
+      <li><a href="#tasks"><span class="toc-num">10</span>Tugas</a></li>
+      <li><a href="#trade"><span class="toc-num">11</span>Pedagang</a></li>
+      <li><a href="#extras"><span class="toc-num">12</span>Hadiah Gratis</a></li>
+      <li><a href="#awakening"><span class="toc-num">13</span>Kebangkitan</a></li>
+      <li><a href="#ascension"><span class="toc-num">14</span>Pendakian</a></li>
+      <li><a href="#dungeons"><span class="toc-num">15</span>Bos dan Jurang</a></li>
+      <li><a href="#store"><span class="toc-num">16</span>Toko dan Pencapaian</a></li>
+      <li><a href="#progress"><span class="toc-num">17</span>Kemajuan dan Penyimpanan</a></li>
     </ul>
   </nav>
 
   <main>
     <header class="hero">
       <div class="strata" role="presentation"></div>
-      <div class="eyebrow">Panduan Pemain - 2026-09-14</div>
-      <h1 class="title">Semua Hal di Tambang,<br>dengan Bahasa Sederhana</h1>
-      <p class="subtitle">Apa fungsi tiap sistem, kapan terbuka, dan ke mana sebaiknya jam berikutnya kamu habiskan. Tanpa rumus - hanya keputusan yang penting.</p>
+      <div class="eyebrow">Panduan Pemain - 2026-09-21</div>
+      <h1 class="title">Seluruh tambang,<br>secara singkat</h1>
+      <p class="subtitle">Apa guna tiap sistem dan ke mana waktumu sebaiknya pergi. Tanpa angka, tanpa rumus - hanya yang perlu kamu tahu.</p>
       <div class="langbar">
         <div class="langbar-label">Bahasa</div>
         <div class="langbar-list"><a href="player_guide_en.html" hreflang="en">English</a><a href="player_guide_tr.html" hreflang="tr">Türkçe</a><a href="player_guide_de.html" hreflang="de">Deutsch</a><a href="player_guide_fr.html" hreflang="fr">Français</a><a href="player_guide_es.html" hreflang="es">Español</a><a href="player_guide_es_la.html" hreflang="es-419">Español (Latinoamérica)</a><a href="player_guide_it.html" hreflang="it">Italiano</a><a href="player_guide_pl.html" hreflang="pl">Polski</a><a href="player_guide_pt_br.html" hreflang="pt-BR">Português (Brasil)</a><a href="player_guide_ru.html" hreflang="ru">Русский</a><a href="player_guide_uk.html" hreflang="uk">Українська</a><a href="player_guide_ja.html" hreflang="ja">日本語</a><a href="player_guide_ko.html" hreflang="ko">한국어</a><a href="player_guide_zh_hans.html" hreflang="zh-Hans">简体中文</a><a href="player_guide_zh_hant.html" hreflang="zh-Hant">繁體中文</a><a href="player_guide_th.html" hreflang="th">ไทย</a><span>Bahasa Indonesia</span><a href="player_guide_vi.html" hreflang="vi">Tiếng Việt</a></div>
@@ -520,712 +515,301 @@
     </header>
 
     <section id="start">
-      <div class="section-head"><span class="section-num">01</span><h2>Mulai dari Mana</h2></div>
-      <p class="section-dek">Tiga tahap, mengikuti urutan game membuka sistemnya.</p>
+      <div class="section-head"><span class="section-num">01</span><h2>Mulai dari mana</h2></div>
+      <p class="section-dek">Game membuka sistemnya sedikit demi sedikit seiring kamu menggali lebih dalam.</p>
       <div class="strategy-track">
           <div class="strategy-stage">
-            <div class="stage-label">Awal - lantai 1 sampai 100</div>
+            <div class="stage-label">Awal</div>
             <ul>
-              <li>Tingkatkan beliungmu terus-menerus; beliung baru terbuka saat kamu turun lebih dalam.</li>
-              <li>Pemecah Bijih datang di lantai 50, Klik Amarah di lantai 100.</li>
-              <li>Klik balon emas setiap kali muncul, dan beli Si Batu saat berlian sudah cukup.</li>
+              <li>Tingkatkan beliung tanpa henti; lantai yang lebih dalam membuka beliung baru.</li>
+              <li>Klik setiap balon emas dan Kristal Emas yang muncul, lalu mulai pakai skill pertamamu.</li>
+              <li>Beli peliharaan pertama begitu berlianmu cukup.</li>
             </ul>
           </div>
           <div class="strategy-stage">
-            <div class="stage-label">Tengah - lantai 100 sampai 350</div>
+            <div class="stage-label">Menengah</div>
             <ul>
-              <li>Lakukan prestise setelah melewati lantai 100 dan kemajuan mulai melambat.</li>
-              <li>Tugas terbuka di lantai 125, setelan di 130, pohon skill di 180, dan Pedagang di 200.</li>
-              <li>Bagi Esensi ke 7 parameter, jangan menumpuk di satu saja.</li>
+              <li>Saat kemajuan melambat, lakukan Kebangkitan dan dapatkan Esensi.</li>
+              <li>Tugas, baju zirah, pohon skill, dan pedagang terbuka di fase ini.</li>
+              <li>Sebarkan Esensi, jangan menumpuknya di satu parameter.</li>
             </ul>
           </div>
           <div class="strategy-stage">
-            <div class="stage-label">Akhir - lantai 350 ke atas</div>
+            <div class="stage-label">Akhir</div>
             <ul>
-              <li>Lawan bos setiap kali punya kunci; mereka memberi Esensi dan Batu Bijih.</li>
-              <li>Bahan mantra mulai jatuh di lantai 500, pekerja bergabung mulai lantai 600.</li>
-              <li>Jaga level setelan agar panas tidak memakan damage-mu.</li>
+              <li>Lawan bos setiap kali kamu punya kunci, lalu mulai sesi Jurang.</li>
+              <li>Pekerja bergabung dan material enchantment mulai berjatuhan.</li>
+              <li>Terus tingkatkan baju zirah agar panas tidak memakan damage-mu.</li>
+            </ul>
+          </div>
+          <div class="strategy-stage">
+            <div class="stage-label">Jangka panjang</div>
+            <ul>
+              <li>Jauh lebih dalam, Pendakian terbuka dan mereset seluruh siklus Kebangkitan.</li>
+              <li>Sebagai gantinya kamu mendapat Esensi Murni, yang membuat setiap sesi berikutnya permanen lebih cepat.</li>
             </ul>
           </div>
         </div>
       <div class="callout">
           <div class="callout-label">Perlu diketahui</div>
-          Angka cepat membesar, jadi game beralih ke bentuk singkat lalu ke notasi ilmiah seperti <strong>1,23e45</strong>. Tidak ada batas - hanya cara penulisannya yang berubah.
+          Angka tumbuh cepat; game beralih ke notasi singkat dulu, lalu ke notasi ilmiah. Tidak ada batas - yang berubah hanya cara penulisannya.
         </div>
     </section>
 
     <section id="currencies">
-      <div class="section-head"><span class="section-num">02</span><h2>7 Mata Uang</h2></div>
-      <p class="section-dek">Masing-masing menopang sistem yang berbeda. Memakai mata uang yang tepat di tempat yang salah adalah kesalahan awal paling umum.</p>
+      <div class="section-head"><span class="section-num">02</span><h2>Mata Uang</h2></div>
+      <p class="section-dek">Masing-masing menghidupi sistem yang berbeda.</p>
       <div class="currency-grid">
         <div class="cur-card" style="--dot:var(--cur-gold)">
           <h4><span class="dot"></span>Emas</h4>
-          <p>Didapat dengan <b>menghancurkan bijih</b>, ditambah balon, pekerja, tugas, dan waktu offline.</p>
-          <p>Dipakai untuk beliung, peningkatan, dan skill item - andalan utamamu.</p>
+          <p>Didapat dengan <b>memecah bijih</b>; balon, pekerja, tugas, dan waktu offline juga membawa emas.</p>
+          <p>Dipakai untuk beliung, peningkatan, dan skill item.</p>
         </div>
         <div class="cur-card" style="--dot:var(--cur-diamond)">
           <h4><span class="dot"></span>Berlian</h4>
-          <p>Dari <b>pembelian uang asli</b>, Roda Keberuntungan, dan kode promo.</p>
-          <p>Dipakai untuk pet, item Infinity, lompatan waktu, peti, dan putaran tambahan.</p>
+          <p>Berasal dari <b>pembelian uang asli</b>, hadiah Roda Keberuntungan, dan kode promo.</p>
+          <p>Dipakai untuk peliharaan, item Infinity, lompatan waktu, peti, dan paket kunci.</p>
         </div>
         <div class="cur-card" style="--dot:var(--cur-essence)">
           <h4><span class="dot"></span>Esensi</h4>
-          <p>Dari <b>prestise</b>, kemenangan melawan bos, dan Pedagang.</p>
-          <p>Dipakai untuk 7 parameter prestise permanen.</p>
+          <p>Hadiah dari <b>Kebangkitan</b>; bos dan Pedagang juga memberi sedikit.</p>
+          <p>Dipakai untuk parameter permanen Kebangkitan.</p>
         </div>
         <div class="cur-card" style="--dot:var(--cur-taskium)">
           <h4><span class="dot"></span>Taskium</h4>
-          <p><b>+1</b> untuk setiap klik yang kena.</p>
+          <p>Sedikit didapat setiap klik yang mengenai sasaran.</p>
           <p>Dipakai untuk menerima dan mengacak ulang tugas.</p>
         </div>
         <div class="cur-card" style="--dot:var(--cur-key)">
           <h4><span class="dot"></span>Kunci Dungeon</h4>
-          <p>Satu kunci gratis per hari, ditambah paket toko dan Roda Keberuntungan.</p>
-          <p>Dipakai untuk masuk pertarungan bos - 1 per percobaan.</p>
+          <p>Satu kunci gratis per hari, selain itu dari toko dan Roda Keberuntungan.</p>
+          <p>Dipakai untuk masuk pertarungan bos.</p>
         </div>
         <div class="cur-card" style="--dot:var(--cur-skillstone)">
           <h4><span class="dot"></span>Batu Skill</h4>
-          <p>Dari paket toko dan Pedagang.</p>
-          <p>Dipakai untuk menaikkan 8 skill aktif.</p>
+          <p>Berasal dari toko dan Pedagang.</p>
+          <p>Dipakai untuk memperkuat skill aktif.</p>
         </div>
         <div class="cur-card" style="--dot:var(--cur-orestone)">
           <h4><span class="dot"></span>Batu Bijih</h4>
-          <p><b>1-5</b> dari setiap bijih yang hancur, ditambah pencapaian dan bos.</p>
-          <p>Dipakai untuk pertukaran, pembuatan mantra, dan peningkatan pekerja.</p>
+          <p>Jatuh dari setiap bijih yang kamu pecah, juga dari pencapaian, bos, dan sesi Jurang.</p>
+          <p>Dipakai untuk penukaran, pembuatan enchantment, dan peningkatan pekerja.</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-abysskey)">
+          <h4><span class="dot"></span>Kunci Jurang</h4>
+          <p>Satu kunci gratis per hari, selain itu dibeli dengan berlian di toko.</p>
+          <p>Dipakai untuk masuk sesi Jurang.</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-pureessence)">
+          <h4><span class="dot"></span>Esensi Murni</h4>
+          <p>Hadiah dari <b>Pendakian</b>; tidak datang dari tempat lain.</p>
+          <p>Hanya dipakai untuk parameter Pendakian.</p>
         </div>
       </div>
       <div class="callout">
           <div class="callout-label">Mata uang server</div>
-          Berlian dan kunci dungeon disimpan di server, jadi membeli dengan keduanya butuh koneksi online. Kalau koneksi terputus, game akan menyambung ulang sendiri saat kamu mencoba membeli.
+          Berlian, kunci dungeon, dan Kunci Jurang disimpan di server; kamu harus online untuk memakainya.
         </div>
     </section>
 
     <section id="damage">
-      <div class="section-head"><span class="section-num">03</span><h2>Damage Klik dan Damage Otomatis</h2></div>
-      <p class="section-dek">Dua sumber damage terpisah yang tumbuh dari hal berbeda.</p>
-      <p><strong>Damage klik</strong> adalah damage dari satu ketukan. Nilainya naik dengan level dan skill beliung pertamamu, skill Klik Amarah, gelarmu, parameter prestise Tangan Penghancur Batu, dan mantra. Setelah Kesatuan Kekuatan ditingkatkan, sebagian damage otomatis juga ditambahkan ke setiap klik.</p>
-      <p><strong>Damage otomatis</strong> (per detik) berasal dari beliung kedua dan seterusnya, skill Amukan, parameter Tempa Abadi, mantra, dan pet-mu. Damage ini berjalan terus selama bijih masih hidup.</p>
-      <div class="callout">
-          <div class="callout-label">Pet adalah pengecualian</div>
-          Damage pet ditambahkan <strong>setelah</strong> sebagian besar pengali - panas, gelar, prestise, dan boost tidak memperbesarnya, hanya Premium. Level pet saja tidak akan membawamu di akhir permainan.
-        </div>
-    </section>
-
-    <section id="critical">
-      <div class="section-head"><span class="section-num">04</span><h2>Serangan Kritis</h2></div>
-      <p class="section-dek">Setiap klik bisa menjadi kritis dan memukul lebih keras.</p>
-      <p>Kamu mulai dengan peluang <strong>5%</strong> dan pengali <strong>x1,5</strong>. Skill Serangan Kritis, skill beliung, parameter prestise Cenayang Bijih dan Kekuatan Bencana, gelar, serta mantra menaikkannya. Peluang kritis berhenti di <strong>100%</strong>, dan parameter prestisenya tidak bisa dibeli melewati batas itu.</p>
-    </section>
-
-    <section id="pickaxes">
-      <div class="section-head"><span class="section-num">05</span><h2>Beliung</h2></div>
-      <p class="section-dek">45 beliung, terbuka berdasarkan kedalaman. Tulang punggung damage-mu.</p>
+      <div class="section-head"><span class="section-num">03</span><h2>Damage dan Kritis</h2></div>
+      <p class="section-dek">Dua sumber damage terpisah dan kritis yang melipatgandakannya.</p>
       <ul>
-          <li>Beliung <strong>terbuka berdasarkan lantai</strong>: yang kedua di lantai 15, yang kesepuluh di lantai 782, yang terakhir di lantai <strong>13.624</strong>. Semakin dalam, jaraknya makin lebar.</li>
-          <li>Beliung pertama seharga <strong>5 emas</strong>, yang kedua 50, dan setiap berikutnya kira-kira <strong>8 kali</strong> lebih mahal dari sebelumnya.</li>
-          <li>Setiap level sekitar <strong>6%</strong> lebih mahal dari level sebelumnya.</li>
-          <li>Hanya beliung <strong>pertama</strong> yang menambah damage klik. Semua yang lain menambah damage otomatis per detik.</li>
-          <li>Setiap beliung punya 6 skill. Skill muncul dan terbuka di sepanjang tangga level - 5 / 25 / 125 / 625 / 3.125 / 15.625 - jadi yang terakhir adalah target jangka panjang. Sebagian membantu beliung itu, sebagian membantu semuanya.</li>
+          <li><strong>Damage klik</strong> berasal dari beliung pertamamu, skill Klik Amarah, gelarmu, parameter Kebangkitan, dan enchantment.</li>
+          <li><strong>Damage otomatis</strong> berasal dari beliung lainnya, skill Amukan, peliharaanmu, dan enchantment; ia mengalir tanpa henti selama bijih masih hidup.</li>
+          <li>Semakin tinggi Kesatuan Kekuatan, semakin besar bagian damage otomatis yang ikut ditambahkan ke setiap klik.</li>
+          <li>Setiap klik bisa menjadi <strong>kritis</strong> dan memukul jauh lebih keras. Peluang dan pengali kritis naik lewat skill, parameter Kebangkitan, gelar, dan enchantment.</li>
+        </ul>
+    </section>
+
+    <section id="equipment">
+      <div class="section-head"><span class="section-num">04</span><h2>Beliung, Baju Zirah, dan Peliharaan</h2></div>
+      <p class="section-dek">Fondasi damage dan ketahananmu.</p>
+      <ul>
+          <li><strong>Beliung</strong> terbuka seiring kedalaman. Yang pertama menghidupi damage klik, sisanya damage otomatis.</li>
+          <li><strong>Baju zirah</strong> sudah milikmu sejak awal; tidak dibeli, hanya ditingkatkan, dan melindungimu dari panas.</li>
+          <li><strong>Peliharaan</strong> dibeli dengan berlian, ditingkatkan dengan emas, dan memberi damage otomatis. Kepemilikannya permanen.</li>
+          <li>Ketiganya punya skill sendiri yang terbuka seiring level; ada yang hanya membantu item itu, ada yang membantu seluruh keluarganya.</li>
         </ul>
       <div class="callout">
-          <div class="callout-label">Lonjakan besar</div>
-          Mulai level <strong>100</strong>, lalu setiap 150 level (250, 400, ...), beliung memangkatkan hasilnya sendiri: <strong>^1,05</strong>, lalu ^1,1, dan seterusnya. Pada angka besar lonjakannya luar biasa, jadi membawa satu beliung ke ambang berikutnya biasanya peningkatan terbaik yang kamu punya.
+          <div class="callout-label">Lompatan besar</div>
+          Pada level tertentu kekuatan sebuah item melonjak besar. Mendorong satu item ke ambang berikutnya biasanya peningkatan terbaik.
         </div>
       <div class="callout warn">
-          <div class="callout-label">Prestise mengunci lagi</div>
-          Prestise mengunci dan mereset semua beliung; beliung terbuka lagi saat kamu melewati lantainya di putaran baru.
+          <div class="callout-label">Setelah Kebangkitan</div>
+          Kebangkitan mengunci beliung lagi dan mereset peningkatan baju zirah serta peliharaan. Peliharaannya sendiri tetap milikmu.
         </div>
-    </section>
-
-    <section id="suits">
-      <div class="section-head"><span class="section-num">06</span><h2>Setelan</h2></div>
-      <p class="section-dek">5 setelan, semuanya sudah dimiliki sejak awal. Gunanya melindungimu dari panas.</p>
-      <ul>
-          <li>Setelan tidak pernah dibeli - hanya ditingkatkan. Setiap level menambah sekitar <strong>5%</strong> ketahanan panas, mulai dari 50, dan sekitar 8,4% lebih mahal dari level sebelumnya.</li>
-          <li>Setelan punya lonjakan pangkat yang sama dengan beliung, mulai level 100 lalu setiap 150 level.</li>
-          <li>Setiap setelan punya 6 skill di tangga level yang sama (5 / 25 / 125 / 625 / 3.125 / 15.625).</li>
-          <li>Panel setelan terbuka di lantai <strong>130</strong>, bersama pengukur panas.</li>
-        </ul>
     </section>
 
     <section id="temperature">
-      <div class="section-head"><span class="section-num">07</span><h2>Panas</h2></div>
-      <p class="section-dek">Semakin dalam, semakin panas, dan panas diam-diam memangkas damage-mu.</p>
-      <ul>
-          <li>Suhu lantai terus naik - sekitar <strong>1,04 kali per lantai</strong>, jadi berlipat dua setiap dua puluhan lantai.</li>
-          <li>Selama ketahanan panasmu minimal <strong>1,5 kali</strong> suhu lantai, pengukur tetap kosong dan tidak ada yang hilang.</li>
-          <li>Begitu ketahanan turun di bawah suhu, damage mulai berkurang; pada <strong>0,5 kali</strong> kamu hanya menyisakan seperdua puluh - hilang <strong>95%</strong>.</li>
-          <li>Panel setelan punya sakelar beli otomatis ketahanan; biarkan menyala kalau sering turun lebih dalam. Panas hanya ada di tambang utama, tidak di pertarungan bos.</li>
-        </ul>
+      <div class="section-head"><span class="section-num">05</span><h2>Panas</h2></div>
+      <p class="section-dek">Semakin dalam semakin panas, dan panas diam-diam memangkas damage-mu.</p>
+      <p>Jika ketahanan panasmu tidak mengejar suhu lantai, damage-mu mulai meleleh. Di panel baju zirah ada sakelar pembelian otomatis untuk ketahanan. Panas hanya ada di tambang utama.</p>
       <div class="callout warn">
-          <div class="callout-label">Kalau kemajuan macet</div>
-          Tembok tiba-tiba ketika bijih tak kunjung hancur hampir selalu karena panas, bukan kurang damage. Periksa pengukur sebelum membelanjakan hal lain.
-        </div>
-    </section>
-
-    <section id="pets">
-      <div class="section-head"><span class="section-num">08</span><h2>Pet</h2></div>
-      <p class="section-dek">5 pet, dibeli dengan berlian lalu ditingkatkan dengan emas.</p>
-      <ul>
-          <li>Harga mulai dari <strong>150</strong> sampai <strong>250</strong> berlian (150 / 175 / 200 / 225 / 250).</li>
-          <li>Setiap level menambah sekitar <strong>1%</strong> damage klik beliung sebagai damage otomatis, dikali urutan pet - di level yang sama Si Serpih Bayangan memberi lima kali lipat dari Si Batu.</li>
-          <li>Level makin mahal sekitar <strong>20%</strong> setiap kali, dan mulai level 100 pet mendapat lonjakan pangkat yang sama dengan beliung.</li>
-          <li>Setiap pet punya 6 skill; sebagian hanya membantu pet itu, sebagian membantu semuanya.</li>
-          <li>Panel pet terbuka di lantai <strong>30</strong>, atau begitu kamu memiliki pet.</li>
-        </ul>
-      <div class="callout warn">
-          <div class="callout-label">Prestise dan pet</div>
-          Prestise mengembalikan setiap pet ke <strong>level 1</strong> dan menghapus skill-nya. Kepemilikannya permanen - kamu tidak perlu membeli pet lagi.
+          <div class="callout-label">Kalau kemajuan mandek</div>
+          Tembok tempat bijih tiba-tiba tidak mau pecah biasanya adalah panas. Lihat meteran panas sebelum menghabiskan emas di tempat lain.
         </div>
     </section>
 
     <section id="workers">
-      <div class="section-head"><span class="section-num">09</span><h2>Pekerja</h2></div>
-      <p class="section-dek">5 pembantu yang menambang untukmu selama game terbuka.</p>
+      <div class="section-head"><span class="section-num">06</span><h2>Pekerja</h2></div>
+      <p class="section-dek">Pembantu yang menggali untukmu selama game terbuka.</p>
       <ul>
-          <li>Pekerja bergabung saat kamu melewati lantai <strong>600 / 800 / 1.000 / 1.200 / 1.400</strong>. Yang dihitung adalah lantai terbaikmu sepanjang masa, jadi mereka tidak pernah terkunci lagi.</li>
-          <li>Beri setiap pekerja sebuah beliung - satu beliung hanya bisa dipakai satu pekerja dalam satu waktu, dan damage-mu sendiri tidak berkurang. Pekerja tanpa beliung tidak menghasilkan apa-apa.</li>
-          <li>Pendapatan ditambahkan setiap 1 detik dan menunggu di wadah sampai kamu mengumpulkannya. Beliung yang lebih kuat menghasilkan lebih banyak.</li>
-          <li>Meningkatkan pekerja memakai Batu Bijih - 100 untuk level pertama, lalu sekitar 2% lebih mahal setiap kali - dan menambah sekitar 1% pendapatan per level.</li>
+          <li>Pekerja baru bergabung seiring kedalaman dan tidak pernah terkunci lagi.</li>
+          <li>Beri setiap pekerja sebuah beliung; pekerja tanpa beliung tidak menghasilkan apa pun. Menyerahkannya tidak mengurangi damage-mu sendiri.</li>
+          <li>Pendapatan menumpuk di satu wadah dan menunggu sampai kamu mengambilnya. Pekerja ditingkatkan dengan Batu Bijih.</li>
         </ul>
       <div class="callout warn">
-          <div class="callout-label">Kumpulkan sebelum prestise</div>
-          Pekerja hanya menghasilkan saat game berjalan, bukan saat offline. Prestise menyimpan level mereka tetapi <strong>menghapus pendapatan yang belum dikumpulkan</strong> dan mengambil kembali beliungnya.
+          <div class="callout-label">Ambil sebelum Kebangkitan</div>
+          Pekerja hanya menghasilkan saat game terbuka. Kebangkitan menyimpan level mereka tetapi menghapus pendapatan yang belum diambil.
         </div>
     </section>
 
     <section id="enchantments">
-      <div class="section-head"><span class="section-num">10</span><h2>Mantra</h2></div>
-      <p class="section-dek">Buat mantra dari bahan yang kamu gali, lalu pasang ke beliung, setelan, dan pet.</p>
-      <p>Menghancurkan bijih bisa menjatuhkan <strong>debu mantra</strong> dan <strong>serpihan mantra</strong> dalam 4 tingkat. Setiap tingkat mulai jatuh saat lantai tertinggimu di putaran ini melewati ambangnya. Menambang lebih dari 100 lantai di atas lantai terbaikmu menurunkan peluang, sampai 10% dari normal.</p>
-      <div class="table-wrap">
-        <table>
-        <thead><tr>
-        <th>Tingkat</th>
-        <th class="num">Atribut</th>
-        <th class="num">Jatuh mulai lantai</th>
-        <th class="num">Peluang debu</th>
-        <th class="num">Peluang serpihan</th>
-        <th class="num">Buat (debu / serpihan / batu bijih)</th>
-        </tr></thead>
-        <tbody>
-        <tr>
-        <td>Umum</td>
-        <td class="num">1</td>
-        <td class="num">500</td>
-        <td class="num">5%</td>
-        <td class="num">0,5%</td>
-        <td class="num">10 / 1 / 40</td>
-        </tr>
-        <tr>
-        <td>Langka</td>
-        <td class="num">1-2</td>
-        <td class="num">1.000</td>
-        <td class="num">2%</td>
-        <td class="num">0,1%</td>
-        <td class="num">20 / 1 / 200</td>
-        </tr>
-        <tr>
-        <td>Epik</td>
-        <td class="num">2-3</td>
-        <td class="num">2.000</td>
-        <td class="num">1%</td>
-        <td class="num">0,03%</td>
-        <td class="num">30 / 1 / 1.000</td>
-        </tr>
-        <tr>
-        <td>Legendaris</td>
-        <td class="num">3-4</td>
-        <td class="num">4.000</td>
-        <td class="num">0,5%</td>
-        <td class="num">0,01%</td>
-        <td class="num">50 / 1 / 5.000</td>
-        </tr>
-        </tbody></table></div>
+      <div class="section-head"><span class="section-num">07</span><h2>Mantra</h2></div>
+      <p class="section-dek">Buat enchantment dari hasil galianmu dan pasang di beliung, baju zirah, dan peliharaan.</p>
       <ul>
-          <li>Pengrajin mengubah debu, satu serpihan, dan biaya Batu Bijih menjadi mantra dengan atribut acak. Tingkat lebih tinggi mendapat lebih banyak atribut dan pengali lebih besar (x1 / x2 / x4 / x6).</li>
-          <li>Setiap beliung, setelan, dan pet punya <strong>8 slot</strong>, terbuka di lantai 1.000 / 3.000 / 6.000 / 9.000 / 12.000 / 15.000 / 18.000 / 21.000. Yang dihitung lantai terbaikmu sepanjang masa, jadi slot tidak pernah tertutup lagi.</li>
-          <li>Sebagian atribut hanya membantu item tempatnya terpasang (damage klik, damage otomatis, ketahanan panas); sebagian membantu semuanya (emas, kritis, bagian DPD, biaya peningkatan). Satu atribut khusus justru memperkuat skill item itu sendiri, jadi hanya bekerja pada item yang skill-nya sudah dibeli.</li>
-          <li>Pemilih hanya menampilkan mantra yang benar-benar berguna pada item tersebut.</li>
-          <li>Di Pedagang, 10 debu atau serpihan satu tingkat menjadi 1 dari tingkat berikutnya. Mantra yang tidak diinginkan juga bisa dibongkar menjadi debu (5 / 10 / 15 / 25 sesuai tingkat) - pembongkaran tidak bisa dibatalkan.</li>
+          <li>Memecah bijih menjatuhkan <strong>debu enchantment</strong> dan <strong>serpihan enchantment</strong>. Material tingkat lebih tinggi muncul lebih dalam.</li>
+          <li>Pengrajin mengubah debu dan serpihan menjadi enchantment dengan atribut acak. Tingkat lebih tinggi membawa lebih banyak atribut dan lebih kuat.</li>
+          <li>Setiap item punya slot enchantment yang terbuka seiring kedalaman.</li>
+          <li>Enchantment yang tidak kamu butuhkan bisa dibongkar jadi debu di pedagang, dan material bisa ditukar naik satu tingkat.</li>
         </ul>
       <div class="callout">
-          <div class="callout-label">Prestise itu aman</div>
-          Prestise tidak pernah menghapus mantra. Jika item terkunci lagi, mantranya hanya kembali ke Inventaris, yang terbuka di lantai 500.
+          <div class="callout-label">Kebangkitan aman</div>
+          Kebangkitan tidak pernah menghapus enchantment; yang ada di item yang terkunci lagi kembali ke Inventaris.
         </div>
     </section>
 
     <section id="floors">
-      <div class="section-head"><span class="section-num">11</span><h2>Lantai, Bijih, dan Kedalaman</h2></div>
-      <p class="section-dek">Lantai menentukan seberapa keras bijih dan berapa emas yang diberikan. Kedalaman menentukan tampilannya.</p>
+      <div class="section-head"><span class="section-num">08</span><h2>Lantai dan Bijih</h2></div>
+      <p class="section-dek">Setiap lantai sedikit lebih sulit dan sedikit lebih menguntungkan dari sebelumnya.</p>
       <ul>
-          <li>Setiap lantai punya sedikit lebih banyak nyawa dan emas daripada lantai sebelumnya, dan kurvanya makin curam.</li>
-          <li>Setiap <strong>10 lantai</strong> ada lantai berwaktu: hitung mundur <strong>20 detik</strong> dimulai, nyawa x5 dan emas x2.</li>
-          <li>Kesulitan juga berjalan dalam siklus 100 lantai - beberapa lantai dalam satu siklus memberi hasil lebih baik dibanding nyawanya.</li>
-          <li>Setiap bijih menjatuhkan <strong>1-5</strong> Batu Bijih selain emasnya.</li>
-          <li><strong>5 bijih langka</strong> (Ferrovyx, Karnyth, Thalveris, Umbryssa, Zephiris) bisa muncul menggantikan bijih biasa. Peluangnya sekitar 1 dari 10.000 sampai 1 dari 1.000.000, dan setelah dihancurkan tercatat selamanya dan tidak pernah muncul lagi.</li>
+          <li>Sesekali muncul <strong>lantai berwaktu</strong>: pecahkan bijih sebelum hitungan mundur habis dan ia membayar lebih banyak emas. Jika waktu menang, kamu turun satu lantai dan maju otomatis dimatikan.</li>
+          <li>Setiap bijih menjatuhkan Batu Bijih selain emas.</li>
+          <li>Sangat jarang muncul <strong>bijih langka</strong> (Ferrovyx, Karnyth, Thalveris, Umbryssa, Zephiris); masing-masing hanya ditemukan sekali.</li>
+          <li>Lift memindahkanmu antar lantai yang sudah kamu capai. Lokasi beralih antara tambang utama, dungeon, dan Jurang.</li>
         </ul>
-      <div class="callout warn">
-          <div class="callout-label">Lantai berwaktu itu kejam</div>
-          Kalau waktunya habis, kamu mundur <strong>satu lantai</strong> dan maju otomatis mati. Tambang sebentar sebelum mencoba lagi.
+      <div class="callout">
+          <div class="callout-label">Farming di bawah tidak efisien</div>
+          Debu dan serpihan paling sering jatuh di dekat lantai terdalam yang pernah kamu capai; berdiam jauh di bawahnya menurunkan peluangnya secara nyata.
         </div>
-      <p>Lift membawamu ke lantai mana pun yang sudah dicapai di putaran ini. Memilih lantai secara manual mematikan maju otomatis; nyalakan lagi saat ingin turun. Panel Lokasi berpindah antara tambang utama dan dungeon bos.</p>
-      <p>Total ada <strong>40</strong> jenis bijih, dan kedalaman menentukan yang muncul. Jenis bijih hanya mengubah tampilan - nyawa dan emas berasal dari lantai.</p>
-      <div class="table-wrap">
-        <table>
-        <thead><tr>
-        <th class="num">Kedalaman</th>
-        <th class="num">Jenis bijih</th>
-        <th class="num">Sekitar lantai</th>
-        </tr></thead>
-        <tbody>
-        <tr>
-        <td class="num">0-100 m</td>
-        <td class="num">9</td>
-        <td class="num">~54</td>
-        </tr>
-        <tr>
-        <td class="num">100-500 m</td>
-        <td class="num">20</td>
-        <td class="num">~129</td>
-        </tr>
-        <tr>
-        <td class="num">500-1.500 m</td>
-        <td class="num">30</td>
-        <td class="num">~196</td>
-        </tr>
-        <tr>
-        <td class="num">1.500 m+</td>
-        <td class="num">40</td>
-        <td class="num">-</td>
-        </tr>
-        </tbody></table></div>
     </section>
 
     <section id="skills">
-      <div class="section-head"><span class="section-num">12</span><h2>Skill Aktif</h2></div>
-      <p class="section-dek">8 skill, masing-masing boost berwaktu yang diikuti cooldown.</p>
-      <p>Skill <strong>gratis</strong> saat lantainya tercapai - kamu memakainya mulai level 1. Menaikkannya sampai level 7 butuh total <strong>63 Batu Skill</strong>, atau <strong>504</strong> untuk semua 8. Level lebih tinggi berarti durasi lebih lama dan cooldown lebih pendek.</p>
-      <div class="table-wrap">
-        <table>
-        <thead><tr>
-        <th>Skill</th>
-        <th class="num">Lantai</th>
-        <th class="num">Level 1 (durasi / cooldown)</th>
-        <th class="num">Level 7 (durasi / cooldown)</th>
-        <th class="num">Efek</th>
-        </tr></thead>
-        <tbody>
-        <tr>
-        <td>Pemecah Bijih</td>
-        <td class="num">50</td>
-        <td class="num">30 dtk / 540 dtk</td>
-        <td class="num">90 dtk / 180 dtk</td>
-        <td class="num">7 → 13 /dtk</td>
-        </tr>
-        <tr>
-        <td>Klik Amarah</td>
-        <td class="num">100</td>
-        <td class="num">40 dtk / 660 dtk</td>
-        <td class="num">210 dtk / 300 dtk</td>
-        <td class="num">x2 → x5</td>
-        </tr>
-        <tr>
-        <td>Serangan Kritis</td>
-        <td class="num">150</td>
-        <td class="num">30 dtk / 600 dtk</td>
-        <td class="num">150 dtk / 240 dtk</td>
-        <td class="num">x1,3 → x1,9</td>
-        </tr>
-        <tr>
-        <td>Amukan</td>
-        <td class="num">200</td>
-        <td class="num">40 dtk / 840 dtk</td>
-        <td class="num">160 dtk / 480 dtk</td>
-        <td class="num">x2 → x3,5</td>
-        </tr>
-        <tr>
-        <td>Gila Emas</td>
-        <td class="num">250</td>
-        <td class="num">50 dtk / 1.020 dtk</td>
-        <td class="num">290 dtk / 660 dtk</td>
-        <td class="num">x2 → x5</td>
-        </tr>
-        <tr>
-        <td>Ketahanan Panas</td>
-        <td class="num">300</td>
-        <td class="num">30 dtk / 660 dtk</td>
-        <td class="num">140 dtk / 300 dtk</td>
-        <td class="num">x2 → x5</td>
-        </tr>
-        <tr>
-        <td>Muatan Berlebih</td>
-        <td class="num">350</td>
-        <td class="num">20 dtk / 1.200 dtk</td>
-        <td class="num">20 dtk / 840 dtk</td>
-        <td class="num">x1,5 → x3</td>
-        </tr>
-        <tr>
-        <td>Pembalik Waktu</td>
-        <td class="num">400</td>
-        <td class="num">1.200 dtk</td>
-        <td class="num">840 dtk</td>
-        <td class="num">-300 dtk → -1.020 dtk</td>
-        </tr>
-        </tbody></table></div>
-      <p>Baris skill pertama terbuka di lantai 50; Pohon Skill tempat membelanjakan Batu Skill terbuka di lantai <strong>180</strong>. Level skill tetap ada setelah prestise.</p>
+      <div class="section-head"><span class="section-num">09</span><h2>Skill dan Gelar</h2></div>
+      <p class="section-dek">Penguatan berjangka dan bonus yang datang sendiri saat kamu menggali.</p>
+      <ul>
+          <li><strong>Skill aktif</strong> terbuka gratis seiring kedalaman; menguatkanmu sebentar lalu masuk cooldown. Ia diperkuat dengan Batu Skill di Pohon Skill dan tidak hilang karena Kebangkitan.</li>
+          <li><strong>Gelar</strong> datang sendiri saat kamu turun dan memberi bonus seperti damage, emas, dan ketahanan panas. Setelah Kebangkitan harus diraih ulang.</li>
+        </ul>
       <div class="callout">
           <div class="callout-label">Kombo</div>
-          Aktifkan Muatan Berlebih dulu, lalu skill yang benar-benar ingin diperkuat - misalnya Gila Emas. Setelah itu Pembalik Waktu memotong cooldown skill terakhir yang kamu pakai, jadi bisa dipakai lagi lebih cepat.
+          Muatan Berlebih dulu, lalu skill yang ingin kamu perbesar - misalnya Gila Emas. Setelah itu Pembalik Waktu memperpendek cooldown skill terakhirmu.
         </div>
     </section>
 
-    <section id="titles">
-      <div class="section-head"><span class="section-num">13</span><h2>Gelar</h2></div>
-      <p class="section-dek">100 gelar yang didapat otomatis saat kamu turun.</p>
-      <ul>
-          <li>Gelar mencakup lantai 1 sampai lantai <strong>50.000</strong> dan dipilih otomatis dari lantai tertinggi di putaran ini.</li>
-          <li>Setiap gelar menambah bonusnya sekitar <strong>+0,1</strong>.</li>
-          <li>Bonus datang bertahap - damage klik, damage otomatis, ketahanan panas, emas, pengali kritis, peluang kritis, dan bagian DPD pada klik dimulai di gelar 2 / 6 / 11 / 16 / 21 / 26 / 31.</li>
-          <li>Prestise mengembalikanmu ke gelar awal; gelar kembali saat kamu turun lagi.</li>
-        </ul>
-    </section>
-
     <section id="tasks">
-      <div class="section-head"><span class="section-num">14</span><h2>Tugas dan Taskium</h2></div>
-      <p class="section-dek">Jalur samping yang mengubah klikmu menjadi pendapatan kedua.</p>
+      <div class="section-head"><span class="section-num">10</span><h2>Tugas</h2></div>
+      <p class="section-dek">Jalur sampingan yang mengubah klikmu jadi pendapatan kedua.</p>
       <ul>
-          <li>Setiap klik yang kena memberi <strong>+1 Taskium</strong>.</li>
-          <li>Menerima tugas seharga <strong>200</strong>, mengacak ulang seharga <strong>25</strong>.</li>
-          <li>Panel tugas terbuka di lantai 125; 6 slot terbuka di lantai 125 / 225 / 325 / 425 / 525 / 625.</li>
-          <li>Ada 10 jenis tugas dalam 6 kelangkaan. Setiap tugas berlangsung 60 menit, dan yang belum diterima diganti setiap jam.</li>
-          <li>Hadiah emas naik sesuai kelangkaan - antara <strong>50-500</strong> kali emas bijih di lantai terbaikmu di putaran ini. Yang paling langka juga memberi Esensi.</li>
-        </ul>
-    </section>
-
-    <section id="missions">
-      <div class="section-head"><span class="section-num">15</span><h2>Misi Harian</h2></div>
-      <p class="section-dek">Daftar target singkat yang berganti setiap hari.</p>
-      <ul>
-          <li>Kamu mendapat <strong>5 misi</strong> per hari - hancurkan bijih, klik, putar roda, kalahkan bos, gunakan skill, dan sebagainya.</li>
-          <li>Setiap misi selesai memberi <strong>boost x2 selama 10 menit</strong> (damage otomatis, damage klik, kritis, atau emas).</li>
-          <li>Hadiah tidak otomatis - klaim di panel misi. Daftar direset tengah malam UTC.</li>
+          <li><strong>Tugas</strong> diterima dengan Taskium; tugas yang lebih langka membayar lebih besar.</li>
+          <li><strong>Misi Harian</strong> diperbarui setiap hari dan memberi penguatan singkat saat kamu menyelesaikannya. Jangan lupa mengambil hadiahnya di panel.</li>
         </ul>
     </section>
 
     <section id="trade">
-      <div class="section-head"><span class="section-num">16</span><h2>Pedagang</h2></div>
-      <p class="section-dek">Terbuka di lantai 200. Tempat Batu Bijih dan bahan berlebih berubah menjadi sesuatu yang berguna.</p>
-      <ul>
-          <li>1 Batu Skill menjadi <strong>5.000 Batu Bijih</strong>.</li>
-          <li><strong>2.000 Batu Bijih</strong> menjadi 1 Esensi.</li>
-          <li><strong>5.000 Batu Bijih</strong> menjadi 1 Batu Skill.</li>
-          <li>Setiap pertukaran mata uang dikenai biaya tetap 100.000 emas. Pertukaran bahan dan pembongkaran memakai Batu Bijih sebagai gantinya.</li>
-        </ul>
-      <p>Pertukaran ke Batu Skill yang paling penting: begitulah sesi menambang panjang berubah jadi level skill tanpa membeli di toko.</p>
+      <div class="section-head"><span class="section-num">11</span><h2>Pedagang</h2></div>
+      <p class="section-dek">Tempat sumber daya berlebih berubah jadi sesuatu yang berguna.</p>
+      <p>Kamu bisa mengubah Batu Bijih menjadi Esensi atau Batu Skill, menukar material enchantment naik satu tingkat, dan membongkar enchantment yang tidak kamu inginkan. Yang paling berharga adalah penukaran Batu Skill: itulah cara memperkuat skill tanpa membeli apa pun di toko.</p>
     </section>
 
     <section id="extras">
-      <div class="section-head"><span class="section-num">17</span><h2>Hadiah Gratis</h2></div>
-      <p class="section-dek">Sumber yang tidak meminta banyak selain mampir ke game.</p>
+      <div class="section-head"><span class="section-num">12</span><h2>Hadiah Gratis</h2></div>
+      <p class="section-dek">Sumber daya yang hanya minta kamu mampir.</p>
       <ul>
-          <li><strong>Balon emas</strong> - mulai lantai 50, satu balon datang setiap 500-700 detik dan menunggu sampai kamu klik. Memberi <strong>x6</strong> emas bijih di lantai terbaikmu di putaran ini.</li>
-          <li><strong>Kristal Emas</strong> - mulai lantai 100, muncul setiap 800-1.300 detik. Mengkliknya di tambang utama mengubah bijih menjadi bijih bonus 10 detik dengan nyawa x10 dan emas x14, dibayar per pukulan.</li>
-          <li><strong>Pendapatan offline</strong> - dihitung setelah 60 menit pergi, maksimal 12 jam. Premium menambahnya.</li>
-          <li><strong>Hadiah waktu bermain</strong> - setiap 60 menit bermain memberi sekitar 100 kali emas satu menit di lantai terbaikmu.</li>
-          <li><strong>Hadiah harian</strong> - 1 kunci dungeon gratis per hari di toko. Tidak ada rentetan yang harus dijaga; kamu perlu online.</li>
-          <li><strong>Roda Keberuntungan</strong> - mulai lantai 100, roda 8 bagian yang diperbarui setiap 3 jam dengan 1 putaran gratis. Putaran tambahan memakai berlian, mulai 10 dan berlipat dua setiap kali. Bagian yang sudah dimenangkan tetap tertutup sampai roda diperbarui; hadiahnya termasuk emas sesuai lantaimu, Batu Bijih, boost, Taskium, 50 berlian, dan kunci dungeon.</li>
-          <li><strong>Kode Promo</strong> - kode yang kami bagikan di pengumuman dan komunitas dimasukkan di Pengaturan > Kode Promo. Setiap kode berlaku sekali per akun, dan sebagian punya jumlah pemakaian terbatas.</li>
+          <li><strong>Balon emas</strong> melintasi layar sesekali; klik dan kamu dapat emas. Tidak mungkin terlewat - ia menunggu sampai kamu mengkliknya.</li>
+          <li><strong>Kristal Emas</strong> mengubah bijih menjadi bijih bonus penuh emas untuk sesaat; hanya bisa dipungut di tambang utama.</li>
+          <li><strong>Pendapatan offline</strong> menumpuk saat game tertutup.</li>
+          <li><strong>Hadiah waktu bermain</strong> membayar emas semakin lama kamu bermain.</li>
+          <li><strong>Hadiah harian</strong> memberi satu kunci dungeon gratis dan satu Kunci Jurang gratis di toko setiap hari, saling terpisah.</li>
+          <li><strong>Roda Keberuntungan</strong> terisi ulang secara berkala dan memberi putaran gratis.</li>
+          <li><strong>Kode Promo</strong> - kode yang kami bagikan di pengumuman bisa ditukar dari menu Pengaturan.</li>
         </ul>
     </section>
 
-    <section id="prestige">
-      <div class="section-head"><span class="section-num">18</span><h2>Prestise</h2></div>
-      <p class="section-dek">Tukar kemajuan putaran ini dengan kekuatan permanen. Dengan waktu yang tepat, ini cara tercepat di game.</p>
-      <p>Panel prestise muncul di lantai 70. Kamu bisa prestise setelah <strong>melewati lantai 100</strong> di putaran saat ini - setiap putaran meminta lantai yang sama.</p>
+    <section id="awakening">
+      <div class="section-head"><span class="section-num">13</span><h2>Kebangkitan</h2></div>
+      <p class="section-dek">Ubah kemajuan sesi ini menjadi kekuatan permanen.</p>
       <ul>
-          <li><strong>Direset:</strong> emas, kemajuan lantai, peningkatan dan skill beliung, setelan, dan pet, cooldown skill, kemajuan gelar, Taskium, kemajuan tugas, beliung yang dipasang ke pekerja, dan pendapatan pekerja yang belum dikumpulkan.</li>
-          <li><strong>Tetap:</strong> berlian dan semua yang dibeli dengannya, kunci dungeon, kemajuan dungeon, Esensi, parameter prestise, level pohon skill, Batu Skill, Batu Bijih, mantra dan inventaris, pencapaian, statistik, papan peringkat, dan level pekerja.</li>
-          <li>Setiap putaran dimulai lagi dari <strong>lantai 1</strong>, tanpa emas awal.</li>
+          <li>Setelah melewati kedalaman tertentu kamu bisa melakukan Kebangkitan. Setiap sesi dimulai lagi dari lantai pertama.</li>
+          <li><strong>Direset:</strong> emas, kemajuan lantai, beliung yang terbuka dan ditingkatkan, peningkatan baju zirah dan peliharaan, skill item, gelar, Taskium, kemajuan tugas, beliung yang diberikan ke pekerja, dan pendapatan pekerja yang belum diambil.</li>
+          <li><strong>Dipertahankan:</strong> berlian dan semua yang dibeli dengannya, kunci, kemajuan bos dan Jurang, Esensi, parameter Kebangkitan, pohon skill, Batu Skill, Batu Bijih, enchantment, pencapaian, level pekerja, dan semua di sisi Pendakian.</li>
+          <li>Esensi yang kamu dapat bergantung pada lantai terdalam yang kamu capai dan tumbuh cepat seiring kedalaman. Belanjakan pada parameter permanen.</li>
         </ul>
-      <p>Hadiah Esensi hanya bergantung pada <strong>lantai tertinggi</strong> yang dicapai, dan naik cepat: sekitar 331 di lantai 200, 1.098 di lantai 300, 12.068 di lantai 500, dan 4.827.341 di lantai 1.000.</p>
       <div class="callout">
-          <div class="callout-label">Turun sedikit lagi</div>
-          Karena hadiahnya naik sangat curam seiring kedalaman, beberapa lantai tambahan sebelum prestise biasanya lebih berharga daripada langsung prestise lagi.
+          <div class="callout-label">Gali sedikit lebih dalam</div>
+          Mendapat beberapa lantai lagi sebelum Kebangkitan biasanya lebih berharga daripada langsung melakukan Kebangkitan berikutnya.
         </div>
-      <div class="table-wrap">
-        <table>
-        <thead><tr>
-        <th>Parameter</th>
-        <th>Efek</th>
-        <th class="num">Per level</th>
-        </tr></thead>
-        <tbody>
-        <tr>
-        <td>Tempa Abadi</td>
-        <td>Damage otomatis per detik</td>
-        <td class="num">+2,5%</td>
-        </tr>
-        <tr>
-        <td>Tangan Penghancur Batu</td>
-        <td>Damage klik</td>
-        <td class="num">+2,5%</td>
-        </tr>
-        <tr>
-        <td>Jurang Emas</td>
-        <td>Pendapatan emas</td>
-        <td class="num">+1%</td>
-        </tr>
-        <tr>
-        <td>Cenayang Bijih</td>
-        <td>Peluang kritis</td>
-        <td class="num">+0,1%</td>
-        </tr>
-        <tr>
-        <td>Kekuatan Bencana</td>
-        <td>Pengali kritis</td>
-        <td class="num">+0,1%</td>
-        </tr>
-        <tr>
-        <td>Perisai Neraka</td>
-        <td>Ketahanan panas</td>
-        <td class="num">+1%</td>
-        </tr>
-        <tr>
-        <td>Kesatuan Kekuatan</td>
-        <td>Bagian DPD yang ditambahkan ke klik</td>
-        <td class="num">+0,1%</td>
-        </tr>
-        </tbody></table></div>
-      <p>Setiap level berlipat bersama level sebelumnya. Satu level awalnya seharga 2 Esensi dan sekitar 2,5% lebih mahal setiap kali, jadi sering membelanjakan lebih baik daripada menimbun.</p>
     </section>
 
-    <section id="bosses">
-      <div class="section-head"><span class="section-num">19</span><h2>Bos</h2></div>
-      <p class="section-dek">Adu damage melawan waktu demi Esensi dan Batu Bijih. Terbuka di lantai 350.</p>
+    <section id="ascension">
+      <div class="section-head"><span class="section-num">14</span><h2>Pendakian</h2></div>
+      <p class="section-dek">Lapisan kedua yang bertumpu di atas Kebangkitan.</p>
       <ul>
-          <li>Buka panel Lokasi, pilih dungeon dan bos, lalu pakai <strong>1 kunci dungeon</strong> untuk memulai. Tidak ada yang mulai sendiri.</li>
-          <li>Bos terbuka berurutan - kalahkan satu untuk membuka berikutnya. Nyawa naik tajam sementara waktunya makin singkat.</li>
-          <li>Kemajuan bos <strong>tetap ada setelah prestise</strong>, dan bos yang sudah dikalahkan bisa dilawan lagi kapan saja.</li>
+          <li>Capai lantai yang jauh lebih dalam dan Pendakian terbuka; ia punya halaman sendiri di bawah tab prestise.</li>
+          <li><strong>Direset:</strong> parameter Kebangkitan dan Esensimu - seluruh siklus itu dimulai dari nol; beliung, lantai, dan peningkatan direset persis seperti pada Kebangkitan.</li>
+          <li><strong>Dipertahankan:</strong> level Kebangkitan-mu, berlian dan semua yang dibeli dengannya, kunci, kemajuan bos dan Jurang, enchantment, pohon skill, pencapaian, level pekerja, dan Esensi Murni yang sudah kamu kumpulkan.</li>
+          <li>Sebagai gantinya kamu mendapat <strong>Esensi Murni</strong>. Ia membeli dua parameter: <strong>Gema Kebangkitan</strong> memperbesar bonus setiap parameter Kebangkitan, dan <strong>Mata Air</strong> menambah Esensi yang dibayarkan tiap Kebangkitan.</li>
+          <li>Kedua parameter tumbuh majemuk: setiap level mengalikan di atas level sebelumnya.</li>
         </ul>
-      <div class="table-wrap">
-        <table>
-        <thead><tr>
-        <th>Bos</th>
-        <th class="num">Nyawa</th>
-        <th class="num">Waktu</th>
-        <th>Hadiah</th>
-        </tr></thead>
-        <tbody>
-        <tr>
-        <td>Kolosus Kristal</td>
-        <td class="num">1e15</td>
-        <td class="num">30 dtk</td>
-        <td>1.000 Esensi + 50.000 Batu Bijih</td>
-        </tr>
-        <tr>
-        <td>Penjaga Kristal</td>
-        <td class="num">1e18</td>
-        <td class="num">25 dtk</td>
-        <td>2.000 Esensi + 75.000 Batu Bijih</td>
-        </tr>
-        <tr>
-        <td>Penjaga Merah Darah</td>
-        <td class="num">1e22</td>
-        <td class="num">20 dtk</td>
-        <td>3.000 Esensi + 100.000 Batu Bijih</td>
-        </tr>
-        <tr>
-        <td>Penjaga Batu</td>
-        <td class="num">1e27</td>
-        <td class="num">20 dtk</td>
-        <td>4.000 Esensi + 125.000 Batu Bijih</td>
-        </tr>
-        <tr>
-        <td>Titan Beku</td>
-        <td class="num">1e33</td>
-        <td class="num">20 dtk</td>
-        <td>5.000 Esensi + 150.000 Batu Bijih</td>
-        </tr>
-        <tr>
-        <td>Golem Kristal 1</td>
-        <td class="num">1e40</td>
-        <td class="num">20 dtk</td>
-        <td>6.000 Esensi + 175.000 Batu Bijih</td>
-        </tr>
-        <tr>
-        <td>Kolosus Janggut Batu</td>
-        <td class="num">1e48</td>
-        <td class="num">15 dtk</td>
-        <td>7.000 Esensi + 200.000 Batu Bijih</td>
-        </tr>
-        <tr>
-        <td>Golem Kristal 2</td>
-        <td class="num">1e57</td>
-        <td class="num">15 dtk</td>
-        <td>8.000 Esensi + 225.000 Batu Bijih</td>
-        </tr>
-        <tr>
-        <td>Golem Api</td>
-        <td class="num">1e67</td>
-        <td class="num">15 dtk</td>
-        <td>9.000 Esensi + 250.000 Batu Bijih</td>
-        </tr>
-        <tr>
-        <td>Golem Penjaga</td>
-        <td class="num">1e78</td>
-        <td class="num">10 dtk</td>
-        <td>10.000 Esensi + 275.000 Batu Bijih</td>
-        </tr>
-        </tbody></table></div>
+      <div class="callout">
+          <div class="callout-label">Kapan naik</div>
+          Pendakian mempercepat bukan satu sesi, melainkan seluruh siklus. Ia sepadan begitu parameter Esensi jadi mahal dan Kebangkitan berikutnya hanya menambah sedikit.
+        </div>
+    </section>
+
+    <section id="dungeons">
+      <div class="section-head"><span class="section-num">15</span><h2>Bos dan Jurang</h2></div>
+      <p class="section-dek">Dua tantangan berwaktu di luar tambang utama.</p>
+      <ul>
+          <li>Keduanya dicapai lewat Lokasi; selama kamu di sana, panas dan kemajuan lantai tambang utama berhenti.</li>
+          <li><strong>Bos</strong> dibuka dengan kunci dungeon: jatuhkan bos sebelum waktu habis dan kamu mendapat Esensi serta Batu Bijih. Bos terbuka berurutan dan bos yang sudah dikalahkan tetap terbuka selamanya.</li>
+          <li><strong>Jurang</strong> dibuka dengan Kunci Jurang dan berjalan dengan satu hitungan mundur: kamu memecah bijih demi bijih, tiap tahap lebih berat dari sebelumnya.</li>
+          <li>Setiap tahap jurang membawa <strong>hukumannya</strong> sendiri - ada yang memangkas damage otomatis, ada damage klik, ada kritis. Hukuman hanya berlaku selama tahap itu berlangsung.</li>
+          <li>Setiap tahap yang kamu pecahkan di jurang tetap dibayar: entah waktu habis atau kamu keluar, apa yang kamu dapat sampai titik itu tetap milikmu. Tuntaskan semua tahap dan jurang berikutnya terbuka.</li>
+        </ul>
       <div class="callout warn">
-          <div class="callout-label">Kalah itu mahal</div>
-          Jika waktu habis duluan, kamu <strong>tidak mendapat apa-apa</strong> dan kuncinya hilang. Setelah gagal kamu bisa melihat sisa nyawa bos - gunakan untuk menilai berapa banyak damage yang masih kurang.
-        </div>
-    </section>
-
-    <section id="achievements">
-      <div class="section-head"><span class="section-num">20</span><h2>Pencapaian</h2></div>
-      <p class="section-dek">100 pencapaian dalam 31 kategori - klik, bijih, bos, prestise, kedalaman, pembuatan, dan lainnya.</p>
-      <p>Setiap pencapaian memberi <strong>Batu Bijih</strong>, dan target serta hadiahnya naik di setiap tingkat.</p>
-      <div class="callout">
-          <div class="callout-label">Klaim hadiahnya</div>
-          Hadiah <strong>tidak otomatis</strong>. Kalau sudah lama tidak membuka tab pencapaian, pasti ada tumpukan yang menunggu - tombol klaim semua mengambil semuanya sekaligus.
+          <div class="callout-label">Kalah dari bos ada harganya</div>
+          Jika waktu habis sebelum bos tumbang, kamu tidak mendapat hadiah dan kunci yang dipakai tidak kembali.
         </div>
     </section>
 
     <section id="store">
-      <div class="section-head"><span class="section-num">21</span><h2>Toko</h2></div>
-      <p class="section-dek">Berlian, kunci, paket, waktu Premium, lompatan waktu, peti, dan item Infinity permanen.</p>
+      <div class="section-head"><span class="section-num">16</span><h2>Toko dan Pencapaian</h2></div>
+      <p class="section-dek">Berlian, kunci, paket, premium, lompatan waktu, peti, dan item Infinity permanen.</p>
       <ul>
-          <li><strong>Paket berlian:</strong> 200 / 550 / 1.150 / 2.400 / 6.250 / 14.000 berlian. Makin besar paketnya, makin hemat.</li>
-          <li><strong>Paket kunci:</strong> 3 / 7 / 15 kunci dungeon.</li>
-          <li><strong>Paket Kecil:</strong> 500 Berlian, 100 Esensi, 10 Batu Skill, 3 Kunci Dungeon.</li>
-          <li><strong>Paket Besar:</strong> 1.000 Berlian, 200 Esensi, 20 Batu Skill, 5 Kunci Dungeon.</li>
-          <li><strong>Paket Premium 7 Hari:</strong> 7 hari x5 damage klik, x5 damage otomatis, x3 emas, x3 ketahanan panas, dan x2 pendapatan offline.</li>
-          <li><strong>Paket Premium 30 Hari:</strong> 30 hari x7 damage klik, x7 damage otomatis, x4,5 emas, x3,5 ketahanan panas, dan x2,5 pendapatan offline.</li>
-          <li><strong>Lompatan waktu:</strong> 8 / 16 / 24 jam seharga 100 / 190 / 370 berlian. Hadiahnya dihitung dari damage, lantai, dan pekerjamu sendiri - termasuk bijih, jatuhan mantra, dan bijih langka. Boost, cooldown, dan pengatur waktu tidak maju, dan tidak bisa dipakai di dalam dungeon.</li>
+          <li><strong>Premium</strong> menaikkan damage, emas, dan pendapatan offline-mu selama periode tertentu.</li>
+          <li><strong>Lompatan waktu</strong> memajukan game beberapa jam; hasilnya dihitung dari kekuatanmu saat itu.</li>
+          <li><strong>Peti Enchantment</strong> terbuka seketika dan memberi material enchantment.</li>
+          <li><strong>Paket kunci</strong> dibeli dengan berlian; ada paket untuk kunci dungeon maupun Kunci Jurang.</li>
+          <li><strong>Item Infinity</strong> dibeli sekali dan bertahan melewati Kebangkitan maupun Pendakian.</li>
+          <li><strong>Pencapaian</strong> membayar Batu Bijih; hadiahnya harus kamu ambil sendiri.</li>
         </ul>
-      <p><strong>Peti Enchantment</strong> seharga 100 berlian dan langsung terbuka. Kartunya menampilkan setiap hadiah dan peluangnya:</p>
-      <div class="table-wrap">
-        <table>
-        <thead><tr>
-        <th>Item</th>
-        <th class="num">Jumlah</th>
-        <th class="num">Peluang</th>
-        </tr></thead>
-        <tbody>
-        <tr>
-        <td>Debu Mantra Umum</td>
-        <td class="num">250</td>
-        <td class="num">17%</td>
-        </tr>
-        <tr>
-        <td>Serpihan Mantra Umum</td>
-        <td class="num">26</td>
-        <td class="num">16%</td>
-        </tr>
-        <tr>
-        <td>Debu Mantra Langka</td>
-        <td class="num">180</td>
-        <td class="num">15%</td>
-        </tr>
-        <tr>
-        <td>Serpihan Mantra Langka</td>
-        <td class="num">9</td>
-        <td class="num">15%</td>
-        </tr>
-        <tr>
-        <td>Debu Mantra Epik</td>
-        <td class="num">150</td>
-        <td class="num">10%</td>
-        </tr>
-        <tr>
-        <td>Serpihan Mantra Epik</td>
-        <td class="num">5</td>
-        <td class="num">10%</td>
-        </tr>
-        <tr>
-        <td>Debu Mantra Legendaris</td>
-        <td class="num">130</td>
-        <td class="num">9%</td>
-        </tr>
-        <tr>
-        <td>Serpihan Mantra Legendaris</td>
-        <td class="num">3</td>
-        <td class="num">8%</td>
-        </tr>
-        </tbody></table></div>
-      <p>Item Infinity dibeli <strong>sekali dengan berlian</strong> dan tidak pernah direset, bahkan saat prestise. Di akhir permainan biasanya ini penggunaan berlian terbaik.</p>
-      <div class="table-wrap">
-        <table>
-        <thead><tr>
-        <th>Item</th>
-        <th class="num">Efek</th>
-        <th class="num">Harga</th>
-        </tr></thead>
-        <tbody>
-        <tr>
-        <td>Kekuatan Infinity</td>
-        <td class="num">x4</td>
-        <td class="num">350 💎</td>
-        </tr>
-        <tr>
-        <td>Pendapatan Infinity</td>
-        <td class="num">x3</td>
-        <td class="num">350 💎</td>
-        </tr>
-        <tr>
-        <td>Armor Infinity</td>
-        <td class="num">x2</td>
-        <td class="num">350 💎</td>
-        </tr>
-        <tr>
-        <td>Kecepatan Infinity</td>
-        <td class="num">x1,5</td>
-        <td class="num">550 💎</td>
-        </tr>
-        <tr>
-        <td>Clicker Infinity</td>
-        <td class="num">7 /dtk</td>
-        <td class="num">600 💎</td>
-        </tr>
-        </tbody></table></div>
-      <div class="callout">
-          <div class="callout-label">Harga</div>
-          Harga uang asli datang dari Steam dalam mata uangmu, jadi tidak dicantumkan di sini. Isi paket tidak berubah; harganya tergantung wilayahmu.
-        </div>
     </section>
 
     <section id="progress">
-      <div class="section-head"><span class="section-num">22</span><h2>Memantau Kemajuan</h2></div>
-      <p class="section-dek">Tempat melihat jalannya putaran dan apa yang baru saja terjadi.</p>
+      <div class="section-head"><span class="section-num">17</span><h2>Kemajuan dan Penyimpanan</h2></div>
+      <p class="section-dek">Tempat kamu memantau sesimu dan bagaimana kemajuanmu dijaga.</p>
       <ul>
-          <li>Papan peringkat Steam mencatat klik, damage klik, jumlah prestise, bos yang dikalahkan, dan lantai tertinggi.</li>
-          <li>Layar statistik menyimpan catatan panjang - pendapatan, pengeluaran, klik, pembuatan, waktu bermain, dan lainnya.</li>
-          <li><strong>Log Aktivitas</strong> mencatat apa yang terjadi di sesi ini - hadiah, pembukaan, bos, pembelian - dan notifikasi di sudut layar membukanya.</li>
-          <li>Panel <strong>Pembaruan</strong> menampilkan catatan pembaruan terbaru dalam bahasamu dan terbuka sendiri sekali setelah pembaruan baru.</li>
+          <li>Papan peringkat Steam, layar statistik, dan <strong>Log Aktivitas</strong> menunjukkan kemajuanmu.</li>
+          <li>Panel <strong>Pembaruan</strong> menampilkan catatan pembaruan terbaru.</li>
+          <li>Game menyimpan sendiri secara berkala dan mencadangkan ke Steam Cloud, jadi kamu bisa melanjutkan di komputer lain.</li>
+          <li>Dengan Discord terbuka, profilmu menampilkan lantai tempatmu berada dan level Kebangkitan / Pendakian-mu.</li>
         </ul>
     </section>
 
-    <section id="save">
-      <div class="section-head"><span class="section-num">23</span><h2>Penyimpanan</h2></div>
-      <p class="section-dek">Singkatnya: kemajuanmu aman dengan beberapa cara sekaligus.</p>
-      <ul>
-          <li>Game menyimpan sendiri dalam bentuk terenkripsi setiap <strong>15 detik</strong>.</li>
-          <li>Cadangan ke Steam Cloud dibuat sekitar setiap <strong>45 detik</strong>, dan selalu saat kamu menutup atau menjeda - komputer lain bisa melanjutkan dari posisi terakhir.</li>
-          <li>Jika file simpanan rusak, game otomatis kembali ke cadangannya.</li>
-          <li>Kamu juga bisa menyalin simpanan ke clipboard dan menempelkannya di perangkat lain.</li>
-        </ul>
-    </section>
-
-    <section id="languages">
-      <div class="section-head"><span class="section-num">24</span><h2>Bahasa</h2></div>
-      <p class="section-dek">Game tersedia dalam 18 bahasa.</p>
-      <p>Inggris, Turki, Jerman, Prancis, Spanyol, Spanyol Amerika Latin, Italia, Polandia, Portugis Brasil, Rusia, Ukraina, Jepang, Korea, Tionghoa Sederhana, Tionghoa Tradisional, Thai, Indonesia, dan Vietnam. Game memilih bahasamu saat pertama kali dibuka, dan kamu bisa menggantinya kapan saja di pengaturan - panduan ini tersedia dalam semua bahasa tersebut, dengan tautan di bagian atas halaman.</p>
-    </section>
-
-    <footer class="doc-footer">Angka di sini mengikuti keseimbangan game saat ini dan bisa berubah lewat pembaruan. Harga uang asli ditentukan Steam dan ditampilkan dalam mata uangmu, jadi tidak dicantumkan di sini.</footer>
+    <footer class="doc-footer">Game berubah seiring pembaruan; panduan ini memberi gambaran umum. Harga barang yang dijual dengan uang asli ditampilkan Steam dalam mata uangmu sendiri.</footer>
   </main>
 </div>
 

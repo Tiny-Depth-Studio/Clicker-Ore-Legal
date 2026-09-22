@@ -13,6 +13,8 @@ CURRENCY_ROWS = [
     ("currency_dungeon_key", "cur-key", "dungeon_key"),
     ("currency_skill_stone", "cur-skillstone", "skill_stone"),
     ("currency_ore_stone", "cur-orestone", "ore_stone"),
+    ("currency_abyss_key", "cur-abysskey", "abyss_key"),
+    ("currency_pure_essence", "cur-pureessence", "pure_essence"),
 ]
 
 PACKAGE_CURRENCIES = ["currency_diamond", "currency_essence", "currency_skill_stone", "currency_dungeon_key"]
@@ -256,6 +258,8 @@ def generated_table(key, lang, values, names, locale, labels):
 def currency_cards(lang, values, names):
     cards = []
     for name_key, color, slug in CURRENCY_ROWS:
+        if slug not in lang["currencies"]:
+            continue
         entry = lang["currencies"][slug]
         cards.append(
             '<div class="cur-card" style="--dot:var(--{0})">\n'

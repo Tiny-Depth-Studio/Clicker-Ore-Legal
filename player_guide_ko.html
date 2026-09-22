@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <title>Clicker Ore Game - 플레이어 가이드</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="광산의 원리: 화폐, 곡괭이, 펫, 작업자, 인챈트, 스킬, 프레스티지, 보스, 상점을 공식 없이 설명합니다.">
+<meta name="description" content="광산이 돌아가는 방식: 곡괭이, 펫, 일꾼, 인챈트, 스킬, 각성, 승천, 보스, 심연, 상점을 짧게 정리했습니다.">
 <style>
   :root {
     --bg: #14110d;
@@ -28,6 +28,8 @@
     --cur-key: #d98a63;
     --cur-skillstone: #7fc9a0;
     --cur-orestone: #b5a68c;
+    --cur-abysskey: #8f7fd6;
+    --cur-pureessence: #d7bff5;
 
     --font-display: "Bahnschrift", "Segoe UI Semibold", "Arial Narrow Bold", "Arial Narrow", sans-serif;
     --font-body: "Sitka Text", "Iowan Old Style", Georgia, "Times New Roman", serif;
@@ -481,38 +483,31 @@
     <div class="toc-brand">Clicker Ore Game<small>플레이어 가이드</small></div>
     <ul class="toc-list">
       <li><a href="#start"><span class="toc-num">01</span>무엇부터 할까</a></li>
-      <li><a href="#currencies"><span class="toc-num">02</span>화폐 7종</a></li>
-      <li><a href="#damage"><span class="toc-num">03</span>클릭 피해와 자동 피해</a></li>
-      <li><a href="#critical"><span class="toc-num">04</span>치명타</a></li>
-      <li><a href="#pickaxes"><span class="toc-num">05</span>곡괭이</a></li>
-      <li><a href="#suits"><span class="toc-num">06</span>갑옷</a></li>
-      <li><a href="#temperature"><span class="toc-num">07</span>열</a></li>
-      <li><a href="#pets"><span class="toc-num">08</span>펫</a></li>
-      <li><a href="#workers"><span class="toc-num">09</span>작업자</a></li>
-      <li><a href="#enchantments"><span class="toc-num">10</span>인챈트</a></li>
-      <li><a href="#floors"><span class="toc-num">11</span>층, 광석, 깊이</a></li>
-      <li><a href="#skills"><span class="toc-num">12</span>액티브 스킬</a></li>
-      <li><a href="#titles"><span class="toc-num">13</span>칭호</a></li>
-      <li><a href="#tasks"><span class="toc-num">14</span>임무와 Taskium</a></li>
-      <li><a href="#missions"><span class="toc-num">15</span>일일 임무</a></li>
-      <li><a href="#trade"><span class="toc-num">16</span>상인</a></li>
-      <li><a href="#extras"><span class="toc-num">17</span>무료 보상</a></li>
-      <li><a href="#prestige"><span class="toc-num">18</span>프레스티지</a></li>
-      <li><a href="#bosses"><span class="toc-num">19</span>보스</a></li>
-      <li><a href="#achievements"><span class="toc-num">20</span>업적</a></li>
-      <li><a href="#store"><span class="toc-num">21</span>상점</a></li>
-      <li><a href="#progress"><span class="toc-num">22</span>진행 상황 확인</a></li>
-      <li><a href="#save"><span class="toc-num">23</span>저장</a></li>
-      <li><a href="#languages"><span class="toc-num">24</span>언어</a></li>
+      <li><a href="#currencies"><span class="toc-num">02</span>재화</a></li>
+      <li><a href="#damage"><span class="toc-num">03</span>피해와 치명타</a></li>
+      <li><a href="#equipment"><span class="toc-num">04</span>곡괭이, 방어구, 펫</a></li>
+      <li><a href="#temperature"><span class="toc-num">05</span>열</a></li>
+      <li><a href="#workers"><span class="toc-num">06</span>작업자</a></li>
+      <li><a href="#enchantments"><span class="toc-num">07</span>인챈트</a></li>
+      <li><a href="#floors"><span class="toc-num">08</span>층과 광석</a></li>
+      <li><a href="#skills"><span class="toc-num">09</span>스킬과 칭호</a></li>
+      <li><a href="#tasks"><span class="toc-num">10</span>과제</a></li>
+      <li><a href="#trade"><span class="toc-num">11</span>상인</a></li>
+      <li><a href="#extras"><span class="toc-num">12</span>무료 보상</a></li>
+      <li><a href="#awakening"><span class="toc-num">13</span>각성</a></li>
+      <li><a href="#ascension"><span class="toc-num">14</span>승화</a></li>
+      <li><a href="#dungeons"><span class="toc-num">15</span>보스와 심연</a></li>
+      <li><a href="#store"><span class="toc-num">16</span>상점와 업적</a></li>
+      <li><a href="#progress"><span class="toc-num">17</span>진행과 저장</a></li>
     </ul>
   </nav>
 
   <main>
     <header class="hero">
       <div class="strata" role="presentation"></div>
-      <div class="eyebrow">플레이어 가이드 - 2026-09-14</div>
-      <h1 class="title">광산의 모든 것,<br>쉬운 말로</h1>
-      <p class="subtitle">각 시스템이 무엇을 하는지, 언제 열리는지, 다음 한 시간을 어디에 쓰는 게 좋은지. 공식은 빼고 중요한 결정만 담았습니다.</p>
+      <div class="eyebrow">플레이어 가이드 - 2026-09-21</div>
+      <h1 class="title">광산 전체를,<br>짧게</h1>
+      <p class="subtitle">어떤 시스템이 무엇을 하고 시간을 어디에 써야 하는지. 숫자도 공식도 없이 꼭 알아야 할 것만 담았습니다.</p>
       <div class="langbar">
         <div class="langbar-label">언어</div>
         <div class="langbar-list"><a href="player_guide_en.html" hreflang="en">English</a><a href="player_guide_tr.html" hreflang="tr">Türkçe</a><a href="player_guide_de.html" hreflang="de">Deutsch</a><a href="player_guide_fr.html" hreflang="fr">Français</a><a href="player_guide_es.html" hreflang="es">Español</a><a href="player_guide_es_la.html" hreflang="es-419">Español (Latinoamérica)</a><a href="player_guide_it.html" hreflang="it">Italiano</a><a href="player_guide_pl.html" hreflang="pl">Polski</a><a href="player_guide_pt_br.html" hreflang="pt-BR">Português (Brasil)</a><a href="player_guide_ru.html" hreflang="ru">Русский</a><a href="player_guide_uk.html" hreflang="uk">Українська</a><a href="player_guide_ja.html" hreflang="ja">日本語</a><span>한국어</span><a href="player_guide_zh_hans.html" hreflang="zh-Hans">简体中文</a><a href="player_guide_zh_hant.html" hreflang="zh-Hant">繁體中文</a><a href="player_guide_th.html" hreflang="th">ไทย</a><a href="player_guide_id.html" hreflang="id">Bahasa Indonesia</a><a href="player_guide_vi.html" hreflang="vi">Tiếng Việt</a></div>
@@ -521,711 +516,300 @@
 
     <section id="start">
       <div class="section-head"><span class="section-num">01</span><h2>무엇부터 할까</h2></div>
-      <p class="section-dek">게임이 기능을 열어주는 순서에 맞춘 세 단계입니다.</p>
+      <p class="section-dek">게임은 깊이 내려갈수록 시스템을 하나씩 열어 줍니다.</p>
       <div class="strategy-track">
           <div class="strategy-stage">
-            <div class="stage-label">초반 - 1층부터 100층</div>
+            <div class="stage-label">초반</div>
             <ul>
-              <li>곡괭이를 계속 강화하세요. 더 깊이 내려갈수록 새 곡괭이가 열립니다.</li>
-              <li>광석 파괴자는 50층, 분노의 클릭은 100층에서 열립니다.</li>
-              <li>황금 풍선이 날아오면 클릭하고, 다이아 여유가 생기면 조약돌을 데려오세요.</li>
+              <li>곡괭이를 쉬지 말고 강화하세요. 깊은 층에서 새 곡괭이가 열립니다.</li>
+              <li>골드 풍선과 황금 수정은 보이는 대로 클릭하고, 첫 스킬을 쓰기 시작하세요.</li>
+              <li>다이아가 모이면 첫 펫을 구입하세요.</li>
             </ul>
           </div>
           <div class="strategy-stage">
-            <div class="stage-label">중반 - 100층부터 350층</div>
+            <div class="stage-label">중반</div>
             <ul>
-              <li>100층을 넘기고 진행이 느려지면 프레스티지하세요.</li>
-              <li>임무는 125층, 갑옷은 130층, 스킬 트리는 180층, 상인은 200층에서 열립니다.</li>
-              <li>에센스는 하나에 몰지 말고 지표 7가지에 나눠 올리세요.</li>
+              <li>진행이 느려지면 각성을 하고 에센스를 얻으세요.</li>
+              <li>과제, 방어구, 스킬 트리, 상인이 이 무렵에 열립니다.</li>
+              <li>에센스를 한 지표에 몰지 말고 나눠서 쓰세요.</li>
             </ul>
           </div>
           <div class="strategy-stage">
-            <div class="stage-label">후반 - 350층부터</div>
+            <div class="stage-label">후반</div>
             <ul>
-              <li>열쇠가 있으면 보스에 도전하세요. 에센스와 광석 스톤을 줍니다.</li>
-              <li>인챈트 재료는 500층부터 떨어지고, 작업자는 600층부터 합류합니다.</li>
-              <li>열이 피해를 깎지 않도록 갑옷 레벨을 유지하세요.</li>
+              <li>열쇠가 있을 때 보스에 도전하고, 이어서 심연 도전을 시작하세요.</li>
+              <li>일꾼이 합류하고 인챈트 재료가 떨어지기 시작합니다.</li>
+              <li>열이 피해를 갉아먹지 않도록 방어구 강화도 계속하세요.</li>
+            </ul>
+          </div>
+          <div class="strategy-stage">
+            <div class="stage-label">장기전</div>
+            <ul>
+              <li>훨씬 더 깊은 층에서 승화이 열리며 각성 순환 전체를 초기화합니다.</li>
+              <li>대신 순수 정수를 얻고, 이후의 모든 회차가 영구적으로 빨라집니다.</li>
             </ul>
           </div>
         </div>
       <div class="callout">
-          <div class="callout-label">알아두면 좋은 점</div>
-          숫자가 금방 길어지기 때문에 게임은 먼저 짧은 표기로, 이어서 <strong>1.23e45</strong> 같은 과학적 표기로 바뀝니다. 상한이 있는 것이 아니라 표기만 달라집니다.
+          <div class="callout-label">알아 두면 좋은 점</div>
+          숫자는 빠르게 커집니다. 게임은 먼저 축약 표기로, 다음에는 지수 표기로 바꿉니다. 상한이 있는 것이 아니라 표기 방식만 달라집니다.
         </div>
     </section>
 
     <section id="currencies">
-      <div class="section-head"><span class="section-num">02</span><h2>화폐 7종</h2></div>
-      <p class="section-dek">각각 다른 시스템을 받쳐줍니다. 맞는 화폐를 엉뚱한 곳에 쓰는 것이 초반에 가장 흔한 실수입니다.</p>
+      <div class="section-head"><span class="section-num">02</span><h2>재화</h2></div>
+      <p class="section-dek">각각 다른 시스템을 굴립니다.</p>
       <div class="currency-grid">
         <div class="cur-card" style="--dot:var(--cur-gold)">
           <h4><span class="dot"></span>골드</h4>
-          <p><b>광석을 깨서</b> 얻습니다. 풍선, 작업자, 임무, 오프라인 시간에서도 들어옵니다.</p>
-          <p>곡괭이, 강화, 아이템 스킬에 쓰는 기본 화폐입니다.</p>
+          <p><b>광석을 캐서</b> 얻습니다. 풍선, 일꾼, 과제, 오프라인 시간도 골드를 줍니다.</p>
+          <p>곡괭이, 강화, 아이템 스킬에 씁니다.</p>
         </div>
         <div class="cur-card" style="--dot:var(--cur-diamond)">
           <h4><span class="dot"></span>다이아몬드</h4>
-          <p><b>실제 결제</b>, 행운의 룰렛, 프로모션 코드에서 얻습니다.</p>
-          <p>펫, 무한 아이템, 시간 건너뛰기, 상자, 추가 회전에 씁니다.</p>
+          <p><b>실제 결제</b>, 행운의 룰렛 보상, 프로모션 코드로 얻습니다.</p>
+          <p>펫, Infinity 아이템, 시간 건너뛰기, 상자, 열쇠 묶음에 씁니다.</p>
         </div>
         <div class="cur-card" style="--dot:var(--cur-essence)">
           <h4><span class="dot"></span>정수</h4>
-          <p><b>프레스티지</b>, 보스 격파, 상인에서 얻습니다.</p>
-          <p>영구 프레스티지 지표 7가지에 씁니다.</p>
+          <p><b>각성</b> 보상입니다. 보스와 상인도 조금 줍니다.</p>
+          <p>영구 각성 지표에 씁니다.</p>
         </div>
         <div class="cur-card" style="--dot:var(--cur-taskium)">
           <h4><span class="dot"></span>Taskium</h4>
-          <p>클릭이 성공할 때마다 <b>+1</b>.</p>
-          <p>임무 수락과 다시 뽑기에 씁니다.</p>
+          <p>클릭이 명중할 때마다 조금씩 쌓입니다.</p>
+          <p>과제를 수락하고 다시 뽑는 데 씁니다.</p>
         </div>
         <div class="cur-card" style="--dot:var(--cur-key)">
           <h4><span class="dot"></span>던전 열쇠</h4>
-          <p>하루 한 개는 무료, 그 외에는 상점 패키지와 행운의 룰렛.</p>
-          <p>보스전 입장에 씁니다(시도당 1개).</p>
+          <p>하루 한 개는 무료이며, 그 외에는 상점과 행운의 룰렛에서 얻습니다.</p>
+          <p>보스전에 입장할 때 씁니다.</p>
         </div>
         <div class="cur-card" style="--dot:var(--cur-skillstone)">
           <h4><span class="dot"></span>스킬 스톤</h4>
-          <p>상점 패키지와 상인에서 얻습니다.</p>
-          <p>액티브 스킬 8개의 단계를 올리는 데 씁니다.</p>
+          <p>상점과 상인에서 얻습니다.</p>
+          <p>액티브 스킬을 강화하는 데 씁니다.</p>
         </div>
         <div class="cur-card" style="--dot:var(--cur-orestone)">
           <h4><span class="dot"></span>광석 스톤</h4>
-          <p>광석을 깰 때마다 <b>1-5</b>개, 여기에 업적과 보스 보상까지.</p>
-          <p>교환, 인챈트 제작, 작업자 강화에 씁니다.</p>
+          <p>캐는 광석마다 떨어지고 업적, 보스, 심연 도전에서도 나옵니다.</p>
+          <p>교환, 인챈트 제작, 일꾼 강화에 씁니다.</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-abysskey)">
+          <h4><span class="dot"></span>심연 열쇠</h4>
+          <p>하루 한 개는 무료이며, 그 외에는 상점에서 다이아로 삽니다.</p>
+          <p>심연 도전에 입장할 때 씁니다.</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-pureessence)">
+          <h4><span class="dot"></span>순수 정수</h4>
+          <p><b>승화</b> 보상이며 다른 곳에서는 얻을 수 없습니다.</p>
+          <p>승화 지표에만 씁니다.</p>
         </div>
       </div>
       <div class="callout">
-          <div class="callout-label">서버 화폐</div>
-          다이아몬드와 던전 열쇠는 서버에 보관되므로, 이것으로 구매하려면 온라인 상태여야 합니다. 연결이 끊겼더라도 구매를 시도하면 게임이 알아서 다시 연결합니다.
+          <div class="callout-label">서버 재화</div>
+          다이아, 던전 열쇠, 심연 열쇠는 서버에 보관됩니다. 쓰려면 온라인이어야 합니다.
         </div>
     </section>
 
     <section id="damage">
-      <div class="section-head"><span class="section-num">03</span><h2>클릭 피해와 자동 피해</h2></div>
-      <p class="section-dek">서로 다른 요소로 성장하는 두 가지 피해입니다.</p>
-      <p><strong>클릭 피해</strong>는 한 번 탭했을 때의 피해입니다. 첫 번째 곡괭이의 레벨과 스킬, 분노의 클릭 스킬, 칭호, 돌 파괴자의 손 프레스티지 지표, 인챈트로 올라갑니다. 힘의 통합를 올리면 자동 피해의 일부도 매 클릭에 더해집니다.</p>
-      <p><strong>자동 피해</strong>(초당)는 두 번째 곡괭이부터의 모든 곡괭이, 광란 스킬, 영원의 대장간 지표, 인챈트, 펫에서 나옵니다. 광석이 살아 있는 동안 끊김 없이 들어갑니다.</p>
-      <div class="callout">
-          <div class="callout-label">펫은 예외입니다</div>
-          펫 피해는 대부분의 배율이 적용된 <strong>뒤에</strong> 더해집니다. 열, 칭호, 프레스티지, 부스트로는 늘지 않고 프리미엄만 효과가 있습니다. 후반에는 펫 레벨만으로는 버틸 수 없습니다.
-        </div>
-    </section>
-
-    <section id="critical">
-      <div class="section-head"><span class="section-num">04</span><h2>치명타</h2></div>
-      <p class="section-dek">모든 클릭은 치명타가 되어 더 세게 들어갈 수 있습니다.</p>
-      <p>처음에는 확률 <strong>5%</strong>, 배율 <strong>x1.5</strong>로 시작합니다. 치명타 일격 스킬, 곡괭이 스킬, 광석의 신탁·재앙의 힘 프레스티지 지표, 칭호, 인챈트가 이를 올려줍니다. 치명타 확률은 <strong>100%</strong>에서 멈추며, 그 이상으로는 프레스티지 지표를 구매할 수 없습니다.</p>
-    </section>
-
-    <section id="pickaxes">
-      <div class="section-head"><span class="section-num">05</span><h2>곡괭이</h2></div>
-      <p class="section-dek">깊이에 따라 열리는 곡괭이 45개. 피해의 중심입니다.</p>
+      <div class="section-head"><span class="section-num">03</span><h2>피해와 치명타</h2></div>
+      <p class="section-dek">서로 다른 두 피해원과 그것을 배로 키우는 치명타.</p>
       <ul>
-          <li>곡괭이는 <strong>층에 따라 열립니다</strong>. 두 번째는 15층, 열 번째는 782층, 마지막은 <strong>13,624</strong>층입니다. 깊어질수록 간격이 벌어집니다.</li>
-          <li>첫 번째는 <strong>5 골드</strong>, 두 번째는 50, 그다음부터는 이전보다 약 <strong>8배</strong>씩 비싸집니다.</li>
-          <li>레벨은 올릴 때마다 약 <strong>6%</strong>씩 비싸집니다.</li>
-          <li>클릭 피해를 올리는 것은 <strong>첫 번째</strong> 곡괭이뿐입니다. 나머지는 모두 초당 자동 피해를 올립니다.</li>
-          <li>곡괭이마다 스킬이 6개 있으며, 5 / 25 / 125 / 625 / 3,125 / 15,625 레벨 사다리를 따라 나타나고 열립니다. 마지막 스킬들은 장기 목표입니다. 해당 곡괭이에만 적용되는 것도, 모든 곡괭이에 적용되는 것도 있습니다.</li>
+          <li><strong>클릭 피해</strong>는 첫 곡괭이, 분노의 클릭 스킬, 칭호, 각성 지표, 인챈트에서 나옵니다.</li>
+          <li><strong>자동 피해</strong>는 나머지 곡괭이, 광란 스킬, 펫, 인챈트에서 나옵니다. 광석이 살아 있는 동안 끊기지 않고 들어갑니다.</li>
+          <li>힘의 통합가 올라갈수록 자동 피해의 일부가 클릭에도 더해집니다.</li>
+          <li>모든 클릭은 <strong>치명타</strong>가 되어 훨씬 세게 들어갈 수 있습니다. 치명타 확률과 배율은 스킬, 각성 지표, 칭호, 인챈트로 올라갑니다.</li>
+        </ul>
+    </section>
+
+    <section id="equipment">
+      <div class="section-head"><span class="section-num">04</span><h2>곡괭이, 방어구, 펫</h2></div>
+      <p class="section-dek">피해량과 버티는 힘의 토대.</p>
+      <ul>
+          <li><strong>곡괭이</strong>는 내려갈수록 열립니다. 첫 곡괭이는 클릭 피해를, 나머지는 자동 피해를 담당합니다.</li>
+          <li><strong>방어구</strong>는 처음부터 가지고 있습니다. 구입이 아니라 강화하는 장비이며 열로부터 지켜 줍니다.</li>
+          <li><strong>펫</strong>은 다이아로 사고 골드로 강화하며 자동 피해를 줍니다. 소유는 영구적입니다.</li>
+          <li>셋 다 레벨에 따라 열리는 고유 스킬이 있습니다. 해당 아이템에만 도움이 되는 것도, 계열 전체에 도움이 되는 것도 있습니다.</li>
         </ul>
       <div class="callout">
           <div class="callout-label">큰 도약</div>
-          레벨 <strong>100</strong>부터, 이후 150레벨마다(250, 400, ...) 곡괭이는 자신의 출력을 거듭제곱합니다. 먼저 <strong>^1.05</strong>, 다음은 ^1.1 식으로 이어집니다. 큰 수에서는 증가폭이 매우 크므로, 곡괭이 하나를 다음 기준점까지 올리는 것이 보통 가장 좋은 강화입니다.
+          특정 레벨에서 아이템의 힘이 크게 뜁니다. 한 아이템을 다음 문턱까지 밀어 올리는 것이 대개 가장 좋은 강화입니다.
         </div>
       <div class="callout warn">
-          <div class="callout-label">프레스티지하면 다시 잠깁니다</div>
-          프레스티지하면 모든 곡괭이가 잠기고 초기화됩니다. 새 회차에서 해당 층을 넘기면 다시 열립니다.
+          <div class="callout-label">각성 이후</div>
+          각성은 곡괭이를 다시 잠그고 방어구와 펫 강화를 초기화합니다. 펫 자체는 그대로 남습니다.
         </div>
-    </section>
-
-    <section id="suits">
-      <div class="section-head"><span class="section-num">06</span><h2>갑옷</h2></div>
-      <p class="section-dek">갑옷 5개는 처음부터 모두 가지고 있습니다. 열로부터 몸을 지키는 용도입니다.</p>
-      <ul>
-          <li>갑옷은 사지 않고 레벨만 올립니다. 레벨마다 열 저항이 약 <strong>5%</strong> 늘어나며(기본값 50), 비용은 이전보다 약 8.4% 비싸집니다.</li>
-          <li>갑옷도 곡괭이와 같은 거듭제곱 도약이 있으며, 레벨 100부터 150레벨마다 일어납니다.</li>
-          <li>갑옷마다 같은 레벨 사다리(5 / 25 / 125 / 625 / 3,125 / 15,625)를 따라 스킬이 6개 있습니다.</li>
-          <li>갑옷 창은 열 게이지와 함께 <strong>130</strong>층에서 열립니다.</li>
-        </ul>
     </section>
 
     <section id="temperature">
-      <div class="section-head"><span class="section-num">07</span><h2>열</h2></div>
-      <p class="section-dek">깊이 내려갈수록 뜨거워지고, 열은 조용히 피해를 깎습니다.</p>
-      <ul>
-          <li>층 온도는 꾸준히 오릅니다. <strong>층마다 약 1.04배</strong>라서 이십여 층마다 두 배가 됩니다.</li>
-          <li>열 저항이 층 온도의 <strong>1.5배</strong> 이상이면 게이지가 비어 있고 손해가 없습니다.</li>
-          <li>저항이 온도보다 낮아지면 피해가 새기 시작하고, <strong>0.5배</strong>에서는 20분의 1만 남습니다. <strong>95%</strong> 손실입니다.</li>
-          <li>갑옷 창에는 열 저항 자동 구매 스위치가 있습니다. 자주 깊이 내려간다면 켜 두세요. 열은 메인 광산에만 있고 보스전에는 없습니다.</li>
-        </ul>
+      <div class="section-head"><span class="section-num">05</span><h2>열</h2></div>
+      <p class="section-dek">깊이 갈수록 더워지고, 열은 조용히 피해량을 깎습니다.</p>
+      <p>열 저항이 층의 온도를 따라가지 못하면 피해량이 녹듯이 줄어듭니다. 방어구 화면에는 저항 자동 구매 스위치가 있습니다. 열은 메인 광산에만 있습니다.</p>
       <div class="callout warn">
-          <div class="callout-label">진행이 막혔다면</div>
-          광석이 끝없이 안 깨지는 벽은 대부분 피해 부족이 아니라 열 때문입니다. 다른 곳에 쓰기 전에 게이지부터 확인하세요.
-        </div>
-    </section>
-
-    <section id="pets">
-      <div class="section-head"><span class="section-num">08</span><h2>펫</h2></div>
-      <p class="section-dek">펫 5마리는 다이아로 사고 골드로 키웁니다.</p>
-      <ul>
-          <li>가격은 <strong>150</strong>에서 <strong>250</strong> 다이아(150 / 175 / 200 / 225 / 250)입니다.</li>
-          <li>레벨마다 곡괭이 클릭 피해의 약 <strong>1%</strong>가 자동 피해로 더해지고, 펫 순번만큼 곱해집니다. 같은 레벨이면 어둠의 파편이 조약돌의 다섯 배를 줍니다.</li>
-          <li>레벨은 매번 약 <strong>20%</strong>씩 비싸지고, 레벨 100부터는 곡괭이와 같은 거듭제곱 도약이 있습니다.</li>
-          <li>펫마다 스킬이 6개 있으며, 그 펫에만 적용되는 것도, 모든 펫에 적용되는 것도 있습니다.</li>
-          <li>펫 창은 <strong>30</strong>층에서, 또는 펫을 가지는 즉시 열립니다.</li>
-        </ul>
-      <div class="callout warn">
-          <div class="callout-label">프레스티지와 펫</div>
-          프레스티지하면 모든 펫이 <strong>1레벨</strong>로 돌아가고 스킬도 초기화됩니다. 다만 소유는 영구적이라 펫을 다시 살 일은 없습니다.
+          <div class="callout-label">진행이 멈췄다면</div>
+          광석이 갑자기 깨지지 않는 벽은 대개 열입니다. 다른 곳에 쓰기 전에 열 게이지를 확인하세요.
         </div>
     </section>
 
     <section id="workers">
-      <div class="section-head"><span class="section-num">09</span><h2>작업자</h2></div>
-      <p class="section-dek">게임이 켜져 있는 동안 대신 채굴하는 도우미 5명입니다.</p>
+      <div class="section-head"><span class="section-num">06</span><h2>작업자</h2></div>
+      <p class="section-dek">게임을 켜 둔 동안 대신 캐 주는 조력자들.</p>
       <ul>
-          <li>작업자는 <strong>600 / 800 / 1,000 / 1,200 / 1,400</strong>층을 넘기면 합류합니다. 역대 최고 층을 기준으로 하므로 다시는 잠기지 않습니다.</li>
-          <li>작업자마다 곡괭이를 하나씩 맡기세요. 곡괭이 하나는 한 번에 한 명만 쓸 수 있고, 내 피해는 줄지 않습니다. 곡괭이가 없는 작업자는 아무것도 벌지 못합니다.</li>
-          <li>수입은 1초마다 더해지고, 수령할 때까지 보관함에 쌓입니다. 강한 곡괭이일수록 더 많이 법니다.</li>
-          <li>작업자 강화에는 광석 스톤이 듭니다. 첫 레벨은 100, 이후 매번 약 2%씩 비싸지며, 레벨마다 수입이 약 1% 늘어납니다.</li>
+          <li>깊이 내려갈수록 새 일꾼이 합류하며 다시 잠기지 않습니다.</li>
+          <li>일꾼마다 곡괭이를 주세요. 곡괭이가 없으면 아무것도 벌지 못합니다. 넘겨줘도 내 피해량은 줄지 않습니다.</li>
+          <li>수입은 한곳에 쌓여 회수할 때까지 기다립니다. 일꾼은 광석 스톤로 강화합니다.</li>
         </ul>
       <div class="callout warn">
-          <div class="callout-label">프레스티지 전에 수령하세요</div>
-          작업자는 게임이 켜져 있을 때만 벌고 오프라인에서는 벌지 않습니다. 프레스티지하면 레벨은 남지만 <strong>수령하지 않은 수입은 사라지고</strong> 곡괭이도 회수됩니다.
+          <div class="callout-label">각성 전에 회수</div>
+          일꾼은 게임이 켜져 있을 때만 법니다. 각성은 레벨은 남기지만 회수하지 않은 수입은 지웁니다.
         </div>
     </section>
 
     <section id="enchantments">
-      <div class="section-head"><span class="section-num">10</span><h2>인챈트</h2></div>
-      <p class="section-dek">캐낸 재료로 인챈트를 만들고 곡괭이, 갑옷, 펫에 장착합니다.</p>
-      <p>광석을 깨면 4개 등급의 <strong>인챈트 가루</strong>와 <strong>인챈트 조각</strong>이 떨어질 수 있습니다. 각 등급은 이번 회차의 최고 층이 기준을 넘으면 떨어지기 시작합니다. 최고 층보다 100층 넘게 위에서 채굴하면 확률이 낮아지며, 최저 평소의 10%까지 떨어집니다.</p>
-      <div class="table-wrap">
-        <table>
-        <thead><tr>
-        <th>등급</th>
-        <th class="num">효과 수</th>
-        <th class="num">드롭 시작 층</th>
-        <th class="num">가루 확률</th>
-        <th class="num">조각 확률</th>
-        <th class="num">제작 (가루 / 조각 / 광석 스톤)</th>
-        </tr></thead>
-        <tbody>
-        <tr>
-        <td>일반</td>
-        <td class="num">1</td>
-        <td class="num">500</td>
-        <td class="num">5%</td>
-        <td class="num">0.5%</td>
-        <td class="num">10 / 1 / 40</td>
-        </tr>
-        <tr>
-        <td>희귀</td>
-        <td class="num">1-2</td>
-        <td class="num">1,000</td>
-        <td class="num">2%</td>
-        <td class="num">0.1%</td>
-        <td class="num">20 / 1 / 200</td>
-        </tr>
-        <tr>
-        <td>영웅</td>
-        <td class="num">2-3</td>
-        <td class="num">2,000</td>
-        <td class="num">1%</td>
-        <td class="num">0.03%</td>
-        <td class="num">30 / 1 / 1,000</td>
-        </tr>
-        <tr>
-        <td>전설</td>
-        <td class="num">3-4</td>
-        <td class="num">4,000</td>
-        <td class="num">0.5%</td>
-        <td class="num">0.01%</td>
-        <td class="num">50 / 1 / 5,000</td>
-        </tr>
-        </tbody></table></div>
+      <div class="section-head"><span class="section-num">07</span><h2>인챈트</h2></div>
+      <p class="section-dek">캐낸 재료로 인챈트를 만들어 곡괭이, 방어구, 펫에 붙이세요.</p>
       <ul>
-          <li>장인은 가루, 조각 1개, 광석 스톤 수수료로 무작위 효과를 가진 인챈트를 만듭니다. 높은 등급일수록 효과가 많고 배율도 큽니다(x1 / x2 / x4 / x6).</li>
-          <li>곡괭이, 갑옷, 펫에는 각각 <strong>슬롯 8개</strong>가 있고 1,000 / 3,000 / 6,000 / 9,000 / 12,000 / 15,000 / 18,000 / 21,000층에서 열립니다. 역대 최고 층을 기준으로 하므로 한 번 열린 슬롯은 닫히지 않습니다.</li>
-          <li>장착한 아이템에만 적용되는 효과(클릭 피해, 자동 피해, 열 저항)와 모든 것에 적용되는 효과(골드, 치명타, DPS 비율, 강화 비용)가 있습니다. 특수 효과는 아이템 자체의 스킬을 강화하므로, 스킬을 구매한 아이템에서만 작동합니다.</li>
-          <li>선택 창에는 그 아이템에서 실제로 효과가 있는 인챈트만 표시됩니다.</li>
-          <li>상인에서는 같은 등급의 가루나 조각 10개를 다음 등급 1개로 바꿀 수 있습니다. 필요 없는 인챈트는 분해해서 가루로 돌려받을 수 있습니다(등급별 5 / 10 / 15 / 25). 분해는 되돌릴 수 없습니다.</li>
+          <li>광석을 캐면 <strong>인챈트 가루</strong>와 <strong>인챈트 조각</strong>이 떨어집니다. 상위 등급 재료는 더 깊은 곳에서 나옵니다.</li>
+          <li>장인는 가루와 조각을 무작위 효과의 인챈트로 바꿉니다. 등급이 높을수록 효과 수가 많고 더 강합니다.</li>
+          <li>아이템마다 깊이에 따라 열리는 인챈트 칸이 있습니다.</li>
+          <li>필요 없는 인챈트는 상인에게서 가루로 분해할 수 있고, 재료는 한 단계 위로 교환할 수 있습니다.</li>
         </ul>
       <div class="callout">
-          <div class="callout-label">프레스티지해도 안전합니다</div>
-          프레스티지로 인챈트가 사라지는 일은 없습니다. 아이템이 다시 잠기면 장착된 인챈트는 500층에서 열리는 인벤토리로 돌아갈 뿐입니다.
+          <div class="callout-label">각성은 안전</div>
+          각성은 인챈트를 지우지 않습니다. 다시 잠긴 아이템에 있던 인챈트는 인벤토리로 돌아옵니다.
         </div>
     </section>
 
     <section id="floors">
-      <div class="section-head"><span class="section-num">11</span><h2>층, 광석, 깊이</h2></div>
-      <p class="section-dek">층은 광석이 얼마나 단단하고 골드를 얼마나 주는지 정하고, 깊이는 광석의 모습을 정합니다.</p>
+      <div class="section-head"><span class="section-num">08</span><h2>층과 광석</h2></div>
+      <p class="section-dek">모든 층은 앞선 층보다 조금 더 어렵고 조금 더 짭짤합니다.</p>
       <ul>
-          <li>층마다 체력과 골드가 조금씩 늘어나고, 갈수록 곡선이 가팔라집니다.</li>
-          <li><strong>10층마다</strong> 시간 제한 층이 있습니다. <strong>20초</strong> 타이머가 시작되고 체력은 x5, 골드는 x2입니다.</li>
-          <li>난이도는 100층 단위 주기로도 바뀌어, 주기 안에서 체력에 비해 보상이 좋은 층이 있습니다.</li>
-          <li>모든 광석은 골드와 함께 광석 스톤 <strong>1-5</strong>개를 떨어뜨립니다.</li>
-          <li><strong>희귀 광석 5종</strong>(Ferrovyx, Karnyth, Thalveris, Umbryssa, Zephiris)이 일반 광석 대신 나올 수 있습니다. 확률은 약 10,000분의 1에서 1,000,000분의 1이며, 한 번 깨면 영구히 기록되고 다시 나오지 않습니다.</li>
+          <li>가끔 <strong>제한 시간 층</strong>이 나옵니다. 시간 안에 광석을 캐면 골드를 더 줍니다. 시간이 다 되면 한 층 내려가고 자동 진행이 꺼집니다.</li>
+          <li>모든 광석은 골드와 함께 광석 스톤을 떨어뜨립니다.</li>
+          <li>아주 드물게 <strong>희귀 광석</strong>(Ferrovyx, Karnyth, Thalveris, Umbryssa, Zephiris)이 나타납니다. 각각 한 번만 발견됩니다.</li>
+          <li>엘리베이터로 이미 도달한 층 사이를 오갈 수 있습니다. 지역는 메인 광산, 던전, 심연를 전환합니다.</li>
         </ul>
-      <div class="callout warn">
-          <div class="callout-label">시간 제한 층은 만만치 않습니다</div>
-          시간이 다 되면 <strong>한 층</strong> 뒤로 밀리고 자동 진행이 꺼집니다. 조금 채굴한 뒤 다시 도전하세요.
+      <div class="callout">
+          <div class="callout-label">아래층 파밍은 효율이 낮습니다</div>
+          가루와 조각은 도달한 가장 깊은 층 근처에서 가장 잘 떨어집니다. 한참 아래에 머물면 확률이 눈에 띄게 낮아집니다.
         </div>
-      <p>엘리베이터를 이용하면 이번 회차에 도달한 아무 층으로나 돌아갈 수 있습니다. 층을 직접 고르면 자동 진행이 꺼지니, 다시 내려가고 싶을 때 켜세요. 지역 창에서는 메인 광산과 보스 던전을 오갑니다.</p>
-      <p>광석은 모두 <strong>40</strong>종이며, 어떤 것이 나올지는 깊이가 정합니다. 종류는 모습만 바꾸고, 체력과 골드는 층이 정합니다.</p>
-      <div class="table-wrap">
-        <table>
-        <thead><tr>
-        <th class="num">깊이</th>
-        <th class="num">광석 종류</th>
-        <th class="num">대략적인 층</th>
-        </tr></thead>
-        <tbody>
-        <tr>
-        <td class="num">0-100 m</td>
-        <td class="num">9</td>
-        <td class="num">~54</td>
-        </tr>
-        <tr>
-        <td class="num">100-500 m</td>
-        <td class="num">20</td>
-        <td class="num">~129</td>
-        </tr>
-        <tr>
-        <td class="num">500-1,500 m</td>
-        <td class="num">30</td>
-        <td class="num">~196</td>
-        </tr>
-        <tr>
-        <td class="num">1,500 m+</td>
-        <td class="num">40</td>
-        <td class="num">-</td>
-        </tr>
-        </tbody></table></div>
     </section>
 
     <section id="skills">
-      <div class="section-head"><span class="section-num">12</span><h2>액티브 스킬</h2></div>
-      <p class="section-dek">스킬 8개. 모두 일정 시간 강화된 뒤 재사용 대기 시간이 있습니다.</p>
-      <p>스킬은 해당 층에 도달하면 <strong>무료</strong>이며 1단계부터 쓸 수 있습니다. 7단계까지 올리려면 총 <strong>스킬 스톤 63개</strong>, 8개 모두라면 <strong>504개</strong>가 필요합니다. 단계가 높을수록 지속 시간은 길고 재사용 대기는 짧습니다.</p>
-      <div class="table-wrap">
-        <table>
-        <thead><tr>
-        <th>스킬</th>
-        <th class="num">층</th>
-        <th class="num">1단계 (지속 시간 / 재사용 대기)</th>
-        <th class="num">7단계 (지속 시간 / 재사용 대기)</th>
-        <th class="num">효과</th>
-        </tr></thead>
-        <tbody>
-        <tr>
-        <td>광석 파괴자</td>
-        <td class="num">50</td>
-        <td class="num">30초 / 540초</td>
-        <td class="num">90초 / 180초</td>
-        <td class="num">7 → 13 /초</td>
-        </tr>
-        <tr>
-        <td>분노의 클릭</td>
-        <td class="num">100</td>
-        <td class="num">40초 / 660초</td>
-        <td class="num">210초 / 300초</td>
-        <td class="num">x2 → x5</td>
-        </tr>
-        <tr>
-        <td>치명타 일격</td>
-        <td class="num">150</td>
-        <td class="num">30초 / 600초</td>
-        <td class="num">150초 / 240초</td>
-        <td class="num">x1.3 → x1.9</td>
-        </tr>
-        <tr>
-        <td>광란</td>
-        <td class="num">200</td>
-        <td class="num">40초 / 840초</td>
-        <td class="num">160초 / 480초</td>
-        <td class="num">x2 → x3.5</td>
-        </tr>
-        <tr>
-        <td>황금 광풍</td>
-        <td class="num">250</td>
-        <td class="num">50초 / 1,020초</td>
-        <td class="num">290초 / 660초</td>
-        <td class="num">x2 → x5</td>
-        </tr>
-        <tr>
-        <td>열 저항</td>
-        <td class="num">300</td>
-        <td class="num">30초 / 660초</td>
-        <td class="num">140초 / 300초</td>
-        <td class="num">x2 → x5</td>
-        </tr>
-        <tr>
-        <td>과부하</td>
-        <td class="num">350</td>
-        <td class="num">20초 / 1,200초</td>
-        <td class="num">20초 / 840초</td>
-        <td class="num">x1.5 → x3</td>
-        </tr>
-        <tr>
-        <td>시간 역행</td>
-        <td class="num">400</td>
-        <td class="num">1,200초</td>
-        <td class="num">840초</td>
-        <td class="num">-300초 → -1,020초</td>
-        </tr>
-        </tbody></table></div>
-      <p>첫 스킬 줄은 50층에서 열리고, 스킬 스톤을 쓰는 스킬 트리는 <strong>180</strong>층에서 열립니다. 스킬 단계는 프레스티지 후에도 유지됩니다.</p>
+      <div class="section-head"><span class="section-num">09</span><h2>스킬과 칭호</h2></div>
+      <p class="section-dek">시간제 강화와, 내려가기만 해도 따라오는 보너스.</p>
+      <ul>
+          <li><strong>액티브 스킬</strong>은 깊이에 따라 무료로 열립니다. 잠깐 강화해 준 뒤 재사용 대기에 들어갑니다. 스킬 스톤으로 스킬 트리에서 강해지며 각성에도 사라지지 않습니다.</li>
+          <li><strong>칭호</strong>는 내려가면 저절로 얻으며 피해, 골드, 열 저항 같은 보너스를 줍니다. 각성 이후에는 다시 모읍니다.</li>
+        </ul>
       <div class="callout">
-          <div class="callout-label">추천 조합</div>
-          먼저 과부하를 쓰고, 정말 강화하고 싶은 스킬(예: 황금 광풍)을 쓰세요. 이어서 시간 역행이 마지막으로 쓴 스킬의 재사용 대기를 줄여 더 빨리 다시 쓸 수 있습니다.
+          <div class="callout-label">콤보</div>
+          먼저 과부하, 그다음 키우고 싶은 스킬 — 예를 들어 황금 광풍. 이어서 시간 역행을 쓰면 마지막 스킬의 대기 시간이 줄어듭니다.
         </div>
     </section>
 
-    <section id="titles">
-      <div class="section-head"><span class="section-num">13</span><h2>칭호</h2></div>
-      <p class="section-dek">내려갈수록 알아서 얻는 칭호 100개입니다.</p>
-      <ul>
-          <li>칭호는 1층부터 <strong>50,000</strong>층까지 있으며, 이번 회차의 최고 도달 층에 따라 자동으로 정해집니다.</li>
-          <li>칭호가 오를 때마다 붙은 보너스가 약 <strong>+0.1</strong>씩 늘어납니다.</li>
-          <li>보너스는 단계적으로 붙습니다. 클릭 피해, 자동 피해, 열 저항, 골드, 치명타 배율, 치명타 확률, 클릭에 더해지는 DPS 비율이 각각 칭호 2 / 6 / 11 / 16 / 21 / 26 / 31부터 시작됩니다.</li>
-          <li>프레스티지하면 초반 칭호로 돌아가고, 다시 내려가면 되돌아옵니다.</li>
-        </ul>
-    </section>
-
     <section id="tasks">
-      <div class="section-head"><span class="section-num">14</span><h2>임무와 Taskium</h2></div>
-      <p class="section-dek">클릭을 두 번째 수입원으로 바꾸는 부가 콘텐츠입니다.</p>
+      <div class="section-head"><span class="section-num">10</span><h2>과제</h2></div>
+      <p class="section-dek">클릭을 두 번째 수입으로 바꿔 주는 곁길.</p>
       <ul>
-          <li>클릭이 성공할 때마다 <strong>+1 Taskium</strong>.</li>
-          <li>임무 수락은 <strong>200</strong>, 다시 뽑기는 <strong>25</strong>입니다.</li>
-          <li>임무 창은 125층에서 열리고, 슬롯 6개는 125 / 225 / 325 / 425 / 525 / 625층에서 열립니다.</li>
-          <li>임무는 10종, 희귀도는 6단계입니다. 임무 하나는 60분 동안 유지되며, 수락하지 않은 임무는 한 시간마다 교체됩니다.</li>
-          <li>골드 보상은 희귀도에 따라 커져서, 이번 회차 최고 층 광석 골드의 <strong>50-500</strong>배입니다. 가장 희귀한 임무는 에센스도 줍니다.</li>
-        </ul>
-    </section>
-
-    <section id="missions">
-      <div class="section-head"><span class="section-num">15</span><h2>일일 임무</h2></div>
-      <p class="section-dek">매일 새로 바뀌는 짧은 목표 목록입니다.</p>
-      <ul>
-          <li>매일 <strong>임무 5개</strong>가 주어집니다. 광석 깨기, 클릭, 룰렛 돌리기, 보스 처치, 스킬 사용 등입니다.</li>
-          <li>임무를 하나 완료할 때마다 <strong>10분 동안 x2 부스트</strong>(자동 피해, 클릭 피해, 치명타, 골드 중 하나)를 받습니다.</li>
-          <li>보상은 자동으로 받아지지 않으니 임무 창에서 수령하세요. 목록은 UTC 자정에 초기화됩니다.</li>
+          <li><strong>과제</strong>는 Taskium으로 수락합니다. 드문 과제일수록 보상이 큽니다.</li>
+          <li><strong>일일 임무</strong>는 매일 갱신되며 완료할 때마다 짧은 강화를 줍니다. 패널에서 보상 받는 것을 잊지 마세요.</li>
         </ul>
     </section>
 
     <section id="trade">
-      <div class="section-head"><span class="section-num">16</span><h2>상인</h2></div>
-      <p class="section-dek">200층에서 열립니다. 광석 스톤과 남는 재료를 쓸모 있는 것으로 바꾸는 곳입니다.</p>
-      <ul>
-          <li>스킬 스톤 1개 → <strong>광석 스톤 5,000개</strong>.</li>
-          <li><strong>광석 스톤 2,000개</strong> → 정수 1개.</li>
-          <li><strong>광석 스톤 5,000개</strong> → 스킬 스톤 1개.</li>
-          <li>화폐 교환은 한 번에 100,000 골드의 고정 수수료가 듭니다. 재료 교환과 분해는 대신 광석 스톤이 듭니다.</li>
-        </ul>
-      <p>가장 중요한 것은 스킬 스톤 교환입니다. 상점에서 사지 않고도 긴 채굴 시간을 스킬 단계로 바꿀 수 있습니다.</p>
+      <div class="section-head"><span class="section-num">11</span><h2>상인</h2></div>
+      <p class="section-dek">남는 자원이 쓸모 있는 것으로 바뀌는 곳.</p>
+      <p>광석 스톤을 에센스나 스킬 스톤으로 바꾸고, 인챈트 재료를 한 단계 위로 교환하고, 필요 없는 인챈트를 분해할 수 있습니다. 가장 값진 것은 스킬 스톤 교환입니다. 상점에서 아무것도 사지 않고 스킬을 강화하는 길이기 때문입니다.</p>
     </section>
 
     <section id="extras">
-      <div class="section-head"><span class="section-num">17</span><h2>무료 보상</h2></div>
-      <p class="section-dek">게임에 들르기만 해도 받는 보상들입니다.</p>
+      <div class="section-head"><span class="section-num">12</span><h2>무료 보상</h2></div>
+      <p class="section-dek">들르기만 하면 받을 수 있는 자원들.</p>
       <ul>
-          <li><strong>황금 풍선</strong> - 50층부터 500-700초마다 날아와 클릭할 때까지 기다립니다. 이번 회차 최고 층 광석 골드의 <strong>x6</strong>를 줍니다.</li>
-          <li><strong>황금 수정</strong> - 100층부터 800-1,300초마다 나타납니다. 메인 광산에서 클릭하면 광석이 10초짜리 보너스 광석(체력 x10, 골드 x14)으로 바뀌고, 골드는 타격마다 지급됩니다.</li>
-          <li><strong>오프라인 수입</strong> - 60분 이상 자리를 비우면 계산되며, 최대 12시간까지입니다. 프리미엄이 늘려줍니다.</li>
-          <li><strong>플레이 시간 보상</strong> - 60분 플레이할 때마다 최고 층에서 1분 동안 버는 골드의 약 100배를 줍니다.</li>
-          <li><strong>일일 보상</strong> - 상점에서 하루 1개의 무료 던전 열쇠. 지켜야 할 연속 기록은 없으며, 온라인 상태여야 합니다.</li>
-          <li><strong>행운의 룰렛</strong> - 100층부터. 8칸 룰렛으로 3시간마다 새로 바뀌며 무료 회전이 1번 있습니다. 추가 회전은 다이아가 들고, 10부터 시작해 매번 두 배가 됩니다. 당첨된 칸은 갱신 전까지 닫혀 있습니다. 보상에는 층에 따라 커지는 골드, 광석 스톤, 부스트, Taskium, 다이아 50개, 던전 열쇠 등이 있습니다.</li>
-          <li><strong>프로모션 코드</strong> - 공지와 커뮤니티에서 공유하는 코드는 설정 > 프로모션 코드에 입력하세요. 코드마다 계정당 한 번만 쓸 수 있고, 사용 횟수가 제한된 코드도 있습니다.</li>
+          <li><strong>골드 풍선</strong>이 가끔 화면에 떠다닙니다. 클릭하면 골드를 줍니다. 놓칠 일은 없고, 누를 때까지 기다립니다.</li>
+          <li><strong>황금 수정</strong>을 클릭하면 광석이 잠시 골드가 많은 보너스 광석으로 바뀝니다. 메인 광산에서만 주울 수 있습니다.</li>
+          <li><strong>오프라인 수입</strong>은 게임을 꺼 둔 동안 쌓입니다.</li>
+          <li><strong>플레이 시간 보상</strong>은 오래 할수록 골드를 줍니다.</li>
+          <li><strong>일일 보상</strong>은 상점에서 매일 무료 던전 열쇠 하나와 무료 심연 열쇠 하나를 줍니다. 둘은 서로 독립적입니다.</li>
+          <li><strong>행운의 룰렛</strong>은 일정 간격으로 다시 차고 무료 돌리기를 줍니다.</li>
+          <li><strong>프로모션 코드</strong> - 공지에서 나눠 드리는 코드는 설정 메뉴에서 입력할 수 있습니다.</li>
         </ul>
     </section>
 
-    <section id="prestige">
-      <div class="section-head"><span class="section-num">18</span><h2>프레스티지</h2></div>
-      <p class="section-dek">이번 회차의 진행을 영구적인 힘으로 바꿉니다. 타이밍만 맞추면 게임에서 가장 빠른 성장 방법입니다.</p>
-      <p>프레스티지 창은 70층에서 나타납니다. 현재 회차에서 <strong>100층을 넘기면</strong> 프레스티지할 수 있으며, 회차마다 같은 층이 조건입니다.</p>
+    <section id="awakening">
+      <div class="section-head"><span class="section-num">13</span><h2>각성</h2></div>
+      <p class="section-dek">이번 회차의 진행을 영구적인 힘으로 바꾸세요.</p>
       <ul>
-          <li><strong>초기화:</strong> 골드, 층 진행, 곡괭이·갑옷·펫의 강화와 스킬, 스킬 재사용 대기, 칭호 진행, Taskium, 임무 진행, 작업자 곡괭이 배정, 수령하지 않은 작업자 수입.</li>
-          <li><strong>유지:</strong> 다이아몬드와 다이아로 산 모든 것, 던전 열쇠, 던전 진행, 에센스, 프레스티지 지표, 스킬 트리 단계, 스킬 스톤, 광석 스톤, 인챈트와 인벤토리, 업적, 통계, 순위표, 작업자 레벨.</li>
-          <li>모든 회차는 시작 골드 없이 다시 <strong>1층</strong>부터 시작합니다.</li>
+          <li>일정 깊이를 넘으면 각성을 할 수 있습니다. 모든 회차는 다시 1층에서 시작합니다.</li>
+          <li><strong>초기화되는 것:</strong> 골드, 층 진행, 해금하고 강화한 곡괭이, 방어구와 펫 강화, 아이템 스킬, 칭호, Taskium, 과제 진행, 일꾼에게 준 곡괭이, 회수하지 않은 일꾼 수입.</li>
+          <li><strong>유지되는 것:</strong> 다이아와 그것으로 산 모든 것, 열쇠, 보스와 심연 진행, 에센스, 각성 지표, 스킬 트리, 스킬 스톤, 광석 스톤, 인챈트, 업적, 일꾼 레벨, 그리고 승화 쪽의 모든 것.</li>
+          <li>얻는 에센스는 도달한 가장 깊은 층에 따라 정해지며 깊이에 따라 빠르게 커집니다. 영구 지표에 쓰세요.</li>
         </ul>
-      <p>에센스 보상은 <strong>도달한 최고 층</strong>만으로 정해지며 빠르게 늘어납니다. 200층에서 약 331, 300층에서 1,098, 500층에서 12,068, 1,000층에서 4,827,341입니다.</p>
       <div class="callout">
           <div class="callout-label">조금만 더 깊이</div>
-          보상이 깊이에 따라 매우 가파르게 늘기 때문에, 곧바로 다시 프레스티지하기보다 몇 층 더 내려간 뒤에 하는 편이 보통 더 이득입니다.
+          각성 전에 몇 층 더 내려가는 편이, 바로 다음 각성을 이어서 하는 것보다 대개 이득입니다.
         </div>
-      <div class="table-wrap">
-        <table>
-        <thead><tr>
-        <th>지표</th>
-        <th>효과</th>
-        <th class="num">레벨당</th>
-        </tr></thead>
-        <tbody>
-        <tr>
-        <td>영원의 대장간</td>
-        <td>초당 자동 피해</td>
-        <td class="num">+2.5%</td>
-        </tr>
-        <tr>
-        <td>돌 파괴자의 손</td>
-        <td>클릭 피해</td>
-        <td class="num">+2.5%</td>
-        </tr>
-        <tr>
-        <td>황금의 심연</td>
-        <td>골드 수입</td>
-        <td class="num">+1%</td>
-        </tr>
-        <tr>
-        <td>광석의 신탁</td>
-        <td>치명타 확률</td>
-        <td class="num">+0.1%</td>
-        </tr>
-        <tr>
-        <td>재앙의 힘</td>
-        <td>치명타 배율</td>
-        <td class="num">+0.1%</td>
-        </tr>
-        <tr>
-        <td>지옥의 방패</td>
-        <td>열 저항</td>
-        <td class="num">+1%</td>
-        </tr>
-        <tr>
-        <td>힘의 통합</td>
-        <td>클릭에 더해지는 DPS 비율</td>
-        <td class="num">+0.1%</td>
-        </tr>
-        </tbody></table></div>
-      <p>각 레벨은 이전 레벨과 곱연산으로 쌓입니다. 첫 레벨은 2 에센스이고 이후 매번 약 2.5%씩 비싸지므로, 모아두기보다 자주 쓰는 편이 낫습니다.</p>
     </section>
 
-    <section id="bosses">
-      <div class="section-head"><span class="section-num">19</span><h2>보스</h2></div>
-      <p class="section-dek">에센스와 광석 스톤을 걸고 시간과 싸우는 피해 경쟁입니다. 350층에서 열립니다.</p>
+    <section id="ascension">
+      <div class="section-head"><span class="section-num">14</span><h2>승화</h2></div>
+      <p class="section-dek">각성 위에 얹히는 두 번째 층.</p>
       <ul>
-          <li>지역 창을 열고 던전을 고른 뒤 보스를 선택해 <strong>던전 열쇠 1개</strong>를 쓰면 시작됩니다. 저절로 시작되지 않습니다.</li>
-          <li>보스는 순서대로 열립니다. 하나를 쓰러뜨려야 다음이 열립니다. 체력은 크게 늘고 제한 시간은 짧아집니다.</li>
-          <li>보스 진행은 <strong>프레스티지해도 유지</strong>되며, 이미 쓰러뜨린 보스에는 언제든 다시 도전할 수 있습니다.</li>
+          <li>훨씬 더 깊은 층에 도달하면 승화이 열리고, 프레스티지 탭 안에 전용 페이지가 생깁니다.</li>
+          <li><strong>초기화되는 것:</strong> 각성 지표와 에센스 — 그 순환이 처음부터 다시 시작됩니다. 곡괭이, 층, 강화도 각성과 똑같이 초기화됩니다.</li>
+          <li><strong>유지되는 것:</strong> 각성 레벨, 다이아와 그것으로 산 모든 것, 열쇠, 보스와 심연 진행, 인챈트, 스킬 트리, 업적, 일꾼 레벨, 모아 둔 순수 정수.</li>
+          <li>대신 <strong>순수 정수</strong>를 얻습니다. 지표는 두 가지입니다. <strong>각성의 메아리</strong>는 모든 각성 지표의 보너스를 키우고, <strong>원천</strong>는 각성마다 받는 에센스를 늘립니다.</li>
+          <li>두 지표 모두 복리로 커집니다. 레벨마다 앞선 레벨 위에 곱해집니다.</li>
         </ul>
-      <div class="table-wrap">
-        <table>
-        <thead><tr>
-        <th>보스</th>
-        <th class="num">체력</th>
-        <th class="num">시간</th>
-        <th>보상</th>
-        </tr></thead>
-        <tbody>
-        <tr>
-        <td>수정 거인</td>
-        <td class="num">1e15</td>
-        <td class="num">30초</td>
-        <td>1,000 정수 + 50,000 광석 스톤</td>
-        </tr>
-        <tr>
-        <td>수정 수호자</td>
-        <td class="num">1e18</td>
-        <td class="num">25초</td>
-        <td>2,000 정수 + 75,000 광석 스톤</td>
-        </tr>
-        <tr>
-        <td>진홍의 파수꾼</td>
-        <td class="num">1e22</td>
-        <td class="num">20초</td>
-        <td>3,000 정수 + 100,000 광석 스톤</td>
-        </tr>
-        <tr>
-        <td>돌 수호자</td>
-        <td class="num">1e27</td>
-        <td class="num">20초</td>
-        <td>4,000 정수 + 125,000 광석 스톤</td>
-        </tr>
-        <tr>
-        <td>서리 타이탄</td>
-        <td class="num">1e33</td>
-        <td class="num">20초</td>
-        <td>5,000 정수 + 150,000 광석 스톤</td>
-        </tr>
-        <tr>
-        <td>수정 골렘 1</td>
-        <td class="num">1e40</td>
-        <td class="num">20초</td>
-        <td>6,000 정수 + 175,000 광석 스톤</td>
-        </tr>
-        <tr>
-        <td>돌수염 거인</td>
-        <td class="num">1e48</td>
-        <td class="num">15초</td>
-        <td>7,000 정수 + 200,000 광석 스톤</td>
-        </tr>
-        <tr>
-        <td>수정 골렘 2</td>
-        <td class="num">1e57</td>
-        <td class="num">15초</td>
-        <td>8,000 정수 + 225,000 광석 스톤</td>
-        </tr>
-        <tr>
-        <td>화염 골렘</td>
-        <td class="num">1e67</td>
-        <td class="num">15초</td>
-        <td>9,000 정수 + 250,000 광석 스톤</td>
-        </tr>
-        <tr>
-        <td>수호자 골렘</td>
-        <td class="num">1e78</td>
-        <td class="num">10초</td>
-        <td>10,000 정수 + 275,000 광석 스톤</td>
-        </tr>
-        </tbody></table></div>
-      <div class="callout warn">
-          <div class="callout-label">지면 손해입니다</div>
-          시간이 먼저 끝나면 <strong>아무것도</strong> 받지 못하고 열쇠만 사라집니다. 실패 후에는 남은 체력이 보이니, 피해가 얼마나 더 필요한지 가늠하는 데 쓰세요.
+      <div class="callout">
+          <div class="callout-label">언제 승천할까</div>
+          승화은 한 회차가 아니라 순환 전체를 빠르게 합니다. 에센스 지표가 비싸지고 한 번 더 각성을 해도 별로 늘지 않을 때가 적기입니다.
         </div>
     </section>
 
-    <section id="achievements">
-      <div class="section-head"><span class="section-num">20</span><h2>업적</h2></div>
-      <p class="section-dek">31개 분야의 업적 100개 - 클릭, 광석, 보스, 프레스티지, 깊이, 제작 등.</p>
-      <p>모든 업적은 <strong>광석 스톤</strong>을 주며, 목표와 보상 모두 단계마다 커집니다.</p>
-      <div class="callout">
-          <div class="callout-label">수령을 잊지 마세요</div>
-          보상은 <strong>자동으로 받아지지 않습니다</strong>. 한동안 업적 탭을 열지 않았다면 잔뜩 쌓여 있을 겁니다. 모두 받기 버튼으로 한 번에 받을 수 있습니다.
+    <section id="dungeons">
+      <div class="section-head"><span class="section-num">15</span><h2>보스와 심연</h2></div>
+      <p class="section-dek">메인 광산 밖에 있는 두 가지 시간제 도전.</p>
+      <ul>
+          <li>둘 다 지역에서 들어갑니다. 그동안 메인 광산의 열과 층 진행은 멈춥니다.</li>
+          <li><strong>보스</strong>는 던전 열쇠로 엽니다. 시간이 끝나기 전에 쓰러뜨리면 에센스와 광석 스톤을 얻습니다. 보스는 순서대로 열리고, 한 번 이긴 보스는 계속 열려 있습니다.</li>
+          <li><strong>심연</strong>는 심연 열쇠로 열리며 하나의 카운트다운으로 진행됩니다. 광석을 연달아 캐고, 단계마다 앞선 단계보다 힘들어집니다.</li>
+          <li>심연의 각 단계에는 고유한 <strong>페널티</strong>가 있습니다. 어떤 것은 자동 피해를, 어떤 것은 클릭 피해를, 어떤 것은 치명타를 깎습니다. 페널티는 그 단계가 이어지는 동안에만 적용됩니다.</li>
+          <li>심연에서 깬 단계의 보상은 모두 내 것입니다. 시간이 다 되든 스스로 나가든 그때까지 얻은 것은 남습니다. 모든 단계를 끝내면 다음 심연이 열립니다.</li>
+        </ul>
+      <div class="callout warn">
+          <div class="callout-label">보스전 패배는 공짜가 아닙니다</div>
+          보스가 쓰러지기 전에 시간이 끝나면 보상은 없고 쓴 열쇠도 돌아오지 않습니다.
         </div>
     </section>
 
     <section id="store">
-      <div class="section-head"><span class="section-num">21</span><h2>상점</h2></div>
-      <p class="section-dek">다이아, 열쇠, 패키지, 프리미엄 기간, 시간 건너뛰기, 상자, 그리고 영구 무한 아이템.</p>
+      <div class="section-head"><span class="section-num">16</span><h2>상점와 업적</h2></div>
+      <p class="section-dek">다이아, 열쇠, 묶음, 프리미엄, 시간 건너뛰기, 상자, 그리고 영구 Infinity 아이템.</p>
       <ul>
-          <li><strong>다이아 팩:</strong> 다이아 200 / 550 / 1,150 / 2,400 / 6,250 / 14,000개. 클수록 이득입니다.</li>
-          <li><strong>열쇠 팩:</strong> 던전 열쇠 3 / 7 / 15개.</li>
-          <li><strong>소형 패키지:</strong> 500 다이아몬드, 100 정수, 10 스킬 스톤, 3 던전 열쇠.</li>
-          <li><strong>대형 패키지:</strong> 1,000 다이아몬드, 200 정수, 20 스킬 스톤, 5 던전 열쇠.</li>
-          <li><strong>7일 프리미엄 패키지:</strong> 7일 동안 클릭 피해 x5, 자동 피해 x5, 골드 x3, 열 저항 x3, 오프라인 수입 x2.</li>
-          <li><strong>30일 프리미엄 패키지:</strong> 30일 동안 클릭 피해 x7, 자동 피해 x7, 골드 x4.5, 열 저항 x3.5, 오프라인 수입 x2.5.</li>
-          <li><strong>시간 건너뛰기:</strong> 8 / 16 / 24시간을 다이아 100 / 190 / 370개로. 보상은 내 피해, 층, 작업자를 바탕으로 계산되며 광석, 인챈트 드롭, 희귀 광석도 포함됩니다. 부스트, 재사용 대기, 타이머는 흘러가지 않고, 던전 안에서는 쓸 수 없습니다.</li>
+          <li><strong>프리미엄</strong>은 정해진 기간 동안 피해, 골드, 오프라인 수입을 올려 줍니다.</li>
+          <li><strong>시간 건너뛰기</strong>는 게임을 몇 시간 앞으로 돌립니다. 보상은 지금의 전투력으로 계산됩니다.</li>
+          <li><strong>인챈트 상자</strong>는 바로 열리고 인챈트 재료를 줍니다.</li>
+          <li><strong>열쇠 묶음</strong>은 다이아로 삽니다. 던전 열쇠용과 심연 열쇠용 묶음이 모두 있습니다.</li>
+          <li><strong>Infinity 아이템</strong>은 한 번 사면 각성에도 승화에도 사라지지 않습니다.</li>
+          <li><strong>업적</strong>은 광석 스톤을 줍니다. 보상은 직접 받아야 합니다.</li>
         </ul>
-      <p><strong>인챈트 상자</strong>는 다이아 100개이며 사는 즉시 열립니다. 카드에 모든 상품과 확률이 적혀 있습니다:</p>
-      <div class="table-wrap">
-        <table>
-        <thead><tr>
-        <th>아이템</th>
-        <th class="num">수량</th>
-        <th class="num">확률</th>
-        </tr></thead>
-        <tbody>
-        <tr>
-        <td>일반 인챈트 가루</td>
-        <td class="num">250</td>
-        <td class="num">17%</td>
-        </tr>
-        <tr>
-        <td>일반 인챈트 조각</td>
-        <td class="num">26</td>
-        <td class="num">16%</td>
-        </tr>
-        <tr>
-        <td>희귀 인챈트 가루</td>
-        <td class="num">180</td>
-        <td class="num">15%</td>
-        </tr>
-        <tr>
-        <td>희귀 인챈트 조각</td>
-        <td class="num">9</td>
-        <td class="num">15%</td>
-        </tr>
-        <tr>
-        <td>영웅 인챈트 가루</td>
-        <td class="num">150</td>
-        <td class="num">10%</td>
-        </tr>
-        <tr>
-        <td>영웅 인챈트 조각</td>
-        <td class="num">5</td>
-        <td class="num">10%</td>
-        </tr>
-        <tr>
-        <td>전설 인챈트 가루</td>
-        <td class="num">130</td>
-        <td class="num">9%</td>
-        </tr>
-        <tr>
-        <td>전설 인챈트 조각</td>
-        <td class="num">3</td>
-        <td class="num">8%</td>
-        </tr>
-        </tbody></table></div>
-      <p>무한 아이템은 <strong>다이아로 한 번만</strong> 사면 되고, 프레스티지해도 초기화되지 않습니다. 후반에는 보통 다이아를 쓰기에 가장 좋은 곳입니다.</p>
-      <div class="table-wrap">
-        <table>
-        <thead><tr>
-        <th>아이템</th>
-        <th class="num">효과</th>
-        <th class="num">가격</th>
-        </tr></thead>
-        <tbody>
-        <tr>
-        <td>무한 위력</td>
-        <td class="num">x4</td>
-        <td class="num">350 💎</td>
-        </tr>
-        <tr>
-        <td>무한 수익</td>
-        <td class="num">x3</td>
-        <td class="num">350 💎</td>
-        </tr>
-        <tr>
-        <td>무한 갑옷</td>
-        <td class="num">x2</td>
-        <td class="num">350 💎</td>
-        </tr>
-        <tr>
-        <td>무한 속도</td>
-        <td class="num">x1.5</td>
-        <td class="num">550 💎</td>
-        </tr>
-        <tr>
-        <td>무한 클리커</td>
-        <td class="num">7 /초</td>
-        <td class="num">600 💎</td>
-        </tr>
-        </tbody></table></div>
-      <div class="callout">
-          <div class="callout-label">가격</div>
-          실제 결제 가격은 Steam에서 사용자의 통화로 받아오므로 여기에는 적지 않습니다. 팩의 구성은 변하지 않지만, 가격은 지역에 따라 다릅니다.
-        </div>
     </section>
 
     <section id="progress">
-      <div class="section-head"><span class="section-num">22</span><h2>진행 상황 확인</h2></div>
-      <p class="section-dek">회차가 어떻게 진행되는지, 방금 무슨 일이 있었는지 볼 수 있는 곳입니다.</p>
+      <div class="section-head"><span class="section-num">17</span><h2>진행과 저장</h2></div>
+      <p class="section-dek">회차를 확인하는 곳과 진행이 지켜지는 방식.</p>
       <ul>
-          <li>Steam 순위표는 클릭 수, 클릭 피해, 프레스티지 횟수, 처치한 보스 수, 최고 층을 기록합니다.</li>
-          <li>통계 화면에는 수입, 지출, 클릭, 제작, 플레이 시간 등이 오래 기록됩니다.</li>
-          <li><strong>활동 기록</strong>에는 이번 세션에 일어난 일(보상, 해금, 보스, 구매 등)이 나열되며, 모서리 알림을 누르면 열립니다.</li>
-          <li><strong>업데이트</strong> 창은 최신 패치 노트를 사용자의 언어로 보여주며, 새 업데이트 후 한 번 자동으로 열립니다.</li>
+          <li>Steam 순위표, 통계 화면, <strong>활동 기록</strong>에서 진행 상황을 볼 수 있습니다.</li>
+          <li><strong>업데이트</strong> 패널은 최신 업데이트 소식을 보여 줍니다.</li>
+          <li>게임은 주기적으로 스스로 저장하고 Steam Cloud에 백업합니다. 다른 컴퓨터에서도 이어서 할 수 있습니다.</li>
+          <li>Discord를 켜 두면 프로필에 현재 층과 각성 / 승화 레벨이 표시됩니다.</li>
         </ul>
     </section>
 
-    <section id="save">
-      <div class="section-head"><span class="section-num">23</span><h2>저장</h2></div>
-      <p class="section-dek">요약: 진행 상황은 여러 방법으로 동시에 안전하게 지켜집니다.</p>
-      <ul>
-          <li>게임은 <strong>15초</strong>마다 암호화해서 자동 저장합니다.</li>
-          <li>약 <strong>45초</strong>마다, 그리고 종료하거나 일시 정지할 때마다 Steam 클라우드에 백업하므로 다른 컴퓨터에서도 이어서 할 수 있습니다.</li>
-          <li>저장 파일이 손상되면 게임이 알아서 백업으로 돌아갑니다.</li>
-          <li>저장 데이터를 클립보드에 복사해 다른 기기에 붙여넣을 수도 있습니다.</li>
-        </ul>
-    </section>
-
-    <section id="languages">
-      <div class="section-head"><span class="section-num">24</span><h2>언어</h2></div>
-      <p class="section-dek">게임은 18개 언어를 지원합니다.</p>
-      <p>영어, 튀르키예어, 독일어, 프랑스어, 스페인어, 중남미 스페인어, 이탈리아어, 폴란드어, 브라질 포르투갈어, 러시아어, 우크라이나어, 일본어, 한국어, 중국어 간체, 중국어 번체, 태국어, 인도네시아어, 베트남어. 처음 실행할 때 언어가 자동으로 정해지며 설정에서 언제든 바꿀 수 있습니다. 이 가이드도 모든 언어로 제공되며, 페이지 위쪽에서 바꿀 수 있습니다.</p>
-    </section>
-
-    <footer class="doc-footer">여기의 수치는 현재 게임 밸런스를 따르며 업데이트에 따라 달라질 수 있습니다. 실제 결제 상품의 가격은 Steam이 정하고 사용자의 통화로 표시되므로 여기에는 적지 않습니다.</footer>
+    <footer class="doc-footer">게임은 업데이트로 달라집니다. 이 가이드는 전체 흐름을 보여 줍니다. 실제 결제 상품의 가격은 Steam이 여러분의 통화로 표시합니다.</footer>
   </main>
 </div>
 
