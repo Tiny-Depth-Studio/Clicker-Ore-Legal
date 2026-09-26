@@ -25,6 +25,14 @@
   },
   "news": [
     {
+      "date": 1790452285,
+      "excerpt": "NEW - Elements now unlock one by one: each element joins the mine at its own floor, and the element you unlocked most recently shows up the most. - The ores you break now pile up in your Inventory, so you can see how…",
+      "feedlabel": "Community Announcements",
+      "gid": "1844751498227964",
+      "title": "1.9.23 Update Notes — September 26, 2026",
+      "url": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1844751498227964"
+    },
+    {
       "date": 1789906385,
       "excerpt": "NEW - Added Ascension: a second prestige layer that sits on top of Awakening. You give up your Awakening upgrades and your Essence and earn Pure Essence. - Pure Essence is spent on two Ascension parameters: one grows…",
       "feedlabel": "Community Announcements",
@@ -63,14 +71,6 @@
       "gid": "1842212951308587",
       "title": "About the Upcoming Balance Change — August 31, 2026",
       "url": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1842212951308587"
-    },
-    {
-      "date": 1787502285,
-      "excerpt": "NEW - Added time skip: spend diamonds to advance 2, 4 or 8 hours, with rewards based on your current speed and floor. - A summary panel now shows everything you earned when the skip ends. - Added rare ores: five special…",
-      "feedlabel": "Community Announcements",
-      "gid": "1841579228673682",
-      "title": "1.5.12 Update Notes — August 23, 2026",
-      "url": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1841579228673682"
     }
   ],
   "screenshots": [
