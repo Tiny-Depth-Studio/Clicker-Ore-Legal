@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self'; style-src 'unsafe-inline'; base-uri 'none'; form-action 'none'; upgrade-insecure-requests">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Clicker Ore Game - Hướng dẫn người chơi</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Mỏ vận hành thế nào: cuốc chim, thú cưng, golem, công nhân, phù phép, kỹ năng, nhân vật và trang bị, Đấu trường, Thức tỉnh, Thăng hoa, trùm, Vực thẳm và cửa hàng - ngắn gọn.">
+<style>
+  :root {
+    --bg: #14110d;
+    --bg-elevated: #1d1811;
+    --bg-card: #211b13;
+    --text: #ede6d8;
+    --text-dim: #a89a82;
+    --text-faint: #766a55;
+    --accent: #e0a752;
+    --accent-strong: #f2bd6e;
+    --accent-2: #7fb8ad;
+    --border: #3a2f22;
+    --border-soft: #2a2318;
+    --danger: #cf7a5a;
+    --shadow: 0 8px 24px rgba(0,0,0,0.35);
+
+    --cur-gold: #e0a752;
+    --cur-diamond: #7fd1e0;
+    --cur-essence: #b79ef0;
+    --cur-taskium: #93a8d6;
+    --cur-key: #d98a63;
+    --cur-skillstone: #7fc9a0;
+    --cur-orestone: #b5a68c;
+    --cur-abysskey: #8f7fd6;
+    --cur-pureessence: #d7bff5;
+    --cur-elementium: #e07f9e;
+
+    --font-display: "Bahnschrift", "Segoe UI Semibold", "Arial Narrow Bold", "Arial Narrow", sans-serif;
+    --font-body: "Sitka Text", "Iowan Old Style", Georgia, "Times New Roman", serif;
+    --font-mono: "Cascadia Mono", "Consolas", "SF Mono", ui-monospace, monospace;
+  }
+
+  :root[data-theme="light"] {
+    --bg: #efe9da;
+    --bg-elevated: #e6ddc8;
+    --bg-card: #f3ede0;
+    --text: #241d14;
+    --text-dim: #5c5138;
+    --text-faint: #857656;
+    --accent: #a8621a;
+    --accent-strong: #8a4e12;
+    --accent-2: #2f7a70;
+    --border: #d3c5a4;
+    --border-soft: #ddd0b1;
+    --danger: #a3492c;
+    --shadow: 0 8px 20px rgba(90,70,30,0.12);
+  }
+
+  @media (prefers-color-scheme: light) {
+    :root:not([data-theme="dark"]) {
+      --bg: #efe9da;
+      --bg-elevated: #e6ddc8;
+      --bg-card: #f3ede0;
+      --text: #241d14;
+      --text-dim: #5c5138;
+      --text-faint: #857656;
+      --accent: #a8621a;
+      --accent-strong: #8a4e12;
+      --accent-2: #2f7a70;
+      --border: #d3c5a4;
+      --border-soft: #ddd0b1;
+      --danger: #a3492c;
+      --shadow: 0 8px 20px rgba(90,70,30,0.12);
+    }
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: 17px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection { background: var(--accent); color: #14110d; }
+
+  a { color: var(--accent-strong); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  a:focus-visible, button:focus-visible, summary:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    text-wrap: balance;
+    letter-spacing: 0.01em;
+    color: var(--text);
+  }
+
+  p { max-width: 68ch; }
+  ul, ol { max-width: 68ch; }
+
+  .shell {
+    display: grid;
+    grid-template-columns: 260px minmax(0, 1fr);
+    min-height: 100vh;
+  }
+
+  .topbar {
+    display: none;
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: var(--bg-elevated);
+    border-bottom: 1px solid var(--border);
+    padding: 0.7rem 1rem;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .topbar-title {
+    font-family: var(--font-display);
+    font-size: 0.95rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--accent-strong);
+  }
+  #nav-toggle { display: none; }
+  .nav-toggle-btn {
+    font-family: var(--font-display);
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 0.4rem 0.7rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.85rem;
+  }
+
+  nav.toc {
+    position: sticky;
+    top: 0;
+    align-self: start;
+    height: 100vh;
+    overflow-y: auto;
+    padding: 2rem 1.4rem 3rem;
+    background: var(--bg-elevated);
+    border-right: 1px solid var(--border);
+  }
+  .toc-home {
+    display: inline-block;
+    font-family: var(--font-display);
+    font-size: 0.8rem;
+    color: var(--text-dim);
+    margin-bottom: 1.1rem;
+  }
+  .toc-home:hover { color: var(--accent-strong); text-decoration: none; }
+
+  .toc-brand {
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    letter-spacing: 0.03em;
+    color: var(--accent-strong);
+    margin-bottom: 0.15rem;
+  }
+  .toc-brand small {
+    display: block;
+    font-family: var(--font-body);
+    font-style: italic;
+    font-size: 0.78rem;
+    color: var(--text-faint);
+    letter-spacing: 0;
+    margin-top: 0.25rem;
+  }
+  .toc-list {
+    list-style: none;
+    margin: 1.6rem 0 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+  }
+  .toc-list a {
+    display: block;
+    color: var(--text-dim);
+    font-size: 0.88rem;
+    padding: 0.32rem 0.5rem;
+    border-radius: 4px;
+    border-left: 2px solid transparent;
+  }
+  .toc-list a:hover {
+    color: var(--text);
+    text-decoration: none;
+    background: rgba(224,167,82,0.08);
+    border-left-color: var(--accent);
+  }
+  .toc-num {
+    font-family: var(--font-mono);
+    color: var(--text-faint);
+    font-size: 0.78rem;
+    margin-right: 0.45rem;
+  }
+
+  main {
+    padding: 3.2rem clamp(1.2rem, 4vw, 4rem) 6rem;
+    max-width: 900px;
+  }
+
+  header.hero {
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .strata {
+    height: 10px;
+    width: 100%;
+    border-radius: 3px;
+    margin-bottom: 1.6rem;
+    background: repeating-linear-gradient(
+      90deg,
+      var(--accent) 0 6%,
+      var(--accent-2) 6% 11%,
+      var(--border-soft) 11% 18%,
+      var(--accent) 18% 24%,
+      var(--border-soft) 24% 34%,
+      var(--accent-2) 34% 40%,
+      var(--accent) 40% 48%,
+      var(--border-soft) 48% 58%,
+      var(--accent-2) 58% 63%,
+      var(--accent) 63% 72%,
+      var(--border-soft) 72% 82%,
+      var(--accent-2) 82% 90%,
+      var(--accent) 90% 100%
+    );
+    opacity: 0.85;
+  }
+  .eyebrow {
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-size: 0.72rem;
+    color: var(--accent);
+    margin-bottom: 0.6rem;
+  }
+  h1.title {
+    font-size: clamp(2rem, 4.2vw, 2.9rem);
+    margin: 0 0 0.7rem;
+    line-height: 1.1;
+  }
+  .subtitle {
+    color: var(--text-dim);
+    font-size: 1.08rem;
+    max-width: 62ch;
+    margin: 0;
+  }
+
+  .langbar {
+    margin: 1.8rem 0 0;
+    padding-top: 1.2rem;
+    border-top: 1px solid var(--border-soft);
+  }
+  .langbar-label {
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 0.68rem;
+    color: var(--text-faint);
+    margin-bottom: 0.55rem;
+  }
+  .langbar-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem 0.4rem;
+  }
+  .langbar-list a, .langbar-list span {
+    font-family: var(--font-display);
+    font-size: 0.78rem;
+    padding: 0.18rem 0.55rem;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    color: var(--text-dim);
+    background: var(--bg-card);
+  }
+  .langbar-list a:hover {
+    text-decoration: none;
+    color: var(--text);
+    border-color: var(--accent);
+  }
+  .langbar-list span {
+    color: #14110d;
+    background: var(--accent);
+    border-color: var(--accent);
+  }
+  :root[data-theme="light"] .langbar-list span { color: #efe9da; }
+
+  section {
+    margin-bottom: 3.6rem;
+    scroll-margin-top: 1.5rem;
+  }
+  .section-head {
+    display: flex;
+    align-items: baseline;
+    gap: 0.7rem;
+    margin-bottom: 0.3rem;
+  }
+  .section-num {
+    font-family: var(--font-mono);
+    color: var(--accent);
+    font-size: 0.95rem;
+  }
+  h2 {
+    font-size: 1.55rem;
+    margin: 0;
+  }
+  .section-dek {
+    color: var(--text-dim);
+    font-size: 0.98rem;
+    margin: 0.3rem 0 1.5rem;
+    max-width: 62ch;
+  }
+
+  .callout {
+    border-left: 3px solid var(--accent);
+    background: var(--bg-card);
+    padding: 0.95rem 1.2rem;
+    border-radius: 0 6px 6px 0;
+    margin: 1.2rem 0;
+    font-size: 0.95rem;
+  }
+  .callout strong { color: var(--accent-strong); }
+  .callout.warn { border-left-color: var(--danger); }
+  .callout-label {
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 0.72rem;
+    color: var(--accent);
+    margin-bottom: 0.35rem;
+  }
+  .callout.warn .callout-label { color: var(--danger); }
+
+  .currency-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 0.9rem;
+    margin: 1.4rem 0;
+  }
+  .cur-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-top: 3px solid var(--dot);
+    border-radius: 6px;
+    padding: 0.95rem 1rem 1.05rem;
+  }
+  .cur-card h4 {
+    margin: 0 0 0.5rem;
+    font-size: 0.98rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .dot {
+    width: 9px; height: 9px; border-radius: 50%;
+    background: var(--dot);
+    flex: none;
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--dot) 20%, transparent);
+  }
+  .cur-card p {
+    margin: 0.15rem 0;
+    font-size: 0.84rem;
+    color: var(--text-dim);
+    max-width: none;
+  }
+  .cur-card p b { color: var(--text); font-weight: 600; }
+
+  .table-wrap {
+    overflow-x: auto;
+    margin: 1.2rem 0;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+  }
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    min-width: 460px;
+    font-size: 0.9rem;
+  }
+  thead th {
+    text-align: left;
+    font-family: var(--font-display);
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    font-size: 0.72rem;
+    color: var(--text-dim);
+    background: var(--bg-elevated);
+    padding: 0.6rem 0.85rem;
+    border-bottom: 1px solid var(--border);
+    white-space: nowrap;
+  }
+  tbody td {
+    padding: 0.55rem 0.85rem;
+    border-bottom: 1px solid var(--border-soft);
+    font-variant-numeric: tabular-nums;
+    color: var(--text);
+  }
+  tbody tr:last-child td { border-bottom: none; }
+  tbody tr:nth-child(even) { background: color-mix(in srgb, var(--accent) 3%, transparent); }
+  td.num, th.num { font-family: var(--font-mono); }
+  td.strong { color: var(--accent-strong); font-weight: 600; }
+
+  .strategy-track {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 1.4rem 0;
+  }
+  .strategy-stage {
+    background: var(--bg-card);
+    padding: 1rem 1.1rem;
+  }
+  .strategy-stage .stage-label {
+    font-family: var(--font-display);
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+    margin-bottom: 0.4rem;
+  }
+  .strategy-stage ul {
+    margin: 0;
+    padding-left: 1.1rem;
+    font-size: 0.86rem;
+    color: var(--text-dim);
+  }
+  .strategy-stage li { margin-bottom: 0.25rem; }
+
+  footer.doc-footer {
+    margin-top: 4rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+    color: var(--text-faint);
+    font-size: 0.8rem;
+  }
+
+  @media (max-width: 880px) {
+    .shell { grid-template-columns: 1fr; }
+    .topbar { display: flex; }
+    nav.toc {
+      position: fixed;
+      inset: 0 20% 0 0;
+      top: 52px;
+      height: calc(100vh - 52px);
+      transform: translateX(-100%);
+      transition: transform 0.22s ease;
+      z-index: 15;
+      box-shadow: var(--shadow);
+    }
+    #nav-toggle:checked ~ .shell nav.toc {
+      transform: translateX(0);
+    }
+    main { padding: 2rem 1.2rem 5rem; }
+  }
+</style>
+</head>
+<body>
+
+<input type="checkbox" id="nav-toggle">
+
+<div class="topbar">
+  <a class="topbar-title" href="index.html">&#9935; Clicker Ore Game</a>
+  <label class="nav-toggle-btn" for="nav-toggle">Mục lục</label>
+</div>
+
+<div class="shell">
+  <nav class="toc" aria-label="Mục lục">
+    <a class="toc-home" href="index.html">← Trang chủ</a>
+    <div class="toc-brand">Clicker Ore Game<small>Hướng dẫn người chơi</small></div>
+    <ul class="toc-list">
+      <li><a href="#start"><span class="toc-num">01</span>Bắt đầu từ đâu</a></li>
+      <li><a href="#currencies"><span class="toc-num">02</span>Tiền tệ</a></li>
+      <li><a href="#damage"><span class="toc-num">03</span>Sát thương và chí mạng</a></li>
+      <li><a href="#equipment"><span class="toc-num">04</span>Cuốc chim, giáp và thú cưng</a></li>
+      <li><a href="#golems"><span class="toc-num">05</span>Golem</a></li>
+      <li><a href="#temperature"><span class="toc-num">06</span>Sức nóng</a></li>
+      <li><a href="#workers"><span class="toc-num">07</span>Công nhân</a></li>
+      <li><a href="#enchantments"><span class="toc-num">08</span>Phù phép</a></li>
+      <li><a href="#floors"><span class="toc-num">09</span>Tầng và quặng</a></li>
+      <li><a href="#weather"><span class="toc-num">10</span>Thời tiết</a></li>
+      <li><a href="#skills"><span class="toc-num">11</span>Kỹ năng và danh hiệu</a></li>
+      <li><a href="#character"><span class="toc-num">12</span>Nhân vật và Trang bị</a></li>
+      <li><a href="#arena"><span class="toc-num">13</span>Đấu trường</a></li>
+      <li><a href="#tasks"><span class="toc-num">14</span>Nhiệm vụ</a></li>
+      <li><a href="#trade"><span class="toc-num">15</span>Thương nhân</a></li>
+      <li><a href="#extras"><span class="toc-num">16</span>Phần thưởng miễn phí</a></li>
+      <li><a href="#awakening"><span class="toc-num">17</span>Thức tỉnh</a></li>
+      <li><a href="#ascension"><span class="toc-num">18</span>Thăng hoa</a></li>
+      <li><a href="#dungeons"><span class="toc-num">19</span>Trùm và Vực thẳm</a></li>
+      <li><a href="#store"><span class="toc-num">20</span>Cửa hàng và thành tựu</a></li>
+      <li><a href="#progress"><span class="toc-num">21</span>Tiến độ và cộng đồng</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <header class="hero">
+      <div class="strata" role="presentation"></div>
+      <div class="eyebrow">Hướng dẫn người chơi - 2026-10-28</div>
+      <h1 class="title">Toàn bộ khu mỏ,<br>gói gọn</h1>
+      <p class="subtitle">Mỗi hệ thống dùng để làm gì và nên dồn thời gian vào đâu. Không con số, không công thức - chỉ những điều bạn cần biết.</p>
+      <div class="langbar">
+        <div class="langbar-label">Ngôn ngữ</div>
+        <div class="langbar-list"><a href="player_guide_en.html" hreflang="en">English</a><a href="player_guide_tr.html" hreflang="tr">Türkçe</a><a href="player_guide_de.html" hreflang="de">Deutsch</a><a href="player_guide_fr.html" hreflang="fr">Français</a><a href="player_guide_es.html" hreflang="es">Español</a><a href="player_guide_es_la.html" hreflang="es-419">Español (Latinoamérica)</a><a href="player_guide_it.html" hreflang="it">Italiano</a><a href="player_guide_pl.html" hreflang="pl">Polski</a><a href="player_guide_pt_br.html" hreflang="pt-BR">Português (Brasil)</a><a href="player_guide_ru.html" hreflang="ru">Русский</a><a href="player_guide_uk.html" hreflang="uk">Українська</a><a href="player_guide_ja.html" hreflang="ja">日本語</a><a href="player_guide_ko.html" hreflang="ko">한국어</a><a href="player_guide_zh_hans.html" hreflang="zh-Hans">简体中文</a><a href="player_guide_zh_hant.html" hreflang="zh-Hant">繁體中文</a><a href="player_guide_th.html" hreflang="th">ไทย</a><a href="player_guide_id.html" hreflang="id">Bahasa Indonesia</a><span>Tiếng Việt</span></div>
+      </div>
+    </header>
+
+    <section id="start">
+      <div class="section-head"><span class="section-num">01</span><h2>Bắt đầu từ đâu</h2></div>
+      <p class="section-dek">Trò chơi mở dần các hệ thống khi bạn đào sâu hơn.</p>
+      <div class="strategy-track">
+          <div class="strategy-stage">
+            <div class="stage-label">Giai đoạn đầu</div>
+            <ul>
+              <li>Nâng cấp cuốc chim không ngừng; tầng sâu hơn mở khóa cuốc chim mới.</li>
+              <li>Thấy bóng bay vàng, Tinh thể vàng và điểm yếu thì nhấp ngay, rồi bắt đầu dùng những kỹ năng đầu tiên.</li>
+              <li>Nhận Quà chào mừng và xem Thưởng trong ngày vào mỗi ngày bạn chơi.</li>
+              <li>Đủ kim cương thì mua thú cưng đầu tiên.</li>
+            </ul>
+          </div>
+          <div class="strategy-stage">
+            <div class="stage-label">Giai đoạn giữa</div>
+            <ul>
+              <li>Khi tiến độ chậm lại, hãy thực hiện Thức tỉnh để nhận Tinh Chất.</li>
+              <li>Nhiệm vụ, Nhiệm vụ hằng ngày, Vòng quay may mắn, Thương nhân, cây kỹ năng và sự kiện thời tiết mở ra trong giai đoạn này.</li>
+              <li>Hãy chọn một phước lành mỗi khi được đưa ra, và rải Tinh Chất ra thay vì dồn hết vào một chỉ số.</li>
+            </ul>
+          </div>
+          <div class="strategy-stage">
+            <div class="stage-label">Giai đoạn cuối</div>
+            <ul>
+              <li>Nhân vật cùng Trang bị của nó và Đấu trường mở ra; nguyên tố bắt đầu chất đầy Túi đồ của bạn.</li>
+              <li>Có chìa khóa thì đánh trùm, sau đó bắt đầu các lượt Vực thẳm.</li>
+              <li>Công nhân gia nhập, ô phù phép mở ra và Thợ rèn bắt đầu cường hóa trang bị của bạn.</li>
+              <li>Tiếp tục nâng cấp giáp để sức nóng không ăn mất sát thương của bạn.</li>
+            </ul>
+          </div>
+          <div class="strategy-stage">
+            <div class="stage-label">Đường dài</div>
+            <ul>
+              <li>Sâu hơn nhiều, Thăng hoa mở khóa và đặt lại toàn bộ vòng lặp Thức tỉnh.</li>
+              <li>Đổi lại bạn nhận Tinh Chất Thuần Khiết, thứ làm mọi lượt chơi sau nhanh hơn vĩnh viễn.</li>
+              <li>Những trùm đã hạ mở ra các bậc Ác mộng vô tận với phần thưởng lớn hơn.</li>
+            </ul>
+          </div>
+        </div>
+      <div class="callout">
+          <div class="callout-label">Nên biết</div>
+          Các con số lớn rất nhanh; trò chơi chuyển sang ký hiệu rút gọn trước, rồi sang ký hiệu khoa học. Không có giới hạn - chỉ cách viết thay đổi.
+        </div>
+      <div class="callout">
+          <div class="callout-label">Hướng dẫn ngắn</div>
+          Mỗi hệ thống mới đều được giới thiệu bằng một hướng dẫn ngắn khi mở lần đầu. Các bước làm tối màn hình đều có nút bỏ qua.
+        </div>
+    </section>
+
+    <section id="currencies">
+      <div class="section-head"><span class="section-num">02</span><h2>Tiền tệ</h2></div>
+      <p class="section-dek">Mỗi loại nuôi một hệ thống khác nhau.</p>
+      <div class="currency-grid">
+        <div class="cur-card" style="--dot:var(--cur-gold)">
+          <h4><span class="dot"></span>Vàng</h4>
+          <p>Kiếm được bằng cách <b>đập quặng</b>; công nhân, thời gian ngoại tuyến, vàng miễn phí mỗi giờ, nhiệm vụ, bóng bay vàng, tua thời gian và Vòng quay may mắn cũng mang lại vàng.</p>
+          <p>Dùng cho cuốc chim, nâng cấp và kỹ năng vật phẩm.</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-diamond)">
+          <h4><span class="dot"></span>Kim Cương</h4>
+          <p>Đến từ <b>Cửa hàng</b>, mã khuyến mãi, phần thưởng mùa giải Đấu trường và Vòng quay may mắn.</p>
+          <p>Dùng mua thú cưng, golem, vật phẩm Vô cực, tua thời gian, rương, gói chìa khóa, lượt tấn công Đấu trường thêm và làm mới Chợ.</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-essence)">
+          <h4><span class="dot"></span>Tinh Chất</h4>
+          <p>Là phần thưởng của <b>Thức tỉnh</b>; trùm, nhiệm vụ, Thương nhân, gói trong cửa hàng và Vòng quay may mắn cũng cho một ít.</p>
+          <p>Dùng cho các chỉ số vĩnh viễn của Thức tỉnh.</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-taskium)">
+          <h4><span class="dot"></span>Taskium</h4>
+          <p>Mỗi cú nhấp vào quặng đều cho một chút, và Vòng quay may mắn cũng cho một ít.</p>
+          <p>Dùng để nhận và đổi lại nhiệm vụ.</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-key)">
+          <h4><span class="dot"></span>Chìa Khóa Hầm Ngục</h4>
+          <p>Mỗi ngày một chìa miễn phí trong cửa hàng, ngoài ra từ kim cương, gói trong cửa hàng và Vòng quay may mắn.</p>
+          <p>Dùng để vào trận đấu trùm.</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-skillstone)">
+          <h4><span class="dot"></span>Đá Kỹ Năng</h4>
+          <p>Đến từ Thương nhân, gói trong cửa hàng và Vòng quay may mắn.</p>
+          <p>Dùng để tăng sức mạnh cho kỹ năng chủ động.</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-orestone)">
+          <h4><span class="dot"></span>Đá Quặng</h4>
+          <p>Rơi từ mọi viên quặng bạn đập, ngoài ra từ thành tựu, trùm, các lượt Vực thẳm, tua thời gian và Vòng quay may mắn.</p>
+          <p>Dùng để trao đổi và trả phí trao đổi, chế tạo phù phép và nâng cấp công nhân.</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-abysskey)">
+          <h4><span class="dot"></span>Chìa Khóa Vực Thẳm</h4>
+          <p>Mỗi ngày một chìa miễn phí trong cửa hàng, ngoài ra từ kim cương và gói trong cửa hàng.</p>
+          <p>Dùng để vào lượt Vực thẳm.</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-pureessence)">
+          <h4><span class="dot"></span>Tinh Chất Thuần Khiết</h4>
+          <p>Là phần thưởng của <b>Thăng hoa</b>; không có nguồn nào khác.</p>
+          <p>Chỉ dùng cho các chỉ số của Thăng hoa.</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-elementium)">
+          <h4><span class="dot"></span>Elementium</h4>
+          <p>Được tạo ở Thương nhân từ nguyên tố bạn thu thập hoặc từ Đá Quặng; bán trang bị ở Thợ rèn cũng cho nó.</p>
+          <p>Dùng cho chỉ số của Nhân vật và Pha lê cùng vật phẩm trong Chợ.</p>
+        </div>
+      </div>
+      <div class="callout">
+          <div class="callout-label">Tiền tệ phía máy chủ</div>
+          Kim cương, chìa khóa hầm ngục và Chìa Khóa Vực Thẳm được giữ trên máy chủ; bạn phải trực tuyến mới tiêu được.
+        </div>
+    </section>
+
+    <section id="damage">
+      <div class="section-head"><span class="section-num">03</span><h2>Sát thương và chí mạng</h2></div>
+      <p class="section-dek">Hai nguồn sát thương tách biệt và những cú chí mạng nhân chúng lên.</p>
+      <ul>
+          <li><strong>Sát thương nhấp</strong> đến từ cây cuốc chim đầu tiên, kỹ năng Nhấp Phẫn Nộ, danh hiệu, các chỉ số Thức tỉnh và phù phép.</li>
+          <li><strong>Sát thương tự động</strong> đến từ những cây cuốc chim còn lại, kỹ năng Cuồng Nộ, thú cưng và phù phép; nó chảy liên tục chừng nào quặng còn nguyên.</li>
+          <li>Hợp Nhất Sức Mạnh càng cao thì phần sát thương tự động được cộng thêm vào mỗi lần nhấp càng lớn.</li>
+          <li>Mỗi lần nhấp đều có thể <strong>chí mạng</strong> và đánh mạnh hơn nhiều. Tỉ lệ và hệ số chí mạng tăng nhờ kỹ năng, chỉ số Thức tỉnh, danh hiệu và phù phép. Khi tỉ lệ chí mạng đã đầy, phần dư sẽ tiếp tục tăng sát thương chí mạng của bạn.</li>
+          <li>Thỉnh thoảng một <strong>điểm yếu</strong> sáng rực xuất hiện trên quặng; nhấp vào đó đánh mạnh hơn nhiều so với cú nhấp thường.</li>
+          <li>Golem, phước lành và Thưởng trong ngày còn cộng thêm những cú tăng lực riêng. Bảng Trạng thái hiệu ứng liệt kê mọi hiệu ứng đang hoạt động và nguồn gốc của chúng.</li>
+        </ul>
+    </section>
+
+    <section id="equipment">
+      <div class="section-head"><span class="section-num">04</span><h2>Cuốc chim, giáp và thú cưng</h2></div>
+      <p class="section-dek">Nền móng của sát thương và sức chịu đựng.</p>
+      <ul>
+          <li><strong>Cuốc chim</strong> mở khóa theo độ sâu. Cây đầu tiên nuôi sát thương nhấp, số còn lại nuôi sát thương tự động.</li>
+          <li>Cuốc chim tích lũy <strong>thành thạo</strong> từ quặng chúng đập vỡ; mỗi cấp thành thạo giúp cây cuốc chim đó đánh mạnh hơn.</li>
+          <li><strong>Giáp</strong> thuộc về bạn ngay từ đầu; không mua, chỉ nâng cấp, và che chắn bạn khỏi sức nóng. Thẻ của nó mở ra khi sức nóng lần đầu bắt đầu cắt sát thương của bạn.</li>
+          <li><strong>Thú cưng</strong> mua bằng kim cương, nâng cấp bằng vàng và gây sát thương tự động. Quyền sở hữu là vĩnh viễn.</li>
+          <li>Cả ba đều có kỹ năng riêng mở theo cấp; có kỹ năng chỉ giúp chính vật phẩm đó, có kỹ năng giúp cả dòng. Thẻ đã mua đủ mọi kỹ năng sẽ phát sáng.</li>
+        </ul>
+      <div class="callout">
+          <div class="callout-label">Bước nhảy lớn</div>
+          Ở một số cấp, sức mạnh của vật phẩm nhảy vọt. Đẩy một vật phẩm tới ngưỡng tiếp theo thường là nâng cấp đáng giá nhất.
+        </div>
+      <div class="callout warn">
+          <div class="callout-label">Sau Thức tỉnh</div>
+          Thức tỉnh khóa lại cuốc chim và đặt lại nâng cấp giáp, thú cưng cùng độ thành thạo cuốc chim. Bản thân thú cưng vẫn là của bạn.
+        </div>
+    </section>
+
+    <section id="golems">
+      <div class="section-head"><span class="section-num">05</span><h2>Golem</h2></div>
+      <p class="section-dek">Những người bạn bằng đá chỉ khiến bạn mạnh hơn.</p>
+      <ul>
+          <li><strong>Trứng Golem</strong> từ Cửa hàng sẽ nở ra một golem ngẫu nhiên. Mọi golem bạn sở hữu đều đứng cạnh bạn trong mỏ cùng một lúc.</li>
+          <li>Golem không tự gây sát thương; thay vào đó kỹ năng của chúng tăng sức mạnh cho bạn - sát thương, vàng, chí mạng, Đá Quặng và hơn thế nữa. Khi một kỹ năng đang kích hoạt, một vòng sáng mang màu của golem sẽ xoay dưới chân nó.</li>
+          <li>Golem lên cấp nhờ quặng bạn đập vỡ. Nở thêm một bản sao của golem bạn đã có sẽ tăng sao của nó và làm kỹ năng của nó mạnh hơn.</li>
+          <li>Golem không bao giờ bị đặt lại - không bởi Thức tỉnh, cũng không bởi Thăng hoa.</li>
+        </ul>
+    </section>
+
+    <section id="temperature">
+      <div class="section-head"><span class="section-num">06</span><h2>Sức nóng</h2></div>
+      <p class="section-dek">Càng xuống sâu càng nóng, và sức nóng âm thầm cắt sát thương của bạn.</p>
+      <p>Nếu kháng nhiệt không theo kịp nhiệt độ của tầng, sát thương của bạn bắt đầu tan chảy. Bảng giáp có công tắc tự mua kháng nhiệt. Sức nóng chỉ tồn tại ở khu mỏ chính, và một số sự kiện thời tiết làm nó thay đổi trong một thời gian.</p>
+      <div class="callout warn">
+          <div class="callout-label">Nếu tiến độ đứng lại</div>
+          Bức tường mà quặng bỗng không vỡ nữa thường là sức nóng. Hãy nhìn vạch nhiệt trước khi tiêu vàng vào chỗ khác.
+        </div>
+    </section>
+
+    <section id="workers">
+      <div class="section-head"><span class="section-num">07</span><h2>Công nhân</h2></div>
+      <p class="section-dek">Những người phụ việc đào thay bạn khi trò chơi đang mở.</p>
+      <ul>
+          <li>Càng xuống sâu càng có công nhân mới gia nhập và không bao giờ bị khóa lại.</li>
+          <li>Hãy giao cho mỗi công nhân một cây cuốc chim; công nhân không có cuốc chim thì không kiếm được gì. Giao cuốc chim đi không làm giảm sát thương của chính bạn.</li>
+          <li>Thu nhập tăng theo tiến độ của bạn, dồn vào một kho và chờ đến khi bạn thu. Công nhân được nâng cấp bằng Đá Quặng.</li>
+        </ul>
+      <div class="callout warn">
+          <div class="callout-label">Thu trước khi Thức tỉnh</div>
+          Công nhân chỉ kiếm được khi trò chơi đang mở. Thức tỉnh giữ nguyên cấp của họ nhưng xóa phần thu nhập chưa thu.
+        </div>
+    </section>
+
+    <section id="enchantments">
+      <div class="section-head"><span class="section-num">08</span><h2>Phù phép</h2></div>
+      <p class="section-dek">Chế tạo phù phép từ thứ bạn đào được rồi gắn vào cuốc chim, giáp và thú cưng.</p>
+      <ul>
+          <li>Đập quặng làm rơi <strong>bụi phù phép</strong> và <strong>mảnh phù phép</strong>. Nguyên liệu bậc cao hơn xuất hiện ở tầng sâu hơn.</li>
+          <li>Thợ chế tạo biến bụi và mảnh thành một phù phép với thuộc tính ngẫu nhiên. Bậc càng cao thì càng nhiều thuộc tính và càng mạnh.</li>
+          <li>Mỗi vật phẩm đều có ô phù phép mở theo độ sâu.</li>
+          <li>Phù phép không cần có thể tháo thành bụi ở chỗ thương nhân, còn nguyên liệu thì đổi lên một bậc.</li>
+        </ul>
+      <div class="callout">
+          <div class="callout-label">Thức tỉnh an toàn</div>
+          Thức tỉnh không bao giờ xóa phù phép; những cái nằm trên vật phẩm bị khóa lại sẽ quay về Túi đồ.
+        </div>
+    </section>
+
+    <section id="floors">
+      <div class="section-head"><span class="section-num">09</span><h2>Tầng và quặng</h2></div>
+      <p class="section-dek">Mỗi tầng khó hơn một chút và cũng hời hơn một chút so với tầng trước.</p>
+      <ul>
+          <li><strong>Nguyên tố</strong> lần lượt gia nhập khu mỏ khi bạn xuống sâu hơn; loại mới nhất xuất hiện thường xuyên nhất. Mọi viên quặng bạn đập vỡ đều được gom vào Túi đồ.</li>
+          <li>Thỉnh thoảng có <strong>tầng tính giờ</strong>: đập vỡ quặng trước khi hết giờ thì nó trả nhiều vàng hơn. Nếu hết giờ, bạn tụt xuống một tầng và tầng tự động bị tắt.</li>
+          <li>Một số tầng mang đến <strong>tinh thể bọc giáp và tinh thể tinh anh</strong>: hãy đập vỡ khiên của chúng trước, và đổi lại chúng trả nhiều vàng hơn.</li>
+          <li>Mọi viên quặng đều rơi Đá Quặng bên cạnh vàng.</li>
+          <li>Rất hiếm khi xuất hiện <strong>quặng hiếm</strong> (Ferrovyx, Karnyth, Thalveris, Umbryssa, Zephiris); mỗi loại chỉ tìm thấy một lần.</li>
+          <li>Đôi khi một <strong>Bia khắc cổ</strong> xuất hiện trên vách hang. Câu đố của nó chỉ tới một tầng bạn đã đi qua - quay lại đó và một tinh thể vàng đang chờ bạn.</li>
+          <li>Thang máy cho phép bạn đi lại giữa các tầng đã tới; nó mở sau lần Thức tỉnh đầu tiên của bạn. Khu vực chuyển giữa khu mỏ chính, hầm ngục và Vực thẳm.</li>
+        </ul>
+      <div class="callout">
+          <div class="callout-label">Cày ở tầng thấp kém hiệu quả</div>
+          Bụi và mảnh rơi nhiều nhất gần tầng sâu nhất bạn từng tới; ở lại quá thấp làm tỉ lệ rơi giảm rõ rệt.
+        </div>
+    </section>
+
+    <section id="weather">
+      <div class="section-head"><span class="section-num">10</span><h2>Thời tiết</h2></div>
+      <p class="section-dek">Khu mỏ cũng có tâm trạng riêng.</p>
+      <p>Khi bạn xuống sâu hơn, các sự kiện thời tiết mở khóa ở khu mỏ chính. Mỗi sự kiện kéo dài một lúc và mang theo hiệu ứng phụ riêng; một số còn thay đổi nhiệt độ của tầng. Các sự kiện không bao giờ chồng lên nhau, và giữa hai sự kiện luôn có một khoảng yên tĩnh.</p>
+    </section>
+
+    <section id="skills">
+      <div class="section-head"><span class="section-num">11</span><h2>Kỹ năng và danh hiệu</h2></div>
+      <p class="section-dek">Những cú tăng lực có thời hạn và các phần thưởng tự đến khi bạn xuống sâu.</p>
+      <ul>
+          <li><strong>Kỹ năng chủ động</strong> mở miễn phí theo độ sâu; chúng tăng lực cho bạn trong chốc lát rồi vào thời gian hồi. Chúng mạnh lên nhờ Đá Kỹ Năng trong Cây kỹ năng và không mất đi khi Thức tỉnh.</li>
+          <li><strong>Danh hiệu</strong> tự đến khi bạn xuống sâu và cho các phần thưởng như sát thương, vàng và kháng nhiệt. Sau Thức tỉnh phải giành lại từ đầu.</li>
+        </ul>
+      <div class="callout">
+          <div class="callout-label">Combo</div>
+          Dùng Quá Tải trước, rồi tới kỹ năng bạn muốn khuếch đại - ví dụ Cuồng Vàng. Sau đó Đảo Ngược Thời Gian rút ngắn thời gian hồi của kỹ năng vừa dùng.
+        </div>
+    </section>
+
+    <section id="character">
+      <div class="section-head"><span class="section-num">12</span><h2>Nhân vật và Trang bị</h2></div>
+      <p class="section-dek">Một con đường tiến bộ thứ hai, dành cho Đấu trường.</p>
+      <ul>
+          <li><strong>Nhân vật</strong> của bạn lên cấp nhờ quặng bạn đập vỡ. Chỉ số tấn công của nó và chỉ số phòng thủ của <strong>Pha lê</strong> được nâng bằng Elementium.</li>
+          <li><strong>Trang bị</strong> được gắn vào các ô như búa, mũ, áo giáp, găng tay, giày, áo choàng, nhẫn và dây chuyền. Vật phẩm có sáu độ hiếm từ Phổ biến đến Độc nhất, và chỉ số của mỗi món được quay ngẫu nhiên ngay lúc bạn nhận được.</li>
+          <li>Mặc đủ mọi món của một bộ thì các chỉ số dương của bộ đó sẽ mạnh hơn.</li>
+          <li><strong>Chợ</strong> bày một lựa chọn vật phẩm mới mỗi ngày để mua bằng Elementium; bạn có thể làm mới sớm bằng kim cương.</li>
+          <li><strong>Thợ rèn</strong> cường hóa trang bị bằng <strong>Đá cường hóa</strong> và mua lại trang bị dư của bạn. Những viên đá này rơi ra từ trùm và các lượt Vực thẳm, và Thương nhân đổi chúng lên bậc kế tiếp.</li>
+        </ul>
+      <div class="callout">
+          <div class="callout-label">Giữ mãi mãi</div>
+          Nhân vật, trang bị và điểm Đấu trường của bạn được giữ lại qua cả Thức tỉnh lẫn Thăng hoa.
+        </div>
+    </section>
+
+    <section id="arena">
+      <div class="section-head"><span class="section-num">13</span><h2>Đấu trường</h2></div>
+      <p class="section-dek">Tấn công pha lê của người chơi khác và leo bảng xếp hạng mùa giải.</p>
+      <ul>
+          <li>Bạn tấn công Pha lê của người chơi khác và giành hoặc mất điểm Đấu trường. Những trận người khác tấn công bạn cũng được tính.</li>
+          <li>Bạn nhận một danh sách đối thủ cố định; có thể làm mới miễn phí vài lần mỗi ngày và bằng kim cương sau đó.</li>
+          <li>Mỗi ngày bạn có vài lượt tấn công miễn phí. Khi hết, bạn có thể tiếp tục tấn công bằng kim cương.</li>
+          <li>Bên mạnh hơn thường thắng; may mắn chỉ đóng vai trò nhỏ.</li>
+          <li>Sau mỗi trận, màn hình kết quả hiển thị sát thương, số đòn đánh, chí mạng và né tránh, cùng điểm mới của hai bên. <strong>Lịch sử trận đấu</strong> lưu các trận gần đây của bạn.</li>
+          <li>Mỗi mùa giải kéo dài một tháng. Khi kết thúc, điểm được đặt lại, những người chơi đứng đầu nhận kim cương, ba người đứng đầu giành huy chương vĩnh viễn và người thắng nhận danh hiệu nhà vô địch mùa giải.</li>
+        </ul>
+    </section>
+
+    <section id="tasks">
+      <div class="section-head"><span class="section-num">14</span><h2>Nhiệm vụ</h2></div>
+      <p class="section-dek">Nhánh phụ biến những cú nhấp của bạn thành nguồn thu thứ hai.</p>
+      <ul>
+          <li><strong>Nhiệm vụ</strong> được nhận bằng Taskium; nhiệm vụ càng hiếm trả càng nhiều. Nhiệm vụ đã sẵn sàng nhận thưởng được đưa lên đầu danh sách.</li>
+          <li><strong>Nhiệm vụ hằng ngày</strong> làm mới mỗi ngày và cho những cú tăng lực ngắn khi bạn hoàn thành. Đừng quên nhận thưởng trong bảng.</li>
+        </ul>
+    </section>
+
+    <section id="trade">
+      <div class="section-head"><span class="section-num">15</span><h2>Thương nhân</h2></div>
+      <p class="section-dek">Nơi tài nguyên dư thừa trở thành thứ có ích.</p>
+      <p>Bạn có thể đổi Đá Quặng thành Tinh Chất, Đá Kỹ Năng hoặc Elementium, biến nguyên tố đã thu thập thành Elementium, đổi nguyên liệu phù phép và Đá cường hóa lên một bậc, và tháo rời những phù phép không cần. Phí chuyển đổi được trả bằng Đá Quặng. Phép đổi lấy Đá Kỹ Năng là cách tăng sức mạnh kỹ năng mà không phải mua gì trong cửa hàng.</p>
+    </section>
+
+    <section id="extras">
+      <div class="section-head"><span class="section-num">16</span><h2>Phần thưởng miễn phí</h2></div>
+      <p class="section-dek">Những tài nguyên chỉ đòi bạn ghé qua.</p>
+      <ul>
+          <li><strong>Bóng bay vàng</strong> thỉnh thoảng trôi qua màn hình; nhấp một cái là có vàng. Không thể bỏ lỡ - nó chờ đến khi bạn nhấp.</li>
+          <li><strong>Tinh thể vàng</strong> khi nhấp sẽ biến quặng thành quặng thưởng đầy vàng trong chốc lát; chỉ nhặt được ở khu mỏ chính.</li>
+          <li><strong>Quà chào mừng</strong> tặng một món quà vào mỗi ngày đầu tiên của bạn; các ngày không cần liên tiếp.</li>
+          <li><strong>Thưởng trong ngày</strong> - mỗi ngày mọi người chơi đều nhận cùng một phần thưởng, như sát thương nhấp, vàng, chí mạng hoặc sát thương thú cưng, và nó thay đổi mỗi ngày.</li>
+          <li><strong>Thu nhập ngoại tuyến</strong> tích lại khi trò chơi đóng và không bao giờ mất trước khi bạn thu.</li>
+          <li><strong>Vàng miễn phí mỗi giờ</strong> chờ bạn trong cửa hàng; nó tăng theo tầng sâu nhất bạn đã tới trong lần Thức tỉnh này.</li>
+          <li><strong>Phần thưởng hằng ngày</strong> cho một chìa khóa hầm ngục miễn phí và một Chìa Khóa Vực Thẳm miễn phí trong cửa hàng mỗi ngày, độc lập với nhau.</li>
+          <li><strong>Vòng quay may mắn</strong> hồi lại theo chu kỳ và cho bạn một lượt quay miễn phí.</li>
+          <li><strong>Mã khuyến mãi</strong> - các mã chúng tôi chia sẻ trong thông báo có thể nhập từ menu Cài đặt.</li>
+        </ul>
+    </section>
+
+    <section id="awakening">
+      <div class="section-head"><span class="section-num">17</span><h2>Thức tỉnh</h2></div>
+      <p class="section-dek">Biến tiến độ của lượt chơi này thành sức mạnh vĩnh viễn.</p>
+      <ul>
+          <li>Khi vượt qua một độ sâu nhất định, bạn có thể thực hiện Thức tỉnh. Mỗi lượt chơi bắt đầu lại từ tầng một.</li>
+          <li><strong>Bị đặt lại:</strong> vàng, Taskium, tiến độ tầng, việc mở khóa, nâng cấp và thành thạo của cuốc chim, nâng cấp giáp và thú cưng, kỹ năng vật phẩm, danh hiệu, tiến độ nhiệm vụ, thời gian hồi kỹ năng, phước lành, cuốc chim đã giao cho công nhân và thu nhập công nhân chưa thu.</li>
+          <li><strong>Được giữ lại:</strong> kim cương, chìa khóa, Tinh Chất, Tinh Chất Thuần Khiết, Đá Kỹ Năng, Đá Quặng, Elementium, chỉ số Thức tỉnh và Thăng hoa, cây kỹ năng, golem, tiến độ trùm và Vực thẳm, các bảng đã mở khóa, phần thưởng hằng ngày, cấp công nhân, Nhân vật cùng trang bị của nó, điểm Đấu trường của bạn và mọi thứ trong Túi đồ.</li>
+          <li>Lượng Tinh Chất bạn nhận phụ thuộc vào tầng sâu nhất đã tới và tăng rất nhanh theo độ sâu. Hãy tiêu nó vào các chỉ số vĩnh viễn.</li>
+          <li>Tầng tự động và tự động mua kháng nhiệt có thể vẫn bật sau Thức tỉnh nếu bạn chọn như vậy trong cài đặt.</li>
+          <li>Nút <strong>i</strong> trên trang này mở <strong>Lịch sử Thức tỉnh</strong> của bạn.</li>
+        </ul>
+      <div class="callout">
+          <div class="callout-label">Phước Lành Thức Tỉnh</div>
+          Ở một số tầng nhất định của mỗi lượt chơi, bạn được chọn một trong các phước lành; khi có phước lành đang chờ, một nút phát sáng sẽ xuất hiện. Các phước lành cùng dòng mạnh lên cùng nhau, và tất cả đều bị đặt lại khi Thức tỉnh.
+        </div>
+      <div class="callout">
+          <div class="callout-label">Đào sâu thêm chút nữa</div>
+          Kiếm thêm vài tầng trước khi Thức tỉnh thường đáng giá hơn là Thức tỉnh lần nữa ngay lập tức.
+        </div>
+    </section>
+
+    <section id="ascension">
+      <div class="section-head"><span class="section-num">18</span><h2>Thăng hoa</h2></div>
+      <p class="section-dek">Lớp thứ hai, đặt chồng lên Thức tỉnh.</p>
+      <ul>
+          <li>Tới được một tầng sâu hơn nhiều thì Thăng hoa mở khóa; nó có trang riêng nằm dưới thẻ danh vọng.</li>
+          <li><strong>Bị đặt lại:</strong> các chỉ số Thức tỉnh và Tinh Chất của bạn - cả vòng lặp đó bắt đầu lại từ con số không; cuốc chim, tầng và nâng cấp cũng đặt lại đúng như khi Thức tỉnh.</li>
+          <li><strong>Được giữ lại:</strong> cấp Thức tỉnh của bạn, kim cương, chìa khóa, tiến độ trùm và Vực thẳm, golem, phù phép và trang bị, Nhân vật, cây kỹ năng, thành tựu, cấp công nhân và số Tinh Chất Thuần Khiết đã tích.</li>
+          <li>Đổi lại bạn nhận <strong>Tinh Chất Thuần Khiết</strong>. Nó mua hai chỉ số: <strong>Dư âm Thức tỉnh</strong> khuếch đại phần thưởng của mọi chỉ số Thức tỉnh, còn <strong>Nguồn mạch</strong> tăng lượng Tinh Chất mà mỗi Thức tỉnh trả về.</li>
+          <li>Cả hai chỉ số đều tăng theo mỗi cấp bạn mua.</li>
+        </ul>
+      <div class="callout">
+          <div class="callout-label">Khi nào nên thăng hoa</div>
+          Thăng hoa tăng tốc không phải một lượt chơi mà cả vòng lặp. Nó đáng giá khi các chỉ số mua bằng Tinh Chất đã đắt và thêm một Thức tỉnh nữa cũng chẳng thêm được bao nhiêu.
+        </div>
+    </section>
+
+    <section id="dungeons">
+      <div class="section-head"><span class="section-num">19</span><h2>Trùm và Vực thẳm</h2></div>
+      <p class="section-dek">Hai thử thách tính giờ nằm ngoài khu mỏ chính.</p>
+      <ul>
+          <li>Cả hai đều vào từ Khu vực; trong lúc bạn ở đó, sức nóng và tiến độ tầng của khu mỏ chính đứng yên.</li>
+          <li><strong>Trùm</strong> mở bằng chìa khóa hầm ngục: hạ trùm trước khi hết giờ thì bạn nhận Tinh Chất, Đá Quặng và Đá cường hóa. Trùm mở khóa theo thứ tự và trùm đã hạ sẽ mở vĩnh viễn.</li>
+          <li>Hạ một trùm thì các bậc <strong>Ác mộng</strong> vô tận của nó mở ra: mỗi bậc khiến trùm mạnh hơn, phần thưởng lớn hơn và Đá cường hóa hiếm hơn.</li>
+          <li><strong>Vực thẳm</strong> mở bằng Chìa Khóa Vực Thẳm và chạy trên một đồng hồ đếm ngược duy nhất: bạn đập quặng nối tiếp nhau, mỗi chặng khó hơn chặng trước.</li>
+          <li>Mỗi chặng của vực thẳm mang theo <strong>hình phạt</strong> riêng - có chặng cắt sát thương tự động, có chặng cắt sát thương nhấp, có chặng cắt chí mạng. Hình phạt chỉ có hiệu lực khi chặng đó còn diễn ra.</li>
+          <li>Mọi chặng bạn đập vỡ trong vực thẳm đều được trả công: dù hết giờ hay bạn tự rời đi, những gì kiếm được đến lúc đó vẫn là của bạn. Vượt hết các chặng thì vực thẳm kế tiếp mở ra.</li>
+        </ul>
+      <div class="callout warn">
+          <div class="callout-label">Thua trùm là mất</div>
+          Nếu hết giờ trước khi trùm ngã xuống, bạn không nhận thưởng và chìa khóa đã dùng cũng không quay lại.
+        </div>
+    </section>
+
+    <section id="store">
+      <div class="section-head"><span class="section-num">20</span><h2>Cửa hàng và thành tựu</h2></div>
+      <p class="section-dek">Kim cương, chìa khóa, gói, premium, tua thời gian, rương, golem và vật phẩm Vô cực vĩnh viễn.</p>
+      <ul>
+          <li><strong>Gói Khởi Đầu</strong> mỗi tài khoản chỉ mua được một lần.</li>
+          <li><strong>Premium</strong> tăng sát thương, vàng và thu nhập ngoại tuyến của bạn trong một khoảng thời gian định sẵn.</li>
+          <li><strong>Tua thời gian</strong> tua trò chơi tới vài giờ; phần trả về được tính theo sức mạnh hiện tại của bạn.</li>
+          <li><strong>Rương</strong> mở ngay lập tức: Rương phù phép cho nguyên liệu phù phép, rương trang bị và Rương hỗn hợp cho trang bị.</li>
+          <li><strong>Trứng Golem</strong> nở ra một golem ngẫu nhiên.</li>
+          <li><strong>Gói chìa khóa</strong> mua bằng kim cương; có gói cho cả chìa khóa hầm ngục lẫn Chìa Khóa Vực Thẳm.</li>
+          <li><strong>Vật phẩm Vô cực</strong> chỉ mua một lần và không mất đi qua cả Thức tỉnh lẫn Thăng hoa.</li>
+          <li><strong>Thành tựu</strong> trả phần thưởng mà bạn phải tự nhận.</li>
+        </ul>
+    </section>
+
+    <section id="progress">
+      <div class="section-head"><span class="section-num">21</span><h2>Tiến độ và cộng đồng</h2></div>
+      <p class="section-dek">Nơi bạn theo dõi lượt chơi của mình, cách tiến độ được giữ gìn và cách bạn chia sẻ nó.</p>
+      <ul>
+          <li><strong>Hướng dẫn</strong> (nút hình cuốn sách) tập hợp các nguyên tố, quặng hiếm, trùm, vực thẳm, tiền tệ, cuốc chim, thú cưng và golem bạn đã tìm thấy. Những thứ chưa khám phá vẫn chỉ là bóng đen.</li>
+          <li>Bảng xếp hạng Steam, màn hình thống kê và <strong>Nhật ký hoạt động</strong> cho thấy tiến độ của bạn. Bảng <strong>Cập nhật</strong> hiển thị ghi chú cập nhật mới nhất.</li>
+          <li>Nút <strong>Xuất thẻ</strong> trong cài đặt hiển thị <strong>Thẻ thợ mỏ</strong> với các chỉ số chính của bạn; bạn có thể lưu nó thành ảnh PNG và chia sẻ.</li>
+          <li>Khi bật <strong>Chia sẻ khoảnh khắc hiếm trên Discord</strong>, những khoảnh khắc hiếm nhất của bạn - tầng sâu, vật phẩm huyền thoại rơi ra, chiến thắng trùm và Vực thẳm, các trận Đấu trường - sẽ xuất hiện trong kênh #live của máy chủ Discord của chúng tôi. Chỉ tên Steam của bạn và khoảnh khắc đó được hiển thị; bạn có thể tắt nó trong cài đặt.</li>
+          <li>Khi Discord đang mở, hồ sơ của bạn hiển thị tầng bạn đang ở và cấp Thức tỉnh / Thăng hoa.</li>
+          <li>Trò chơi tự lưu đều đặn và sao lưu lên Steam Cloud, nên bạn có thể chơi tiếp trên máy khác.</li>
+          <li>Trên máy tính yếu hơn, tắt <strong>Dùng bóng đổ</strong> trong cài đặt sẽ cải thiện hiệu năng.</li>
+        </ul>
+    </section>
+
+    <footer class="doc-footer">Trò chơi thay đổi theo bản cập nhật; hướng dẫn này chỉ đưa ra bức tranh chung. Giá các vật phẩm bán bằng tiền thật do Steam hiển thị theo tiền tệ của bạn.</footer>
+  </main>
+</div>
+
+</body>
+</html>

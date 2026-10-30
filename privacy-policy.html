@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self'; style-src 'unsafe-inline'; base-uri 'none'; form-action 'none'; upgrade-insecure-requests">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy Policy — Clicker Ore</title>
+<meta name="description" content="Privacy Policy for Clicker Ore by Tiny Depth Studio.">
+<style>
+  :root {
+    --bg: #14110d;
+    --bg-elevated: #1d1811;
+    --bg-card: #211b13;
+    --text: #ede6d8;
+    --text-dim: #a89a82;
+    --text-faint: #766a55;
+    --accent: #e0a752;
+    --accent-strong: #f2bd6e;
+    --accent-2: #7fb8ad;
+    --border: #3a2f22;
+    --border-soft: #2a2318;
+
+    --font-display: "Bahnschrift", "Segoe UI Semibold", "Arial Narrow Bold", "Arial Narrow", sans-serif;
+    --font-body: "Sitka Text", "Iowan Old Style", Georgia, "Times New Roman", serif;
+    --font-mono: "Cascadia Mono", "Consolas", "SF Mono", ui-monospace, monospace;
+  }
+
+  :root[data-theme="light"] {
+    --bg: #efe9da;
+    --bg-elevated: #e6ddc8;
+    --bg-card: #f3ede0;
+    --text: #241d14;
+    --text-dim: #5c5138;
+    --text-faint: #857656;
+    --accent: #a8621a;
+    --accent-strong: #8a4e12;
+    --accent-2: #2f7a70;
+    --border: #d3c5a4;
+    --border-soft: #ddd0b1;
+  }
+
+  @media (prefers-color-scheme: light) {
+    :root:not([data-theme="dark"]) {
+      --bg: #efe9da;
+      --bg-elevated: #e6ddc8;
+      --bg-card: #f3ede0;
+      --text: #241d14;
+      --text-dim: #5c5138;
+      --text-faint: #857656;
+      --accent: #a8621a;
+      --accent-strong: #8a4e12;
+      --accent-2: #2f7a70;
+      --border: #d3c5a4;
+      --border-soft: #ddd0b1;
+    }
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: 17px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    display: flex;
+    justify-content: center;
+  }
+
+  ::selection { background: var(--accent); color: #14110d; }
+  a { color: var(--accent-strong); text-decoration-color: color-mix(in srgb, var(--accent-strong) 40%, transparent); text-underline-offset: 2px; }
+  a:hover { text-decoration-color: var(--accent-strong); }
+  a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  .page {
+    width: 100%;
+    max-width: 680px;
+    padding: clamp(2rem, 5vw, 4rem) 1.5rem 4rem;
+  }
+
+  .strata {
+    height: 8px;
+    width: 100%;
+    border-radius: 3px;
+    margin-bottom: 2rem;
+    background: repeating-linear-gradient(
+      90deg,
+      var(--accent) 0 6%,
+      var(--accent-2) 6% 11%,
+      var(--border-soft) 11% 18%,
+      var(--accent) 18% 24%,
+      var(--border-soft) 24% 34%,
+      var(--accent-2) 34% 40%,
+      var(--accent) 40% 48%,
+      var(--border-soft) 48% 58%,
+      var(--accent-2) 58% 63%,
+      var(--accent) 63% 72%,
+      var(--border-soft) 72% 82%,
+      var(--accent-2) 82% 90%,
+      var(--accent) 90% 100%
+    );
+    opacity: 0.85;
+  }
+
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-family: var(--font-display);
+    font-size: 0.82rem;
+    letter-spacing: 0.03em;
+    color: var(--text-dim);
+    text-decoration: none;
+    margin-bottom: 1.6rem;
+  }
+  .back-link:hover { color: var(--accent-strong); }
+
+  .eyebrow {
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    font-size: 0.72rem;
+    color: var(--accent);
+    margin-bottom: 0.6rem;
+  }
+
+  h1 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    text-wrap: balance;
+    font-size: clamp(1.9rem, 5vw, 2.4rem);
+    margin: 0 0 0.5rem;
+    line-height: 1.1;
+  }
+
+  .updated {
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    color: var(--text-faint);
+    margin: 0 0 2.6rem;
+  }
+
+  .lede {
+    color: var(--text-dim);
+    font-size: 1.02rem;
+    padding: 1rem 1.2rem;
+    background: var(--bg-card);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 6px 6px 0;
+    margin: 0 0 2.6rem;
+  }
+
+  article section {
+    margin-bottom: 2.2rem;
+    padding-bottom: 2.2rem;
+    border-bottom: 1px solid var(--border-soft);
+  }
+  article section:last-of-type {
+    border-bottom: none;
+  }
+
+  h2 {
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    color: var(--text);
+    margin: 0 0 0.8rem;
+    display: flex;
+    align-items: baseline;
+    gap: 0.6rem;
+  }
+  h2 .num {
+    font-family: var(--font-mono);
+    color: var(--accent);
+    font-size: 0.85rem;
+    font-weight: 400;
+  }
+
+  p { margin: 0 0 0.9rem; color: var(--text); }
+  section > p:last-child { margin-bottom: 0; }
+
+  ul { margin: 0.6rem 0 0; padding-left: 1.3rem; }
+  li { margin-bottom: 0.5rem; color: var(--text); }
+  li:last-child { margin-bottom: 0; }
+  strong { color: var(--accent-strong); font-weight: 600; }
+
+  .contact-box {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1rem 1.2rem;
+    margin-top: 0.6rem;
+  }
+  .contact-box a { font-family: var(--font-mono); font-size: 0.95rem; }
+
+  footer {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+    color: var(--text-faint);
+    font-size: 0.82rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem 1rem;
+    justify-content: space-between;
+  }
+  footer a { color: var(--text-dim); }
+  footer a:hover { color: var(--accent-strong); }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="strata" role="presentation"></div>
+  <a class="back-link" href="index.html">← Clicker Ore</a>
+  <div class="eyebrow">Tiny Depth Studio · Legal</div>
+  <h1>Privacy Policy</h1>
+  <p class="updated">Last updated: October 2026</p>
+
+  <p class="lede">This Privacy Policy explains what data Clicker Ore collects, why we collect it, who processes it on our behalf, and the choices you have. It covers the game client and the online services behind it. If you play in the European Economic Area or the United Kingdom, it also describes your rights under the GDPR.</p>
+
+  <article>
+    <section>
+      <h2><span class="num">01</span>Who We Are</h2>
+      <p>Clicker Ore is developed and operated by Tiny Depth Studio (&ldquo;we&rdquo;, &ldquo;us&rdquo;). For the data described here, we act as the data controller. You can reach us at the address in section 12.</p>
+    </section>
+
+    <section>
+      <h2><span class="num">02</span>Data We Collect</h2>
+      <p>We do not ask you to create an account with us, and we never ask for your name, postal address or payment details. Everything below is collected automatically while you play.</p>
+      <ul>
+        <li><strong>Your Steam ID, profile name and country.</strong> You sign in through Steam, so your Steam account number identifies you to our servers. We also store your Steam profile name and the country Steam reports for your connection with your account.</li>
+        <li><strong>What other players see.</strong> Your Steam profile name is shown on in-game leaderboards. In the Arena, players who attack you or whom you attack see your Steam profile name, your Arena rating and the combat stats of your character.</li>
+        <li><strong>Discord live feed.</strong> Notable moments from your game &mdash; passing big floors, rare item drops, boss and Abyss clears, Arena battles, Awakening and Ascension milestones and fully upgraded pickaxes &mdash; may be posted together with your Steam profile name to the public <em>#live</em> channel of our Discord server. This is <strong>on by default</strong>; you can turn it off at any time in <em>Settings &rarr; Share rare moments on Discord</em>. When you attack another player in the Arena, their Steam name is shown only if they have shared a moment to the feed in the last 7 days and have not turned sharing off since. When you turn sharing off, the game tells our servers right away (or the next time it connects): your name stops appearing in other players&rsquo; posts and any of your moments still waiting to be posted are dropped. Nothing else about you or your account is posted.</li>
+        <li><strong>Game progress.</strong> Floors reached, prestige level, items owned, achievements, statistics and settings. This is stored on your device and, if you have Steam Cloud enabled, in your Steam Cloud storage.</li>
+        <li><strong>Account balances and entitlements.</strong> Premium status and the balances of currencies that are managed on our servers, together with a ledger of the transactions that changed them.</li>
+        <li><strong>Purchases.</strong> When you buy something through Steam we record the Steam order number, which product was bought, and whether it was delivered. Payment itself is handled entirely by Steam &mdash; we never see or store your card or payment details.</li>
+        <li><strong>Technical data.</strong> The IP address your device uses to reach our servers, which our hosting provider processes to deliver each request. If a purchase or request is refused as invalid or suspicious, we keep the IP address and the request with that record. If we restrict an account for breaking the Terms of Service, we keep a record of the restriction and its reason.</li>
+        <li><strong>Feedback you send.</strong> If you send feedback from the in-game feedback page, your message and your Steam ID are submitted to a Google Form and stored in Google&rsquo;s systems.</li>
+        <li><strong>Discord activity status.</strong> If the Discord app is running on your computer, the game tells it that you are playing Clicker Ore and shows your current floor and your Awakening and Ascension levels on your Discord profile. This goes through your own Discord app, not our servers; you can hide it with Discord&rsquo;s activity privacy setting.</li>
+        <li><strong>Analytics data and error reports.</strong> Device type, operating system, game version, usage data and error reports are sent only if you consent &mdash; see section 04.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2><span class="num">03</span>Why We Use It, and Our Legal Basis</h2>
+      <ul>
+        <li><strong>To run the game and keep your progress</strong> &mdash; saving and syncing your save, delivering what you buy, keeping balances correct, showing leaderboards and achievements. Legal basis: performance of our agreement with you.</li>
+        <li><strong>To keep the game working and fair</strong> &mdash; preventing duplicate or fraudulent transactions, enforcing the Terms of Service, and keeping an auditable record of purchases. Legal basis: our legitimate interest in a working, non-exploitable game, and our legal obligation to keep transaction records.</li>
+        <li><strong>To answer your feedback</strong> &mdash; reading and replying to what you send us from the feedback page. Legal basis: our legitimate interest in improving the game, and your choice to send it.</li>
+        <li><strong>To show the community what is happening in the game</strong> &mdash; posting notable moments to our Discord <em>#live</em> channel (see section 02). Legal basis: our legitimate interest in an active player community. You can object at any time by turning the setting off, and we remove posts about you on request.</li>
+        <li><strong>To understand how the game is played and improve it</strong> &mdash; balancing difficulty, seeing where players get stuck, measuring which features are used, and finding and fixing errors. Legal basis: your consent.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2><span class="num">04</span>Analytics and Your Consent</h2>
+      <p>The first time you launch the game we ask whether you want to share usage data. Analytics is <strong>off until you say yes</strong>: if you decline, no analytics service is started and no analytics data leaves your device.</p>
+      <p>If you accept, we use <strong>GameAnalytics</strong> (GameAnalytics A/S, Denmark) as our analytics provider. The data sent is linked to your Steam ID, so it is not anonymous. It includes your in-game progress and balances, purchases (product, price and currency), session length and total play time, device and platform information, and error reports.</p>
+      <p>You can change your mind at any time in <em>Settings &rarr; Analytics Consent</em>. Withdrawing consent stops any further analytics from being sent. It does not affect data already collected while consent was in place, and it does not affect the rest of the game.</p>
+      <p>We do not use this data for advertising, and we do not sell it.</p>
+    </section>
+
+    <section>
+      <h2><span class="num">05</span>Service Providers</h2>
+      <p>We use the following providers, who process data on our behalf or under their own policies:</p>
+      <ul>
+        <li><strong>Valve / Steamworks</strong> &mdash; sign-in, cloud saves, achievements, leaderboards and all payment processing.</li>
+        <li><strong>Supabase</strong> &mdash; hosting for our game servers and the database holding your account, balances, entitlements, purchase records and Arena data.</li>
+        <li><strong>GameAnalytics</strong> &mdash; analytics and error reports, only if you have given consent.</li>
+        <li><strong>Discord</strong> &mdash; hosts our community server; live feed posts are delivered to it and stored under Discord&rsquo;s own policy.</li>
+        <li><strong>Google</strong> &mdash; Google Forms receives the feedback you choose to send from the game.</li>
+      </ul>
+      <p>Each of these providers handles data according to its own privacy policy. We do not share your data with anyone else, and we do not sell it.</p>
+    </section>
+
+    <section>
+      <h2><span class="num">06</span>International Transfers</h2>
+      <p>Our providers may process data outside your country, including outside the European Economic Area. Where that happens, transfers rely on the safeguards those providers put in place, such as the European Commission&rsquo;s standard contractual clauses.</p>
+    </section>
+
+    <section>
+      <h2><span class="num">07</span>How Long We Keep Data</h2>
+      <ul>
+        <li><strong>Account data, balances and entitlements</strong> &mdash; for as long as your account exists, so that what you have bought and earned stays with you. We delete it when you ask us to (see section 08).</li>
+        <li><strong>Purchase records</strong> &mdash; kept as long as required for accounting and consumer-protection purposes.</li>
+        <li><strong>Records of refused requests and account restrictions</strong> &mdash; as long as needed to prevent fraud and handle disputes about them.</li>
+        <li><strong>Analytics data and error reports</strong> &mdash; retained by GameAnalytics under its own retention schedule.</li>
+        <li><strong>Feedback</strong> &mdash; kept in Google Forms for as long as we need it to follow up, and deleted on request.</li>
+        <li><strong>Discord live feed</strong> &mdash; our server keeps only the most recent feed posts (the newest 1,000) and deletes older ones automatically every night. Messages already posted in our Discord channel stay there until we delete them, which we do on request.</li>
+        <li><strong>Local save data</strong> &mdash; stays on your device and in Steam Cloud until you delete it.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2><span class="num">08</span>Your Rights</h2>
+      <p>Depending on where you live, you may have the right to access the data we hold about you, to have it corrected or deleted, to restrict or object to how we use it, to receive a copy in a portable format, and to withdraw consent you have given.</p>
+      <p>To exercise any of these, email us at the address in section 12 and include your Steam ID so we can find your records. We will respond within 30 days. If you are in the EEA or the UK and are unhappy with our response, you may complain to your local data protection authority.</p>
+      <p>Some data cannot be deleted on request: we must keep purchase records for as long as accounting and consumer-protection law requires.</p>
+    </section>
+
+    <section>
+      <h2><span class="num">09</span>Data Security</h2>
+      <p>Connections between the game and our servers are encrypted, save files are checksummed, and balances that matter are held server-side rather than on your device. No system is perfectly secure, but we take reasonable technical and organisational steps to protect your data.</p>
+    </section>
+
+    <section>
+      <h2><span class="num">10</span>Children&rsquo;s Privacy</h2>
+      <p>The game is not intended for children under 13, or under the minimum age of digital consent in your country (up to 16 in parts of the European Economic Area). We do not knowingly collect data from children below that age. If you believe a child has provided us with data, contact us and we will delete it.</p>
+    </section>
+
+    <section>
+      <h2><span class="num">11</span>Changes to This Policy</h2>
+      <p>We may update this policy from time to time. Changes are posted on this page with a revised date. If a change materially affects how we use your data, we will tell you in the game before it takes effect.</p>
+    </section>
+
+    <section>
+      <h2><span class="num">12</span>Contact Us</h2>
+      <p>Questions about this policy, or a request about your data:</p>
+      <div class="contact-box"><a href="mailto:tinydepthstudio@gmail.com">tinydepthstudio@gmail.com</a></div>
+    </section>
+  </article>
+
+  <footer>
+    <span>© 2026 Tiny Depth Studio</span>
+    <a href="terms-of-service.html">Terms of Service</a>
+  </footer>
+</div>
+</body>
+</html>

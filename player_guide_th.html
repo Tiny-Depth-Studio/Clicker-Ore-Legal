@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self'; style-src 'unsafe-inline'; base-uri 'none'; form-action 'none'; upgrade-insecure-requests">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Clicker Ore Game - คู่มือผู้เล่น</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="เหมืองทำงานอย่างไร: อีเต้อ สัตว์เลี้ยง โกเลม คนงาน เวทเสก สกิล ตัวละครและอุปกรณ์ อารีน่า การตื่นรู้ การก้าวข้าม บอส เหวลึก และร้านค้า แบบย่อ">
+<style>
+  :root {
+    --bg: #14110d;
+    --bg-elevated: #1d1811;
+    --bg-card: #211b13;
+    --text: #ede6d8;
+    --text-dim: #a89a82;
+    --text-faint: #766a55;
+    --accent: #e0a752;
+    --accent-strong: #f2bd6e;
+    --accent-2: #7fb8ad;
+    --border: #3a2f22;
+    --border-soft: #2a2318;
+    --danger: #cf7a5a;
+    --shadow: 0 8px 24px rgba(0,0,0,0.35);
+
+    --cur-gold: #e0a752;
+    --cur-diamond: #7fd1e0;
+    --cur-essence: #b79ef0;
+    --cur-taskium: #93a8d6;
+    --cur-key: #d98a63;
+    --cur-skillstone: #7fc9a0;
+    --cur-orestone: #b5a68c;
+    --cur-abysskey: #8f7fd6;
+    --cur-pureessence: #d7bff5;
+    --cur-elementium: #e07f9e;
+
+    --font-display: "Bahnschrift", "Segoe UI Semibold", "Arial Narrow Bold", "Arial Narrow", sans-serif;
+    --font-body: "Sitka Text", "Iowan Old Style", Georgia, "Times New Roman", serif;
+    --font-mono: "Cascadia Mono", "Consolas", "SF Mono", ui-monospace, monospace;
+  }
+
+  :root[data-theme="light"] {
+    --bg: #efe9da;
+    --bg-elevated: #e6ddc8;
+    --bg-card: #f3ede0;
+    --text: #241d14;
+    --text-dim: #5c5138;
+    --text-faint: #857656;
+    --accent: #a8621a;
+    --accent-strong: #8a4e12;
+    --accent-2: #2f7a70;
+    --border: #d3c5a4;
+    --border-soft: #ddd0b1;
+    --danger: #a3492c;
+    --shadow: 0 8px 20px rgba(90,70,30,0.12);
+  }
+
+  @media (prefers-color-scheme: light) {
+    :root:not([data-theme="dark"]) {
+      --bg: #efe9da;
+      --bg-elevated: #e6ddc8;
+      --bg-card: #f3ede0;
+      --text: #241d14;
+      --text-dim: #5c5138;
+      --text-faint: #857656;
+      --accent: #a8621a;
+      --accent-strong: #8a4e12;
+      --accent-2: #2f7a70;
+      --border: #d3c5a4;
+      --border-soft: #ddd0b1;
+      --danger: #a3492c;
+      --shadow: 0 8px 20px rgba(90,70,30,0.12);
+    }
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: 17px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection { background: var(--accent); color: #14110d; }
+
+  a { color: var(--accent-strong); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  a:focus-visible, button:focus-visible, summary:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    text-wrap: balance;
+    letter-spacing: 0.01em;
+    color: var(--text);
+  }
+
+  p { max-width: 68ch; }
+  ul, ol { max-width: 68ch; }
+
+  .shell {
+    display: grid;
+    grid-template-columns: 260px minmax(0, 1fr);
+    min-height: 100vh;
+  }
+
+  .topbar {
+    display: none;
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: var(--bg-elevated);
+    border-bottom: 1px solid var(--border);
+    padding: 0.7rem 1rem;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .topbar-title {
+    font-family: var(--font-display);
+    font-size: 0.95rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--accent-strong);
+  }
+  #nav-toggle { display: none; }
+  .nav-toggle-btn {
+    font-family: var(--font-display);
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 0.4rem 0.7rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.85rem;
+  }
+
+  nav.toc {
+    position: sticky;
+    top: 0;
+    align-self: start;
+    height: 100vh;
+    overflow-y: auto;
+    padding: 2rem 1.4rem 3rem;
+    background: var(--bg-elevated);
+    border-right: 1px solid var(--border);
+  }
+  .toc-home {
+    display: inline-block;
+    font-family: var(--font-display);
+    font-size: 0.8rem;
+    color: var(--text-dim);
+    margin-bottom: 1.1rem;
+  }
+  .toc-home:hover { color: var(--accent-strong); text-decoration: none; }
+
+  .toc-brand {
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    letter-spacing: 0.03em;
+    color: var(--accent-strong);
+    margin-bottom: 0.15rem;
+  }
+  .toc-brand small {
+    display: block;
+    font-family: var(--font-body);
+    font-style: italic;
+    font-size: 0.78rem;
+    color: var(--text-faint);
+    letter-spacing: 0;
+    margin-top: 0.25rem;
+  }
+  .toc-list {
+    list-style: none;
+    margin: 1.6rem 0 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+  }
+  .toc-list a {
+    display: block;
+    color: var(--text-dim);
+    font-size: 0.88rem;
+    padding: 0.32rem 0.5rem;
+    border-radius: 4px;
+    border-left: 2px solid transparent;
+  }
+  .toc-list a:hover {
+    color: var(--text);
+    text-decoration: none;
+    background: rgba(224,167,82,0.08);
+    border-left-color: var(--accent);
+  }
+  .toc-num {
+    font-family: var(--font-mono);
+    color: var(--text-faint);
+    font-size: 0.78rem;
+    margin-right: 0.45rem;
+  }
+
+  main {
+    padding: 3.2rem clamp(1.2rem, 4vw, 4rem) 6rem;
+    max-width: 900px;
+  }
+
+  header.hero {
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .strata {
+    height: 10px;
+    width: 100%;
+    border-radius: 3px;
+    margin-bottom: 1.6rem;
+    background: repeating-linear-gradient(
+      90deg,
+      var(--accent) 0 6%,
+      var(--accent-2) 6% 11%,
+      var(--border-soft) 11% 18%,
+      var(--accent) 18% 24%,
+      var(--border-soft) 24% 34%,
+      var(--accent-2) 34% 40%,
+      var(--accent) 40% 48%,
+      var(--border-soft) 48% 58%,
+      var(--accent-2) 58% 63%,
+      var(--accent) 63% 72%,
+      var(--border-soft) 72% 82%,
+      var(--accent-2) 82% 90%,
+      var(--accent) 90% 100%
+    );
+    opacity: 0.85;
+  }
+  .eyebrow {
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-size: 0.72rem;
+    color: var(--accent);
+    margin-bottom: 0.6rem;
+  }
+  h1.title {
+    font-size: clamp(2rem, 4.2vw, 2.9rem);
+    margin: 0 0 0.7rem;
+    line-height: 1.1;
+  }
+  .subtitle {
+    color: var(--text-dim);
+    font-size: 1.08rem;
+    max-width: 62ch;
+    margin: 0;
+  }
+
+  .langbar {
+    margin: 1.8rem 0 0;
+    padding-top: 1.2rem;
+    border-top: 1px solid var(--border-soft);
+  }
+  .langbar-label {
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 0.68rem;
+    color: var(--text-faint);
+    margin-bottom: 0.55rem;
+  }
+  .langbar-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem 0.4rem;
+  }
+  .langbar-list a, .langbar-list span {
+    font-family: var(--font-display);
+    font-size: 0.78rem;
+    padding: 0.18rem 0.55rem;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    color: var(--text-dim);
+    background: var(--bg-card);
+  }
+  .langbar-list a:hover {
+    text-decoration: none;
+    color: var(--text);
+    border-color: var(--accent);
+  }
+  .langbar-list span {
+    color: #14110d;
+    background: var(--accent);
+    border-color: var(--accent);
+  }
+  :root[data-theme="light"] .langbar-list span { color: #efe9da; }
+
+  section {
+    margin-bottom: 3.6rem;
+    scroll-margin-top: 1.5rem;
+  }
+  .section-head {
+    display: flex;
+    align-items: baseline;
+    gap: 0.7rem;
+    margin-bottom: 0.3rem;
+  }
+  .section-num {
+    font-family: var(--font-mono);
+    color: var(--accent);
+    font-size: 0.95rem;
+  }
+  h2 {
+    font-size: 1.55rem;
+    margin: 0;
+  }
+  .section-dek {
+    color: var(--text-dim);
+    font-size: 0.98rem;
+    margin: 0.3rem 0 1.5rem;
+    max-width: 62ch;
+  }
+
+  .callout {
+    border-left: 3px solid var(--accent);
+    background: var(--bg-card);
+    padding: 0.95rem 1.2rem;
+    border-radius: 0 6px 6px 0;
+    margin: 1.2rem 0;
+    font-size: 0.95rem;
+  }
+  .callout strong { color: var(--accent-strong); }
+  .callout.warn { border-left-color: var(--danger); }
+  .callout-label {
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 0.72rem;
+    color: var(--accent);
+    margin-bottom: 0.35rem;
+  }
+  .callout.warn .callout-label { color: var(--danger); }
+
+  .currency-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 0.9rem;
+    margin: 1.4rem 0;
+  }
+  .cur-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-top: 3px solid var(--dot);
+    border-radius: 6px;
+    padding: 0.95rem 1rem 1.05rem;
+  }
+  .cur-card h4 {
+    margin: 0 0 0.5rem;
+    font-size: 0.98rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .dot {
+    width: 9px; height: 9px; border-radius: 50%;
+    background: var(--dot);
+    flex: none;
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--dot) 20%, transparent);
+  }
+  .cur-card p {
+    margin: 0.15rem 0;
+    font-size: 0.84rem;
+    color: var(--text-dim);
+    max-width: none;
+  }
+  .cur-card p b { color: var(--text); font-weight: 600; }
+
+  .table-wrap {
+    overflow-x: auto;
+    margin: 1.2rem 0;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+  }
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    min-width: 460px;
+    font-size: 0.9rem;
+  }
+  thead th {
+    text-align: left;
+    font-family: var(--font-display);
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    font-size: 0.72rem;
+    color: var(--text-dim);
+    background: var(--bg-elevated);
+    padding: 0.6rem 0.85rem;
+    border-bottom: 1px solid var(--border);
+    white-space: nowrap;
+  }
+  tbody td {
+    padding: 0.55rem 0.85rem;
+    border-bottom: 1px solid var(--border-soft);
+    font-variant-numeric: tabular-nums;
+    color: var(--text);
+  }
+  tbody tr:last-child td { border-bottom: none; }
+  tbody tr:nth-child(even) { background: color-mix(in srgb, var(--accent) 3%, transparent); }
+  td.num, th.num { font-family: var(--font-mono); }
+  td.strong { color: var(--accent-strong); font-weight: 600; }
+
+  .strategy-track {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 1.4rem 0;
+  }
+  .strategy-stage {
+    background: var(--bg-card);
+    padding: 1rem 1.1rem;
+  }
+  .strategy-stage .stage-label {
+    font-family: var(--font-display);
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+    margin-bottom: 0.4rem;
+  }
+  .strategy-stage ul {
+    margin: 0;
+    padding-left: 1.1rem;
+    font-size: 0.86rem;
+    color: var(--text-dim);
+  }
+  .strategy-stage li { margin-bottom: 0.25rem; }
+
+  footer.doc-footer {
+    margin-top: 4rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+    color: var(--text-faint);
+    font-size: 0.8rem;
+  }
+
+  @media (max-width: 880px) {
+    .shell { grid-template-columns: 1fr; }
+    .topbar { display: flex; }
+    nav.toc {
+      position: fixed;
+      inset: 0 20% 0 0;
+      top: 52px;
+      height: calc(100vh - 52px);
+      transform: translateX(-100%);
+      transition: transform 0.22s ease;
+      z-index: 15;
+      box-shadow: var(--shadow);
+    }
+    #nav-toggle:checked ~ .shell nav.toc {
+      transform: translateX(0);
+    }
+    main { padding: 2rem 1.2rem 5rem; }
+  }
+</style>
+</head>
+<body>
+
+<input type="checkbox" id="nav-toggle">
+
+<div class="topbar">
+  <a class="topbar-title" href="index.html">&#9935; Clicker Ore Game</a>
+  <label class="nav-toggle-btn" for="nav-toggle">สารบัญ</label>
+</div>
+
+<div class="shell">
+  <nav class="toc" aria-label="สารบัญ">
+    <a class="toc-home" href="index.html">← หน้าแรก</a>
+    <div class="toc-brand">Clicker Ore Game<small>คู่มือผู้เล่น</small></div>
+    <ul class="toc-list">
+      <li><a href="#start"><span class="toc-num">01</span>เริ่มจากตรงไหน</a></li>
+      <li><a href="#currencies"><span class="toc-num">02</span>สกุลเงิน</a></li>
+      <li><a href="#damage"><span class="toc-num">03</span>ความเสียหายและคริติคอล</a></li>
+      <li><a href="#equipment"><span class="toc-num">04</span>อีเต้อ ชุดเกราะ และสัตว์เลี้ยง</a></li>
+      <li><a href="#golems"><span class="toc-num">05</span>โกเลม</a></li>
+      <li><a href="#temperature"><span class="toc-num">06</span>ความร้อน</a></li>
+      <li><a href="#workers"><span class="toc-num">07</span>คนงาน</a></li>
+      <li><a href="#enchantments"><span class="toc-num">08</span>เวทเสก</a></li>
+      <li><a href="#floors"><span class="toc-num">09</span>ชั้นและแร่</a></li>
+      <li><a href="#weather"><span class="toc-num">10</span>สภาพอากาศ</a></li>
+      <li><a href="#skills"><span class="toc-num">11</span>สกิลและฉายา</a></li>
+      <li><a href="#character"><span class="toc-num">12</span>ตัวละครและอุปกรณ์</a></li>
+      <li><a href="#arena"><span class="toc-num">13</span>อารีน่า</a></li>
+      <li><a href="#tasks"><span class="toc-num">14</span>ภารกิจ</a></li>
+      <li><a href="#trade"><span class="toc-num">15</span>พ่อค้า</a></li>
+      <li><a href="#extras"><span class="toc-num">16</span>รางวัลฟรี</a></li>
+      <li><a href="#awakening"><span class="toc-num">17</span>การตื่นรู้</a></li>
+      <li><a href="#ascension"><span class="toc-num">18</span>การก้าวข้าม</a></li>
+      <li><a href="#dungeons"><span class="toc-num">19</span>บอสและเหวลึก</a></li>
+      <li><a href="#store"><span class="toc-num">20</span>ร้านค้าและความสำเร็จ</a></li>
+      <li><a href="#progress"><span class="toc-num">21</span>ความคืบหน้าและชุมชน</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <header class="hero">
+      <div class="strata" role="presentation"></div>
+      <div class="eyebrow">คู่มือผู้เล่น - 2026-10-28</div>
+      <h1 class="title">ทั้งเหมือง<br>ในหน้าเดียว</h1>
+      <p class="subtitle">แต่ละระบบมีไว้ทำอะไร และควรใช้เวลาไปกับอะไร ไม่มีตัวเลขไม่มีสูตร มีแต่สิ่งที่คุณต้องรู้</p>
+      <div class="langbar">
+        <div class="langbar-label">ภาษา</div>
+        <div class="langbar-list"><a href="player_guide_en.html" hreflang="en">English</a><a href="player_guide_tr.html" hreflang="tr">Türkçe</a><a href="player_guide_de.html" hreflang="de">Deutsch</a><a href="player_guide_fr.html" hreflang="fr">Français</a><a href="player_guide_es.html" hreflang="es">Español</a><a href="player_guide_es_la.html" hreflang="es-419">Español (Latinoamérica)</a><a href="player_guide_it.html" hreflang="it">Italiano</a><a href="player_guide_pl.html" hreflang="pl">Polski</a><a href="player_guide_pt_br.html" hreflang="pt-BR">Português (Brasil)</a><a href="player_guide_ru.html" hreflang="ru">Русский</a><a href="player_guide_uk.html" hreflang="uk">Українська</a><a href="player_guide_ja.html" hreflang="ja">日本語</a><a href="player_guide_ko.html" hreflang="ko">한국어</a><a href="player_guide_zh_hans.html" hreflang="zh-Hans">简体中文</a><a href="player_guide_zh_hant.html" hreflang="zh-Hant">繁體中文</a><span>ไทย</span><a href="player_guide_id.html" hreflang="id">Bahasa Indonesia</a><a href="player_guide_vi.html" hreflang="vi">Tiếng Việt</a></div>
+      </div>
+    </header>
+
+    <section id="start">
+      <div class="section-head"><span class="section-num">01</span><h2>เริ่มจากตรงไหน</h2></div>
+      <p class="section-dek">เกมจะค่อย ๆ เปิดระบบต่าง ๆ ให้เมื่อคุณขุดลึกลงไป</p>
+      <div class="strategy-track">
+          <div class="strategy-stage">
+            <div class="stage-label">ช่วงต้น</div>
+            <ul>
+              <li>อัปเกรดอีเต้อไม่หยุด ชั้นที่ลึกขึ้นจะปลดล็อกอีเต้อใหม่</li>
+              <li>เห็นลูกโป่งทองคำ คริสตัลทองคำ และจุดอ่อนให้คลิกทุกครั้ง แล้วเริ่มใช้สกิลแรก ๆ</li>
+              <li>รับของขวัญต้อนรับและดูโบนัสประจำวันทุกวันที่คุณเล่น</li>
+              <li>พอเพชรพอก็ซื้อสัตว์เลี้ยงตัวแรก</li>
+            </ul>
+          </div>
+          <div class="strategy-stage">
+            <div class="stage-label">ช่วงกลาง</div>
+            <ul>
+              <li>เมื่อความคืบหน้าช้าลง ให้ทำการตื่นรู้เพื่อรับเอสเซนซ์</li>
+              <li>ภารกิจ เควสประจำวัน วงล้อเสี่ยงโชค พ่อค้า ผังสกิล และเหตุการณ์สภาพอากาศจะเปิดในช่วงนี้</li>
+              <li>เลือกพรทุกครั้งที่มีให้เลือก และกระจายเอสเซนซ์ อย่าเทลงค่าพลังเดียว</li>
+            </ul>
+          </div>
+          <div class="strategy-stage">
+            <div class="stage-label">ช่วงปลาย</div>
+            <ul>
+              <li>ตัวละครพร้อมอุปกรณ์ของมัน และอารีน่าจะเปิดขึ้น ธาตุเริ่มสะสมเต็มคลังไอเทมของคุณ</li>
+              <li>มีกุญแจเมื่อไรก็ไปสู้บอส แล้วเริ่มลงรอบเหวลึก</li>
+              <li>คนงานเข้าร่วม ช่องเวทเสกเปิด และช่างตีเหล็กเริ่มเสริมพลังอุปกรณ์ของคุณ</li>
+              <li>อัปเกรดชุดเกราะต่อไป อย่าให้ความร้อนกินความเสียหายของคุณ</li>
+            </ul>
+          </div>
+          <div class="strategy-stage">
+            <div class="stage-label">ระยะยาว</div>
+            <ul>
+              <li>ลึกลงไปอีกมากจะปลดล็อกการก้าวข้าม ซึ่งรีเซ็ตวงจรการตื่นรู้ทั้งหมด</li>
+              <li>แลกกับแก่นสารบริสุทธิ์ ที่ทำให้รอบต่อ ๆ ไปเร็วขึ้นอย่างถาวร</li>
+              <li>บอสที่ชนะแล้วจะเปิดระดับฝันร้ายไม่สิ้นสุดที่ให้รางวัลมากขึ้น</li>
+            </ul>
+          </div>
+        </div>
+      <div class="callout">
+          <div class="callout-label">ควรรู้ไว้</div>
+          ตัวเลขโตเร็วมาก เกมจะเปลี่ยนไปใช้ตัวย่อก่อน แล้วค่อยเป็นสัญกรณ์วิทยาศาสตร์ ไม่มีเพดาน เปลี่ยนแค่วิธีเขียน
+        </div>
+      <div class="callout">
+          <div class="callout-label">บทสอนสั้น ๆ</div>
+          ทุกระบบใหม่จะมีบทสอนสั้น ๆ แนะนำในครั้งแรกที่เปิด ขั้นตอนที่ทำให้หน้าจอมืดลงจะมีปุ่มข้าม
+        </div>
+    </section>
+
+    <section id="currencies">
+      <div class="section-head"><span class="section-num">02</span><h2>สกุลเงิน</h2></div>
+      <p class="section-dek">แต่ละอย่างหล่อเลี้ยงระบบที่ต่างกัน</p>
+      <div class="currency-grid">
+        <div class="cur-card" style="--dot:var(--cur-gold)">
+          <h4><span class="dot"></span>ทองคำ</h4>
+          <p>ได้จาก<b>การทุบแร่</b> คนงาน เวลาออฟไลน์ ทองฟรีรายชั่วโมง ภารกิจ ลูกโป่งทองคำ การข้ามเวลา และวงล้อเสี่ยงโชคก็ให้ทองคำเช่นกัน</p>
+          <p>ใช้กับอีเต้อ การอัปเกรด และสกิลของไอเทม</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-diamond)">
+          <h4><span class="dot"></span>เพชร</h4>
+          <p>มาจาก<b>ร้านค้า</b> โค้ดโปรโมชัน รางวัลซีซันอารีน่า และวงล้อเสี่ยงโชค</p>
+          <p>ใช้ซื้อสัตว์เลี้ยง โกเลม ไอเทมอนันต์ การข้ามเวลา หีบ ชุดกุญแจ การโจมตีอารีน่าเพิ่มเติม และการรีเฟรชตลาด</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-essence)">
+          <h4><span class="dot"></span>เอสเซนซ์</h4>
+          <p>เป็นรางวัลจาก<b>การตื่นรู้</b> บอส ภารกิจ พ่อค้า แพ็กในร้านค้า และวงล้อเสี่ยงโชคก็ให้บ้าง</p>
+          <p>ใช้กับค่าพลังถาวรของการตื่นรู้</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-taskium)">
+          <h4><span class="dot"></span>Taskium</h4>
+          <p>ได้ทีละนิดทุกครั้งที่คลิกแร่ และวงล้อเสี่ยงโชคก็ให้บ้าง</p>
+          <p>ใช้รับภารกิจและสุ่มภารกิจใหม่</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-key)">
+          <h4><span class="dot"></span>กุญแจดันเจี้ยน</h4>
+          <p>ฟรีวันละดอกในร้านค้า นอกนั้นมาจากเพชร แพ็กในร้านค้า และวงล้อเสี่ยงโชค</p>
+          <p>ใช้เข้าต่อสู้กับบอส</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-skillstone)">
+          <h4><span class="dot"></span>ศิลาสกิล</h4>
+          <p>มาจากพ่อค้า แพ็กในร้านค้า และวงล้อเสี่ยงโชค</p>
+          <p>ใช้เสริมพลังสกิลที่กดใช้เอง</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-orestone)">
+          <h4><span class="dot"></span>ศิลาแร่</h4>
+          <p>ดรอปจากแร่ทุกก้อนที่ทุบ รวมถึงความสำเร็จ บอส รอบเหวลึก การข้ามเวลา และวงล้อเสี่ยงโชค</p>
+          <p>ใช้แลกเปลี่ยนและจ่ายค่าธรรมเนียมการแลก สร้างเวทเสก และอัปเกรดคนงาน</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-abysskey)">
+          <h4><span class="dot"></span>กุญแจเหวลึก</h4>
+          <p>ฟรีวันละดอกในร้านค้า นอกนั้นมาจากเพชรและแพ็กในร้านค้า</p>
+          <p>ใช้เข้ารอบเหวลึก</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-pureessence)">
+          <h4><span class="dot"></span>แก่นสารบริสุทธิ์</h4>
+          <p>เป็นรางวัลจาก<b>การก้าวข้าม</b> ไม่มีที่อื่นให้</p>
+          <p>ใช้กับค่าพลังของการก้าวข้ามเท่านั้น</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-elementium)">
+          <h4><span class="dot"></span>Elementium</h4>
+          <p>สร้างได้ที่พ่อค้าจากธาตุที่คุณสะสมหรือจากศิลาแร่ การขายอุปกรณ์ที่ช่างตีเหล็กก็ให้มาเช่นกัน</p>
+          <p>ใช้กับค่าสถานะของตัวละครและคริสตัล และซื้อไอเทมในตลาด</p>
+        </div>
+      </div>
+      <div class="callout">
+          <div class="callout-label">สกุลเงินฝั่งเซิร์ฟเวอร์</div>
+          เพชร กุญแจดันเจี้ยน และกุญแจเหวลึกเก็บไว้บนเซิร์ฟเวอร์ ต้องออนไลน์จึงจะใช้ได้
+        </div>
+    </section>
+
+    <section id="damage">
+      <div class="section-head"><span class="section-num">03</span><h2>ความเสียหายและคริติคอล</h2></div>
+      <p class="section-dek">แหล่งความเสียหายสองทางแยกกัน กับคริติคอลที่คูณมันขึ้น</p>
+      <ul>
+          <li><strong>ความเสียหายต่อคลิก</strong>มาจากอีเต้อด้ามแรก สกิลคลิกพิโรธ ฉายา ค่าพลังการตื่นรู้ และเวทเสก</li>
+          <li><strong>ความเสียหายอัตโนมัติ</strong>มาจากอีเต้อด้ามอื่น สกิลอาละวาด สัตว์เลี้ยง และเวทเสก มันไหลต่อเนื่องตราบที่แร่ยังไม่แตก</li>
+          <li>ยิ่งเอกภาพแห่งพลังสูง สัดส่วนของความเสียหายอัตโนมัติก็ยิ่งถูกบวกเข้ากับทุกคลิกด้วย</li>
+          <li>ทุกคลิกอาจเป็น<strong>คริติคอล</strong>และแรงกว่ามาก โอกาสและตัวคูณคริติคอลเพิ่มจากสกิล ค่าพลังการตื่นรู้ ฉายา และเวทเสก เมื่อโอกาสคริติคอลเต็มแล้ว ส่วนที่เกินจะเพิ่มความเสียหายคริติคอลของคุณต่อไป</li>
+          <li><strong>จุดอ่อน</strong>ที่ส่องสว่างจะปรากฏบนแร่เป็นระยะ การคลิกโดนมันแรงกว่าคลิกปกติมาก</li>
+          <li>โกเลม พร และโบนัสประจำวันยังเพิ่มบัฟของตัวเองซ้อนเข้าไปอีก หน้าต่างสถานะเอฟเฟกต์แสดงเอฟเฟกต์ที่ทำงานอยู่ทั้งหมดและแหล่งที่มาของมัน</li>
+        </ul>
+    </section>
+
+    <section id="equipment">
+      <div class="section-head"><span class="section-num">04</span><h2>อีเต้อ ชุดเกราะ และสัตว์เลี้ยง</h2></div>
+      <p class="section-dek">รากฐานของความเสียหายและความทนทาน</p>
+      <ul>
+          <li><strong>อีเต้อ</strong>ปลดล็อกตามความลึก ด้ามแรกหล่อเลี้ยงความเสียหายต่อคลิก ที่เหลือหล่อเลี้ยงความเสียหายอัตโนมัติ</li>
+          <li>อีเต้อสะสม<strong>ความชำนาญ</strong>จากแร่ที่มันทุบ ความชำนาญทุกเลเวลทำให้อีเต้อด้ามนั้นตีแรงขึ้น</li>
+          <li><strong>ชุดเกราะ</strong>เป็นของคุณตั้งแต่ต้น ไม่ต้องซื้อ มีแต่อัปเกรด และช่วยกันความร้อน แท็บของมันจะเปิดเมื่อความร้อนเริ่มลดความเสียหายของคุณเป็นครั้งแรก</li>
+          <li><strong>สัตว์เลี้ยง</strong>ซื้อด้วยเพชร อัปเกรดด้วยทองคำ และสร้างความเสียหายอัตโนมัติ การครอบครองเป็นแบบถาวร</li>
+          <li>ทั้งสามอย่างมีสกิลของตัวเองที่เปิดตามระดับ บางอันช่วยเฉพาะไอเทมนั้น บางอันช่วยทั้งตระกูล การ์ดที่ซื้อสกิลครบทุกอันแล้วจะเรืองแสง</li>
+        </ul>
+      <div class="callout">
+          <div class="callout-label">ก้าวกระโดดครั้งใหญ่</div>
+          ที่บางระดับ พลังของไอเทมจะกระโดดขึ้นมาก การดันไอเทมหนึ่งให้ถึงขีดถัดไปมักเป็นการอัปเกรดที่คุ้มที่สุด
+        </div>
+      <div class="callout warn">
+          <div class="callout-label">หลังการตื่นรู้</div>
+          การตื่นรู้จะล็อกอีเต้ออีกครั้ง และรีเซ็ตการอัปเกรดชุดเกราะกับสัตว์เลี้ยงรวมถึงความชำนาญอีเต้อ ตัวสัตว์เลี้ยงยังเป็นของคุณ
+        </div>
+    </section>
+
+    <section id="golems">
+      <div class="section-head"><span class="section-num">05</span><h2>โกเลม</h2></div>
+      <p class="section-dek">สหายศิลาที่มีแต่ทำให้คุณแข็งแกร่งขึ้น</p>
+      <ul>
+          <li><strong>ไข่โกเลม</strong>จากร้านค้าจะฟักเป็นโกเลมแบบสุ่ม โกเลมทุกตัวที่คุณมีจะยืนอยู่ข้างคุณในเหมืองพร้อมกัน</li>
+          <li>โกเลมไม่สร้างความเสียหายเอง แต่สกิลของมันเสริมพลังให้คุณแทน ทั้งความเสียหาย ทองคำ คริติคอล ศิลาแร่ และอื่น ๆ ขณะที่สกิลทำงานอยู่ จะมีวงแหวนสีเดียวกับโกเลมหมุนอยู่ใต้เท้าของมัน</li>
+          <li>โกเลมเลเวลอัปจากแร่ที่คุณทุบ การฟักได้โกเลมที่คุณมีอยู่แล้วซ้ำอีกตัวจะเพิ่มดาวของมันและทำให้สกิลแรงขึ้น</li>
+          <li>โกเลมไม่เคยถูกรีเซ็ต ทั้งจากการตื่นรู้และการก้าวข้าม</li>
+        </ul>
+    </section>
+
+    <section id="temperature">
+      <div class="section-head"><span class="section-num">06</span><h2>ความร้อน</h2></div>
+      <p class="section-dek">ยิ่งลึกยิ่งร้อน และความร้อนจะกัดกินความเสียหายของคุณเงียบ ๆ</p>
+      <p>ถ้าต้านทานความร้อนตามอุณหภูมิของชั้นไม่ทัน ความเสียหายของคุณจะเริ่มละลายหายไป หน้าชุดเกราะมีสวิตช์ซื้อต้านทานอัตโนมัติ ความร้อนมีเฉพาะในเหมืองหลัก และเหตุการณ์สภาพอากาศบางอย่างจะเปลี่ยนมันไปชั่วขณะ</p>
+      <div class="callout warn">
+          <div class="callout-label">ถ้าความคืบหน้าหยุดนิ่ง</div>
+          กำแพงที่แร่อยู่ ๆ ก็ทุบไม่แตก ส่วนใหญ่คือความร้อน ดูมาตรวัดความร้อนก่อนจะเอาเงินไปใช้ที่อื่น
+        </div>
+    </section>
+
+    <section id="workers">
+      <div class="section-head"><span class="section-num">07</span><h2>คนงาน</h2></div>
+      <p class="section-dek">ผู้ช่วยที่ขุดแทนคุณขณะเกมเปิดอยู่</p>
+      <ul>
+          <li>ยิ่งลึกจะมีคนงานใหม่เข้าร่วม และจะไม่ถูกล็อกอีก</li>
+          <li>ให้อีเต้อกับคนงานทุกคน คนงานที่ไม่มีอีเต้อจะไม่ได้อะไรเลย การยกให้ไม่ลดความเสียหายของคุณเอง</li>
+          <li>รายได้เติบโตตามความคืบหน้าของคุณ สะสมในกองและรอจนกว่าคุณจะเก็บ คนงานอัปเกรดด้วยศิลาแร่</li>
+        </ul>
+      <div class="callout warn">
+          <div class="callout-label">เก็บก่อนทำการตื่นรู้</div>
+          คนงานหาเงินได้เฉพาะตอนเกมเปิดอยู่ การตื่นรู้จะเก็บระดับของพวกเขาไว้ แต่ลบรายได้ที่ยังไม่ได้เก็บ
+        </div>
+    </section>
+
+    <section id="enchantments">
+      <div class="section-head"><span class="section-num">08</span><h2>เวทเสก</h2></div>
+      <p class="section-dek">สร้างเวทเสกจากวัสดุที่ขุดได้ แล้วใส่ลงอีเต้อ ชุดเกราะ และสัตว์เลี้ยง</p>
+      <ul>
+          <li>การทุบแร่จะดรอป<strong>ผงเวทเสก</strong>และ<strong>เศษเวทเสก</strong> วัสดุระดับสูงกว่าจะออกที่ลึกกว่า</li>
+          <li>ช่างฝีมือเปลี่ยนผงกับเศษให้เป็นเวทเสกที่มีคุณสมบัติสุ่ม ระดับยิ่งสูงยิ่งมีคุณสมบัติมากและแรงกว่า</li>
+          <li>ไอเทมทุกชิ้นมีช่องเวทเสกที่เปิดตามความลึก</li>
+          <li>เวทเสกที่ไม่ต้องการนำไปแยกเป็นผงได้ที่พ่อค้า และแลกวัสดุขึ้นไปอีกระดับได้</li>
+        </ul>
+      <div class="callout">
+          <div class="callout-label">การตื่นรู้ปลอดภัย</div>
+          การตื่นรู้ไม่เคยลบเวทเสก ชิ้นที่อยู่บนไอเทมที่ถูกล็อกใหม่จะกลับเข้าคลังไอเทม
+        </div>
+    </section>
+
+    <section id="floors">
+      <div class="section-head"><span class="section-num">09</span><h2>ชั้นและแร่</h2></div>
+      <p class="section-dek">ทุกชั้นยากขึ้นนิดหนึ่งและคุ้มขึ้นนิดหนึ่งกว่าชั้นก่อน</p>
+      <ul>
+          <li><strong>ธาตุ</strong>จะเข้ามาในเหมืองทีละชนิดเมื่อคุณขุดลึกลง ชนิดล่าสุดจะโผล่บ่อยที่สุด แร่ทุกก้อนที่คุณทุบจะถูกเก็บไว้ในคลังไอเทม</li>
+          <li>เป็นระยะจะมี<strong>ชั้นจับเวลา</strong> ทุบแร่ให้ทันก่อนหมดเวลาแล้วจะได้ทองคำมากขึ้น ถ้าเวลาหมด คุณจะตกลงมาหนึ่งชั้นและชั้นอัตโนมัติจะปิด</li>
+          <li>บางชั้นจะมี<strong>คริสตัลหุ้มเกราะและคริสตัลอีลิท</strong> ต้องทุบโล่ของมันให้แตกก่อน แล้วมันจะตอบแทนด้วยทองคำที่มากขึ้น</li>
+          <li>แร่ทุกก้อนดรอปศิลาแร่ควบคู่กับทองคำ</li>
+          <li>นาน ๆ ครั้งจะมี<strong>แร่หายาก</strong> (เฟอร์โรวิกซ์, คาร์นิธ, ทัลเวริส, อัมบริสซา, เซฟิริส) โผล่มา แต่ละชนิดพบได้ครั้งเดียว</li>
+          <li>บางครั้ง<strong>จารึกโบราณ</strong>จะปรากฏบนผนังถ้ำ ปริศนาของมันชี้ไปยังชั้นที่คุณผ่านมาแล้ว กลับไปที่นั่นแล้วจะมีคริสตัลทองคำรอคุณอยู่</li>
+          <li>ลิฟต์ให้คุณไปมาระหว่างชั้นที่เคยไปถึงแล้ว และจะเปิดหลังการตื่นรู้ครั้งแรกของคุณ ส่วนพื้นที่ใช้สลับระหว่างเหมืองหลัก ดันเจี้ยน และเหวลึก</li>
+        </ul>
+      <div class="callout">
+          <div class="callout-label">ฟาร์มชั้นต่ำไม่คุ้ม</div>
+          ผงและเศษดรอปดีที่สุดใกล้ชั้นที่ลึกที่สุดที่คุณเคยไปถึง อยู่ต่ำกว่านั้นมากโอกาสจะลดลงชัดเจน
+        </div>
+    </section>
+
+    <section id="weather">
+      <div class="section-head"><span class="section-num">10</span><h2>สภาพอากาศ</h2></div>
+      <p class="section-dek">เหมืองก็มีอารมณ์ของตัวเอง</p>
+      <p>เมื่อคุณขุดลึกลง เหตุการณ์สภาพอากาศจะปลดล็อกในเหมืองหลัก แต่ละเหตุการณ์อยู่ได้สักพักและนำผลข้างเคียงของตัวเองมาด้วย บางเหตุการณ์ยังเปลี่ยนอุณหภูมิของชั้นด้วย เหตุการณ์จะไม่เกิดซ้อนกัน และระหว่างสองเหตุการณ์จะมีช่วงสงบเสมอ</p>
+    </section>
+
+    <section id="skills">
+      <div class="section-head"><span class="section-num">11</span><h2>สกิลและฉายา</h2></div>
+      <p class="section-dek">บัฟชั่วคราว และโบนัสที่มาเองเมื่อคุณขุดลึกลง</p>
+      <ul>
+          <li><strong>สกิลที่กดใช้เอง</strong>ปลดล็อกฟรีตามความลึก เสริมพลังคุณช่วงสั้น ๆ แล้วเข้าคูลดาวน์ เสริมให้แรงขึ้นได้ด้วยศิลาสกิลในผังสกิล และไม่หายไปกับการตื่นรู้</li>
+          <li><strong>ฉายา</strong>มาเองเมื่อคุณขุดลึกลง ให้โบนัสอย่างความเสียหาย ทองคำ และต้านทานความร้อน หลังการตื่นรู้ต้องไต่ใหม่</li>
+        </ul>
+      <div class="callout">
+          <div class="callout-label">คอมโบ</div>
+          ใช้โอเวอร์ชาร์จก่อน แล้วค่อยใช้สกิลที่อยากขยายผล เช่น คลั่งทองคำ จากนั้นย้อนเวลาจะลดคูลดาวน์ของสกิลล่าสุด
+        </div>
+    </section>
+
+    <section id="character">
+      <div class="section-head"><span class="section-num">12</span><h2>ตัวละครและอุปกรณ์</h2></div>
+      <p class="section-dek">เส้นทางความก้าวหน้าสายที่สอง สร้างมาเพื่ออารีน่า</p>
+      <ul>
+          <li><strong>ตัวละคร</strong>ของคุณเลเวลอัปจากแร่ที่คุณทุบ ค่าสถานะโจมตีของมันและค่าสถานะป้องกันของ<strong>คริสตัล</strong>ของคุณเพิ่มได้ด้วยElementium</li>
+          <li><strong>อุปกรณ์</strong>ใส่ในช่องต่าง ๆ เช่น ค้อน หมวก เสื้อเกราะ ถุงมือ รองเท้า ผ้าคลุม แหวน และสร้อยคอ ไอเทมมีหกระดับความหายากตั้งแต่ธรรมดาถึงหนึ่งเดียว และค่าสถานะของไอเทมทุกชิ้นจะสุ่มในตอนที่คุณได้รับ</li>
+          <li>สวมครบทุกชิ้นของเซ็ตเดียวกัน แล้วค่าสถานะด้านบวกของเซ็ตนั้นจะแรงขึ้น</li>
+          <li><strong>ตลาด</strong>มีไอเทมชุดใหม่ให้ซื้อด้วยElementiumทุกวัน และคุณรีเฟรชรายการก่อนเวลาได้ด้วยเพชร</li>
+          <li><strong>ช่างตีเหล็ก</strong>เสริมพลังอุปกรณ์ด้วย<strong>หินเสริมพลัง</strong> และรับซื้ออุปกรณ์ส่วนเกินของคุณ หินเหล่านี้ดรอปจากบอสและรอบเหวลึก และพ่อค้าแลกเป็นระดับถัดไปได้</li>
+        </ul>
+      <div class="callout">
+          <div class="callout-label">เก็บไว้ตลอดไป</div>
+          ตัวละคร อุปกรณ์ และคะแนนอารีน่าของคุณคงอยู่ทั้งหลังการตื่นรู้และการก้าวข้าม
+        </div>
+    </section>
+
+    <section id="arena">
+      <div class="section-head"><span class="section-num">13</span><h2>อารีน่า</h2></div>
+      <p class="section-dek">โจมตีคริสตัลของผู้เล่นคนอื่นและไต่อันดับในซีซัน</p>
+      <ul>
+          <li>คุณโจมตีคริสตัลของผู้เล่นคนอื่น แล้วได้หรือเสียคะแนนอารีน่า แมตช์ที่คนอื่นโจมตีคุณก็นับด้วย</li>
+          <li>คุณจะได้รายชื่อคู่ต่อสู้แบบคงที่ รีเฟรชได้ฟรีไม่กี่ครั้งต่อวัน หลังจากนั้นใช้เพชร</li>
+          <li>ทุกวันคุณมีการโจมตีฟรีไม่กี่ครั้ง เมื่อหมดแล้วยังโจมตีต่อด้วยเพชรได้</li>
+          <li>ฝ่ายที่แข็งแกร่งกว่ามักชนะ โชคมีส่วนเพียงเล็กน้อย</li>
+          <li>หลังการต่อสู้แต่ละครั้ง หน้าผลการต่อสู้จะแสดงความเสียหาย จำนวนการโจมตี คริติคอล และการหลบ รวมถึงคะแนนใหม่ของทั้งสองฝ่าย <strong>ประวัติการต่อสู้</strong>เก็บแมตช์ล่าสุดของคุณไว้</li>
+          <li>แต่ละซีซันยาวหนึ่งเดือน เมื่อจบซีซันคะแนนจะรีเซ็ต ผู้เล่นอันดับต้น ๆ ได้รับเพชร สามอันดับแรกได้รับเหรียญถาวร และผู้ชนะได้รับฉายาแชมป์ประจำซีซัน</li>
+        </ul>
+    </section>
+
+    <section id="tasks">
+      <div class="section-head"><span class="section-num">14</span><h2>ภารกิจ</h2></div>
+      <p class="section-dek">เส้นทางเสริมที่เปลี่ยนการคลิกของคุณเป็นรายได้ทางที่สอง</p>
+      <ul>
+          <li><strong>ภารกิจ</strong>รับด้วยTaskium ภารกิจที่หายากกว่าให้รางวัลมากกว่า ภารกิจที่รางวัลพร้อมรับแล้วจะเลื่อนขึ้นไปบนสุดของรายการ</li>
+          <li><strong>เควสประจำวัน</strong>รีเฟรชทุกวันและให้บัฟสั้น ๆ เมื่อทำสำเร็จ อย่าลืมกดรับรางวัลในหน้าต่าง</li>
+        </ul>
+    </section>
+
+    <section id="trade">
+      <div class="section-head"><span class="section-num">15</span><h2>พ่อค้า</h2></div>
+      <p class="section-dek">ที่ซึ่งทรัพยากรเหลือใช้กลายเป็นของมีประโยชน์</p>
+      <p>คุณแปลงศิลาแร่เป็นเอสเซนซ์ ศิลาสกิล หรือElementiumได้ เปลี่ยนธาตุที่สะสมไว้เป็นElementiumได้ แลกวัสดุเวทเสกและหินเสริมพลังขึ้นอีกระดับได้ และแยกเวทเสกที่ไม่ต้องการได้ ค่าธรรมเนียมการแปลงจ่ายด้วยศิลาแร่ การแลกเป็นศิลาสกิลคือทางเสริมพลังสกิลโดยไม่ต้องซื้ออะไรในร้านค้า</p>
+    </section>
+
+    <section id="extras">
+      <div class="section-head"><span class="section-num">16</span><h2>รางวัลฟรี</h2></div>
+      <p class="section-dek">ทรัพยากรที่ขอแค่คุณแวะเข้ามา</p>
+      <ul>
+          <li><strong>ลูกโป่งทองคำ</strong>ลอยผ่านจอเป็นระยะ คลิกแล้วได้ทองคำ ไม่มีทางพลาด เพราะมันรอจนกว่าคุณจะคลิก</li>
+          <li><strong>คริสตัลทองคำ</strong>เมื่อคลิกจะเปลี่ยนแร่เป็นแร่โบนัสที่ให้ทองคำมากช่วงสั้น ๆ เก็บได้เฉพาะในเหมืองหลัก</li>
+          <li><strong>ของขวัญต้อนรับ</strong>ให้ของขวัญทุกวันในช่วงวันแรก ๆ ของคุณ และวันไม่จำเป็นต้องติดกัน</li>
+          <li><strong>โบนัสประจำวัน</strong> - ทุกวัน ทุกคนที่เล่นจะได้รับโบนัสเดียวกัน เช่น ความเสียหายต่อคลิก ทองคำ คริติคอล หรือความเสียหายของสัตว์เลี้ยง และโบนัสจะเปลี่ยนไปทุกวัน</li>
+          <li><strong>รายได้ออฟไลน์</strong>สะสมขณะปิดเกม และไม่มีวันหายไปก่อนที่คุณจะเก็บ</li>
+          <li><strong>ทองฟรีรายชั่วโมง</strong>รออยู่ในร้านค้า และเพิ่มขึ้นตามชั้นที่ลึกที่สุดที่คุณไปถึงในการตื่นรู้รอบนี้</li>
+          <li><strong>รางวัลรายวัน</strong>ให้กุญแจดันเจี้ยนฟรีหนึ่งดอกและกุญแจเหวลึกฟรีหนึ่งดอกในร้านค้าทุกวัน แยกจากกันคนละส่วน</li>
+          <li><strong>วงล้อเสี่ยงโชค</strong>เติมใหม่เป็นระยะและให้หมุนฟรี</li>
+          <li><strong>โค้ดโปรโมชัน</strong> - โค้ดที่เราแจกในประกาศใช้ได้จากเมนูตั้งค่า</li>
+        </ul>
+    </section>
+
+    <section id="awakening">
+      <div class="section-head"><span class="section-num">17</span><h2>การตื่นรู้</h2></div>
+      <p class="section-dek">เปลี่ยนความคืบหน้าของรอบนี้ให้เป็นพลังถาวร</p>
+      <ul>
+          <li>เมื่อผ่านความลึกระดับหนึ่งแล้วคุณทำการตื่นรู้ได้ ทุกรอบจะเริ่มใหม่จากชั้นแรก</li>
+          <li><strong>สิ่งที่รีเซ็ต:</strong> ทองคำ Taskium ความคืบหน้าของชั้น การปลดล็อก การอัปเกรด และความชำนาญของอีเต้อ การอัปเกรดชุดเกราะกับสัตว์เลี้ยง สกิลของไอเทม ฉายา ความคืบหน้าภารกิจ คูลดาวน์สกิล พร อีเต้อที่มอบให้คนงาน และรายได้คนงานที่ยังไม่ได้เก็บ</li>
+          <li><strong>สิ่งที่คงไว้:</strong> เพชร กุญแจ เอสเซนซ์ แก่นสารบริสุทธิ์ ศิลาสกิล ศิลาแร่ Elementium ค่าพลังการตื่นรู้และการก้าวข้าม ผังสกิล โกเลม ความคืบหน้าบอสและเหวลึก หน้าต่างที่ปลดล็อกแล้ว รางวัลรายวัน ระดับคนงาน ตัวละครและอุปกรณ์ของมัน คะแนนอารีน่าของคุณ และทุกอย่างในคลังไอเทม</li>
+          <li>เอสเซนซ์ที่ได้ขึ้นกับชั้นที่ลึกที่สุดที่คุณไปถึง และโตเร็วตามความลึก ใช้มันกับค่าพลังถาวร</li>
+          <li>ชั้นอัตโนมัติและการซื้อความต้านทานความร้อนอัตโนมัติสามารถเปิดค้างไว้หลังการตื่นรู้ได้ หากคุณเลือกไว้ในการตั้งค่า</li>
+          <li>ปุ่ม<strong>i</strong>ในหน้านี้จะเปิด<strong>ประวัติการตื่นรู้</strong>ของคุณ</li>
+        </ul>
+      <div class="callout">
+          <div class="callout-label">พรแห่งการตื่นรู้</div>
+          ในบางชั้นของทุกรอบ คุณจะได้เลือกพรจากตัวเลือกที่เสนอให้ เมื่อมีพรรออยู่จะมีปุ่มเรืองแสงปรากฏขึ้น พรในตระกูลเดียวกันจะแรงขึ้นด้วยกัน และทั้งหมดจะรีเซ็ตเมื่อการตื่นรู้
+        </div>
+      <div class="callout">
+          <div class="callout-label">ขุดลึกอีกหน่อย</div>
+          การได้อีกไม่กี่ชั้นก่อนทำการตื่นรู้ มักคุ้มกว่าการรีบทำการตื่นรู้อีกรอบทันที
+        </div>
+    </section>
+
+    <section id="ascension">
+      <div class="section-head"><span class="section-num">18</span><h2>การก้าวข้าม</h2></div>
+      <p class="section-dek">ชั้นที่สองที่ซ้อนอยู่บนการตื่นรู้</p>
+      <ul>
+          <li>เมื่อไปถึงชั้นที่ลึกกว่ามาก การก้าวข้ามจะปลดล็อก และมีหน้าของตัวเองอยู่ใต้แท็บเพรสทีจ</li>
+          <li><strong>สิ่งที่รีเซ็ต:</strong> ค่าพลังการตื่นรู้และเอสเซนซ์ วงจรนั้นเริ่มใหม่จากศูนย์ อีเต้อ ชั้น และการอัปเกรดก็รีเซ็ตเหมือนตอนทำการตื่นรู้</li>
+          <li><strong>สิ่งที่คงไว้:</strong> ระดับการตื่นรู้ของคุณ เพชร กุญแจ ความคืบหน้าบอสและเหวลึก โกเลม เวทเสกและอุปกรณ์ ตัวละคร ผังสกิล ความสำเร็จ ระดับคนงาน และแก่นสารบริสุทธิ์ที่สะสมไว้</li>
+          <li>แลกกับ<strong>แก่นสารบริสุทธิ์</strong> ซึ่งใช้ซื้อค่าพลังสองอย่าง: <strong>เสียงสะท้อนแห่งการตื่นรู้</strong> ขยายโบนัสของค่าพลังการตื่นรู้ทุกตัว ส่วน<strong>ต้นธาร</strong> เพิ่มเอสเซนซ์ที่ได้จากการตื่นรู้แต่ละครั้ง</li>
+          <li>ค่าพลังทั้งสองเติบโตขึ้นทุกระดับที่คุณซื้อ</li>
+        </ul>
+      <div class="callout">
+          <div class="callout-label">ควรก้าวข้ามเมื่อไร</div>
+          การก้าวข้ามไม่ได้เร่งแค่รอบเดียว แต่เร่งทั้งวงจร คุ้มเมื่อค่าพลังที่ซื้อด้วยเอสเซนซ์แพงขึ้นแล้ว และการทำการตื่นรู้อีกครั้งเพิ่มได้น้อยลง
+        </div>
+    </section>
+
+    <section id="dungeons">
+      <div class="section-head"><span class="section-num">19</span><h2>บอสและเหวลึก</h2></div>
+      <p class="section-dek">สองบททดสอบจับเวลานอกเหมืองหลัก</p>
+      <ul>
+          <li>เข้าทั้งสองที่ได้จากพื้นที่ ระหว่างที่อยู่ที่นั่น ความร้อนและความคืบหน้าของชั้นในเหมืองหลักจะหยุดนิ่ง</li>
+          <li><strong>บอส</strong>เปิดด้วยกุญแจดันเจี้ยน ล้มบอสก่อนหมดเวลาแล้วจะได้เอสเซนซ์ ศิลาแร่ และหินเสริมพลัง บอสปลดล็อกตามลำดับ และบอสที่ชนะแล้วจะเปิดอยู่ตลอดไป</li>
+          <li>ชนะบอสแล้วระดับ<strong>ฝันร้าย</strong>ไม่สิ้นสุดของมันจะเปิด ทุกระดับทำให้บอสแข็งแกร่งขึ้น รางวัลมากขึ้น และหินเสริมพลังหายากขึ้น</li>
+          <li><strong>เหวลึก</strong>เปิดด้วยกุญแจเหวลึก และเดินด้วยการนับถอยหลังชุดเดียว คุณทุบแร่ทีละก้อนต่อเนื่อง แต่ละด่านยากกว่าด่านก่อน</li>
+          <li>ทุกด่านของเหวลึกมี<strong>บทลงโทษ</strong>ของตัวเอง บางด่านตัดความเสียหายอัตโนมัติ บางด่านตัดความเสียหายต่อคลิก บางด่านตัดคริติคอล บทลงโทษมีผลเฉพาะช่วงที่ด่านนั้นดำเนินอยู่</li>
+          <li>ทุกด่านที่คุณทุบผ่านในเหวลึกจะได้รางวัล ไม่ว่าเวลาจะหมดหรือคุณออกเอง สิ่งที่ได้มาถึงตอนนั้นยังเป็นของคุณ เคลียร์ครบทุกด่านแล้วเหวลึกถัดไปจะเปิด</li>
+        </ul>
+      <div class="callout warn">
+          <div class="callout-label">แพ้บอสมีราคา</div>
+          ถ้าเวลาหมดก่อนบอสล้ม คุณจะไม่ได้รางวัล และกุญแจที่ใช้ไปก็ไม่คืน
+        </div>
+    </section>
+
+    <section id="store">
+      <div class="section-head"><span class="section-num">20</span><h2>ร้านค้าและความสำเร็จ</h2></div>
+      <p class="section-dek">เพชร กุญแจ ชุดรวม พรีเมียม การข้ามเวลา หีบ โกเลม และไอเทมอนันต์แบบถาวร</p>
+      <ul>
+          <li><strong>แพ็กเริ่มต้น</strong>ซื้อได้เพียงครั้งเดียวต่อบัญชี</li>
+          <li><strong>พรีเมียม</strong>เพิ่มความเสียหาย ทองคำ และรายได้ออฟไลน์ของคุณตามช่วงเวลาที่กำหนด</li>
+          <li><strong>การข้ามเวลา</strong>เร่งเกมไปข้างหน้าหลายชั่วโมง ผลตอบแทนคำนวณจากพลังของคุณ ณ ตอนนั้น</li>
+          <li><strong>หีบ</strong>เปิดทันที หีบเวทเสกให้วัสดุเวทเสก ส่วนหีบอุปกรณ์และหีบรวมให้อุปกรณ์</li>
+          <li><strong>ไข่โกเลม</strong>ฟักเป็นโกเลมแบบสุ่ม</li>
+          <li><strong>ชุดกุญแจ</strong>ซื้อด้วยเพชร มีทั้งชุดกุญแจดันเจี้ยนและกุญแจเหวลึก</li>
+          <li><strong>ไอเทมอนันต์</strong>ซื้อครั้งเดียว และไม่หายไปทั้งกับการตื่นรู้และการก้าวข้าม</li>
+          <li><strong>ความสำเร็จ</strong>ให้รางวัลที่คุณต้องกดรับเอง</li>
+        </ul>
+    </section>
+
+    <section id="progress">
+      <div class="section-head"><span class="section-num">21</span><h2>ความคืบหน้าและชุมชน</h2></div>
+      <p class="section-dek">ที่ที่คุณติดตามรอบของตัวเอง ความคืบหน้าถูกเก็บรักษาอย่างไร และคุณแชร์มันได้อย่างไร</p>
+      <ul>
+          <li><strong>คู่มือ</strong> (ปุ่มรูปหนังสือ) รวบรวมธาตุ แร่หายาก บอส เหวลึก สกุลเงิน อีเต้อ สัตว์เลี้ยง และโกเลมที่คุณค้นพบแล้ว สิ่งที่ยังไม่ค้นพบจะแสดงเป็นเงาดำ</li>
+          <li>กระดานผู้นำ Steam หน้าสถิติ และ<strong>บันทึกกิจกรรม</strong> แสดงความคืบหน้าของคุณ หน้าต่าง<strong>อัปเดต</strong>แสดงบันทึกอัปเดตล่าสุด</li>
+          <li>ปุ่ม<strong>ส่งออกการ์ด</strong>ในการตั้งค่าจะแสดง<strong>การ์ดนักขุด</strong>พร้อมสถิติสำคัญของคุณ คุณบันทึกเป็นภาพ PNG แล้วแชร์ได้</li>
+          <li>เมื่อเปิด<strong>แชร์ช่วงเวลาหายากบน Discord</strong> ช่วงเวลาที่หายากที่สุดของคุณ ทั้งชั้นลึก ไอเทมระดับตำนานที่ดรอป ชัยชนะเหนือบอสและในเหวลึก และการต่อสู้ในอารีน่า จะปรากฏในช่อง #live ของเซิร์ฟเวอร์ Discord ของเรา จะแสดงเพียงชื่อ Steam ของคุณและช่วงเวลานั้น และคุณปิดได้ในการตั้งค่า</li>
+          <li>ถ้าเปิด Discord ไว้ โปรไฟล์ของคุณจะแสดงชั้นที่อยู่และระดับการตื่นรู้ / การก้าวข้าม</li>
+          <li>เกมบันทึกเองเป็นประจำและสำรองขึ้น Steam Cloud เล่นต่อจากเครื่องอื่นได้</li>
+          <li>บนคอมพิวเตอร์สเปกต่ำ การปิด<strong>ใช้เงา</strong>ในการตั้งค่าจะช่วยเพิ่มประสิทธิภาพ</li>
+        </ul>
+    </section>
+
+    <footer class="doc-footer">เกมเปลี่ยนไปตามอัปเดต คู่มือนี้ให้ภาพรวม ราคาสินค้าที่ขายด้วยเงินจริงจะแสดงโดย Steam ในสกุลเงินของคุณ</footer>
+  </main>
+</div>
+
+</body>
+</html>

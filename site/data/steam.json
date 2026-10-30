@@ -1,0 +1,118 @@
+{
+  "app": {
+    "capsule_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3810540/44ad5e9a4ee99e60e24941c847b0812aa8224a3c/capsule_231x87.jpg",
+    "developers": [
+      "Tiny Depth Studio"
+    ],
+    "genres": [
+      "Adventure",
+      "Casual",
+      "Indie",
+      "Strategy",
+      "Free To Play"
+    ],
+    "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3810540/7a280bb9a06816fcdbf60c377d092257e7c07175/header.jpg",
+    "id": 3810540,
+    "is_free": true,
+    "name": "Clicker Ore",
+    "platforms": [
+      "windows",
+      "mac"
+    ],
+    "release_date": "26 Jul 2026",
+    "short_description": "Grab your pickaxe, descend into the depths, and become the master of wealth! 45 pickaxes, 270 skills, bosses, the Abyss, the Arena, weather events and blessings. Your mine keeps working even while you're away.",
+    "store_url": "https://store.steampowered.com/app/3810540/"
+  },
+  "news": [
+    {
+      "date": 1793266871,
+      "excerpt": "NEW - I updated the player guide on our website in every language; golems, the character and equipment, the Arena and the other recently added systems are now in the guide. IMPROVEMENTS - When the server is briefly…",
+      "feedlabel": "Community Announcements",
+      "gid": "1847920302234093",
+      "title": "1.13.32 Patch Notes — October 29, 2026",
+      "url": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1847920302234093"
+    },
+    {
+      "date": 1793126017,
+      "excerpt": "The new tutorials in 1.13.30 left the screen locked for some players; I'm sorry for the trouble. To make up for it, enter BUGFIX1 in the code field on the main page of the Settings to get 50 diamonds. IMPROVEMENTS - I…",
+      "feedlabel": "Community Announcements",
+      "gid": "1847286114050061",
+      "title": "1.13.31 Patch Notes — October 27, 2026",
+      "url": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1847286114050061"
+    },
+    {
+      "date": 1793037903,
+      "excerpt": "NEW - Wall inscriptions are here: on some floors a riddle appears on the cave wall; its answer is a floor you have already passed, and a gold crystal waits for you when you go back there. - Every 100th floor brings an…",
+      "feedlabel": "Community Announcements",
+      "gid": "1847286114046159",
+      "title": "1.13.30 Major Update — October 25, 2026",
+      "url": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1847286114046159"
+    },
+    {
+      "date": 1792261865,
+      "excerpt": "NEW - Golems are here: a Golem Egg from the store hatches a random golem, and every golem you own stands beside you in the mine and boosts you with its skills. - Golems level up from the ore you break; hatching another…",
+      "feedlabel": "Community Announcements",
+      "gid": "1846651706685300",
+      "title": "1.12.28 Major Update — October 17, 2026",
+      "url": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1846651706685300"
+    },
+    {
+      "date": 1791574249,
+      "excerpt": "NEW - Welcome gifts: a gift awaits you every day during your first days; the days don't have to be consecutive. - Weather events: new weather events unlock in the mine as you go deeper; each event has timed side…",
+      "feedlabel": "Community Announcements",
+      "gid": "1846018067934483",
+      "title": "1.11.27 Major Update — October 9, 2026",
+      "url": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1846018067934483"
+    },
+    {
+      "date": 1791233331,
+      "excerpt": "NEW - Character is open: after floor 250 your character levels up as you break ores and play, and you can strengthen its attack stats and your Crystal's defense stats with Elementium. - Added equipment: hammers…",
+      "feedlabel": "Community Announcements",
+      "gid": "1845383656394602",
+      "title": "1.10.24 Major Update — October 5, 2026",
+      "url": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1845383656394602"
+    }
+  ],
+  "screenshots": [
+    {
+      "full": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3810540/cd7647bdcf6abe197af03ebc9ed779b58d8fec99/ss_cd7647bdcf6abe197af03ebc9ed779b58d8fec99.1920x1080.jpg",
+      "thumb": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3810540/cd7647bdcf6abe197af03ebc9ed779b58d8fec99/ss_cd7647bdcf6abe197af03ebc9ed779b58d8fec99.600x338.jpg"
+    },
+    {
+      "full": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3810540/9eebd0adbd12437efeee3f3385992a6d0146d40c/ss_9eebd0adbd12437efeee3f3385992a6d0146d40c.1920x1080.jpg",
+      "thumb": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3810540/9eebd0adbd12437efeee3f3385992a6d0146d40c/ss_9eebd0adbd12437efeee3f3385992a6d0146d40c.600x338.jpg"
+    },
+    {
+      "full": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3810540/f23f918d7e2d1e3ef6dba74098bb6353560927a9/ss_f23f918d7e2d1e3ef6dba74098bb6353560927a9.1920x1080.jpg",
+      "thumb": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3810540/f23f918d7e2d1e3ef6dba74098bb6353560927a9/ss_f23f918d7e2d1e3ef6dba74098bb6353560927a9.600x338.jpg"
+    },
+    {
+      "full": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3810540/aeb6a045b4f8bdcecb8744ee6bd99af4f17773a1/ss_aeb6a045b4f8bdcecb8744ee6bd99af4f17773a1.1920x1080.jpg",
+      "thumb": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3810540/aeb6a045b4f8bdcecb8744ee6bd99af4f17773a1/ss_aeb6a045b4f8bdcecb8744ee6bd99af4f17773a1.600x338.jpg"
+    },
+    {
+      "full": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3810540/2438e61e43bd0e64c840b9fb9976ccead3844498/ss_2438e61e43bd0e64c840b9fb9976ccead3844498.1920x1080.jpg",
+      "thumb": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3810540/2438e61e43bd0e64c840b9fb9976ccead3844498/ss_2438e61e43bd0e64c840b9fb9976ccead3844498.600x338.jpg"
+    },
+    {
+      "full": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3810540/7d050203dd51d008acd7715ea7f97dc50f17b450/ss_7d050203dd51d008acd7715ea7f97dc50f17b450.1920x1080.jpg",
+      "thumb": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3810540/7d050203dd51d008acd7715ea7f97dc50f17b450/ss_7d050203dd51d008acd7715ea7f97dc50f17b450.600x338.jpg"
+    },
+    {
+      "full": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3810540/3f587cec1af23a8689a132e0f0dfa2a32f5b728b/ss_3f587cec1af23a8689a132e0f0dfa2a32f5b728b.1920x1080.jpg",
+      "thumb": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3810540/3f587cec1af23a8689a132e0f0dfa2a32f5b728b/ss_3f587cec1af23a8689a132e0f0dfa2a32f5b728b.600x338.jpg"
+    },
+    {
+      "full": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3810540/38ee52f2a332d7174615a706e4096b37e5932533/ss_38ee52f2a332d7174615a706e4096b37e5932533.1920x1080.jpg",
+      "thumb": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3810540/38ee52f2a332d7174615a706e4096b37e5932533/ss_38ee52f2a332d7174615a706e4096b37e5932533.600x338.jpg"
+    },
+    {
+      "full": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3810540/abbc7ba032baa4a2d56eb8bea5acc0ab9ba66b92/ss_abbc7ba032baa4a2d56eb8bea5acc0ab9ba66b92.1920x1080.jpg",
+      "thumb": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3810540/abbc7ba032baa4a2d56eb8bea5acc0ab9ba66b92/ss_abbc7ba032baa4a2d56eb8bea5acc0ab9ba66b92.600x338.jpg"
+    }
+  ],
+  "trailer": {
+    "name": "Gameplay",
+    "thumb": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/257212616/fa0926aafa99e27effe1ab4c1c638661b5a7751f/movie_600x337.jpg"
+  }
+}

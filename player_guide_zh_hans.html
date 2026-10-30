@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self'; style-src 'unsafe-inline'; base-uri 'none'; form-action 'none'; upgrade-insecure-requests">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Clicker Ore Game - 玩家指南</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="矿井是怎么运作的：十字镐、宠物、魔像、工人、附魔、技能、角色与装备、竞技场、觉醒、升华、首领、深渊和商店，简明扼要。">
+<style>
+  :root {
+    --bg: #14110d;
+    --bg-elevated: #1d1811;
+    --bg-card: #211b13;
+    --text: #ede6d8;
+    --text-dim: #a89a82;
+    --text-faint: #766a55;
+    --accent: #e0a752;
+    --accent-strong: #f2bd6e;
+    --accent-2: #7fb8ad;
+    --border: #3a2f22;
+    --border-soft: #2a2318;
+    --danger: #cf7a5a;
+    --shadow: 0 8px 24px rgba(0,0,0,0.35);
+
+    --cur-gold: #e0a752;
+    --cur-diamond: #7fd1e0;
+    --cur-essence: #b79ef0;
+    --cur-taskium: #93a8d6;
+    --cur-key: #d98a63;
+    --cur-skillstone: #7fc9a0;
+    --cur-orestone: #b5a68c;
+    --cur-abysskey: #8f7fd6;
+    --cur-pureessence: #d7bff5;
+    --cur-elementium: #e07f9e;
+
+    --font-display: "Bahnschrift", "Segoe UI Semibold", "Arial Narrow Bold", "Arial Narrow", sans-serif;
+    --font-body: "Sitka Text", "Iowan Old Style", Georgia, "Times New Roman", serif;
+    --font-mono: "Cascadia Mono", "Consolas", "SF Mono", ui-monospace, monospace;
+  }
+
+  :root[data-theme="light"] {
+    --bg: #efe9da;
+    --bg-elevated: #e6ddc8;
+    --bg-card: #f3ede0;
+    --text: #241d14;
+    --text-dim: #5c5138;
+    --text-faint: #857656;
+    --accent: #a8621a;
+    --accent-strong: #8a4e12;
+    --accent-2: #2f7a70;
+    --border: #d3c5a4;
+    --border-soft: #ddd0b1;
+    --danger: #a3492c;
+    --shadow: 0 8px 20px rgba(90,70,30,0.12);
+  }
+
+  @media (prefers-color-scheme: light) {
+    :root:not([data-theme="dark"]) {
+      --bg: #efe9da;
+      --bg-elevated: #e6ddc8;
+      --bg-card: #f3ede0;
+      --text: #241d14;
+      --text-dim: #5c5138;
+      --text-faint: #857656;
+      --accent: #a8621a;
+      --accent-strong: #8a4e12;
+      --accent-2: #2f7a70;
+      --border: #d3c5a4;
+      --border-soft: #ddd0b1;
+      --danger: #a3492c;
+      --shadow: 0 8px 20px rgba(90,70,30,0.12);
+    }
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: 17px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection { background: var(--accent); color: #14110d; }
+
+  a { color: var(--accent-strong); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  a:focus-visible, button:focus-visible, summary:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    text-wrap: balance;
+    letter-spacing: 0.01em;
+    color: var(--text);
+  }
+
+  p { max-width: 68ch; }
+  ul, ol { max-width: 68ch; }
+
+  .shell {
+    display: grid;
+    grid-template-columns: 260px minmax(0, 1fr);
+    min-height: 100vh;
+  }
+
+  .topbar {
+    display: none;
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: var(--bg-elevated);
+    border-bottom: 1px solid var(--border);
+    padding: 0.7rem 1rem;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .topbar-title {
+    font-family: var(--font-display);
+    font-size: 0.95rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--accent-strong);
+  }
+  #nav-toggle { display: none; }
+  .nav-toggle-btn {
+    font-family: var(--font-display);
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 0.4rem 0.7rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.85rem;
+  }
+
+  nav.toc {
+    position: sticky;
+    top: 0;
+    align-self: start;
+    height: 100vh;
+    overflow-y: auto;
+    padding: 2rem 1.4rem 3rem;
+    background: var(--bg-elevated);
+    border-right: 1px solid var(--border);
+  }
+  .toc-home {
+    display: inline-block;
+    font-family: var(--font-display);
+    font-size: 0.8rem;
+    color: var(--text-dim);
+    margin-bottom: 1.1rem;
+  }
+  .toc-home:hover { color: var(--accent-strong); text-decoration: none; }
+
+  .toc-brand {
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    letter-spacing: 0.03em;
+    color: var(--accent-strong);
+    margin-bottom: 0.15rem;
+  }
+  .toc-brand small {
+    display: block;
+    font-family: var(--font-body);
+    font-style: italic;
+    font-size: 0.78rem;
+    color: var(--text-faint);
+    letter-spacing: 0;
+    margin-top: 0.25rem;
+  }
+  .toc-list {
+    list-style: none;
+    margin: 1.6rem 0 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+  }
+  .toc-list a {
+    display: block;
+    color: var(--text-dim);
+    font-size: 0.88rem;
+    padding: 0.32rem 0.5rem;
+    border-radius: 4px;
+    border-left: 2px solid transparent;
+  }
+  .toc-list a:hover {
+    color: var(--text);
+    text-decoration: none;
+    background: rgba(224,167,82,0.08);
+    border-left-color: var(--accent);
+  }
+  .toc-num {
+    font-family: var(--font-mono);
+    color: var(--text-faint);
+    font-size: 0.78rem;
+    margin-right: 0.45rem;
+  }
+
+  main {
+    padding: 3.2rem clamp(1.2rem, 4vw, 4rem) 6rem;
+    max-width: 900px;
+  }
+
+  header.hero {
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .strata {
+    height: 10px;
+    width: 100%;
+    border-radius: 3px;
+    margin-bottom: 1.6rem;
+    background: repeating-linear-gradient(
+      90deg,
+      var(--accent) 0 6%,
+      var(--accent-2) 6% 11%,
+      var(--border-soft) 11% 18%,
+      var(--accent) 18% 24%,
+      var(--border-soft) 24% 34%,
+      var(--accent-2) 34% 40%,
+      var(--accent) 40% 48%,
+      var(--border-soft) 48% 58%,
+      var(--accent-2) 58% 63%,
+      var(--accent) 63% 72%,
+      var(--border-soft) 72% 82%,
+      var(--accent-2) 82% 90%,
+      var(--accent) 90% 100%
+    );
+    opacity: 0.85;
+  }
+  .eyebrow {
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-size: 0.72rem;
+    color: var(--accent);
+    margin-bottom: 0.6rem;
+  }
+  h1.title {
+    font-size: clamp(2rem, 4.2vw, 2.9rem);
+    margin: 0 0 0.7rem;
+    line-height: 1.1;
+  }
+  .subtitle {
+    color: var(--text-dim);
+    font-size: 1.08rem;
+    max-width: 62ch;
+    margin: 0;
+  }
+
+  .langbar {
+    margin: 1.8rem 0 0;
+    padding-top: 1.2rem;
+    border-top: 1px solid var(--border-soft);
+  }
+  .langbar-label {
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 0.68rem;
+    color: var(--text-faint);
+    margin-bottom: 0.55rem;
+  }
+  .langbar-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem 0.4rem;
+  }
+  .langbar-list a, .langbar-list span {
+    font-family: var(--font-display);
+    font-size: 0.78rem;
+    padding: 0.18rem 0.55rem;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    color: var(--text-dim);
+    background: var(--bg-card);
+  }
+  .langbar-list a:hover {
+    text-decoration: none;
+    color: var(--text);
+    border-color: var(--accent);
+  }
+  .langbar-list span {
+    color: #14110d;
+    background: var(--accent);
+    border-color: var(--accent);
+  }
+  :root[data-theme="light"] .langbar-list span { color: #efe9da; }
+
+  section {
+    margin-bottom: 3.6rem;
+    scroll-margin-top: 1.5rem;
+  }
+  .section-head {
+    display: flex;
+    align-items: baseline;
+    gap: 0.7rem;
+    margin-bottom: 0.3rem;
+  }
+  .section-num {
+    font-family: var(--font-mono);
+    color: var(--accent);
+    font-size: 0.95rem;
+  }
+  h2 {
+    font-size: 1.55rem;
+    margin: 0;
+  }
+  .section-dek {
+    color: var(--text-dim);
+    font-size: 0.98rem;
+    margin: 0.3rem 0 1.5rem;
+    max-width: 62ch;
+  }
+
+  .callout {
+    border-left: 3px solid var(--accent);
+    background: var(--bg-card);
+    padding: 0.95rem 1.2rem;
+    border-radius: 0 6px 6px 0;
+    margin: 1.2rem 0;
+    font-size: 0.95rem;
+  }
+  .callout strong { color: var(--accent-strong); }
+  .callout.warn { border-left-color: var(--danger); }
+  .callout-label {
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 0.72rem;
+    color: var(--accent);
+    margin-bottom: 0.35rem;
+  }
+  .callout.warn .callout-label { color: var(--danger); }
+
+  .currency-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 0.9rem;
+    margin: 1.4rem 0;
+  }
+  .cur-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-top: 3px solid var(--dot);
+    border-radius: 6px;
+    padding: 0.95rem 1rem 1.05rem;
+  }
+  .cur-card h4 {
+    margin: 0 0 0.5rem;
+    font-size: 0.98rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .dot {
+    width: 9px; height: 9px; border-radius: 50%;
+    background: var(--dot);
+    flex: none;
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--dot) 20%, transparent);
+  }
+  .cur-card p {
+    margin: 0.15rem 0;
+    font-size: 0.84rem;
+    color: var(--text-dim);
+    max-width: none;
+  }
+  .cur-card p b { color: var(--text); font-weight: 600; }
+
+  .table-wrap {
+    overflow-x: auto;
+    margin: 1.2rem 0;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+  }
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    min-width: 460px;
+    font-size: 0.9rem;
+  }
+  thead th {
+    text-align: left;
+    font-family: var(--font-display);
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    font-size: 0.72rem;
+    color: var(--text-dim);
+    background: var(--bg-elevated);
+    padding: 0.6rem 0.85rem;
+    border-bottom: 1px solid var(--border);
+    white-space: nowrap;
+  }
+  tbody td {
+    padding: 0.55rem 0.85rem;
+    border-bottom: 1px solid var(--border-soft);
+    font-variant-numeric: tabular-nums;
+    color: var(--text);
+  }
+  tbody tr:last-child td { border-bottom: none; }
+  tbody tr:nth-child(even) { background: color-mix(in srgb, var(--accent) 3%, transparent); }
+  td.num, th.num { font-family: var(--font-mono); }
+  td.strong { color: var(--accent-strong); font-weight: 600; }
+
+  .strategy-track {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 1.4rem 0;
+  }
+  .strategy-stage {
+    background: var(--bg-card);
+    padding: 1rem 1.1rem;
+  }
+  .strategy-stage .stage-label {
+    font-family: var(--font-display);
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+    margin-bottom: 0.4rem;
+  }
+  .strategy-stage ul {
+    margin: 0;
+    padding-left: 1.1rem;
+    font-size: 0.86rem;
+    color: var(--text-dim);
+  }
+  .strategy-stage li { margin-bottom: 0.25rem; }
+
+  footer.doc-footer {
+    margin-top: 4rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+    color: var(--text-faint);
+    font-size: 0.8rem;
+  }
+
+  @media (max-width: 880px) {
+    .shell { grid-template-columns: 1fr; }
+    .topbar { display: flex; }
+    nav.toc {
+      position: fixed;
+      inset: 0 20% 0 0;
+      top: 52px;
+      height: calc(100vh - 52px);
+      transform: translateX(-100%);
+      transition: transform 0.22s ease;
+      z-index: 15;
+      box-shadow: var(--shadow);
+    }
+    #nav-toggle:checked ~ .shell nav.toc {
+      transform: translateX(0);
+    }
+    main { padding: 2rem 1.2rem 5rem; }
+  }
+</style>
+</head>
+<body>
+
+<input type="checkbox" id="nav-toggle">
+
+<div class="topbar">
+  <a class="topbar-title" href="index.html">&#9935; Clicker Ore Game</a>
+  <label class="nav-toggle-btn" for="nav-toggle">目录</label>
+</div>
+
+<div class="shell">
+  <nav class="toc" aria-label="目录">
+    <a class="toc-home" href="index.html">← 首页</a>
+    <div class="toc-brand">Clicker Ore Game<small>玩家指南</small></div>
+    <ul class="toc-list">
+      <li><a href="#start"><span class="toc-num">01</span>从哪里开始</a></li>
+      <li><a href="#currencies"><span class="toc-num">02</span>货币</a></li>
+      <li><a href="#damage"><span class="toc-num">03</span>伤害与暴击</a></li>
+      <li><a href="#equipment"><span class="toc-num">04</span>十字镐、护甲与宠物</a></li>
+      <li><a href="#golems"><span class="toc-num">05</span>魔像</a></li>
+      <li><a href="#temperature"><span class="toc-num">06</span>高温</a></li>
+      <li><a href="#workers"><span class="toc-num">07</span>工人</a></li>
+      <li><a href="#enchantments"><span class="toc-num">08</span>附魔</a></li>
+      <li><a href="#floors"><span class="toc-num">09</span>楼层与矿石</a></li>
+      <li><a href="#weather"><span class="toc-num">10</span>天气</a></li>
+      <li><a href="#skills"><span class="toc-num">11</span>技能与称号</a></li>
+      <li><a href="#character"><span class="toc-num">12</span>角色与装备</a></li>
+      <li><a href="#arena"><span class="toc-num">13</span>竞技场</a></li>
+      <li><a href="#tasks"><span class="toc-num">14</span>任务</a></li>
+      <li><a href="#trade"><span class="toc-num">15</span>商人</a></li>
+      <li><a href="#extras"><span class="toc-num">16</span>免费奖励</a></li>
+      <li><a href="#awakening"><span class="toc-num">17</span>觉醒</a></li>
+      <li><a href="#ascension"><span class="toc-num">18</span>升华</a></li>
+      <li><a href="#dungeons"><span class="toc-num">19</span>首领与深渊</a></li>
+      <li><a href="#store"><span class="toc-num">20</span>商店与成就</a></li>
+      <li><a href="#progress"><span class="toc-num">21</span>进度与社区</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <header class="hero">
+      <div class="strata" role="presentation"></div>
+      <div class="eyebrow">玩家指南 - 2026-10-28</div>
+      <h1 class="title">整座矿井，<br>一文讲完</h1>
+      <p class="subtitle">每个系统有什么用，时间该花在哪里。没有数字和公式，只讲你需要知道的。</p>
+      <div class="langbar">
+        <div class="langbar-label">语言</div>
+        <div class="langbar-list"><a href="player_guide_en.html" hreflang="en">English</a><a href="player_guide_tr.html" hreflang="tr">Türkçe</a><a href="player_guide_de.html" hreflang="de">Deutsch</a><a href="player_guide_fr.html" hreflang="fr">Français</a><a href="player_guide_es.html" hreflang="es">Español</a><a href="player_guide_es_la.html" hreflang="es-419">Español (Latinoamérica)</a><a href="player_guide_it.html" hreflang="it">Italiano</a><a href="player_guide_pl.html" hreflang="pl">Polski</a><a href="player_guide_pt_br.html" hreflang="pt-BR">Português (Brasil)</a><a href="player_guide_ru.html" hreflang="ru">Русский</a><a href="player_guide_uk.html" hreflang="uk">Українська</a><a href="player_guide_ja.html" hreflang="ja">日本語</a><a href="player_guide_ko.html" hreflang="ko">한국어</a><span>简体中文</span><a href="player_guide_zh_hant.html" hreflang="zh-Hant">繁體中文</a><a href="player_guide_th.html" hreflang="th">ไทย</a><a href="player_guide_id.html" hreflang="id">Bahasa Indonesia</a><a href="player_guide_vi.html" hreflang="vi">Tiếng Việt</a></div>
+      </div>
+    </header>
+
+    <section id="start">
+      <div class="section-head"><span class="section-num">01</span><h2>从哪里开始</h2></div>
+      <p class="section-dek">你挖得越深，游戏就越会一点点打开它的系统。</p>
+      <div class="strategy-track">
+          <div class="strategy-stage">
+            <div class="stage-label">前期</div>
+            <ul>
+              <li>不停升级十字镐；更深的楼层会解锁新的十字镐。</li>
+              <li>看到黄金气球、黄金水晶和弱点就点，并开始使用最初的技能。</li>
+              <li>每个游戏日都领取欢迎好礼，并看看每日加成。</li>
+              <li>买得起时就买下第一只宠物。</li>
+            </ul>
+          </div>
+          <div class="strategy-stage">
+            <div class="stage-label">中期</div>
+            <ul>
+              <li>进度变慢时做一次觉醒，换取精华。</li>
+              <li>任务、每日任务、幸运转盘、商人、技能树和天气事件都在这个阶段开放。</li>
+              <li>每次有祝福可选时都选一个，并把精华分散投入，别全堆在一个参数上。</li>
+            </ul>
+          </div>
+          <div class="strategy-stage">
+            <div class="stage-label">后期</div>
+            <ul>
+              <li>角色、它的装备和竞技场陆续开放；元素开始在背包里堆积。</li>
+              <li>有钥匙时就去打首领，之后开始深渊挑战。</li>
+              <li>工人加入，附魔槽开放，铁匠也开始为你强化装备。</li>
+              <li>继续升级护甲，别让高温吃掉你的伤害。</li>
+            </ul>
+          </div>
+          <div class="strategy-stage">
+            <div class="stage-label">长期</div>
+            <ul>
+              <li>在更深的地方会解锁升华，它会重置整个觉醒循环。</li>
+              <li>作为交换你会获得纯净精华，让之后每一轮都永久变快。</li>
+              <li>被击败的首领会开放无尽的噩梦层级，奖励更丰厚。</li>
+            </ul>
+          </div>
+        </div>
+      <div class="callout">
+          <div class="callout-label">值得一提</div>
+          数字增长很快；游戏会先切换到简写，再切换到科学记数法。并没有上限，变的只是写法。
+        </div>
+      <div class="callout">
+          <div class="callout-label">简短教程</div>
+          每个新系统第一次开放时，都会有一段简短的教程来介绍。会让屏幕变暗的步骤带有跳过按钮。
+        </div>
+    </section>
+
+    <section id="currencies">
+      <div class="section-head"><span class="section-num">02</span><h2>货币</h2></div>
+      <p class="section-dek">每一种都支撑着不同的系统。</p>
+      <div class="currency-grid">
+        <div class="cur-card" style="--dot:var(--cur-gold)">
+          <h4><span class="dot"></span>金币</h4>
+          <p>靠<b>敲碎矿石</b>获得；工人、离线时间、每小时免费金币、任务、黄金气球、时间跳跃和幸运转盘也会带来金币。</p>
+          <p>用于十字镐、升级和物品技能。</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-diamond)">
+          <h4><span class="dot"></span>钻石</h4>
+          <p>来自<b>商店</b>、优惠码、竞技场赛季奖励和幸运转盘。</p>
+          <p>用于宠物、魔像、Infinity 物品、时间跳跃、宝箱、钥匙礼包、竞技场额外进攻和集市刷新。</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-essence)">
+          <h4><span class="dot"></span>精华</h4>
+          <p>是<b>觉醒</b>的奖励；首领、任务、商人、商店礼包和幸运转盘也会给一些。</p>
+          <p>用于永久的觉醒参数。</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-taskium)">
+          <h4><span class="dot"></span>Taskium</h4>
+          <p>每次点击矿石都会攒下一点，幸运转盘也会给一些。</p>
+          <p>用于接受任务和重新刷新任务。</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-key)">
+          <h4><span class="dot"></span>地下城钥匙</h4>
+          <p>商店每天一把免费，此外来自钻石、商店礼包和幸运转盘。</p>
+          <p>用于进入首领战。</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-skillstone)">
+          <h4><span class="dot"></span>技能石</h4>
+          <p>来自商人、商店礼包和幸运转盘。</p>
+          <p>用于强化主动技能。</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-orestone)">
+          <h4><span class="dot"></span>矿石结晶</h4>
+          <p>每块敲碎的矿石都会掉落，成就、首领、深渊挑战、时间跳跃和幸运转盘也会给。</p>
+          <p>用于兑换及其手续费、制作附魔和升级工人。</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-abysskey)">
+          <h4><span class="dot"></span>深渊钥匙</h4>
+          <p>商店每天一把免费，此外来自钻石和商店礼包。</p>
+          <p>用于进入深渊挑战。</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-pureessence)">
+          <h4><span class="dot"></span>纯净精华</h4>
+          <p>是<b>升华</b>的奖励，别处得不到。</p>
+          <p>只用于升华参数。</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-elementium)">
+          <h4><span class="dot"></span>Elementium</h4>
+          <p>在商人处用收集到的元素或矿石结晶制成；在铁匠处出售装备也能获得。</p>
+          <p>用于角色和水晶的属性，以及集市里的物品。</p>
+        </div>
+      </div>
+      <div class="callout">
+          <div class="callout-label">服务器货币</div>
+          钻石、地下城钥匙和深渊钥匙保存在服务器上；要花掉它们需要联网。
+        </div>
+    </section>
+
+    <section id="damage">
+      <div class="section-head"><span class="section-num">03</span><h2>伤害与暴击</h2></div>
+      <p class="section-dek">两条独立的伤害来源，以及把它们成倍放大的暴击。</p>
+      <ul>
+          <li><strong>点击伤害</strong>来自第一把十字镐、愤怒点击技能、称号、觉醒参数和附魔。</li>
+          <li><strong>自动伤害</strong>来自其他十字镐、狂暴技能、宠物和附魔；只要矿石还活着就持续不断地打。</li>
+          <li>力量合一越高，自动伤害中就有越大一部分也会加到每次点击上。</li>
+          <li>每次点击都可能<strong>暴击</strong>，打出高得多的伤害。暴击率和暴击倍率会随技能、觉醒参数、称号和附魔提升。暴击率满了之后，多出的部分会继续提高你的暴击伤害。</li>
+          <li>矿石上时不时会出现一个发亮的<strong>弱点</strong>；点它造成的伤害比普通点击高得多。</li>
+          <li>魔像、祝福和每日加成还会在此之上叠加各自的增益。效果状态面板会列出每个生效中的效果及其来源。</li>
+        </ul>
+    </section>
+
+    <section id="equipment">
+      <div class="section-head"><span class="section-num">04</span><h2>十字镐、护甲与宠物</h2></div>
+      <p class="section-dek">你的伤害和生存能力的基础。</p>
+      <ul>
+          <li><strong>十字镐</strong>随深度解锁。第一把支撑点击伤害，其余支撑自动伤害。</li>
+          <li>十字镐会从它敲碎的矿石中获得<strong>熟练度</strong>；熟练度每升一级，那把十字镐就打得更狠。</li>
+          <li><strong>护甲</strong>一开始就属于你；它不用购买，只能升级，用来抵挡高温。高温第一次开始削减你的伤害时，护甲标签页就会开放。</li>
+          <li><strong>宠物</strong>用钻石购买、用金币升级，并造成自动伤害。拥有权是永久的。</li>
+          <li>三者都有随等级开放的专属技能；有的只帮该物品，有的惠及整个系列。技能全部买齐的卡片会发光。</li>
+        </ul>
+      <div class="callout">
+          <div class="callout-label">大跨步</div>
+          在特定等级上，物品的威力会出现一次大跳跃。把一件物品推到下一个门槛，通常是最划算的升级。
+        </div>
+      <div class="callout warn">
+          <div class="callout-label">觉醒之后</div>
+          觉醒会重新锁住十字镐，并重置护甲和宠物的升级以及十字镐熟练度。宠物本身仍然属于你。
+        </div>
+    </section>
+
+    <section id="golems">
+      <div class="section-head"><span class="section-num">05</span><h2>魔像</h2></div>
+      <p class="section-dek">只会让你变强的石头伙伴。</p>
+      <ul>
+          <li>商店里的<strong>魔像蛋</strong>会孵化出一个随机魔像。你拥有的每个魔像都会同时站在矿井里陪着你。</li>
+          <li>魔像自己不造成伤害，而是用技能强化你——伤害、金币、暴击、矿石结晶等等。技能生效期间，魔像脚下会转动一个它自己颜色的光环。</li>
+          <li>魔像会随你敲碎的矿石升级。再孵化出一个已拥有的魔像，会提升它的星级并强化它的技能。</li>
+          <li>魔像永远不会被重置——觉醒不会，升华也不会。</li>
+        </ul>
+    </section>
+
+    <section id="temperature">
+      <div class="section-head"><span class="section-num">06</span><h2>高温</h2></div>
+      <p class="section-dek">越往深处越热，而高温会悄悄削掉你的伤害。</p>
+      <p>如果耐热跟不上楼层温度，你的伤害就会像被融掉一样下降。护甲面板里有耐热的自动购买开关。高温只存在于主矿场，一些天气事件会暂时改变它。</p>
+      <div class="callout warn">
+          <div class="callout-label">如果进度卡住</div>
+          矿石突然敲不动的那堵墙，多半就是高温。在把钱花到别处之前，先看一眼温度条。
+        </div>
+    </section>
+
+    <section id="workers">
+      <div class="section-head"><span class="section-num">07</span><h2>工人</h2></div>
+      <p class="section-dek">在游戏开着时替你挖矿的帮手。</p>
+      <ul>
+          <li>越往深处会有新工人加入，而且不会再被锁住。</li>
+          <li>给每个工人一把十字镐；没有十字镐的工人什么也赚不到。把十字镐交出去不会降低你自己的伤害。</li>
+          <li>收益随你的进度增长，积在池子里，等你去领取。工人用矿石结晶升级。</li>
+        </ul>
+      <div class="callout warn">
+          <div class="callout-label">觉醒之前记得领取</div>
+          工人只在游戏开着时赚取收益。觉醒会保留他们的等级，但会清空未领取的收益。
+        </div>
+    </section>
+
+    <section id="enchantments">
+      <div class="section-head"><span class="section-num">08</span><h2>附魔</h2></div>
+      <p class="section-dek">用挖到的材料制作附魔，装到十字镐、护甲和宠物上。</p>
+      <ul>
+          <li>敲碎矿石会掉落<strong>附魔粉尘</strong>和<strong>附魔碎片</strong>。更高品质的材料出现在更深的地方。</li>
+          <li>工匠把粉尘和碎片变成属性随机的附魔。品质越高，属性越多也越强。</li>
+          <li>每件物品都有随深度开放的附魔槽。</li>
+          <li>用不上的附魔可以在商人那里分解成粉尘，材料也能向上兑换一档品质。</li>
+        </ul>
+      <div class="callout">
+          <div class="callout-label">觉醒很安全</div>
+          觉醒绝不会删除附魔；被重新锁住的物品上的附魔会回到背包。
+        </div>
+    </section>
+
+    <section id="floors">
+      <div class="section-head"><span class="section-num">09</span><h2>楼层与矿石</h2></div>
+      <p class="section-dek">每一层都比上一层难一点，也更划算一点。</p>
+      <ul>
+          <li>随着你越挖越深，<strong>元素</strong>会一个接一个加入矿井；最新的那个出现得最频繁。你敲碎的每块矿石都会收进背包。</li>
+          <li>时不时会出现<strong>限时楼层</strong>：在倒计时结束前敲碎矿石，它会给出更多金币。若时间耗尽，你会掉回一层，自动楼层也会关闭。</li>
+          <li>有些楼层会出现<strong>装甲水晶和精英水晶</strong>：要先敲碎它们的护盾，作为回报它们会给出更多金币。</li>
+          <li>每块矿石在给金币之外还会掉落矿石结晶。</li>
+          <li>极偶尔会出现<strong>稀有矿石</strong>（Ferrovyx, Karnyth, Thalveris, Umbryssa, Zephiris），每一种只会被找到一次。</li>
+          <li>洞穴墙壁上有时会出现<strong>古老铭文</strong>。它的谜题指向一个你已经经过的楼层——回到那里，会有一个黄金水晶在等你。</li>
+          <li>电梯让你在已到达的楼层之间往返；它在你第一次觉醒之后开放。区域用于在主矿场、地下城和深渊之间切换。</li>
+        </ul>
+      <div class="callout">
+          <div class="callout-label">在下层刷效率很低</div>
+          粉尘和碎片在你到达过的最深楼层附近掉得最好；待在低得多的地方，几率会明显下降。
+        </div>
+    </section>
+
+    <section id="weather">
+      <div class="section-head"><span class="section-num">10</span><h2>天气</h2></div>
+      <p class="section-dek">矿井也有自己的脾气。</p>
+      <p>随着你越挖越深，主矿场里会解锁天气事件。每个事件都会持续一段时间，并带来各自的附加效果；有些还会改变楼层温度。事件之间不会重叠，两个事件之间总会有一段平静期。</p>
+    </section>
+
+    <section id="skills">
+      <div class="section-head"><span class="section-num">11</span><h2>技能与称号</h2></div>
+      <p class="section-dek">限时强化，以及往下挖就会自己到手的加成。</p>
+      <ul>
+          <li><strong>主动技能</strong>随深度免费解锁；短暂强化你之后进入冷却。它们用技能石在技能树里变强，并且不会因觉醒而消失。</li>
+          <li><strong>称号</strong>会在你往下挖时自动到手，提供伤害、金币和耐热等加成。觉醒之后需要重新获得。</li>
+        </ul>
+      <div class="callout">
+          <div class="callout-label">连招</div>
+          先用超载，再用你想放大的技能，比如黄金狂热。之后时光倒流会缩短上一个技能的冷却。
+        </div>
+    </section>
+
+    <section id="character">
+      <div class="section-head"><span class="section-num">12</span><h2>角色与装备</h2></div>
+      <p class="section-dek">为竞技场打造的第二条成长线。</p>
+      <ul>
+          <li>你的<strong>角色</strong>会随你敲碎的矿石升级。它的攻击属性和你的<strong>水晶</strong>的防御属性都用Elementium提升。</li>
+          <li><strong>装备</strong>装在战锤、头盔、胸甲、手套、靴子、披风、戒指和项链等栏位上。物品有从普通到唯一的六种稀有度，每件物品的属性在你获得的那一刻随机生成。</li>
+          <li>穿齐同一套装的所有部件，该套装的正面属性就会变强。</li>
+          <li><strong>集市</strong>每天都会上架一批新物品，用Elementium购买；你也可以用钻石提前刷新货架。</li>
+          <li><strong>铁匠</strong>用<strong>强化石</strong>强化装备，并收购你多余的装备。强化石从首领和深渊挑战中掉落，商人可以把它们换成更高一级的强化石。</li>
+        </ul>
+      <div class="callout">
+          <div class="callout-label">永久保留</div>
+          角色、装备和你的竞技场积分在觉醒和升华中都会保留。
+        </div>
+    </section>
+
+    <section id="arena">
+      <div class="section-head"><span class="section-num">13</span><h2>竞技场</h2></div>
+      <p class="section-dek">进攻其他玩家的水晶，在赛季排名中往上爬。</p>
+      <ul>
+          <li>你进攻其他玩家的水晶，赢得或失去竞技场积分。别人进攻你的对战同样计入。</li>
+          <li>你会得到一份固定的对手名单；每天可以免费刷新几次，之后用钻石刷新。</li>
+          <li>每天有几次免费进攻机会。用完之后，可以用钻石继续进攻。</li>
+          <li>通常是更强的一方获胜；运气只占很小的一部分。</li>
+          <li>每场战斗后，结果界面会显示伤害、攻击次数、暴击和闪避，以及双方的新积分。<strong>对战记录</strong>会保存你最近的对战。</li>
+          <li>每个赛季持续一个月。赛季结束时积分重置，排名靠前的玩家获得钻石，前三名获得永久奖章，第一名还会获得赛季冠军称号。</li>
+        </ul>
+    </section>
+
+    <section id="tasks">
+      <div class="section-head"><span class="section-num">14</span><h2>任务</h2></div>
+      <p class="section-dek">把点击变成第二份收入的支线。</p>
+      <ul>
+          <li><strong>任务</strong>用Taskium接受；越稀有的任务奖励越高。奖励已可领取的任务会移到列表顶部。</li>
+          <li><strong>每日任务</strong>每天刷新，完成时会给短时强化。别忘了在面板里领取奖励。</li>
+        </ul>
+    </section>
+
+    <section id="trade">
+      <div class="section-head"><span class="section-num">15</span><h2>商人</h2></div>
+      <p class="section-dek">把多余资源换成有用东西的地方。</p>
+      <p>你可以把矿石结晶换成精华、技能石或Elementium，把收集到的元素变成Elementium，把附魔材料和强化石向上兑换一档，也能分解不想要的附魔。兑换手续费用矿石结晶支付。换技能石是不在商店买任何东西也能强化技能的途径。</p>
+    </section>
+
+    <section id="extras">
+      <div class="section-head"><span class="section-num">16</span><h2>免费奖励</h2></div>
+      <p class="section-dek">只要你露个面就能拿到的资源。</p>
+      <ul>
+          <li><strong>黄金气球</strong>时不时飘过屏幕；点一下就有金币。不会错过——它会一直等到你点。</li>
+          <li><strong>黄金水晶</strong>会把矿石短暂变成金币丰厚的奖励矿石；只能在主矿场里拾取。</li>
+          <li><strong>欢迎好礼</strong>会在你最初的几天里每天送一份礼物；这些天不必连续。</li>
+          <li><strong>每日加成</strong> - 每天所有玩家都会获得相同的加成，例如点击伤害、金币、暴击或宠物伤害，并且每天都会更换。</li>
+          <li><strong>离线收益</strong>在游戏关闭时累积，领取之前绝不会丢失。</li>
+          <li><strong>每小时免费金币</strong>在商店里等你；它随你在本次觉醒中到达的最深楼层增长。</li>
+          <li><strong>每日奖励</strong>每天在商店给一把免费地下城钥匙和一把免费深渊钥匙，两者互不影响。</li>
+          <li><strong>幸运转盘</strong>每隔一段时间恢复，并给出免费转盘机会。</li>
+          <li><strong>优惠码</strong> - 我们在公告里发布的兑换码可以在设置菜单中使用。</li>
+        </ul>
+    </section>
+
+    <section id="awakening">
+      <div class="section-head"><span class="section-num">17</span><h2>觉醒</h2></div>
+      <p class="section-dek">把这一轮的进度换成永久的力量。</p>
+      <ul>
+          <li>越过一定深度后就可以进行觉醒。每一轮都会重新从第一层开始。</li>
+          <li><strong>会重置：</strong>金币、Taskium、楼层进度、十字镐的解锁、升级与熟练度、护甲和宠物升级、物品技能、称号、任务进度、技能冷却、祝福、工人的十字镐分配，以及未领取的工人收益。</li>
+          <li><strong>会保留：</strong>钻石、钥匙、精华、纯净精华、技能石、矿石结晶、Elementium、觉醒与升华参数、技能树、魔像、首领和深渊进度、已解锁的面板、每日奖励、工人等级、角色及其装备、你的竞技场积分，以及背包里的所有东西。</li>
+          <li>获得的精华取决于你到达过的最深楼层，并随深度迅速增长。把它花在永久参数上。</li>
+          <li>如果在设置中选择保留，自动楼层和自动购买耐热在觉醒之后也可以保持开启。</li>
+          <li>页面上的<strong>i</strong>按钮会打开你的<strong>觉醒记录</strong>。</li>
+        </ul>
+      <div class="callout">
+          <div class="callout-label">觉醒祝福</div>
+          每一轮到达特定楼层时，你可以从几个祝福中选择一个；有祝福等待选择时会出现一个发光的按钮。同一系列的祝福凑在一起会更强，而它们在觉醒时全部重置。
+        </div>
+      <div class="callout">
+          <div class="callout-label">再往下挖一点</div>
+          在觉醒之前多打下几层，通常比马上接着再做一次觉醒更划算。
+        </div>
+    </section>
+
+    <section id="ascension">
+      <div class="section-head"><span class="section-num">18</span><h2>升华</h2></div>
+      <p class="section-dek">叠在觉醒之上的第二层。</p>
+      <ul>
+          <li>到达深得多的楼层后会解锁升华；它在声望标签页下有自己的页面。</li>
+          <li><strong>会重置：</strong>你的觉醒参数和精华——那个循环从零开始；十字镐、楼层和升级也和觉醒一样重置。</li>
+          <li><strong>会保留：</strong>你的觉醒等级、钻石、钥匙、首领和深渊进度、魔像、附魔与装备、角色、技能树、成就、工人等级，以及攒下的纯净精华。</li>
+          <li>作为交换你会获得<strong>纯净精华</strong>。它可以投入两项参数：<strong>觉醒回响</strong>放大每一项觉醒参数的加成，<strong>源泉</strong>提高每次觉醒给出的精华。</li>
+          <li>两项参数都会随你购买的每一级而增长。</li>
+        </ul>
+      <div class="callout">
+          <div class="callout-label">什么时候升华</div>
+          升华加速的不是单独一轮，而是整个循环。当精华参数变贵、再做一次觉醒也提升不大时，就值得了。
+        </div>
+    </section>
+
+    <section id="dungeons">
+      <div class="section-head"><span class="section-num">19</span><h2>首领与深渊</h2></div>
+      <p class="section-dek">主矿场之外的两种限时挑战。</p>
+      <ul>
+          <li>两者都从区域进入；你在那里时，主矿场的高温和楼层进度都会暂停。</li>
+          <li><strong>首领</strong>用地下城钥匙开启：在时限结束前把首领打倒，就能获得精华、矿石结晶和强化石。首领按顺序解锁，打赢过的首领会一直开放。</li>
+          <li>击败首领后，它无尽的<strong>噩梦</strong>层级就会开放：每升一级，首领更强，奖励更多，强化石也更稀有。</li>
+          <li><strong>深渊</strong>用深渊钥匙开启，并以一个倒计时贯穿全程：你接连敲碎矿石，每个阶段都比上一个更难。</li>
+          <li>深渊的每个阶段都带有自己的<strong>惩罚</strong>——有的削自动伤害，有的削点击伤害，有的削暴击。惩罚只在该阶段持续期间生效。</li>
+          <li>你在深渊里敲碎的每个阶段都会结算：无论时间耗尽还是你自己退出，到那时为止赚到的都归你。通关全部阶段后，下一个深渊就会开放。</li>
+        </ul>
+      <div class="callout warn">
+          <div class="callout-label">输给首领是有代价的</div>
+          如果首领倒下之前时间就到了，你拿不到奖励，钥匙也没了。
+        </div>
+    </section>
+
+    <section id="store">
+      <div class="section-head"><span class="section-num">20</span><h2>商店与成就</h2></div>
+      <p class="section-dek">钻石、钥匙、礼包、会员、时间跳跃、宝箱、魔像，以及永久的 Infinity 物品。</p>
+      <ul>
+          <li><strong>新手礼包</strong>每个账号只能购买一次。</li>
+          <li><strong>会员</strong>在规定期限内提升你的伤害、金币和离线收益。</li>
+          <li><strong>时间跳跃</strong>把游戏快进几个小时；结算按你当前的实力计算。</li>
+          <li><strong>宝箱</strong>立即开启：附魔宝箱给出附魔材料，装备宝箱和混合宝箱给出装备。</li>
+          <li><strong>魔像蛋</strong>会孵化出一个随机魔像。</li>
+          <li><strong>钥匙礼包</strong>用钻石购买；地下城钥匙和深渊钥匙都有对应礼包。</li>
+          <li><strong>Infinity 物品</strong>只需买一次，觉醒和升华都不会让它消失。</li>
+          <li><strong>成就</strong>会给出奖励，但需要你自己领取。</li>
+        </ul>
+    </section>
+
+    <section id="progress">
+      <div class="section-head"><span class="section-num">21</span><h2>进度与社区</h2></div>
+      <p class="section-dek">在哪里查看这一轮、进度如何被保住，以及如何分享它。</p>
+      <ul>
+          <li><strong>指南</strong>（书本按钮）收录你找到过的元素、稀有矿石、首领、深渊、货币、十字镐、宠物和魔像。尚未发现的会保持黑色剪影。</li>
+          <li>Steam 排行榜、统计界面和<strong>活动日志</strong>都会显示你的进度。<strong>更新</strong>面板会显示最新的更新说明。</li>
+          <li>设置中的<strong>导出卡片</strong>按钮会显示带有你主要数据的<strong>矿工卡</strong>；你可以把它保存为 PNG 图片并分享。</li>
+          <li>开启<strong>在Discord分享稀有时刻</strong>后，你最稀有的时刻——深层楼层、传说掉落、首领与深渊胜利、竞技场战斗——会出现在我们 Discord 服务器的 #live 频道里。只会显示你的 Steam 名称和那个时刻；你可以在设置中关闭它。</li>
+          <li>开着 Discord 时，你的个人资料会显示当前楼层和觉醒 / 升华等级。</li>
+          <li>游戏会定期自动保存并备份到 Steam 云；换一台电脑也能接着玩。</li>
+          <li>在配置较低的电脑上，在设置中关闭<strong>使用阴影</strong>可以提升性能。</li>
+        </ul>
+    </section>
+
+    <footer class="doc-footer">游戏会随更新变化；本指南提供整体概览。以真实货币出售的商品，价格由 Steam 以你所在地区的货币显示。</footer>
+  </main>
+</div>
+
+</body>
+</html>

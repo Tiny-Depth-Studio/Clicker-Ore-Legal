@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self'; style-src 'unsafe-inline'; base-uri 'none'; form-action 'none'; upgrade-insecure-requests">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Clicker Ore Game - Oyuncu Rehberi</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Madende ne nasıl işliyor: kazmalar, petler, golemler, işçiler, efsunlar, yetenekler, karakter ve ekipman, Arena, Uyanış, Yükseliş, bosslar, Uçurum ve mağaza - kısaca.">
+<style>
+  :root {
+    --bg: #14110d;
+    --bg-elevated: #1d1811;
+    --bg-card: #211b13;
+    --text: #ede6d8;
+    --text-dim: #a89a82;
+    --text-faint: #766a55;
+    --accent: #e0a752;
+    --accent-strong: #f2bd6e;
+    --accent-2: #7fb8ad;
+    --border: #3a2f22;
+    --border-soft: #2a2318;
+    --danger: #cf7a5a;
+    --shadow: 0 8px 24px rgba(0,0,0,0.35);
+
+    --cur-gold: #e0a752;
+    --cur-diamond: #7fd1e0;
+    --cur-essence: #b79ef0;
+    --cur-taskium: #93a8d6;
+    --cur-key: #d98a63;
+    --cur-skillstone: #7fc9a0;
+    --cur-orestone: #b5a68c;
+    --cur-abysskey: #8f7fd6;
+    --cur-pureessence: #d7bff5;
+    --cur-elementium: #e07f9e;
+
+    --font-display: "Bahnschrift", "Segoe UI Semibold", "Arial Narrow Bold", "Arial Narrow", sans-serif;
+    --font-body: "Sitka Text", "Iowan Old Style", Georgia, "Times New Roman", serif;
+    --font-mono: "Cascadia Mono", "Consolas", "SF Mono", ui-monospace, monospace;
+  }
+
+  :root[data-theme="light"] {
+    --bg: #efe9da;
+    --bg-elevated: #e6ddc8;
+    --bg-card: #f3ede0;
+    --text: #241d14;
+    --text-dim: #5c5138;
+    --text-faint: #857656;
+    --accent: #a8621a;
+    --accent-strong: #8a4e12;
+    --accent-2: #2f7a70;
+    --border: #d3c5a4;
+    --border-soft: #ddd0b1;
+    --danger: #a3492c;
+    --shadow: 0 8px 20px rgba(90,70,30,0.12);
+  }
+
+  @media (prefers-color-scheme: light) {
+    :root:not([data-theme="dark"]) {
+      --bg: #efe9da;
+      --bg-elevated: #e6ddc8;
+      --bg-card: #f3ede0;
+      --text: #241d14;
+      --text-dim: #5c5138;
+      --text-faint: #857656;
+      --accent: #a8621a;
+      --accent-strong: #8a4e12;
+      --accent-2: #2f7a70;
+      --border: #d3c5a4;
+      --border-soft: #ddd0b1;
+      --danger: #a3492c;
+      --shadow: 0 8px 20px rgba(90,70,30,0.12);
+    }
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: 17px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection { background: var(--accent); color: #14110d; }
+
+  a { color: var(--accent-strong); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  a:focus-visible, button:focus-visible, summary:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    text-wrap: balance;
+    letter-spacing: 0.01em;
+    color: var(--text);
+  }
+
+  p { max-width: 68ch; }
+  ul, ol { max-width: 68ch; }
+
+  .shell {
+    display: grid;
+    grid-template-columns: 260px minmax(0, 1fr);
+    min-height: 100vh;
+  }
+
+  .topbar {
+    display: none;
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: var(--bg-elevated);
+    border-bottom: 1px solid var(--border);
+    padding: 0.7rem 1rem;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .topbar-title {
+    font-family: var(--font-display);
+    font-size: 0.95rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--accent-strong);
+  }
+  #nav-toggle { display: none; }
+  .nav-toggle-btn {
+    font-family: var(--font-display);
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 0.4rem 0.7rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.85rem;
+  }
+
+  nav.toc {
+    position: sticky;
+    top: 0;
+    align-self: start;
+    height: 100vh;
+    overflow-y: auto;
+    padding: 2rem 1.4rem 3rem;
+    background: var(--bg-elevated);
+    border-right: 1px solid var(--border);
+  }
+  .toc-home {
+    display: inline-block;
+    font-family: var(--font-display);
+    font-size: 0.8rem;
+    color: var(--text-dim);
+    margin-bottom: 1.1rem;
+  }
+  .toc-home:hover { color: var(--accent-strong); text-decoration: none; }
+
+  .toc-brand {
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    letter-spacing: 0.03em;
+    color: var(--accent-strong);
+    margin-bottom: 0.15rem;
+  }
+  .toc-brand small {
+    display: block;
+    font-family: var(--font-body);
+    font-style: italic;
+    font-size: 0.78rem;
+    color: var(--text-faint);
+    letter-spacing: 0;
+    margin-top: 0.25rem;
+  }
+  .toc-list {
+    list-style: none;
+    margin: 1.6rem 0 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+  }
+  .toc-list a {
+    display: block;
+    color: var(--text-dim);
+    font-size: 0.88rem;
+    padding: 0.32rem 0.5rem;
+    border-radius: 4px;
+    border-left: 2px solid transparent;
+  }
+  .toc-list a:hover {
+    color: var(--text);
+    text-decoration: none;
+    background: rgba(224,167,82,0.08);
+    border-left-color: var(--accent);
+  }
+  .toc-num {
+    font-family: var(--font-mono);
+    color: var(--text-faint);
+    font-size: 0.78rem;
+    margin-right: 0.45rem;
+  }
+
+  main {
+    padding: 3.2rem clamp(1.2rem, 4vw, 4rem) 6rem;
+    max-width: 900px;
+  }
+
+  header.hero {
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .strata {
+    height: 10px;
+    width: 100%;
+    border-radius: 3px;
+    margin-bottom: 1.6rem;
+    background: repeating-linear-gradient(
+      90deg,
+      var(--accent) 0 6%,
+      var(--accent-2) 6% 11%,
+      var(--border-soft) 11% 18%,
+      var(--accent) 18% 24%,
+      var(--border-soft) 24% 34%,
+      var(--accent-2) 34% 40%,
+      var(--accent) 40% 48%,
+      var(--border-soft) 48% 58%,
+      var(--accent-2) 58% 63%,
+      var(--accent) 63% 72%,
+      var(--border-soft) 72% 82%,
+      var(--accent-2) 82% 90%,
+      var(--accent) 90% 100%
+    );
+    opacity: 0.85;
+  }
+  .eyebrow {
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-size: 0.72rem;
+    color: var(--accent);
+    margin-bottom: 0.6rem;
+  }
+  h1.title {
+    font-size: clamp(2rem, 4.2vw, 2.9rem);
+    margin: 0 0 0.7rem;
+    line-height: 1.1;
+  }
+  .subtitle {
+    color: var(--text-dim);
+    font-size: 1.08rem;
+    max-width: 62ch;
+    margin: 0;
+  }
+
+  .langbar {
+    margin: 1.8rem 0 0;
+    padding-top: 1.2rem;
+    border-top: 1px solid var(--border-soft);
+  }
+  .langbar-label {
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 0.68rem;
+    color: var(--text-faint);
+    margin-bottom: 0.55rem;
+  }
+  .langbar-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem 0.4rem;
+  }
+  .langbar-list a, .langbar-list span {
+    font-family: var(--font-display);
+    font-size: 0.78rem;
+    padding: 0.18rem 0.55rem;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    color: var(--text-dim);
+    background: var(--bg-card);
+  }
+  .langbar-list a:hover {
+    text-decoration: none;
+    color: var(--text);
+    border-color: var(--accent);
+  }
+  .langbar-list span {
+    color: #14110d;
+    background: var(--accent);
+    border-color: var(--accent);
+  }
+  :root[data-theme="light"] .langbar-list span { color: #efe9da; }
+
+  section {
+    margin-bottom: 3.6rem;
+    scroll-margin-top: 1.5rem;
+  }
+  .section-head {
+    display: flex;
+    align-items: baseline;
+    gap: 0.7rem;
+    margin-bottom: 0.3rem;
+  }
+  .section-num {
+    font-family: var(--font-mono);
+    color: var(--accent);
+    font-size: 0.95rem;
+  }
+  h2 {
+    font-size: 1.55rem;
+    margin: 0;
+  }
+  .section-dek {
+    color: var(--text-dim);
+    font-size: 0.98rem;
+    margin: 0.3rem 0 1.5rem;
+    max-width: 62ch;
+  }
+
+  .callout {
+    border-left: 3px solid var(--accent);
+    background: var(--bg-card);
+    padding: 0.95rem 1.2rem;
+    border-radius: 0 6px 6px 0;
+    margin: 1.2rem 0;
+    font-size: 0.95rem;
+  }
+  .callout strong { color: var(--accent-strong); }
+  .callout.warn { border-left-color: var(--danger); }
+  .callout-label {
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 0.72rem;
+    color: var(--accent);
+    margin-bottom: 0.35rem;
+  }
+  .callout.warn .callout-label { color: var(--danger); }
+
+  .currency-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 0.9rem;
+    margin: 1.4rem 0;
+  }
+  .cur-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-top: 3px solid var(--dot);
+    border-radius: 6px;
+    padding: 0.95rem 1rem 1.05rem;
+  }
+  .cur-card h4 {
+    margin: 0 0 0.5rem;
+    font-size: 0.98rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .dot {
+    width: 9px; height: 9px; border-radius: 50%;
+    background: var(--dot);
+    flex: none;
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--dot) 20%, transparent);
+  }
+  .cur-card p {
+    margin: 0.15rem 0;
+    font-size: 0.84rem;
+    color: var(--text-dim);
+    max-width: none;
+  }
+  .cur-card p b { color: var(--text); font-weight: 600; }
+
+  .table-wrap {
+    overflow-x: auto;
+    margin: 1.2rem 0;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+  }
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    min-width: 460px;
+    font-size: 0.9rem;
+  }
+  thead th {
+    text-align: left;
+    font-family: var(--font-display);
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    font-size: 0.72rem;
+    color: var(--text-dim);
+    background: var(--bg-elevated);
+    padding: 0.6rem 0.85rem;
+    border-bottom: 1px solid var(--border);
+    white-space: nowrap;
+  }
+  tbody td {
+    padding: 0.55rem 0.85rem;
+    border-bottom: 1px solid var(--border-soft);
+    font-variant-numeric: tabular-nums;
+    color: var(--text);
+  }
+  tbody tr:last-child td { border-bottom: none; }
+  tbody tr:nth-child(even) { background: color-mix(in srgb, var(--accent) 3%, transparent); }
+  td.num, th.num { font-family: var(--font-mono); }
+  td.strong { color: var(--accent-strong); font-weight: 600; }
+
+  .strategy-track {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 1.4rem 0;
+  }
+  .strategy-stage {
+    background: var(--bg-card);
+    padding: 1rem 1.1rem;
+  }
+  .strategy-stage .stage-label {
+    font-family: var(--font-display);
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+    margin-bottom: 0.4rem;
+  }
+  .strategy-stage ul {
+    margin: 0;
+    padding-left: 1.1rem;
+    font-size: 0.86rem;
+    color: var(--text-dim);
+  }
+  .strategy-stage li { margin-bottom: 0.25rem; }
+
+  footer.doc-footer {
+    margin-top: 4rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+    color: var(--text-faint);
+    font-size: 0.8rem;
+  }
+
+  @media (max-width: 880px) {
+    .shell { grid-template-columns: 1fr; }
+    .topbar { display: flex; }
+    nav.toc {
+      position: fixed;
+      inset: 0 20% 0 0;
+      top: 52px;
+      height: calc(100vh - 52px);
+      transform: translateX(-100%);
+      transition: transform 0.22s ease;
+      z-index: 15;
+      box-shadow: var(--shadow);
+    }
+    #nav-toggle:checked ~ .shell nav.toc {
+      transform: translateX(0);
+    }
+    main { padding: 2rem 1.2rem 5rem; }
+  }
+</style>
+</head>
+<body>
+
+<input type="checkbox" id="nav-toggle">
+
+<div class="topbar">
+  <a class="topbar-title" href="index.html">&#9935; Clicker Ore Game</a>
+  <label class="nav-toggle-btn" for="nav-toggle">İçindekiler</label>
+</div>
+
+<div class="shell">
+  <nav class="toc" aria-label="İçindekiler">
+    <a class="toc-home" href="index.html">← Ana sayfa</a>
+    <div class="toc-brand">Clicker Ore Game<small>Oyuncu Rehberi</small></div>
+    <ul class="toc-list">
+      <li><a href="#start"><span class="toc-num">01</span>Nereden Başlamalı</a></li>
+      <li><a href="#currencies"><span class="toc-num">02</span>Para Birimleri</a></li>
+      <li><a href="#damage"><span class="toc-num">03</span>Hasar ve Kritik Vuruş</a></li>
+      <li><a href="#equipment"><span class="toc-num">04</span>Kazmalar, Zırhlar ve Petler</a></li>
+      <li><a href="#golems"><span class="toc-num">05</span>Golemler</a></li>
+      <li><a href="#temperature"><span class="toc-num">06</span>Isı</a></li>
+      <li><a href="#workers"><span class="toc-num">07</span>İşçiler</a></li>
+      <li><a href="#enchantments"><span class="toc-num">08</span>Efsunlar</a></li>
+      <li><a href="#floors"><span class="toc-num">09</span>Katlar ve Cevherler</a></li>
+      <li><a href="#weather"><span class="toc-num">10</span>Hava Durumu</a></li>
+      <li><a href="#skills"><span class="toc-num">11</span>Yetenekler ve Unvanlar</a></li>
+      <li><a href="#character"><span class="toc-num">12</span>Karakter ve Ekipman</a></li>
+      <li><a href="#arena"><span class="toc-num">13</span>Arena</a></li>
+      <li><a href="#tasks"><span class="toc-num">14</span>Görevler</a></li>
+      <li><a href="#trade"><span class="toc-num">15</span>Tüccar</a></li>
+      <li><a href="#extras"><span class="toc-num">16</span>Bedava Ödüller</a></li>
+      <li><a href="#awakening"><span class="toc-num">17</span>Uyanış</a></li>
+      <li><a href="#ascension"><span class="toc-num">18</span>Yükseliş</a></li>
+      <li><a href="#dungeons"><span class="toc-num">19</span>Bosslar ve Uçurum</a></li>
+      <li><a href="#store"><span class="toc-num">20</span>Mağaza ve Başarımlar</a></li>
+      <li><a href="#progress"><span class="toc-num">21</span>İlerleme ve Topluluk</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <header class="hero">
+      <div class="strata" role="presentation"></div>
+      <div class="eyebrow">Oyuncu Rehberi - 2026-10-28</div>
+      <h1 class="title">Madenin Tamamı,<br>Kısaca</h1>
+      <p class="subtitle">Hangi sistem ne işe yarar ve zamanını nereye harcamalısın. Sayı ve formül yok - yalnızca bilmen gerekenler.</p>
+      <div class="langbar">
+        <div class="langbar-label">Dil</div>
+        <div class="langbar-list"><a href="player_guide_en.html" hreflang="en">English</a><span>Türkçe</span><a href="player_guide_de.html" hreflang="de">Deutsch</a><a href="player_guide_fr.html" hreflang="fr">Français</a><a href="player_guide_es.html" hreflang="es">Español</a><a href="player_guide_es_la.html" hreflang="es-419">Español (Latinoamérica)</a><a href="player_guide_it.html" hreflang="it">Italiano</a><a href="player_guide_pl.html" hreflang="pl">Polski</a><a href="player_guide_pt_br.html" hreflang="pt-BR">Português (Brasil)</a><a href="player_guide_ru.html" hreflang="ru">Русский</a><a href="player_guide_uk.html" hreflang="uk">Українська</a><a href="player_guide_ja.html" hreflang="ja">日本語</a><a href="player_guide_ko.html" hreflang="ko">한국어</a><a href="player_guide_zh_hans.html" hreflang="zh-Hans">简体中文</a><a href="player_guide_zh_hant.html" hreflang="zh-Hant">繁體中文</a><a href="player_guide_th.html" hreflang="th">ไทย</a><a href="player_guide_id.html" hreflang="id">Bahasa Indonesia</a><a href="player_guide_vi.html" hreflang="vi">Tiếng Việt</a></div>
+      </div>
+    </header>
+
+    <section id="start">
+      <div class="section-head"><span class="section-num">01</span><h2>Nereden Başlamalı</h2></div>
+      <p class="section-dek">Oyun sistemlerini sen derine indikçe yavaş yavaş açar.</p>
+      <div class="strategy-track">
+          <div class="strategy-stage">
+            <div class="stage-label">Başlangıç</div>
+            <ul>
+              <li>Kazmanı durmadan yükselt; derine indikçe yeni kazmalar açılır.</li>
+              <li>Altın balon, Altın Kristal ve zayıf nokta gördükçe tıkla; ilk yeteneklerini kullanmaya başla.</li>
+              <li>Oynadığın her gün Hoş Geldin Hediyeleri panelinden hediyeni al ve Günün Bonusu bölümüne bak.</li>
+              <li>Gücün yettiğinde ilk petini al.</li>
+            </ul>
+          </div>
+          <div class="strategy-stage">
+            <div class="stage-label">Orta</div>
+            <ul>
+              <li>İlerleme yavaşlayınca Uyanış yap ve Öz kazan.</li>
+              <li>Görevler, Günlük Görevler, Şans Çarkı, Tüccar, yetenek ağacı ve hava olayları bu dönemde açılır.</li>
+              <li>Sana bir kutsama sunulduğunda her seferinde birini seç; Öz'ü de tek parametreye yığmak yerine dağıt.</li>
+            </ul>
+          </div>
+          <div class="strategy-stage">
+            <div class="stage-label">İleri</div>
+            <ul>
+              <li>Karakter, ona ait Ekipman ve Arena açılır; elementler Envanter içinde birikmeye başlar.</li>
+              <li>Anahtarın oldukça bosslarla dövüş, sonra Uçurum koşularına gir.</li>
+              <li>İşçiler katılır, efsun yuvaları açılır ve Demirci ekipmanını geliştirmeye başlar.</li>
+              <li>Isı hasarını yemesin diye zırhını yükseltmeyi ihmal etme.</li>
+            </ul>
+          </div>
+          <div class="strategy-stage">
+            <div class="stage-label">Uzun vade</div>
+            <ul>
+              <li>Çok daha derinde Yükseliş açılır ve Uyanış döngüsünün tamamını sıfırlar.</li>
+              <li>Karşılığında Saf Öz kazanırsın; o da sonraki her koşuyu kalıcı olarak hızlandırır.</li>
+              <li>Yendiğin bosslar daha büyük ödüllü, sonu olmayan Kâbus kademelerini açar.</li>
+            </ul>
+          </div>
+        </div>
+      <div class="callout">
+          <div class="callout-label">Bilmekte fayda var</div>
+          Sayılar hızla büyür; oyun önce kısa gösterime, sonra bilimsel gösterime geçer. Hiçbir şey sınırlanmaz, değişen yalnızca yazım biçimidir.
+        </div>
+      <div class="callout">
+          <div class="callout-label">Kısa öğreticiler</div>
+          Her yeni sistem ilk açıldığında kısa bir öğreticiyle tanıtılır. Ekranı karartan adımlarda atlama butonu vardır.
+        </div>
+    </section>
+
+    <section id="currencies">
+      <div class="section-head"><span class="section-num">02</span><h2>Para Birimleri</h2></div>
+      <p class="section-dek">Her biri farklı bir sistemi besler.</p>
+      <div class="currency-grid">
+        <div class="cur-card" style="--dot:var(--cur-gold)">
+          <h4><span class="dot"></span>Altın</h4>
+          <p><b>Cevher kırarak</b> kazanılır; ayrıca işçiler, çevrimdışı süre, saatlik ücretsiz altın, görevler, altın balonlar, zaman atlamaları ve Şans Çarkı altın getirir.</p>
+          <p>Kazmalara, yükseltmelere ve eşya yeteneklerine gider.</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-diamond)">
+          <h4><span class="dot"></span>Elmas</h4>
+          <p><b>Mağaza</b>, promosyon kodları, Arena sezon ödülleri ve Şans Çarkı elmas verir.</p>
+          <p>Petlere, golemlere, Sonsuz eşyalara, zaman atlamaya, sandıklara, anahtar paketlerine, ek Arena saldırılarına ve Dükkân yenilemelerine harcanır.</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-essence)">
+          <h4><span class="dot"></span>Öz</h4>
+          <p><b>Uyanış</b> ödülüdür; ayrıca bosslar, görevler, Tüccar, mağaza paketleri ve Şans Çarkı biraz verir.</p>
+          <p>Kalıcı Uyanış parametrelerine harcanır.</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-taskium)">
+          <h4><span class="dot"></span>Taskium</h4>
+          <p>Cevhere yapılan her tıklamada biraz kazanılır; ayrıca Şans Çarkı verir.</p>
+          <p>Görev kabul etmeye ve görev yenilemeye gider.</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-key)">
+          <h4><span class="dot"></span>Zindan Anahtarı</h4>
+          <p>Mağazada günde bir bedava anahtar; ayrıca elmas, mağaza paketleri ve Şans Çarkı.</p>
+          <p>Boss dövüşüne girmek için harcanır.</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-skillstone)">
+          <h4><span class="dot"></span>Yetenek Taşı</h4>
+          <p>Tüccar, mağaza paketleri ve Şans Çarkı verir.</p>
+          <p>Aktif yetenekleri güçlendirmeye harcanır.</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-orestone)">
+          <h4><span class="dot"></span>Cevher Taşı</h4>
+          <p>Kırdığın her cevherden düşer; ayrıca başarımlar, bosslar, Uçurum koşuları, zaman atlamaları ve Şans Çarkı verir.</p>
+          <p>Takaslara ve takas ücretlerine, efsun üretimine ve işçi yükseltmelerine harcanır.</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-abysskey)">
+          <h4><span class="dot"></span>Uçurum Anahtarı</h4>
+          <p>Mağazada günde bir bedava anahtar; ayrıca elmas ve mağaza paketleri.</p>
+          <p>Uçurum koşusuna girmek için harcanır.</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-pureessence)">
+          <h4><span class="dot"></span>Saf Öz</h4>
+          <p><b>Yükseliş</b> ödülüdür; başka hiçbir yerden gelmez.</p>
+          <p>Yalnızca Yükseliş parametrelerine harcanır.</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-elementium)">
+          <h4><span class="dot"></span>Elementium</h4>
+          <p>Tüccar panelinde, topladığın elementlerden ya da Cevher Taşı dönüştürülerek elde edilir; Demirci panelinde ekipman satmak da kazandırır.</p>
+          <p>Karakter ve Kristal statlarına ve Dükkân eşyalarına harcanır.</p>
+        </div>
+      </div>
+      <div class="callout">
+          <div class="callout-label">Sunucu paraları</div>
+          Elmas, zindan anahtarı ve Uçurum Anahtarı sunucuda tutulur; bunlarla alışveriş için çevrimiçi olman gerekir.
+        </div>
+    </section>
+
+    <section id="damage">
+      <div class="section-head"><span class="section-num">03</span><h2>Hasar ve Kritik Vuruş</h2></div>
+      <p class="section-dek">İki ayrı hasar kaynağı ve onları katlayan kritik vuruşlar.</p>
+      <ul>
+          <li><strong>Tıklama hasarı</strong> ilk kazmandan, Öfkeli Tıklama yeteneğinden, unvanından, Uyanış parametrelerinden ve efsunlardan gelir.</li>
+          <li><strong>Otomatik hasar</strong> diğer kazmalardan, Cinnet yeteneğinden, petlerinden ve efsunlardan gelir; cevher canlı olduğu sürece kesintisiz işler.</li>
+          <li>Güç Birliği yükseldikçe otomatik hasarının bir payı her tıklamaya da eklenir.</li>
+          <li>Her tıklama <strong>kritik</strong> olup çok daha sert vurabilir. Kritik şansı ve çarpanı yetenekler, Uyanış parametreleri, unvanlar ve efsunlarla artar. Kritik şansı dolduğunda fazlası kritik hasarını artırmaya devam eder.</li>
+          <li>Cevherin üzerinde ara ara parlak bir <strong>zayıf nokta</strong> belirir; ona yapılan tıklama normal bir tıklamadan çok daha sert vurur.</li>
+          <li>Golemler, kutsamalar ve Günün Bonusu bunların üstüne kendi güçlendirmelerini ekler. Etki Durumu paneli etkin her etkiyi ve nereden geldiğini listeler.</li>
+        </ul>
+    </section>
+
+    <section id="equipment">
+      <div class="section-head"><span class="section-num">04</span><h2>Kazmalar, Zırhlar ve Petler</h2></div>
+      <p class="section-dek">Hasarının ve dayanıklılığının temeli.</p>
+      <ul>
+          <li><strong>Kazmalar</strong> derine indikçe açılır. İlk kazma tıklama hasarını, diğerleri otomatik hasarı besler.</li>
+          <li>Kazmalar kırdıkları cevherlerden <strong>ustalık</strong> kazanır; her ustalık seviyesi o kazmanın daha sert vurmasını sağlar.</li>
+          <li><strong>Zırhlar</strong> baştan sende; satın alınmaz, yalnızca yükseltilir ve seni ısıdan korur. Sekmesi, ısı hasarını ilk kez düşürmeye başladığında açılır.</li>
+          <li><strong>Petler</strong> elmasla alınır, altınla yükseltilir ve otomatik hasar verir. Sahiplik kalıcıdır.</li>
+          <li>Hepsinin yükseldikçe açılan kendi yetenekleri var; kimisi yalnızca o eşyaya, kimisi bütün aileye yarar. Bütün yetenekleri alınmış kart parlar.</li>
+        </ul>
+      <div class="callout">
+          <div class="callout-label">Büyük sıçrama</div>
+          Belirli seviyelere ulaştıkça bir eşyanın gücü büyük bir sıçrama yapar. Bir eşyayı bir sonraki eşiğe taşımak genelde en iyi yükseltmedir.
+        </div>
+      <div class="callout warn">
+          <div class="callout-label">Uyanış sonrası</div>
+          Uyanış kazmaları yeniden kilitler; zırh ve pet yükseltmelerini ve kazma ustalığını sıfırlar. Petlerin senin kalır.
+        </div>
+    </section>
+
+    <section id="golems">
+      <div class="section-head"><span class="section-num">05</span><h2>Golemler</h2></div>
+      <p class="section-dek">Seni yalnızca güçlendiren taş yoldaşlar.</p>
+      <ul>
+          <li>Mağaza bölümündeki bir <strong>Golem Yumurtası</strong> açılınca rastgele bir golem çıkar. Sahip olduğun her golem aynı anda madende yanında durur.</li>
+          <li>Golemler kendileri hasar vermez; onun yerine yetenekleri seni güçlendirir - hasar, altın, kritik, Cevher Taşı ve daha fazlası. Bir yetenek etkinken golemin ayağının altında golemin renginde bir halka döner.</li>
+          <li>Golemler kırdığın cevherlerle seviye atlar. Zaten sahip olduğun bir golemin kopyası çıkınca yıldızı artar ve yetenekleri güçlenir.</li>
+          <li>Golemleri hiçbir şey sıfırlamaz - ne Uyanış ne de Yükseliş.</li>
+        </ul>
+    </section>
+
+    <section id="temperature">
+      <div class="section-head"><span class="section-num">06</span><h2>Isı</h2></div>
+      <p class="section-dek">Derine indikçe sıcaklık artar ve ısı sessizce hasarını düşürür.</p>
+      <p>Isı direncin kat sıcaklığına yetişemezse hasarın erimeye başlar. Zırh panelinde direnç için otomatik alım anahtarı var. Isı yalnızca ana madende vardır ve bazı hava olayları onu bir süreliğine değiştirir.</p>
+      <div class="callout warn">
+          <div class="callout-label">İlerleme durduysa</div>
+          Cevherin bir anda kırılmaz hale geldiği duvar çoğu zaman ısıdır. Başka bir şeye harcamadan önce ısı göstergesine bak.
+        </div>
+    </section>
+
+    <section id="workers">
+      <div class="section-head"><span class="section-num">07</span><h2>İşçiler</h2></div>
+      <p class="section-dek">Oyun açıkken senin yerine kazan yardımcılar.</p>
+      <ul>
+          <li>Derine indikçe yeni işçiler katılır ve bir daha kilitlenmez.</li>
+          <li>Her işçiye bir kazma ver; kazması olmayan işçi kazanmaz. Kazmayı işçiye vermek kendi hasarını azaltmaz.</li>
+          <li>Gelir ilerlemenle birlikte büyür, bir havuzda birikir ve sen toplayana kadar bekler. İşçiler Cevher Taşı ile yükseltilir.</li>
+        </ul>
+      <div class="callout warn">
+          <div class="callout-label">Uyanış öncesi topla</div>
+          İşçiler yalnızca oyun açıkken kazanır. Uyanış seviyelerini korur ama toplanmamış geliri siler.
+        </div>
+    </section>
+
+    <section id="enchantments">
+      <div class="section-head"><span class="section-num">08</span><h2>Efsunlar</h2></div>
+      <p class="section-dek">Kazdığın malzemelerden efsun üret, kazmalara, zırhlara ve petlere tak.</p>
+      <ul>
+          <li>Cevher kırdıkça <strong>efsun tozu</strong> ve <strong>efsun parçası</strong> düşer. Üst kademe malzemeler daha derinde çıkar.</li>
+          <li>Zanaatkâr toz ve parçayı rastgele özellikli bir efsuna çevirir. Üst kademe efsunlar daha çok ve daha güçlü özellik taşır.</li>
+          <li>Her eşyanın derine indikçe açılan efsun yuvaları var.</li>
+          <li>İşine yaramayan efsunu tüccarda toza çevirebilir, malzemeleri bir üst kademeye takas edebilirsin.</li>
+        </ul>
+      <div class="callout">
+          <div class="callout-label">Uyanış güvenli</div>
+          Uyanış efsunları asla silmez; kilitlenen bir eşyanın efsunları Envanter bölümüne geri döner.
+        </div>
+    </section>
+
+    <section id="floors">
+      <div class="section-head"><span class="section-num">09</span><h2>Katlar ve Cevherler</h2></div>
+      <p class="section-dek">Her kat bir öncekinden biraz daha zor ve biraz daha kazançlı.</p>
+      <ul>
+          <li><strong>Elementler</strong> derine indikçe madene teker teker katılır; en yenisi en sık çıkar. Kırdığın her cevher Envanter bölümünde toplanır.</li>
+          <li>Arada bir <strong>süreli kat</strong> gelir: cevheri süre bitmeden kırman gerekir, karşılığında daha çok altın verir. Süre dolarsa bir kat geri düşersin ve otomatik kat kapanır.</li>
+          <li>Bazı katlarda <strong>zırhlı ve elit kristaller</strong> çıkar: önce kalkanlarını kır; karşılığında daha çok altın verirler.</li>
+          <li>Her cevher altının yanında Cevher Taşı da düşürür.</li>
+          <li>Çok nadiren bir <strong>nadir cevher</strong> (Ferroviks, Karnit, Talveris, Umbrissa, Zefiris) çıkar; her biri yalnızca bir kez bulunur.</li>
+          <li>Mağara duvarında bazen bir <strong>Kadim Yazıt</strong> belirir. Bilmecesi daha önce geçtiğin bir katı işaret eder - oraya dön, seni altın bir kristal bekliyor.</li>
+          <li>Asansör ile ulaştığın katlar arasında gidip gelebilirsin; ilk Uyanış sonrasında açılır. Bölgeler paneli ana maden, zindan ve Uçurum arasında geçiş yapar.</li>
+        </ul>
+      <div class="callout">
+          <div class="callout-label">Aşağıda farm verimsizdir</div>
+          Efsun tozu ve parçası en çok ulaştığın en derin katın yakınında düşer; çok aşağıda kalırsan düşme şansı belirgin biçimde azalır.
+        </div>
+    </section>
+
+    <section id="weather">
+      <div class="section-head"><span class="section-num">10</span><h2>Hava Durumu</h2></div>
+      <p class="section-dek">Madenin kendine has halleri var.</p>
+      <p>Derine indikçe ana madende hava olayları açılır. Her biri bir süre sürer ve kendi yan etkilerini getirir; bazıları kat sıcaklığını da değiştirir. Olaylar asla üst üste binmez ve iki olay arasında her zaman sakin bir dönem olur.</p>
+    </section>
+
+    <section id="skills">
+      <div class="section-head"><span class="section-num">11</span><h2>Yetenekler ve Unvanlar</h2></div>
+      <p class="section-dek">Süreli güçlendirmeler ve tırmandıkça kendiliğinden gelen bonuslar.</p>
+      <ul>
+          <li><strong>Aktif yetenekler</strong> derine indikçe bedava açılır; kısa süre güçlendirir, sonra bekleme süresine girer. Yetenek Taşı ile Yetenek Ağacı üzerinden güçlenir ve Uyanış ile kaybolmaz.</li>
+          <li><strong>Unvanlar</strong> tırmandıkça kendiliğinden gelir ve hasar, altın, ısı direnci gibi bonuslar verir. Uyanış sonrası baştan kazanılır.</li>
+        </ul>
+      <div class="callout">
+          <div class="callout-label">Kombo</div>
+          Önce Aşırı Yükleme, sonra güçlendirmek istediğin yetenek - örneğin Altın Çılgınlığı. Ardından Zamanı Geri Alma son yeteneğin beklemesini kısaltır.
+        </div>
+    </section>
+
+    <section id="character">
+      <div class="section-head"><span class="section-num">12</span><h2>Karakter ve Ekipman</h2></div>
+      <p class="section-dek">Arena için kurulan ikinci bir ilerleme hattı.</p>
+      <ul>
+          <li><strong>Karakter</strong> kırdığın cevherlerle seviye atlar. Karakterin saldırı statları ve <strong>Kristal</strong> savunma statları Elementium ile yükseltilir.</li>
+          <li><strong>Ekipman</strong> çekiç, kask, gövde zırhı, eldiven, bot, pelerin, yüzük ve kolye gibi yuvalara takılır. Eşyalar Yaygın ile Eşsiz arasında altı nadirlikte gelir ve her eşyanın statları eline geçtiği anda rastgele belirlenir.</li>
+          <li>Bir setin bütün parçalarını giyersen o setin olumlu statları güçlenir.</li>
+          <li><strong>Dükkân</strong> her gün Elementium karşılığında yeni bir eşya seçkisi sunar; seçkiyi elmasla erkenden yenileyebilirsin.</li>
+          <li><strong>Demirci</strong> ekipmanı <strong>Geliştirme Taşı</strong> ile geliştirir ve fazla ekipmanını satın alır. Bu taşlar bosslardan ve Uçurum koşularından düşer; Tüccar onları bir üst kademeye çevirir.</li>
+        </ul>
+      <div class="callout">
+          <div class="callout-label">Sonsuza dek kalır</div>
+          Karakter, ekipman ve Arena puanın hem Uyanış hem Yükseliş sonrasında korunur.
+        </div>
+    </section>
+
+    <section id="arena">
+      <div class="section-head"><span class="section-num">13</span><h2>Arena</h2></div>
+      <p class="section-dek">Diğer oyuncuların kristallerine saldır ve sezon sıralamasında yüksel.</p>
+      <ul>
+          <li>Diğer oyuncuların sahip olduğu Kristal hedeflerine saldırır, Arena puanı kazanır ya da kaybedersin. Başkalarının sana saldırdığı maçlar da sayılır.</li>
+          <li>Sabit bir rakip listen olur; günde birkaç kez ücretsiz, sonrasında elmasla yenilenebilir.</li>
+          <li>Her gün birkaç ücretsiz saldırı hakkın olur. Bunlar bitince elmasla saldırmaya devam edebilirsin.</li>
+          <li>Çoğunlukla güçlü taraf kazanır; şansın payı küçüktür.</li>
+          <li>Her dövüşten sonra bir sonuç ekranı hasarı, vuruşları, kritikleri, kaçınılan vuruşları ve iki tarafın yeni puanını gösterir. <strong>Maç Geçmişi</strong> son maçlarını saklar.</li>
+          <li>Sezonlar bir ay sürer. Sonunda puanlar sıfırlanır, en iyi oyuncular elmas kazanır, ilk üç kalıcı bir madalya alır ve birinci Sezon Şampiyonu unvanını kazanır.</li>
+        </ul>
+    </section>
+
+    <section id="tasks">
+      <div class="section-head"><span class="section-num">14</span><h2>Görevler</h2></div>
+      <p class="section-dek">Tıklamalarını ikinci bir gelire çeviren yan yol.</p>
+      <ul>
+          <li><strong>Görevler</strong> Taskium ile kabul edilir; nadir görevler daha büyük ödül verir. Ödülü hazır olan görevler listenin en üstüne çıkar.</li>
+          <li><strong>Günlük Görevler</strong> her gün yenilenir; tamamladıkça kısa süreli güçlendirmeler kazanırsın. Ödülleri panelden almayı unutma.</li>
+        </ul>
+    </section>
+
+    <section id="trade">
+      <div class="section-head"><span class="section-num">15</span><h2>Tüccar</h2></div>
+      <p class="section-dek">Artan kaynakları işe yarar şeylere çevirdiğin yer.</p>
+      <p>Burada Cevher Taşı Öz, Yetenek Taşı ya da Elementium karşılığında takas edilir; topladığın elementler Elementium olarak dönüştürülür; efsun malzemesi ve Geliştirme Taşı bir üst kademeye çıkarılır; istemediğin efsunlar parçalanır. Dönüşüm ücretleri Cevher Taşı ile ödenir. Yetenek Taşı takası, mağazadan bir şey almadan yeteneklerini güçlendirmenin yoludur.</p>
+    </section>
+
+    <section id="extras">
+      <div class="section-head"><span class="section-num">16</span><h2>Bedava Ödüller</h2></div>
+      <p class="section-dek">Oyuna uğramaktan fazlasını istemeyen kaynaklar.</p>
+      <ul>
+          <li><strong>Altın balonu</strong> ara ara ekrana gelir; tıkla, altın kazan. Kaçırma diye bir şey yok - tıklayana kadar ekranda bekler.</li>
+          <li><strong>Altın Kristal</strong> tıkladığında cevheri kısa süreliğine bol altınlı bir bonus cevhere çevirir; yalnızca ana madende toplanır.</li>
+          <li><strong>Hoş Geldin Hediyeleri</strong> ilk günlerinin her birinde bir hediye verir; günlerin arka arkaya olması gerekmez.</li>
+          <li><strong>Günün Bonusu</strong> - her gün oynayan herkes aynı bonusu alır; tıklama hasarı, altın, kritik ya da pet hasarı gibi. Bonus her gün değişir.</li>
+          <li><strong>Çevrimdışı kazanç</strong> oyun kapalıyken birikir ve sen toplamadan asla kaybolmaz.</li>
+          <li><strong>Saatlik ücretsiz altın</strong> mağazada seni bekler; bu Uyanış turunda ulaştığın en derin katla birlikte büyür.</li>
+          <li><strong>Günlük ödül</strong> mağazada her gün bir bedava zindan anahtarı ve bir bedava Uçurum Anahtarı verir; ikisi birbirinden bağımsızdır.</li>
+          <li><strong>Şans Çarkı</strong> belirli aralıklarla yenilenir ve bedava çevirme hakkı verir.</li>
+          <li><strong>Promosyon Kodları</strong> - duyurularda paylaştığımız kodları Ayarlar menüsünden kullanabilirsin.</li>
+        </ul>
+    </section>
+
+    <section id="awakening">
+      <div class="section-head"><span class="section-num">17</span><h2>Uyanış</h2></div>
+      <p class="section-dek">Bu koşunun ilerlemesini kalıcı güce çevir.</p>
+      <ul>
+          <li>Belirli bir derinliği geçince Uyanış yapabilirsin. Her koşu yeniden ilk kattan başlar.</li>
+          <li><strong>Sıfırlananlar:</strong> altın, Taskium, kat ilerlemesi, kazma kilitleri, yükseltmeleri ve ustalığı, zırh ve pet yükseltmeleri, eşya yetenekleri, unvanlar, görev ilerlemesi, yetenek bekleme süreleri, kutsamalar, işçilere verilen kazmalar ve toplanmamış işçi geliri.</li>
+          <li><strong>Korunanlar:</strong> elmaslar, anahtarlar, Öz, Saf Öz, Yetenek Taşı, Cevher Taşı, Elementium, Uyanış ve Yükseliş parametreleri, yetenek ağacı, golemler, boss ve Uçurum ilerlemesi, açılmış paneller, günlük ödüller, işçi seviyeleri, Karakter ve ekipmanı, Arena puanın ve Envanter içindeki her şey.</li>
+          <li>Kazandığın Öz ulaştığın en derin kata bağlıdır ve derinlikle hızla büyür. Öz'ü kalıcı parametrelere harca.</li>
+          <li>Ayarlarda seçersen otomatik kat ve ısı direnci otomatik alımı Uyanış sonrasında da açık kalabilir.</li>
+          <li>Sayfadaki <strong>i</strong> butonu <strong>Uyanış Geçmişi</strong> ekranını açar.</li>
+        </ul>
+      <div class="callout">
+          <div class="callout-label">Uyanış Kutsaması</div>
+          Her koşunun belirli katlarında sana kutsamalar arasından seçim sunulur; bekleyen bir kutsama olduğunda parlayan bir buton belirir. Aynı ailedeki kutsamalar birlikte güçlenir ve hepsi Uyanış ile sıfırlanır.
+        </div>
+      <div class="callout">
+          <div class="callout-label">Biraz daha derine in</div>
+          Uyanış yapmadan önce birkaç kat daha inmek, hemen yeniden Uyanış yapmaktan genelde daha değerlidir.
+        </div>
+    </section>
+
+    <section id="ascension">
+      <div class="section-head"><span class="section-num">18</span><h2>Yükseliş</h2></div>
+      <p class="section-dek">Uyanış üzerine binen ikinci katman.</p>
+      <ul>
+          <li>Çok daha derin bir kata ulaşınca Yükseliş açılır; prestij sekmesinin altında kendi sayfası vardır.</li>
+          <li><strong>Sıfırlananlar:</strong> Uyanış parametreleri ve Öz - yani o döngü tamamen baştan başlar; kazmalar, katlar ve yükseltmeler de Uyanış ile aynı şekilde sıfırlanır.</li>
+          <li><strong>Korunanlar:</strong> Uyanış seviyen, elmaslar, anahtarlar, boss ve Uçurum ilerlemesi, golemler, efsunlar ve ekipman, Karakter, yetenek ağacı, başarımlar, işçi seviyeleri ve biriken Saf Öz.</li>
+          <li>Karşılığında <strong>Saf Öz</strong> kazanırsın. İki parametreye harcanır: <strong>Uyanış Yankısı</strong> her Uyanış parametresinin bonusunu büyütür, <strong>Kaynak</strong> ise Uyanış başına aldığın Öz'ü artırır.</li>
+          <li>İki parametre de satın aldığın her seviyeyle büyür.</li>
+        </ul>
+      <div class="callout">
+          <div class="callout-label">Ne zaman yükselmeli</div>
+          Yükseliş tek bir koşuyu değil, koşu döngüsünün tamamını hızlandırır. Öz ile alınan parametrelerin pahalılaştığı ve yeni Uyanış turlarının artık az şey kattığı noktada değerlidir.
+        </div>
+    </section>
+
+    <section id="dungeons">
+      <div class="section-head"><span class="section-num">19</span><h2>Bosslar ve Uçurum</h2></div>
+      <p class="section-dek">Ana madenin dışındaki iki süreli meydan okuma.</p>
+      <ul>
+          <li>İkisine de Bölgeler panelinden geçersin; oradayken ana madenin ısısı ve kat ilerlemesi durur.</li>
+          <li><strong>Bosslar</strong> zindan anahtarıyla açılır: süre dolmadan bossu indirirsen Öz, Cevher Taşı ve Geliştirme Taşı kazanırsın. Bosslar sırayla açılır ve yenilen boss kalıcı olarak açık kalır.</li>
+          <li>Bir bossu yendiğinde sonu olmayan <strong>Kâbus</strong> kademeleri açılır: her kademe bossu güçlendirir, ödülleri büyütür ve Geliştirme Taşı ödülünü daha nadir yapar.</li>
+          <li><strong>Uçurum</strong> Uçurum Anahtarı ile açılır ve tek bir geri sayımla işler: taşları arka arkaya kırarsın, her aşama bir öncekinden serttir.</li>
+          <li>Her uçurum aşamasının kendi <strong>cezası</strong> vardır - biri otomatik hasarını, biri tıklama hasarını, biri kritiğini kısar. Ceza yalnızca o aşama sürerken geçerlidir.</li>
+          <li>Uçurumda kırdığın her aşamanın ödülü senindir: süre dolsa da, koşuyu bıraksan da o ana kadar kazandığını alırsın. Tüm aşamaları bitirirsen sıradaki uçurum açılır.</li>
+        </ul>
+      <div class="callout warn">
+          <div class="callout-label">Boss kaybı bedava değil</div>
+          Süre boss ölmeden biterse ödül alamazsın ve harcadığın anahtar geri gelmez.
+        </div>
+    </section>
+
+    <section id="store">
+      <div class="section-head"><span class="section-num">20</span><h2>Mağaza ve Başarımlar</h2></div>
+      <p class="section-dek">Elmas, anahtarlar, paketler, premium, zaman atlama, sandıklar, golemler ve kalıcı Sonsuz eşyalar.</p>
+      <ul>
+          <li><strong>Başlangıç Paketi</strong> hesap başına yalnızca bir kez alınabilir.</li>
+          <li><strong>Premium</strong> belirli bir süre boyunca hasarını, altınını ve çevrimdışı kazancını artırır.</li>
+          <li><strong>Zaman atlama</strong> oyunu birkaç saat ileri sarar; kazancın o anki gücüne göre hesaplanır.</li>
+          <li><strong>Sandıklar</strong> anında açılır: Efsun Sandığı efsun malzemesi verir; ekipman sandıkları ve Karışık Sandık ekipman verir.</li>
+          <li><strong>Golem Yumurtası</strong> açılınca rastgele bir golem çıkar.</li>
+          <li><strong>Anahtar paketleri</strong> elmasla alınır; hem zindan anahtarı hem Uçurum Anahtarı için paket vardır.</li>
+          <li><strong>Sonsuz eşyalar</strong> bir kez alınır; Uyanış ile de Yükseliş ile de kaybolmaz.</li>
+          <li><strong>Başarımlar</strong> ödül verir; ödülleri kendin alman gerekir.</li>
+        </ul>
+    </section>
+
+    <section id="progress">
+      <div class="section-head"><span class="section-num">21</span><h2>İlerleme ve Topluluk</h2></div>
+      <p class="section-dek">Koşunu takip ettiğin, ilerlemenin korunduğu ve onu paylaştığın yerler.</p>
+      <ul>
+          <li><strong>Rehber</strong> (kitap butonu) bulduğun elementleri, nadir cevherleri, bossları, uçurumları, para birimlerini, kazmaları, petleri ve golemleri toplar. Keşfedilmemiş olanlar siyah silüet olarak kalır.</li>
+          <li>Steam liderlik tabloları, istatistik ekranı ve <strong>Etkinlik Günlüğü</strong> ilerlemeni gösterir. <strong>Güncellemeler</strong> paneli son güncelleme notlarını gösterir.</li>
+          <li>Ayarlardaki <strong>Kart Çıkar</strong> butonu, önemli istatistiklerini taşıyan <strong>Madenci Kartı</strong> ekranını gösterir; onu PNG resmi olarak kaydedip paylaşabilirsin.</li>
+          <li><strong>Nadir anları Discord'da paylaş</strong> açıkken en nadir anların - derin katlar, efsanevi düşüşler, boss ve Uçurum zaferleri, Arena dövüşleri - Discord sunucumuzun #live kanalına düşer. Yalnızca Steam adın ve o an gösterilir; ayarlardan kapatabilirsin.</li>
+          <li>Discord açıksa profilinde hangi kattasın ve Uyanış / Yükseliş seviyen görünür.</li>
+          <li>Oyun kendini düzenli olarak kaydeder ve Steam Cloud'a yedekler; başka bir bilgisayarda kaldığın yerden devam edebilirsin.</li>
+          <li>Zayıf bir bilgisayarda ayarlardan <strong>Gölge kullan</strong> seçeneğini kapatmak performansı artırır.</li>
+        </ul>
+    </section>
+
+    <footer class="doc-footer">Oyun güncellemelerle değişebilir; bu rehber genel bir bakış sunar. Gerçek parayla satılan ürünlerin fiyatları Steam tarafından kendi para biriminde gösterilir.</footer>
+  </main>
+</div>
+
+</body>
+</html>

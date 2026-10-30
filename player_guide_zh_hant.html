@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self'; style-src 'unsafe-inline'; base-uri 'none'; form-action 'none'; upgrade-insecure-requests">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Clicker Ore Game - 玩家指南</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="礦坑是怎麼運作的：十字鎬、寵物、魔像、工人、附魔、技能、角色與裝備、競技場、覺醒、昇華、首領、深淵和商店，簡明扼要。">
+<style>
+  :root {
+    --bg: #14110d;
+    --bg-elevated: #1d1811;
+    --bg-card: #211b13;
+    --text: #ede6d8;
+    --text-dim: #a89a82;
+    --text-faint: #766a55;
+    --accent: #e0a752;
+    --accent-strong: #f2bd6e;
+    --accent-2: #7fb8ad;
+    --border: #3a2f22;
+    --border-soft: #2a2318;
+    --danger: #cf7a5a;
+    --shadow: 0 8px 24px rgba(0,0,0,0.35);
+
+    --cur-gold: #e0a752;
+    --cur-diamond: #7fd1e0;
+    --cur-essence: #b79ef0;
+    --cur-taskium: #93a8d6;
+    --cur-key: #d98a63;
+    --cur-skillstone: #7fc9a0;
+    --cur-orestone: #b5a68c;
+    --cur-abysskey: #8f7fd6;
+    --cur-pureessence: #d7bff5;
+    --cur-elementium: #e07f9e;
+
+    --font-display: "Bahnschrift", "Segoe UI Semibold", "Arial Narrow Bold", "Arial Narrow", sans-serif;
+    --font-body: "Sitka Text", "Iowan Old Style", Georgia, "Times New Roman", serif;
+    --font-mono: "Cascadia Mono", "Consolas", "SF Mono", ui-monospace, monospace;
+  }
+
+  :root[data-theme="light"] {
+    --bg: #efe9da;
+    --bg-elevated: #e6ddc8;
+    --bg-card: #f3ede0;
+    --text: #241d14;
+    --text-dim: #5c5138;
+    --text-faint: #857656;
+    --accent: #a8621a;
+    --accent-strong: #8a4e12;
+    --accent-2: #2f7a70;
+    --border: #d3c5a4;
+    --border-soft: #ddd0b1;
+    --danger: #a3492c;
+    --shadow: 0 8px 20px rgba(90,70,30,0.12);
+  }
+
+  @media (prefers-color-scheme: light) {
+    :root:not([data-theme="dark"]) {
+      --bg: #efe9da;
+      --bg-elevated: #e6ddc8;
+      --bg-card: #f3ede0;
+      --text: #241d14;
+      --text-dim: #5c5138;
+      --text-faint: #857656;
+      --accent: #a8621a;
+      --accent-strong: #8a4e12;
+      --accent-2: #2f7a70;
+      --border: #d3c5a4;
+      --border-soft: #ddd0b1;
+      --danger: #a3492c;
+      --shadow: 0 8px 20px rgba(90,70,30,0.12);
+    }
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: 17px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection { background: var(--accent); color: #14110d; }
+
+  a { color: var(--accent-strong); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  a:focus-visible, button:focus-visible, summary:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    text-wrap: balance;
+    letter-spacing: 0.01em;
+    color: var(--text);
+  }
+
+  p { max-width: 68ch; }
+  ul, ol { max-width: 68ch; }
+
+  .shell {
+    display: grid;
+    grid-template-columns: 260px minmax(0, 1fr);
+    min-height: 100vh;
+  }
+
+  .topbar {
+    display: none;
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: var(--bg-elevated);
+    border-bottom: 1px solid var(--border);
+    padding: 0.7rem 1rem;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .topbar-title {
+    font-family: var(--font-display);
+    font-size: 0.95rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--accent-strong);
+  }
+  #nav-toggle { display: none; }
+  .nav-toggle-btn {
+    font-family: var(--font-display);
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 0.4rem 0.7rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.85rem;
+  }
+
+  nav.toc {
+    position: sticky;
+    top: 0;
+    align-self: start;
+    height: 100vh;
+    overflow-y: auto;
+    padding: 2rem 1.4rem 3rem;
+    background: var(--bg-elevated);
+    border-right: 1px solid var(--border);
+  }
+  .toc-home {
+    display: inline-block;
+    font-family: var(--font-display);
+    font-size: 0.8rem;
+    color: var(--text-dim);
+    margin-bottom: 1.1rem;
+  }
+  .toc-home:hover { color: var(--accent-strong); text-decoration: none; }
+
+  .toc-brand {
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    letter-spacing: 0.03em;
+    color: var(--accent-strong);
+    margin-bottom: 0.15rem;
+  }
+  .toc-brand small {
+    display: block;
+    font-family: var(--font-body);
+    font-style: italic;
+    font-size: 0.78rem;
+    color: var(--text-faint);
+    letter-spacing: 0;
+    margin-top: 0.25rem;
+  }
+  .toc-list {
+    list-style: none;
+    margin: 1.6rem 0 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+  }
+  .toc-list a {
+    display: block;
+    color: var(--text-dim);
+    font-size: 0.88rem;
+    padding: 0.32rem 0.5rem;
+    border-radius: 4px;
+    border-left: 2px solid transparent;
+  }
+  .toc-list a:hover {
+    color: var(--text);
+    text-decoration: none;
+    background: rgba(224,167,82,0.08);
+    border-left-color: var(--accent);
+  }
+  .toc-num {
+    font-family: var(--font-mono);
+    color: var(--text-faint);
+    font-size: 0.78rem;
+    margin-right: 0.45rem;
+  }
+
+  main {
+    padding: 3.2rem clamp(1.2rem, 4vw, 4rem) 6rem;
+    max-width: 900px;
+  }
+
+  header.hero {
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .strata {
+    height: 10px;
+    width: 100%;
+    border-radius: 3px;
+    margin-bottom: 1.6rem;
+    background: repeating-linear-gradient(
+      90deg,
+      var(--accent) 0 6%,
+      var(--accent-2) 6% 11%,
+      var(--border-soft) 11% 18%,
+      var(--accent) 18% 24%,
+      var(--border-soft) 24% 34%,
+      var(--accent-2) 34% 40%,
+      var(--accent) 40% 48%,
+      var(--border-soft) 48% 58%,
+      var(--accent-2) 58% 63%,
+      var(--accent) 63% 72%,
+      var(--border-soft) 72% 82%,
+      var(--accent-2) 82% 90%,
+      var(--accent) 90% 100%
+    );
+    opacity: 0.85;
+  }
+  .eyebrow {
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-size: 0.72rem;
+    color: var(--accent);
+    margin-bottom: 0.6rem;
+  }
+  h1.title {
+    font-size: clamp(2rem, 4.2vw, 2.9rem);
+    margin: 0 0 0.7rem;
+    line-height: 1.1;
+  }
+  .subtitle {
+    color: var(--text-dim);
+    font-size: 1.08rem;
+    max-width: 62ch;
+    margin: 0;
+  }
+
+  .langbar {
+    margin: 1.8rem 0 0;
+    padding-top: 1.2rem;
+    border-top: 1px solid var(--border-soft);
+  }
+  .langbar-label {
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 0.68rem;
+    color: var(--text-faint);
+    margin-bottom: 0.55rem;
+  }
+  .langbar-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem 0.4rem;
+  }
+  .langbar-list a, .langbar-list span {
+    font-family: var(--font-display);
+    font-size: 0.78rem;
+    padding: 0.18rem 0.55rem;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    color: var(--text-dim);
+    background: var(--bg-card);
+  }
+  .langbar-list a:hover {
+    text-decoration: none;
+    color: var(--text);
+    border-color: var(--accent);
+  }
+  .langbar-list span {
+    color: #14110d;
+    background: var(--accent);
+    border-color: var(--accent);
+  }
+  :root[data-theme="light"] .langbar-list span { color: #efe9da; }
+
+  section {
+    margin-bottom: 3.6rem;
+    scroll-margin-top: 1.5rem;
+  }
+  .section-head {
+    display: flex;
+    align-items: baseline;
+    gap: 0.7rem;
+    margin-bottom: 0.3rem;
+  }
+  .section-num {
+    font-family: var(--font-mono);
+    color: var(--accent);
+    font-size: 0.95rem;
+  }
+  h2 {
+    font-size: 1.55rem;
+    margin: 0;
+  }
+  .section-dek {
+    color: var(--text-dim);
+    font-size: 0.98rem;
+    margin: 0.3rem 0 1.5rem;
+    max-width: 62ch;
+  }
+
+  .callout {
+    border-left: 3px solid var(--accent);
+    background: var(--bg-card);
+    padding: 0.95rem 1.2rem;
+    border-radius: 0 6px 6px 0;
+    margin: 1.2rem 0;
+    font-size: 0.95rem;
+  }
+  .callout strong { color: var(--accent-strong); }
+  .callout.warn { border-left-color: var(--danger); }
+  .callout-label {
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 0.72rem;
+    color: var(--accent);
+    margin-bottom: 0.35rem;
+  }
+  .callout.warn .callout-label { color: var(--danger); }
+
+  .currency-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 0.9rem;
+    margin: 1.4rem 0;
+  }
+  .cur-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-top: 3px solid var(--dot);
+    border-radius: 6px;
+    padding: 0.95rem 1rem 1.05rem;
+  }
+  .cur-card h4 {
+    margin: 0 0 0.5rem;
+    font-size: 0.98rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .dot {
+    width: 9px; height: 9px; border-radius: 50%;
+    background: var(--dot);
+    flex: none;
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--dot) 20%, transparent);
+  }
+  .cur-card p {
+    margin: 0.15rem 0;
+    font-size: 0.84rem;
+    color: var(--text-dim);
+    max-width: none;
+  }
+  .cur-card p b { color: var(--text); font-weight: 600; }
+
+  .table-wrap {
+    overflow-x: auto;
+    margin: 1.2rem 0;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+  }
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    min-width: 460px;
+    font-size: 0.9rem;
+  }
+  thead th {
+    text-align: left;
+    font-family: var(--font-display);
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    font-size: 0.72rem;
+    color: var(--text-dim);
+    background: var(--bg-elevated);
+    padding: 0.6rem 0.85rem;
+    border-bottom: 1px solid var(--border);
+    white-space: nowrap;
+  }
+  tbody td {
+    padding: 0.55rem 0.85rem;
+    border-bottom: 1px solid var(--border-soft);
+    font-variant-numeric: tabular-nums;
+    color: var(--text);
+  }
+  tbody tr:last-child td { border-bottom: none; }
+  tbody tr:nth-child(even) { background: color-mix(in srgb, var(--accent) 3%, transparent); }
+  td.num, th.num { font-family: var(--font-mono); }
+  td.strong { color: var(--accent-strong); font-weight: 600; }
+
+  .strategy-track {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 1.4rem 0;
+  }
+  .strategy-stage {
+    background: var(--bg-card);
+    padding: 1rem 1.1rem;
+  }
+  .strategy-stage .stage-label {
+    font-family: var(--font-display);
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+    margin-bottom: 0.4rem;
+  }
+  .strategy-stage ul {
+    margin: 0;
+    padding-left: 1.1rem;
+    font-size: 0.86rem;
+    color: var(--text-dim);
+  }
+  .strategy-stage li { margin-bottom: 0.25rem; }
+
+  footer.doc-footer {
+    margin-top: 4rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+    color: var(--text-faint);
+    font-size: 0.8rem;
+  }
+
+  @media (max-width: 880px) {
+    .shell { grid-template-columns: 1fr; }
+    .topbar { display: flex; }
+    nav.toc {
+      position: fixed;
+      inset: 0 20% 0 0;
+      top: 52px;
+      height: calc(100vh - 52px);
+      transform: translateX(-100%);
+      transition: transform 0.22s ease;
+      z-index: 15;
+      box-shadow: var(--shadow);
+    }
+    #nav-toggle:checked ~ .shell nav.toc {
+      transform: translateX(0);
+    }
+    main { padding: 2rem 1.2rem 5rem; }
+  }
+</style>
+</head>
+<body>
+
+<input type="checkbox" id="nav-toggle">
+
+<div class="topbar">
+  <a class="topbar-title" href="index.html">&#9935; Clicker Ore Game</a>
+  <label class="nav-toggle-btn" for="nav-toggle">目錄</label>
+</div>
+
+<div class="shell">
+  <nav class="toc" aria-label="目錄">
+    <a class="toc-home" href="index.html">← 首頁</a>
+    <div class="toc-brand">Clicker Ore Game<small>玩家指南</small></div>
+    <ul class="toc-list">
+      <li><a href="#start"><span class="toc-num">01</span>從哪裡開始</a></li>
+      <li><a href="#currencies"><span class="toc-num">02</span>貨幣</a></li>
+      <li><a href="#damage"><span class="toc-num">03</span>傷害與爆擊</a></li>
+      <li><a href="#equipment"><span class="toc-num">04</span>十字鎬、護甲與寵物</a></li>
+      <li><a href="#golems"><span class="toc-num">05</span>魔像</a></li>
+      <li><a href="#temperature"><span class="toc-num">06</span>熱度</a></li>
+      <li><a href="#workers"><span class="toc-num">07</span>工人</a></li>
+      <li><a href="#enchantments"><span class="toc-num">08</span>附魔</a></li>
+      <li><a href="#floors"><span class="toc-num">09</span>樓層與礦石</a></li>
+      <li><a href="#weather"><span class="toc-num">10</span>天氣</a></li>
+      <li><a href="#skills"><span class="toc-num">11</span>技能與稱號</a></li>
+      <li><a href="#character"><span class="toc-num">12</span>角色與裝備</a></li>
+      <li><a href="#arena"><span class="toc-num">13</span>競技場</a></li>
+      <li><a href="#tasks"><span class="toc-num">14</span>任務</a></li>
+      <li><a href="#trade"><span class="toc-num">15</span>商人</a></li>
+      <li><a href="#extras"><span class="toc-num">16</span>免費獎勵</a></li>
+      <li><a href="#awakening"><span class="toc-num">17</span>覺醒</a></li>
+      <li><a href="#ascension"><span class="toc-num">18</span>昇華</a></li>
+      <li><a href="#dungeons"><span class="toc-num">19</span>首領與深淵</a></li>
+      <li><a href="#store"><span class="toc-num">20</span>商店與成就</a></li>
+      <li><a href="#progress"><span class="toc-num">21</span>進度與社群</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <header class="hero">
+      <div class="strata" role="presentation"></div>
+      <div class="eyebrow">玩家指南 - 2026-10-28</div>
+      <h1 class="title">整座礦坑，<br>一文講完</h1>
+      <p class="subtitle">每個系統有什麼用，時間該花在哪裡。沒有數字和公式，只講你需要知道的。</p>
+      <div class="langbar">
+        <div class="langbar-label">語言</div>
+        <div class="langbar-list"><a href="player_guide_en.html" hreflang="en">English</a><a href="player_guide_tr.html" hreflang="tr">Türkçe</a><a href="player_guide_de.html" hreflang="de">Deutsch</a><a href="player_guide_fr.html" hreflang="fr">Français</a><a href="player_guide_es.html" hreflang="es">Español</a><a href="player_guide_es_la.html" hreflang="es-419">Español (Latinoamérica)</a><a href="player_guide_it.html" hreflang="it">Italiano</a><a href="player_guide_pl.html" hreflang="pl">Polski</a><a href="player_guide_pt_br.html" hreflang="pt-BR">Português (Brasil)</a><a href="player_guide_ru.html" hreflang="ru">Русский</a><a href="player_guide_uk.html" hreflang="uk">Українська</a><a href="player_guide_ja.html" hreflang="ja">日本語</a><a href="player_guide_ko.html" hreflang="ko">한국어</a><a href="player_guide_zh_hans.html" hreflang="zh-Hans">简体中文</a><span>繁體中文</span><a href="player_guide_th.html" hreflang="th">ไทย</a><a href="player_guide_id.html" hreflang="id">Bahasa Indonesia</a><a href="player_guide_vi.html" hreflang="vi">Tiếng Việt</a></div>
+      </div>
+    </header>
+
+    <section id="start">
+      <div class="section-head"><span class="section-num">01</span><h2>從哪裡開始</h2></div>
+      <p class="section-dek">你挖得越深，遊戲就越會一點一點打開它的系統。</p>
+      <div class="strategy-track">
+          <div class="strategy-stage">
+            <div class="stage-label">前期</div>
+            <ul>
+              <li>不停升級十字鎬；更深的樓層會解鎖新的十字鎬。</li>
+              <li>看到黃金氣球、黃金水晶和弱點就點，並開始使用最初的技能。</li>
+              <li>記得領取歡迎好禮，並在每個遊玩的日子查看每日加成。</li>
+              <li>鑽石夠了就買下第一隻寵物。</li>
+            </ul>
+          </div>
+          <div class="strategy-stage">
+            <div class="stage-label">中期</div>
+            <ul>
+              <li>進度變慢時做一次覺醒，換取精華。</li>
+              <li>任務、每日任務、幸運轉盤、商人、技能樹和天氣事件都在這個階段開放。</li>
+              <li>每當有祝福可選就挑一個，並把精華分散投入，別全堆在一個屬性上。</li>
+            </ul>
+          </div>
+          <div class="strategy-stage">
+            <div class="stage-label">後期</div>
+            <ul>
+              <li>角色及其裝備、競技場相繼開放；元素開始在背包裡越積越多。</li>
+              <li>有鑰匙時就去打首領，之後開始深淵挑戰。</li>
+              <li>工人加入，附魔欄位開放，鐵匠也開始強化你的裝備。</li>
+              <li>繼續升級護甲，別讓熱度吃掉你的傷害。</li>
+            </ul>
+          </div>
+          <div class="strategy-stage">
+            <div class="stage-label">長期</div>
+            <ul>
+              <li>在更深的地方會解鎖昇華，它會重置整個覺醒循環。</li>
+              <li>作為交換你會獲得純淨精華，讓之後每一輪都永久變快。</li>
+              <li>被擊敗的首領會開放無盡的噩夢層級，獎勵也更豐厚。</li>
+            </ul>
+          </div>
+        </div>
+      <div class="callout">
+          <div class="callout-label">值得一提</div>
+          數字增長很快；遊戲會先切換到簡寫，再切換到科學記數法。並沒有上限，變的只是寫法。
+        </div>
+      <div class="callout">
+          <div class="callout-label">簡短教學</div>
+          每個新系統第一次開放時，都會有一段簡短教學來介紹。會讓畫面變暗的步驟都有跳過按鈕。
+        </div>
+    </section>
+
+    <section id="currencies">
+      <div class="section-head"><span class="section-num">02</span><h2>貨幣</h2></div>
+      <p class="section-dek">每一種都支撐著不同的系統。</p>
+      <div class="currency-grid">
+        <div class="cur-card" style="--dot:var(--cur-gold)">
+          <h4><span class="dot"></span>金幣</h4>
+          <p>靠<b>敲碎礦石</b>取得；工人、離線時間、每小時免費金幣、任務、黃金氣球、時間跳躍和幸運轉盤也會帶來金幣。</p>
+          <p>用於十字鎬、升級和物品技能。</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-diamond)">
+          <h4><span class="dot"></span>鑽石</h4>
+          <p>來自<b>商店</b>、促銷兌換碼、競技場賽季獎勵和幸運轉盤。</p>
+          <p>用於寵物、魔像、無限物品、時間跳躍、寶箱、鑰匙禮包、競技場額外進攻和市集刷新。</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-essence)">
+          <h4><span class="dot"></span>精華</h4>
+          <p>是<b>覺醒</b>的獎勵；首領、任務、商人、商店禮包和幸運轉盤也會給一些。</p>
+          <p>用於永久的覺醒屬性。</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-taskium)">
+          <h4><span class="dot"></span>Taskium</h4>
+          <p>每次點擊礦石都會攢下一點，幸運轉盤也會給一些。</p>
+          <p>用於接受任務和重新刷新任務。</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-key)">
+          <h4><span class="dot"></span>地城鑰匙</h4>
+          <p>商店每天一把免費，此外來自鑽石、商店禮包和幸運轉盤。</p>
+          <p>用於進入首領戰。</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-skillstone)">
+          <h4><span class="dot"></span>技能石</h4>
+          <p>來自商人、商店禮包和幸運轉盤。</p>
+          <p>用於強化主動技能。</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-orestone)">
+          <h4><span class="dot"></span>礦石結晶</h4>
+          <p>每塊敲碎的礦石都會掉落，成就、首領、深淵挑戰、時間跳躍和幸運轉盤也會給。</p>
+          <p>用於兌換及其手續費、製作附魔和升級工人。</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-abysskey)">
+          <h4><span class="dot"></span>深淵鑰匙</h4>
+          <p>商店每天一把免費，此外來自鑽石和商店禮包。</p>
+          <p>用於進入深淵挑戰。</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-pureessence)">
+          <h4><span class="dot"></span>純淨精華</h4>
+          <p>是<b>昇華</b>的獎勵，別處拿不到。</p>
+          <p>只用於昇華屬性。</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-elementium)">
+          <h4><span class="dot"></span>Elementium</h4>
+          <p>在商人處用收集到的元素或礦石結晶製成；在鐵匠出售裝備也能獲得。</p>
+          <p>用於角色和水晶的屬性，以及市集裡的物品。</p>
+        </div>
+      </div>
+      <div class="callout">
+          <div class="callout-label">伺服器貨幣</div>
+          鑽石、地城鑰匙和深淵鑰匙保存在伺服器上；要花掉它們需要連線。
+        </div>
+    </section>
+
+    <section id="damage">
+      <div class="section-head"><span class="section-num">03</span><h2>傷害與爆擊</h2></div>
+      <p class="section-dek">兩條獨立的傷害來源，以及把它們成倍放大的爆擊。</p>
+      <ul>
+          <li><strong>點擊傷害</strong>來自第一把十字鎬、憤怒點擊技能、稱號、覺醒屬性和附魔。</li>
+          <li><strong>自動傷害</strong>來自其他十字鎬、狂暴技能、寵物和附魔；只要礦石還活著就持續不斷地打。</li>
+          <li>力量合一越高，自動傷害中就有越大一部分也會加到每次點擊上。</li>
+          <li>每次點擊都可能<strong>爆擊</strong>，打出高得多的傷害。爆擊率和爆擊倍率會隨技能、覺醒屬性、稱號和附魔提升。爆擊率滿了之後，超出的部分會繼續提高你的爆擊傷害。</li>
+          <li>礦石上不時會出現一個發亮的<strong>弱點</strong>；點擊它比普通點擊打得重得多。</li>
+          <li>魔像、祝福和每日加成還會在此之上疊加各自的增益。效果狀態面板會列出所有生效中的效果及其來源。</li>
+        </ul>
+    </section>
+
+    <section id="equipment">
+      <div class="section-head"><span class="section-num">04</span><h2>十字鎬、護甲與寵物</h2></div>
+      <p class="section-dek">你的傷害和生存能力的基礎。</p>
+      <ul>
+          <li><strong>十字鎬</strong>隨深度解鎖。第一把支撐點擊傷害，其餘支撐自動傷害。</li>
+          <li>十字鎬會從敲碎的礦石中累積<strong>精通</strong>；每提升一級精通，那把十字鎬就打得更重。</li>
+          <li><strong>護甲</strong>一開始就屬於你；它不用購買，只能升級，用來抵擋熱度。熱度第一次開始削減你的傷害時，它的分頁才會開放。</li>
+          <li><strong>寵物</strong>用鑽石購買、用金幣升級，並造成自動傷害。擁有權是永久的。</li>
+          <li>三者都有隨等級開放的專屬技能；有的只幫該物品，有的惠及整個系列。技能全部買齊的卡片會發光。</li>
+        </ul>
+      <div class="callout">
+          <div class="callout-label">大跨步</div>
+          在特定等級上，物品的威力會出現一次大跳躍。把一件物品推到下一個門檻，通常是最划算的升級。
+        </div>
+      <div class="callout warn">
+          <div class="callout-label">覺醒之後</div>
+          覺醒會重新鎖住十字鎬，並重置護甲和寵物的升級以及十字鎬精通。寵物本身仍然屬於你。
+        </div>
+    </section>
+
+    <section id="golems">
+      <div class="section-head"><span class="section-num">05</span><h2>魔像</h2></div>
+      <p class="section-dek">只會讓你變得更強的石頭夥伴。</p>
+      <ul>
+          <li>商店裡的<strong>魔像蛋</strong>會孵化出一隻隨機魔像。你擁有的每隻魔像都會同時站在礦坑裡陪著你。</li>
+          <li>魔像本身不造成傷害，而是用技能為你增益：傷害、金幣、爆擊、礦石結晶等等。技能生效期間，魔像腳下會旋轉著一圈與它同色的光環。</li>
+          <li>魔像會隨你敲碎的礦石升級。再孵化出一隻你已擁有的魔像，會提升它的星級並強化它的技能。</li>
+          <li>魔像永遠不會被重置：覺醒不會，昇華也不會。</li>
+        </ul>
+    </section>
+
+    <section id="temperature">
+      <div class="section-head"><span class="section-num">06</span><h2>熱度</h2></div>
+      <p class="section-dek">越往深處越熱，而熱度會悄悄削掉你的傷害。</p>
+      <p>如果耐熱跟不上樓層溫度，你的傷害就會像被融掉一樣下降。護甲面板裡有耐熱的自動購買開關。熱度只存在於主礦坑，部分天氣事件會暫時改變它。</p>
+      <div class="callout warn">
+          <div class="callout-label">如果進度卡住</div>
+          礦石突然敲不動的那堵牆，多半就是熱度。在把錢花到別處之前，先看一眼熱度條。
+        </div>
+    </section>
+
+    <section id="workers">
+      <div class="section-head"><span class="section-num">07</span><h2>工人</h2></div>
+      <p class="section-dek">在遊戲開著時替你挖礦的幫手。</p>
+      <ul>
+          <li>越往深處會有新工人加入，而且不會再被鎖住。</li>
+          <li>給每個工人一把十字鎬；沒有十字鎬的工人什麼也賺不到。把十字鎬交出去不會降低你自己的傷害。</li>
+          <li>收益會隨你的進度成長，積在池子裡，等你去領取。工人用礦石結晶升級。</li>
+        </ul>
+      <div class="callout warn">
+          <div class="callout-label">覺醒之前記得領取</div>
+          工人只在遊戲開著時賺取收益。覺醒會保留他們的等級，但會清空未領取的收益。
+        </div>
+    </section>
+
+    <section id="enchantments">
+      <div class="section-head"><span class="section-num">08</span><h2>附魔</h2></div>
+      <p class="section-dek">用挖到的材料製作附魔，裝到十字鎬、護甲和寵物上。</p>
+      <ul>
+          <li>敲碎礦石會掉落<strong>附魔粉塵</strong>和<strong>附魔碎片</strong>。更高品質的材料出現在更深的地方。</li>
+          <li>工匠把粉塵和碎片變成屬性隨機的附魔。品質越高，屬性越多也越強。</li>
+          <li>每件物品都有隨深度開放的附魔欄位。</li>
+          <li>用不上的附魔可以在商人那裡分解成粉塵，材料也能向上兌換一檔品質。</li>
+        </ul>
+      <div class="callout">
+          <div class="callout-label">覺醒很安全</div>
+          覺醒絕不會刪除附魔；被重新鎖住的物品上的附魔會回到背包。
+        </div>
+    </section>
+
+    <section id="floors">
+      <div class="section-head"><span class="section-num">09</span><h2>樓層與礦石</h2></div>
+      <p class="section-dek">每一層都比上一層難一點，也更划算一點。</p>
+      <ul>
+          <li><strong>元素</strong>會隨著你往深處挖，一種接一種加入礦坑；最新的那種出現得最頻繁。你敲碎的每塊礦石都會收進背包。</li>
+          <li>時不時會出現<strong>限時樓層</strong>：在倒數結束前敲碎礦石，它會給出更多金幣。若時間耗盡，你會掉回一層，自動樓層也會關閉。</li>
+          <li>有些樓層會出現<strong>裝甲水晶和菁英水晶</strong>：先敲碎它們的護盾，它們會以更多金幣作為回報。</li>
+          <li>每塊礦石在給金幣之外還會掉落礦石結晶。</li>
+          <li>極偶爾會出現<strong>稀有礦石</strong>（Ferrovyx, Karnyth, Thalveris, Umbryssa, Zephiris），每一種只會被找到一次。</li>
+          <li>洞穴牆壁上有時會出現<strong>古老銘文</strong>。它的謎題指向一個你已經經過的樓層——回到那裡，就有一顆黃金水晶在等你。</li>
+          <li>電梯讓你在已到達的樓層之間往返；它在你第一次覺醒之後開放。地點用於在主礦坑、地城和深淵之間切換。</li>
+        </ul>
+      <div class="callout">
+          <div class="callout-label">在下層刷效率很低</div>
+          粉塵和碎片在你到達過的最深樓層附近掉得最好；待在低得多的地方，機率會明顯下降。
+        </div>
+    </section>
+
+    <section id="weather">
+      <div class="section-head"><span class="section-num">10</span><h2>天氣</h2></div>
+      <p class="section-dek">礦坑也有自己的脾氣。</p>
+      <p>越往深處挖，主礦坑裡就會解鎖天氣事件。每個事件會持續一段時間，並帶來各自的附加效果；有些還會改變樓層溫度。事件不會重疊，兩次事件之間總會有一段平靜期。</p>
+    </section>
+
+    <section id="skills">
+      <div class="section-head"><span class="section-num">11</span><h2>技能與稱號</h2></div>
+      <p class="section-dek">限時強化，以及往下挖就會自己到手的加成。</p>
+      <ul>
+          <li><strong>主動技能</strong>隨深度免費解鎖；短暫強化你之後進入冷卻。它們用技能石在技能樹裡變強，而且不會因覺醒而消失。</li>
+          <li><strong>稱號</strong>會在你往下挖時自動到手，提供傷害、金幣和耐熱等加成。覺醒之後需要重新取得。</li>
+        </ul>
+      <div class="callout">
+          <div class="callout-label">連招</div>
+          先用超載，再用你想放大的技能，例如黃金狂熱。之後時光倒流會縮短上一個技能的冷卻。
+        </div>
+    </section>
+
+    <section id="character">
+      <div class="section-head"><span class="section-num">12</span><h2>角色與裝備</h2></div>
+      <p class="section-dek">第二條成長路線，為競技場而生。</p>
+      <ul>
+          <li>你的<strong>角色</strong>會隨你敲碎的礦石升級。它的攻擊屬性和你的<strong>水晶</strong>的防禦屬性都用Elementium提升。</li>
+          <li><strong>裝備</strong>裝在戰錘、頭盔、胸甲、手套、靴子、披風、戒指和項鍊等欄位上。物品有從普通到唯一共六種稀有度，每件物品的屬性在你獲得的那一刻就已隨機決定。</li>
+          <li>穿齊同一套裝的所有部件，該套裝的正面屬性就會變強。</li>
+          <li><strong>市集</strong>每天提供一批新的物品，用Elementium購買；也可以用鑽石提前刷新。</li>
+          <li><strong>鐵匠</strong>用<strong>強化石</strong>強化裝備，並收購你多餘的裝備。這些石頭從首領和深淵挑戰中掉落，商人能把它們換成更高一級。</li>
+        </ul>
+      <div class="callout">
+          <div class="callout-label">永久保留</div>
+          角色、裝備和你的競技場積分，在覺醒和昇華之後都會保留。
+        </div>
+    </section>
+
+    <section id="arena">
+      <div class="section-head"><span class="section-num">13</span><h2>競技場</h2></div>
+      <p class="section-dek">進攻其他玩家的水晶，在賽季排名中往上爬。</p>
+      <ul>
+          <li>你進攻其他玩家的水晶，贏得或失去競技場積分。別人進攻你的對戰也會計入。</li>
+          <li>你會得到一份固定的對手名單；每天可以免費刷新幾次，之後用鑽石刷新。</li>
+          <li>每天有幾次免費進攻。用完之後，可以用鑽石繼續進攻。</li>
+          <li>較強的一方通常會獲勝；運氣只佔一小部分。</li>
+          <li>每場戰鬥後，結果畫面會顯示傷害、攻擊次數、爆擊和閃避，以及雙方的新積分。<strong>對戰記錄</strong>會保留你最近的對戰。</li>
+          <li>每個賽季為期一個月。賽季結束時積分重置，排名靠前的玩家獲得鑽石，前三名贏得永久獎章，第一名還會得到賽季冠軍稱號。</li>
+        </ul>
+    </section>
+
+    <section id="tasks">
+      <div class="section-head"><span class="section-num">14</span><h2>任務</h2></div>
+      <p class="section-dek">把點擊變成第二份收入的支線。</p>
+      <ul>
+          <li><strong>任務</strong>用Taskium接受；越稀有的任務獎勵越高。獎勵已可領取的任務會移到清單最上方。</li>
+          <li><strong>每日任務</strong>每天刷新，完成時會給短時強化。別忘了在面板裡領取獎勵。</li>
+        </ul>
+    </section>
+
+    <section id="trade">
+      <div class="section-head"><span class="section-num">15</span><h2>商人</h2></div>
+      <p class="section-dek">把多餘資源換成有用東西的地方。</p>
+      <p>你可以把礦石結晶換成精華、技能石或Elementium，把收集到的元素變成Elementium，把附魔材料和強化石向上兌換一檔，也能分解不想要的附魔。兌換手續費用礦石結晶支付。換技能石是不在商店花錢也能強化技能的途徑。</p>
+    </section>
+
+    <section id="extras">
+      <div class="section-head"><span class="section-num">16</span><h2>免費獎勵</h2></div>
+      <p class="section-dek">只要你露個面就能拿到的資源。</p>
+      <ul>
+          <li><strong>黃金氣球</strong>時不時飄過螢幕；點一下就有金幣。不會錯過——它會一直等到你點。</li>
+          <li>點擊<strong>黃金水晶</strong>會把礦石短暫變成金幣豐厚的獎勵礦石；只能在主礦坑裡撿到。</li>
+          <li><strong>歡迎好禮</strong>在你最初的幾天裡每天送出一份禮物；日期不必連續。</li>
+          <li><strong>每日加成</strong> - 每天所有遊玩的人都會獲得相同的加成，例如點擊傷害、金幣、爆擊或寵物傷害，而且加成每天都會更換。</li>
+          <li><strong>離線收益</strong>在遊戲關閉時累積，在你領取之前絕不會消失。</li>
+          <li><strong>每小時免費金幣</strong>在商店裡等你；它隨你在本次覺醒中到達的最深樓層而增長。</li>
+          <li><strong>每日獎勵</strong>每天在商店給一把免費地城鑰匙和一把免費深淵鑰匙，兩者互不影響。</li>
+          <li><strong>幸運轉盤</strong>每隔一段時間恢復，並給出免費轉盤機會。</li>
+          <li><strong>優惠碼</strong> - 我們在公告裡發布的兌換碼可以在設定選單中使用。</li>
+        </ul>
+    </section>
+
+    <section id="awakening">
+      <div class="section-head"><span class="section-num">17</span><h2>覺醒</h2></div>
+      <p class="section-dek">把這一輪的進度換成永久的力量。</p>
+      <ul>
+          <li>越過一定深度後就可以進行覺醒。每一輪都會重新從第一層開始。</li>
+          <li><strong>會重置：</strong>金幣、Taskium、樓層進度、十字鎬的解鎖、升級與精通、護甲和寵物升級、物品技能、稱號、任務進度、技能冷卻、祝福、交給工人的十字鎬，以及未領取的工人收益。</li>
+          <li><strong>會保留：</strong>鑽石、鑰匙、精華、純淨精華、技能石、礦石結晶、Elementium、覺醒和昇華屬性、技能樹、魔像、首領和深淵進度、已解鎖的面板、每日獎勵、工人等級、角色及其裝備、你的競技場積分，以及背包裡的一切。</li>
+          <li>獲得的精華取決於你到達過的最深樓層，並隨深度迅速增長。把它花在永久屬性上。</li>
+          <li>如果你在設定中選擇保留，自動樓層和自動購買耐熱在覺醒之後可以保持開啟。</li>
+          <li>頁面上的<strong>i</strong>按鈕會打開你的<strong>覺醒記錄</strong>。</li>
+        </ul>
+      <div class="callout">
+          <div class="callout-label">覺醒祝福</div>
+          每一輪的特定樓層都會讓你從幾個祝福中選一個；有祝福在等待時會出現一個發光按鈕。同一系列的祝福會一起變強，並在覺醒時全部重置。
+        </div>
+      <div class="callout">
+          <div class="callout-label">再往下挖一點</div>
+          在覺醒之前多打下幾層，通常比馬上接著再做一次覺醒更划算。
+        </div>
+    </section>
+
+    <section id="ascension">
+      <div class="section-head"><span class="section-num">18</span><h2>昇華</h2></div>
+      <p class="section-dek">疊在覺醒之上的第二層。</p>
+      <ul>
+          <li>到達深得多的樓層後會解鎖昇華；它在聲望分頁下有自己的頁面。</li>
+          <li><strong>會重置：</strong>你的覺醒屬性和精華——那個循環從零開始；十字鎬、樓層和升級也和覺醒一樣重置。</li>
+          <li><strong>會保留：</strong>你的覺醒等級、鑽石、鑰匙、首領和深淵進度、魔像、附魔和裝備、角色、技能樹、成就、工人等級，以及攢下的純淨精華。</li>
+          <li>作為交換你會獲得<strong>純淨精華</strong>。它可以投入兩項屬性：<strong>覺醒迴響</strong>放大每一項覺醒屬性的加成，<strong>源泉</strong>提高每次覺醒給出的精華。</li>
+          <li>兩項屬性都會隨你購買的每一級成長。</li>
+        </ul>
+      <div class="callout">
+          <div class="callout-label">什麼時候昇華</div>
+          昇華加速的不是單獨一輪，而是整個循環。當精華屬性變貴、再做一次覺醒也提升不大時，就值得了。
+        </div>
+    </section>
+
+    <section id="dungeons">
+      <div class="section-head"><span class="section-num">19</span><h2>首領與深淵</h2></div>
+      <p class="section-dek">主礦坑之外的兩種限時挑戰。</p>
+      <ul>
+          <li>兩者都從地點進入；你在那裡時，主礦坑的熱度和樓層進度都會暫停。</li>
+          <li><strong>首領</strong>用地城鑰匙開啟：在時限結束前把首領打倒，就能獲得精華、礦石結晶和強化石。首領按順序解鎖，打贏過的首領會一直開放。</li>
+          <li>擊敗一個首領後，會開放它無盡的<strong>噩夢</strong>層級：每一層都讓首領更強、獎勵更豐厚，掉落的強化石也更稀有。</li>
+          <li><strong>深淵</strong>用深淵鑰匙開啟，並以一個倒數貫穿全程：你接連敲碎礦石，每個階段都比上一個更難。</li>
+          <li>深淵的每個階段都帶有自己的<strong>懲罰</strong>——有的削自動傷害，有的削點擊傷害，有的削爆擊。懲罰只在該階段持續期間生效。</li>
+          <li>你在深淵裡敲碎的每個階段都會結算：無論時間耗盡還是你自己退出，到那時為止賺到的都歸你。通關全部階段後，下一個深淵就會開放。</li>
+        </ul>
+      <div class="callout warn">
+          <div class="callout-label">輸給首領是有代價的</div>
+          如果首領倒下之前時間就到了，你拿不到獎勵，鑰匙也沒了。
+        </div>
+    </section>
+
+    <section id="store">
+      <div class="section-head"><span class="section-num">20</span><h2>商店與成就</h2></div>
+      <p class="section-dek">鑽石、鑰匙、禮包、尊爵、時間跳躍、寶箱、魔像，以及永久的無限物品。</p>
+      <ul>
+          <li><strong>新手禮包</strong>每個帳號只能購買一次。</li>
+          <li><strong>尊爵</strong>在規定期限內提升你的傷害、金幣和離線收益。</li>
+          <li><strong>時間跳躍</strong>把遊戲快轉幾個小時；結算按你當前的實力計算。</li>
+          <li><strong>寶箱</strong>立即開啟：附魔寶箱給出附魔材料，裝備寶箱和混合寶箱給出裝備。</li>
+          <li><strong>魔像蛋</strong>會孵化出一隻隨機魔像。</li>
+          <li><strong>鑰匙禮包</strong>用鑽石購買；地城鑰匙和深淵鑰匙都有對應禮包。</li>
+          <li><strong>無限物品</strong>只需買一次，覺醒和昇華都不會讓它消失。</li>
+          <li><strong>成就</strong>給出的獎勵需要你自己領取。</li>
+        </ul>
+    </section>
+
+    <section id="progress">
+      <div class="section-head"><span class="section-num">21</span><h2>進度與社群</h2></div>
+      <p class="section-dek">在哪裡查看這一輪、進度如何被保住，以及如何分享它。</p>
+      <ul>
+          <li><strong>指南</strong>（書本按鈕）收錄你發現過的元素、稀有礦石、首領、深淵、貨幣、十字鎬、寵物和魔像。尚未發現的會保持為黑色剪影。</li>
+          <li>Steam 排行榜、統計畫面和<strong>活動日誌</strong>都會顯示你的進度。<strong>更新</strong>面板會顯示最新的更新說明。</li>
+          <li>設定中的<strong>匯出卡片</strong>按鈕會顯示帶有你主要數據的<strong>礦工卡</strong>；你可以把它儲存為 PNG 圖片並分享。</li>
+          <li>開啟<strong>在Discord分享稀有時刻</strong>後，你最稀有的時刻——深層樓層、傳說掉落、首領和深淵勝利、競技場戰鬥——會出現在我們 Discord 伺服器的 #live 頻道。只會顯示你的 Steam 名稱和該時刻；你可以在設定中關閉它。</li>
+          <li>開著 Discord 時，你的個人資料會顯示目前樓層和覺醒 / 昇華等級。</li>
+          <li>遊戲會定期自動存檔並備份到 Steam 雲端；換一台電腦也能接著玩。</li>
+          <li>在效能較弱的電腦上，於設定中關閉<strong>使用陰影</strong>可以提升效能。</li>
+        </ul>
+    </section>
+
+    <footer class="doc-footer">遊戲會隨更新變化；本指南提供整體概覽。以真實貨幣販售的商品，價格由 Steam 以你所在地區的貨幣顯示。</footer>
+  </main>
+</div>
+
+</body>
+</html>

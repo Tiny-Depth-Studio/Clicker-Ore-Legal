@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' https://shared.akamai.steamstatic.com https://cdn.akamai.steamstatic.com https://shared.fastly.steamstatic.com https://shared.cloudflare.steamstatic.com; style-src 'unsafe-inline'; base-uri 'none'; form-action 'none'; upgrade-insecure-requests">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Clicker Ore - Idle mining and clicker game</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Grab your pickaxe, descend into the depths, and become the master of wealth! 45 pickaxes, 270 skills, bosses, the Abyss, the Arena, weather events and blessings. Your mine keeps working even while you&#x27;re away.">
+<meta property="og:title" content="Clicker Ore">
+<meta property="og:description" content="Grab your pickaxe, descend into the depths, and become the master of wealth! 45 pickaxes, 270 skills, bosses, the Abyss, the Arena, weather events and blessings. Your mine keeps working even while you&#x27;re away.">
+<meta property="og:image" content="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3810540/7a280bb9a06816fcdbf60c377d092257e7c07175/header.jpg">
+<meta property="og:type" content="website">
+<style>
+  :root {
+    --bg: #0e0c0a;
+    --bg-soft: #171310;
+    --card: rgba(255, 247, 232, 0.045);
+    --card-hover: rgba(255, 247, 232, 0.085);
+    --text: #f3ece0;
+    --text-dim: #b3a693;
+    --text-faint: #7d7264;
+    --accent: #f0b45c;
+    --accent-strong: #ffcd7d;
+    --accent-2: #7fd0c2;
+    --line: rgba(255, 233, 200, 0.14);
+    --line-strong: rgba(255, 233, 200, 0.28);
+    --glow: rgba(240, 180, 92, 0.22);
+
+    --font: ui-sans-serif, "Segoe UI Variable Display", "Segoe UI", Inter, Roboto,
+            "Helvetica Neue", Arial, sans-serif;
+    --font-mono: "Cascadia Mono", Consolas, "SF Mono", ui-monospace, monospace;
+    --radius: 16px;
+  }
+
+  :root[data-theme="light"] {
+    --bg: #f6f1e7;
+    --bg-soft: #efe7d8;
+    --card: rgba(20, 15, 8, 0.04);
+    --card-hover: rgba(20, 15, 8, 0.075);
+    --text: #1e1810;
+    --text-dim: #5b5140;
+    --text-faint: #877a65;
+    --accent: #b06a15;
+    --accent-strong: #8d5210;
+    --accent-2: #237c6d;
+    --line: rgba(30, 24, 16, 0.14);
+    --line-strong: rgba(30, 24, 16, 0.26);
+    --glow: rgba(176, 106, 21, 0.18);
+  }
+
+  @media (prefers-color-scheme: light) {
+    :root:not([data-theme="dark"]) {
+      --bg: #f6f1e7;
+      --bg-soft: #efe7d8;
+      --card: rgba(20, 15, 8, 0.04);
+      --card-hover: rgba(20, 15, 8, 0.075);
+      --text: #1e1810;
+      --text-dim: #5b5140;
+      --text-faint: #877a65;
+      --accent: #b06a15;
+      --accent-strong: #8d5210;
+      --accent-2: #237c6d;
+      --line: rgba(30, 24, 16, 0.14);
+      --line-strong: rgba(30, 24, 16, 0.26);
+      --glow: rgba(176, 106, 21, 0.18);
+    }
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font);
+    font-size: 17px;
+    line-height: 1.6;
+    text-align: center;
+    -webkit-font-smoothing: antialiased;
+  }
+  img { max-width: 100%; display: block; }
+  a { color: var(--accent-strong); text-decoration: none; }
+  a:hover { color: var(--accent); }
+  a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 8px; }
+  h1, h2, h3 { margin: 0; font-weight: 700; letter-spacing: -0.02em; text-wrap: balance; }
+
+  .wrap {
+    width: min(1120px, 100%);
+    margin: 0 auto;
+    padding: 0 clamp(1.1rem, 5vw, 2.6rem);
+  }
+
+  /* ---------- nav ---------- */
+  .topbar {
+    position: sticky;
+    top: 0;
+    z-index: 30;
+    background: color-mix(in srgb, var(--bg) 82%, transparent);
+    border-bottom: 1px solid var(--line);
+    backdrop-filter: blur(14px) saturate(140%);
+  }
+  .topbar-inner {
+    width: min(1120px, 100%);
+    margin: 0 auto;
+    padding: 0.65rem clamp(1.1rem, 5vw, 2.6rem);
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 1rem;
+  }
+  .topbar-brand {
+    justify-self: start;
+    font-weight: 700;
+    font-size: 0.95rem;
+    letter-spacing: 0.02em;
+    color: var(--text);
+  }
+  .topbar-brand:hover { color: var(--text); }
+  .topbar-nav {
+    display: flex;
+    gap: 1.4rem;
+    font-size: 0.88rem;
+    font-weight: 500;
+  }
+  .topbar-nav a { color: var(--text-dim); }
+  .topbar-nav a:hover { color: var(--text); }
+  .topbar-cta { justify-self: end; }
+
+  /* ---------- buttons ---------- */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    font-family: inherit;
+    font-size: 0.94rem;
+    font-weight: 600;
+    padding: 0.7rem 1.4rem;
+    border-radius: 999px;
+    border: 1px solid transparent;
+    background: linear-gradient(135deg, var(--accent-strong), var(--accent));
+    color: #17120b;
+    box-shadow: 0 8px 24px -10px var(--glow);
+    transition: transform 0.16s ease, box-shadow 0.16s ease, background 0.16s ease;
+  }
+  .btn:hover {
+    color: #17120b;
+    transform: translateY(-2px);
+    box-shadow: 0 14px 30px -12px var(--glow);
+  }
+  .btn.sm { padding: 0.5rem 1.05rem; font-size: 0.86rem; }
+  .btn.ghost {
+    background: var(--card);
+    color: var(--text);
+    border-color: var(--line-strong);
+    box-shadow: none;
+    backdrop-filter: blur(6px);
+  }
+  .btn.ghost:hover { background: var(--card-hover); color: var(--text); }
+
+  /* ---------- hero ---------- */
+  .hero {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    padding: clamp(4rem, 12vw, 8rem) 0 clamp(3rem, 8vw, 5rem);
+  }
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    background-size: cover;
+    background-position: center;
+    filter: blur(26px) saturate(120%);
+    transform: scale(1.15);
+    opacity: 0.5;
+  }
+  .hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background:
+      radial-gradient(60% 50% at 50% 0%, var(--glow), transparent 70%),
+      linear-gradient(180deg, color-mix(in srgb, var(--bg) 55%, transparent) 0%, var(--bg) 78%);
+  }
+  .kicker {
+    display: inline-block;
+    font-size: 0.74rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1rem;
+  }
+
+  a.studio-link { text-decoration: none; }
+
+  a.studio-link:hover { color: var(--accent-strong); }
+  .hero h1 {
+    font-size: clamp(2.6rem, 8vw, 4.6rem);
+    line-height: 1.02;
+    margin-bottom: 1rem;
+  }
+  .lede {
+    color: var(--text-dim);
+    font-size: clamp(1.02rem, 2.3vw, 1.2rem);
+    max-width: 56ch;
+    margin: 0 auto 1.7rem;
+  }
+  .hero-actions {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.7rem;
+    margin-bottom: 1.8rem;
+  }
+  .chips {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+  .chip {
+    font-size: 0.76rem;
+    font-weight: 500;
+    padding: 0.28rem 0.72rem;
+    border-radius: 999px;
+    border: 1px solid var(--line);
+    background: var(--card);
+    color: var(--text-dim);
+    backdrop-filter: blur(6px);
+  }
+  .chip.free { color: var(--accent-strong); border-color: var(--line-strong); }
+  .hero-art {
+    display: block;
+    width: min(760px, 100%);
+    margin: clamp(2.2rem, 6vw, 3.4rem) auto 0;
+    border-radius: var(--radius);
+    overflow: hidden;
+    border: 1px solid var(--line-strong);
+    box-shadow: 0 30px 70px -34px rgba(0, 0, 0, 0.85), 0 0 0 1px rgba(255, 255, 255, 0.03) inset;
+    transition: transform 0.2s ease;
+  }
+  .hero-art:hover { transform: translateY(-3px); }
+
+  /* ---------- sections ---------- */
+  section.block { padding: clamp(3.2rem, 8vw, 5.2rem) 0; }
+  section.block + section.block { border-top: 1px solid var(--line); }
+  .block-head { margin-bottom: clamp(1.8rem, 4vw, 2.6rem); }
+  .block-head h2 { font-size: clamp(1.7rem, 4vw, 2.3rem); }
+  .block-dek {
+    color: var(--text-dim);
+    font-size: 1rem;
+    max-width: 58ch;
+    margin: 0.7rem auto 0;
+  }
+  .block-more { margin-top: clamp(1.6rem, 4vw, 2.2rem); }
+
+  /* ---------- news ---------- */
+  .news-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(272px, 1fr));
+    gap: 1rem;
+  }
+  .news-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    text-align: left;
+    padding: 1.4rem 1.5rem;
+    border-radius: var(--radius);
+    border: 1px solid var(--line);
+    background: var(--card);
+    color: inherit;
+    transition: transform 0.18s ease, background 0.18s ease, border-color 0.18s ease;
+  }
+  .news-card:hover {
+    color: inherit;
+    transform: translateY(-3px);
+    background: var(--card-hover);
+    border-color: var(--line-strong);
+  }
+  .news-meta {
+    display: flex;
+    gap: 0.55rem;
+    flex-wrap: wrap;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--text-faint);
+  }
+  .news-card h3 { font-size: 1.06rem; line-height: 1.32; }
+  .news-card p { margin: 0; font-size: 0.92rem; color: var(--text-dim); }
+  .news-card .more {
+    margin-top: auto;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--accent-strong);
+  }
+
+  /* ---------- media ---------- */
+  .media-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(248px, 1fr));
+    gap: 0.85rem;
+  }
+  .shot {
+    position: relative;
+    border-radius: 14px;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    background: var(--bg-soft);
+    transition: transform 0.18s ease, border-color 0.18s ease;
+  }
+  .shot:hover { transform: translateY(-3px); border-color: var(--line-strong); }
+  .shot img { aspect-ratio: 16 / 9; object-fit: cover; transition: transform 0.35s ease; }
+  .shot:hover img { transform: scale(1.05); }
+  .shot.trailer { grid-column: span 2; }
+  .shot.trailer::after {
+    content: "▶";
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    font-size: 2.2rem;
+    color: #fff8ec;
+    text-shadow: 0 4px 18px rgba(0, 0, 0, 0.6);
+    background: linear-gradient(180deg, rgba(14, 12, 10, 0.1), rgba(14, 12, 10, 0.45));
+  }
+
+  /* ---------- languages ---------- */
+  .lang-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 0.7rem;
+  }
+  .lang-card {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    text-align: left;
+    padding: 0.85rem 1rem;
+    border-radius: 14px;
+    border: 1px solid var(--line);
+    background: var(--card);
+    transition: transform 0.16s ease, background 0.16s ease, border-color 0.16s ease;
+  }
+  .lang-card:hover {
+    transform: translateY(-2px);
+    background: var(--card-hover);
+    border-color: var(--line-strong);
+  }
+  .lang-flag {
+    flex: none;
+    width: 2.5rem;
+    height: 2.5rem;
+    object-fit: contain;
+    filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.35));
+    transition: transform 0.16s ease;
+  }
+  .lang-card:hover .lang-flag { transform: scale(1.08); }
+  .lang-text { display: flex; flex-direction: column; min-width: 0; }
+  .lang-text strong { font-size: 0.96rem; font-weight: 600; color: var(--text); line-height: 1.25; }
+  .lang-text span {
+    font-size: 0.8rem;
+    color: var(--text-dim);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  /* ---------- legal + footer ---------- */
+  .legal-row { display: flex; justify-content: center; flex-wrap: wrap; gap: 0.7rem; }
+  footer.site {
+    padding: 2.4rem 0 3.4rem;
+    border-top: 1px solid var(--line);
+    color: var(--text-faint);
+    font-size: 0.85rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+  }
+  footer.site a { color: var(--text-dim); }
+
+  @media (max-width: 860px) {
+    .topbar-inner { grid-template-columns: 1fr auto; }
+    .topbar-nav { display: none; }
+    .shot.trailer { grid-column: span 1; }
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <a class="topbar-brand" href="#top">&#9935; Clicker Ore</a>
+    <nav class="topbar-nav" aria-label="Sections">
+      <a href="#news">Updates</a>
+      <a href="#media">Screenshots</a>
+      <a href="#guide">Guide</a>
+      <a href="#legal">Legal</a>
+    </nav>
+    <a class="btn sm topbar-cta" href="https://store.steampowered.com/app/3810540/">Play free</a>
+  </div>
+</div>
+
+<header class="hero" id="top">
+  <div class="hero-bg" style="background-image:url('https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3810540/7a280bb9a06816fcdbf60c377d092257e7c07175/header.jpg')" role="presentation"></div>
+  <div class="wrap">
+    <a class="kicker studio-link" href="https://tiny-depth-studio.github.io/">Tiny Depth Studio</a>
+    <h1>Clicker Ore</h1>
+    <p class="lede">Grab your pickaxe, descend into the depths, and become the master of wealth! 45 pickaxes, 270 skills, bosses, the Abyss, the Arena, weather events and blessings. Your mine keeps working even while you&#x27;re away.</p>
+    <div class="hero-actions">
+      <a class="btn" href="https://store.steampowered.com/app/3810540/">Play free on Steam</a>
+      <a class="btn ghost" href="#guide">Read the player guide</a>
+    </div>
+    <div class="chips"><span class="chip free">Free to play</span><span class="chip">Released 26 Jul 2026</span><span class="chip">Windows</span><span class="chip">Mac</span><span class="chip">Adventure</span><span class="chip">Casual</span><span class="chip">Indie</span><span class="chip">Strategy</span></div>
+    <a class="hero-art" href="https://store.steampowered.com/app/3810540/" aria-label="Clicker Ore on Steam">
+      <img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3810540/7a280bb9a06816fcdbf60c377d092257e7c07175/header.jpg" alt="Clicker Ore store artwork" width="920" height="430">
+    </a>
+  </div>
+</header>
+
+<main>
+  <section class="block" id="news">
+    <div class="wrap">
+      <div class="block-head">
+        <span class="kicker">Updates</span>
+        <h2>Fresh from the mine</h2>
+        <p class="block-dek">Pulled from the Steam announcements - this page rebuilds itself when a new one goes up.</p>
+      </div>
+      <div class="news-grid">
+      <a class="news-card" href="https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1847920302234093">
+        <span class="news-meta"><span>29 Oct 2026</span><span>Community Announcements</span></span>
+        <h3>1.13.32 Patch Notes — October 29, 2026</h3>
+        <p>NEW - I updated the player guide on our website in every language; golems, the character and equipment, the Arena and the other recently added systems are now in the guide. IMPROVEMENTS - When the server is briefly…</p>
+        <span class="more">Read on Steam →</span>
+      </a>
+      <a class="news-card" href="https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1847286114050061">
+        <span class="news-meta"><span>27 Oct 2026</span><span>Community Announcements</span></span>
+        <h3>1.13.31 Patch Notes — October 27, 2026</h3>
+        <p>The new tutorials in 1.13.30 left the screen locked for some players; I&#x27;m sorry for the trouble. To make up for it, enter BUGFIX1 in the code field on the main page of the Settings to get 50 diamonds. IMPROVEMENTS - I…</p>
+        <span class="more">Read on Steam →</span>
+      </a>
+      <a class="news-card" href="https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1847286114046159">
+        <span class="news-meta"><span>26 Oct 2026</span><span>Community Announcements</span></span>
+        <h3>1.13.30 Major Update — October 25, 2026</h3>
+        <p>NEW - Wall inscriptions are here: on some floors a riddle appears on the cave wall; its answer is a floor you have already passed, and a gold crystal waits for you when you go back there. - Every 100th floor brings an…</p>
+        <span class="more">Read on Steam →</span>
+      </a>
+      <a class="news-card" href="https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1846651706685300">
+        <span class="news-meta"><span>17 Oct 2026</span><span>Community Announcements</span></span>
+        <h3>1.12.28 Major Update — October 17, 2026</h3>
+        <p>NEW - Golems are here: a Golem Egg from the store hatches a random golem, and every golem you own stands beside you in the mine and boosts you with its skills. - Golems level up from the ore you break; hatching another…</p>
+        <span class="more">Read on Steam →</span>
+      </a>
+      </div>
+      <div class="block-more"><a class="btn ghost" href="https://steamcommunity.com/app/3810540/allnews/">All announcements on Steam</a></div>
+    </div>
+  </section>
+
+  <section class="block" id="media">
+    <div class="wrap">
+      <div class="block-head">
+        <span class="kicker">Gallery</span>
+        <h2>Down in the shaft</h2>
+        <p class="block-dek">9 shots from the mine, plus the trailer.</p>
+      </div>
+      <div class="media-grid">
+      <a class="shot trailer" href="https://store.steampowered.com/app/3810540/">
+        <img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/257212616/fa0926aafa99e27effe1ab4c1c638661b5a7751f/movie_600x337.jpg" alt="Clicker Ore trailer" loading="lazy" width="600" height="338">
+      </a>
+      <a class="shot" href="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3810540/cd7647bdcf6abe197af03ebc9ed779b58d8fec99/ss_cd7647bdcf6abe197af03ebc9ed779b58d8fec99.1920x1080.jpg">
+        <img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3810540/cd7647bdcf6abe197af03ebc9ed779b58d8fec99/ss_cd7647bdcf6abe197af03ebc9ed779b58d8fec99.600x338.jpg" alt="Clicker Ore screenshot 1" loading="lazy" width="600" height="338">
+      </a>
+      <a class="shot" href="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3810540/9eebd0adbd12437efeee3f3385992a6d0146d40c/ss_9eebd0adbd12437efeee3f3385992a6d0146d40c.1920x1080.jpg">
+        <img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3810540/9eebd0adbd12437efeee3f3385992a6d0146d40c/ss_9eebd0adbd12437efeee3f3385992a6d0146d40c.600x338.jpg" alt="Clicker Ore screenshot 2" loading="lazy" width="600" height="338">
+      </a>
+      <a class="shot" href="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3810540/f23f918d7e2d1e3ef6dba74098bb6353560927a9/ss_f23f918d7e2d1e3ef6dba74098bb6353560927a9.1920x1080.jpg">
+        <img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3810540/f23f918d7e2d1e3ef6dba74098bb6353560927a9/ss_f23f918d7e2d1e3ef6dba74098bb6353560927a9.600x338.jpg" alt="Clicker Ore screenshot 3" loading="lazy" width="600" height="338">
+      </a>
+      <a class="shot" href="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3810540/aeb6a045b4f8bdcecb8744ee6bd99af4f17773a1/ss_aeb6a045b4f8bdcecb8744ee6bd99af4f17773a1.1920x1080.jpg">
+        <img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3810540/aeb6a045b4f8bdcecb8744ee6bd99af4f17773a1/ss_aeb6a045b4f8bdcecb8744ee6bd99af4f17773a1.600x338.jpg" alt="Clicker Ore screenshot 4" loading="lazy" width="600" height="338">
+      </a>
+      <a class="shot" href="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3810540/2438e61e43bd0e64c840b9fb9976ccead3844498/ss_2438e61e43bd0e64c840b9fb9976ccead3844498.1920x1080.jpg">
+        <img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3810540/2438e61e43bd0e64c840b9fb9976ccead3844498/ss_2438e61e43bd0e64c840b9fb9976ccead3844498.600x338.jpg" alt="Clicker Ore screenshot 5" loading="lazy" width="600" height="338">
+      </a>
+      <a class="shot" href="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3810540/7d050203dd51d008acd7715ea7f97dc50f17b450/ss_7d050203dd51d008acd7715ea7f97dc50f17b450.1920x1080.jpg">
+        <img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3810540/7d050203dd51d008acd7715ea7f97dc50f17b450/ss_7d050203dd51d008acd7715ea7f97dc50f17b450.600x338.jpg" alt="Clicker Ore screenshot 6" loading="lazy" width="600" height="338">
+      </a>
+      <a class="shot" href="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3810540/3f587cec1af23a8689a132e0f0dfa2a32f5b728b/ss_3f587cec1af23a8689a132e0f0dfa2a32f5b728b.1920x1080.jpg">
+        <img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3810540/3f587cec1af23a8689a132e0f0dfa2a32f5b728b/ss_3f587cec1af23a8689a132e0f0dfa2a32f5b728b.600x338.jpg" alt="Clicker Ore screenshot 7" loading="lazy" width="600" height="338">
+      </a>
+      <a class="shot" href="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3810540/38ee52f2a332d7174615a706e4096b37e5932533/ss_38ee52f2a332d7174615a706e4096b37e5932533.1920x1080.jpg">
+        <img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3810540/38ee52f2a332d7174615a706e4096b37e5932533/ss_38ee52f2a332d7174615a706e4096b37e5932533.600x338.jpg" alt="Clicker Ore screenshot 8" loading="lazy" width="600" height="338">
+      </a>
+      <a class="shot" href="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3810540/abbc7ba032baa4a2d56eb8bea5acc0ab9ba66b92/ss_abbc7ba032baa4a2d56eb8bea5acc0ab9ba66b92.1920x1080.jpg">
+        <img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3810540/abbc7ba032baa4a2d56eb8bea5acc0ab9ba66b92/ss_abbc7ba032baa4a2d56eb8bea5acc0ab9ba66b92.600x338.jpg" alt="Clicker Ore screenshot 9" loading="lazy" width="600" height="338">
+      </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="guide">
+    <div class="wrap">
+      <div class="block-head">
+        <span class="kicker">18 languages</span>
+        <h2>Player guide</h2>
+        <p class="block-dek">Pickaxes, skills, pets, golems, workers, enchantments, the character and equipment, the Arena, prestige, bosses and the store, explained in plain terms - the same guide in every language the game ships in. Pick yours:</p>
+      </div>
+      <div class="lang-grid">
+      <a class="lang-card" href="player_guide_id.html" hreflang="id" lang="id">
+        <img class="lang-flag" src="assets/flags/id.png" alt="" width="40" height="40" loading="lazy">
+        <span class="lang-text">
+          <strong>Bahasa Indonesia</strong>
+          <span>Panduan Pemain</span>
+        </span>
+      </a>
+      <a class="lang-card" href="player_guide_de.html" hreflang="de" lang="de">
+        <img class="lang-flag" src="assets/flags/de.png" alt="" width="40" height="40" loading="lazy">
+        <span class="lang-text">
+          <strong>Deutsch</strong>
+          <span>Spielerhandbuch</span>
+        </span>
+      </a>
+      <a class="lang-card" href="player_guide_en.html" hreflang="en" lang="en">
+        <img class="lang-flag" src="assets/flags/en.png" alt="" width="40" height="40" loading="lazy">
+        <span class="lang-text">
+          <strong>English</strong>
+          <span>Player Guide</span>
+        </span>
+      </a>
+      <a class="lang-card" href="player_guide_es.html" hreflang="es" lang="es">
+        <img class="lang-flag" src="assets/flags/es.png" alt="" width="40" height="40" loading="lazy">
+        <span class="lang-text">
+          <strong>Español</strong>
+          <span>Guía del jugador</span>
+        </span>
+      </a>
+      <a class="lang-card" href="player_guide_es_la.html" hreflang="es-419" lang="es-419">
+        <img class="lang-flag" src="assets/flags/es_la.png" alt="" width="40" height="40" loading="lazy">
+        <span class="lang-text">
+          <strong>Español (Latinoamérica)</strong>
+          <span>Guía del jugador</span>
+        </span>
+      </a>
+      <a class="lang-card" href="player_guide_fr.html" hreflang="fr" lang="fr">
+        <img class="lang-flag" src="assets/flags/fr.png" alt="" width="40" height="40" loading="lazy">
+        <span class="lang-text">
+          <strong>Français</strong>
+          <span>Guide du joueur</span>
+        </span>
+      </a>
+      <a class="lang-card" href="player_guide_it.html" hreflang="it" lang="it">
+        <img class="lang-flag" src="assets/flags/it.png" alt="" width="40" height="40" loading="lazy">
+        <span class="lang-text">
+          <strong>Italiano</strong>
+          <span>Guida del giocatore</span>
+        </span>
+      </a>
+      <a class="lang-card" href="player_guide_pl.html" hreflang="pl" lang="pl">
+        <img class="lang-flag" src="assets/flags/pl.png" alt="" width="40" height="40" loading="lazy">
+        <span class="lang-text">
+          <strong>Polski</strong>
+          <span>Poradnik gracza</span>
+        </span>
+      </a>
+      <a class="lang-card" href="player_guide_pt_br.html" hreflang="pt-BR" lang="pt-BR">
+        <img class="lang-flag" src="assets/flags/pt_br.png" alt="" width="40" height="40" loading="lazy">
+        <span class="lang-text">
+          <strong>Português (Brasil)</strong>
+          <span>Guia do jogador</span>
+        </span>
+      </a>
+      <a class="lang-card" href="player_guide_vi.html" hreflang="vi" lang="vi">
+        <img class="lang-flag" src="assets/flags/vi.png" alt="" width="40" height="40" loading="lazy">
+        <span class="lang-text">
+          <strong>Tiếng Việt</strong>
+          <span>Hướng dẫn người chơi</span>
+        </span>
+      </a>
+      <a class="lang-card" href="player_guide_tr.html" hreflang="tr" lang="tr">
+        <img class="lang-flag" src="assets/flags/tr.png" alt="" width="40" height="40" loading="lazy">
+        <span class="lang-text">
+          <strong>Türkçe</strong>
+          <span>Oyuncu Rehberi</span>
+        </span>
+      </a>
+      <a class="lang-card" href="player_guide_ru.html" hreflang="ru" lang="ru">
+        <img class="lang-flag" src="assets/flags/ru.png" alt="" width="40" height="40" loading="lazy">
+        <span class="lang-text">
+          <strong>Русский</strong>
+          <span>Руководство игрока</span>
+        </span>
+      </a>
+      <a class="lang-card" href="player_guide_uk.html" hreflang="uk" lang="uk">
+        <img class="lang-flag" src="assets/flags/uk.png" alt="" width="40" height="40" loading="lazy">
+        <span class="lang-text">
+          <strong>Українська</strong>
+          <span>Посібник гравця</span>
+        </span>
+      </a>
+      <a class="lang-card" href="player_guide_th.html" hreflang="th" lang="th">
+        <img class="lang-flag" src="assets/flags/th.png" alt="" width="40" height="40" loading="lazy">
+        <span class="lang-text">
+          <strong>ไทย</strong>
+          <span>คู่มือผู้เล่น</span>
+        </span>
+      </a>
+      <a class="lang-card" href="player_guide_ja.html" hreflang="ja" lang="ja">
+        <img class="lang-flag" src="assets/flags/ja.png" alt="" width="40" height="40" loading="lazy">
+        <span class="lang-text">
+          <strong>日本語</strong>
+          <span>プレイヤーガイド</span>
+        </span>
+      </a>
+      <a class="lang-card" href="player_guide_zh_hans.html" hreflang="zh-Hans" lang="zh-Hans">
+        <img class="lang-flag" src="assets/flags/zh_hans.png" alt="" width="40" height="40" loading="lazy">
+        <span class="lang-text">
+          <strong>简体中文</strong>
+          <span>玩家指南</span>
+        </span>
+      </a>
+      <a class="lang-card" href="player_guide_zh_hant.html" hreflang="zh-Hant" lang="zh-Hant">
+        <img class="lang-flag" src="assets/flags/zh_hant.png" alt="" width="40" height="40" loading="lazy">
+        <span class="lang-text">
+          <strong>繁體中文</strong>
+          <span>玩家指南</span>
+        </span>
+      </a>
+      <a class="lang-card" href="player_guide_ko.html" hreflang="ko" lang="ko">
+        <img class="lang-flag" src="assets/flags/ko.png" alt="" width="40" height="40" loading="lazy">
+        <span class="lang-text">
+          <strong>한국어</strong>
+          <span>플레이어 가이드</span>
+        </span>
+      </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="legal">
+    <div class="wrap">
+      <div class="block-head">
+        <span class="kicker">Legal</span>
+        <h2>The small print</h2>
+        <p class="block-dek">What data the game collects, and the rules for using it.</p>
+      </div>
+      <div class="legal-row">
+        <a class="btn ghost" href="privacy-policy.html">Privacy Policy</a>
+        <a class="btn ghost" href="terms-of-service.html">Terms of Service</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div class="wrap">
+  <footer class="site">
+    <span>© 2026 <a href="https://tiny-depth-studio.github.io/">Tiny Depth Studio</a> · <a href="mailto:tinydepthstudio@gmail.com">tinydepthstudio@gmail.com</a></span>
+    <span>Updated 29 Oct 2026</span>
+  </footer>
+</div>
+
+</body>
+</html>

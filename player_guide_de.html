@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self'; style-src 'unsafe-inline'; base-uri 'none'; form-action 'none'; upgrade-insecure-requests">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Clicker Ore Game - Spielerhandbuch</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Wie die Mine funktioniert: Spitzhacken, Begleiter, Golems, Arbeiter, Verzauberungen, Fertigkeiten, Charakter und Ausrüstung, die Arena, Erwachen, Aufstieg, Bosse, der Abgrund und der Shop - kurz gefasst.">
+<style>
+  :root {
+    --bg: #14110d;
+    --bg-elevated: #1d1811;
+    --bg-card: #211b13;
+    --text: #ede6d8;
+    --text-dim: #a89a82;
+    --text-faint: #766a55;
+    --accent: #e0a752;
+    --accent-strong: #f2bd6e;
+    --accent-2: #7fb8ad;
+    --border: #3a2f22;
+    --border-soft: #2a2318;
+    --danger: #cf7a5a;
+    --shadow: 0 8px 24px rgba(0,0,0,0.35);
+
+    --cur-gold: #e0a752;
+    --cur-diamond: #7fd1e0;
+    --cur-essence: #b79ef0;
+    --cur-taskium: #93a8d6;
+    --cur-key: #d98a63;
+    --cur-skillstone: #7fc9a0;
+    --cur-orestone: #b5a68c;
+    --cur-abysskey: #8f7fd6;
+    --cur-pureessence: #d7bff5;
+    --cur-elementium: #e07f9e;
+
+    --font-display: "Bahnschrift", "Segoe UI Semibold", "Arial Narrow Bold", "Arial Narrow", sans-serif;
+    --font-body: "Sitka Text", "Iowan Old Style", Georgia, "Times New Roman", serif;
+    --font-mono: "Cascadia Mono", "Consolas", "SF Mono", ui-monospace, monospace;
+  }
+
+  :root[data-theme="light"] {
+    --bg: #efe9da;
+    --bg-elevated: #e6ddc8;
+    --bg-card: #f3ede0;
+    --text: #241d14;
+    --text-dim: #5c5138;
+    --text-faint: #857656;
+    --accent: #a8621a;
+    --accent-strong: #8a4e12;
+    --accent-2: #2f7a70;
+    --border: #d3c5a4;
+    --border-soft: #ddd0b1;
+    --danger: #a3492c;
+    --shadow: 0 8px 20px rgba(90,70,30,0.12);
+  }
+
+  @media (prefers-color-scheme: light) {
+    :root:not([data-theme="dark"]) {
+      --bg: #efe9da;
+      --bg-elevated: #e6ddc8;
+      --bg-card: #f3ede0;
+      --text: #241d14;
+      --text-dim: #5c5138;
+      --text-faint: #857656;
+      --accent: #a8621a;
+      --accent-strong: #8a4e12;
+      --accent-2: #2f7a70;
+      --border: #d3c5a4;
+      --border-soft: #ddd0b1;
+      --danger: #a3492c;
+      --shadow: 0 8px 20px rgba(90,70,30,0.12);
+    }
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: 17px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection { background: var(--accent); color: #14110d; }
+
+  a { color: var(--accent-strong); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  a:focus-visible, button:focus-visible, summary:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    text-wrap: balance;
+    letter-spacing: 0.01em;
+    color: var(--text);
+  }
+
+  p { max-width: 68ch; }
+  ul, ol { max-width: 68ch; }
+
+  .shell {
+    display: grid;
+    grid-template-columns: 260px minmax(0, 1fr);
+    min-height: 100vh;
+  }
+
+  .topbar {
+    display: none;
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: var(--bg-elevated);
+    border-bottom: 1px solid var(--border);
+    padding: 0.7rem 1rem;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .topbar-title {
+    font-family: var(--font-display);
+    font-size: 0.95rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--accent-strong);
+  }
+  #nav-toggle { display: none; }
+  .nav-toggle-btn {
+    font-family: var(--font-display);
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 0.4rem 0.7rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.85rem;
+  }
+
+  nav.toc {
+    position: sticky;
+    top: 0;
+    align-self: start;
+    height: 100vh;
+    overflow-y: auto;
+    padding: 2rem 1.4rem 3rem;
+    background: var(--bg-elevated);
+    border-right: 1px solid var(--border);
+  }
+  .toc-home {
+    display: inline-block;
+    font-family: var(--font-display);
+    font-size: 0.8rem;
+    color: var(--text-dim);
+    margin-bottom: 1.1rem;
+  }
+  .toc-home:hover { color: var(--accent-strong); text-decoration: none; }
+
+  .toc-brand {
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    letter-spacing: 0.03em;
+    color: var(--accent-strong);
+    margin-bottom: 0.15rem;
+  }
+  .toc-brand small {
+    display: block;
+    font-family: var(--font-body);
+    font-style: italic;
+    font-size: 0.78rem;
+    color: var(--text-faint);
+    letter-spacing: 0;
+    margin-top: 0.25rem;
+  }
+  .toc-list {
+    list-style: none;
+    margin: 1.6rem 0 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+  }
+  .toc-list a {
+    display: block;
+    color: var(--text-dim);
+    font-size: 0.88rem;
+    padding: 0.32rem 0.5rem;
+    border-radius: 4px;
+    border-left: 2px solid transparent;
+  }
+  .toc-list a:hover {
+    color: var(--text);
+    text-decoration: none;
+    background: rgba(224,167,82,0.08);
+    border-left-color: var(--accent);
+  }
+  .toc-num {
+    font-family: var(--font-mono);
+    color: var(--text-faint);
+    font-size: 0.78rem;
+    margin-right: 0.45rem;
+  }
+
+  main {
+    padding: 3.2rem clamp(1.2rem, 4vw, 4rem) 6rem;
+    max-width: 900px;
+  }
+
+  header.hero {
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .strata {
+    height: 10px;
+    width: 100%;
+    border-radius: 3px;
+    margin-bottom: 1.6rem;
+    background: repeating-linear-gradient(
+      90deg,
+      var(--accent) 0 6%,
+      var(--accent-2) 6% 11%,
+      var(--border-soft) 11% 18%,
+      var(--accent) 18% 24%,
+      var(--border-soft) 24% 34%,
+      var(--accent-2) 34% 40%,
+      var(--accent) 40% 48%,
+      var(--border-soft) 48% 58%,
+      var(--accent-2) 58% 63%,
+      var(--accent) 63% 72%,
+      var(--border-soft) 72% 82%,
+      var(--accent-2) 82% 90%,
+      var(--accent) 90% 100%
+    );
+    opacity: 0.85;
+  }
+  .eyebrow {
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-size: 0.72rem;
+    color: var(--accent);
+    margin-bottom: 0.6rem;
+  }
+  h1.title {
+    font-size: clamp(2rem, 4.2vw, 2.9rem);
+    margin: 0 0 0.7rem;
+    line-height: 1.1;
+  }
+  .subtitle {
+    color: var(--text-dim);
+    font-size: 1.08rem;
+    max-width: 62ch;
+    margin: 0;
+  }
+
+  .langbar {
+    margin: 1.8rem 0 0;
+    padding-top: 1.2rem;
+    border-top: 1px solid var(--border-soft);
+  }
+  .langbar-label {
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 0.68rem;
+    color: var(--text-faint);
+    margin-bottom: 0.55rem;
+  }
+  .langbar-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem 0.4rem;
+  }
+  .langbar-list a, .langbar-list span {
+    font-family: var(--font-display);
+    font-size: 0.78rem;
+    padding: 0.18rem 0.55rem;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    color: var(--text-dim);
+    background: var(--bg-card);
+  }
+  .langbar-list a:hover {
+    text-decoration: none;
+    color: var(--text);
+    border-color: var(--accent);
+  }
+  .langbar-list span {
+    color: #14110d;
+    background: var(--accent);
+    border-color: var(--accent);
+  }
+  :root[data-theme="light"] .langbar-list span { color: #efe9da; }
+
+  section {
+    margin-bottom: 3.6rem;
+    scroll-margin-top: 1.5rem;
+  }
+  .section-head {
+    display: flex;
+    align-items: baseline;
+    gap: 0.7rem;
+    margin-bottom: 0.3rem;
+  }
+  .section-num {
+    font-family: var(--font-mono);
+    color: var(--accent);
+    font-size: 0.95rem;
+  }
+  h2 {
+    font-size: 1.55rem;
+    margin: 0;
+  }
+  .section-dek {
+    color: var(--text-dim);
+    font-size: 0.98rem;
+    margin: 0.3rem 0 1.5rem;
+    max-width: 62ch;
+  }
+
+  .callout {
+    border-left: 3px solid var(--accent);
+    background: var(--bg-card);
+    padding: 0.95rem 1.2rem;
+    border-radius: 0 6px 6px 0;
+    margin: 1.2rem 0;
+    font-size: 0.95rem;
+  }
+  .callout strong { color: var(--accent-strong); }
+  .callout.warn { border-left-color: var(--danger); }
+  .callout-label {
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 0.72rem;
+    color: var(--accent);
+    margin-bottom: 0.35rem;
+  }
+  .callout.warn .callout-label { color: var(--danger); }
+
+  .currency-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 0.9rem;
+    margin: 1.4rem 0;
+  }
+  .cur-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-top: 3px solid var(--dot);
+    border-radius: 6px;
+    padding: 0.95rem 1rem 1.05rem;
+  }
+  .cur-card h4 {
+    margin: 0 0 0.5rem;
+    font-size: 0.98rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .dot {
+    width: 9px; height: 9px; border-radius: 50%;
+    background: var(--dot);
+    flex: none;
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--dot) 20%, transparent);
+  }
+  .cur-card p {
+    margin: 0.15rem 0;
+    font-size: 0.84rem;
+    color: var(--text-dim);
+    max-width: none;
+  }
+  .cur-card p b { color: var(--text); font-weight: 600; }
+
+  .table-wrap {
+    overflow-x: auto;
+    margin: 1.2rem 0;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+  }
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    min-width: 460px;
+    font-size: 0.9rem;
+  }
+  thead th {
+    text-align: left;
+    font-family: var(--font-display);
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    font-size: 0.72rem;
+    color: var(--text-dim);
+    background: var(--bg-elevated);
+    padding: 0.6rem 0.85rem;
+    border-bottom: 1px solid var(--border);
+    white-space: nowrap;
+  }
+  tbody td {
+    padding: 0.55rem 0.85rem;
+    border-bottom: 1px solid var(--border-soft);
+    font-variant-numeric: tabular-nums;
+    color: var(--text);
+  }
+  tbody tr:last-child td { border-bottom: none; }
+  tbody tr:nth-child(even) { background: color-mix(in srgb, var(--accent) 3%, transparent); }
+  td.num, th.num { font-family: var(--font-mono); }
+  td.strong { color: var(--accent-strong); font-weight: 600; }
+
+  .strategy-track {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 1.4rem 0;
+  }
+  .strategy-stage {
+    background: var(--bg-card);
+    padding: 1rem 1.1rem;
+  }
+  .strategy-stage .stage-label {
+    font-family: var(--font-display);
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+    margin-bottom: 0.4rem;
+  }
+  .strategy-stage ul {
+    margin: 0;
+    padding-left: 1.1rem;
+    font-size: 0.86rem;
+    color: var(--text-dim);
+  }
+  .strategy-stage li { margin-bottom: 0.25rem; }
+
+  footer.doc-footer {
+    margin-top: 4rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+    color: var(--text-faint);
+    font-size: 0.8rem;
+  }
+
+  @media (max-width: 880px) {
+    .shell { grid-template-columns: 1fr; }
+    .topbar { display: flex; }
+    nav.toc {
+      position: fixed;
+      inset: 0 20% 0 0;
+      top: 52px;
+      height: calc(100vh - 52px);
+      transform: translateX(-100%);
+      transition: transform 0.22s ease;
+      z-index: 15;
+      box-shadow: var(--shadow);
+    }
+    #nav-toggle:checked ~ .shell nav.toc {
+      transform: translateX(0);
+    }
+    main { padding: 2rem 1.2rem 5rem; }
+  }
+</style>
+</head>
+<body>
+
+<input type="checkbox" id="nav-toggle">
+
+<div class="topbar">
+  <a class="topbar-title" href="index.html">&#9935; Clicker Ore Game</a>
+  <label class="nav-toggle-btn" for="nav-toggle">Inhalt</label>
+</div>
+
+<div class="shell">
+  <nav class="toc" aria-label="Inhalt">
+    <a class="toc-home" href="index.html">← Startseite</a>
+    <div class="toc-brand">Clicker Ore Game<small>Spielerhandbuch</small></div>
+    <ul class="toc-list">
+      <li><a href="#start"><span class="toc-num">01</span>Womit anfangen</a></li>
+      <li><a href="#currencies"><span class="toc-num">02</span>Währungen</a></li>
+      <li><a href="#damage"><span class="toc-num">03</span>Schaden und kritische Treffer</a></li>
+      <li><a href="#equipment"><span class="toc-num">04</span>Spitzhacken, Rüstungen und Begleiter</a></li>
+      <li><a href="#golems"><span class="toc-num">05</span>Golems</a></li>
+      <li><a href="#temperature"><span class="toc-num">06</span>Hitze</a></li>
+      <li><a href="#workers"><span class="toc-num">07</span>Arbeiter</a></li>
+      <li><a href="#enchantments"><span class="toc-num">08</span>Verzauberungen</a></li>
+      <li><a href="#floors"><span class="toc-num">09</span>Etagen und Erze</a></li>
+      <li><a href="#weather"><span class="toc-num">10</span>Wetter</a></li>
+      <li><a href="#skills"><span class="toc-num">11</span>Fertigkeiten und Titel</a></li>
+      <li><a href="#character"><span class="toc-num">12</span>Charakter und Ausrüstung</a></li>
+      <li><a href="#arena"><span class="toc-num">13</span>Arena</a></li>
+      <li><a href="#tasks"><span class="toc-num">14</span>Aufgaben</a></li>
+      <li><a href="#trade"><span class="toc-num">15</span>Händler</a></li>
+      <li><a href="#extras"><span class="toc-num">16</span>Kostenlose Belohnungen</a></li>
+      <li><a href="#awakening"><span class="toc-num">17</span>Erwachen</a></li>
+      <li><a href="#ascension"><span class="toc-num">18</span>Aufstieg</a></li>
+      <li><a href="#dungeons"><span class="toc-num">19</span>Bosse und Abgrund</a></li>
+      <li><a href="#store"><span class="toc-num">20</span>Shop und Erfolge</a></li>
+      <li><a href="#progress"><span class="toc-num">21</span>Fortschritt und Community</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <header class="hero">
+      <div class="strata" role="presentation"></div>
+      <div class="eyebrow">Spielerhandbuch - 2026-10-28</div>
+      <h1 class="title">Die ganze Mine,<br>kurz gefasst</h1>
+      <p class="subtitle">Was jedes System bringt und wofür sich deine Zeit lohnt. Keine Zahlen, keine Formeln - nur das, was du wissen musst.</p>
+      <div class="langbar">
+        <div class="langbar-label">Sprache</div>
+        <div class="langbar-list"><a href="player_guide_en.html" hreflang="en">English</a><a href="player_guide_tr.html" hreflang="tr">Türkçe</a><span>Deutsch</span><a href="player_guide_fr.html" hreflang="fr">Français</a><a href="player_guide_es.html" hreflang="es">Español</a><a href="player_guide_es_la.html" hreflang="es-419">Español (Latinoamérica)</a><a href="player_guide_it.html" hreflang="it">Italiano</a><a href="player_guide_pl.html" hreflang="pl">Polski</a><a href="player_guide_pt_br.html" hreflang="pt-BR">Português (Brasil)</a><a href="player_guide_ru.html" hreflang="ru">Русский</a><a href="player_guide_uk.html" hreflang="uk">Українська</a><a href="player_guide_ja.html" hreflang="ja">日本語</a><a href="player_guide_ko.html" hreflang="ko">한국어</a><a href="player_guide_zh_hans.html" hreflang="zh-Hans">简体中文</a><a href="player_guide_zh_hant.html" hreflang="zh-Hant">繁體中文</a><a href="player_guide_th.html" hreflang="th">ไทย</a><a href="player_guide_id.html" hreflang="id">Bahasa Indonesia</a><a href="player_guide_vi.html" hreflang="vi">Tiếng Việt</a></div>
+      </div>
+    </header>
+
+    <section id="start">
+      <div class="section-head"><span class="section-num">01</span><h2>Womit anfangen</h2></div>
+      <p class="section-dek">Das Spiel öffnet seine Systeme nach und nach, je tiefer du gräbst.</p>
+      <div class="strategy-track">
+          <div class="strategy-stage">
+            <div class="stage-label">Früh</div>
+            <ul>
+              <li>Verbessere deine Spitzhacke ununterbrochen; tiefere Etagen schalten neue frei.</li>
+              <li>Klicke jeden Goldballon, jeden Goldkristall und jede Schwachstelle, die du siehst, und setze deine ersten Fertigkeiten ein.</li>
+              <li>Hol dir an jedem Spieltag deine Willkommensgeschenke ab und schau nach dem Tagesbonus.</li>
+              <li>Kauf deinen ersten Begleiter, sobald du ihn dir leisten kannst.</li>
+            </ul>
+          </div>
+          <div class="strategy-stage">
+            <div class="stage-label">Mitte</div>
+            <ul>
+              <li>Wenn der Fortschritt stockt, mach ein Erwachen und verdiene Essenz.</li>
+              <li>Aufgaben, Tägliche Missionen, das Glücksrad, der Händler, der Fertigkeitsbaum und Wetterereignisse öffnen sich in dieser Phase.</li>
+              <li>Wähle jedes Mal einen Segen, wenn dir einer angeboten wird, und verteile die Essenz, statt sie auf einen Parameter zu stapeln.</li>
+            </ul>
+          </div>
+          <div class="strategy-stage">
+            <div class="stage-label">Spät</div>
+            <ul>
+              <li>Der Charakter, seine Ausrüstung und die Arena öffnen sich; in deinem Inventar sammeln sich Elemente an.</li>
+              <li>Kämpfe gegen Bosse, sobald du einen Schlüssel hast, und beginne danach mit Abgrund-Läufen.</li>
+              <li>Arbeiter stoßen dazu, Verzauberungsplätze öffnen sich und der Schmied beginnt, deine Ausrüstung aufzuwerten.</li>
+              <li>Verbessere deine Rüstung weiter, damit die Hitze deinen Schaden nicht auffrisst.</li>
+            </ul>
+          </div>
+          <div class="strategy-stage">
+            <div class="stage-label">Langfristig</div>
+            <ul>
+              <li>Viel tiefer schaltet sich Aufstieg frei und setzt die gesamte Erwachen-Schleife zurück.</li>
+              <li>Dafür bekommst du Reine Essenz, die jeden späteren Lauf dauerhaft beschleunigt.</li>
+              <li>Besiegte Bosse öffnen endlose Albtraum-Stufen mit größeren Belohnungen.</li>
+            </ul>
+          </div>
+        </div>
+      <div class="callout">
+          <div class="callout-label">Gut zu wissen</div>
+          Die Zahlen wachsen schnell; das Spiel wechselt erst zur Kurzschreibweise und später zur wissenschaftlichen. Nichts wird gedeckelt - nur die Schreibweise ändert sich.
+        </div>
+      <div class="callout">
+          <div class="callout-label">Kurze Tutorials</div>
+          Jedes neue System wird beim ersten Öffnen mit einem kurzen Tutorial vorgestellt. Schritte, die den Bildschirm abdunkeln, haben eine Schaltfläche zum Überspringen.
+        </div>
+    </section>
+
+    <section id="currencies">
+      <div class="section-head"><span class="section-num">02</span><h2>Währungen</h2></div>
+      <p class="section-dek">Jede speist ein anderes System.</p>
+      <div class="currency-grid">
+        <div class="cur-card" style="--dot:var(--cur-gold)">
+          <h4><span class="dot"></span>Gold</h4>
+          <p>Wird durch <b>Erzabbau</b> verdient; auch Arbeiter, Offline-Zeit, das stündliche Gratis-Gold, Aufgaben, Goldballons, Zeitsprünge und das Glücksrad bringen Gold.</p>
+          <p>Fließt in Spitzhacken, Verbesserungen und Gegenstandsfertigkeiten.</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-diamond)">
+          <h4><span class="dot"></span>Diamant</h4>
+          <p>Kommt aus dem <b>Shop</b>, aus Promo-Codes, Arena-Saisonbelohnungen und dem Glücksrad.</p>
+          <p>Wird für Begleiter, Golems, Unendlichkeits-Gegenstände, Zeitsprünge, Truhen, Schlüsselpakete, zusätzliche Arena-Angriffe und das Erneuern im Laden ausgegeben.</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-essence)">
+          <h4><span class="dot"></span>Essenz</h4>
+          <p>Die Belohnung des <b>Erwachen</b>; auch Bosse, Aufgaben, der Händler, Shop-Pakete und das Glücksrad geben etwas.</p>
+          <p>Wird für dauerhafte Erwachen-Parameter ausgegeben.</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-taskium)">
+          <h4><span class="dot"></span>Taskium</h4>
+          <p>Bei jedem Klick auf ein Erz fällt etwas davon ab, und auch das Glücksrad gibt welches.</p>
+          <p>Wird zum Annehmen und Neuwürfeln von Aufgaben gebraucht.</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-key)">
+          <h4><span class="dot"></span>Verliesschlüssel</h4>
+          <p>Ein Gratisschlüssel pro Tag im Shop, dazu Diamanten, Shop-Pakete und das Glücksrad.</p>
+          <p>Wird für den Eintritt in einen Bosskampf ausgegeben.</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-skillstone)">
+          <h4><span class="dot"></span>Fertigkeitsstein</h4>
+          <p>Kommt vom Händler, aus Shop-Paketen und vom Glücksrad.</p>
+          <p>Wird zum Verstärken aktiver Fertigkeiten ausgegeben.</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-orestone)">
+          <h4><span class="dot"></span>Erzstein</h4>
+          <p>Fällt bei jedem Erz, außerdem aus Erfolgen, von Bossen, aus Abgrund-Läufen, Zeitsprüngen und dem Glücksrad.</p>
+          <p>Wird für Tauschgeschäfte und ihre Gebühren, das Herstellen von Verzauberungen und Arbeiter-Verbesserungen ausgegeben.</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-abysskey)">
+          <h4><span class="dot"></span>Abgrundschlüssel</h4>
+          <p>Ein Gratisschlüssel pro Tag im Shop, dazu Diamanten und Shop-Pakete.</p>
+          <p>Wird für einen Abgrund-Lauf ausgegeben.</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-pureessence)">
+          <h4><span class="dot"></span>Reine Essenz</h4>
+          <p>Die Belohnung des <b>Aufstieg</b>; es gibt keine andere Quelle.</p>
+          <p>Wird ausschließlich für Aufstieg-Parameter ausgegeben.</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-elementium)">
+          <h4><span class="dot"></span>Elementium</h4>
+          <p>Entsteht beim Händler aus den Elementen, die du sammelst, oder aus Erzstein; auch der Verkauf von Ausrüstung beim Schmied bringt welches.</p>
+          <p>Wird für Charakter- und Kristall-Werte und für Gegenstände im Laden ausgegeben.</p>
+        </div>
+      </div>
+      <div class="callout">
+          <div class="callout-label">Server-Währungen</div>
+          Diamanten, Verliesschlüssel und Abgrundschlüssel liegen auf dem Server; zum Ausgeben musst du online sein.
+        </div>
+    </section>
+
+    <section id="damage">
+      <div class="section-head"><span class="section-num">03</span><h2>Schaden und kritische Treffer</h2></div>
+      <p class="section-dek">Zwei getrennte Schadensquellen und die kritischen Treffer, die sie vervielfachen.</p>
+      <ul>
+          <li><strong>Klickschaden</strong> kommt von deiner ersten Spitzhacke, der Fertigkeit Zornklick, deinem Titel, den Erwachen-Parametern und Verzauberungen.</li>
+          <li><strong>Automatischer Schaden</strong> kommt von den übrigen Spitzhacken, der Fertigkeit Amoklauf, deinen Begleitern und Verzauberungen; er läuft durchgehend, solange das Erz lebt.</li>
+          <li>Je höher Einheit der Kraft, desto größer der Anteil deines automatischen Schadens, der zusätzlich auf jeden Klick kommt.</li>
+          <li>Jeder Klick kann <strong>kritisch</strong> sein und deutlich härter treffen. Kritische Chance und Multiplikator wachsen mit Fertigkeiten, Erwachen-Parametern, Titeln und Verzauberungen. Ist die kritische Chance voll, erhöht der Überschuss weiter deinen kritischen Schaden.</li>
+          <li>Ab und zu erscheint eine leuchtende <strong>Schwachstelle</strong> auf dem Erz; ein Klick darauf trifft viel härter als ein normaler Klick.</li>
+          <li>Golems, Segen und der Tagesbonus legen ihre eigenen Boosts obendrauf. Das Fenster Effektstatus listet jeden aktiven Effekt und seine Herkunft auf.</li>
+        </ul>
+    </section>
+
+    <section id="equipment">
+      <div class="section-head"><span class="section-num">04</span><h2>Spitzhacken, Rüstungen und Begleiter</h2></div>
+      <p class="section-dek">Die Grundlage deines Schadens und deiner Widerstandsfähigkeit.</p>
+      <ul>
+          <li><strong>Spitzhacken</strong> schalten sich mit der Tiefe frei. Die erste speist den Klickschaden, die übrigen den automatischen Schaden.</li>
+          <li>Spitzhacken sammeln durch die Erze, die sie zerschlagen, <strong>Meisterschaft</strong>; jede Meisterschaftsstufe lässt diese Spitzhacke härter zuschlagen.</li>
+          <li><strong>Rüstungen</strong> gehören dir von Anfang an; sie werden nicht gekauft, nur verbessert, und schützen dich vor Hitze. Ihr Reiter öffnet sich, sobald die Hitze zum ersten Mal deinen Schaden senkt.</li>
+          <li><strong>Begleiter</strong> werden mit Diamanten gekauft, mit Gold verbessert und verursachen automatischen Schaden. Der Besitz ist dauerhaft.</li>
+          <li>Alle drei haben eigene Fertigkeiten, die mit den Stufen aufgehen; manche helfen nur diesem Gegenstand, manche der ganzen Familie. Eine Karte, deren Fertigkeiten alle gekauft sind, leuchtet.</li>
+        </ul>
+      <div class="callout">
+          <div class="callout-label">Der große Sprung</div>
+          Auf bestimmten Stufen macht die Kraft eines Gegenstands einen großen Sprung. Einen Gegenstand bis zur nächsten Schwelle zu bringen ist meist die beste Verbesserung.
+        </div>
+      <div class="callout warn">
+          <div class="callout-label">Nach einem Erwachen</div>
+          Erwachen sperrt Spitzhacken wieder und setzt Rüstungs- und Begleiter-Verbesserungen sowie die Spitzhacken-Meisterschaft zurück. Die Begleiter selbst bleiben dir.
+        </div>
+    </section>
+
+    <section id="golems">
+      <div class="section-head"><span class="section-num">05</span><h2>Golems</h2></div>
+      <p class="section-dek">Steinerne Mitstreiter, die dich nur stärker machen.</p>
+      <ul>
+          <li>Aus einem <strong>Golem-Ei</strong> aus dem Shop schlüpft ein zufälliger Golem. Jeder Golem, den du besitzt, steht gleichzeitig neben dir in der Mine.</li>
+          <li>Golems verursachen selbst keinen Schaden; stattdessen stärken dich ihre Fertigkeiten - Schaden, Gold, kritische Treffer, Erzstein und mehr. Solange eine Fertigkeit aktiv ist, dreht sich zu Füßen des Golems ein Ring in seiner Farbe.</li>
+          <li>Golems steigen durch die Erze, die du zerschlägst, im Level auf. Schlüpft eine Kopie eines Golems, den du schon besitzt, bekommt er mehr Sterne und seine Fertigkeiten werden stärker.</li>
+          <li>Golems werden nie zurückgesetzt - weder durch Erwachen noch durch Aufstieg.</li>
+        </ul>
+    </section>
+
+    <section id="temperature">
+      <div class="section-head"><span class="section-num">06</span><h2>Hitze</h2></div>
+      <p class="section-dek">Je tiefer du kommst, desto heißer wird es - und Hitze senkt stillschweigend deinen Schaden.</p>
+      <p>Kommt deine Hitzeresistenz der Etagentemperatur nicht hinterher, schmilzt dein Schaden dahin. Im Rüstungsfenster gibt es einen Schalter für den automatischen Kauf von Resistenz. Hitze gibt es nur in der Hauptmine, und manche Wetterereignisse verändern sie für eine Weile.</p>
+      <div class="callout warn">
+          <div class="callout-label">Wenn nichts mehr vorangeht</div>
+          Die Wand, an der das Erz plötzlich nicht mehr zerbricht, ist meistens die Hitze. Schau auf die Hitzeanzeige, bevor du dein Gold woanders ausgibst.
+        </div>
+    </section>
+
+    <section id="workers">
+      <div class="section-head"><span class="section-num">07</span><h2>Arbeiter</h2></div>
+      <p class="section-dek">Helfer, die für dich graben, solange das Spiel offen ist.</p>
+      <ul>
+          <li>Mit der Tiefe stoßen neue Arbeiter dazu und werden nie wieder gesperrt.</li>
+          <li>Gib jedem Arbeiter eine Spitzhacke; ohne eine verdient er nichts. Die Übergabe senkt deinen eigenen Schaden nicht.</li>
+          <li>Das Einkommen wächst mit deinem Fortschritt, sammelt sich in einem Topf und wartet, bis du es einsammelst. Arbeiter werden mit Erzstein verbessert.</li>
+        </ul>
+      <div class="callout warn">
+          <div class="callout-label">Vor dem Erwachen einsammeln</div>
+          Arbeiter verdienen nur, solange das Spiel offen ist. Erwachen behält ihre Stufen, löscht aber nicht eingesammeltes Einkommen.
+        </div>
+    </section>
+
+    <section id="enchantments">
+      <div class="section-head"><span class="section-num">08</span><h2>Verzauberungen</h2></div>
+      <p class="section-dek">Stelle aus deiner Ausbeute Verzauberungen her und setze sie in Spitzhacken, Rüstungen und Begleiter ein.</p>
+      <ul>
+          <li>Beim Erzabbau fallen <strong>Verzauberungsstaub</strong> und <strong>Verzauberungsfragmente</strong>. Höhere Stufen erscheinen weiter unten.</li>
+          <li>Handwerker macht aus Staub und Fragmenten eine Verzauberung mit zufälligen Werten. Höhere Stufen tragen mehr und stärkere Werte.</li>
+          <li>Jeder Gegenstand hat Verzauberungsplätze, die sich mit der Tiefe öffnen.</li>
+          <li>Eine Verzauberung, die du nicht brauchst, kannst du beim Händler zu Staub zerlegen, und Material lässt sich eine Stufe hochtauschen.</li>
+        </ul>
+      <div class="callout">
+          <div class="callout-label">Erwachen ist sicher</div>
+          Erwachen löscht niemals Verzauberungen; die eines wieder gesperrten Gegenstands wandern zurück ins Inventar.
+        </div>
+    </section>
+
+    <section id="floors">
+      <div class="section-head"><span class="section-num">09</span><h2>Etagen und Erze</h2></div>
+      <p class="section-dek">Jede Etage ist ein wenig härter und ein wenig einträglicher als die davor.</p>
+      <ul>
+          <li><strong>Elemente</strong> kommen mit der Tiefe eines nach dem anderen in die Mine; das neueste taucht am häufigsten auf. Jedes Erz, das du zerschlägst, landet in deinem Inventar.</li>
+          <li>Ab und zu kommt eine <strong>Zeitetage</strong>: Zerbrich das Erz, bevor die Zeit abläuft, dafür gibt es mehr Gold. Läuft die Zeit ab, fällst du eine Etage zurück und die Auto-Etage schaltet sich ab.</li>
+          <li>Manche Etagen bringen <strong>gepanzerte Kristalle und Elite-Kristalle</strong>: Zerschlage zuerst ihren Schild, dafür zahlen sie mehr Gold.</li>
+          <li>Jedes Erz lässt neben Gold auch Erzstein fallen.</li>
+          <li>Sehr selten erscheint ein <strong>seltenes Erz</strong> (Ferrovyx, Karnyth, Thalveris, Umbryssa, Zephiris); jedes davon findest du nur ein einziges Mal.</li>
+          <li>Manchmal erscheint eine <strong>Uralte Inschrift</strong> an der Höhlenwand. Ihr Rätsel verweist auf eine Etage, die du schon passiert hast - kehr dorthin zurück, und ein goldener Kristall wartet auf dich.</li>
+          <li>Mit Aufzug bewegst du dich zwischen bereits erreichten Etagen; er öffnet sich nach deinem ersten Erwachen. Orte wechselt zwischen Hauptmine, Verlies und Abgrund.</li>
+        </ul>
+      <div class="callout">
+          <div class="callout-label">Weiter unten farmen lohnt nicht</div>
+          Verzauberungsstaub und -fragmente fallen am besten nahe deiner tiefsten erreichten Etage; weit darunter sinkt die Chance deutlich.
+        </div>
+    </section>
+
+    <section id="weather">
+      <div class="section-head"><span class="section-num">10</span><h2>Wetter</h2></div>
+      <p class="section-dek">Die Mine hat ihre eigenen Launen.</p>
+      <p>Mit der Tiefe schalten sich in der Hauptmine Wetterereignisse frei. Jedes dauert eine Weile und bringt eigene Nebeneffekte mit; manche verändern auch die Etagentemperatur. Ereignisse überschneiden sich nie, und zwischen zwei Ereignissen gibt es immer eine ruhige Phase.</p>
+    </section>
+
+    <section id="skills">
+      <div class="section-head"><span class="section-num">11</span><h2>Fertigkeiten und Titel</h2></div>
+      <p class="section-dek">Zeitlich begrenzte Schübe und Boni, die beim Aufstieg von selbst kommen.</p>
+      <ul>
+          <li><strong>Aktive Fertigkeiten</strong> schalten sich mit der Tiefe kostenlos frei; sie verstärken dich kurz und gehen dann auf Abklingzeit. Mit Fertigkeitsstein werden sie im Fertigkeitsbaum stärker und überstehen das Erwachen.</li>
+          <li><strong>Titel</strong> kommen beim Aufstieg von selbst und geben Boni wie Schaden, Gold und Hitzeresistenz. Nach einem Erwachen werden sie neu verdient.</li>
+        </ul>
+      <div class="callout">
+          <div class="callout-label">Kombo</div>
+          Erst Überladung, dann die Fertigkeit, die du verstärken willst - zum Beispiel Goldrausch. Zeitumkehr danach verkürzt die Abklingzeit deiner letzten Fertigkeit.
+        </div>
+    </section>
+
+    <section id="character">
+      <div class="section-head"><span class="section-num">12</span><h2>Charakter und Ausrüstung</h2></div>
+      <p class="section-dek">Ein zweiter Fortschrittsstrang, gebaut für die Arena.</p>
+      <ul>
+          <li>Dein <strong>Charakter</strong> steigt durch die Erze, die du zerschlägst, im Level auf. Seine Angriffswerte und die Verteidigungswerte deines <strong>Kristall</strong>s werden mit Elementium erhöht.</li>
+          <li><strong>Ausrüstung</strong> kommt in Plätze wie Hammer, Helm, Brustpanzer, Handschuhe, Stiefel, Umhang, Ring und Halskette. Gegenstände gibt es in sechs Seltenheiten von Gewöhnlich bis Einzigartig, und die Werte jedes Gegenstands werden in dem Moment ausgewürfelt, in dem du ihn bekommst.</li>
+          <li>Trägst du alle Teile eines Sets, werden die positiven Werte dieses Sets stärker.</li>
+          <li>Der <strong>Laden</strong> bietet jeden Tag eine neue Auswahl an Gegenständen für Elementium; mit Diamanten kannst du die Auswahl vorzeitig erneuern.</li>
+          <li>Der <strong>Schmied</strong> wertet Ausrüstung mit <strong>Aufwertungssteinen</strong> auf und kauft dir überschüssige Ausrüstung ab. Die Steine fallen bei Bossen und in Abgrund-Läufen, und der Händler macht daraus die nächsthöhere Stufe.</li>
+        </ul>
+      <div class="callout">
+          <div class="callout-label">Für immer</div>
+          Der Charakter, die Ausrüstung und deine Arena-Wertung überstehen sowohl Erwachen als auch Aufstieg.
+        </div>
+    </section>
+
+    <section id="arena">
+      <div class="section-head"><span class="section-num">13</span><h2>Arena</h2></div>
+      <p class="section-dek">Greife die Kristalle anderer Spieler an und klettere in der Saisonwertung nach oben.</p>
+      <ul>
+          <li>Du greifst den Kristall anderer Spieler an und gewinnst oder verlierst Arena-Wertung. Kämpfe, in denen andere dich angreifen, zählen ebenfalls.</li>
+          <li>Du bekommst eine feste Gegnerliste; sie lässt sich ein paar Mal am Tag kostenlos erneuern, danach mit Diamanten.</li>
+          <li>Jeden Tag hast du ein paar Gratisangriffe. Sind sie verbraucht, kannst du mit Diamanten weiter angreifen.</li>
+          <li>Meistens gewinnt die stärkere Seite; Glück spielt nur eine kleine Rolle.</li>
+          <li>Nach jedem Kampf zeigt ein Ergebnisbildschirm Schaden, Treffer, kritische Treffer und Ausweichen sowie die neue Wertung beider Seiten. Der <strong>Kampfverlauf</strong> hält deine letzten Kämpfe fest.</li>
+          <li>Saisons dauern einen Monat. Am Ende werden die Wertungen zurückgesetzt, die besten Spieler erhalten Diamanten, die besten drei eine dauerhafte Medaille und der Sieger den Titel Champion der Saison.</li>
+        </ul>
+    </section>
+
+    <section id="tasks">
+      <div class="section-head"><span class="section-num">14</span><h2>Aufgaben</h2></div>
+      <p class="section-dek">Der Nebenweg, der deine Klicks in ein zweites Einkommen verwandelt.</p>
+      <ul>
+          <li><strong>Aufgaben</strong> nimmst du mit Taskium an; seltenere Aufgaben zahlen mehr. Aufgaben, deren Belohnung bereitliegt, rücken an den Anfang der Liste.</li>
+          <li><strong>Tägliche Missionen</strong> erneuern sich täglich und geben beim Abschluss kurze Schübe. Vergiss nicht, die Belohnungen im Fenster abzuholen.</li>
+        </ul>
+    </section>
+
+    <section id="trade">
+      <div class="section-head"><span class="section-num">15</span><h2>Händler</h2></div>
+      <p class="section-dek">Wo überschüssige Ressourcen zu etwas Nützlichem werden.</p>
+      <p>Du kannst Erzstein in Essenz, Fertigkeitsstein oder Elementium tauschen, gesammelte Elemente in Elementium umwandeln, Verzauberungsmaterial und Aufwertungssteine eine Stufe hochtauschen und ungewollte Verzauberungen zerlegen. Die Umwandlungsgebühren zahlst du in Erzstein. Über den Fertigkeitsstein-Tausch verstärkst du Fertigkeiten, ohne im Shop etwas zu kaufen.</p>
+    </section>
+
+    <section id="extras">
+      <div class="section-head"><span class="section-num">16</span><h2>Kostenlose Belohnungen</h2></div>
+      <p class="section-dek">Ressourcen, die nichts weiter verlangen als vorbeizuschauen.</p>
+      <ul>
+          <li><strong>Goldballons</strong> treiben hin und wieder über den Bildschirm; ein Klick bringt Gold. Verpassen kann man sie nicht - sie warten, bis du klickst.</li>
+          <li><strong>Goldkristall</strong> verwandelt das Erz kurzzeitig in ein goldreiches Bonus-Erz; einsammeln lässt er sich nur in der Hauptmine.</li>
+          <li><strong>Willkommensgeschenke</strong> geben dir an jedem deiner ersten Tage ein Geschenk; die Tage müssen nicht aufeinanderfolgen.</li>
+          <li><strong>Tagesbonus</strong> - jeden Tag erhalten alle, die spielen, denselben Bonus, etwa Klickschaden, Gold, kritische Treffer oder Begleiterschaden, und er wechselt jeden Tag.</li>
+          <li><strong>Offline-Einnahmen</strong> sammeln sich, während das Spiel geschlossen ist, und gehen nie verloren, bevor du sie einsammelst.</li>
+          <li><strong>Stündliches Gratis-Gold</strong> wartet im Shop; es wächst mit der tiefsten Etage, die du in diesem Erwachen erreicht hast.</li>
+          <li><strong>Tägliche Belohnungen</strong> geben im Shop jeden Tag einen kostenlosen Verliesschlüssel und einen kostenlosen Abgrundschlüssel, unabhängig voneinander.</li>
+          <li><strong>Glücksrad</strong> füllt sich in Abständen wieder auf und gibt dir einen Gratisdreh.</li>
+          <li><strong>Aktionscodes</strong> - Codes aus unseren Ankündigungen kannst du im Einstellungsmenü einlösen.</li>
+        </ul>
+    </section>
+
+    <section id="awakening">
+      <div class="section-head"><span class="section-num">17</span><h2>Erwachen</h2></div>
+      <p class="section-dek">Verwandle den Fortschritt dieses Laufs in dauerhafte Kraft.</p>
+      <ul>
+          <li>Ab einer bestimmten Tiefe kannst du ein Erwachen durchführen. Jeder Lauf beginnt wieder auf der ersten Etage.</li>
+          <li><strong>Zurückgesetzt:</strong> Gold, Taskium, Etagenfortschritt, freigeschaltete und verbesserte Spitzhacken samt Meisterschaft, Rüstungs- und Begleiter-Verbesserungen, Gegenstandsfertigkeiten, Titel, Aufgabenfortschritt, Abklingzeiten der Fertigkeiten, Segen, an Arbeiter vergebene Spitzhacken und nicht eingesammeltes Arbeitereinkommen.</li>
+          <li><strong>Behalten:</strong> Diamanten, Schlüssel, Essenz, Reine Essenz, Fertigkeitsstein, Erzstein, Elementium, Erwachen- und Aufstieg-Parameter, der Fertigkeitsbaum, Golems, Boss- und Abgrund-Fortschritt, freigeschaltete Fenster, tägliche Belohnungen, Arbeiterstufen, der Charakter und seine Ausrüstung, deine Arena-Wertung und alles in deinem Inventar.</li>
+          <li>Die Essenz richtet sich nach der tiefsten erreichten Etage und wächst mit der Tiefe schnell an. Gib sie für dauerhafte Parameter aus.</li>
+          <li>Auto-Etage und der automatische Kauf von Hitzeresistenz können nach einem Erwachen eingeschaltet bleiben, wenn du das in den Einstellungen so wählst.</li>
+          <li>Die Schaltfläche <strong>i</strong> auf der Seite öffnet deinen <strong>Erwachen-Verlauf</strong>.</li>
+        </ul>
+      <div class="callout">
+          <div class="callout-label">Segen des Erwachens</div>
+          Auf bestimmten Etagen jedes Laufs wird dir eine Auswahl an Segen angeboten; wartet einer auf dich, erscheint eine leuchtende Schaltfläche. Segen derselben Familie werden gemeinsam stärker, und alle werden beim Erwachen zurückgesetzt.
+        </div>
+      <div class="callout">
+          <div class="callout-label">Grab noch ein Stück tiefer</div>
+          Vor dem Erwachen noch ein paar Etagen zu schaffen ist meist mehr wert als sofort ein weiteres Erwachen.
+        </div>
+    </section>
+
+    <section id="ascension">
+      <div class="section-head"><span class="section-num">18</span><h2>Aufstieg</h2></div>
+      <p class="section-dek">Die zweite Ebene, die auf dem Erwachen aufsitzt.</p>
+      <ul>
+          <li>Erreichst du eine deutlich tiefere Etage, schaltet sich Aufstieg frei; es bekommt eine eigene Seite unter dem Prestige-Reiter.</li>
+          <li><strong>Zurückgesetzt:</strong> deine Erwachen-Parameter und die Essenz - diese Schleife beginnt komplett von vorn; Spitzhacken, Etagen und Verbesserungen werden wie beim Erwachen zurückgesetzt.</li>
+          <li><strong>Behalten:</strong> deine Erwachen-Stufe, Diamanten, Schlüssel, Boss- und Abgrund-Fortschritt, Golems, Verzauberungen und Ausrüstung, der Charakter, der Fertigkeitsbaum, Erfolge, Arbeiterstufen und die angesparte Reine Essenz.</li>
+          <li>Dafür bekommst du <strong>Reine Essenz</strong>. Sie kauft zwei Parameter: <strong>Echo des Erwachens</strong> verstärkt den Bonus jedes Erwachen-Parameters, <strong>Quellborn</strong> erhöht die Essenz, die jedes Erwachen auszahlt.</li>
+          <li>Beide Parameter wachsen mit jeder Stufe, die du kaufst.</li>
+        </ul>
+      <div class="callout">
+          <div class="callout-label">Wann aufsteigen</div>
+          Aufstieg beschleunigt nicht einen einzelnen Lauf, sondern die ganze Schleife. Es lohnt sich, sobald Essenz-Parameter teuer geworden sind und ein weiteres Erwachen kaum noch etwas bringt.
+        </div>
+    </section>
+
+    <section id="dungeons">
+      <div class="section-head"><span class="section-num">19</span><h2>Bosse und Abgrund</h2></div>
+      <p class="section-dek">Die zwei zeitlich begrenzten Herausforderungen außerhalb der Hauptmine.</p>
+      <ul>
+          <li>Zu beiden gelangst du über Orte; solange du dort bist, ruhen Hitze und Etagenfortschritt der Hauptmine.</li>
+          <li><strong>Bosse</strong> öffnest du mit einem Verliesschlüssel: Streckst du den Boss vor Ablauf der Zeit nieder, gibt es Essenz, Erzstein und Aufwertungssteine. Bosse schalten sich der Reihe nach frei, ein besiegter Boss bleibt dauerhaft offen.</li>
+          <li>Besiegst du einen Boss, öffnen sich seine endlosen <strong>Albtraum</strong>-Stufen: Jede Stufe macht den Boss stärker, die Belohnungen größer und die Aufwertungssteine seltener.</li>
+          <li><strong>Abgrund</strong> öffnest du mit einem Abgrundschlüssel; alles läuft über eine einzige Uhr: Du zerbrichst Erz um Erz, jede Stufe härter als die davor.</li>
+          <li>Jede Abgrundstufe bringt ihre eigene <strong>Strafe</strong> mit - eine senkt deinen automatischen Schaden, eine den Klickschaden, eine die Kritischen. Die Strafe gilt nur, solange die Stufe läuft.</li>
+          <li>Jede im Abgrund zerbrochene Stufe wird ausgezahlt: Ob die Zeit abläuft oder du den Lauf verlässt, das bis dahin Verdiente gehört dir. Schaffst du alle Stufen, öffnet sich der nächste Abgrund.</li>
+        </ul>
+      <div class="callout warn">
+          <div class="callout-label">Ein verlorener Boss kostet</div>
+          Endet die Zeit, bevor der Boss fällt, bekommst du keine Belohnung und der Schlüssel ist weg.
+        </div>
+    </section>
+
+    <section id="store">
+      <div class="section-head"><span class="section-num">20</span><h2>Shop und Erfolge</h2></div>
+      <p class="section-dek">Diamanten, Schlüssel, Pakete, Premium, Zeitsprünge, Truhen, Golems und dauerhafte Unendlichkeits-Gegenstände.</p>
+      <ul>
+          <li>Das <strong>Starterpaket</strong> kann nur einmal pro Konto gekauft werden.</li>
+          <li><strong>Premium</strong> erhöht für einen festgelegten Zeitraum Schaden, Gold und Offline-Einnahmen.</li>
+          <li><strong>Zeitsprünge</strong> spulen das Spiel um einige Stunden vor; die Auszahlung richtet sich nach deiner aktuellen Stärke.</li>
+          <li><strong>Truhen</strong> öffnen sich sofort: Die Verzauberungstruhe gibt Verzauberungsmaterial, die Ausrüstungstruhen und die Gemischte Truhe geben Ausrüstung.</li>
+          <li>Aus dem <strong>Golem-Ei</strong> schlüpft ein zufälliger Golem.</li>
+          <li><strong>Schlüsselpakete</strong> werden mit Diamanten gekauft; es gibt Pakete für Verliesschlüssel und für Abgrundschlüssel.</li>
+          <li><strong>Unendlichkeits-Gegenstände</strong> kaufst du einmal; sie überstehen sowohl Erwachen als auch Aufstieg.</li>
+          <li><strong>Erfolge</strong> zahlen Belohnungen, die du selbst abholen musst.</li>
+        </ul>
+    </section>
+
+    <section id="progress">
+      <div class="section-head"><span class="section-num">21</span><h2>Fortschritt und Community</h2></div>
+      <p class="section-dek">Wo du deinen Lauf verfolgst, wie dein Fortschritt gesichert wird und wie du ihn teilst.</p>
+      <ul>
+          <li>Der <strong>Leitfaden</strong> (die Buch-Schaltfläche) sammelt die Elemente, seltenen Erze, Bosse, Abgründe, Währungen, Spitzhacken, Begleiter und Golems, die du gefunden hast. Unentdeckte bleiben schwarze Silhouetten.</li>
+          <li>Steam-Bestenlisten, der Statistikbildschirm und das <strong>Aktivitätsprotokoll</strong> zeigen deinen Fortschritt. Das Fenster <strong>Updates</strong> zeigt die neuesten Update-Notizen.</li>
+          <li>Die Schaltfläche <strong>Karte exportieren</strong> in den Einstellungen zeigt deine <strong>Bergarbeiterkarte</strong> mit deinen wichtigsten Werten; du kannst sie als PNG-Bild speichern und teilen.</li>
+          <li>Ist <strong>Seltene Momente auf Discord teilen</strong> eingeschaltet, erscheinen deine seltensten Momente - tiefe Etagen, legendäre Funde, Siege über Bosse und im Abgrund, Arena-Kämpfe - im #live-Kanal unseres Discord-Servers. Gezeigt werden nur dein Steam-Name und der Moment; in den Einstellungen kannst du es abschalten.</li>
+          <li>Ist Discord offen, zeigt dein Profil, auf welcher Etage du bist und welche Erwachen- / Aufstieg-Stufe du hast.</li>
+          <li>Das Spiel speichert regelmäßig und sichert in der Steam Cloud; so machst du an einem anderen Rechner weiter.</li>
+          <li>Auf einem schwächeren Rechner verbessert es die Leistung, wenn du <strong>Schatten verwenden</strong> in den Einstellungen abschaltest.</li>
+        </ul>
+    </section>
+
+    <footer class="doc-footer">Das Spiel ändert sich mit Updates; dieses Handbuch gibt einen Überblick. Preise für Echtgeld-Artikel zeigt Steam in deiner eigenen Währung an.</footer>
+  </main>
+</div>
+
+</body>
+</html>

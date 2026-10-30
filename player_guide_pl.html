@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self'; style-src 'unsafe-inline'; base-uri 'none'; form-action 'none'; upgrade-insecure-requests">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Clicker Ore Game - Poradnik gracza</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Jak działa kopalnia: kilofy, pupile, golemy, robotnicy, zaklęcia, umiejętności, postać i wyposażenie, Arena, Przebudzenie, Wzniesienie, bossowie, Otchłań i sklep - w skrócie.">
+<style>
+  :root {
+    --bg: #14110d;
+    --bg-elevated: #1d1811;
+    --bg-card: #211b13;
+    --text: #ede6d8;
+    --text-dim: #a89a82;
+    --text-faint: #766a55;
+    --accent: #e0a752;
+    --accent-strong: #f2bd6e;
+    --accent-2: #7fb8ad;
+    --border: #3a2f22;
+    --border-soft: #2a2318;
+    --danger: #cf7a5a;
+    --shadow: 0 8px 24px rgba(0,0,0,0.35);
+
+    --cur-gold: #e0a752;
+    --cur-diamond: #7fd1e0;
+    --cur-essence: #b79ef0;
+    --cur-taskium: #93a8d6;
+    --cur-key: #d98a63;
+    --cur-skillstone: #7fc9a0;
+    --cur-orestone: #b5a68c;
+    --cur-abysskey: #8f7fd6;
+    --cur-pureessence: #d7bff5;
+    --cur-elementium: #e07f9e;
+
+    --font-display: "Bahnschrift", "Segoe UI Semibold", "Arial Narrow Bold", "Arial Narrow", sans-serif;
+    --font-body: "Sitka Text", "Iowan Old Style", Georgia, "Times New Roman", serif;
+    --font-mono: "Cascadia Mono", "Consolas", "SF Mono", ui-monospace, monospace;
+  }
+
+  :root[data-theme="light"] {
+    --bg: #efe9da;
+    --bg-elevated: #e6ddc8;
+    --bg-card: #f3ede0;
+    --text: #241d14;
+    --text-dim: #5c5138;
+    --text-faint: #857656;
+    --accent: #a8621a;
+    --accent-strong: #8a4e12;
+    --accent-2: #2f7a70;
+    --border: #d3c5a4;
+    --border-soft: #ddd0b1;
+    --danger: #a3492c;
+    --shadow: 0 8px 20px rgba(90,70,30,0.12);
+  }
+
+  @media (prefers-color-scheme: light) {
+    :root:not([data-theme="dark"]) {
+      --bg: #efe9da;
+      --bg-elevated: #e6ddc8;
+      --bg-card: #f3ede0;
+      --text: #241d14;
+      --text-dim: #5c5138;
+      --text-faint: #857656;
+      --accent: #a8621a;
+      --accent-strong: #8a4e12;
+      --accent-2: #2f7a70;
+      --border: #d3c5a4;
+      --border-soft: #ddd0b1;
+      --danger: #a3492c;
+      --shadow: 0 8px 20px rgba(90,70,30,0.12);
+    }
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: 17px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection { background: var(--accent); color: #14110d; }
+
+  a { color: var(--accent-strong); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  a:focus-visible, button:focus-visible, summary:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    text-wrap: balance;
+    letter-spacing: 0.01em;
+    color: var(--text);
+  }
+
+  p { max-width: 68ch; }
+  ul, ol { max-width: 68ch; }
+
+  .shell {
+    display: grid;
+    grid-template-columns: 260px minmax(0, 1fr);
+    min-height: 100vh;
+  }
+
+  .topbar {
+    display: none;
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: var(--bg-elevated);
+    border-bottom: 1px solid var(--border);
+    padding: 0.7rem 1rem;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .topbar-title {
+    font-family: var(--font-display);
+    font-size: 0.95rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--accent-strong);
+  }
+  #nav-toggle { display: none; }
+  .nav-toggle-btn {
+    font-family: var(--font-display);
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 0.4rem 0.7rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.85rem;
+  }
+
+  nav.toc {
+    position: sticky;
+    top: 0;
+    align-self: start;
+    height: 100vh;
+    overflow-y: auto;
+    padding: 2rem 1.4rem 3rem;
+    background: var(--bg-elevated);
+    border-right: 1px solid var(--border);
+  }
+  .toc-home {
+    display: inline-block;
+    font-family: var(--font-display);
+    font-size: 0.8rem;
+    color: var(--text-dim);
+    margin-bottom: 1.1rem;
+  }
+  .toc-home:hover { color: var(--accent-strong); text-decoration: none; }
+
+  .toc-brand {
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    letter-spacing: 0.03em;
+    color: var(--accent-strong);
+    margin-bottom: 0.15rem;
+  }
+  .toc-brand small {
+    display: block;
+    font-family: var(--font-body);
+    font-style: italic;
+    font-size: 0.78rem;
+    color: var(--text-faint);
+    letter-spacing: 0;
+    margin-top: 0.25rem;
+  }
+  .toc-list {
+    list-style: none;
+    margin: 1.6rem 0 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+  }
+  .toc-list a {
+    display: block;
+    color: var(--text-dim);
+    font-size: 0.88rem;
+    padding: 0.32rem 0.5rem;
+    border-radius: 4px;
+    border-left: 2px solid transparent;
+  }
+  .toc-list a:hover {
+    color: var(--text);
+    text-decoration: none;
+    background: rgba(224,167,82,0.08);
+    border-left-color: var(--accent);
+  }
+  .toc-num {
+    font-family: var(--font-mono);
+    color: var(--text-faint);
+    font-size: 0.78rem;
+    margin-right: 0.45rem;
+  }
+
+  main {
+    padding: 3.2rem clamp(1.2rem, 4vw, 4rem) 6rem;
+    max-width: 900px;
+  }
+
+  header.hero {
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .strata {
+    height: 10px;
+    width: 100%;
+    border-radius: 3px;
+    margin-bottom: 1.6rem;
+    background: repeating-linear-gradient(
+      90deg,
+      var(--accent) 0 6%,
+      var(--accent-2) 6% 11%,
+      var(--border-soft) 11% 18%,
+      var(--accent) 18% 24%,
+      var(--border-soft) 24% 34%,
+      var(--accent-2) 34% 40%,
+      var(--accent) 40% 48%,
+      var(--border-soft) 48% 58%,
+      var(--accent-2) 58% 63%,
+      var(--accent) 63% 72%,
+      var(--border-soft) 72% 82%,
+      var(--accent-2) 82% 90%,
+      var(--accent) 90% 100%
+    );
+    opacity: 0.85;
+  }
+  .eyebrow {
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-size: 0.72rem;
+    color: var(--accent);
+    margin-bottom: 0.6rem;
+  }
+  h1.title {
+    font-size: clamp(2rem, 4.2vw, 2.9rem);
+    margin: 0 0 0.7rem;
+    line-height: 1.1;
+  }
+  .subtitle {
+    color: var(--text-dim);
+    font-size: 1.08rem;
+    max-width: 62ch;
+    margin: 0;
+  }
+
+  .langbar {
+    margin: 1.8rem 0 0;
+    padding-top: 1.2rem;
+    border-top: 1px solid var(--border-soft);
+  }
+  .langbar-label {
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 0.68rem;
+    color: var(--text-faint);
+    margin-bottom: 0.55rem;
+  }
+  .langbar-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem 0.4rem;
+  }
+  .langbar-list a, .langbar-list span {
+    font-family: var(--font-display);
+    font-size: 0.78rem;
+    padding: 0.18rem 0.55rem;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    color: var(--text-dim);
+    background: var(--bg-card);
+  }
+  .langbar-list a:hover {
+    text-decoration: none;
+    color: var(--text);
+    border-color: var(--accent);
+  }
+  .langbar-list span {
+    color: #14110d;
+    background: var(--accent);
+    border-color: var(--accent);
+  }
+  :root[data-theme="light"] .langbar-list span { color: #efe9da; }
+
+  section {
+    margin-bottom: 3.6rem;
+    scroll-margin-top: 1.5rem;
+  }
+  .section-head {
+    display: flex;
+    align-items: baseline;
+    gap: 0.7rem;
+    margin-bottom: 0.3rem;
+  }
+  .section-num {
+    font-family: var(--font-mono);
+    color: var(--accent);
+    font-size: 0.95rem;
+  }
+  h2 {
+    font-size: 1.55rem;
+    margin: 0;
+  }
+  .section-dek {
+    color: var(--text-dim);
+    font-size: 0.98rem;
+    margin: 0.3rem 0 1.5rem;
+    max-width: 62ch;
+  }
+
+  .callout {
+    border-left: 3px solid var(--accent);
+    background: var(--bg-card);
+    padding: 0.95rem 1.2rem;
+    border-radius: 0 6px 6px 0;
+    margin: 1.2rem 0;
+    font-size: 0.95rem;
+  }
+  .callout strong { color: var(--accent-strong); }
+  .callout.warn { border-left-color: var(--danger); }
+  .callout-label {
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 0.72rem;
+    color: var(--accent);
+    margin-bottom: 0.35rem;
+  }
+  .callout.warn .callout-label { color: var(--danger); }
+
+  .currency-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 0.9rem;
+    margin: 1.4rem 0;
+  }
+  .cur-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-top: 3px solid var(--dot);
+    border-radius: 6px;
+    padding: 0.95rem 1rem 1.05rem;
+  }
+  .cur-card h4 {
+    margin: 0 0 0.5rem;
+    font-size: 0.98rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .dot {
+    width: 9px; height: 9px; border-radius: 50%;
+    background: var(--dot);
+    flex: none;
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--dot) 20%, transparent);
+  }
+  .cur-card p {
+    margin: 0.15rem 0;
+    font-size: 0.84rem;
+    color: var(--text-dim);
+    max-width: none;
+  }
+  .cur-card p b { color: var(--text); font-weight: 600; }
+
+  .table-wrap {
+    overflow-x: auto;
+    margin: 1.2rem 0;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+  }
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    min-width: 460px;
+    font-size: 0.9rem;
+  }
+  thead th {
+    text-align: left;
+    font-family: var(--font-display);
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    font-size: 0.72rem;
+    color: var(--text-dim);
+    background: var(--bg-elevated);
+    padding: 0.6rem 0.85rem;
+    border-bottom: 1px solid var(--border);
+    white-space: nowrap;
+  }
+  tbody td {
+    padding: 0.55rem 0.85rem;
+    border-bottom: 1px solid var(--border-soft);
+    font-variant-numeric: tabular-nums;
+    color: var(--text);
+  }
+  tbody tr:last-child td { border-bottom: none; }
+  tbody tr:nth-child(even) { background: color-mix(in srgb, var(--accent) 3%, transparent); }
+  td.num, th.num { font-family: var(--font-mono); }
+  td.strong { color: var(--accent-strong); font-weight: 600; }
+
+  .strategy-track {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 1.4rem 0;
+  }
+  .strategy-stage {
+    background: var(--bg-card);
+    padding: 1rem 1.1rem;
+  }
+  .strategy-stage .stage-label {
+    font-family: var(--font-display);
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+    margin-bottom: 0.4rem;
+  }
+  .strategy-stage ul {
+    margin: 0;
+    padding-left: 1.1rem;
+    font-size: 0.86rem;
+    color: var(--text-dim);
+  }
+  .strategy-stage li { margin-bottom: 0.25rem; }
+
+  footer.doc-footer {
+    margin-top: 4rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+    color: var(--text-faint);
+    font-size: 0.8rem;
+  }
+
+  @media (max-width: 880px) {
+    .shell { grid-template-columns: 1fr; }
+    .topbar { display: flex; }
+    nav.toc {
+      position: fixed;
+      inset: 0 20% 0 0;
+      top: 52px;
+      height: calc(100vh - 52px);
+      transform: translateX(-100%);
+      transition: transform 0.22s ease;
+      z-index: 15;
+      box-shadow: var(--shadow);
+    }
+    #nav-toggle:checked ~ .shell nav.toc {
+      transform: translateX(0);
+    }
+    main { padding: 2rem 1.2rem 5rem; }
+  }
+</style>
+</head>
+<body>
+
+<input type="checkbox" id="nav-toggle">
+
+<div class="topbar">
+  <a class="topbar-title" href="index.html">&#9935; Clicker Ore Game</a>
+  <label class="nav-toggle-btn" for="nav-toggle">Spis treści</label>
+</div>
+
+<div class="shell">
+  <nav class="toc" aria-label="Spis treści">
+    <a class="toc-home" href="index.html">← Strona główna</a>
+    <div class="toc-brand">Clicker Ore Game<small>Poradnik gracza</small></div>
+    <ul class="toc-list">
+      <li><a href="#start"><span class="toc-num">01</span>Od czego zacząć</a></li>
+      <li><a href="#currencies"><span class="toc-num">02</span>Waluty</a></li>
+      <li><a href="#damage"><span class="toc-num">03</span>Obrażenia i trafienia krytyczne</a></li>
+      <li><a href="#equipment"><span class="toc-num">04</span>Kilofy, zbroje i pupile</a></li>
+      <li><a href="#golems"><span class="toc-num">05</span>Golemy</a></li>
+      <li><a href="#temperature"><span class="toc-num">06</span>Ciepło</a></li>
+      <li><a href="#workers"><span class="toc-num">07</span>Robotnicy</a></li>
+      <li><a href="#enchantments"><span class="toc-num">08</span>Zaklęcia</a></li>
+      <li><a href="#floors"><span class="toc-num">09</span>Piętra i rudy</a></li>
+      <li><a href="#weather"><span class="toc-num">10</span>Pogoda</a></li>
+      <li><a href="#skills"><span class="toc-num">11</span>Umiejętności i tytuły</a></li>
+      <li><a href="#character"><span class="toc-num">12</span>Postać i Wyposażenie</a></li>
+      <li><a href="#arena"><span class="toc-num">13</span>Arena</a></li>
+      <li><a href="#tasks"><span class="toc-num">14</span>Zadania</a></li>
+      <li><a href="#trade"><span class="toc-num">15</span>Handlarz</a></li>
+      <li><a href="#extras"><span class="toc-num">16</span>Darmowe nagrody</a></li>
+      <li><a href="#awakening"><span class="toc-num">17</span>Przebudzenie</a></li>
+      <li><a href="#ascension"><span class="toc-num">18</span>Wzniesienie</a></li>
+      <li><a href="#dungeons"><span class="toc-num">19</span>Bossowie i Otchłań</a></li>
+      <li><a href="#store"><span class="toc-num">20</span>Sklep i osiągnięcia</a></li>
+      <li><a href="#progress"><span class="toc-num">21</span>Postęp i społeczność</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <header class="hero">
+      <div class="strata" role="presentation"></div>
+      <div class="eyebrow">Poradnik gracza - 2026-10-28</div>
+      <h1 class="title">Cała kopalnia,<br>w skrócie</h1>
+      <p class="subtitle">Do czego służy każdy system i gdzie warto poświęcić czas. Bez liczb i wzorów - tylko to, co trzeba wiedzieć.</p>
+      <div class="langbar">
+        <div class="langbar-label">Język</div>
+        <div class="langbar-list"><a href="player_guide_en.html" hreflang="en">English</a><a href="player_guide_tr.html" hreflang="tr">Türkçe</a><a href="player_guide_de.html" hreflang="de">Deutsch</a><a href="player_guide_fr.html" hreflang="fr">Français</a><a href="player_guide_es.html" hreflang="es">Español</a><a href="player_guide_es_la.html" hreflang="es-419">Español (Latinoamérica)</a><a href="player_guide_it.html" hreflang="it">Italiano</a><span>Polski</span><a href="player_guide_pt_br.html" hreflang="pt-BR">Português (Brasil)</a><a href="player_guide_ru.html" hreflang="ru">Русский</a><a href="player_guide_uk.html" hreflang="uk">Українська</a><a href="player_guide_ja.html" hreflang="ja">日本語</a><a href="player_guide_ko.html" hreflang="ko">한국어</a><a href="player_guide_zh_hans.html" hreflang="zh-Hans">简体中文</a><a href="player_guide_zh_hant.html" hreflang="zh-Hant">繁體中文</a><a href="player_guide_th.html" hreflang="th">ไทย</a><a href="player_guide_id.html" hreflang="id">Bahasa Indonesia</a><a href="player_guide_vi.html" hreflang="vi">Tiếng Việt</a></div>
+      </div>
+    </header>
+
+    <section id="start">
+      <div class="section-head"><span class="section-num">01</span><h2>Od czego zacząć</h2></div>
+      <p class="section-dek">Gra otwiera swoje systemy stopniowo, w miarę jak schodzisz głębiej.</p>
+      <div class="strategy-track">
+          <div class="strategy-stage">
+            <div class="stage-label">Początek</div>
+            <ul>
+              <li>Ulepszaj kilof bez przerwy; głębsze piętra odblokowują nowe.</li>
+              <li>Klikaj każdy złoty balon, każdy Złoty kryształ i każdy słaby punkt, który zobaczysz, i zacznij używać pierwszych umiejętności.</li>
+              <li>Odbieraj Prezenty powitalne i sprawdzaj Bonus dnia każdego dnia, w którym grasz.</li>
+              <li>Kup pierwszego pupila, gdy tylko będzie cię na niego stać.</li>
+            </ul>
+          </div>
+          <div class="strategy-stage">
+            <div class="stage-label">Środek</div>
+            <ul>
+              <li>Gdy postęp zwolni, wykonaj Przebudzenie i zdobądź Esencję.</li>
+              <li>Zadania, Misje dzienne, Koło Fortuny, Handlarz, drzewko umiejętności i zjawiska pogodowe otwierają się właśnie wtedy.</li>
+              <li>Wybieraj błogosławieństwo za każdym razem, gdy jest oferowane, i rozkładaj Esencję zamiast pakować wszystko w jeden parametr.</li>
+            </ul>
+          </div>
+          <div class="strategy-stage">
+            <div class="stage-label">Późna gra</div>
+            <ul>
+              <li>Otwierają się Postać, jej Wyposażenie i Arena; w panelu Ekwipunek zaczynają się gromadzić pierwiastki.</li>
+              <li>Walcz z bossami, gdy masz klucz, a potem zacznij wyprawy do Otchłań.</li>
+              <li>Dołączają robotnicy, otwierają się gniazda na zaklęcia, a Kowal zaczyna udoskonalać twoje wyposażenie.</li>
+              <li>Ulepszaj zbroję, żeby ciepło nie zjadało twoich obrażeń.</li>
+            </ul>
+          </div>
+          <div class="strategy-stage">
+            <div class="stage-label">Długi dystans</div>
+            <ul>
+              <li>Dużo głębiej odblokowuje się Wzniesienie i zeruje całą pętlę Przebudzenie.</li>
+              <li>W zamian zdobywasz Czysta Esencja, która trwale przyspiesza każdą kolejną grę.</li>
+              <li>Pokonani bossowie otwierają niekończące się poziomy Koszmar z większymi nagrodami.</li>
+            </ul>
+          </div>
+        </div>
+      <div class="callout">
+          <div class="callout-label">Warto wiedzieć</div>
+          Liczby rosną szybko; gra przechodzi najpierw na skrócony, a później na naukowy zapis. Nic nie jest ograniczane - zmienia się tylko sposób zapisu.
+        </div>
+      <div class="callout">
+          <div class="callout-label">Krótkie samouczki</div>
+          Każdy nowy system przedstawia krótki samouczek, gdy otwiera się po raz pierwszy. Kroki, które przyciemniają ekran, mają przycisk Pomiń.
+        </div>
+    </section>
+
+    <section id="currencies">
+      <div class="section-head"><span class="section-num">02</span><h2>Waluty</h2></div>
+      <p class="section-dek">Każda zasila inny system.</p>
+      <div class="currency-grid">
+        <div class="cur-card" style="--dot:var(--cur-gold)">
+          <h4><span class="dot"></span>Złoto</h4>
+          <p>Zdobywasz je, <b>rozbijając rudę</b>; złoto dają też robotnicy, czas offline, darmowe złoto co godzinę, zadania, złote balony, przeskoki czasu i Koło Fortuny.</p>
+          <p>Idzie na kilofy, ulepszenia i umiejętności przedmiotów.</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-diamond)">
+          <h4><span class="dot"></span>Diament</h4>
+          <p>Dają je <b>Sklep</b>, kody promocyjne, nagrody za sezon Areny i Koło Fortuny.</p>
+          <p>Wydajesz je na pupili, golemy, przedmioty Infinity, przeskoki czasu, skrzynie, paczki kluczy, dodatkowe ataki na Arenie i odświeżanie oferty w panelu Kram.</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-essence)">
+          <h4><span class="dot"></span>Esencja</h4>
+          <p>To nagroda z <b>Przebudzenie</b>; trochę dają też bossowie, zadania, Handlarz, paczki ze sklepu i Koło Fortuny.</p>
+          <p>Wydajesz ją na stałe parametry Przebudzenie.</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-taskium)">
+          <h4><span class="dot"></span>Taskium</h4>
+          <p>Odrobina wpada przy każdym kliknięciu w rudę, trochę daje też Koło Fortuny.</p>
+          <p>Idzie na przyjmowanie i odświeżanie zadań.</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-key)">
+          <h4><span class="dot"></span>Klucz do lochu</h4>
+          <p>Jeden darmowy klucz dziennie w sklepie, a poza tym diamenty, paczki ze sklepu i Koło Fortuny.</p>
+          <p>Wydajesz go na wejście do walki z bossem.</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-skillstone)">
+          <h4><span class="dot"></span>Kamień umiejętności</h4>
+          <p>Dają go Handlarz, paczki ze sklepu i Koło Fortuny.</p>
+          <p>Wydajesz go na wzmacnianie umiejętności aktywnych.</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-orestone)">
+          <h4><span class="dot"></span>Kamień rudy</h4>
+          <p>Wypada z każdej rozbitej rudy, a także z osiągnięć, bossów, wypraw do Otchłań i przeskoków czasu; daje go też Koło Fortuny.</p>
+          <p>Idzie na wymiany i ich opłaty, wytwarzanie zaklęć i ulepszanie robotników.</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-abysskey)">
+          <h4><span class="dot"></span>Klucz do otchłani</h4>
+          <p>Jeden darmowy klucz dziennie w sklepie, a poza tym diamenty i paczki ze sklepu.</p>
+          <p>Wydajesz go na wejście do Otchłań.</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-pureessence)">
+          <h4><span class="dot"></span>Czysta Esencja</h4>
+          <p>To nagroda z <b>Wzniesienie</b>; nie pochodzi znikąd indziej.</p>
+          <p>Wydajesz ją wyłącznie na parametry Wzniesienie.</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-elementium)">
+          <h4><span class="dot"></span>Elementium</h4>
+          <p>Wytwarza go Handlarz z zebranych pierwiastków albo za Kamień rudy; płaci nim też Kowal za sprzedane wyposażenie.</p>
+          <p>Idzie na statystyki w panelach Postać i Kryształ oraz na przedmioty w panelu Kram.</p>
+        </div>
+      </div>
+      <div class="callout">
+          <div class="callout-label">Waluty serwerowe</div>
+          Diamenty, klucze do lochu i Klucz do otchłani trzymane są na serwerze; żeby je wydać, musisz być online.
+        </div>
+    </section>
+
+    <section id="damage">
+      <div class="section-head"><span class="section-num">03</span><h2>Obrażenia i trafienia krytyczne</h2></div>
+      <p class="section-dek">Dwa osobne źródła obrażeń i krytyki, które je mnożą.</p>
+      <ul>
+          <li><strong>Obrażenia od kliknięcia</strong> pochodzą z pierwszego kilofa, umiejętności Gniewne Kliknięcie, tytułu, parametrów Przebudzenie i zaklęć.</li>
+          <li><strong>Obrażenia automatyczne</strong> pochodzą z pozostałych kilofów, umiejętności Szał, pupili i zaklęć; działają bez przerwy, dopóki ruda żyje.</li>
+          <li>Im wyższa Jedność Siły, tym większa część obrażeń automatycznych dolicza się również do każdego kliknięcia.</li>
+          <li>Każde kliknięcie może być <strong>krytyczne</strong> i uderzyć znacznie mocniej. Szansa i mnożnik krytyka rosną dzięki umiejętnościom, parametrom Przebudzenie, tytułom i zaklęciom. Gdy szansa na krytyka jest pełna, nadwyżka dalej zwiększa obrażenia krytyczne.</li>
+          <li>Co jakiś czas na rudzie pojawia się świecący <strong>słaby punkt</strong>; kliknięcie w niego uderza znacznie mocniej niż zwykłe kliknięcie.</li>
+          <li>Golemy, błogosławieństwa i Bonus dnia dokładają własne wzmocnienia. Panel Stan efektów pokazuje każdy aktywny efekt i jego źródło.</li>
+        </ul>
+    </section>
+
+    <section id="equipment">
+      <div class="section-head"><span class="section-num">04</span><h2>Kilofy, zbroje i pupile</h2></div>
+      <p class="section-dek">Podstawa twoich obrażeń i wytrzymałości.</p>
+      <ul>
+          <li><strong>Kilofy</strong> odblokowują się wraz z głębokością. Pierwszy zasila obrażenia od kliknięcia, pozostałe - automatyczne.</li>
+          <li>Kilofy zdobywają <strong>mistrzostwo</strong> za rozbijane rudy; każdy poziom mistrzostwa sprawia, że ten kilof bije mocniej.</li>
+          <li><strong>Zbroje</strong> masz od początku; nie kupuje się ich, tylko ulepsza, i chronią cię przed ciepłem. Ich zakładka otwiera się, gdy ciepło po raz pierwszy zaczyna obniżać twoje obrażenia.</li>
+          <li><strong>Pupile</strong> kupuje się za diamenty, ulepsza za złoto i zadają obrażenia automatyczne. Posiadanie jest trwałe.</li>
+          <li>Każde z nich ma własne umiejętności otwierane poziomami; część pomaga tylko temu przedmiotowi, część całej rodzinie. Karta z wszystkimi kupionymi umiejętnościami świeci.</li>
+        </ul>
+      <div class="callout">
+          <div class="callout-label">Wielki skok</div>
+          Na pewnych poziomach moc przedmiotu robi duży skok. Dociągnięcie jednego przedmiotu do kolejnego progu to zwykle najlepsze ulepszenie.
+        </div>
+      <div class="callout warn">
+          <div class="callout-label">Po Przebudzenie</div>
+          Przebudzenie ponownie blokuje kilofy i zeruje ulepszenia zbroi i pupili oraz mistrzostwo kilofów. Sami pupile zostają twoi.
+        </div>
+    </section>
+
+    <section id="golems">
+      <div class="section-head"><span class="section-num">05</span><h2>Golemy</h2></div>
+      <p class="section-dek">Kamienni towarzysze, którzy tylko cię wzmacniają.</p>
+      <ul>
+          <li>Kup w panelu Sklep <strong>Jajo golema</strong>, a wykluje się z niego losowy golem. Wszystkie twoje golemy stoją jednocześnie obok ciebie w kopalni.</li>
+          <li>Golemy same nie zadają obrażeń; zamiast tego ich umiejętności wzmacniają ciebie - obrażenia, złoto, krytyki, Kamień rudy i więcej. Gdy umiejętność jest aktywna, u stóp golema obraca się pierścień w jego kolorze.</li>
+          <li>Golemy zdobywają poziomy za rudę, którą rozbijasz. Wyklucie kopii golema, którego już masz, zwiększa jego gwiazdki i wzmacnia jego umiejętności.</li>
+          <li>Golemy nigdy się nie zerują - ani przy Przebudzenie, ani przy Wzniesienie.</li>
+        </ul>
+    </section>
+
+    <section id="temperature">
+      <div class="section-head"><span class="section-num">06</span><h2>Ciepło</h2></div>
+      <p class="section-dek">Im głębiej, tym goręcej, a ciepło po cichu obniża twoje obrażenia.</p>
+      <p>Jeśli odporność na ciepło nie nadąża za temperaturą piętra, twoje obrażenia zaczynają topnieć. W panelu zbroi jest przełącznik automatycznego kupowania odporności. Ciepło występuje wyłącznie w głównej kopalni, a niektóre zjawiska pogodowe na jakiś czas je zmieniają.</p>
+      <div class="callout warn">
+          <div class="callout-label">Gdy postęp staje</div>
+          Ściana, o którą ruda nagle przestaje pękać, to prawie zawsze ciepło. Zajrzyj na wskaźnik, zanim wydasz złoto gdzie indziej.
+        </div>
+    </section>
+
+    <section id="workers">
+      <div class="section-head"><span class="section-num">07</span><h2>Robotnicy</h2></div>
+      <p class="section-dek">Pomocnicy, którzy kopią za ciebie, dopóki gra jest włączona.</p>
+      <ul>
+          <li>W miarę schodzenia dołączają nowi robotnicy i już nigdy się nie blokują.</li>
+          <li>Daj każdemu robotnikowi kilof; bez kilofa nic nie zarabia. Oddanie kilofa nie obniża twoich własnych obrażeń.</li>
+          <li>Zarobek rośnie wraz z twoim postępem, zbiera się w puli i czeka, aż go odbierzesz. Robotników ulepsza się za Kamień rudy.</li>
+        </ul>
+      <div class="callout warn">
+          <div class="callout-label">Odbierz przed Przebudzenie</div>
+          Robotnicy zarabiają tylko przy włączonej grze. Przebudzenie zachowuje ich poziomy, ale kasuje nieodebrany zarobek.
+        </div>
+    </section>
+
+    <section id="enchantments">
+      <div class="section-head"><span class="section-num">08</span><h2>Zaklęcia</h2></div>
+      <p class="section-dek">Twórz zaklęcia z tego, co wykopiesz, i wstawiaj je w kilofy, zbroje i pupili.</p>
+      <ul>
+          <li>Rozbijanie rudy daje <strong>pył zaklęć</strong> i <strong>fragmenty zaklęć</strong>. Materiały wyższych rang pojawiają się głębiej.</li>
+          <li>Rzemieślnik zamienia pył i fragmenty w zaklęcie o losowych cechach. Wyższe rangi niosą więcej cech i mocniejsze.</li>
+          <li>Każdy przedmiot ma gniazda na zaklęcia, które otwierają się wraz z głębokością.</li>
+          <li>Niepotrzebne zaklęcie można rozłożyć na pył u handlarza, a materiały wymienić na wyższą rangę.</li>
+        </ul>
+      <div class="callout">
+          <div class="callout-label">Przebudzenie nic nie rusza</div>
+          Przebudzenie nigdy nie kasuje zaklęć; te z ponownie zablokowanego przedmiotu wracają do Ekwipunek.
+        </div>
+    </section>
+
+    <section id="floors">
+      <div class="section-head"><span class="section-num">09</span><h2>Piętra i rudy</h2></div>
+      <p class="section-dek">Każde piętro jest nieco trudniejsze i nieco bardziej opłacalne od poprzedniego.</p>
+      <ul>
+          <li><strong>Pierwiastki</strong> dołączają do kopalni jeden po drugim w miarę schodzenia; najnowszy pojawia się najczęściej. Każda rozbita ruda trafia do panelu Ekwipunek.</li>
+          <li>Co jakiś czas trafia się <strong>piętro na czas</strong>: rozbij rudę, zanim odliczanie się skończy, a zapłaci więcej złota. Jeśli czas wygra, spadasz o piętro i auto-piętro się wyłącza.</li>
+          <li>Niektóre piętra przynoszą <strong>opancerzone i elitarne kryształy</strong>: najpierw rozbij ich tarczę, a w zamian zapłacą więcej złota.</li>
+          <li>Każda ruda daje Kamień rudy obok złota.</li>
+          <li>Bardzo rzadko pojawia się <strong>rzadka ruda</strong> (Ferrovyx, Karnyth, Thalveris, Umbryssa, Zephiris); każdą znajduje się tylko raz.</li>
+          <li>Na ścianie jaskini pojawia się czasem <strong>Pradawna inskrypcja</strong>. Jej zagadka wskazuje piętro, które już przeszedłeś - wróć tam, a będzie na ciebie czekał złoty kryształ.</li>
+          <li>Winda pozwala poruszać się między osiągniętymi piętrami; otwiera się, gdy wykonasz pierwsze Przebudzenie. Lokacje przełącza między główną kopalnią, lochem i Otchłań.</li>
+        </ul>
+      <div class="callout">
+          <div class="callout-label">Farmienie nisko się nie opłaca</div>
+          Pył i fragmenty wypadają najlepiej blisko najgłębszego osiągniętego piętra; siedzenie dużo niżej wyraźnie obniża szansę.
+        </div>
+    </section>
+
+    <section id="weather">
+      <div class="section-head"><span class="section-num">10</span><h2>Pogoda</h2></div>
+      <p class="section-dek">Kopalnia ma swoje nastroje.</p>
+      <p>W miarę schodzenia w głównej kopalni odblokowują się zjawiska pogodowe. Każde trwa przez jakiś czas i przynosi własne efekty uboczne; niektóre zmieniają też temperaturę piętra. Zjawiska nigdy się nie nakładają, a między dwoma zawsze jest chwila spokoju.</p>
+    </section>
+
+    <section id="skills">
+      <div class="section-head"><span class="section-num">11</span><h2>Umiejętności i tytuły</h2></div>
+      <p class="section-dek">Czasowe wzmocnienia i bonusy, które przychodzą same w miarę schodzenia.</p>
+      <ul>
+          <li><strong>Umiejętności aktywne</strong> odblokowują się za darmo wraz z głębokością; wzmacniają cię na chwilę, a potem idą na odnowienie. Wzmacnia się je Kamień umiejętności w Drzewko umiejętności i przetrwają Przebudzenie.</li>
+          <li><strong>Tytuły</strong> przychodzą same w miarę schodzenia i dają bonusy do obrażeń, złota czy odporności na ciepło. Po Przebudzenie zdobywa się je od nowa.</li>
+        </ul>
+      <div class="callout">
+          <div class="callout-label">Kombinacja</div>
+          Najpierw Przeciążenie, potem umiejętność, którą chcesz wzmocnić - na przykład Złota Furia. Następnie Odwrócenie Czasu skraca odnowienie ostatniej umiejętności.
+        </div>
+    </section>
+
+    <section id="character">
+      <div class="section-head"><span class="section-num">12</span><h2>Postać i Wyposażenie</h2></div>
+      <p class="section-dek">Druga ścieżka rozwoju; jej celem jest Arena.</p>
+      <ul>
+          <li>Twoja <strong>Postać</strong> zdobywa poziomy za rozbijane rudy. Jej statystyki ataku oraz statystyki obrony, które ma twój <strong>Kryształ</strong>, podnosisz za Elementium.</li>
+          <li><strong>Wyposażenie</strong> zakłada się w gniazda takie jak młot, hełm, napierśnik, rękawice, buty, peleryna, pierścień i naszyjnik. Przedmioty mają sześć rzadkości - od Pospolity po Unikatowy - a statystyki każdego przedmiotu są losowane w chwili jego zdobycia.</li>
+          <li>Załóż wszystkie części jednego zestawu, a dodatnie statystyki tego zestawu staną się mocniejsze.</li>
+          <li><strong>Kram</strong> codziennie oferuje nowy wybór przedmiotów za Elementium; ofertę możesz odświeżyć wcześniej za diamenty.</li>
+          <li><strong>Kowal</strong> udoskonala wyposażenie za <strong>Kamień udoskonalenia</strong> i skupuje twoje zbędne wyposażenie. Kamienie wypadają z bossów i wypraw do Otchłań, a Handlarz zamienia je na kamienie wyższej rangi.</li>
+        </ul>
+      <div class="callout">
+          <div class="callout-label">Na zawsze</div>
+          Postać, wyposażenie i twój ranking w panelu Arena przetrwają zarówno Przebudzenie, jak i Wzniesienie.
+        </div>
+    </section>
+
+    <section id="arena">
+      <div class="section-head"><span class="section-num">13</span><h2>Arena</h2></div>
+      <p class="section-dek">Atakuj kryształy innych graczy i wspinaj się w rankingu sezonu.</p>
+      <ul>
+          <li>Atakujesz Kryształ innych graczy i zyskujesz lub tracisz ranking Areny. Liczą się też walki, w których to inni atakują ciebie.</li>
+          <li>Dostajesz stałą listę przeciwników; możesz ją odświeżyć kilka razy dziennie za darmo, a potem za diamenty.</li>
+          <li>Codziennie masz kilka darmowych ataków. Gdy się skończą, możesz dalej atakować za diamenty.</li>
+          <li>Zwykle wygrywa silniejsza strona; szczęście ma tylko niewielki wpływ.</li>
+          <li>Po każdej walce ekran wyniku pokazuje obrażenia, ciosy, krytyki i uniki oraz nowy ranking obu stron. <strong>Historia walk</strong> przechowuje twoje ostatnie walki.</li>
+          <li>Sezony trwają miesiąc. Na koniec ranking się zeruje, najlepsi gracze dostają diamenty, pierwsza trójka zdobywa stały medal, a zwycięzca - tytuł mistrza sezonu.</li>
+        </ul>
+    </section>
+
+    <section id="tasks">
+      <div class="section-head"><span class="section-num">14</span><h2>Zadania</h2></div>
+      <p class="section-dek">Boczna ścieżka, która zamienia twoje kliknięcia w drugi przychód.</p>
+      <ul>
+          <li><strong>Zadania</strong> przyjmuje się za Taskium; rzadsze płacą więcej. Zadania z gotową nagrodą przesuwają się na górę listy.</li>
+          <li><strong>Misje dzienne</strong> odświeżają się codziennie i dają krótkie wzmocnienia w miarę wykonywania. Pamiętaj, żeby odebrać nagrody w panelu.</li>
+        </ul>
+    </section>
+
+    <section id="trade">
+      <div class="section-head"><span class="section-num">15</span><h2>Handlarz</h2></div>
+      <p class="section-dek">Miejsce, w którym nadmiar surowców zamienia się w coś przydatnego.</p>
+      <p>Możesz zamienić Kamień rudy na Esencję, Kamień umiejętności albo Elementium, przerobić zebrane pierwiastki na Elementium, wymienić materiały na zaklęcia i Kamień udoskonalenia na wyższą rangę oraz rozłożyć niechciane zaklęcia. Opłaty za wymianę płaci się, oddając Kamień rudy. Wymiana na Kamień umiejętności to sposób na wzmacnianie umiejętności bez kupowania czegokolwiek w sklepie.</p>
+    </section>
+
+    <section id="extras">
+      <div class="section-head"><span class="section-num">16</span><h2>Darmowe nagrody</h2></div>
+      <p class="section-dek">Surowce, które wymagają tylko tego, żebyś zajrzał do gry.</p>
+      <ul>
+          <li><strong>Złote balony</strong> przelatują co jakiś czas przez ekran; kliknij i masz złoto. Nie da się ich przegapić - czekają, aż klikniesz.</li>
+          <li><strong>Złoty kryształ</strong> zamienia rudę na krótko w bonusową rudę pełną złota; zbierzesz go tylko w głównej kopalni.</li>
+          <li><strong>Prezenty powitalne</strong> dają prezent w każdym z twoich pierwszych dni; dni nie muszą następować po sobie.</li>
+          <li><strong>Bonus dnia</strong> - każdego dnia wszyscy grający dostają ten sam bonus, na przykład do obrażeń od kliknięcia, złota, trafień krytycznych lub obrażeń pupili, i zmienia się on codziennie.</li>
+          <li><strong>Zarobki offline</strong> zbierają się, gdy gra jest zamknięta, i nigdy nie przepadają, zanim je odbierzesz.</li>
+          <li><strong>Darmowe złoto co godzinę</strong> czeka w sklepie; rośnie wraz z najgłębszym piętrem osiągniętym w tym Przebudzenie.</li>
+          <li><strong>Nagroda dzienna</strong> daje codziennie w sklepie darmowy klucz do lochu i darmowy Klucz do otchłani, niezależnie od siebie.</li>
+          <li><strong>Koło Fortuny</strong> odnawia się co jakiś czas i daje darmowe losowanie.</li>
+          <li><strong>Kody promocyjne</strong> - kody udostępniane w ogłoszeniach wpisuje się w menu Ustawień.</li>
+        </ul>
+    </section>
+
+    <section id="awakening">
+      <div class="section-head"><span class="section-num">17</span><h2>Przebudzenie</h2></div>
+      <p class="section-dek">Zamień postęp tej gry w trwałą moc.</p>
+      <ul>
+          <li>Po przekroczeniu pewnej głębokości możesz wykonać Przebudzenie. Każde podejście zaczyna się znów od pierwszego piętra.</li>
+          <li><strong>Zerowane:</strong> złoto, Taskium, postęp pięter, odblokowanie, ulepszenia i mistrzostwo kilofów, ulepszenia zbroi i pupili, umiejętności przedmiotów, tytuły, postęp zadań, odnowienia umiejętności, błogosławieństwa, kilofy oddane robotnikom i nieodebrany zarobek robotników.</li>
+          <li><strong>Zachowane:</strong> diamenty, klucze, Esencja, Czysta Esencja, Kamień umiejętności, Kamień rudy, Elementium, parametry Przebudzenie i Wzniesienie, drzewko umiejętności, golemy, postęp bossów i Otchłań, odblokowane panele, nagrody dzienne, poziomy robotników, Postać i jej wyposażenie, twój ranking w panelu Arena i wszystko, co masz w panelu Ekwipunek.</li>
+          <li>Zdobyta Esencja zależy od najgłębszego osiągniętego piętra i szybko rośnie z głębokością. Wydawaj ją na stałe parametry.</li>
+          <li>Auto-piętro i automatyczny zakup odporności na ciepło mogą pozostać włączone po Przebudzenie, jeśli tak wybierzesz w ustawieniach.</li>
+          <li>Przycisk <strong>i</strong> na tej stronie otwiera <strong>Historia Przebudzeń</strong>.</li>
+        </ul>
+      <div class="callout">
+          <div class="callout-label">Błogosławieństwo Przebudzenia</div>
+          Na pewnych piętrach każdego podejścia dostajesz do wyboru kilka błogosławieństw; gdy jakieś czeka, pojawia się świecący przycisk. Błogosławieństwa z tej samej rodziny wzmacniają się razem i wszystkie zerują się przy Przebudzenie.
+        </div>
+      <div class="callout">
+          <div class="callout-label">Zejdź jeszcze trochę</div>
+          Zdobycie kilku pięter więcej przed Przebudzenie jest zwykle warte więcej niż natychmiastowe kolejne Przebudzenie.
+        </div>
+    </section>
+
+    <section id="ascension">
+      <div class="section-head"><span class="section-num">18</span><h2>Wzniesienie</h2></div>
+      <p class="section-dek">Druga warstwa, położona na Przebudzenie.</p>
+      <ul>
+          <li>Po dotarciu na znacznie głębsze piętro odblokowuje się Wzniesienie; ma własną stronę w zakładce prestiżu.</li>
+          <li><strong>Zerowane:</strong> twoje parametry Przebudzenie i Esencja - ta pętla startuje od zera; kilofy, piętra i ulepszenia zerują się tak samo jak przy Przebudzenie.</li>
+          <li><strong>Zachowane:</strong> twój poziom Przebudzenie, diamenty, klucze, postęp bossów i Otchłań, golemy, zaklęcia i wyposażenie, Postać, drzewko umiejętności, osiągnięcia, poziomy robotników oraz odłożona Czysta Esencja.</li>
+          <li>W zamian zdobywasz <strong>Czysta Esencja</strong>. Kupuje ona dwa parametry: <strong>Echo Przebudzenia</strong> wzmacnia bonus każdego parametru Przebudzenie, a <strong>Źródło</strong> zwiększa Esencję wypłacaną przez każde Przebudzenie.</li>
+          <li>Oba parametry rosną z każdym kupionym poziomem.</li>
+        </ul>
+      <div class="callout">
+          <div class="callout-label">Kiedy wznosić</div>
+          Wzniesienie przyspiesza nie jedno podejście, tylko całą pętlę. Opłaca się, gdy parametry za Esencję zdrożały, a kolejne Przebudzenie niewiele już daje.
+        </div>
+    </section>
+
+    <section id="dungeons">
+      <div class="section-head"><span class="section-num">19</span><h2>Bossowie i Otchłań</h2></div>
+      <p class="section-dek">Dwa wyzwania na czas poza główną kopalnią.</p>
+      <ul>
+          <li>Do obu wchodzi się przez Lokacje; w tym czasie ciepło i postęp pięter w głównej kopalni stoją.</li>
+          <li><strong>Bossów</strong> otwiera klucz do lochu: połóż bossa przed końcem czasu, a zdobędziesz Esencję, Kamień rudy i Kamień udoskonalenia. Bossowie odblokowują się po kolei, a pokonany zostaje otwarty na stałe.</li>
+          <li>Pokonaj bossa, a otworzą się jego niekończące się poziomy <strong>Koszmar</strong>: z każdym poziomem boss jest silniejszy, nagrody większe, a Kamień udoskonalenia rzadszy.</li>
+          <li><strong>Otchłań</strong> otwiera Klucz do otchłani i działa na jednym odliczaniu: rozbijasz rudę za rudą, a każdy etap jest trudniejszy od poprzedniego.</li>
+          <li>Każdy etap otchłani niesie własną <strong>karę</strong> - jedna tnie obrażenia automatyczne, inna obrażenia od kliknięcia, jeszcze inna krytyki. Kara obowiązuje tylko na czas tego etapu.</li>
+          <li>Każdy rozbity etap w otchłani jest wypłacany: czy skończy się czas, czy sam wyjdziesz, zostaje ci to, co zdobyłeś do tej pory. Ukończ wszystkie etapy, a otworzy się kolejna otchłań.</li>
+        </ul>
+      <div class="callout warn">
+          <div class="callout-label">Przegrana z bossem kosztuje</div>
+          Jeśli czas skończy się przed śmiercią bossa, nie dostajesz nagrody, a klucz przepada.
+        </div>
+    </section>
+
+    <section id="store">
+      <div class="section-head"><span class="section-num">20</span><h2>Sklep i osiągnięcia</h2></div>
+      <p class="section-dek">Diamenty, klucze, paczki, premium, przeskoki czasu, skrzynie, golemy i trwałe przedmioty Infinity.</p>
+      <ul>
+          <li><strong>Pakiet startowy</strong> można kupić tylko raz na konto.</li>
+          <li><strong>Premium</strong> podnosi obrażenia, złoto i zarobek offline na określony czas.</li>
+          <li><strong>Przeskoki czasu</strong> przewijają grę o kilka godzin; wypłata liczona jest z twojej obecnej mocy.</li>
+          <li><strong>Skrzynie</strong> otwierają się od razu: Skrzynia zaklęć daje materiały na zaklęcia, a skrzynie z wyposażeniem i Mieszana skrzynia dają wyposażenie.</li>
+          <li><strong>Jajo golema</strong> daje losowego golema.</li>
+          <li><strong>Paczki kluczy</strong> kupuje się za diamenty; są paczki zarówno kluczy do lochu, jak i Klucz do otchłani.</li>
+          <li><strong>Przedmioty Infinity</strong> kupuje się raz i przetrwają zarówno Przebudzenie, jak i Wzniesienie.</li>
+          <li><strong>Osiągnięcia</strong> dają nagrody, które trzeba odebrać samemu.</li>
+        </ul>
+    </section>
+
+    <section id="progress">
+      <div class="section-head"><span class="section-num">21</span><h2>Postęp i społeczność</h2></div>
+      <p class="section-dek">Gdzie śledzisz swoje podejście, jak chroniony jest postęp i jak się nim dzielić.</p>
+      <ul>
+          <li><strong>Przewodnik</strong> (przycisk z książką) zbiera znalezione przez ciebie pierwiastki, rzadkie rudy, bossów, otchłanie, waluty, kilofy, pupile i golemy. Nieodkryte pozostają czarnymi sylwetkami.</li>
+          <li>Rankingi Steam, ekran statystyk i <strong>Dziennik aktywności</strong> pokazują twój postęp. Panel <strong>Aktualizacje</strong> pokazuje najnowsze informacje o aktualizacjach.</li>
+          <li>Przycisk <strong>Eksportuj kartę</strong> w ustawieniach pokazuje twoją <strong>Karta górnika</strong> z najważniejszymi statystykami; możesz zapisać ją jako obraz PNG i udostępnić.</li>
+          <li>Gdy opcja <strong>Udostępniaj rzadkie chwile na Discordzie</strong> jest włączona, twoje najrzadsze chwile - głębokie piętra, legendarne łupy, zwycięstwa nad bossami i w Otchłań, walki na Arenie - pojawiają się na kanale #live naszego serwera Discord. Widać tylko twoją nazwę Steam i samą chwilę; możesz to wyłączyć w ustawieniach.</li>
+          <li>Przy włączonym Discordzie profil pokazuje, na którym jesteś piętrze i jaki masz poziom Przebudzenie / Wzniesienie.</li>
+          <li>Gra zapisuje się regularnie i robi kopię w Steam Cloud; możesz grać dalej na innym komputerze.</li>
+          <li>Na słabszym komputerze wyłączenie opcji <strong>Używaj cieni</strong> w ustawieniach poprawia wydajność.</li>
+        </ul>
+    </section>
+
+    <footer class="doc-footer">Gra zmienia się wraz z aktualizacjami; ten poradnik to ogólny przegląd. Ceny przedmiotów za prawdziwe pieniądze pokazuje Steam w twojej walucie.</footer>
+  </main>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self'; style-src 'unsafe-inline'; base-uri 'none'; form-action 'none'; upgrade-insecure-requests">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Clicker Ore Game - Посібник гравця</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Як влаштована шахта: кайла, улюбленці, големи, робітники, чари, уміння, персонаж і спорядження, Арена, Пробудження, Вознесіння, боси, Безодня і крамниця - стисло.">
+<style>
+  :root {
+    --bg: #14110d;
+    --bg-elevated: #1d1811;
+    --bg-card: #211b13;
+    --text: #ede6d8;
+    --text-dim: #a89a82;
+    --text-faint: #766a55;
+    --accent: #e0a752;
+    --accent-strong: #f2bd6e;
+    --accent-2: #7fb8ad;
+    --border: #3a2f22;
+    --border-soft: #2a2318;
+    --danger: #cf7a5a;
+    --shadow: 0 8px 24px rgba(0,0,0,0.35);
+
+    --cur-gold: #e0a752;
+    --cur-diamond: #7fd1e0;
+    --cur-essence: #b79ef0;
+    --cur-taskium: #93a8d6;
+    --cur-key: #d98a63;
+    --cur-skillstone: #7fc9a0;
+    --cur-orestone: #b5a68c;
+    --cur-abysskey: #8f7fd6;
+    --cur-pureessence: #d7bff5;
+    --cur-elementium: #e07f9e;
+
+    --font-display: "Bahnschrift", "Segoe UI Semibold", "Arial Narrow Bold", "Arial Narrow", sans-serif;
+    --font-body: "Sitka Text", "Iowan Old Style", Georgia, "Times New Roman", serif;
+    --font-mono: "Cascadia Mono", "Consolas", "SF Mono", ui-monospace, monospace;
+  }
+
+  :root[data-theme="light"] {
+    --bg: #efe9da;
+    --bg-elevated: #e6ddc8;
+    --bg-card: #f3ede0;
+    --text: #241d14;
+    --text-dim: #5c5138;
+    --text-faint: #857656;
+    --accent: #a8621a;
+    --accent-strong: #8a4e12;
+    --accent-2: #2f7a70;
+    --border: #d3c5a4;
+    --border-soft: #ddd0b1;
+    --danger: #a3492c;
+    --shadow: 0 8px 20px rgba(90,70,30,0.12);
+  }
+
+  @media (prefers-color-scheme: light) {
+    :root:not([data-theme="dark"]) {
+      --bg: #efe9da;
+      --bg-elevated: #e6ddc8;
+      --bg-card: #f3ede0;
+      --text: #241d14;
+      --text-dim: #5c5138;
+      --text-faint: #857656;
+      --accent: #a8621a;
+      --accent-strong: #8a4e12;
+      --accent-2: #2f7a70;
+      --border: #d3c5a4;
+      --border-soft: #ddd0b1;
+      --danger: #a3492c;
+      --shadow: 0 8px 20px rgba(90,70,30,0.12);
+    }
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: 17px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection { background: var(--accent); color: #14110d; }
+
+  a { color: var(--accent-strong); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  a:focus-visible, button:focus-visible, summary:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    text-wrap: balance;
+    letter-spacing: 0.01em;
+    color: var(--text);
+  }
+
+  p { max-width: 68ch; }
+  ul, ol { max-width: 68ch; }
+
+  .shell {
+    display: grid;
+    grid-template-columns: 260px minmax(0, 1fr);
+    min-height: 100vh;
+  }
+
+  .topbar {
+    display: none;
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: var(--bg-elevated);
+    border-bottom: 1px solid var(--border);
+    padding: 0.7rem 1rem;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .topbar-title {
+    font-family: var(--font-display);
+    font-size: 0.95rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--accent-strong);
+  }
+  #nav-toggle { display: none; }
+  .nav-toggle-btn {
+    font-family: var(--font-display);
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 0.4rem 0.7rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.85rem;
+  }
+
+  nav.toc {
+    position: sticky;
+    top: 0;
+    align-self: start;
+    height: 100vh;
+    overflow-y: auto;
+    padding: 2rem 1.4rem 3rem;
+    background: var(--bg-elevated);
+    border-right: 1px solid var(--border);
+  }
+  .toc-home {
+    display: inline-block;
+    font-family: var(--font-display);
+    font-size: 0.8rem;
+    color: var(--text-dim);
+    margin-bottom: 1.1rem;
+  }
+  .toc-home:hover { color: var(--accent-strong); text-decoration: none; }
+
+  .toc-brand {
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    letter-spacing: 0.03em;
+    color: var(--accent-strong);
+    margin-bottom: 0.15rem;
+  }
+  .toc-brand small {
+    display: block;
+    font-family: var(--font-body);
+    font-style: italic;
+    font-size: 0.78rem;
+    color: var(--text-faint);
+    letter-spacing: 0;
+    margin-top: 0.25rem;
+  }
+  .toc-list {
+    list-style: none;
+    margin: 1.6rem 0 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+  }
+  .toc-list a {
+    display: block;
+    color: var(--text-dim);
+    font-size: 0.88rem;
+    padding: 0.32rem 0.5rem;
+    border-radius: 4px;
+    border-left: 2px solid transparent;
+  }
+  .toc-list a:hover {
+    color: var(--text);
+    text-decoration: none;
+    background: rgba(224,167,82,0.08);
+    border-left-color: var(--accent);
+  }
+  .toc-num {
+    font-family: var(--font-mono);
+    color: var(--text-faint);
+    font-size: 0.78rem;
+    margin-right: 0.45rem;
+  }
+
+  main {
+    padding: 3.2rem clamp(1.2rem, 4vw, 4rem) 6rem;
+    max-width: 900px;
+  }
+
+  header.hero {
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .strata {
+    height: 10px;
+    width: 100%;
+    border-radius: 3px;
+    margin-bottom: 1.6rem;
+    background: repeating-linear-gradient(
+      90deg,
+      var(--accent) 0 6%,
+      var(--accent-2) 6% 11%,
+      var(--border-soft) 11% 18%,
+      var(--accent) 18% 24%,
+      var(--border-soft) 24% 34%,
+      var(--accent-2) 34% 40%,
+      var(--accent) 40% 48%,
+      var(--border-soft) 48% 58%,
+      var(--accent-2) 58% 63%,
+      var(--accent) 63% 72%,
+      var(--border-soft) 72% 82%,
+      var(--accent-2) 82% 90%,
+      var(--accent) 90% 100%
+    );
+    opacity: 0.85;
+  }
+  .eyebrow {
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-size: 0.72rem;
+    color: var(--accent);
+    margin-bottom: 0.6rem;
+  }
+  h1.title {
+    font-size: clamp(2rem, 4.2vw, 2.9rem);
+    margin: 0 0 0.7rem;
+    line-height: 1.1;
+  }
+  .subtitle {
+    color: var(--text-dim);
+    font-size: 1.08rem;
+    max-width: 62ch;
+    margin: 0;
+  }
+
+  .langbar {
+    margin: 1.8rem 0 0;
+    padding-top: 1.2rem;
+    border-top: 1px solid var(--border-soft);
+  }
+  .langbar-label {
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 0.68rem;
+    color: var(--text-faint);
+    margin-bottom: 0.55rem;
+  }
+  .langbar-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem 0.4rem;
+  }
+  .langbar-list a, .langbar-list span {
+    font-family: var(--font-display);
+    font-size: 0.78rem;
+    padding: 0.18rem 0.55rem;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    color: var(--text-dim);
+    background: var(--bg-card);
+  }
+  .langbar-list a:hover {
+    text-decoration: none;
+    color: var(--text);
+    border-color: var(--accent);
+  }
+  .langbar-list span {
+    color: #14110d;
+    background: var(--accent);
+    border-color: var(--accent);
+  }
+  :root[data-theme="light"] .langbar-list span { color: #efe9da; }
+
+  section {
+    margin-bottom: 3.6rem;
+    scroll-margin-top: 1.5rem;
+  }
+  .section-head {
+    display: flex;
+    align-items: baseline;
+    gap: 0.7rem;
+    margin-bottom: 0.3rem;
+  }
+  .section-num {
+    font-family: var(--font-mono);
+    color: var(--accent);
+    font-size: 0.95rem;
+  }
+  h2 {
+    font-size: 1.55rem;
+    margin: 0;
+  }
+  .section-dek {
+    color: var(--text-dim);
+    font-size: 0.98rem;
+    margin: 0.3rem 0 1.5rem;
+    max-width: 62ch;
+  }
+
+  .callout {
+    border-left: 3px solid var(--accent);
+    background: var(--bg-card);
+    padding: 0.95rem 1.2rem;
+    border-radius: 0 6px 6px 0;
+    margin: 1.2rem 0;
+    font-size: 0.95rem;
+  }
+  .callout strong { color: var(--accent-strong); }
+  .callout.warn { border-left-color: var(--danger); }
+  .callout-label {
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 0.72rem;
+    color: var(--accent);
+    margin-bottom: 0.35rem;
+  }
+  .callout.warn .callout-label { color: var(--danger); }
+
+  .currency-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 0.9rem;
+    margin: 1.4rem 0;
+  }
+  .cur-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-top: 3px solid var(--dot);
+    border-radius: 6px;
+    padding: 0.95rem 1rem 1.05rem;
+  }
+  .cur-card h4 {
+    margin: 0 0 0.5rem;
+    font-size: 0.98rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .dot {
+    width: 9px; height: 9px; border-radius: 50%;
+    background: var(--dot);
+    flex: none;
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--dot) 20%, transparent);
+  }
+  .cur-card p {
+    margin: 0.15rem 0;
+    font-size: 0.84rem;
+    color: var(--text-dim);
+    max-width: none;
+  }
+  .cur-card p b { color: var(--text); font-weight: 600; }
+
+  .table-wrap {
+    overflow-x: auto;
+    margin: 1.2rem 0;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+  }
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    min-width: 460px;
+    font-size: 0.9rem;
+  }
+  thead th {
+    text-align: left;
+    font-family: var(--font-display);
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    font-size: 0.72rem;
+    color: var(--text-dim);
+    background: var(--bg-elevated);
+    padding: 0.6rem 0.85rem;
+    border-bottom: 1px solid var(--border);
+    white-space: nowrap;
+  }
+  tbody td {
+    padding: 0.55rem 0.85rem;
+    border-bottom: 1px solid var(--border-soft);
+    font-variant-numeric: tabular-nums;
+    color: var(--text);
+  }
+  tbody tr:last-child td { border-bottom: none; }
+  tbody tr:nth-child(even) { background: color-mix(in srgb, var(--accent) 3%, transparent); }
+  td.num, th.num { font-family: var(--font-mono); }
+  td.strong { color: var(--accent-strong); font-weight: 600; }
+
+  .strategy-track {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 1.4rem 0;
+  }
+  .strategy-stage {
+    background: var(--bg-card);
+    padding: 1rem 1.1rem;
+  }
+  .strategy-stage .stage-label {
+    font-family: var(--font-display);
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+    margin-bottom: 0.4rem;
+  }
+  .strategy-stage ul {
+    margin: 0;
+    padding-left: 1.1rem;
+    font-size: 0.86rem;
+    color: var(--text-dim);
+  }
+  .strategy-stage li { margin-bottom: 0.25rem; }
+
+  footer.doc-footer {
+    margin-top: 4rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+    color: var(--text-faint);
+    font-size: 0.8rem;
+  }
+
+  @media (max-width: 880px) {
+    .shell { grid-template-columns: 1fr; }
+    .topbar { display: flex; }
+    nav.toc {
+      position: fixed;
+      inset: 0 20% 0 0;
+      top: 52px;
+      height: calc(100vh - 52px);
+      transform: translateX(-100%);
+      transition: transform 0.22s ease;
+      z-index: 15;
+      box-shadow: var(--shadow);
+    }
+    #nav-toggle:checked ~ .shell nav.toc {
+      transform: translateX(0);
+    }
+    main { padding: 2rem 1.2rem 5rem; }
+  }
+</style>
+</head>
+<body>
+
+<input type="checkbox" id="nav-toggle">
+
+<div class="topbar">
+  <a class="topbar-title" href="index.html">&#9935; Clicker Ore Game</a>
+  <label class="nav-toggle-btn" for="nav-toggle">Зміст</label>
+</div>
+
+<div class="shell">
+  <nav class="toc" aria-label="Зміст">
+    <a class="toc-home" href="index.html">← Головна</a>
+    <div class="toc-brand">Clicker Ore Game<small>Посібник гравця</small></div>
+    <ul class="toc-list">
+      <li><a href="#start"><span class="toc-num">01</span>З чого почати</a></li>
+      <li><a href="#currencies"><span class="toc-num">02</span>Валюти</a></li>
+      <li><a href="#damage"><span class="toc-num">03</span>Шкода і критичні удари</a></li>
+      <li><a href="#equipment"><span class="toc-num">04</span>Кайла, броня та улюбленці</a></li>
+      <li><a href="#golems"><span class="toc-num">05</span>Големи</a></li>
+      <li><a href="#temperature"><span class="toc-num">06</span>Спека</a></li>
+      <li><a href="#workers"><span class="toc-num">07</span>Робітники</a></li>
+      <li><a href="#enchantments"><span class="toc-num">08</span>Чари</a></li>
+      <li><a href="#floors"><span class="toc-num">09</span>Поверхи і руда</a></li>
+      <li><a href="#weather"><span class="toc-num">10</span>Погода</a></li>
+      <li><a href="#skills"><span class="toc-num">11</span>Уміння і звання</a></li>
+      <li><a href="#character"><span class="toc-num">12</span>Персонаж і Спорядження</a></li>
+      <li><a href="#arena"><span class="toc-num">13</span>Арена</a></li>
+      <li><a href="#tasks"><span class="toc-num">14</span>Завдання</a></li>
+      <li><a href="#trade"><span class="toc-num">15</span>Торговець</a></li>
+      <li><a href="#extras"><span class="toc-num">16</span>Безкоштовні нагороди</a></li>
+      <li><a href="#awakening"><span class="toc-num">17</span>Пробудження</a></li>
+      <li><a href="#ascension"><span class="toc-num">18</span>Вознесіння</a></li>
+      <li><a href="#dungeons"><span class="toc-num">19</span>Боси і Безодня</a></li>
+      <li><a href="#store"><span class="toc-num">20</span>Крамниця і досягнення</a></li>
+      <li><a href="#progress"><span class="toc-num">21</span>Прогрес і спільнота</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <header class="hero">
+      <div class="strata" role="presentation"></div>
+      <div class="eyebrow">Посібник гравця - 2026-10-28</div>
+      <h1 class="title">Уся шахта,<br>стисло</h1>
+      <p class="subtitle">Для чого потрібна кожна система і на що варто витрачати час. Без чисел і формул - лише те, що треба знати.</p>
+      <div class="langbar">
+        <div class="langbar-label">Мова</div>
+        <div class="langbar-list"><a href="player_guide_en.html" hreflang="en">English</a><a href="player_guide_tr.html" hreflang="tr">Türkçe</a><a href="player_guide_de.html" hreflang="de">Deutsch</a><a href="player_guide_fr.html" hreflang="fr">Français</a><a href="player_guide_es.html" hreflang="es">Español</a><a href="player_guide_es_la.html" hreflang="es-419">Español (Latinoamérica)</a><a href="player_guide_it.html" hreflang="it">Italiano</a><a href="player_guide_pl.html" hreflang="pl">Polski</a><a href="player_guide_pt_br.html" hreflang="pt-BR">Português (Brasil)</a><a href="player_guide_ru.html" hreflang="ru">Русский</a><span>Українська</span><a href="player_guide_ja.html" hreflang="ja">日本語</a><a href="player_guide_ko.html" hreflang="ko">한국어</a><a href="player_guide_zh_hans.html" hreflang="zh-Hans">简体中文</a><a href="player_guide_zh_hant.html" hreflang="zh-Hant">繁體中文</a><a href="player_guide_th.html" hreflang="th">ไทย</a><a href="player_guide_id.html" hreflang="id">Bahasa Indonesia</a><a href="player_guide_vi.html" hreflang="vi">Tiếng Việt</a></div>
+      </div>
+    </header>
+
+    <section id="start">
+      <div class="section-head"><span class="section-num">01</span><h2>З чого почати</h2></div>
+      <p class="section-dek">Гра відкриває свої системи поступово, у міру того як ти спускаєшся.</p>
+      <div class="strategy-track">
+          <div class="strategy-stage">
+            <div class="stage-label">Початок</div>
+            <ul>
+              <li>Покращуй кайло без упину; на глибині відкриваються нові.</li>
+              <li>Клікай кожну золоту кульку, кожен Золотий кристал і кожне слабке місце, починай користуватися першими вміннями.</li>
+              <li>Щодня, коли граєш, забирай Вітальні подарунки і зазирай у Бонус дня.</li>
+              <li>Купи першого улюбленця, щойно зможеш собі це дозволити.</li>
+            </ul>
+          </div>
+          <div class="strategy-stage">
+            <div class="stage-label">Середина</div>
+            <ul>
+              <li>Коли прогрес сповільниться, зроби Пробудження і здобудь Есенцію.</li>
+              <li>Приблизно тоді ж відкриваються завдання, Щоденні місії, Колесо удачі, Торговець, дерево вмінь і погодні явища.</li>
+              <li>Обирай благословення щоразу, коли його пропонують, і розподіляй Есенцію, а не складай усе в один параметр.</li>
+            </ul>
+          </div>
+          <div class="strategy-stage">
+            <div class="stage-label">Пізня гра</div>
+            <ul>
+              <li>Відкриваються Персонаж, його Спорядження і Арена; у розділі Інвентар починають накопичуватися елементи.</li>
+              <li>Бийся з босами, коли є ключ, а потім починай заходи в локацію Безодня.</li>
+              <li>Приєднуються робітники, відкриваються гнізда для чарів, а Коваль починає гартувати твоє спорядження.</li>
+              <li>Далі покращуй броню, щоб спека не з'їдала твою шкоду.</li>
+            </ul>
+          </div>
+          <div class="strategy-stage">
+            <div class="stage-label">Довга дистанція</div>
+            <ul>
+              <li>Значно глибше відкривається Вознесіння і обнуляє весь цикл Пробудження.</li>
+              <li>Натомість тобі дістається Чиста Есенція, яка назавжди пришвидшує кожен наступний захід.</li>
+              <li>Переможені боси відкривають нескінченні рівні режиму Кошмар з більшими нагородами.</li>
+            </ul>
+          </div>
+        </div>
+      <div class="callout">
+          <div class="callout-label">Варто знати</div>
+          Числа зростають швидко; гра переходить спершу на скорочений, а потім на науковий запис. Ніщо не обмежується - змінюється лише спосіб запису.
+        </div>
+      <div class="callout">
+          <div class="callout-label">Коротке навчання</div>
+          Кожну нову систему під час першого відкриття представляє коротке навчання. Кроки, що затемнюють екран, мають кнопку «Пропустити».
+        </div>
+    </section>
+
+    <section id="currencies">
+      <div class="section-head"><span class="section-num">02</span><h2>Валюти</h2></div>
+      <p class="section-dek">Кожна живить свою систему.</p>
+      <div class="currency-grid">
+        <div class="cur-card" style="--dot:var(--cur-gold)">
+          <h4><span class="dot"></span>Золото</h4>
+          <p>Здобувається <b>розбиванням руди</b>; золото приносять також робітники, час офлайн, щогодинне безкоштовне золото, завдання, золоті кульки, стрибки часу і Колесо удачі.</p>
+          <p>Іде на кайла, покращення та вміння предметів.</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-diamond)">
+          <h4><span class="dot"></span>Діамант</h4>
+          <p>Їх дають <b>Крамниця</b>, промокоди, сезонні нагороди Арени і Колесо удачі.</p>
+          <p>Витрачаються на улюбленців, големів, предмети Infinity, стрибки часу, скрині, набори ключів, додаткові атаки на Арені та оновлення вітрини, яку пропонує Лавка.</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-essence)">
+          <h4><span class="dot"></span>Есенція</h4>
+          <p>Це нагорода за <b>Пробудження</b>; трохи дають також боси, завдання, Торговець, набори з крамниці і Колесо удачі.</p>
+          <p>Витрачається на постійні параметри Пробудження.</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-taskium)">
+          <h4><span class="dot"></span>Taskium</h4>
+          <p>Потроху капає з кожного кліку по руді, а ще його дає Колесо удачі.</p>
+          <p>Іде на прийняття та оновлення завдань.</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-key)">
+          <h4><span class="dot"></span>Ключ Підземелля</h4>
+          <p>Один безкоштовний ключ на день у крамниці, а також діаманти, набори з крамниці і Колесо удачі.</p>
+          <p>Витрачається на вхід у бій із босом.</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-skillstone)">
+          <h4><span class="dot"></span>Камінь Умінь</h4>
+          <p>Його дають Торговець, набори з крамниці і Колесо удачі.</p>
+          <p>Витрачається на посилення активних умінь.</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-orestone)">
+          <h4><span class="dot"></span>Рудний Камінь</h4>
+          <p>Падає з кожної розбитої руди, а також із досягнень, босів, заходів у локацію Безодня, стрибків часу і з обертань, які дає Колесо удачі.</p>
+          <p>Витрачається на обміни та комісію за них, створення чарів і покращення робітників.</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-abysskey)">
+          <h4><span class="dot"></span>Ключ Безодні</h4>
+          <p>Один безкоштовний ключ на день у крамниці, а також діаманти і набори з крамниці.</p>
+          <p>Витрачається на захід у локацію Безодня.</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-pureessence)">
+          <h4><span class="dot"></span>Чиста Есенція</h4>
+          <p>Це нагорода за <b>Вознесіння</b>; більше її ніде не взяти.</p>
+          <p>Витрачається лише на параметри Вознесіння.</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-elementium)">
+          <h4><span class="dot"></span>Elementium</h4>
+          <p>Його створює Торговець із зібраних тобою елементів або з валюти Рудний Камінь; також за нього скуповує спорядження Коваль.</p>
+          <p>Витрачається на характеристики, які мають Персонаж і Кристал, та на предмети, які продає Лавка.</p>
+        </div>
+      </div>
+      <div class="callout">
+          <div class="callout-label">Серверні валюти</div>
+          Діаманти, ключі підземелля і Ключ Безодні зберігаються на сервері; щоб їх витратити, треба бути онлайн.
+        </div>
+    </section>
+
+    <section id="damage">
+      <div class="section-head"><span class="section-num">03</span><h2>Шкода і критичні удари</h2></div>
+      <p class="section-dek">Два окремі джерела шкоди і крити, що їх множать.</p>
+      <ul>
+          <li><strong>Шкода за клік</strong> іде від першого кайла, уміння Лютий Клік, звання, параметрів Пробудження і чарів.</li>
+          <li><strong>Автошкода</strong> іде від решти кайл, уміння Шаленство, улюбленців і чарів; вона ллється безперервно, доки руда жива.</li>
+          <li>Що сильніше зростає Єдність Сили, то більша частка автошкоди додається й до кожного кліку.</li>
+          <li>Будь-який клік може стати <strong>критичним</strong> і вдарити значно сильніше. Шанс і множник крита зростають від умінь, параметрів Пробудження, звань і чарів. Коли шанс крита заповнено, надлишок і далі підвищує критичну шкоду.</li>
+          <li>Час від часу на руді з'являється яскраве <strong>слабке місце</strong>; клік по ньому б'є набагато сильніше за звичайний.</li>
+          <li>Големи, благословення і Бонус дня додають згори власні підсилення. Панель Стан ефектів показує кожен активний ефект і його джерело.</li>
+        </ul>
+    </section>
+
+    <section id="equipment">
+      <div class="section-head"><span class="section-num">04</span><h2>Кайла, броня та улюбленці</h2></div>
+      <p class="section-dek">Основа твоєї шкоди і твоєї живучості.</p>
+      <ul>
+          <li><strong>Кайла</strong> відкриваються з глибиною. Перше живить шкоду за клік, решта - автошкоду.</li>
+          <li>Кайла здобувають <strong>майстерність</strong> за розбиту руду; кожен рівень майстерності робить удари цього кайла сильнішими.</li>
+          <li><strong>Броня</strong> у тебе від самого початку; її не купують, лише покращують, і вона захищає від спеки. Її вкладка відкривається, коли спека вперше починає знижувати твою шкоду.</li>
+          <li><strong>Улюбленці</strong> купуються за діаманти, покращуються за золото і завдають автошкоди. Володіння постійне.</li>
+          <li>У кожного є власні вміння, що відкриваються з рівнями; частина допомагає лише цьому предмету, частина - усій родині. Картка, у якої куплено всі вміння, світиться.</li>
+        </ul>
+      <div class="callout">
+          <div class="callout-label">Великий стрибок</div>
+          На певних рівнях сила предмета робить великий стрибок. Довести один предмет до наступного порога зазвичай найвигідніше.
+        </div>
+      <div class="callout warn">
+          <div class="callout-label">Після Пробудження</div>
+          Пробудження знову замикає кайла й обнуляє покращення броні та улюбленців, а також майстерність кайл. Самі улюбленці лишаються твоїми.
+        </div>
+    </section>
+
+    <section id="golems">
+      <div class="section-head"><span class="section-num">05</span><h2>Големи</h2></div>
+      <p class="section-dek">Кам'яні супутники, які лише роблять тебе сильнішим.</p>
+      <ul>
+          <li><strong>Яйце голема</strong>, яке продає Крамниця, вилуплює випадкового голема. Усі твої големи одночасно стоять поруч із тобою в шахті.</li>
+          <li>Големи самі не завдають шкоди; натомість їхні вміння посилюють тебе - шкоду, золото, крити, Рудний Камінь та інше. Поки вміння активне, під ногами голема обертається кільце його кольору.</li>
+          <li>Големи отримують рівні за розбиту руду. Якщо з яйця вилупиться копія голема, який у тебе вже є, його зірка зросте, а вміння посиляться.</li>
+          <li>Големи ніколи не скидаються - ні під час Пробудження, ні під час Вознесіння.</li>
+        </ul>
+    </section>
+
+    <section id="temperature">
+      <div class="section-head"><span class="section-num">06</span><h2>Спека</h2></div>
+      <p class="section-dek">Що глибше, то спекотніше, і спека тихо зрізає твою шкоду.</p>
+      <p>Якщо термостійкість не встигає за температурою поверху, шкода починає танути. У панелі броні є перемикач автопокупки термостійкості. Спека існує лише в головній шахті, а деякі погодні явища на якийсь час її змінюють.</p>
+      <div class="callout warn">
+          <div class="callout-label">Якщо прогрес став</div>
+          Стіна, на якій руда раптом перестає ламатися, майже завжди - спека. Зазирни в індикатор температури, перш ніж витрачати на щось інше.
+        </div>
+    </section>
+
+    <section id="workers">
+      <div class="section-head"><span class="section-num">07</span><h2>Робітники</h2></div>
+      <p class="section-dek">Помічники, які копають за тебе, доки гра відкрита.</p>
+      <ul>
+          <li>З глибиною приєднуються нові робітники і більше ніколи не замикаються.</li>
+          <li>Дай кожному робітникові кайло; без нього він нічого не заробляє. Передача кайла не знижує твою власну шкоду.</li>
+          <li>Дохід зростає разом із твоїм прогресом, збирається в спільному казані й чекає, доки ти його забереш. Робітників покращують за Рудний Камінь.</li>
+        </ul>
+      <div class="callout warn">
+          <div class="callout-label">Забери до Пробудження</div>
+          Робітники заробляють лише за відкритої гри. Пробудження зберігає їхні рівні, але стирає незібраний дохід.
+        </div>
+    </section>
+
+    <section id="enchantments">
+      <div class="section-head"><span class="section-num">08</span><h2>Чари</h2></div>
+      <p class="section-dek">Створюй чари з видобутого і вставляй їх у кайла, броню та улюбленців.</p>
+      <ul>
+          <li>З розбитої руди падають <strong>пил чарів</strong> і <strong>фрагменти чарів</strong>. Матеріали вищих рангів з'являються глибше.</li>
+          <li>Ремісник перетворює пил і фрагменти на чари з випадковими властивостями. Вищі ранги несуть більше властивостей, і ті сильніші.</li>
+          <li>У кожного предмета є гнізда для чарів, що відкриваються з глибиною.</li>
+          <li>Непотрібні чари можна розібрати на пил у торговця, а матеріали обміняти на ранг вище.</li>
+        </ul>
+      <div class="callout">
+          <div class="callout-label">Пробудження безпечне</div>
+          Пробудження ніколи не видаляє чари; ті, що стояли на знову замкненому предметі, повертаються до розділу Інвентар.
+        </div>
+    </section>
+
+    <section id="floors">
+      <div class="section-head"><span class="section-num">09</span><h2>Поверхи і руда</h2></div>
+      <p class="section-dek">Кожен поверх трохи складніший і трохи прибутковіший за попередній.</p>
+      <ul>
+          <li>З глибиною до шахти по одному додаються <strong>елементи</strong>; найновіший трапляється найчастіше. Уся розбита руда збирається в розділі Інвентар.</li>
+          <li>Час від часу трапляється <strong>поверх із таймером</strong>: розбий руду до кінця відліку, і вона заплатить більше золота. Якщо час переможе, ти повернешся на поверх назад, а автоповерх вимкнеться.</li>
+          <li>Деякі поверхи приносять <strong>броньовані та елітні кристали</strong>: спершу розбий їхній щит, а натомість вони дадуть більше золота.</li>
+          <li>Кожна руда лишає Рудний Камінь на додачу до золота.</li>
+          <li>Дуже рідко трапляється <strong>рідкісна руда</strong> (Ферровікс, Карніт, Талверіс, Умбрісса, Зефіріс); кожну знаходять лише раз.</li>
+          <li>Іноді на стіні печери з'являється <strong>Давній напис</strong>. Його загадка вказує на поверх, який ти вже пройшов, - повернися туди, і на тебе чекатиме золотий кристал.</li>
+          <li>Ліфт переміщує між уже досягнутими поверхами; він відкривається після твого першого Пробудження. Через Локації можна перемикатися між головною шахтою, підземеллям і локацією Безодня.</li>
+        </ul>
+      <div class="callout">
+          <div class="callout-label">Фарм унизу невигідний</div>
+          Пил і фрагменти падають найкраще поруч із найглибшим досягнутим поверхом; якщо сидіти набагато нижче, шанс помітно падає.
+        </div>
+    </section>
+
+    <section id="weather">
+      <div class="section-head"><span class="section-num">10</span><h2>Погода</h2></div>
+      <p class="section-dek">У шахти є свій настрій.</p>
+      <p>З глибиною в головній шахті відкриваються погодні явища. Кожне триває певний час і має власні побічні ефекти; деякі ще й змінюють температуру поверху. Явища ніколи не накладаються, і між двома з них завжди буває тихий проміжок.</p>
+    </section>
+
+    <section id="skills">
+      <div class="section-head"><span class="section-num">11</span><h2>Уміння і звання</h2></div>
+      <p class="section-dek">Тимчасові посилення та бонуси, що приходять самі під час спуску.</p>
+      <ul>
+          <li><strong>Активні вміння</strong> відкриваються безкоштовно з глибиною; вони посилюють тебе ненадовго, а потім ідуть на відновлення. Їх підсилюють за Камінь Умінь у розділі Дерево умінь, і вони переживають Пробудження.</li>
+          <li><strong>Звання</strong> приходять самі під час спуску і дають бонуси до шкоди, золота та термостійкості. Після Пробудження їх здобувають наново.</li>
+        </ul>
+      <div class="callout">
+          <div class="callout-label">Комбо</div>
+          Спершу Надзаряд, потім уміння, яке хочеш підсилити, - наприклад Золоте Шаленство. Далі Обернення Часу скорочує відновлення останнього вміння.
+        </div>
+    </section>
+
+    <section id="character">
+      <div class="section-head"><span class="section-num">12</span><h2>Персонаж і Спорядження</h2></div>
+      <p class="section-dek">Друга лінія прогресу, створена для режиму Арена.</p>
+      <ul>
+          <li>Твій <strong>Персонаж</strong> отримує рівні за розбиту руду. Його характеристики атаки, а також захисні характеристики, які має твій <strong>Кристал</strong>, підвищують за Elementium.</li>
+          <li><strong>Спорядження</strong> вдягають у слоти, як-от молот, шолом, обладунок, рукавиці, чоботи, плащ, перстень і намисто. Предмети бувають шести рівнів рідкісності, від «Звичайний» до «Унікальний», і характеристики кожного визначаються випадково в мить отримання.</li>
+          <li>Вдягни всі предмети одного комплекту, і його позитивні характеристики стануть сильнішими.</li>
+          <li><strong>Лавка</strong> щодня пропонує свіжий добір предметів за Elementium; оновити добір раніше можна за діаманти.</li>
+          <li><strong>Коваль</strong> гартує спорядження, використовуючи <strong>Камінь гартування</strong>, і скуповує твоє зайве спорядження. Ці камені випадають із босів і заходів у локацію Безодня, а Торговець обмінює їх на камені наступного рівня.</li>
+        </ul>
+      <div class="callout">
+          <div class="callout-label">Назавжди з тобою</div>
+          Персонаж, спорядження і рейтинг, який дає Арена, переживають і Пробудження, і Вознесіння.
+        </div>
+    </section>
+
+    <section id="arena">
+      <div class="section-head"><span class="section-num">13</span><h2>Арена</h2></div>
+      <p class="section-dek">Атакуй кристали інших гравців і піднімайся в сезонному рейтингу.</p>
+      <ul>
+          <li>Ти атакуєш Кристал інших гравців і виграєш або втрачаєш рейтинг Арени. Бої, у яких атакують тебе, теж зараховуються.</li>
+          <li>Ти отримуєш сталий список суперників; його можна кілька разів на день оновити безкоштовно, а далі - за діаманти.</li>
+          <li>Щодня ти маєш кілька безкоштовних атак. Коли вони скінчаться, можна атакувати далі за діаманти.</li>
+          <li>Зазвичай перемагає сильніша сторона; удача важить зовсім трохи.</li>
+          <li>Після кожного бою екран результату показує шкоду, удари, крити та ухилення, а також новий рейтинг обох сторін. <strong>Історія боїв</strong> зберігає твої останні бої.</li>
+          <li>Сезон триває місяць. Наприкінці рейтинг скидається, найкращі гравці отримують діаманти, трійка лідерів - постійну медаль, а переможець - титул чемпіона сезону.</li>
+        </ul>
+    </section>
+
+    <section id="tasks">
+      <div class="section-head"><span class="section-num">14</span><h2>Завдання</h2></div>
+      <p class="section-dek">Бічна гілка, що перетворює твої кліки на другий дохід.</p>
+      <ul>
+          <li><strong>Завдання</strong> приймають за Taskium; рідкісніші платять більше. Завдання, нагорода за які вже готова, піднімаються на верх списку.</li>
+          <li><strong>Щоденні місії</strong> оновлюються щодня і дають короткі посилення в міру виконання. Не забувай забирати нагороди в панелі.</li>
+        </ul>
+    </section>
+
+    <section id="trade">
+      <div class="section-head"><span class="section-num">15</span><h2>Торговець</h2></div>
+      <p class="section-dek">Місце, де зайві ресурси стають чимось корисним.</p>
+      <p>Можна перетворити Рудний Камінь на Есенцію, Камінь Умінь чи Elementium, перетворити зібрані елементи на Elementium, обміняти матеріали чарів і Камінь гартування на ранг вище та розібрати непотрібні чари. Комісію за обмін платять у валюті Рудний Камінь. Обмін на Камінь Умінь - це спосіб підсилювати вміння, нічого не купуючи в крамниці.</p>
+    </section>
+
+    <section id="extras">
+      <div class="section-head"><span class="section-num">16</span><h2>Безкоштовні нагороди</h2></div>
+      <p class="section-dek">Ресурси, яким потрібна лише твоя поява в грі.</p>
+      <ul>
+          <li><strong>Золоті кульки</strong> час від часу пролітають екраном; клік - і золото твоє. Пропустити їх не вийде: вони чекають, доки ти натиснеш.</li>
+          <li><strong>Золотий кристал</strong> ненадовго перетворює руду на бонусну, повну золота; підібрати його можна лише в головній шахті.</li>
+          <li><strong>Вітальні подарунки</strong> дарують подарунок у кожен із твоїх перших днів; ці дні не мусять іти поспіль.</li>
+          <li><strong>Бонус дня</strong> - щодня всі, хто грає, отримують однаковий бонус, наприклад до шкоди за клік, золота, крита чи шкоди улюбленців, і він змінюється щодня.</li>
+          <li><strong>Офлайн-заробіток</strong> накопичується, поки гра закрита, і ніколи не пропадає, доки ти його не забереш.</li>
+          <li><strong>Щогодинне безкоштовне золото</strong> чекає в крамниці; воно зростає разом із найглибшим поверхом, якого ти досяг за поточний цикл Пробудження.</li>
+          <li><strong>Щоденна нагорода</strong> дає в крамниці щодня безкоштовний ключ підземелля і безкоштовний Ключ Безодні, незалежно один від одного.</li>
+          <li><strong>Колесо удачі</strong> оновлюється через рівні проміжки і дає безкоштовне обертання.</li>
+          <li><strong>Промокоди</strong> - коди з наших оголошень вводять у меню налаштувань.</li>
+        </ul>
+    </section>
+
+    <section id="awakening">
+      <div class="section-head"><span class="section-num">17</span><h2>Пробудження</h2></div>
+      <p class="section-dek">Перетвори прогрес цього заходу на постійну силу.</p>
+      <ul>
+          <li>Подолавши певну глибину, можна зробити Пробудження. Кожен захід починається знову з першого поверху.</li>
+          <li><strong>Скидається:</strong> золото, Taskium, прогрес поверхів, відкриття, покращення й майстерність кайл, покращення броні й улюбленців, уміння предметів, звання, прогрес завдань, відновлення вмінь, благословення, призначення кайл робітникам і незібраний дохід робітників.</li>
+          <li><strong>Зберігається:</strong> діаманти, ключі, Есенція, Чиста Есенція, Камінь Умінь, Рудний Камінь, Elementium, параметри Пробудження і Вознесіння, дерево вмінь, големи, прогрес босів і локації Безодня, відкриті панелі, щоденні нагороди, рівні робітників, Персонаж і його спорядження, твій рейтинг у режимі Арена і все, що лежить у розділі Інвентар.</li>
+          <li>Здобута Есенція залежить від найглибшого досягнутого поверху і швидко зростає з глибиною. Витрачай її на постійні параметри.</li>
+          <li>Автоповерх і автопокупка термостійкості можуть лишатися ввімкненими після Пробудження, якщо обрати це в налаштуваннях.</li>
+          <li>Кнопка <strong>i</strong> на сторінці відкриває розділ <strong>Історія Пробуджень</strong>.</li>
+        </ul>
+      <div class="callout">
+          <div class="callout-label">Благословення Пробудження</div>
+          На певних поверхах кожного заходу тобі пропонують на вибір кілька благословень; коли одне з них чекає, з'являється кнопка, що світиться. Благословення однієї родини посилюються разом, і всі вони скидаються під час Пробудження.
+        </div>
+      <div class="callout">
+          <div class="callout-label">Спустися ще трохи</div>
+          Пройти ще кілька поверхів до Пробудження зазвичай цінніше, ніж одразу робити наступне Пробудження.
+        </div>
+    </section>
+
+    <section id="ascension">
+      <div class="section-head"><span class="section-num">18</span><h2>Вознесіння</h2></div>
+      <p class="section-dek">Другий шар, надбудований над циклом Пробудження.</p>
+      <ul>
+          <li>Діставшись значно глибшого поверху, ти відкриваєш Вознесіння; воно має власну сторінку на вкладці престижу.</li>
+          <li><strong>Скидається:</strong> твої параметри Пробудження та Есенція - цей цикл починається з нуля; кайла, поверхи й покращення обнуляються так само, як під час Пробудження.</li>
+          <li><strong>Зберігається:</strong> твій рівень Пробудження, діаманти, ключі, прогрес босів і локації Безодня, големи, чари та спорядження, Персонаж, дерево вмінь, досягнення, рівні робітників і накопичена Чиста Есенція.</li>
+          <li>Натомість тобі дістається <strong>Чиста Есенція</strong>. На неї беруть два параметри: <strong>Відлуння Пробудження</strong> підсилює бонус кожного параметра Пробудження, а <strong>Джерело</strong> збільшує Есенцію, яку платить кожне Пробудження.</li>
+          <li>Обидва параметри зростають із кожним купленим рівнем.</li>
+        </ul>
+      <div class="callout">
+          <div class="callout-label">Коли возноситися</div>
+          Вознесіння пришвидшує не один захід, а весь цикл. Воно окупається, коли параметри за Есенцію подорожчали, а чергове Пробудження дає вже небагато.
+        </div>
+    </section>
+
+    <section id="dungeons">
+      <div class="section-head"><span class="section-num">19</span><h2>Боси і Безодня</h2></div>
+      <p class="section-dek">Два випробування на час за межами головної шахти.</p>
+      <ul>
+          <li>До обох потрапляють через Локації; поки ти там, спека і прогрес поверхів головної шахти стоять.</li>
+          <li><strong>Боси</strong> відкриваються ключем підземелля: поклади боса до кінця відліку - отримаєш Есенцію, Рудний Камінь і Камінь гартування. Боси відкриваються по черзі, а переможений лишається відкритим назавжди.</li>
+          <li>Переможи боса, і відкриються його нескінченні рівні режиму <strong>Кошмар</strong>: з кожним рівнем бос сильніший, нагороди більші, а Камінь гартування - вищої рідкісності.</li>
+          <li><strong>Безодня</strong> відкривається за Ключ Безодні і йде на одному відліку: ти розбиваєш руду за рудою, і кожен етап важчий за попередній.</li>
+          <li>У кожного етапу безодні свій <strong>штраф</strong> - один ріже автошкоду, інший шкоду за клік, ще інший крити. Штраф діє лише поки триває цей етап.</li>
+          <li>Кожен розбитий у безодні етап оплачується: чи спливе час, чи ти вийдеш сам, зароблене до того моменту лишається твоїм. Пройди всі етапи - відкриється наступна безодня.</li>
+        </ul>
+      <div class="callout warn">
+          <div class="callout-label">Програш босу не безкоштовний</div>
+          Якщо час скінчиться раніше, ніж бос упаде, нагороди не буде, а ключ зникне.
+        </div>
+    </section>
+
+    <section id="store">
+      <div class="section-head"><span class="section-num">20</span><h2>Крамниця і досягнення</h2></div>
+      <p class="section-dek">Діаманти, ключі, набори, преміум, стрибки часу, скрині, големи та постійні предмети Infinity.</p>
+      <ul>
+          <li><strong>Стартовий набір</strong> можна купити лише один раз на обліковий запис.</li>
+          <li><strong>Преміум</strong> на визначений строк підвищує шкоду, золото й офлайн-заробіток.</li>
+          <li><strong>Стрибки часу</strong> перемотують гру на кілька годин; виплата рахується за твоєю поточною силою.</li>
+          <li><strong>Скрині</strong> відкриваються одразу: Скриня з чарами дає матеріали для чарів, а скрині спорядження і Змішана скриня дають спорядження.</li>
+          <li><strong>Яйце голема</strong> вилуплює випадкового голема.</li>
+          <li><strong>Набори ключів</strong> купують за діаманти; є набори з ключами підземелля, а є такі, що містять Ключ Безодні.</li>
+          <li><strong>Предмети Infinity</strong> купують один раз, і вони переживають і Пробудження, і Вознесіння.</li>
+          <li><strong>Досягнення</strong> дають нагороди, які треба забирати самому.</li>
+        </ul>
+    </section>
+
+    <section id="progress">
+      <div class="section-head"><span class="section-num">21</span><h2>Прогрес і спільнота</h2></div>
+      <p class="section-dek">Де стежити за заходом, як зберігається твій прогрес і як ним поділитися.</p>
+      <ul>
+          <li><strong>Довідник</strong> (кнопка з книгою) збирає знайдені тобою елементи, рідкісні руди, босів, безодні, валюти, кайла, улюбленців і големів. Ще не відкриті лишаються чорними силуетами.</li>
+          <li>Таблиці лідерів Steam, екран статистики і <strong>Журнал подій</strong> показують твій прогрес. Панель <strong>Оновлення</strong> показує свіжі нотатки про оновлення.</li>
+          <li>Після натискання кнопки <strong>Експорт картки</strong> у налаштуваннях з'являється твоя <strong>Картка шахтаря</strong> з ключовими показниками; її можна зберегти як зображення PNG і поділитися нею.</li>
+          <li>Якщо ввімкнено параметр <strong>Ділитися рідкісними моментами в Discord</strong>, твої найрідкісніші моменти - глибокі поверхи, легендарні знахідки, перемоги над босами та в локації Безодня, бої на Арені - з'являються в каналі #live на нашому сервері Discord. Видно лише твоє ім'я в Steam і сам момент; вимкнути це можна в налаштуваннях.</li>
+          <li>Якщо відкрито Discord, у профілі видно, на якому ти поверсі і який у тебе рівень Пробудження / Вознесіння.</li>
+          <li>Гра регулярно зберігається сама і робить копію в Steam Cloud; можна продовжити на іншому комп'ютері.</li>
+          <li>На слабшому комп'ютері вимкнення параметра <strong>Використовувати тіні</strong> у налаштуваннях підвищує продуктивність.</li>
+        </ul>
+    </section>
+
+    <footer class="doc-footer">Гра змінюється з оновленнями; цей посібник дає загальний огляд. Ціни товарів за реальні гроші Steam показує у твоїй валюті.</footer>
+  </main>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self'; style-src 'unsafe-inline'; base-uri 'none'; form-action 'none'; upgrade-insecure-requests">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Clicker Ore Game - Guide du joueur</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Comment fonctionne la mine : pioches, familiers, golems, ouvriers, enchantements, compétences, personnage et équipement, Arène, Éveil, Ascension, boss, Abîme et boutique - en bref.">
+<style>
+  :root {
+    --bg: #14110d;
+    --bg-elevated: #1d1811;
+    --bg-card: #211b13;
+    --text: #ede6d8;
+    --text-dim: #a89a82;
+    --text-faint: #766a55;
+    --accent: #e0a752;
+    --accent-strong: #f2bd6e;
+    --accent-2: #7fb8ad;
+    --border: #3a2f22;
+    --border-soft: #2a2318;
+    --danger: #cf7a5a;
+    --shadow: 0 8px 24px rgba(0,0,0,0.35);
+
+    --cur-gold: #e0a752;
+    --cur-diamond: #7fd1e0;
+    --cur-essence: #b79ef0;
+    --cur-taskium: #93a8d6;
+    --cur-key: #d98a63;
+    --cur-skillstone: #7fc9a0;
+    --cur-orestone: #b5a68c;
+    --cur-abysskey: #8f7fd6;
+    --cur-pureessence: #d7bff5;
+    --cur-elementium: #e07f9e;
+
+    --font-display: "Bahnschrift", "Segoe UI Semibold", "Arial Narrow Bold", "Arial Narrow", sans-serif;
+    --font-body: "Sitka Text", "Iowan Old Style", Georgia, "Times New Roman", serif;
+    --font-mono: "Cascadia Mono", "Consolas", "SF Mono", ui-monospace, monospace;
+  }
+
+  :root[data-theme="light"] {
+    --bg: #efe9da;
+    --bg-elevated: #e6ddc8;
+    --bg-card: #f3ede0;
+    --text: #241d14;
+    --text-dim: #5c5138;
+    --text-faint: #857656;
+    --accent: #a8621a;
+    --accent-strong: #8a4e12;
+    --accent-2: #2f7a70;
+    --border: #d3c5a4;
+    --border-soft: #ddd0b1;
+    --danger: #a3492c;
+    --shadow: 0 8px 20px rgba(90,70,30,0.12);
+  }
+
+  @media (prefers-color-scheme: light) {
+    :root:not([data-theme="dark"]) {
+      --bg: #efe9da;
+      --bg-elevated: #e6ddc8;
+      --bg-card: #f3ede0;
+      --text: #241d14;
+      --text-dim: #5c5138;
+      --text-faint: #857656;
+      --accent: #a8621a;
+      --accent-strong: #8a4e12;
+      --accent-2: #2f7a70;
+      --border: #d3c5a4;
+      --border-soft: #ddd0b1;
+      --danger: #a3492c;
+      --shadow: 0 8px 20px rgba(90,70,30,0.12);
+    }
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: 17px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection { background: var(--accent); color: #14110d; }
+
+  a { color: var(--accent-strong); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  a:focus-visible, button:focus-visible, summary:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    text-wrap: balance;
+    letter-spacing: 0.01em;
+    color: var(--text);
+  }
+
+  p { max-width: 68ch; }
+  ul, ol { max-width: 68ch; }
+
+  .shell {
+    display: grid;
+    grid-template-columns: 260px minmax(0, 1fr);
+    min-height: 100vh;
+  }
+
+  .topbar {
+    display: none;
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: var(--bg-elevated);
+    border-bottom: 1px solid var(--border);
+    padding: 0.7rem 1rem;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .topbar-title {
+    font-family: var(--font-display);
+    font-size: 0.95rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--accent-strong);
+  }
+  #nav-toggle { display: none; }
+  .nav-toggle-btn {
+    font-family: var(--font-display);
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 0.4rem 0.7rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.85rem;
+  }
+
+  nav.toc {
+    position: sticky;
+    top: 0;
+    align-self: start;
+    height: 100vh;
+    overflow-y: auto;
+    padding: 2rem 1.4rem 3rem;
+    background: var(--bg-elevated);
+    border-right: 1px solid var(--border);
+  }
+  .toc-home {
+    display: inline-block;
+    font-family: var(--font-display);
+    font-size: 0.8rem;
+    color: var(--text-dim);
+    margin-bottom: 1.1rem;
+  }
+  .toc-home:hover { color: var(--accent-strong); text-decoration: none; }
+
+  .toc-brand {
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    letter-spacing: 0.03em;
+    color: var(--accent-strong);
+    margin-bottom: 0.15rem;
+  }
+  .toc-brand small {
+    display: block;
+    font-family: var(--font-body);
+    font-style: italic;
+    font-size: 0.78rem;
+    color: var(--text-faint);
+    letter-spacing: 0;
+    margin-top: 0.25rem;
+  }
+  .toc-list {
+    list-style: none;
+    margin: 1.6rem 0 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+  }
+  .toc-list a {
+    display: block;
+    color: var(--text-dim);
+    font-size: 0.88rem;
+    padding: 0.32rem 0.5rem;
+    border-radius: 4px;
+    border-left: 2px solid transparent;
+  }
+  .toc-list a:hover {
+    color: var(--text);
+    text-decoration: none;
+    background: rgba(224,167,82,0.08);
+    border-left-color: var(--accent);
+  }
+  .toc-num {
+    font-family: var(--font-mono);
+    color: var(--text-faint);
+    font-size: 0.78rem;
+    margin-right: 0.45rem;
+  }
+
+  main {
+    padding: 3.2rem clamp(1.2rem, 4vw, 4rem) 6rem;
+    max-width: 900px;
+  }
+
+  header.hero {
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .strata {
+    height: 10px;
+    width: 100%;
+    border-radius: 3px;
+    margin-bottom: 1.6rem;
+    background: repeating-linear-gradient(
+      90deg,
+      var(--accent) 0 6%,
+      var(--accent-2) 6% 11%,
+      var(--border-soft) 11% 18%,
+      var(--accent) 18% 24%,
+      var(--border-soft) 24% 34%,
+      var(--accent-2) 34% 40%,
+      var(--accent) 40% 48%,
+      var(--border-soft) 48% 58%,
+      var(--accent-2) 58% 63%,
+      var(--accent) 63% 72%,
+      var(--border-soft) 72% 82%,
+      var(--accent-2) 82% 90%,
+      var(--accent) 90% 100%
+    );
+    opacity: 0.85;
+  }
+  .eyebrow {
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-size: 0.72rem;
+    color: var(--accent);
+    margin-bottom: 0.6rem;
+  }
+  h1.title {
+    font-size: clamp(2rem, 4.2vw, 2.9rem);
+    margin: 0 0 0.7rem;
+    line-height: 1.1;
+  }
+  .subtitle {
+    color: var(--text-dim);
+    font-size: 1.08rem;
+    max-width: 62ch;
+    margin: 0;
+  }
+
+  .langbar {
+    margin: 1.8rem 0 0;
+    padding-top: 1.2rem;
+    border-top: 1px solid var(--border-soft);
+  }
+  .langbar-label {
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 0.68rem;
+    color: var(--text-faint);
+    margin-bottom: 0.55rem;
+  }
+  .langbar-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem 0.4rem;
+  }
+  .langbar-list a, .langbar-list span {
+    font-family: var(--font-display);
+    font-size: 0.78rem;
+    padding: 0.18rem 0.55rem;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    color: var(--text-dim);
+    background: var(--bg-card);
+  }
+  .langbar-list a:hover {
+    text-decoration: none;
+    color: var(--text);
+    border-color: var(--accent);
+  }
+  .langbar-list span {
+    color: #14110d;
+    background: var(--accent);
+    border-color: var(--accent);
+  }
+  :root[data-theme="light"] .langbar-list span { color: #efe9da; }
+
+  section {
+    margin-bottom: 3.6rem;
+    scroll-margin-top: 1.5rem;
+  }
+  .section-head {
+    display: flex;
+    align-items: baseline;
+    gap: 0.7rem;
+    margin-bottom: 0.3rem;
+  }
+  .section-num {
+    font-family: var(--font-mono);
+    color: var(--accent);
+    font-size: 0.95rem;
+  }
+  h2 {
+    font-size: 1.55rem;
+    margin: 0;
+  }
+  .section-dek {
+    color: var(--text-dim);
+    font-size: 0.98rem;
+    margin: 0.3rem 0 1.5rem;
+    max-width: 62ch;
+  }
+
+  .callout {
+    border-left: 3px solid var(--accent);
+    background: var(--bg-card);
+    padding: 0.95rem 1.2rem;
+    border-radius: 0 6px 6px 0;
+    margin: 1.2rem 0;
+    font-size: 0.95rem;
+  }
+  .callout strong { color: var(--accent-strong); }
+  .callout.warn { border-left-color: var(--danger); }
+  .callout-label {
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 0.72rem;
+    color: var(--accent);
+    margin-bottom: 0.35rem;
+  }
+  .callout.warn .callout-label { color: var(--danger); }
+
+  .currency-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 0.9rem;
+    margin: 1.4rem 0;
+  }
+  .cur-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-top: 3px solid var(--dot);
+    border-radius: 6px;
+    padding: 0.95rem 1rem 1.05rem;
+  }
+  .cur-card h4 {
+    margin: 0 0 0.5rem;
+    font-size: 0.98rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .dot {
+    width: 9px; height: 9px; border-radius: 50%;
+    background: var(--dot);
+    flex: none;
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--dot) 20%, transparent);
+  }
+  .cur-card p {
+    margin: 0.15rem 0;
+    font-size: 0.84rem;
+    color: var(--text-dim);
+    max-width: none;
+  }
+  .cur-card p b { color: var(--text); font-weight: 600; }
+
+  .table-wrap {
+    overflow-x: auto;
+    margin: 1.2rem 0;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+  }
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    min-width: 460px;
+    font-size: 0.9rem;
+  }
+  thead th {
+    text-align: left;
+    font-family: var(--font-display);
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    font-size: 0.72rem;
+    color: var(--text-dim);
+    background: var(--bg-elevated);
+    padding: 0.6rem 0.85rem;
+    border-bottom: 1px solid var(--border);
+    white-space: nowrap;
+  }
+  tbody td {
+    padding: 0.55rem 0.85rem;
+    border-bottom: 1px solid var(--border-soft);
+    font-variant-numeric: tabular-nums;
+    color: var(--text);
+  }
+  tbody tr:last-child td { border-bottom: none; }
+  tbody tr:nth-child(even) { background: color-mix(in srgb, var(--accent) 3%, transparent); }
+  td.num, th.num { font-family: var(--font-mono); }
+  td.strong { color: var(--accent-strong); font-weight: 600; }
+
+  .strategy-track {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 1.4rem 0;
+  }
+  .strategy-stage {
+    background: var(--bg-card);
+    padding: 1rem 1.1rem;
+  }
+  .strategy-stage .stage-label {
+    font-family: var(--font-display);
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+    margin-bottom: 0.4rem;
+  }
+  .strategy-stage ul {
+    margin: 0;
+    padding-left: 1.1rem;
+    font-size: 0.86rem;
+    color: var(--text-dim);
+  }
+  .strategy-stage li { margin-bottom: 0.25rem; }
+
+  footer.doc-footer {
+    margin-top: 4rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+    color: var(--text-faint);
+    font-size: 0.8rem;
+  }
+
+  @media (max-width: 880px) {
+    .shell { grid-template-columns: 1fr; }
+    .topbar { display: flex; }
+    nav.toc {
+      position: fixed;
+      inset: 0 20% 0 0;
+      top: 52px;
+      height: calc(100vh - 52px);
+      transform: translateX(-100%);
+      transition: transform 0.22s ease;
+      z-index: 15;
+      box-shadow: var(--shadow);
+    }
+    #nav-toggle:checked ~ .shell nav.toc {
+      transform: translateX(0);
+    }
+    main { padding: 2rem 1.2rem 5rem; }
+  }
+</style>
+</head>
+<body>
+
+<input type="checkbox" id="nav-toggle">
+
+<div class="topbar">
+  <a class="topbar-title" href="index.html">&#9935; Clicker Ore Game</a>
+  <label class="nav-toggle-btn" for="nav-toggle">Sommaire</label>
+</div>
+
+<div class="shell">
+  <nav class="toc" aria-label="Sommaire">
+    <a class="toc-home" href="index.html">← Accueil</a>
+    <div class="toc-brand">Clicker Ore Game<small>Guide du joueur</small></div>
+    <ul class="toc-list">
+      <li><a href="#start"><span class="toc-num">01</span>Par où commencer</a></li>
+      <li><a href="#currencies"><span class="toc-num">02</span>Monnaies</a></li>
+      <li><a href="#damage"><span class="toc-num">03</span>Dégâts et coups critiques</a></li>
+      <li><a href="#equipment"><span class="toc-num">04</span>Pioches, armures et familiers</a></li>
+      <li><a href="#golems"><span class="toc-num">05</span>Golems</a></li>
+      <li><a href="#temperature"><span class="toc-num">06</span>Chaleur</a></li>
+      <li><a href="#workers"><span class="toc-num">07</span>Ouvriers</a></li>
+      <li><a href="#enchantments"><span class="toc-num">08</span>Enchantements</a></li>
+      <li><a href="#floors"><span class="toc-num">09</span>Étages et minerais</a></li>
+      <li><a href="#weather"><span class="toc-num">10</span>Météo</a></li>
+      <li><a href="#skills"><span class="toc-num">11</span>Compétences et titres</a></li>
+      <li><a href="#character"><span class="toc-num">12</span>Personnage et Équipement</a></li>
+      <li><a href="#arena"><span class="toc-num">13</span>Arène</a></li>
+      <li><a href="#tasks"><span class="toc-num">14</span>Tâches</a></li>
+      <li><a href="#trade"><span class="toc-num">15</span>Marchand</a></li>
+      <li><a href="#extras"><span class="toc-num">16</span>Récompenses gratuites</a></li>
+      <li><a href="#awakening"><span class="toc-num">17</span>Éveil</a></li>
+      <li><a href="#ascension"><span class="toc-num">18</span>Ascension</a></li>
+      <li><a href="#dungeons"><span class="toc-num">19</span>Boss et Abîme</a></li>
+      <li><a href="#store"><span class="toc-num">20</span>Boutique et succès</a></li>
+      <li><a href="#progress"><span class="toc-num">21</span>Progression et communauté</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <header class="hero">
+      <div class="strata" role="presentation"></div>
+      <div class="eyebrow">Guide du joueur - 2026-10-28</div>
+      <h1 class="title">Toute la mine,<br>en bref</h1>
+      <p class="subtitle">À quoi sert chaque système et où ton temps rapporte le plus. Ni chiffres ni formules - seulement l'essentiel.</p>
+      <div class="langbar">
+        <div class="langbar-label">Langue</div>
+        <div class="langbar-list"><a href="player_guide_en.html" hreflang="en">English</a><a href="player_guide_tr.html" hreflang="tr">Türkçe</a><a href="player_guide_de.html" hreflang="de">Deutsch</a><span>Français</span><a href="player_guide_es.html" hreflang="es">Español</a><a href="player_guide_es_la.html" hreflang="es-419">Español (Latinoamérica)</a><a href="player_guide_it.html" hreflang="it">Italiano</a><a href="player_guide_pl.html" hreflang="pl">Polski</a><a href="player_guide_pt_br.html" hreflang="pt-BR">Português (Brasil)</a><a href="player_guide_ru.html" hreflang="ru">Русский</a><a href="player_guide_uk.html" hreflang="uk">Українська</a><a href="player_guide_ja.html" hreflang="ja">日本語</a><a href="player_guide_ko.html" hreflang="ko">한국어</a><a href="player_guide_zh_hans.html" hreflang="zh-Hans">简体中文</a><a href="player_guide_zh_hant.html" hreflang="zh-Hant">繁體中文</a><a href="player_guide_th.html" hreflang="th">ไทย</a><a href="player_guide_id.html" hreflang="id">Bahasa Indonesia</a><a href="player_guide_vi.html" hreflang="vi">Tiếng Việt</a></div>
+      </div>
+    </header>
+
+    <section id="start">
+      <div class="section-head"><span class="section-num">01</span><h2>Par où commencer</h2></div>
+      <p class="section-dek">Le jeu ouvre ses systèmes petit à petit, à mesure que tu descends.</p>
+      <div class="strategy-track">
+          <div class="strategy-stage">
+            <div class="stage-label">Début</div>
+            <ul>
+              <li>Améliore ta pioche sans relâche ; les étages profonds en débloquent de nouvelles.</li>
+              <li>Clique sur chaque ballon d'or, chaque Cristal d'or et chaque point faible que tu vois, et commence à utiliser tes premières compétences.</li>
+              <li>Récupère tes Cadeaux de bienvenue et regarde le Bonus du jour chaque jour où tu joues.</li>
+              <li>Achète ton premier familier dès que tu peux te l'offrir.</li>
+            </ul>
+          </div>
+          <div class="strategy-stage">
+            <div class="stage-label">Milieu</div>
+            <ul>
+              <li>Quand la progression ralentit, fais un Éveil et gagne de l'Essence.</li>
+              <li>Les tâches, les Missions quotidiennes, la Roue de la chance, le Marchand, l'arbre de compétences et les événements météo s'ouvrent à ce moment-là.</li>
+              <li>Choisis une bénédiction chaque fois qu'on t'en propose une, et répartis l'Essence au lieu de tout mettre dans un seul paramètre.</li>
+            </ul>
+          </div>
+          <div class="strategy-stage">
+            <div class="stage-label">Avancé</div>
+            <ul>
+              <li>Le Personnage, son Équipement et l'Arène s'ouvrent ; les éléments commencent à s'accumuler dans ton Inventaire.</li>
+              <li>Affronte les boss dès que tu as une clé, puis lance des descentes dans l'Abîme.</li>
+              <li>Les ouvriers arrivent, les emplacements d'enchantement s'ouvrent et le Forgeron commence à renforcer ton équipement.</li>
+              <li>Continue d'améliorer ton armure pour que la chaleur ne ronge pas tes dégâts.</li>
+            </ul>
+          </div>
+          <div class="strategy-stage">
+            <div class="stage-label">Long terme</div>
+            <ul>
+              <li>Bien plus bas, l'Ascension se débloque et remet à zéro toute la boucle de l'Éveil.</li>
+              <li>En échange tu gagnes de l'Essence pure, qui accélère définitivement chaque partie suivante.</li>
+              <li>Les boss vaincus ouvrent des paliers de Cauchemar sans fin, aux récompenses plus grosses.</li>
+            </ul>
+          </div>
+        </div>
+      <div class="callout">
+          <div class="callout-label">Bon à savoir</div>
+          Les nombres grossissent vite ; le jeu passe d'abord à la notation courte, puis à la notation scientifique. Rien n'est plafonné - seule l'écriture change.
+        </div>
+      <div class="callout">
+          <div class="callout-label">Tutoriels courts</div>
+          Chaque nouveau système est présenté par un court tutoriel la première fois qu'il s'ouvre. Les étapes qui assombrissent l'écran ont un bouton pour passer.
+        </div>
+    </section>
+
+    <section id="currencies">
+      <div class="section-head"><span class="section-num">02</span><h2>Monnaies</h2></div>
+      <p class="section-dek">Chacune alimente un système différent.</p>
+      <div class="currency-grid">
+        <div class="cur-card" style="--dot:var(--cur-gold)">
+          <h4><span class="dot"></span>Or</h4>
+          <p>Gagné en <b>cassant du minerai</b> ; les ouvriers, le temps hors ligne, l'or gratuit horaire, les tâches, les ballons d'or, les sauts de temps et la Roue de la chance en rapportent aussi.</p>
+          <p>Sert aux pioches, aux améliorations et aux compétences d'objet.</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-diamond)">
+          <h4><span class="dot"></span>Diamant</h4>
+          <p>Vient de la <b>Boutique</b>, des codes promo, des récompenses de saison de l'Arène et de la Roue de la chance.</p>
+          <p>Sert aux familiers, aux golems, aux objets Infinity, aux sauts de temps, aux coffres, aux lots de clés, aux attaques d'Arène supplémentaires et aux renouvellements de l'Échoppe.</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-essence)">
+          <h4><span class="dot"></span>Essence</h4>
+          <p>La récompense de l'<b>Éveil</b> ; les boss, les tâches, le Marchand, les lots de la boutique et la Roue de la chance en donnent aussi.</p>
+          <p>Sert aux paramètres permanents d'Éveil.</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-taskium)">
+          <h4><span class="dot"></span>Taskium</h4>
+          <p>Un peu est gagné à chaque clic sur un minerai, et la Roue de la chance en donne aussi.</p>
+          <p>Sert à accepter et à relancer des tâches.</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-key)">
+          <h4><span class="dot"></span>Clé de donjon</h4>
+          <p>Une clé gratuite par jour en boutique, plus les diamants, les lots de la boutique et la Roue de la chance.</p>
+          <p>Sert à entrer dans un combat de boss.</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-skillstone)">
+          <h4><span class="dot"></span>Pierre de compétence</h4>
+          <p>Vient du Marchand, des lots de la boutique et de la Roue de la chance.</p>
+          <p>Sert à renforcer les compétences actives.</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-orestone)">
+          <h4><span class="dot"></span>Pierre de minerai</h4>
+          <p>Tombe de chaque minerai cassé, ainsi que des succès, des boss, des descentes dans l'Abîme, des sauts de temps et de la Roue de la chance.</p>
+          <p>Sert aux échanges et à leurs frais, à la fabrication d'enchantements et aux améliorations d'ouvriers.</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-abysskey)">
+          <h4><span class="dot"></span>Clé d'abîme</h4>
+          <p>Une clé gratuite par jour en boutique, plus les diamants et les lots de la boutique.</p>
+          <p>Sert à lancer une descente dans l'Abîme.</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-pureessence)">
+          <h4><span class="dot"></span>Essence pure</h4>
+          <p>La récompense de l'<b>Ascension</b> ; elle ne vient de nulle part ailleurs.</p>
+          <p>Sert uniquement aux paramètres d'Ascension.</p>
+        </div>
+        <div class="cur-card" style="--dot:var(--cur-elementium)">
+          <h4><span class="dot"></span>Elementium</h4>
+          <p>Fabriqué chez le Marchand à partir des éléments que tu collectes ou de la Pierre de minerai ; vendre de l'équipement au Forgeron en rapporte aussi.</p>
+          <p>Sert aux stats du Personnage et du Cristal, et aux objets de l'Échoppe.</p>
+        </div>
+      </div>
+      <div class="callout">
+          <div class="callout-label">Monnaies serveur</div>
+          Les diamants, les clés de donjon et l'Clé d'abîme sont conservés sur le serveur ; il faut être en ligne pour les dépenser.
+        </div>
+    </section>
+
+    <section id="damage">
+      <div class="section-head"><span class="section-num">03</span><h2>Dégâts et coups critiques</h2></div>
+      <p class="section-dek">Deux sources de dégâts distinctes et les coups critiques qui les multiplient.</p>
+      <ul>
+          <li>Les <strong>dégâts de clic</strong> viennent de ta première pioche, de la compétence Clic de rage, de ton titre, des paramètres d'Éveil et des enchantements.</li>
+          <li>Les <strong>dégâts automatiques</strong> viennent de tes autres pioches, de la compétence Déchaînement, de tes familiers et des enchantements ; ils s'appliquent sans interruption tant que le minerai est en vie.</li>
+          <li>Plus Unité de la force monte, plus une part de tes dégâts automatiques s'ajoute aussi à chaque clic.</li>
+          <li>Chaque clic peut être <strong>critique</strong> et frapper bien plus fort. La chance et le multiplicateur critiques montent avec les compétences, les paramètres d'Éveil, les titres et les enchantements. Une fois la chance critique au maximum, le surplus continue d'augmenter tes dégâts critiques.</li>
+          <li>Un <strong>point faible</strong> lumineux apparaît de temps en temps sur le minerai ; un clic dessus frappe bien plus fort qu'un clic normal.</li>
+          <li>Les golems, les bénédictions et le Bonus du jour ajoutent leurs propres bonus par-dessus. Le panneau État des effets liste chaque effet actif et sa provenance.</li>
+        </ul>
+    </section>
+
+    <section id="equipment">
+      <div class="section-head"><span class="section-num">04</span><h2>Pioches, armures et familiers</h2></div>
+      <p class="section-dek">La base de tes dégâts et de ta résistance.</p>
+      <ul>
+          <li>Les <strong>pioches</strong> se débloquent en descendant. La première alimente les dégâts de clic, les autres les dégâts automatiques.</li>
+          <li>Les pioches gagnent de la <strong>maîtrise</strong> grâce aux minerais qu'elles cassent ; chaque niveau de maîtrise fait frapper cette pioche plus fort.</li>
+          <li>Les <strong>armures</strong> sont à toi dès le départ ; elles ne s'achètent pas, elles s'améliorent, et elles te protègent de la chaleur. Leur onglet s'ouvre dès que la chaleur commence à réduire tes dégâts.</li>
+          <li>Les <strong>familiers</strong> s'achètent en diamants, s'améliorent en or et infligent des dégâts automatiques. La possession est définitive.</li>
+          <li>Chacun a ses propres compétences qui s'ouvrent avec les niveaux ; certaines n'aident que cet objet, d'autres toute la famille. Une carte dont toutes les compétences sont achetées se met à briller.</li>
+        </ul>
+      <div class="callout">
+          <div class="callout-label">Le grand saut</div>
+          À certains niveaux, la puissance d'un objet fait un bond important. Pousser un objet jusqu'à son prochain palier est en général la meilleure amélioration.
+        </div>
+      <div class="callout warn">
+          <div class="callout-label">Après un Éveil</div>
+          L'Éveil reverrouille les pioches et remet à zéro les améliorations d'armure et de familier ainsi que la maîtrise des pioches. Les familiers eux-mêmes restent à toi.
+        </div>
+    </section>
+
+    <section id="golems">
+      <div class="section-head"><span class="section-num">05</span><h2>Golems</h2></div>
+      <p class="section-dek">Des compagnons de pierre qui ne font que te rendre plus fort.</p>
+      <ul>
+          <li>Un <strong>Œuf de golem</strong> de la Boutique fait éclore un golem au hasard. Tous les golems que tu possèdes se tiennent à tes côtés dans la mine en même temps.</li>
+          <li>Les golems n'infligent aucun dégât eux-mêmes ; ce sont leurs compétences qui te renforcent - dégâts, or, critiques, Pierre de minerai et plus encore. Pendant qu'une compétence est active, un anneau de la couleur du golem tourne à ses pieds.</li>
+          <li>Les golems montent de niveau grâce aux minerais que tu casses. Faire éclore un exemplaire d'un golem que tu possèdes déjà augmente ses étoiles et renforce ses compétences.</li>
+          <li>Les golems ne sont jamais remis à zéro - ni par l'Éveil, ni par l'Ascension.</li>
+        </ul>
+    </section>
+
+    <section id="temperature">
+      <div class="section-head"><span class="section-num">06</span><h2>Chaleur</h2></div>
+      <p class="section-dek">Plus tu descends, plus il fait chaud, et la chaleur réduit tes dégâts en silence.</p>
+      <p>Si ta résistance à la chaleur ne suit pas la température de l'étage, tes dégâts commencent à fondre. Le panneau des armures propose un achat automatique de résistance. La chaleur n'existe que dans la mine principale, et certains événements météo la modifient pendant un moment.</p>
+      <div class="callout warn">
+          <div class="callout-label">Si tu stagnes</div>
+          Le mur où le minerai refuse soudain de casser, c'est presque toujours la chaleur. Regarde la jauge avant de dépenser ailleurs.
+        </div>
+    </section>
+
+    <section id="workers">
+      <div class="section-head"><span class="section-num">07</span><h2>Ouvriers</h2></div>
+      <p class="section-dek">Des aides qui creusent pour toi tant que le jeu est ouvert.</p>
+      <ul>
+          <li>De nouveaux ouvriers arrivent au fil de la descente et ne se reverrouillent jamais.</li>
+          <li>Donne une pioche à chaque ouvrier ; sans pioche il ne gagne rien. La prêter ne réduit pas tes propres dégâts.</li>
+          <li>Le revenu grandit avec ta progression, s'accumule dans une réserve et attend que tu le récupères. Les ouvriers s'améliorent avec de la Pierre de minerai.</li>
+        </ul>
+      <div class="callout warn">
+          <div class="callout-label">Récupère avant un Éveil</div>
+          Les ouvriers ne gagnent que pendant que le jeu est ouvert. L'Éveil conserve leurs niveaux mais efface le revenu non récupéré.
+        </div>
+    </section>
+
+    <section id="enchantments">
+      <div class="section-head"><span class="section-num">08</span><h2>Enchantements</h2></div>
+      <p class="section-dek">Fabrique des enchantements avec ce que tu extrais et place-les sur les pioches, les armures et les familiers.</p>
+      <ul>
+          <li>Casser du minerai fait tomber de la <strong>poussière d'enchantement</strong> et des <strong>fragments d'enchantement</strong>. Les matériaux de rang supérieur apparaissent plus bas.</li>
+          <li>Artisan transforme poussière et fragments en un enchantement aux stats aléatoires. Les rangs supérieurs portent plus de stats, et de meilleures.</li>
+          <li>Chaque objet possède des emplacements d'enchantement qui s'ouvrent avec la profondeur.</li>
+          <li>Un enchantement inutile peut être démantelé en poussière chez le marchand, et les matériaux s'échangent contre le rang au-dessus.</li>
+        </ul>
+      <div class="callout">
+          <div class="callout-label">L'Éveil ne touche à rien</div>
+          L'Éveil ne supprime jamais les enchantements ; ceux d'un objet reverrouillé retournent dans ton Inventaire.
+        </div>
+    </section>
+
+    <section id="floors">
+      <div class="section-head"><span class="section-num">09</span><h2>Étages et minerais</h2></div>
+      <p class="section-dek">Chaque étage est un peu plus dur et un peu plus rentable que le précédent.</p>
+      <ul>
+          <li>Les <strong>éléments</strong> rejoignent la mine un par un à mesure que tu descends ; le plus récent est celui qui apparaît le plus souvent. Chaque minerai cassé est rangé dans ton Inventaire.</li>
+          <li>De temps en temps arrive un <strong>étage chronométré</strong> : casse le minerai avant la fin du compte à rebours et il paie plus d'or. Si le temps gagne, tu redescends d'un étage et l'étage auto se désactive.</li>
+          <li>Certains étages amènent des <strong>cristaux blindés et d'élite</strong> : brise d'abord leur bouclier, et ils paient plus d'or en retour.</li>
+          <li>Chaque minerai fait tomber de la Pierre de minerai en plus de l'or.</li>
+          <li>Très rarement, un <strong>minerai rare</strong> (Ferrovyx, Karnyth, Thalveris, Umbryssa, Zephiris) apparaît ; chacun ne se trouve qu'une seule fois.</li>
+          <li>Une <strong>Inscription ancienne</strong> apparaît parfois sur la paroi de la grotte. Son énigme désigne un étage que tu as déjà passé - retournes-y et un cristal d'or t'y attend.</li>
+          <li>L'Ascenseur te fait circuler entre les étages déjà atteints ; il s'ouvre après ton premier Éveil. Lieux bascule entre la mine principale, le donjon et l'Abîme.</li>
+        </ul>
+      <div class="callout">
+          <div class="callout-label">Farmer trop bas ne rapporte pas</div>
+          La poussière et les fragments tombent surtout près de l'étage le plus profond que tu as atteint ; rester bien en dessous réduit nettement les chances.
+        </div>
+    </section>
+
+    <section id="weather">
+      <div class="section-head"><span class="section-num">10</span><h2>Météo</h2></div>
+      <p class="section-dek">La mine a ses propres humeurs.</p>
+      <p>En descendant, des événements météo se débloquent dans la mine principale. Chacun dure un moment et apporte ses propres effets secondaires ; certains modifient aussi la température de l'étage. Les événements ne se chevauchent jamais, et il y a toujours une accalmie entre deux d'entre eux.</p>
+    </section>
+
+    <section id="skills">
+      <div class="section-head"><span class="section-num">11</span><h2>Compétences et titres</h2></div>
+      <p class="section-dek">Des renforts temporaires et des bonus qui arrivent d'eux-mêmes en montant.</p>
+      <ul>
+          <li>Les <strong>compétences actives</strong> se débloquent gratuitement en descendant ; elles te renforcent brièvement puis passent en recharge. Elles se renforcent avec la Pierre de compétence dans l'Arbre de compétences et survivent à l'Éveil.</li>
+          <li>Les <strong>titres</strong> arrivent d'eux-mêmes en grimpant et donnent des bonus de dégâts, d'or ou de résistance à la chaleur. Après un Éveil, ils se regagnent depuis le début.</li>
+        </ul>
+      <div class="callout">
+          <div class="callout-label">Combo</div>
+          D'abord Surcharge, puis la compétence à amplifier - Frénésie dorée par exemple. Ensuite Retour temporel raccourcit la recharge de ta dernière compétence.
+        </div>
+    </section>
+
+    <section id="character">
+      <div class="section-head"><span class="section-num">12</span><h2>Personnage et Équipement</h2></div>
+      <p class="section-dek">Une seconde voie de progression, pensée pour l'Arène.</p>
+      <ul>
+          <li>Ton <strong>Personnage</strong> monte de niveau grâce aux minerais que tu casses. Ses stats d'attaque et les stats de défense de ton <strong>Cristal</strong> s'améliorent avec de l'Elementium.</li>
+          <li>L'<strong>Équipement</strong> se place dans des emplacements comme le marteau, le casque, la cuirasse, les gants, les bottes, la cape, l'anneau et le collier. Les objets existent en six raretés, de Commun à Unique, et les stats de chaque objet sont tirées au sort au moment où tu l'obtiens.</li>
+          <li>Porte toutes les pièces d'un même set et les stats positives de ce set se renforcent.</li>
+          <li>L'<strong>Échoppe</strong> propose chaque jour une nouvelle sélection d'objets contre de l'Elementium ; tu peux renouveler la sélection plus tôt avec des diamants.</li>
+          <li>Le <strong>Forgeron</strong> renforce l'équipement avec de la <strong>Pierre de renforcement</strong> et rachète ton équipement en trop. Ces pierres tombent des boss et des descentes dans l'Abîme, et le Marchand les transforme en pierres du rang supérieur.</li>
+        </ul>
+      <div class="callout">
+          <div class="callout-label">Conservés pour toujours</div>
+          Le Personnage, l'équipement et ta cote d'Arène survivent à l'Éveil comme à l'Ascension.
+        </div>
+    </section>
+
+    <section id="arena">
+      <div class="section-head"><span class="section-num">13</span><h2>Arène</h2></div>
+      <p class="section-dek">Attaque les cristaux des autres joueurs et grimpe au classement de la saison.</p>
+      <ul>
+          <li>Tu attaques le Cristal des autres joueurs et tu gagnes ou perds de la cote d'Arène. Les combats où d'autres t'attaquent comptent aussi.</li>
+          <li>Tu reçois une liste fixe d'adversaires ; elle peut être actualisée quelques fois par jour gratuitement, puis avec des diamants.</li>
+          <li>Tu as quelques attaques gratuites chaque jour. Une fois épuisées, tu peux continuer à attaquer avec des diamants.</li>
+          <li>Le camp le plus fort gagne le plus souvent ; la chance ne joue qu'un petit rôle.</li>
+          <li>Après chaque combat, un écran de résultat affiche les dégâts, les coups, les critiques et les esquives, ainsi que la nouvelle cote des deux camps. L'<strong>Historique des combats</strong> garde tes derniers combats.</li>
+          <li>Les saisons durent un mois. À la fin, les cotes sont remises à zéro, les meilleurs joueurs gagnent des diamants, les trois premiers obtiennent une médaille permanente et le vainqueur reçoit le titre de champion de la saison.</li>
+        </ul>
+    </section>
+
+    <section id="tasks">
+      <div class="section-head"><span class="section-num">14</span><h2>Tâches</h2></div>
+      <p class="section-dek">La voie secondaire qui transforme tes clics en deuxième revenu.</p>
+      <ul>
+          <li>Les <strong>tâches</strong> s'acceptent avec du Taskium ; les plus rares rapportent davantage. Les tâches dont la récompense est prête remontent en haut de la liste.</li>
+          <li>Les <strong>Missions quotidiennes</strong> se renouvellent chaque jour et offrent de courts renforts à mesure que tu les termines. N'oublie pas de réclamer les récompenses dans le panneau.</li>
+        </ul>
+    </section>
+
+    <section id="trade">
+      <div class="section-head"><span class="section-num">15</span><h2>Marchand</h2></div>
+      <p class="section-dek">Là où les ressources en trop deviennent utiles.</p>
+      <p>Tu peux convertir la Pierre de minerai en Essence, en Pierre de compétence ou en Elementium, transformer les éléments que tu as collectés en Elementium, échanger les matériaux d'enchantement et la Pierre de renforcement contre le rang supérieur, et démanteler les enchantements dont tu ne veux pas. Les frais de conversion se paient en Pierre de minerai. L'échange de Pierre de compétence permet de renforcer tes compétences sans rien acheter en boutique.</p>
+    </section>
+
+    <section id="extras">
+      <div class="section-head"><span class="section-num">16</span><h2>Récompenses gratuites</h2></div>
+      <p class="section-dek">Des ressources qui ne demandent qu'un passage.</p>
+      <ul>
+          <li>Les <strong>ballons d'or</strong> traversent l'écran de temps en temps ; un clic et tu gagnes de l'or. Impossible de les rater - ils attendent ton clic.</li>
+          <li><strong>Cristal d'or</strong> transforme brièvement le minerai en minerai bonus très riche en or ; il ne se ramasse que dans la mine principale.</li>
+          <li>Les <strong>Cadeaux de bienvenue</strong> t'offrent un cadeau chacun de tes premiers jours ; les jours n'ont pas besoin de se suivre.</li>
+          <li><strong>Bonus du jour</strong> - chaque jour, tous ceux qui jouent reçoivent le même bonus, comme des dégâts de clic, de l'or, des critiques ou des dégâts des familiers, et il change chaque jour.</li>
+          <li>Les <strong>gains hors ligne</strong> s'accumulent quand le jeu est fermé et ne se perdent jamais avant que tu les récupères.</li>
+          <li>L'<strong>or gratuit horaire</strong> t'attend en boutique ; il grandit avec l'étage le plus profond atteint pendant cet Éveil.</li>
+          <li>La <strong>récompense quotidienne</strong> donne chaque jour en boutique une clé de donjon gratuite et une Clé d'abîme gratuite, indépendamment l'une de l'autre.</li>
+          <li>La <strong>Roue de la chance</strong> se recharge à intervalles réguliers et t'offre un tour gratuit.</li>
+          <li><strong>Codes promo</strong> - les codes partagés dans nos annonces s'utilisent depuis le menu Paramètres.</li>
+        </ul>
+    </section>
+
+    <section id="awakening">
+      <div class="section-head"><span class="section-num">17</span><h2>Éveil</h2></div>
+      <p class="section-dek">Transforme la progression de cette partie en puissance permanente.</p>
+      <ul>
+          <li>Passé une certaine profondeur, tu peux faire un Éveil. Chaque partie repart du premier étage.</li>
+          <li><strong>Remis à zéro :</strong> l'or, le Taskium, la progression d'étages, les pioches débloquées, leurs améliorations et leur maîtrise, les améliorations d'armure et de familier, les compétences d'objet, les titres, la progression des tâches, les recharges des compétences, les bénédictions, les pioches confiées aux ouvriers et le revenu d'ouvrier non récupéré.</li>
+          <li><strong>Conservés :</strong> les diamants, les clés, l'Essence, l'Essence pure, la Pierre de compétence, la Pierre de minerai, l'Elementium, les paramètres d'Éveil et d'Ascension, l'arbre de compétences, les golems, la progression des boss et de l'Abîme, les panneaux débloqués, les récompenses quotidiennes, les niveaux d'ouvrier, le Personnage et son équipement, ta cote d'Arène et tout ce qui se trouve dans ton Inventaire.</li>
+          <li>L'Essence gagnée dépend de l'étage le plus profond atteint et grandit vite avec la profondeur. Dépense-la en paramètres permanents.</li>
+          <li>L'étage auto et l'achat automatique de résistance à la chaleur peuvent rester activés après un Éveil si tu le choisis dans les paramètres.</li>
+          <li>Le bouton <strong>i</strong> de la page ouvre ton <strong>Historique des Éveils</strong>.</li>
+        </ul>
+      <div class="callout">
+          <div class="callout-label">Bénédiction d'Éveil</div>
+          À certains étages de chaque partie, on te propose un choix de bénédictions ; un bouton lumineux apparaît quand l'une d'elles t'attend. Les bénédictions d'une même famille se renforcent ensemble, et elles sont toutes remises à zéro à l'Éveil.
+        </div>
+      <div class="callout">
+          <div class="callout-label">Descends encore un peu</div>
+          Gagner quelques étages avant de faire un Éveil vaut en général mieux que d'enchaîner tout de suite un autre Éveil.
+        </div>
+    </section>
+
+    <section id="ascension">
+      <div class="section-head"><span class="section-num">18</span><h2>Ascension</h2></div>
+      <p class="section-dek">La deuxième couche, posée sur l'Éveil.</p>
+      <ul>
+          <li>Atteins un étage bien plus profond et l'Ascension se débloque ; elle a sa propre page sous l'onglet prestige.</li>
+          <li><strong>Remis à zéro :</strong> tes paramètres d'Éveil et ton Essence - cette boucle recommence entièrement ; pioches, étages et améliorations se réinitialisent comme lors d'un Éveil.</li>
+          <li><strong>Conservés :</strong> ton niveau d'Éveil, les diamants, les clés, la progression des boss et de l'Abîme, les golems, les enchantements et l'équipement, le Personnage, l'arbre de compétences, les succès, les niveaux d'ouvrier et l'Essence pure accumulée.</li>
+          <li>En échange tu gagnes de l'<strong>Essence pure</strong>. Elle achète deux paramètres : <strong>Écho de l'Éveil</strong> amplifie le bonus de chaque paramètre d'Éveil, et <strong>Source</strong> augmente l'Essence versée par chaque Éveil.</li>
+          <li>Les deux paramètres grandissent avec chaque niveau que tu achètes.</li>
+        </ul>
+      <div class="callout">
+          <div class="callout-label">Quand monter</div>
+          L'Ascension n'accélère pas une partie mais toute la boucle. Elle devient intéressante quand les paramètres d'Essence coûtent cher et qu'un Éveil de plus n'apporte plus grand-chose.
+        </div>
+    </section>
+
+    <section id="dungeons">
+      <div class="section-head"><span class="section-num">19</span><h2>Boss et Abîme</h2></div>
+      <p class="section-dek">Les deux défis chronométrés hors de la mine principale.</p>
+      <ul>
+          <li>On accède aux deux par Lieux ; pendant ce temps, la chaleur et la progression d'étages de la mine principale s'arrêtent.</li>
+          <li>Les <strong>boss</strong> s'ouvrent avec une clé de donjon : abats le boss avant la fin du chrono et tu gagnes de l'Essence, de la Pierre de minerai et de la Pierre de renforcement. Les boss se débloquent dans l'ordre et un boss vaincu reste ouvert pour de bon.</li>
+          <li>Bats un boss et ses paliers de <strong>Cauchemar</strong> sans fin s'ouvrent : chaque palier rend le boss plus fort, les récompenses plus grosses et la Pierre de renforcement plus rare.</li>
+          <li>L'<strong>Abîme</strong> s'ouvre avec une Clé d'abîme et tourne sur un seul compte à rebours : tu casses minerai après minerai, chaque palier plus dur que le précédent.</li>
+          <li>Chaque palier de l'abîme porte sa propre <strong>pénalité</strong> - l'une réduit tes dégâts automatiques, l'autre tes dégâts de clic, l'autre tes critiques. La pénalité ne s'applique que pendant ce palier.</li>
+          <li>Chaque palier cassé dans l'abîme est payé : que le chrono expire ou que tu quittes la descente, tu gardes ce que tu as gagné jusque-là. Termine tous les paliers et l'abîme suivant s'ouvre.</li>
+        </ul>
+      <div class="callout warn">
+          <div class="callout-label">Perdre contre un boss coûte cher</div>
+          Si le temps s'écoule avant la mort du boss, aucune récompense et la clé est perdue.
+        </div>
+    </section>
+
+    <section id="store">
+      <div class="section-head"><span class="section-num">20</span><h2>Boutique et succès</h2></div>
+      <p class="section-dek">Diamants, clés, lots, premium, sauts de temps, coffres, golems et objets Infinity permanents.</p>
+      <ul>
+          <li>Le <strong>Pack de démarrage</strong> ne peut être acheté qu'une fois par compte.</li>
+          <li>Le <strong>premium</strong> augmente tes dégâts, ton or et tes gains hors ligne pendant une durée définie.</li>
+          <li>Les <strong>sauts de temps</strong> avancent le jeu de plusieurs heures ; le gain est calculé sur ta puissance du moment.</li>
+          <li>Les <strong>coffres</strong> s'ouvrent immédiatement : le Coffre d'enchantements donne des matériaux d'enchantement, les coffres d'équipement et le Coffre mixte donnent de l'équipement.</li>
+          <li>L'<strong>Œuf de golem</strong> fait éclore un golem au hasard.</li>
+          <li>Les <strong>lots de clés</strong> s'achètent en diamants ; il existe des lots pour les clés de donjon comme pour l'Clé d'abîme.</li>
+          <li>Les <strong>objets Infinity</strong> s'achètent une seule fois et survivent à l'Éveil comme à l'Ascension.</li>
+          <li>Les <strong>succès</strong> versent des récompenses que tu dois réclamer toi-même.</li>
+        </ul>
+    </section>
+
+    <section id="progress">
+      <div class="section-head"><span class="section-num">21</span><h2>Progression et communauté</h2></div>
+      <p class="section-dek">Où suivre ta partie, comment ta progression est préservée et comment la partager.</p>
+      <ul>
+          <li>Le <strong>Guide</strong> (le bouton livre) rassemble les éléments, minerais rares, boss, abîmes, monnaies, pioches, familiers et golems que tu as trouvés. Ceux que tu n'as pas encore découverts restent des silhouettes noires.</li>
+          <li>Les classements Steam, l'écran de statistiques et le <strong>Journal d'activité</strong> montrent ta progression. Le panneau <strong>Mises à jour</strong> affiche les dernières notes de mise à jour.</li>
+          <li>Le bouton <strong>Exporter la carte</strong> des paramètres affiche ta <strong>Carte de mineur</strong> avec tes principales stats ; tu peux l'enregistrer en image PNG et la partager.</li>
+          <li>Avec <strong>Partager les moments rares sur Discord</strong> activé, tes moments les plus rares - étages profonds, butins légendaires, victoires contre les boss et dans l'Abîme, combats d'Arène - apparaissent dans le canal #live de notre serveur Discord. Seuls ton nom Steam et le moment sont affichés ; tu peux le désactiver dans les paramètres.</li>
+          <li>Si Discord est ouvert, ton profil indique l'étage où tu te trouves et ton niveau d'Éveil / Ascension.</li>
+          <li>Le jeu se sauvegarde régulièrement et se synchronise avec Steam Cloud ; tu peux continuer sur un autre ordinateur.</li>
+          <li>Sur un ordinateur moins puissant, désactiver <strong>Utiliser les ombres</strong> dans les paramètres améliore les performances.</li>
+        </ul>
+    </section>
+
+    <footer class="doc-footer">Le jeu évolue avec les mises à jour ; ce guide donne une vue d'ensemble. Les prix des articles vendus en argent réel sont affichés par Steam dans ta propre devise.</footer>
+  </main>
+</div>
+
+</body>
+</html>
