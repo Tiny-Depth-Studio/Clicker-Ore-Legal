@@ -25,6 +25,14 @@
   },
   "news": [
     {
+      "date": 1793370234,
+      "excerpt": "NEW - Players who placed in an Arena season now show their gold, silver and bronze medals next to their name on every leaderboard tab. - Bulk buying and upgrading now have an x1000 option. - I added a button to the…",
+      "feedlabel": "Community Announcements",
+      "gid": "1847920302238802",
+      "title": "1.13.33 Update Notes — October 30, 2026",
+      "url": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1847920302238802"
+    },
+    {
       "date": 1793266871,
       "excerpt": "NEW - I updated the player guide on our website in every language; golems, the character and equipment, the Arena and the other recently added systems are now in the guide. IMPROVEMENTS - When the server is briefly…",
       "feedlabel": "Community Announcements",
@@ -63,14 +71,6 @@
       "gid": "1846018067934483",
       "title": "1.11.27 Major Update — October 9, 2026",
       "url": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1846018067934483"
-    },
-    {
-      "date": 1791233331,
-      "excerpt": "NEW - Character is open: after floor 250 your character levels up as you break ores and play, and you can strengthen its attack stats and your Crystal's defense stats with Elementium. - Added equipment: hammers…",
-      "feedlabel": "Community Announcements",
-      "gid": "1845383656394602",
-      "title": "1.10.24 Major Update — October 5, 2026",
-      "url": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1845383656394602"
     }
   ],
   "screenshots": [
