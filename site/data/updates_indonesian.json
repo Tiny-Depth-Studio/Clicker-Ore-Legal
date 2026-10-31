@@ -1,6 +1,15 @@
 {
  "entries": [
   {
+   "body": "<b>BARU</b>\n- Pekerja kini bisa mengumpulkan Elementium sebagai ganti emas: tombol mata uang di samping pekerja mengganti apa yang dikumpulkannya secara gratis, dan hasil yang sudah didapat tidak hilang.\n- Saya menambahkan kolom tombol di kanan panel beliung, zirah, dan pet; di samping \"Isi Otomatis\", tombol baru \"Lepas Semua\" melepas semua mantra yang terpasang dengan satu klik.\n- Saya menambahkan tab \"Info dan Tips\" ke panel Panduan: isinya menjelaskan pengalaman dan penguasaan, lantai dan pembukaan, damage, Kebangkitan dan Pendakian, hadiah, karakter, dan Arena dalam poin singkat.\n\n<b>PENINGKATAN</b>\n- Pintasan kini bekerja tanpa Shift: cukup tekan tombolnya, misalnya 1 sampai 8 untuk skill; menahan Shift tetap menampilkan tombol mana yang terhubung ke tiap tombol layar.\n\n<b>PERBAIKAN</b>\n- Notifikasi putaran gratis Putaran Keberuntungan kini juga menyala saat siklus 3 jam berakhir ketika game sedang terbuka.\n- Nama dengan huruf Tionghoa, Jepang, Korea, atau Thai di papan peringkat kini tampil utuh, tidak lagi berubah menjadi elipsis.\n\nSelamat menggali!",
+   "date": "2026-11-01",
+   "id": "2026-11-01_1.13.34",
+   "subtitle": "Pekerja mengumpulkan Elementium, tombol \"Lepas Semua\" dan tab baru \"Info dan Tips\"",
+   "summary": "Pekerja kini bisa mengumpulkan Elementium sebagai ganti emas, panel item punya tombol \"Lepas Semua\", dan Panduan punya tab \"Info dan Tips\".",
+   "title": "1.13.34 Catatan Pembaruan — 1 November 2026",
+   "version": "1.13.34"
+  },
+  {
    "body": "<b>BARU</b>\n- Pemain yang meraih peringkat di musim Arena kini menampilkan medali emas, perak, dan perunggu di samping nama mereka di setiap tab papan peringkat.\n- Pembelian dan peningkatan massal kini punya opsi x1000.\n- Aku menambahkan tombol di panel Panduan yang membuka panduan pemain di situs kami dalam bahasa game.\n\n<b>PENINGKATAN</b>\n- Dengan pengali tetap, peningkatan massal kini membeli jumlah penuh atau tidak sama sekali, dan tombolnya menjadi abu-abu jika uangmu tidak cukup; Maks tetap membeli sebanyak yang bisa.\n- Saat kamu mematikan berbagi ke Discord, game langsung memberi tahu server kami: namamu tidak lagi muncul di postingan Arena pemain lain dan momenmu yang masih menunggu tidak diposting.\n- Peringatan koneksi kini tampil di latar gelap yang mudah dibaca, dan jika Steam mengeluarkanmu (misalnya karena akunmu masuk di komputer lain), sebuah pesan mengatakannya dengan jelas.\n- Aku memperbarui Kebijakan Privasi dan Ketentuan Layanan; keduanya kini menjelaskan lebih rinci data apa yang disimpan dan fitur mana yang butuh internet.\n\n<b>PERBAIKAN</b>\n- Tombol coba lagi di samping namamu kini menyambung ulang ke server meskipun Steam sudah berjalan.\n- Slot tugas yang terbuka saat halaman tugas ditutup kini langsung muncul begitu halaman dibuka.\n- Nama panjang di papan peringkat tidak lagi meluber ke bawah skor; kini diakhiri dengan elipsis.\n- Beberapa karakter yang hilang pada teks Jepang, Korea, Tionghoa, dan Thai kini tampil dengan benar.\n\nSelamat menggali!",
    "date": "2026-10-30",
    "id": "2026-10-30_1.13.33",

@@ -1,6 +1,15 @@
 {
  "entries": [
   {
+   "body": "<b>NOWOŚCI</b>\n- Robotnicy mogą teraz zbierać Elementium zamiast złota: przycisk waluty obok robotnika za darmo zmienia to, co zbiera, a nic z tego, co już zarobił, nie przepada.\n- Po prawej stronie paneli kilofów, zbroi i pupili dodałem kolumnę przycisków; obok „Auto-wypełnianie” nowy przycisk „Zdejmij wszystko” zdejmuje jednym kliknięciem wszystkie założone zaklęcia.\n- Dodałem do Przewodnika kartę „Informacje i porady”: w krótkich punktach wyjaśnia doświadczenie i mistrzostwo, piętra i odblokowania, obrażenia, Przebudzenie i Wzniesienie, nagrody, postać i Arenę.\n\n<b>ULEPSZENIA</b>\n- Skróty działają teraz bez Shifta: wystarczy nacisnąć klawisz, np. od 1 do 8 dla umiejętności; przytrzymanie Shifta nadal pokazuje, który klawisz należy do którego przycisku.\n\n<b>POPRAWKI</b>\n- Powiadomienie o darmowym obrocie Koła Fortuny zapala się teraz także wtedy, gdy 3-godzinny cykl kończy się przy otwartej grze.\n- Nazwy z literami chińskimi, japońskimi, koreańskimi lub tajskimi w rankingach wyświetlają się teraz w całości zamiast zamieniać się w wielokropek.\n\nUdanego kopania!",
+   "date": "2026-11-01",
+   "id": "2026-11-01_1.13.34",
+   "subtitle": "Robotnicy zbierają Elementium, przycisk „Zdejmij wszystko” i nowa karta „Informacje i porady”",
+   "summary": "Robotnicy mogą teraz zbierać Elementium zamiast złota, panele przedmiotów mają przycisk „Zdejmij wszystko”, a Przewodnik kartę „Informacje i porady”.",
+   "title": "1.13.34 Informacje o aktualizacji — 1 listopada 2026",
+   "version": "1.13.34"
+  },
+  {
    "body": "<b>NOWOŚCI</b>\n- Gracze, którzy zajęli miejsce w sezonie Areny, pokazują teraz swoje złote, srebrne i brązowe medale obok nazwy na każdej karcie rankingu.\n- Zbiorczy zakup i ulepszanie mają teraz opcję x1000.\n- Dodałem do panelu poradnika przycisk, który otwiera poradnik gracza na naszej stronie w języku gry.\n\n<b>ULEPSZENIA</b>\n- Przy stałym mnożniku zbiorcze ulepszanie kupuje teraz całą ilość albo nic, a przycisk szarzeje, gdy cię nie stać; Maks nadal kupuje tyle, ile się da.\n- Gdy wyłączysz udostępnianie na Discordzie, gra od razu informuje o tym nasz serwer: twoja nazwa przestaje pojawiać się we wpisach z Areny innych graczy, a oczekujące momenty nie są publikowane.\n- Ostrzeżenia o połączeniu pojawiają się teraz na ciemnym tle i łatwo je przeczytać, a gdy Steam cię wyloguje (na przykład dlatego, że konto zalogowało się na innym komputerze), komunikat mówi o tym wprost.\n- Zaktualizowałem politykę prywatności i warunki korzystania; dokładniej wyjaśniają teraz, jakie dane są przechowywane i które funkcje wymagają internetu.\n\n<b>POPRAWKI</b>\n- Przycisk ponowienia obok twojej nazwy łączy się teraz ponownie z serwerem nawet wtedy, gdy Steam już działa.\n- Miejsce na zadanie odblokowane przy zamkniętej stronie zadań pojawia się teraz od razu po otwarciu strony.\n- Długie nazwy w rankingach nie wchodzą już pod wynik; teraz kończą się wielokropkiem.\n- Niektóre znaki, których brakowało w tekstach japońskich, koreańskich, chińskich i tajskich, wyświetlają się teraz poprawnie.\n\nUdanego kopania!",
    "date": "2026-10-30",
    "id": "2026-10-30_1.13.33",

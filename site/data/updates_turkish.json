@@ -1,6 +1,15 @@
 {
  "entries": [
   {
+   "body": "<b>YENİLİKLER</b>\n- İşçiler artık altın yerine Elementium da toplayabiliyor: her işçinin yanındaki para butonuna basarak ne toplayacağını ücretsiz değiştirebilirsiniz, biriken kazancınız kaybolmuyor.\n- Kazma, zırh ve pet panellerinin sağına bir buton sütunu ekledim; Otomatik Yerleştir'in yanına takılı bütün efsunları tek tıkla çıkaran Hepsini Sök butonu geldi.\n- Rehber paneline Bilgi ve İpuçları sekmesi ekledim: tecrübe ve ustalık, katlar ve açılışlar, hasar, Uyanış ve Yükseliş, ödüller, karakter ve Arena kısa maddelerle anlatılıyor.\n\n<b>İYİLEŞTİRMELER</b>\n- Kısayollar artık Shift'e basmadan çalışıyor: yetenekler için 1-8 gibi tuşlara doğrudan basmanız yeterli; Shift'i basılı tutunca hangi butonun hangi tuşa bağlı olduğu yine görünüyor.\n\n<b>DÜZELTMELER</b>\n- Şans Çarkı'nın ücretsiz çevirme bildirimi artık oyun açıkken 3 saatlik döngü bittiğinde de yanıyor.\n- Liderlik tablolarında Çince, Japonca, Korece ya da Tayca harf içeren isimler artık üç noktaya dönüşmeden tam görünüyor.\n\nİyi kazılar!",
+   "date": "2026-11-01",
+   "id": "2026-11-01_1.13.34",
+   "subtitle": "İşçiler Elementium toplayabiliyor, Hepsini Sök butonu ve yeni Bilgi ve İpuçları sekmesi",
+   "summary": "İşçiler artık altın yerine Elementium da toplayabiliyor, eşya panellerine Hepsini Sök butonu geldi, Rehber'e Bilgi ve İpuçları sekmesi eklendi.",
+   "title": "1.13.34 Güncelleme Notları — 1 Kasım 2026",
+   "version": "1.13.34"
+  },
+  {
    "body": "<b>YENİLİKLER</b>\n- Bir Arena sezonunda derece alan oyuncuların altın, gümüş ve bronz madalyaları artık bütün liderlik tablosu sekmelerinde isimlerinin yanında görünüyor.\n- Toplu satın alma ve geliştirmeye x1000 seçeneği eklendi.\n- Rehber paneline, web sitemizdeki oyuncu rehberini oyunun dilinde açan bir buton ekledim.\n\n<b>İYİLEŞTİRMELER</b>\n- Sabit bir çarpan seçiliyken toplu geliştirme artık seçilen miktarın tamamını alıyor ya da hiç almıyor, paranız yetmiyorsa buton griye dönüyor; Max eskisi gibi alınabildiği kadar alıyor.\n- Discord'da paylaşımı kapattığınızda oyun bunu sunucumuza hemen bildiriyor: adınız başka oyuncuların Arena paylaşımlarında görünmüyor ve paylaşılmayı bekleyen anlarınız gönderilmiyor.\n- Bağlantı uyarıları artık kolay okunan koyu bir zeminde çıkıyor; Steam oturumunuz kapanırsa (örneğin hesabınız başka bir bilgisayarda açıldığı için) bunu açıkça söyleyen bir mesaj gösteriliyor.\n- Gizlilik politikamızı ve kullanım şartlarımızı güncelledim; hangi verilerin tutulduğu ve hangi özelliklerin internet gerektirdiği artık daha ayrıntılı anlatılıyor.\n\n<b>DÜZELTMELER</b>\n- İsminizin yanındaki tekrar dene butonu artık Steam açıkken de sunucuya yeniden bağlanıyor.\n- Görev sayfası kapalıyken açılan görev yuvası artık sayfayı açar açmaz görünüyor.\n- Liderlik tablolarında uzun isimler artık skorun altına taşmıyor, sonu üç noktayla kısalıyor.\n- Japonca, Korece, Çince ve Tayca metinlerde eksik görünen bazı karakterler artık doğru görünüyor.\n\nİyi kazılar!",
    "date": "2026-10-30",
    "id": "2026-10-30_1.13.33",

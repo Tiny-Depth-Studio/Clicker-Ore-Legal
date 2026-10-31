@@ -1,6 +1,15 @@
 {
  "entries": [
   {
+   "body": "<b>MỚI</b>\n- Công nhân giờ có thể thu Elementium thay cho vàng: nút tiền tệ bên cạnh mỗi công nhân đổi miễn phí thứ họ thu, và những gì đã kiếm được không bị mất.\n- Tôi đã thêm một cột nút bên phải bảng cuốc chim, giáp và thú cưng; cạnh \"Tự động lắp\", nút mới \"Tháo tất cả\" tháo mọi phù phép đang lắp chỉ bằng một cú nhấp.\n- Tôi đã thêm thẻ \"Thông tin & mẹo\" vào bảng Hướng dẫn: giải thích ngắn gọn kinh nghiệm và thành thạo, tầng và mở khóa, sát thương, Thức tỉnh và Thăng hoa, phần thưởng, nhân vật và Đấu trường.\n\n<b>CẢI TIẾN</b>\n- Phím tắt giờ hoạt động mà không cần Shift: chỉ cần nhấn phím, ví dụ 1 đến 8 cho kỹ năng; giữ Shift vẫn hiện phím nào thuộc nút nào.\n\n<b>SỬA LỖI</b>\n- Thông báo lượt quay miễn phí của Vòng quay may mắn giờ cũng sáng lên khi chu kỳ 3 giờ kết thúc trong lúc game đang mở.\n- Trên bảng xếp hạng, tên có chữ Trung, Nhật, Hàn hoặc Thái giờ hiển thị đầy đủ thay vì biến thành dấu ba chấm.\n\nChúc đào vui vẻ!",
+   "date": "2026-11-01",
+   "id": "2026-11-01_1.13.34",
+   "subtitle": "Công nhân thu Elementium, nút \"Tháo tất cả\" và thẻ mới \"Thông tin & mẹo\"",
+   "summary": "Công nhân giờ có thể thu Elementium thay cho vàng, bảng vật phẩm có nút \"Tháo tất cả\" và Hướng dẫn có thẻ \"Thông tin & mẹo\".",
+   "title": "1.13.34 Ghi chú cập nhật — 1 tháng 11, 2026",
+   "version": "1.13.34"
+  },
+  {
    "body": "<b>MỚI</b>\n- Người chơi đạt thứ hạng trong một mùa Đấu trường giờ hiển thị huy chương vàng, bạc và đồng cạnh tên ở mọi thẻ bảng xếp hạng.\n- Mua và nâng cấp hàng loạt giờ có tùy chọn x1000.\n- Tôi đã thêm vào bảng Hướng dẫn một nút mở hướng dẫn người chơi trên trang web của chúng tôi bằng ngôn ngữ của trò chơi.\n\n<b>CẢI TIẾN</b>\n- Khi chọn hệ số cố định, nâng cấp hàng loạt giờ mua đủ toàn bộ số lượng hoặc không mua gì, và nút chuyển xám khi bạn không đủ tiền; Tối đa vẫn mua nhiều nhất có thể.\n- Khi bạn tắt chia sẻ lên Discord, trò chơi báo ngay cho máy chủ của chúng tôi: tên bạn không còn xuất hiện trong bài đăng Đấu trường của người chơi khác và các khoảnh khắc đang chờ sẽ không được đăng.\n- Cảnh báo kết nối giờ hiện trên nền tối dễ đọc, và nếu Steam đăng xuất bạn (ví dụ vì tài khoản của bạn đăng nhập trên máy tính khác), một thông báo sẽ nói rõ điều đó.\n- Tôi đã cập nhật Chính sách quyền riêng tư và Điều khoản dịch vụ; giờ chúng giải thích chi tiết hơn dữ liệu nào được lưu và tính năng nào cần Internet.\n\n<b>SỬA LỖI</b>\n- Nút thử lại cạnh tên bạn giờ kết nối lại máy chủ ngay cả khi Steam đã đang chạy.\n- Ô nhiệm vụ được mở khóa khi trang nhiệm vụ đang đóng giờ hiện ra ngay khi bạn mở trang.\n- Tên dài trên bảng xếp hạng không còn tràn xuống dưới điểm số và giờ kết thúc bằng dấu ba chấm.\n- Một số ký tự bị thiếu trong văn bản tiếng Nhật, Hàn, Trung và Thái giờ hiển thị đúng.\n\nChúc đào vui vẻ!",
    "date": "2026-10-30",
    "id": "2026-10-30_1.13.33",

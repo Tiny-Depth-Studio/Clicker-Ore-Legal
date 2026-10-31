@@ -1,6 +1,15 @@
 {
  "entries": [
   {
+   "body": "<b>NEW</b>\n- Workers can now collect Elementium instead of gold: press the currency button next to a worker to switch what it collects for free, and nothing it has already earned is lost.\n- I added a button column to the right of the pickaxe, armor and pet panels; next to Auto Fill, the new Unequip All button removes every equipped enchantment in one click.\n- I added an Info & Tips tab to the Guide panel: it explains experience and mastery, floors and unlocks, damage, Awakening and Ascension, rewards, character and Arena in short points.\n\n<b>IMPROVEMENTS</b>\n- Shortcuts now work without Shift: just press the key, such as 1 to 8 for skills; holding Shift still shows which key belongs to which button.\n\n<b>FIXES</b>\n- The Lucky Spin free spin notification now also lights up when the 3-hour cycle ends while the game is open.\n- Names with Chinese, Japanese, Korean or Thai letters on the leaderboards now show in full instead of turning into an ellipsis.\n\nHappy digging!",
+   "date": "2026-11-01",
+   "id": "2026-11-01_1.13.34",
+   "subtitle": "Workers can collect Elementium, an Unequip All button and a new Info & Tips guide tab",
+   "summary": "Workers can now collect Elementium instead of gold, item panels get an Unequip All button, and the Guide has a new Info & Tips tab.",
+   "title": "1.13.34 Update Notes — November 1, 2026",
+   "version": "1.13.34"
+  },
+  {
    "body": "<b>NEW</b>\n- Players who placed in an Arena season now show their gold, silver and bronze medals next to their name on every leaderboard tab.\n- Bulk buying and upgrading now have an x1000 option.\n- I added a button to the Guide panel that opens the player guide on our website in your game language.\n\n<b>IMPROVEMENTS</b>\n- With a fixed multiplier selected, bulk upgrading now buys the full amount or nothing, and the button greys out when you cannot afford it; Max still buys as much as you can afford.\n- When you turn off sharing to Discord, the game now tells our server right away: your name stops appearing in other players' Arena posts and your moments still waiting to be posted are dropped.\n- Connection warnings now appear on a dark backdrop so they are easy to read, and if Steam signs you out (for example because your account signed in on another computer) a message now says exactly that.\n- I updated our Privacy Policy and Terms of Service; they now explain in more detail which data is kept and which features need an internet connection.\n\n<b>FIXES</b>\n- The retry button next to your name now reconnects to the server even when Steam is already running.\n- A task slot unlocked while the task page was closed now shows up as soon as you open the page.\n- Long names on the leaderboards no longer run under the score; they now end with an ellipsis.\n- Some characters that were missing in Japanese, Korean, Chinese and Thai text now display correctly.\n\nHappy digging!",
    "date": "2026-10-30",
    "id": "2026-10-30_1.13.33",
