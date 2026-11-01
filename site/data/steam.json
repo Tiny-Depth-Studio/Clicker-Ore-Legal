@@ -25,6 +25,14 @@
   },
   "news": [
     {
+      "date": 1793490844,
+      "excerpt": "NEW - Workers can now collect Elementium instead of gold: press the currency button next to a worker to switch what it collects for free, and nothing it has already earned is lost. - I added a button column to the right…",
+      "feedlabel": "Community Announcements",
+      "gid": "1847920302243677",
+      "title": "1.13.34 Update Notes — November 1, 2026",
+      "url": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1847920302243677"
+    },
+    {
       "date": 1793370234,
       "excerpt": "NEW - Players who placed in an Arena season now show their gold, silver and bronze medals next to their name on every leaderboard tab. - Bulk buying and upgrading now have an x1000 option. - I added a button to the…",
       "feedlabel": "Community Announcements",
@@ -63,14 +71,6 @@
       "gid": "1846651706685300",
       "title": "1.12.28 Major Update — October 17, 2026",
       "url": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1846651706685300"
-    },
-    {
-      "date": 1791574249,
-      "excerpt": "NEW - Welcome gifts: a gift awaits you every day during your first days; the days don't have to be consecutive. - Weather events: new weather events unlock in the mine as you go deeper; each event has timed side…",
-      "feedlabel": "Community Announcements",
-      "gid": "1846018067934483",
-      "title": "1.11.27 Major Update — October 9, 2026",
-      "url": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1846018067934483"
     }
   ],
   "screenshots": [
