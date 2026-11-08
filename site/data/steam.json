@@ -25,6 +25,14 @@
   },
   "news": [
     {
+      "date": 1794160909,
+      "excerpt": "NEW - I added Contracts: with the Contracts button on the Awakening and Ascension pages you can pick contracts that make your next run harder and earn more Essence and Pure Essence. - You can pick up to 2 contracts per…",
+      "feedlabel": "Community Announcements",
+      "gid": "1848664643353101",
+      "title": "1.13.36 Update Notes — November 8, 2026",
+      "url": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1848664643353101"
+    },
+    {
       "date": 1793821944,
       "excerpt": "NEW - I added the Library: it opens in the General tab after floor 350, and three book chests bought with Elementium drop books that give permanent power. - Each of the 24 books rises up to 5 stars with new copies…",
       "feedlabel": "Community Announcements",
@@ -63,14 +71,6 @@
       "gid": "1847286114050061",
       "title": "1.13.31 Patch Notes — October 27, 2026",
       "url": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1847286114050061"
-    },
-    {
-      "date": 1793037903,
-      "excerpt": "NEW - Wall inscriptions are here: on some floors a riddle appears on the cave wall; its answer is a floor you have already passed, and a gold crystal waits for you when you go back there. - Every 100th floor brings an…",
-      "feedlabel": "Community Announcements",
-      "gid": "1847286114046159",
-      "title": "1.13.30 Major Update — October 25, 2026",
-      "url": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1847286114046159"
     }
   ],
   "screenshots": [
